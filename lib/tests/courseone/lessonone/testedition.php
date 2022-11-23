@@ -8,8 +8,12 @@ Loc::loadMessages(__FILE__);
 
 class TestEdition extends \Intervolga\Edu\Tests\BaseTest
 {
-	public static function run()
+	/**
+	 * @return string[]
+	 */
+	public static function getErrors()
 	{
+		$errors = [];
 		require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/classes/general/update_client.php");
 
 		$stableVersionsOnly = \COption::GetOptionString('main', 'stable_versions_only', 'Y');
@@ -18,13 +22,15 @@ class TestEdition extends \Intervolga\Edu\Tests\BaseTest
 				if ($license = $arUpdateList["CLIENT"][0]["@"]["LICENSE"]) {
 					$translitLicense = \CUtil::translit($license, 'ru');
 					if ($translitLicense != 'standart') {
-						throw new TestException(Loc::getMessage('INTERVOLGA_EDU.INCORRECT_LICENSE', ['#LICENSE#' => $license]));
+						$errors[] = Loc::getMessage('INTERVOLGA_EDU.INCORRECT_LICENSE', ['#LICENSE#' => $license]);
 					}
 				}
 			} else {
-				throw new TestException($errorMessage);
+				$errors[] = $errorMessage;
 			}
 			\CUpdateClient::UnLock();
 		}
+
+		return $errors;
 	}
 }

@@ -3,8 +3,22 @@ namespace Intervolga\Edu\Tests;
 
 abstract class BaseTest
 {
-	public static function run()
+	/**
+	 * @return string[]
+	 */
+	public static function getErrors()
 	{
-		throw new \Intervolga\Edu\Exceptions\TestException('Not implemented yet');
+		return ['Not implemented yet'];
+	}
+
+	public static function getErrorsPrefixed()
+	{
+		$result = [];
+		$errors = static::getErrors();
+		foreach ($errors as $error) {
+			$result[] = '[' . get_called_class() .'] ' . $error;
+		}
+
+		return $result;
 	}
 }

@@ -8,19 +8,21 @@ Loc::loadMessages(__FILE__);
 
 class TestUpdates extends \Intervolga\Edu\Tests\BaseTest
 {
-	public static function run()
+	public static function getErrors()
 	{
+		$errors = [];
 		require_once($_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/classes/general/update_client.php');
 
 		$stableVersionsOnly = \Bitrix\Main\Config\Option::get('main', 'stable_versions_only', 'Y');
 		if (\CUpdateClient::Lock()) {
 			if ($updatesList = \CUpdateClient::GetUpdatesList($errorMessage, LANG, $stableVersionsOnly)) {
-				echo '<pre>' . __FILE__ . ':' . __LINE__ . ':<br>' . print_r($updatesList['MODULES'][0]['#']['MODULE'], true) . '</pre>';
-				echo '<pre>' . __FILE__ . ':' . __LINE__ . ':<br>' . print_r(Option::get('main', 'update_system_update', '-'), true) . '</pre>';
+				$errors[] = Loc::getMessage('INTERVOLGA_EDU.UPDATES_AVAILABLE', ['#COUNT#' => count($updatesList['MODULES'][0]['#']['MODULE'])]);
 			} else {
-				throw new TestException($errorMessage);
+				$errors[] = $errorMessage;
 			}
 			\CUpdateClient::UnLock();
 		}
+
+		return $errors;
 	}
 }
