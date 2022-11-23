@@ -33,6 +33,14 @@ abstract class BaseTest
 	 */
 	public static function getErrors()
 	{
-		return static::$errors[get_called_class()];
+		return (array)static::$errors[get_called_class()];
+	}
+
+	/**
+	 * @return string
+	 */
+	public static function getCode()
+	{
+		return str_replace(__NAMESPACE__. '\\', '', get_called_class());
 	}
 }
