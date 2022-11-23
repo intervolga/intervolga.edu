@@ -6,57 +6,37 @@ use Bitrix\Main\Application;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Exceptions\TestException;
+use Intervolga\Edu\Tests\BaseTest;
 
 Loc::loadMessages(__FILE__);
 
-class TestSiteCorporate extends \Intervolga\Edu\Tests\BaseTest
+class TestSiteCorporate extends BaseTest
 {
-	/**
-	 * @return string[]
-	 * @throws TestException
-	 */
-	public static function getErrors()
+	public static function run()
 	{
-		$errors = [];
-		$errors = array_merge($errors, static::testModule());
-		$errors = array_merge($errors, static::testPublic());
-		$errors = array_merge($errors, static::testIblock());
-
-		return $errors;
+		static::testModule();
+		static::testPublic();
+		static::testIblock();
 	}
 
-	/**
-	 * @return string[]
-	 * @throws \Bitrix\Main\LoaderException
-	 */
 	protected static function testModule()
 	{
-		$errors = [];
 		if (!Loader::includeModule('bitrix.sitecorporate')) {
-			$errors [] = Loc::getMessage('INTERVOLGA_EDU.MODULE_SITECORPORATE_NOT_INSTALLED');
+			static::registerError(Loc::getMessage('INTERVOLGA_EDU.MODULE_SITECORPORATE_NOT_INSTALLED'));
 		}
-
-		return $errors;
 	}
 
-	/**
-	 * @return string[]
-	 */
 	protected static function testPublic()
 	{
-		$errors = [];
 		$paths = [
 			'/company/mission.php',
 			'/company/management.php',
 		];
 		foreach ($paths as $path) {
 			if (!File::isFileExists(Application::getDocumentRoot() . $path)) {
-				$errors[] = Loc::getMessage('INTERVOLGA_EDU.PAGE_NOT_FOUND', ['#PAGE#' => $path]);
+				static::registerError(Loc::getMessage('INTERVOLGA_EDU.PAGE_NOT_FOUND', ['#PAGE#' => $path]));
 			}
 		}
-
-		return $errors;
 	}
 
 	/**
@@ -89,10 +69,15 @@ class TestSiteCorporate extends \Intervolga\Edu\Tests\BaseTest
 				$foundCodes[] = $fetch['CODE'];
 			}
 			if (count($foundCodes)<count($codes)) {
-				$errors[] = Loc::getMessage('INTERVOLGA_EDU.IBLOCKS_NOT_FOUND', ['#CODES#' => implode(', ', array_diff($codes, $foundCodes))]);
+				static::registerError(
+					Loc::getMessage(
+						'INTERVOLGA_EDU.IBLOCKS_NOT_FOUND',
+						[
+							'#CODES#' => implode(', ', array_diff($codes, $foundCodes)),
+						]
+					)
+				);
 			}
 		}
-
-		return $errors;
 	}
 }
