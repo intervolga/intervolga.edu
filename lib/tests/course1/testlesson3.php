@@ -20,7 +20,7 @@ class TestLesson3 extends BaseTest
 	public static function run()
 	{
 		static::testTemplates();
-		// Только шаблоны .default, inner, main
+		static::testCustomCoreCheck();
 		// B_PROLOG_INCLUDED === true || die();
 		// Asset::getInstance()->add
 		// <?php
@@ -44,6 +44,38 @@ class TestLesson3 extends BaseTest
 					static::registerError(Loc::getMessage('INTERVOLGA_EDU.UNKNOWN_TEMPLATE_FOUND', [
 						'#NAME#' => $child->getName(),
 						'#ADMIN_LINK#' => Admin::getFileManUrl($child),
+					]));
+				}
+			}
+		}
+	}
+
+	protected static function testCustomCoreCheck()
+	{
+		$templatesToCheck = [
+			'/local/templates/',
+			[
+				'main/',
+				'inner/'
+			],
+			[
+				'header.php',
+				'footer.php'
+			]
+		];
+		$example = 'B_PROLOG_INCLUDED === true || die()';
+		$re = '/B_PROLOG_INCLUDED ?=== ?true ?\|\| ?die(\(\))?/mi';
+
+		$files = FileSystem::getComboEntries($templatesToCheck);
+		foreach ($files as $file) {
+			if ($file->isExists() && $file->isFile()) {
+				$content = $file->getContents();
+				preg_match_all($re, $content, $matches, PREG_SET_ORDER, 0);
+				if (!$matches) {
+					static::registerError(Loc::getMessage('INTERVOLGA_EDU.CUSTOM_CORE_CHECK_NOT_FOUND', [
+						'#PATH#' => $file->getName(),
+						'#ADMIN_LINK#' => Admin::getFileManUrl($file),
+						'#EXAMPLE#' => $example,
 					]));
 				}
 			}
