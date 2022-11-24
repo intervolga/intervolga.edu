@@ -145,8 +145,8 @@ class TestLesson2 extends BaseTest
 	protected static function testMenu()
 	{
 		$publicDirs = FileSystem::getPublicDirsLevelOne();
-		$menuFiles = FileSystem::getFilesRecursiveByNameSubst($publicDirs, '.menu.php');
-		$menuFiles = array_merge($menuFiles, FileSystem::getFilesNonRecursiveByNameSubst([new Directory(Application::getDocumentRoot())], '.menu.php'));
+		$menuFiles = FileSystem::getFilesRecursiveByPathRegex($publicDirs, '/\.menu\.php/m');
+		$menuFiles = array_merge($menuFiles, FileSystem::getFilesNonRecursiveByPathRegex([new Directory(Application::getDocumentRoot())], '/\.menu\.php/m'));
 		foreach ($menuFiles as $menuFile) {
 			$content = $menuFile->getContents();
 			$re = '/(\/.*)?index\.php/m';

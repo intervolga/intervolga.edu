@@ -39,10 +39,13 @@ class FileSystem
 		}
 
 		foreach ($resultPaths as $resultPath) {
-			if (strlen($resultPath)) {
-				$result [] = new File(Application::getDocumentRoot() . $resultPath);
+			if (mb_strlen($resultPath)) {
+				if (mb_substr($resultPath, '-1', '1') == '/') {
+					$result [] = new Directory(Application::getDocumentRoot() . $resultPath);
+				} else {
+					$result [] = new File(Application::getDocumentRoot() . $resultPath);
+				}
 			}
-
 		}
 
 		return $result;
@@ -76,50 +79,54 @@ class FileSystem
 	}
 
 	/**
-	 * @param Directory[] $dirs
-	 * @param string $namePart
+	 * @param FileSystemEntry[] $dirs
+	 * @param string $pathRegex
 	 * @return File[]
 	 */
-	public static function getFilesRecursiveByNameSubst($dirs, $namePart)
+	public static function getFilesRecursiveByPathRegex($dirs, $pathRegex)
 	{
-		return static::getFilesByNameSubst($dirs, $namePart, true);
+		return static::getFilesByPathRegex($dirs, $pathRegex, true);
 	}
 
 	/**
 	 * @param Directory[] $dirs
-	 * @param string $namePart
+	 * @param string $pathRegex
 	 * @return File[]
 	 */
-	public static function getFilesNonRecursiveByNameSubst($dirs, $namePart)
+	public static function getFilesNonRecursiveByPathRegex($dirs, $pathRegex)
 	{
-		return static::getFilesByNameSubst($dirs, $namePart, false);
+		return static::getFilesByPathRegex($dirs, $pathRegex, false);
 	}
 
 	/**
 	 * @param Directory[] $dirs
-	 * @param string $namePart
+	 * @param string $pathRegex
 	 * @param bool $isRecursive
 	 * @return File[]
 	 */
-	protected static function getFilesByNameSubst($dirs, $namePart, $isRecursive)
+	protected static function getFilesByPathRegex($dirs, $pathRegex, $isRecursive)
 	{
 		$dirsToCheck = [];
 		$result = [];
 		foreach ($dirs as $dir) {
-			foreach ($dir->getChildren() as $child) {
-				if ($child->isDirectory()) {
-					if ($isRecursive) {
-						$dirsToCheck[] = $child;
-					}
-				} else {
-					if (substr_count($child->getName(), $namePart)) {
-						$result[] = $child;
+			if ($dir->isExists()) {
+				foreach ($dir->getChildren() as $child) {
+					if ($child->isDirectory()) {
+						if ($isRecursive) {
+							$dirsToCheck[] = $child;
+						}
+					} else {
+						preg_match_all($pathRegex, $child->getPath(),$matches, PREG_SET_ORDER, 0);
+
+						if ($matches) {
+							$result[] = $child;
+						}
 					}
 				}
 			}
 		}
 		if ($dirsToCheck) {
-			$result = array_merge($result, static::getFilesByNameSubst($dirsToCheck, $namePart, $isRecursive));
+			$result = array_merge($result, static::getFilesByPathRegex($dirsToCheck, $pathRegex, $isRecursive));
 		}
 
 		return $result;
