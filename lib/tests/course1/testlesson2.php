@@ -48,7 +48,7 @@ class TestLesson2 extends BaseTest
 					'INTERVOLGA_EDU.DIR_NOT_DELETED',
 					[
 						'#PATH#' => $dirToDelete,
-						'#PATH_EDIT_LINK#' => Admin::getFileManUrl($directory),
+						'#ADMIN_LINK#' => Admin::getFileManUrl($directory),
 					]
 				));
 			}
@@ -75,7 +75,7 @@ class TestLesson2 extends BaseTest
 								'INTERVOLGA_EDU.DIR_NOT_LOWER_CASE',
 								[
 									'#PATH#' => $path,
-									'#PATH_EDIT_LINK#' => Admin::getFileManUrl($child),
+									'#ADMIN_LINK#' => Admin::getFileManUrl($child),
 								]
 							));
 						} else {
@@ -83,7 +83,7 @@ class TestLesson2 extends BaseTest
 								'INTERVOLGA_EDU.FILE_NOT_LOWER_CASE',
 								[
 									'#PATH#' => $path,
-									'#PATH_EDIT_LINK#' => Admin::getFileManUrl($child),
+									'#ADMIN_LINK#' => Admin::getFileManUrl($child),
 								]
 							));
 						}
@@ -125,17 +125,17 @@ class TestLesson2 extends BaseTest
 				if (substr_count($content, '<img')) {
 					if (!substr_count($content, '/upload/')) {
 						static::registerError(Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_UPLOAD_SRC', [
-							'#PATH_EDIT_LINK#' => Admin::getFileManUrl($indexFile),
+							'#ADMIN_LINK#' => Admin::getFileManUrl($indexFile),
 						]));
 					}
 				} else {
 					static::registerError(Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_IMG_TAG', [
-						'#PATH_EDIT_LINK#' => Admin::getFileManUrl($indexFile),
+						'#ADMIN_LINK#' => Admin::getFileManUrl($indexFile),
 					]));
 				}
 				if (!substr_count($content, '<table')) {
 					static::registerError(Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_TABLE_TAG', [
-						'#PATH_EDIT_LINK#' => Admin::getFileManUrl($indexFile),
+						'#ADMIN_LINK#' => Admin::getFileManUrl($indexFile),
 					]));
 				}
 			}
@@ -154,7 +154,7 @@ class TestLesson2 extends BaseTest
 			foreach ($matches as $match) {
 				static::registerError(Loc::getMessage('INTERVOLGA_EDU.FOUND_INDEX_PHP_MENU_LINK', [
 					'#PATH#' => FileSystem::getLocalPath($menuFile),
-					'#PATH_EDIT_LINK#' => Admin::getFileManUrl($menuFile),
+					'#ADMIN_LINK#' => Admin::getFileManUrl($menuFile),
 					'#LINK#' => $match[0],
 				]));
 			}
