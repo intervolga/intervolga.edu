@@ -24,11 +24,10 @@ class TestLesson3 extends BaseTest
 	{
 		static::testTemplates();
 		static::testCustomCoreCheck();
-		// Asset::getInstance()->add
 		static::testLongPhpTag();
 		static::testScripts();
-		// переводы
-		// GetMessage заменяй на аналог в новом ядре
+		// TODO переводы
+		static::testCoreD7();
 	}
 
 	protected static function testTemplates()
@@ -115,8 +114,12 @@ class TestLesson3 extends BaseTest
 		}
 
 		if (count($errors)>static::MAX_LINES_IN_REPORT) {
+			$countWas = count($errors);
 			$errors = array_slice($errors, 0, static::MAX_LINES_IN_REPORT);
-			static::registerError(Loc::getMessage('INTERVOLGA_EDU.NUM_SHOWN', ['#NUM#' => static::MAX_LINES_IN_REPORT]));
+			static::registerError(Loc::getMessage('INTERVOLGA_EDU.NUM_SHOWN', [
+				'#NUM#' => static::MAX_LINES_IN_REPORT,
+				'#TOTAL#' => $countWas,
+				]));
 		}
 		foreach ($errors as $error) {
 			static::registerError($error);
@@ -135,7 +138,7 @@ class TestLesson3 extends BaseTest
 
 		$mainHeaderFile = new File(Application::getDocumentRoot() . $mainHeaderPath);
 		$innerHeaderFile = new File(Application::getDocumentRoot() . $innerHeaderPath);
-		foreach ($jsLibsToCheck as $jsLibToCheck) {
+		foreach ($jsLibsToCheckInMain as $jsLibToCheck) {
 			if ($mainHeaderFile->isExists() && $mainHeaderFile->isFile()) {
 				if (!substr_count($mainHeaderFile->getContents(), $jsLibToCheck)) {
 					static::registerError(Loc::getMessage('INTERVOLGA_EDU.ADD_THIS_JS', [
@@ -155,5 +158,11 @@ class TestLesson3 extends BaseTest
 				}
 			}
 		}
+	}
+
+	protected static function testCoreD7()
+	{
+		// TODO Asset::getInstance()->add
+		// TODO GetMessage заменяй на аналог в новом ядре
 	}
 }
