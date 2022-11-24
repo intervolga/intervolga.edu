@@ -21,7 +21,7 @@ class TestLesson2 extends BaseTest
 		$filesToDelete = ['/services/index.php'];
 		$dirsToDelete = ['/services/'];
 		static::testLowerCase();
-		// Адекватность partners -- вынести в требования?
+		static::testPartnersDir();
 		// Ссылки в меню с /index.php в конце
 		static::testLocalPhpInterface();
 		static::testDumpFunction();
@@ -31,30 +31,57 @@ class TestLesson2 extends BaseTest
 	{
 		$lowerCaseDirs = [
 			'/',
-			'/company/'
+			'/company/',
+			'/for-partners/',
+			'/partner/',
+			'/partners/',
 		];
 		foreach ($lowerCaseDirs as $lowerCaseDir) {
 			$directory = new Directory(Application::getDocumentRoot() . $lowerCaseDir);
-			foreach ($directory->getChildren() as $child) {
-				if ($child->getName() != strtolower($child->getName())) {
-					$path = $child->getPath();
-					$path = str_replace(Application::getDocumentRoot(), '', $path);
-					if ($child->isDirectory()) {
-						$path .= '/';
-						static::registerError(Loc::getMessage(
-							'INTERVOLGA_EDU.DIR_NOT_LOWER_CASE',
-							[
-								'#PATH#' => $path,
-							]
-						));
-					} else {
-						static::registerError(Loc::getMessage(
-							'INTERVOLGA_EDU.FILE_NOT_LOWER_CASE',
-							[
-								'#PATH#' => $path,
-							]
-						));
+			if ($directory->isExists()) {
+				foreach ($directory->getChildren() as $child) {
+					if ($child->getName() != strtolower($child->getName())) {
+						$path = $child->getPath();
+						$path = str_replace(Application::getDocumentRoot(), '', $path);
+						if ($child->isDirectory()) {
+							$path .= '/';
+							static::registerError(Loc::getMessage(
+								'INTERVOLGA_EDU.DIR_NOT_LOWER_CASE',
+								[
+									'#PATH#' => $path,
+								]
+							));
+						} else {
+							static::registerError(Loc::getMessage(
+								'INTERVOLGA_EDU.FILE_NOT_LOWER_CASE',
+								[
+									'#PATH#' => $path,
+								]
+							));
+						}
 					}
+				}
+			}
+
+		}
+	}
+
+	public static function testPartnersDir()
+	{
+		$forbiddenNames = [
+			'partneram',
+		];
+		$directory = new Directory(Application::getDocumentRoot());
+		foreach ($directory->getChildren() as $child) {
+			if ($child->isDirectory()) {
+				$dirName = strtolower($child->getName());
+				if (in_array($dirName, $forbiddenNames)) {
+					static::registerError(
+						Loc::getMessage(
+							'INTERVOLGA_EDU.PARTNERS_DIR_FORBIDDEN_NAME',
+							['#NAME#' => $child->getName()]
+						)
+					);
 				}
 			}
 		}
