@@ -6,6 +6,8 @@ use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTest;
+use Intervolga\Edu\Util\Admin;
+use Intervolga\Edu\Util\FileSystem;
 
 Loc::loadMessages(__FILE__);
 
@@ -28,7 +30,7 @@ class TestLesson2 extends BaseTest
 		static::testLowerCase();
 		static::testPartnersDir();
 		static::testPartnersPage();
-		// TODO Ссылки в меню с /index.php в конце
+		static::testMenu();
 		static::testLocalPhpInterface();
 		static::testDumpFunction();
 	}
@@ -126,6 +128,25 @@ class TestLesson2 extends BaseTest
 				if (!substr_count($content, '<table')) {
 					static::registerError(Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_TABLE_TAG'));
 				}
+			}
+		}
+	}
+
+	protected static function testMenu()
+	{
+		$publicDirs = FileSystem::getPublicDirsLevelOne();
+		$menuFiles = FileSystem::getFilesRecursiveByNameSubst($publicDirs, '.menu.php');
+		$menuFiles = array_merge($menuFiles, FileSystem::getFilesNonRecursiveByNameSubst([new Directory(Application::getDocumentRoot())], '.menu.php'));
+		foreach ($menuFiles as $menuFile) {
+			$content = $menuFile->getContents();
+			$re = '/(\/.*)?index\.php/m';
+			preg_match_all($re, $content, $matches, PREG_SET_ORDER, 0);
+			foreach ($matches as $match) {
+				static::registerError(Loc::getMessage('INTERVOLGA_EDU.FOUND_INDEX_PHP_MENU_LINK', [
+					'#PATH#' => FileSystem::getLocalPath($menuFile),
+					'#PATH_EDIT_LINK#' => Admin::getEditUrl($menuFile),
+					'#LINK#' => $match[0],
+				]));
 			}
 		}
 	}

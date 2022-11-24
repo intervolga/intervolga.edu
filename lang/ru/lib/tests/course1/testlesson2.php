@@ -9,3 +9,4 @@ $MESS['INTERVOLGA_EDU.NOT_FOUND_UPLOAD_SRC'] = 'На странице Услов
 $MESS['INTERVOLGA_EDU.NOT_FOUND_IMG_TAG'] = 'На странице Условия сотрудничества нет картинки';
 $MESS['INTERVOLGA_EDU.NOT_FOUND_TABLE_TAG'] = 'На странице Условия сотрудничества нет таблицы';
 $MESS['INTERVOLGA_EDU.DIR_NOT_DELETED'] = 'Раздел #PATH# нужно удалить';
+$MESS['INTERVOLGA_EDU.FOUND_INDEX_PHP_MENU_LINK'] = 'Найдена index.php-ссылка (#LINK#) в файле меню <a href="#PATH_EDIT_LINK#" target="_blank">#PATH#</a>';
