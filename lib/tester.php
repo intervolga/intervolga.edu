@@ -1,21 +1,15 @@
 <?php
 namespace Intervolga\Edu;
 
+use Intervolga\Edu\Tests\Course1\TestLesson1;
 use Intervolga\Edu\Tests\Course1\TestLesson2;
-use Intervolga\Edu\Tests\CourseOne\LessonOne\TestEdition;
-use Intervolga\Edu\Tests\CourseOne\LessonOne\TestSiteChecker;
-use Intervolga\Edu\Tests\CourseOne\LessonOne\TestSiteCorporate;
-use Intervolga\Edu\Tests\CourseOne\LessonOne\TestUpdates;
 
 class Tester
 {
 	protected static function getTestClasses()
 	{
 		return [
-			TestEdition::class,
-			TestSiteCorporate::class,
-			TestUpdates::class,
-			TestSiteChecker::class,
+			TestLesson1::class,
 			TestLesson2::class,
 		];
 	}

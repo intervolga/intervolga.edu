@@ -60,7 +60,7 @@ foreach ($errors as $testClass => $testErrors) {
 		echo $message->show();
 	} else {
 		$message = new CAdminMessage([
-			'MESSAGE' => 'OK',
+			'MESSAGE' => Loc::getMessage('INTERVOLGA_EDU.NO_ERRORS'),
 			'TYPE' => 'OK'
 		]);
 		echo $message->show();
