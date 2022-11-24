@@ -4,6 +4,15 @@ namespace Intervolga\Edu\Tests;
 abstract class BaseTest
 {
 	protected static $errors = [];
+
+	/**
+	 * @return string
+	 */
+	public static function getTitle()
+	{
+		return str_replace(__NAMESPACE__ . '\\', '', get_called_class());
+	}
+
 	public static function run()
 	{
 		static::registerError('Not implemented yet');
@@ -14,7 +23,7 @@ abstract class BaseTest
 		$result = [];
 		static::run();
 		foreach (static::getErrors() as $error) {
-			$result[] = '[' . get_called_class() .'] ' . $error;
+			$result[] = '[' . get_called_class() . '] ' . $error;
 		}
 
 		return $result;
@@ -34,13 +43,5 @@ abstract class BaseTest
 	public static function getErrors()
 	{
 		return (array)static::$errors[get_called_class()];
-	}
-
-	/**
-	 * @return string
-	 */
-	public static function getCode()
-	{
-		return str_replace(__NAMESPACE__. '\\', '', get_called_class());
 	}
 }

@@ -53,13 +53,16 @@ $errors = Tester::getErrorsTree();
  */
 foreach ($errors as $testClass => $testErrors) {
 	?>
-	<h2><?=$testClass::getCode()?></h2>
+	<h2><?=$testClass::getTitle()?></h2>
 	<?php
 	if ($testErrors) {
 		$message = new CAdminMessage(['MESSAGE' => implode('<br>', $testErrors)]);
 		echo $message->show();
 	} else {
-		$message = new CAdminMessage(['MESSAGE' => 'OK', 'TYPE' => 'OK']);
+		$message = new CAdminMessage([
+			'MESSAGE' => 'OK',
+			'TYPE' => 'OK'
+		]);
 		echo $message->show();
 	}
 }
