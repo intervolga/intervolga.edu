@@ -163,8 +163,22 @@ class TestLesson3 extends BaseTest
 	protected static function testCoreD7()
 	{
 		$oldFunctions = [
-			'/->SetAdditionalCSS/mi' => 'SetAdditionalCSS',
-			'/[^:]getMessage/mi' => 'GetMessage',
+			'/SetAdditionalCSS/mi' => [
+				'OLD' => '$APPLICATION->SetAdditionalCSS()',
+				'NEW' => '\Bitrix\Main\Page\Asset::addCss()',
+			],
+			'/AddHeadScript/mi' => [
+				'OLD' => '$APPLICATION->AddHeadScript()',
+				'NEW' => '\Bitrix\Main\Page\Asset::addJs()',
+			],
+			'/[^:]getMessage/mi' => [
+				'OLD' => 'GetMessage()',
+				'NEW' => '\Bitrix\Main\Localization\Loc::getMessage()',
+			],
+			'/IncludeTemplateLangFile/mi' => [
+				'OLD' => 'IncludeTemplateLangFile()',
+				'NEW' => '\Bitrix\Main\Localization\Loc::loadMessages()',
+			],
 		];
 
 		$files = static::getLessonFilesToCheck();
@@ -172,17 +186,15 @@ class TestLesson3 extends BaseTest
 		foreach ($files as $file) {
 			if ($file->isExists() && $file->isFile()) {
 				$content = $file->getContents();
-				foreach ($oldFunctions as $oldFunctionRe => $function) {
+				foreach ($oldFunctions as $oldFunctionRe => $comments) {
 					preg_match_all($oldFunctionRe, $content, $matches, PREG_SET_ORDER, 0);
 					if ($matches) {
-						foreach ($matches as $match) {
-							Loc::getMessage('INTERVOLGA_EDU.OLD_FUNCTION_FOUND', [
-								'#PATH#' => $file->getName(),
-								'#ADMIN_LINK#' => Admin::getFileManUrl($file),
-								'#OLD#' => htmlspecialchars(trim($matches[0])),
-								'#NEW#' => $function,
-							]);
-						}
+						static::registerError(Loc::getMessage('INTERVOLGA_EDU.OLD_FUNCTION_FOUND', [
+							'#PATH#' => FileSystem::getLocalPath($file),
+							'#ADMIN_LINK#' => Admin::getFileManUrl($file),
+							'#OLD#' => $comments['OLD'],
+							'#NEW#' => $comments['NEW'],
+						]));
 					}
 				}
 			}
