@@ -26,7 +26,7 @@ class TestLesson1 extends BaseTest
 		static::testSiteChecker();
 	}
 
-	public static function testLicense()
+	protected static function testLicense()
 	{
 		if ($updatesList = static::getUpdatesInfo()) {
 			if ($license = $updatesList['CLIENT'][0]['@']['LICENSE']) {
@@ -62,7 +62,7 @@ class TestLesson1 extends BaseTest
 		return $result;
 	}
 
-	public static function testUpdates()
+	protected static function testUpdates()
 	{
 		$lastUpdate = Option::get('main', 'update_system_update', '-');
 		if ($updatesList = static::getUpdatesInfo()) {
@@ -78,7 +78,7 @@ class TestLesson1 extends BaseTest
 		}
 	}
 
-	public static function testSiteCorporate()
+	protected static function testSiteCorporate()
 	{
 		static::testSiteCorporateModule();
 		static::testSiteCorporatePublic();
@@ -139,7 +139,7 @@ class TestLesson1 extends BaseTest
 		}
 	}
 
-	public static function testSiteChecker()
+	protected static function testSiteChecker()
 	{
 		$checkerTest = new \CSiteCheckerTest();
 		$log = File::getFileContents(Application::getDocumentRoot() . $checkerTest->LogFile);

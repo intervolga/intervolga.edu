@@ -28,7 +28,7 @@ class TestLesson2 extends BaseTest
 		static::testDumpFunction();
 	}
 
-	public static function testLowerCase()
+	protected static function testLowerCase()
 	{
 		$lowerCaseDirs = [
 			'/',
@@ -67,7 +67,7 @@ class TestLesson2 extends BaseTest
 		}
 	}
 
-	public static function testPartnersDir()
+	protected static function testPartnersDir()
 	{
 		$forbiddenNames = [
 			'partneram',
@@ -94,7 +94,7 @@ class TestLesson2 extends BaseTest
 		// TODO Условия сотрудничества -- картинка
 	}
 
-	public static function testLocalPhpInterface()
+	protected static function testLocalPhpInterface()
 	{
 		$path = Application::getDocumentRoot() . '/local/php_interface/init.php';
 		if (!File::isFileExists($path)) {
@@ -102,7 +102,7 @@ class TestLesson2 extends BaseTest
 		}
 	}
 
-	public static function testDumpFunction()
+	protected static function testDumpFunction()
 	{
 		if (!function_exists('test_dump')) {
 			static::registerError(Loc::getMessage('INTERVOLGA_EDU.TEST_DUMP_NOT_FOUND'));
