@@ -15,6 +15,21 @@ class TestFiles extends BaseTest
 
 	public static function run()
 	{
-		static::registerError('Test');
+		$filesToDelete = ['/services/index.php'];
+		$dirsToDelete = ['/services/'];
+		$lowerCaseDirs = [
+			'/',
+			'/company/'
+		];
+		// Адекватность partners -- вынести в требования?
+		// Наличие /local/php_interface/
+		static::testDumpFunction();
+	}
+
+	public static function testDumpFunction()
+	{
+		if (!function_exists('test_dump')) {
+			static::registerError(Loc::getMessage('INTERVOLGA_EDU.TEST_DUMP_NOT_FOUND'));
+		}
 	}
 }
