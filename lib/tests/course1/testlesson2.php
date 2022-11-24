@@ -1,6 +1,8 @@
 <?php
 namespace Intervolga\Edu\Tests\Course1;
 
+use Bitrix\Main\Application;
+use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTest;
@@ -18,19 +20,49 @@ class TestLesson2 extends BaseTest
 	{
 		$filesToDelete = ['/services/index.php'];
 		$dirsToDelete = ['/services/'];
-		$lowerCaseDirs = [
-			'/',
-			'/company/'
-		];
+		static::testLowerCase();
 		// Адекватность partners -- вынести в требования?
-		// Наличие /local/php_interface/
+		// Ссылки в меню с /index.php в конце
 		static::testLocalPhpInterface();
 		static::testDumpFunction();
 	}
 
+	public static function testLowerCase()
+	{
+		$lowerCaseDirs = [
+			'/',
+			'/company/'
+		];
+		foreach ($lowerCaseDirs as $lowerCaseDir) {
+			$directory = new Directory(Application::getDocumentRoot() . $lowerCaseDir);
+			foreach ($directory->getChildren() as $child) {
+				if ($child->getName() != strtolower($child->getName())) {
+					$path = $child->getPath();
+					$path = str_replace(Application::getDocumentRoot(), '', $path);
+					if ($child->isDirectory()) {
+						$path .= '/';
+						static::registerError(Loc::getMessage(
+							'INTERVOLGA_EDU.DIR_NOT_LOWER_CASE',
+							[
+								'#PATH#' => $path,
+							]
+						));
+					} else {
+						static::registerError(Loc::getMessage(
+							'INTERVOLGA_EDU.FILE_NOT_LOWER_CASE',
+							[
+								'#PATH#' => $path,
+							]
+						));
+					}
+				}
+			}
+		}
+	}
+
 	public static function testLocalPhpInterface()
 	{
-		$path = \Bitrix\Main\Application::getDocumentRoot() . '/local/php_interface/init.php';
+		$path = Application::getDocumentRoot() . '/local/php_interface/init.php';
 		if (!File::isFileExists($path)) {
 			static::registerError(Loc::getMessage('INTERVOLGA_EDU.LOCAL_PHP_INTERFACE_NOT_FOUND'));
 		}
