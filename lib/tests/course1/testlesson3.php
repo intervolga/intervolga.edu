@@ -12,6 +12,8 @@ Loc::loadMessages(__FILE__);
 
 class TestLesson3 extends BaseTest
 {
+	const MAX_LINES_IN_REPORT = 5;
+
 	public static function getTitle()
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.TEST_COURSE_1_LESSON_3');
@@ -21,9 +23,8 @@ class TestLesson3 extends BaseTest
 	{
 		static::testTemplates();
 		static::testCustomCoreCheck();
-		// B_PROLOG_INCLUDED === true || die();
 		// Asset::getInstance()->add
-		// <?php
+		static::testLongPhpTag();
 		// Плагины jquery для слайдера и для карусели подключить только в шаблоне главной страницы
 		// переводы
 		// GetMessage заменяй на аналог в новом ядре
@@ -52,21 +53,10 @@ class TestLesson3 extends BaseTest
 
 	protected static function testCustomCoreCheck()
 	{
-		$templatesToCheck = [
-			'/local/templates/',
-			[
-				'main/',
-				'inner/'
-			],
-			[
-				'header.php',
-				'footer.php'
-			]
-		];
+		$files = static::getLessonFilesToCheck();
 		$example = 'B_PROLOG_INCLUDED === true || die()';
 		$re = '/B_PROLOG_INCLUDED ?=== ?true ?\|\| ?die(\(\))?/mi';
 
-		$files = FileSystem::getComboEntries($templatesToCheck);
 		foreach ($files as $file) {
 			if ($file->isExists() && $file->isFile()) {
 				$content = $file->getContents();
@@ -79,6 +69,56 @@ class TestLesson3 extends BaseTest
 					]));
 				}
 			}
+		}
+	}
+
+	/**
+	 * @return \Bitrix\Main\IO\FileSystemEntry[]
+	 */
+	protected static function getLessonFilesToCheck()
+	{
+		$templatesToCheck = [
+			'/local/templates/',
+			[
+				'main/',
+				'inner/'
+			],
+			[
+				'header.php',
+				'footer.php'
+			]
+		];
+
+		return FileSystem::getComboEntries($templatesToCheck);
+	}
+
+	protected static function testLongPhpTag()
+	{
+		$files = static::getLessonFilesToCheck();
+		$re = '/<\?[^=p].*/m'; // Not <?=, mot <?p...
+		$errors = [];
+		foreach ($files as $file) {
+			if ($file->isExists() && $file->isFile()) {
+				$content = $file->getContents();
+				preg_match_all($re, $content, $matches, PREG_SET_ORDER, 0);
+				if ($matches) {
+					foreach ($matches as $match) {
+						$errors[] = Loc::getMessage('INTERVOLGA_EDU.SHORT_PHP_TAG_FOUND', [
+							'#LINE#' => htmlspecialchars($match[0]),
+							'#PATH#' => $file->getName(),
+							'#ADMIN_LINK#' => Admin::getFileManUrl($file),
+						]);
+					}
+				}
+			}
+		}
+
+		if (count($errors)>static::MAX_LINES_IN_REPORT) {
+			$errors = array_slice($errors, 0, static::MAX_LINES_IN_REPORT);
+			static::registerError(Loc::getMessage('INTERVOLGA_EDU.NUM_SHOWN', ['#NUM#' => static::MAX_LINES_IN_REPORT]));
+		}
+		foreach ($errors as $error) {
+			static::registerError($error);
 		}
 	}
 }
