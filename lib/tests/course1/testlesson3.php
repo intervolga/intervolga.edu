@@ -143,7 +143,7 @@ class TestLesson3 extends BaseTest
 				if (!substr_count($mainHeaderFile->getContents(), $jsLibToCheck)) {
 					static::registerError(Loc::getMessage('INTERVOLGA_EDU.ADD_THIS_JS', [
 						'#JS#' => $jsLibToCheck,
-						'#PATH#' => $mainHeaderFile->getName(),
+						'#PATH#' => FileSystem::getLocalPath($mainHeaderFile),
 						'#ADMIN_LINK#' => Admin::getFileManUrl($mainHeaderFile),
 					]));
 				}
@@ -152,8 +152,8 @@ class TestLesson3 extends BaseTest
 				if (substr_count($innerHeaderFile->getContents(), $jsLibToCheck)) {
 					static::registerError(Loc::getMessage('INTERVOLGA_EDU.DELETE_THIS_JS', [
 						'#JS#' => $jsLibToCheck,
-						'#PATH#' => $mainHeaderFile->getName(),
-						'#ADMIN_LINK#' => Admin::getFileManUrl($mainHeaderFile),
+						'#PATH#' => FileSystem::getLocalPath($innerHeaderFile),
+						'#ADMIN_LINK#' => Admin::getFileManUrl($innerHeaderFile),
 					]));
 				}
 			}
