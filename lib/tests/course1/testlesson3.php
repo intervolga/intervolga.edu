@@ -3,6 +3,7 @@ namespace Intervolga\Edu\Tests\Course1;
 
 use Bitrix\Main\Application;
 use Bitrix\Main\IO\Directory;
+use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\Admin;
@@ -25,7 +26,7 @@ class TestLesson3 extends BaseTest
 		static::testCustomCoreCheck();
 		// Asset::getInstance()->add
 		static::testLongPhpTag();
-		// Плагины jquery для слайдера и для карусели подключить только в шаблоне главной страницы
+		static::testScripts();
 		// переводы
 		// GetMessage заменяй на аналог в новом ядре
 	}
@@ -119,6 +120,40 @@ class TestLesson3 extends BaseTest
 		}
 		foreach ($errors as $error) {
 			static::registerError($error);
+		}
+	}
+
+	protected static function testScripts()
+	{
+		$innerHeaderPath = '/local/templates/inner/header.php';
+		$mainHeaderPath = '/local/templates/main/header.php';
+
+		$jsLibsToCheckInMain = [
+			'slides.min.jquery.js',
+			'jquery.carouFredSel-6.1.0-packed.js',
+		];
+
+		$mainHeaderFile = new File(Application::getDocumentRoot() . $mainHeaderPath);
+		$innerHeaderFile = new File(Application::getDocumentRoot() . $innerHeaderPath);
+		foreach ($jsLibsToCheck as $jsLibToCheck) {
+			if ($mainHeaderFile->isExists() && $mainHeaderFile->isFile()) {
+				if (!substr_count($mainHeaderFile->getContents(), $jsLibToCheck)) {
+					static::registerError(Loc::getMessage('INTERVOLGA_EDU.ADD_THIS_JS', [
+						'#JS#' => $jsLibToCheck,
+						'#PATH#' => $mainHeaderFile->getName(),
+						'#ADMIN_LINK#' => Admin::getFileManUrl($mainHeaderFile),
+					]));
+				}
+			}
+			if ($innerHeaderFile->isExists() && $innerHeaderFile->isFile()) {
+				if (substr_count($innerHeaderFile->getContents(), $jsLibToCheck)) {
+					static::registerError(Loc::getMessage('INTERVOLGA_EDU.DELETE_THIS_JS', [
+						'#JS#' => $jsLibToCheck,
+						'#PATH#' => $mainHeaderFile->getName(),
+						'#ADMIN_LINK#' => Admin::getFileManUrl($mainHeaderFile),
+					]));
+				}
+			}
 		}
 	}
 }
