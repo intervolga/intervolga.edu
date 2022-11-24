@@ -3,6 +3,7 @@ namespace Intervolga\Edu;
 
 use Intervolga\Edu\Tests\Course1\TestLesson1;
 use Intervolga\Edu\Tests\Course1\TestLesson2;
+use Intervolga\Edu\Tests\Course1\TestLesson3;
 
 class Tester
 {
@@ -11,6 +12,7 @@ class Tester
 		return [
 			TestLesson1::class,
 			TestLesson2::class,
+			TestLesson3::class,
 		];
 	}
 
