@@ -15,6 +15,40 @@ class FileSystem
 	];
 
 	/**
+	 * @param array $partsToCombo
+	 * @return FileSystemEntry[]
+	 */
+	public static function getComboEntries(array $partsToCombo)
+	{
+		$result = [];
+		$resultPaths = [''];
+		foreach ($partsToCombo as $partToCombo) {
+			if (is_array($partToCombo)) {
+				$newResult = [];
+				foreach ($partToCombo as $subPartToCombo) {
+					foreach ($resultPaths as $item) {
+						$newResult[] = $item . $subPartToCombo;
+					}
+				}
+				$resultPaths = $newResult;
+			} else {
+				foreach ($resultPaths as $i => $item) {
+					$resultPaths[$i] .= $partToCombo;
+				}
+			}
+		}
+
+		foreach ($resultPaths as $resultPath) {
+			if (strlen($resultPath)) {
+				$result [] = new File(Application::getDocumentRoot() . $resultPath);
+			}
+
+		}
+
+		return $result;
+	}
+
+	/**
 	 * @param FileSystemEntry $entry
 	 * @return string
 	 */
