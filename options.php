@@ -56,7 +56,7 @@ foreach ($errors as $testClass => $testErrors) {
 	<h2><?=$testClass::getTitle()?></h2>
 	<?php
 	if ($testErrors) {
-		$message = new CAdminMessage(['MESSAGE' => implode('<br>', $testErrors)]);
+		$message = new CAdminMessage(['HTML' => true, 'MESSAGE' => implode('<br>', $testErrors)]);
 		echo $message->show();
 	} else {
 		$message = new CAdminMessage([
