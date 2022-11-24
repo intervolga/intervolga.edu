@@ -162,7 +162,30 @@ class TestLesson3 extends BaseTest
 
 	protected static function testCoreD7()
 	{
-		// TODO Asset::getInstance()->add
-		// TODO GetMessage заменяй на аналог в новом ядре
+		$oldFunctions = [
+			'/->SetAdditionalCSS/mi' => 'SetAdditionalCSS',
+			'/[^:]getMessage/mi' => 'GetMessage',
+		];
+
+		$files = static::getLessonFilesToCheck();
+
+		foreach ($files as $file) {
+			if ($file->isExists() && $file->isFile()) {
+				$content = $file->getContents();
+				foreach ($oldFunctions as $oldFunctionRe => $function) {
+					preg_match_all($oldFunctionRe, $content, $matches, PREG_SET_ORDER, 0);
+					if ($matches) {
+						foreach ($matches as $match) {
+							Loc::getMessage('INTERVOLGA_EDU.OLD_FUNCTION_FOUND', [
+								'#PATH#' => $file->getName(),
+								'#ADMIN_LINK#' => Admin::getFileManUrl($file),
+								'#OLD#' => htmlspecialchars(trim($matches[0])),
+								'#NEW#' => $function,
+							]);
+						}
+					}
+				}
+			}
+		}
 	}
 }

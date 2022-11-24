@@ -6,3 +6,4 @@ $MESS['INTERVOLGA_EDU.SHORT_PHP_TAG_FOUND'] = 'В файле <a href="#ADMIN_LIN
 $MESS['INTERVOLGA_EDU.NUM_SHOWN'] = 'Далее первые #NUM# однотипных ошибок (всего #TOTAL#)';
 $MESS['INTERVOLGA_EDU.ADD_THIS_JS'] = 'Не подключен #JS# в шаблоне <a href="#ADMIN_LINK#" target="_blank">#NAME#</a>';
 $MESS['INTERVOLGA_EDU.DELETE_THIS_JS'] = 'Подключен #JS# в шаблоне <a href="#ADMIN_LINK#" target="_blank">#NAME#</a>';
+$MESS['INTERVOLGA_EDU.OLD_FUNCTION_FOUND'] = 'В файле <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> вместо #NEW# используется устаревший код: #OLD#';
