@@ -26,7 +26,12 @@ $options = [
 	],
 ];
 
-Tester::run();
+$fatalThrowable = null;
+try {
+	Tester::run();
+} catch (Throwable $throwable) {
+	$fatalThrowable = $throwable;
+}
 
 $tabs = [
 	[
@@ -46,17 +51,27 @@ if ($USER->IsAdmin()) {
 $tabControl = new CAdminTabControl('tabControl', $tabs);
 $tabControl->Begin();
 $tabControl->BeginNextTab();
+if ($fatalThrowable)
+{
+	echo '<h2>' . Loc::getMessage('INTERVOLGA_EDU.FATAL_ERROR') . '</h2>';
+	$message = new CAdminMessage([
+		'MESSAGE' => $fatalThrowable->getMessage(),
+		'DETAILS' => $fatalThrowable->getTraceAsString(),
+	]);
+	echo $message->show();
+}
 
 $errors = Tester::getErrorsTree();
 /**
  * @var \Intervolga\Edu\Tests\BaseTest $testClass
  */
 foreach ($errors as $testClass => $testErrors) {
-	?>
-	<h2><?=$testClass::getTitle()?></h2>
-	<?php
+	echo '<h2>' . $testClass::getTitle() . '</h2>';
 	if ($testErrors) {
-		$message = new CAdminMessage(['HTML' => true, 'MESSAGE' => implode('<br>', $testErrors)]);
+		$message = new CAdminMessage([
+			'HTML' => true,
+			'MESSAGE' => implode('<br>', $testErrors)
+		]);
 		echo $message->show();
 	} else {
 		$message = new CAdminMessage([
