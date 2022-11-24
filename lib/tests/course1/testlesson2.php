@@ -48,6 +48,7 @@ class TestLesson2 extends BaseTest
 					'INTERVOLGA_EDU.DIR_NOT_DELETED',
 					[
 						'#PATH#' => $dirToDelete,
+						'#PATH_EDIT_LINK#' => Admin::getEditUrl($directory),
 					]
 				));
 			}
@@ -74,6 +75,7 @@ class TestLesson2 extends BaseTest
 								'INTERVOLGA_EDU.DIR_NOT_LOWER_CASE',
 								[
 									'#PATH#' => $path,
+									'#PATH_EDIT_LINK#' => Admin::getEditUrl($child),
 								]
 							));
 						} else {
@@ -81,6 +83,7 @@ class TestLesson2 extends BaseTest
 								'INTERVOLGA_EDU.FILE_NOT_LOWER_CASE',
 								[
 									'#PATH#' => $path,
+									'#PATH_EDIT_LINK#' => Admin::getEditUrl($child),
 								]
 							));
 						}
@@ -117,16 +120,23 @@ class TestLesson2 extends BaseTest
 			$directory = new Directory(Application::getDocumentRoot() . $possiblePartnerName);
 			if ($directory->isExists() && $directory->isDirectory()) {
 				$indexPath = $directory->getPath() . '/index.php';
-				$content = File::getFileContents($indexPath);
+				$indexFile = new File($indexPath);
+				$content = $indexFile->getContents();
 				if (substr_count($content, '<img')) {
 					if (!substr_count($content, '/upload/')) {
-						static::registerError(Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_UPLOAD_SRC'));
+						static::registerError(Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_UPLOAD_SRC', [
+							'#PATH_EDIT_LINK#' => Admin::getEditUrl($indexFile),
+						]));
 					}
 				} else {
-					static::registerError(Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_IMG_TAG'));
+					static::registerError(Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_IMG_TAG', [
+						'#PATH_EDIT_LINK#' => Admin::getEditUrl($indexFile),
+					]));
 				}
 				if (!substr_count($content, '<table')) {
-					static::registerError(Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_TABLE_TAG'));
+					static::registerError(Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_TABLE_TAG', [
+						'#PATH_EDIT_LINK#' => Admin::getEditUrl($indexFile),
+					]));
 				}
 			}
 		}
