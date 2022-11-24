@@ -1,6 +1,7 @@
 <?php
 namespace Intervolga\Edu;
 
+use Intervolga\Edu\Tests\CourseOne\Lesson2\TestFiles;
 use Intervolga\Edu\Tests\CourseOne\LessonOne\TestEdition;
 use Intervolga\Edu\Tests\CourseOne\LessonOne\TestSiteChecker;
 use Intervolga\Edu\Tests\CourseOne\LessonOne\TestSiteCorporate;
@@ -15,6 +16,7 @@ class Tester
 			TestSiteCorporate::class,
 			TestUpdates::class,
 			TestSiteChecker::class,
+			TestFiles::class,
 		];
 	}
 
