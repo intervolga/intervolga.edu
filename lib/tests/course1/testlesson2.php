@@ -11,6 +11,12 @@ Loc::loadMessages(__FILE__);
 
 class TestLesson2 extends BaseTest
 {
+	const POSSIBLE_PARTNERS_NAMES = [
+		'/for-partners/',
+		'/partner/',
+		'/partners/',
+	];
+
 	public static function getTitle()
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.TEST_COURSE_1_LESSON_2');
@@ -33,10 +39,8 @@ class TestLesson2 extends BaseTest
 		$lowerCaseDirs = [
 			'/',
 			'/company/',
-			'/for-partners/',
-			'/partner/',
-			'/partners/',
 		];
+		$lowerCaseDirs = array_merge($lowerCaseDirs, static::POSSIBLE_PARTNERS_NAMES);
 		foreach ($lowerCaseDirs as $lowerCaseDir) {
 			$directory = new Directory(Application::getDocumentRoot() . $lowerCaseDir);
 			if ($directory->isExists()) {
@@ -90,8 +94,23 @@ class TestLesson2 extends BaseTest
 
 	protected static function testPartnersPage()
 	{
-		// TODO Условия сотрудничества -- таблица с border
-		// TODO Условия сотрудничества -- картинка
+		foreach (static::POSSIBLE_PARTNERS_NAMES as $possiblePartnerName) {
+			$directory = new Directory(Application::getDocumentRoot() . $possiblePartnerName);
+			if ($directory->isExists() && $directory->isDirectory()) {
+				$indexPath = $directory->getPath() . '/index.php';
+				$content = File::getFileContents($indexPath);
+				if (substr_count($content, '<img')) {
+					if (!substr_count($content, '/upload/')) {
+						static::registerError(Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_UPLOAD_SRC'));
+					}
+				} else {
+					static::registerError(Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_IMG_TAG'));
+				}
+				if (!substr_count($content, '<table')) {
+					static::registerError(Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_TABLE_TAG'));
+				}
+			}
+		}
 	}
 
 	protected static function testLocalPhpInterface()

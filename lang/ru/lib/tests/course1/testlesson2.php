@@ -5,3 +5,6 @@ $MESS['INTERVOLGA_EDU.LOCAL_PHP_INTERFACE_NOT_FOUND'] = 'Не используе
 $MESS['INTERVOLGA_EDU.DIR_NOT_LOWER_CASE'] = 'Название раздела #PATH# содержит буквы верхнего регистра';
 $MESS['INTERVOLGA_EDU.FILE_NOT_LOWER_CASE'] = 'Название файла #PATH# содержит буквы верхнего регистра';
 $MESS['INTERVOLGA_EDU.PARTNERS_DIR_FORBIDDEN_NAME'] = 'Неудачное название для раздела Партнерам (#NAME#). Лучше partners или for-partners';
+$MESS['INTERVOLGA_EDU.NOT_FOUND_UPLOAD_SRC'] = 'На странице Условия сотрудничества есть картинка, но она не в /upload/';
+$MESS['INTERVOLGA_EDU.NOT_FOUND_IMG_TAG'] = 'На странице Условия сотрудничества нет картинки';
+$MESS['INTERVOLGA_EDU.NOT_FOUND_TABLE_TAG'] = 'На странице Условия сотрудничества нет таблицы';
