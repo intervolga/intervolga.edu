@@ -27,25 +27,6 @@ $options = [
 ];
 
 Tester::run();
-$errors = Tester::getErrorsTree();
-/**
- * @var \Intervolga\Edu\Tests\BaseTest $testClass
- */
-foreach ($errors as $testClass => $testErrors) {
-	$options['general'][] = $testClass::getCode();
-	if ($testErrors) {
-		foreach ($testErrors as $testError) {
-			$options['general'][] = [
-				'',
-				'',
-				$testError,
-				['statichtml']
-			];
-		}
-	} else {
-		$options['general'][] = ['note' => 'OK'];
-	}
-}
 
 $tabs = [
 	[
@@ -64,14 +45,23 @@ if ($USER->IsAdmin()) {
 }
 $tabControl = new CAdminTabControl('tabControl', $tabs);
 $tabControl->Begin();
-?>
-<form method='POST'
-	  action='<?=$APPLICATION->getCurPage()?>?mid=<?=htmlspecialcharsbx($mid)?>&lang=<?=LANGUAGE_ID?>'>
-	<?php $tabControl->BeginNextTab(); ?>
-	<?php __AdmSettingsDrawList($module_id, $options['general']); ?>
-	<?php $tabControl->Buttons([
-		'disabled' => true,
-	]); ?>
-	<?=bitrix_sessid_post();?>
-	<?php $tabControl->End(); ?>
-</form>
+$tabControl->BeginNextTab();
+
+$errors = Tester::getErrorsTree();
+/**
+ * @var \Intervolga\Edu\Tests\BaseTest $testClass
+ */
+foreach ($errors as $testClass => $testErrors) {
+	?>
+	<h2><?=$testClass::getCode()?></h2>
+	<?php
+	if ($testErrors) {
+		$message = new CAdminMessage(['MESSAGE' => implode('<br>', $testErrors)]);
+		echo $message->show();
+	} else {
+		$message = new CAdminMessage(['MESSAGE' => 'OK', 'TYPE' => 'OK']);
+		echo $message->show();
+	}
+}
+
+$tabControl->End();
