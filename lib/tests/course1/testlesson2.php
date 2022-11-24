@@ -18,11 +18,12 @@ class TestLesson2 extends BaseTest
 
 	public static function run()
 	{
-		$filesToDelete = ['/services/index.php'];
-		$dirsToDelete = ['/services/'];
+		// TODO $filesToDelete = ['/services/index.php'];
+		// TODO $dirsToDelete = ['/services/'];
 		static::testLowerCase();
 		static::testPartnersDir();
-		// Ссылки в меню с /index.php в конце
+		static::testPartnersPage();
+		// TODO Ссылки в меню с /index.php в конце
 		static::testLocalPhpInterface();
 		static::testDumpFunction();
 	}
@@ -85,6 +86,12 @@ class TestLesson2 extends BaseTest
 				}
 			}
 		}
+	}
+
+	protected static function testPartnersPage()
+	{
+		// TODO Условия сотрудничества -- таблица с border
+		// TODO Условия сотрудничества -- картинка
 	}
 
 	public static function testLocalPhpInterface()
