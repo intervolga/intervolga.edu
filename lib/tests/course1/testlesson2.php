@@ -24,14 +24,32 @@ class TestLesson2 extends BaseTest
 
 	public static function run()
 	{
-		// TODO $filesToDelete = ['/services/index.php'];
-		// TODO $dirsToDelete = ['/services/'];
+		static::testDeleted();
 		static::testLowerCase();
 		static::testPartnersDir();
 		static::testPartnersPage();
 		// TODO Ссылки в меню с /index.php в конце
 		static::testLocalPhpInterface();
 		static::testDumpFunction();
+	}
+
+	protected static function testDeleted()
+	{
+		$dirsToDelete = [
+			'/services/'
+		];
+		foreach ($dirsToDelete as $dirToDelete) {
+			$directory = new Directory(Application::getDocumentRoot() . $dirToDelete);
+			if ($directory->isExists())
+			{
+				static::registerError(Loc::getMessage(
+					'INTERVOLGA_EDU.DIR_NOT_DELETED',
+					[
+						'#PATH#' => $dirToDelete,
+					]
+				));
+			}
+		}
 	}
 
 	protected static function testLowerCase()
@@ -73,22 +91,21 @@ class TestLesson2 extends BaseTest
 
 	protected static function testPartnersDir()
 	{
-		$forbiddenNames = [
-			'partneram',
-		];
-		$directory = new Directory(Application::getDocumentRoot());
-		foreach ($directory->getChildren() as $child) {
-			if ($child->isDirectory()) {
-				$dirName = strtolower($child->getName());
-				if (in_array($dirName, $forbiddenNames)) {
-					static::registerError(
-						Loc::getMessage(
-							'INTERVOLGA_EDU.PARTNERS_DIR_FORBIDDEN_NAME',
-							['#NAME#' => $child->getName()]
-						)
-					);
-				}
+		$found = false;
+		foreach (static::POSSIBLE_PARTNERS_NAMES as $possiblePartnerName) {
+			$directory = new Directory(Application::getDocumentRoot() . $possiblePartnerName);
+			if ($directory->isExists() && $directory->isDirectory()) {
+				$found = true;
 			}
+		}
+
+		if (!$found) {
+			static::registerError(
+				Loc::getMessage(
+					'INTERVOLGA_EDU.PARTNERS_DIR_NOT_FOUND',
+					['#POSSIBLE#' => implode(', ', static::POSSIBLE_PARTNERS_NAMES)]
+				)
+			);
 		}
 	}
 
