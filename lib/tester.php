@@ -4,6 +4,7 @@ namespace Intervolga\Edu;
 use Intervolga\Edu\Tests\Course1\TestLesson1;
 use Intervolga\Edu\Tests\Course1\TestLesson2;
 use Intervolga\Edu\Tests\Course1\TestLesson3;
+use Intervolga\Edu\Tests\Course1\TestLesson41;
 
 class Tester
 {
@@ -13,6 +14,7 @@ class Tester
 			TestLesson1::class,
 			TestLesson2::class,
 			TestLesson3::class,
+			TestLesson41::class,
 		];
 	}
 
