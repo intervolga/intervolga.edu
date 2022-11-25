@@ -9,6 +9,34 @@ abstract class BaseTest
 {
 	protected static $errors = [];
 
+	public static function getCourse()
+	{
+		$class = get_called_class();
+		$tmp = str_replace('Intervolga\\Edu\\Tests\\', '', $class);
+		$tmpArray = explode('\\', $tmp);
+
+		return strtolower($tmpArray[0]);
+	}
+
+	public static function getCourseLoc()
+	{
+		return Loc::getMessage('INTERVOLGA_EDU.COURSE_' . mb_strtoupper(static::getCourse()));
+	}
+
+	public static function getLesson()
+	{
+		$class = get_called_class();
+		$tmp = str_replace('Intervolga\\Edu\\Tests\\', '', $class);
+		$tmpArray = explode('\\', $tmp);
+
+		return strtolower($tmpArray[1]);
+	}
+
+	public static function getLessonLoc()
+	{
+		return Loc::getMessage('INTERVOLGA_EDU.COURSE_' . mb_strtoupper(static::getCourse()) . '_LESSON_'. mb_strtoupper(static::getLesson()));
+	}
+
 	/**
 	 * @return string
 	 */
