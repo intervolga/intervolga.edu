@@ -1,9 +1,8 @@
 <?php
-namespace Intervolga\Edu\Tests\Filesets;
+namespace Intervolga\Edu\Util;
 
 use Bitrix\Main\Application;
 use Bitrix\Main\IO\Directory;
-use Intervolga\Edu\Util\FileSystem;
 
 class FilesetBuilder
 {

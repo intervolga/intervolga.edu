@@ -21,7 +21,7 @@ class Tester
 	public static function run()
 	{
 		/**
-		 * @var \Intervolga\Edu\Tests\BaseTest $testClass
+		 * @var \Intervolga\Edu\Util\BaseTest $testClass
 		 */
 		foreach (static::getTestClasses() as $testClass) {
 			$testClass::run();
@@ -35,12 +35,17 @@ class Tester
 	{
 		$errors = [];
 		/**
-		 * @var \Intervolga\Edu\Tests\BaseTest $testClass
+		 * @var \Intervolga\Edu\Util\BaseTest $testClass
 		 */
 		foreach (static::getTestClasses() as $testClass) {
 			$errors[$testClass] = $testClass::getErrors();
 		}
 
 		return $errors;
+	}
+
+	public static function getTestsTree()
+	{
+		echo '<pre>' . __FILE__ . ':' . __LINE__ . ':<br>' . print_r(__DIR__, true) . '</pre>';
 	}
 }

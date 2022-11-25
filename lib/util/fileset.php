@@ -1,5 +1,5 @@
 <?php
-namespace Intervolga\Edu\Tests\Filesets;
+namespace Intervolga\Edu\Util;
 
 use Bitrix\Main\IO\FileSystemEntry;
 

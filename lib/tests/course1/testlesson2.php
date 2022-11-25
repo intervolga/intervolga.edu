@@ -5,9 +5,9 @@ use Bitrix\Main\Application;
 use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Tests\BaseTest;
-use Intervolga\Edu\Tests\Filesets\FilesetBuilder;
 use Intervolga\Edu\Util\Admin;
+use Intervolga\Edu\Util\BaseTest;
+use Intervolga\Edu\Util\FilesetBuilder;
 use Intervolga\Edu\Util\FileSystem;
 
 Loc::loadMessages(__FILE__);

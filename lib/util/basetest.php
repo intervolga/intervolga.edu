@@ -1,11 +1,7 @@
 <?php
-namespace Intervolga\Edu\Tests;
+namespace Intervolga\Edu\Util;
 
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Tests\Filesets\Fileset;
-use Intervolga\Edu\Util\Admin;
-use Intervolga\Edu\Util\FileSystem;
-use Intervolga\Edu\Util\Regex;
 
 Loc::loadMessages(__FILE__);
 

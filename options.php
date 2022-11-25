@@ -28,6 +28,7 @@ $options = [
 
 $fatalThrowable = null;
 try {
+	Tester::getTestsTree();
 	Tester::run();
 } catch (Throwable $throwable) {
 	$fatalThrowable = $throwable;

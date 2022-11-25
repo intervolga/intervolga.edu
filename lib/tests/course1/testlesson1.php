@@ -7,7 +7,7 @@ use Bitrix\Main\Config\Option;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Tests\BaseTest;
+use Intervolga\Edu\Util\BaseTest;
 
 Loc::loadMessages(__FILE__);
 
