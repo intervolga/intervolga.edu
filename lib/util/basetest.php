@@ -143,7 +143,32 @@ abstract class BaseTest
 				foreach ($regexes as $regexObject) {
 					preg_match_all($regexObject->getRegex(), $content, $matches, PREG_SET_ORDER, 0);
 					if (!$matches) {
-						static::registerError(Loc::getMessage('INTERVOLGA_EDU.CONTENT_ADD_REQUIRED', [
+						static::registerError(Loc::getMessage('INTERVOLGA_EDU.CONTENT_NOT_FOUND', [
+							'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
+							'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
+							'#REGEX_EXPLAIN#' => htmlspecialchars($regexObject->getRegexExplanation()),
+							'#REASON#' => $regexObject->getTipToReplace(),
+						]));
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * @param Fileset $fileset
+	 * @param Regex[] $regexes
+	 * @param string $reason
+	 */
+	protected static function testFilesetContentFoundByRegex($fileset, $regexes)
+	{
+		foreach ($fileset->getFileSystemEntries() as $fileSystemEntry) {
+			if ($fileSystemEntry->isFile()) {
+				$content = $fileSystemEntry->getContents();
+				foreach ($regexes as $regexObject) {
+					preg_match_all($regexObject->getRegex(), $content, $matches, PREG_SET_ORDER, 0);
+					if ($matches) {
+						static::registerError(Loc::getMessage('INTERVOLGA_EDU.CONTENT_FOUND', [
 							'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
 							'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
 							'#REGEX_EXPLAIN#' => htmlspecialchars($regexObject->getRegexExplanation()),
