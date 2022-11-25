@@ -27,6 +27,8 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_CUSTOMCORECHECK'] = 'Современна�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_LONGPHPTAG'] = 'Использование запрещенных коротких php-тегов';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SCRIPTS'] = 'Плагины слайдера и карусели только в main-шаблоне';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_CORED7'] = 'Использование современных аналогов старых функций';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON41_IMAGES'] = 'Оставлен мусор в шаблонах компонентов';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON41_UGLYCHECKRESULT'] = 'Использованы аккуратнные проверки if ($arResult) вместо if (!empty($arResult))';
 
 $MESS['INTERVOLGA_EDU.LICENSE_NAME'] = 'Стандарт';
 $MESS['INTERVOLGA_EDU.INCORRECT_LICENSE'] = 'Некорректная редакция! Требуется &laquo;Стандарт&raquo;, сейчас &laquo;#LICENSE#&raquo;';
