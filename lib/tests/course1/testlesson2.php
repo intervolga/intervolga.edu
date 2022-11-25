@@ -6,6 +6,7 @@ use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTest;
+use Intervolga\Edu\Tests\Filesets\FilesetBuilder;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
 
@@ -37,22 +38,13 @@ class TestLesson2 extends BaseTest
 
 	protected static function testDeleted()
 	{
+		$fileset = FilesetBuilder::getPublic(true, false);
+		$regex = '/\/services$/ui';	// /services/
+
+		static::testFilesetToBeDeleted($fileset, $regex, Loc::getMessage('INTERVOLGA_EDU.SERVICES_DELETE_REASON'));
 		$dirsToDelete = [
 			'/services/'
 		];
-		foreach ($dirsToDelete as $dirToDelete) {
-			$directory = new Directory(Application::getDocumentRoot() . $dirToDelete);
-			if ($directory->isExists())
-			{
-				static::registerError(Loc::getMessage(
-					'INTERVOLGA_EDU.DIR_NOT_DELETED',
-					[
-						'#PATH#' => $dirToDelete,
-						'#ADMIN_LINK#' => Admin::getFileManUrl($directory),
-					]
-				));
-			}
-		}
 	}
 
 	protected static function testLowerCase()
