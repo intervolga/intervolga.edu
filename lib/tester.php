@@ -13,6 +13,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson1\TestUpdates::class,
 			\Intervolga\Edu\Tests\Course1\Lesson1\TestSiteCorporate::class,
 			\Intervolga\Edu\Tests\Course1\Lesson1\TestSiteChecker::class,
+
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestServicesDeleted::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestReviews::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestLowerCase::class,
@@ -21,7 +22,9 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestMenu::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestLocalPhpInterface::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestDumpFunction::class,
+
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestTemplates::class,
+			\Intervolga\Edu\Tests\Course1\Lesson3\TestCustomCoreCheck::class,
 		];
 	}
 

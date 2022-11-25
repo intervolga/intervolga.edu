@@ -23,6 +23,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_MENU'] = 'В меню нет index.php-с�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_LOCALPHPINTERFACE'] = 'Код размещен в /local/php_interface/';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_DUMPFUNCTION'] = 'Объявлена свободная функция test_dump';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_TEMPLATES'] = 'В /local/templates/ шаблоны: main, inner, .default';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_CUSTOMCORECHECK'] = 'Современная проверка ядра Битрикса';
 
 $MESS['INTERVOLGA_EDU.LICENSE_NAME'] = 'Стандарт';
 $MESS['INTERVOLGA_EDU.INCORRECT_LICENSE'] = 'Некорректная редакция! Требуется &laquo;Стандарт&raquo;, сейчас &laquo;#LICENSE#&raquo;';
@@ -48,7 +49,7 @@ $MESS['INTERVOLGA_EDU.INTERVOLGA_EDU.OLD_CODE_USAGE'] = 'устаревшая ф
 $MESS['INTERVOLGA_EDU.ADD_THIS_JS'] = 'Не подключен #JS# в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>';
 $MESS['INTERVOLGA_EDU.DELETE_THIS_JS'] = 'Подключен #JS# в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>';
 $MESS['INTERVOLGA_EDU.OLD_FUNCTION_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> вместо #NEW# используется устаревший код: #OLD#';
-$MESS['INTERVOLGA_EDU.CUSTOM_CORE_CHECK'] = 'современная проверка подключения ядра';
+$MESS['INTERVOLGA_EDU.CUSTOM_CORE_CHECK'] = 'надо добавить';
 $MESS['INTERVOLGA_EDU.UGLY_RESULT_CHECK_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> используется избыточная проверка <i>if (!empty($arResult))</i> вместо короткой <i>if ($arResult)</i>';
 $MESS['INTERVOLGA_EDU.IMAGES_DELETE_REASON'] = 'удалить, не требуется для выполнения задания';
 
