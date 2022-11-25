@@ -21,7 +21,8 @@ class TestLesson2 extends BaseTest
 
 	public static function run()
 	{
-		static::testDeleted();
+		static::testServicesDeleted();
+		static::testReviews();
 		static::testLowerCase();
 		static::testPartnersDir();
 		static::testPartnersPage();
@@ -30,11 +31,25 @@ class TestLesson2 extends BaseTest
 		static::testDumpFunction();
 	}
 
-	protected static function testDeleted()
+	protected static function testServicesDeleted()
 	{
 		$fileset = FilesetBuilder::getPublic(true, false);
 		$regex = '/\/services$/ui';	// /services/
 		static::testIfFilesetMatches($fileset, $regex, Loc::getMessage('INTERVOLGA_EDU.SERVICES_DELETE'));
+	}
+
+	protected static function testReviews()
+	{
+		$section = FilesetBuilder::getReviewsSection();
+
+		if (!$section) {
+			static::registerError(
+				Loc::getMessage(
+					'INTERVOLGA_EDU.REVIEWS_DIR_NOT_FOUND',
+					['#POSSIBLE#' => implode(', ', FilesetBuilder::POSSIBLE_REVIEWS_NAMES)]
+				)
+			);
+		}
 	}
 
 	protected static function testLowerCase()

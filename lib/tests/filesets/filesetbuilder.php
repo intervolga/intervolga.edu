@@ -3,6 +3,7 @@ namespace Intervolga\Edu\Tests\Filesets;
 
 use Bitrix\Main\Application;
 use Bitrix\Main\IO\Directory;
+use Intervolga\Edu\Util\FileSystem;
 
 class FilesetBuilder
 {
@@ -10,6 +11,11 @@ class FilesetBuilder
 		'/upload/',
 		'/bitrix/',
 		'/local/',
+	];
+
+	const POSSIBLE_REVIEWS_NAMES = [
+		'/company/reviews/',
+		'/company/review/',
 	];
 
 	const POSSIBLE_PARTNERS_NAMES = [
@@ -138,6 +144,22 @@ class FilesetBuilder
 		}
 
 		return $result;
+	}
+
+	/**
+	 * @return Directory
+	 */
+	public static function getReviewsSection()
+	{
+		$return = null;
+		$publicDirs = static::getPublic(true, false);
+		foreach ($publicDirs->getFileSystemEntries() as $publicDir) {
+			if (in_array(FileSystem::getLocalPath($publicDir) . '/', static::POSSIBLE_REVIEWS_NAMES)) {
+				$return = $publicDir;
+			}
+		}
+
+		return $return;
 	}
 
 	/**
