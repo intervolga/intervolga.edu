@@ -17,6 +17,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_UPDATES'] = 'Проверка обновл
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_SERVICESDELETED'] = 'Удаление раздела &laquo;Услуги&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_REVIEWS'] = 'Создание раздела &laquo;Отзывы&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_LOWERCASE'] = 'Названия файлов и папок в нижнем регистре';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PARTNERS'] = 'Создание раздела &laquo;Партнерам&raquo;';
 
 $MESS['INTERVOLGA_EDU.LICENSE_NAME'] = 'Стандарт';
 $MESS['INTERVOLGA_EDU.INCORRECT_LICENSE'] = 'Некорректная редакция! Требуется &laquo;Стандарт&raquo;, сейчас &laquo;#LICENSE#&raquo;';
@@ -29,6 +30,7 @@ $MESS['INTERVOLGA_EDU.EMPTY_SITE_CHECK_LOG'] = 'Проверка системы 
 $MESS['INTERVOLGA_EDU.SERVICES_DELETE_REASON'] = 'по заданию';
 $MESS['INTERVOLGA_EDU.REVIEWS_SECTION_NEED'] = 'раздел &laquo;Отзывы&raquo; должен быть где-то тут';
 $MESS['INTERVOLGA_EDU.NOT_LOWER_CASE'] = 'привести имя к нижнему регистру, чтобы не было проблем на разных ОС';
+$MESS['INTERVOLGA_EDU.PARTNERS_DIR_NOT_FOUND'] = 'раздел &laquo;Партнерам&raquo; должен быть где-то тут';
 
 $MESS['INTERVOLGA_EDU.DELETE_FILE_SYSTEM_ENTRY'] = 'Требуется удалить <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
 $MESS['INTERVOLGA_EDU.LOST_FILE_SYSTEM_ENTRY'] = 'Не найден <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
