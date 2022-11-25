@@ -19,6 +19,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestPartners::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestPartnersPage::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestMenu::class,
+			\Intervolga\Edu\Tests\Course1\Lesson2\TestLocalPhpInterface::class,
 		];
 	}
 
