@@ -60,28 +60,26 @@ class TestLesson2 extends BaseTest
 
 	protected static function testPartnersPage()
 	{
-		foreach (FilesetBuilder::POSSIBLE_PARTNERS_NAMES as $possiblePartnerName) {
-			$directory = new Directory(Application::getDocumentRoot() . $possiblePartnerName);
-			if ($directory->isExists() && $directory->isDirectory()) {
-				$indexPath = $directory->getPath() . '/index.php';
-				$indexFile = new File($indexPath);
-				$content = $indexFile->getContents();
-				if (substr_count($content, '<img')) {
-					if (!substr_count($content, '/upload/')) {
-						static::registerError(Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_UPLOAD_SRC', [
-							'#ADMIN_LINK#' => Admin::getFileManUrl($indexFile),
-						]));
-					}
-				} else {
-					static::registerError(Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_IMG_TAG', [
+		$partnersSection = FilesetBuilder::getPartnersSection();
+		if ($partnersSection) {
+			$indexPath = $partnersSection->getPath() . '/index.php';
+			$indexFile = new File($indexPath);
+			$content = $indexFile->getContents();
+			if (substr_count($content, '<img')) {
+				if (!substr_count($content, '/upload/')) {
+					static::registerError(Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_UPLOAD_SRC', [
 						'#ADMIN_LINK#' => Admin::getFileManUrl($indexFile),
 					]));
 				}
-				if (!substr_count($content, '<table')) {
-					static::registerError(Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_TABLE_TAG', [
-						'#ADMIN_LINK#' => Admin::getFileManUrl($indexFile),
-					]));
-				}
+			} else {
+				static::registerError(Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_IMG_TAG', [
+					'#ADMIN_LINK#' => Admin::getFileManUrl($indexFile),
+				]));
+			}
+			if (!substr_count($content, '<table')) {
+				static::registerError(Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_TABLE_TAG', [
+					'#ADMIN_LINK#' => Admin::getFileManUrl($indexFile),
+				]));
 			}
 		}
 	}
