@@ -5,6 +5,7 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\Filesets\Fileset;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
+use Intervolga\Edu\Util\Regex;
 
 Loc::loadMessages(__FILE__);
 
@@ -56,6 +57,38 @@ abstract class BaseTest
 				'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
 				'#REASON#' => $reason,
 			]));
+		}
+	}
+
+	/**
+	 * @param Fileset $fileset
+	 * @param Regex[] $regexes
+	 * @param string $reason
+	 */
+	protected static function testFilesetContentByRegex($fileset, $regexes, $reason)
+	{
+		foreach ($fileset->getFileSystemEntries() as $fileSystemEntry) {
+			if ($fileSystemEntry->isFile()) {
+				$content = $fileSystemEntry->getContents();
+				foreach ($regexes as $regexObject) {
+					preg_match_all($regexObject->getRegex(), $content, $matches, PREG_SET_ORDER, 0);
+					if ($matches) {
+						$tip = $regexObject->getTipToReplace();
+						if ($tip) {
+							$code = 'INTERVOLGA_EDU.CONTENT_REPLACE_REQUIRED';
+						} else {
+							$code = 'INTERVOLGA_EDU.CONTENT_ACTION_REQUIRED';
+						}
+						static::registerError(Loc::getMessage($code, [
+							'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
+							'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
+							'#OLD#' => htmlspecialchars($regexObject->getRegexExplanation()),
+							'#NEW#' => htmlspecialchars($regexObject->getTipToReplace()),
+							'#REASON#' => $reason,
+						]));
+					}
+				}
+			}
 		}
 	}
 }
