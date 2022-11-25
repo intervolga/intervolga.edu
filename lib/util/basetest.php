@@ -156,8 +156,7 @@ abstract class BaseTest
 
 	protected static function registerErrorIfFileSystemEntryExists(FileSystemEntry $fileSystemEntry, $reason)
 	{
-		if ($fileSystemEntry->isExists())
-		{
+		if ($fileSystemEntry->isExists()) {
 			static::registerError(Loc::getMessage('INTERVOLGA_EDU.DELETE_FILE_SYSTEM_ENTRY', [
 				'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
 				'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
@@ -168,11 +167,32 @@ abstract class BaseTest
 
 	protected static function registerErrorIfFileSystemEntryLost(FileSystemEntry $fileSystemEntry, $reason)
 	{
-		if (!$fileSystemEntry->isExists())
-		{
+		if (!$fileSystemEntry->isExists()) {
 			static::registerError(Loc::getMessage('INTERVOLGA_EDU.LOST_FILE_SYSTEM_ENTRY', [
 				'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
 				'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
+				'#REASON#' => $reason,
+			]));
+		}
+	}
+
+	protected static function registerErrorIfAllFileSystemEntriesLost(array $fileSystemEntries, $reason)
+	{
+		$found = false;
+		$links = [];
+		foreach ($fileSystemEntries as $fileSystemEntry) {
+			if ($fileSystemEntry->isExists()) {
+				$found = true;
+			} else {
+				$links[] = Loc::getMessage('INTERVOLGA_EDU.FILE_SYSTEM_ENTRY', [
+					'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
+					'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
+				]);
+			}
+		}
+		if (!$found) {
+			static::registerError(Loc::getMessage('INTERVOLGA_EDU.ALL_FILE_SYSTEM_ENTRIES_LOST', [
+				'#LINKS#' => implode(', ', $links),
 				'#REASON#' => $reason,
 			]));
 		}

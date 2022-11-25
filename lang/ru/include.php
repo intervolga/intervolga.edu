@@ -15,6 +15,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECHECKER'] = 'Проверка сист
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_LICENSE'] = 'Проверка редакции';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_UPDATES'] = 'Проверка обновлений';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_SERVICESDELETED'] = 'Удаление раздела &laquo;Услуги&raquo;';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_REVIEWS'] = 'Создание раздела &laquo;Отзывы&raquo;';
 
 $MESS['INTERVOLGA_EDU.LICENSE_NAME'] = 'Стандарт';
 $MESS['INTERVOLGA_EDU.INCORRECT_LICENSE'] = 'Некорректная редакция! Требуется &laquo;Стандарт&raquo;, сейчас &laquo;#LICENSE#&raquo;';
@@ -25,3 +26,4 @@ $MESS['INTERVOLGA_EDU.IBLOCKS_NOT_FOUND'] = 'Инфоблоки не найде�
 $MESS['INTERVOLGA_EDU.SITE_CHECK_ERROR'] = '<b>#TITLE#</b>: #ERROR#';
 $MESS['INTERVOLGA_EDU.EMPTY_SITE_CHECK_LOG'] = 'Проверка системы не запускалась';
 $MESS['INTERVOLGA_EDU.SERVICES_DELETE_REASON'] = 'по заданию';
+$MESS['INTERVOLGA_EDU.REVIEWS_SECTION_NEED'] = 'раздел &laquo;Отзывы&raquo; должен быть где-то тут';
