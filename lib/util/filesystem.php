@@ -15,6 +15,15 @@ class FileSystem
 	];
 
 	/**
+	 * @param $path
+	 * @return Directory
+	 */
+	public static function getDirectory($path)
+	{
+		return new Directory(Application::getDocumentRoot() . $path);
+	}
+
+	/**
 	 * @param array $partsToCombo
 	 * @return FileSystemEntry[]
 	 */
@@ -57,7 +66,12 @@ class FileSystem
 	 */
 	public static function getLocalPath(FileSystemEntry $entry)
 	{
-		return str_replace(Application::getDocumentRoot(), '', $entry->getPath());
+		$path = str_replace(Application::getDocumentRoot(), '', $entry->getPath());
+		if ($entry->isDirectory()) {
+			$path .= '/';
+		}
+
+		return $path;
 	}
 
 	/**
@@ -116,7 +130,7 @@ class FileSystem
 							$dirsToCheck[] = $child;
 						}
 					} else {
-						preg_match_all($pathRegex, $child->getPath(),$matches, PREG_SET_ORDER, 0);
+						preg_match_all($pathRegex, $child->getPath(), $matches, PREG_SET_ORDER, 0);
 
 						if ($matches) {
 							$result[] = $child;

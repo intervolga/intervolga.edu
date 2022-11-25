@@ -14,6 +14,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATE'] = 'Проверка мод
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECHECKER'] = 'Проверка системы';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_LICENSE'] = 'Проверка редакции';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_UPDATES'] = 'Проверка обновлений';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_SERVICESDELETED'] = 'Проверка раздела &laquo;Услуги&raquo;';
 
 $MESS['INTERVOLGA_EDU.LICENSE_NAME'] = 'Стандарт';
 $MESS['INTERVOLGA_EDU.INCORRECT_LICENSE'] = 'Некорректная редакция! Требуется &laquo;Стандарт&raquo;, сейчас &laquo;#LICENSE#&raquo;';
@@ -23,3 +24,4 @@ $MESS['INTERVOLGA_EDU.PAGE_NOT_FOUND'] = 'Страница не найдена: 
 $MESS['INTERVOLGA_EDU.IBLOCKS_NOT_FOUND'] = 'Инфоблоки не найдены: #CODES#';
 $MESS['INTERVOLGA_EDU.SITE_CHECK_ERROR'] = '<b>#TITLE#</b>: #ERROR#';
 $MESS['INTERVOLGA_EDU.EMPTY_SITE_CHECK_LOG'] = 'Проверка системы не запускалась';
+$MESS['INTERVOLGA_EDU.SERVICES_DELETE_REASON'] = 'по заданию';

@@ -1,8 +1,6 @@
 <?php
 namespace Intervolga\Edu;
 
-use Intervolga\Edu\Util\BaseTest;
-
 class Tester
 {
 	/**
@@ -15,10 +13,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson1\TestUpdates::class,
 			\Intervolga\Edu\Tests\Course1\Lesson1\TestSiteCorporate::class,
 			\Intervolga\Edu\Tests\Course1\Lesson1\TestSiteChecker::class,
-			//TestLesson1::class,
-			//TestLesson2::class,
-			//TestLesson3::class,
-			//TestLesson41::class,
+			\Intervolga\Edu\Tests\Course1\Lesson2\TestServicesDeleted::class,
 		];
 	}
 

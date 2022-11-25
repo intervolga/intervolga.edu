@@ -1,6 +1,7 @@
 <?php
 namespace Intervolga\Edu\Util;
 
+use Bitrix\Main\IO\FileSystemEntry;
 use Bitrix\Main\Localization\Loc;
 
 Loc::loadMessages(__FILE__);
@@ -150,6 +151,18 @@ abstract class BaseTest
 					}
 				}
 			}
+		}
+	}
+
+	protected static function registerErrorIfFileSystemEntryExists(FileSystemEntry $fileSystemEntry, $reason)
+	{
+		if ($fileSystemEntry->isExists())
+		{
+			static::registerError(Loc::getMessage('INTERVOLGA_EDU.DELETE_FILE_SYSTEM_ENTRY', [
+				'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
+				'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
+				'#REASON#' => $reason,
+			]));
 		}
 	}
 }
