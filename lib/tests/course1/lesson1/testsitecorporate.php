@@ -7,6 +7,7 @@ use Bitrix\Main\IO\File;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Util\BaseTest;
+use Intervolga\Edu\Util\FileSystem;
 
 class TestSiteCorporate extends BaseTest
 {
@@ -31,9 +32,8 @@ class TestSiteCorporate extends BaseTest
 			'/company/management.php',
 		];
 		foreach ($paths as $path) {
-			if (!File::isFileExists(Application::getDocumentRoot() . $path)) {
-				static::registerError(Loc::getMessage('INTERVOLGA_EDU.PAGE_NOT_FOUND', ['#PAGE#' => $path]));
-			}
+			$file = FileSystem::getFile($path);
+			static::registerErrorIfFileSystemEntryLost($file, Loc::getMessage('INTERVOLGA_EDU.MODULE_PAGE'));
 		}
 	}
 

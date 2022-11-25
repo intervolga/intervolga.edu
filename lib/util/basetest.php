@@ -165,4 +165,16 @@ abstract class BaseTest
 			]));
 		}
 	}
+
+	protected static function registerErrorIfFileSystemEntryLost(FileSystemEntry $fileSystemEntry, $reason)
+	{
+		if (!$fileSystemEntry->isExists())
+		{
+			static::registerError(Loc::getMessage('INTERVOLGA_EDU.LOST_FILE_SYSTEM_ENTRY', [
+				'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
+				'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
+				'#REASON#' => $reason,
+			]));
+		}
+	}
 }
