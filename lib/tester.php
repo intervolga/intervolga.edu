@@ -27,6 +27,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestCustomCoreCheck::class,
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestLongPhpTag::class,
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestScripts::class,
+			\Intervolga\Edu\Tests\Course1\Lesson3\TestCoreD7::class,
 		];
 	}
 
