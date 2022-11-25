@@ -25,6 +25,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_DUMPFUNCTION'] = 'Объявлена св�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_TEMPLATES'] = 'В /local/templates/ шаблоны: main, inner, .default';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_CUSTOMCORECHECK'] = 'Современная проверка ядра Битрикса';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_LONGPHPTAG'] = 'Использование запрещенных коротких php-тегов';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SCRIPTS'] = 'Плагины слайдера и карусели только в main-шаблоне';
 
 $MESS['INTERVOLGA_EDU.LICENSE_NAME'] = 'Стандарт';
 $MESS['INTERVOLGA_EDU.INCORRECT_LICENSE'] = 'Некорректная редакция! Требуется &laquo;Стандарт&raquo;, сейчас &laquo;#LICENSE#&raquo;';
