@@ -27,60 +27,51 @@ $options = [
 ];
 
 $fatalThrowable = null;
+$testsTree = Tester::getTestsTree();
 try {
-	Tester::getTestsTree();
 	Tester::run();
 } catch (Throwable $throwable) {
 	$fatalThrowable = $throwable;
 }
-
-$tabs = [
-	[
-		'DIV' => 'general',
-		'TAB' => Loc::getMessage('INTERVOLGA_EDU.TAB_GENERAL'),
-		'TITLE' => Loc::getMessage('INTERVOLGA_EDU.TAB_GENERAL'),
-	],
-];
-if ($USER->IsAdmin()) {
-	if (check_bitrix_sessid() && strlen($_POST['save'])>0) {
-		foreach ($options as $option) {
-			__AdmSettingsSaveOptions($module_id, $option);
-		}
-		LocalRedirect($APPLICATION->GetCurPageParam());
-	}
+$errorsTree = Tester::getErrorsTree();
+$tabs = [];
+foreach ($testsTree as $courseCode => $course) {
+	$tabs[] = [
+		'DIV' => $courseCode,
+		'TAB' => Loc::getMessage('INTERVOLGA_EDU.COURSE_HEADER', ['#LESSON#' => $course['TITLE']]),
+		'TITLE' => Loc::getMessage('INTERVOLGA_EDU.TEST_RESULTS'),
+	];
 }
-$tabControl = new CAdminTabControl('tabControl', $tabs);
-$tabControl->Begin();
-$tabControl->BeginNextTab();
-if ($fatalThrowable)
-{
-	echo '<h2>' . Loc::getMessage('INTERVOLGA_EDU.FATAL_ERROR') . '</h2>';
+if ($fatalThrowable) {
 	$message = new CAdminMessage([
-		'MESSAGE' => $fatalThrowable->getMessage(),
+		'MESSAGE' => Loc::getMessage('INTERVOLGA_EDU.FATAL_ERROR', ['#ERROR#' => $fatalThrowable->getMessage()]),
 		'DETAILS' => $fatalThrowable->getTraceAsString(),
 	]);
 	echo $message->show();
 }
-
-$errors = Tester::getErrorsTree();
-/**
- * @var \Intervolga\Edu\Tests\BaseTest $testClass
- */
-foreach ($errors as $testClass => $testErrors) {
-	echo '<h2>' . $testClass::getTitle() . '</h2>';
-	if ($testErrors) {
-		$message = new CAdminMessage([
-			'HTML' => true,
-			'MESSAGE' => implode('<br>', $testErrors)
-		]);
-		echo $message->show();
-	} else {
-		$message = new CAdminMessage([
-			'MESSAGE' => Loc::getMessage('INTERVOLGA_EDU.NO_ERRORS'),
-			'TYPE' => 'OK'
-		]);
-		echo $message->show();
+$tabControl = new CAdminTabControl('tabControl', $tabs);
+$tabControl->begin();
+foreach ($testsTree as $courseCode => $course) {
+	$tabControl->beginNextTab();
+	foreach ($course['LESSONS'] as $lessonCode => $lesson) {
+		echo '<h2>' . Loc::getMessage('INTERVOLGA_EDU.LESSON_HEADER', ['#LESSON#' => $lesson['TITLE']]) . '</h2>';
+		$counter = 1;
+		foreach ($lesson['TESTS'] as $testCode => $testTitle) {
+			$errors = $errorsTree[$courseCode][$lessonCode][$testCode];
+			$messageParams = [
+				'HTML' => true,
+				'MESSAGE' => Loc::getMessage('INTERVOLGA_EDU.TEST_HEADER', ['#TEST#' => $counter . '. ' . $testTitle]),
+			];
+			if ($errors) {
+				$messageParams['DETAILS'] = implode('<br>', $errors);
+			} else {
+				$messageParams['DETAILS'] = Loc::getMessage('INTERVOLGA_EDU.TEST_NO_ERRORS');
+				$messageParams['TYPE'] = 'OK';
+			}
+			$message = new CAdminMessage($messageParams);
+			echo $message->show();
+			$counter++;
+		}
 	}
 }
-
-$tabControl->End();
+$tabControl->end();

@@ -1,20 +1,24 @@
 <?php
 namespace Intervolga\Edu;
 
-use Intervolga\Edu\Tests\Course1\TestLesson1;
-use Intervolga\Edu\Tests\Course1\TestLesson2;
-use Intervolga\Edu\Tests\Course1\TestLesson3;
-use Intervolga\Edu\Tests\Course1\TestLesson41;
+use Intervolga\Edu\Util\BaseTest;
 
 class Tester
 {
+	/**
+	 * @return string[]|\Intervolga\Edu\Util\BaseTest[]
+	 */
 	protected static function getTestClasses()
 	{
 		return [
-			TestLesson1::class,
-			TestLesson2::class,
-			TestLesson3::class,
-			TestLesson41::class,
+			\Intervolga\Edu\Tests\Course1\Lesson1\TestLicense::class,
+			\Intervolga\Edu\Tests\Course1\Lesson1\TestUpdates::class,
+			\Intervolga\Edu\Tests\Course1\Lesson1\TestSiteCorporate::class,
+			\Intervolga\Edu\Tests\Course1\Lesson1\TestSiteChecker::class,
+			//TestLesson1::class,
+			//TestLesson2::class,
+			//TestLesson3::class,
+			//TestLesson41::class,
 		];
 	}
 
@@ -38,14 +42,25 @@ class Tester
 		 * @var \Intervolga\Edu\Util\BaseTest $testClass
 		 */
 		foreach (static::getTestClasses() as $testClass) {
-			$errors[$testClass] = $testClass::getErrors();
+			$errors[$testClass::getCourseCode()][$testClass::getLessonCode()][$testClass] = $testClass::getErrors();
 		}
 
 		return $errors;
 	}
 
+	/**
+	 * @return array|\Intervolga\Edu\Util\BaseTest[]
+	 */
 	public static function getTestsTree()
 	{
-		echo '<pre>' . __FILE__ . ':' . __LINE__ . ':<br>' . print_r(__DIR__, true) . '</pre>';
+		$tree = [];
+		$classes = static::getTestClasses();
+		foreach ($classes as $testClass) {
+			$tree[$testClass::getCourseCode()]['TITLE'] = $testClass::getCourseLoc();
+			$tree[$testClass::getCourseCode()]['LESSONS'][$testClass::getLessonCode()]['TITLE'] = $testClass::getLessonLoc();
+			$tree[$testClass::getCourseCode()]['LESSONS'][$testClass::getLessonCode()]['TESTS'][$testClass] = $testClass::getTestLoc();
+		}
+
+		return $tree;
 	}
 }

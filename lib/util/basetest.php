@@ -9,7 +9,7 @@ abstract class BaseTest
 {
 	protected static $errors = [];
 
-	public static function getCourse()
+	public static function getCourseCode(): string
 	{
 		$class = get_called_class();
 		$tmp = str_replace('Intervolga\\Edu\\Tests\\', '', $class);
@@ -18,12 +18,12 @@ abstract class BaseTest
 		return strtolower($tmpArray[0]);
 	}
 
-	public static function getCourseLoc()
+	public static function getCourseLoc(): string
 	{
-		return Loc::getMessage('INTERVOLGA_EDU.COURSE_' . mb_strtoupper(static::getCourse()));
+		return Loc::getMessage('INTERVOLGA_EDU.' . mb_strtoupper(static::getCourseCode()));
 	}
 
-	public static function getLesson()
+	public static function getLessonCode(): string
 	{
 		$class = get_called_class();
 		$tmp = str_replace('Intervolga\\Edu\\Tests\\', '', $class);
@@ -32,17 +32,29 @@ abstract class BaseTest
 		return strtolower($tmpArray[1]);
 	}
 
-	public static function getLessonLoc()
+	public static function getLessonLoc(): string
 	{
-		return Loc::getMessage('INTERVOLGA_EDU.COURSE_' . mb_strtoupper(static::getCourse()) . '_LESSON_'. mb_strtoupper(static::getLesson()));
+		return Loc::getMessage('INTERVOLGA_EDU.' . mb_strtoupper(static::getCourseCode()) . '_' . mb_strtoupper(static::getLessonCode()));
 	}
 
-	/**
-	 * @return string
-	 */
-	public static function getTitle()
+	public static function getTestCode(): string
 	{
-		return str_replace(__NAMESPACE__ . '\\', '', get_called_class());
+		$class = get_called_class();
+		$tmp = str_replace('Intervolga\\Edu\\Tests\\', '', $class);
+		$tmpArray = explode('\\', $tmp);
+
+		return preg_replace('/^Test/', '', $tmpArray[2]);
+	}
+
+	public static function getTestLoc(): string
+	{
+		$code = 'INTERVOLGA_EDU.' . mb_strtoupper(static::getCourseCode()) . '_' . mb_strtoupper(static::getLessonCode()) . '_' . mb_strtoupper(static::getTestCode());
+		$loc = Loc::getMessage($code);
+		if (mb_strlen($loc)) {
+			return $loc;
+		} else {
+			return $code;
+		}
 	}
 
 	public static function run()
