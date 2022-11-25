@@ -16,6 +16,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_LICENSE'] = 'Проверка редакц
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_UPDATES'] = 'Проверка обновлений';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_SERVICESDELETED'] = 'Удаление раздела &laquo;Услуги&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_REVIEWS'] = 'Создание раздела &laquo;Отзывы&raquo;';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_LOWERCASE'] = 'Названия файлов и папок в нижнем регистре';
 
 $MESS['INTERVOLGA_EDU.LICENSE_NAME'] = 'Стандарт';
 $MESS['INTERVOLGA_EDU.INCORRECT_LICENSE'] = 'Некорректная редакция! Требуется &laquo;Стандарт&raquo;, сейчас &laquo;#LICENSE#&raquo;';
@@ -27,3 +28,14 @@ $MESS['INTERVOLGA_EDU.SITE_CHECK_ERROR'] = '<b>#TITLE#</b>: #ERROR#';
 $MESS['INTERVOLGA_EDU.EMPTY_SITE_CHECK_LOG'] = 'Проверка системы не запускалась';
 $MESS['INTERVOLGA_EDU.SERVICES_DELETE_REASON'] = 'по заданию';
 $MESS['INTERVOLGA_EDU.REVIEWS_SECTION_NEED'] = 'раздел &laquo;Отзывы&raquo; должен быть где-то тут';
+$MESS['INTERVOLGA_EDU.NOT_LOWER_CASE'] = 'привести имя к нижнему регистру, чтобы не было проблем на разных ОС';
+
+$MESS['INTERVOLGA_EDU.DELETE_FILE_SYSTEM_ENTRY'] = 'Требуется удалить <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
+$MESS['INTERVOLGA_EDU.LOST_FILE_SYSTEM_ENTRY'] = 'Не найден <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
+$MESS['INTERVOLGA_EDU.FILE_SYSTEM_ENTRY'] = '<a href="#ADMIN_LINK#" target="_blank">#PATH#</a>';
+$MESS['INTERVOLGA_EDU.ALL_FILE_SYSTEM_ENTRIES_LOST'] = 'Не найдены #LINKS# (#REASON#)';
+$MESS['INTERVOLGA_EDU.ACTION_REQUIRED'] = 'Проблема с <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
+$MESS['INTERVOLGA_EDU.CONTENT_REPLACE_REQUIRED'] = 'Проблема в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, требуется заменить #REGEX_EXPLAIN# на #NEW# (#REASON#)';
+$MESS['INTERVOLGA_EDU.CONTENT_DELETE_REQUIRED'] = 'Проблема в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, нужно убрать #REGEX_EXPLAIN# (#REASON#)';
+$MESS['INTERVOLGA_EDU.CONTENT_ADD_REQUIRED'] = 'Проблема в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, отсутствует #REGEX_EXPLAIN# (#REASON#)';
+$MESS['INTERVOLGA_EDU.FILE_SYSTEM_ENTRY_MATCH'] = 'Проблема с <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';

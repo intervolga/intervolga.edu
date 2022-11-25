@@ -15,6 +15,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson1\TestSiteChecker::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestServicesDeleted::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestReviews::class,
+			\Intervolga\Edu\Tests\Course1\Lesson2\TestLowerCase::class,
 		];
 	}
 

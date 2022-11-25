@@ -176,6 +176,10 @@ abstract class BaseTest
 		}
 	}
 
+	/**
+	 * @param FileSystemEntry[] $fileSystemEntries
+	 * @param string $reason
+	 */
 	protected static function registerErrorIfAllFileSystemEntriesLost(array $fileSystemEntries, $reason)
 	{
 		$found = false;
@@ -195,6 +199,26 @@ abstract class BaseTest
 				'#LINKS#' => implode(', ', $links),
 				'#REASON#' => $reason,
 			]));
+		}
+	}
+
+	/**
+	 * @param FileSystemEntry[] $fileSystemEntries
+	 * @param string $regex
+	 * @param string $reason
+	 */
+	protected static function registerErrorForFileSystemEntriesNameMatch(array $fileSystemEntries, $regex, $reason)
+	{
+		foreach ($fileSystemEntries as $fileSystemEntry) {
+			$matches = [];
+			preg_match_all($regex, $fileSystemEntry->getName(), $matches, PREG_SET_ORDER);
+			if ($matches) {
+				static::registerError(Loc::getMessage('INTERVOLGA_EDU.FILE_SYSTEM_ENTRY_MATCH', [
+					'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
+					'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
+					'#REASON#' => $reason,
+				]));
+			}
 		}
 	}
 }

@@ -3,6 +3,9 @@ namespace Intervolga\Edu\Util;
 
 use Bitrix\Main\IO\FileSystemEntry;
 
+/**
+ * @deprecated а зачем?
+ */
 class Fileset
 {
 	protected $fileSystemEntries = [];
