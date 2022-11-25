@@ -36,7 +36,13 @@ abstract class BaseTest
 
 	public static function getLessonLoc(): string
 	{
-		return Loc::getMessage('INTERVOLGA_EDU.' . mb_strtoupper(static::getCourseCode()) . '_' . mb_strtoupper(static::getLessonCode()));
+		$code = 'INTERVOLGA_EDU.' . mb_strtoupper(static::getCourseCode()) . '_' . mb_strtoupper(static::getLessonCode());
+		$loc = Loc::getMessage($code);
+		if (mb_strlen($loc)) {
+			return $loc;
+		} else {
+			return $code;
+		}
 	}
 
 	public static function getTestCode(): string

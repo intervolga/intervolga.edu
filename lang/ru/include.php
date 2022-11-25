@@ -9,6 +9,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON2'] = '2. Структура Bitrix Framewor
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3'] = '3. Интеграция HTML шаблона';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41'] = '4.1 Компоненты. Часть 1';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42'] = '4.2 Компоненты. Часть 2';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON10'] = '10. Поиск';
 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATE'] = 'Проверка модуля «Корпоративный сайт производственной компании» (bitrix.sitecorporate)';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECHECKER'] = 'Проверка системы';
@@ -29,6 +30,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SCRIPTS'] = 'Плагины слайдер
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_CORED7'] = 'Использование современных аналогов старых функций';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_IMAGES'] = 'Оставлен мусор в шаблонах компонентов';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_UGLYCHECKRESULT'] = 'Использованы аккуратнные проверки if ($arResult) вместо if (!empty($arResult))';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION'] = 'Форма поиска в шапке настроена на раздел, а не на его index.php-страницу';
 
 $MESS['INTERVOLGA_EDU.LICENSE_NAME'] = 'Стандарт';
 $MESS['INTERVOLGA_EDU.INCORRECT_LICENSE'] = 'Некорректная редакция! Требуется &laquo;Стандарт&raquo;, сейчас &laquo;#LICENSE#&raquo;';
@@ -57,6 +59,7 @@ $MESS['INTERVOLGA_EDU.OLD_FUNCTION_FOUND'] = 'В <a href="#ADMIN_LINK#" target="
 $MESS['INTERVOLGA_EDU.CUSTOM_CORE_CHECK'] = 'надо добавить';
 $MESS['INTERVOLGA_EDU.UGLY_RESULT_CHECK_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> используется избыточная проверка <i>if (!empty($arResult))</i> вместо короткой <i>if ($arResult)</i>';
 $MESS['INTERVOLGA_EDU.IMAGES_DELETE_REASON'] = 'удалить, не требуется для выполнения задания';
+$MESS['INTERVOLGA_EDU.SEARCH_FORM_ACTION_HAS_INDEX_PHP'] = 'Форма поиска должна быть настроена на раздел поиска, а не на его index.php-страницу';
 
 $MESS['INTERVOLGA_EDU.DELETE_FILE_SYSTEM_ENTRY'] = 'Требуется удалить <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
 $MESS['INTERVOLGA_EDU.LOST_FILE_SYSTEM_ENTRY'] = 'Не найден <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';

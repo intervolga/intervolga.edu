@@ -31,6 +31,8 @@ class Tester
 
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestImages::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestUglyCheckResult::class,
+
+			\Intervolga\Edu\Tests\Course1\Lesson10\TestSearchAction::class,
 		];
 	}
 
