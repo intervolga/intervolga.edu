@@ -33,6 +33,8 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestUglyCheckResult::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson10\TestSearchAction::class,
+
+			\Intervolga\Edu\Tests\Course3\Lesson4\TestUf::class,
 		];
 	}
 
@@ -47,7 +49,7 @@ class Tester
 	}
 
 	/**
-	 * @return string[]
+	 * @return string[][][]
 	 */
 	public static function getErrorsTree()
 	{
@@ -71,7 +73,9 @@ class Tester
 		$classes = static::getTestClasses();
 		foreach ($classes as $testClass) {
 			$tree[$testClass::getCourseCode()]['TITLE'] = $testClass::getCourseLoc();
+			$tree[$testClass::getCourseCode()]['COUNT']++;
 			$tree[$testClass::getCourseCode()]['LESSONS'][$testClass::getLessonCode()]['TITLE'] = $testClass::getLessonLoc();
+			$tree[$testClass::getCourseCode()]['LESSONS'][$testClass::getLessonCode()]['COUNT']++;
 			$tree[$testClass::getCourseCode()]['LESSONS'][$testClass::getLessonCode()]['TESTS'][$testClass] = $testClass::getTestLoc();
 		}
 

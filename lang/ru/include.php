@@ -10,6 +10,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON3'] = '3. Интеграция HTML шабл
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41'] = '4.1 Компоненты. Часть 1';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42'] = '4.2 Компоненты. Часть 2';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10'] = '10. Поиск';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы.pdf';
 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATE'] = 'Проверка модуля «Корпоративный сайт производственной компании» (bitrix.sitecorporate)';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECHECKER'] = 'Проверка системы';
@@ -31,6 +32,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_CORED7'] = 'Использование с�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_IMAGES'] = 'Оставлен мусор в шаблонах компонентов';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_UGLYCHECKRESULT'] = 'Использованы аккуратнные проверки if ($arResult) вместо if (!empty($arResult))';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION'] = 'Форма поиска в шапке настроена на раздел, а не на его index.php-страницу';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Собственное UF-свойство';
 
 $MESS['INTERVOLGA_EDU.LICENSE_NAME'] = 'Стандарт';
 $MESS['INTERVOLGA_EDU.INCORRECT_LICENSE'] = 'Некорректная редакция! Требуется &laquo;Стандарт&raquo;, сейчас &laquo;#LICENSE#&raquo;';

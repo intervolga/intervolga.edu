@@ -34,11 +34,31 @@ try {
 	$fatalThrowable = $throwable;
 }
 $errorsTree = Tester::getErrorsTree();
+$okStat = [];
+foreach ($errorsTree as $courseCode => $lessonCodes) {
+	$courseOkCount = 0;
+	foreach ($lessonCodes as $lessonCode => $testErrors) {
+		$lessonOkCount = 0;
+		foreach ($testErrors as $testError) {
+			if (!$testError) {
+				$courseOkCount++;
+				$lessonOkCount++;
+			}
+		}
+		$okStat[$courseCode]['LESSONS'][$lessonCode]['ERRORS'] = $lessonOkCount;
+	}
+	$okStat[$courseCode]['ERRORS'] = $courseOkCount;
+}
 $tabs = [];
 foreach ($testsTree as $courseCode => $course) {
 	$tabs[] = [
 		'DIV' => $courseCode,
-		'TAB' => Loc::getMessage('INTERVOLGA_EDU.COURSE_HEADER', ['#LESSON#' => $course['TITLE']]),
+		'TAB' => Loc::getMessage('INTERVOLGA_EDU.COURSE_HEADER', [
+				'#COURSE#' => $course['TITLE'],
+				'#DONE#' => $okStat[$courseCode]['ERRORS'],
+				'#TOTAL#' => $course['COUNT'],
+			]
+		),
 		'TITLE' => Loc::getMessage('INTERVOLGA_EDU.TEST_RESULTS'),
 	];
 }
@@ -54,7 +74,12 @@ $tabControl->begin();
 foreach ($testsTree as $courseCode => $course) {
 	$tabControl->beginNextTab();
 	foreach ($course['LESSONS'] as $lessonCode => $lesson) {
-		echo '<h2>' . Loc::getMessage('INTERVOLGA_EDU.LESSON_HEADER', ['#LESSON#' => $lesson['TITLE']]) . '</h2>';
+		$title = Loc::getMessage('INTERVOLGA_EDU.LESSON_HEADER', [
+			'#LESSON#' => $lesson['TITLE'],
+			'#TOTAL#' => count($lesson['TESTS']),
+			'#DONE#' => $okStat[$courseCode]['LESSONS'][$lessonCode]['ERRORS'],
+		]);
+		echo '<h2>' . $title . '</h2>';
 		$counter = 1;
 		foreach ($lesson['TESTS'] as $testCode => $testTitle) {
 			$errors = $errorsTree[$courseCode][$lessonCode][$testCode];
