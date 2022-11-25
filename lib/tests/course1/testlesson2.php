@@ -40,7 +40,7 @@ class TestLesson2 extends BaseTest
 	protected static function testLowerCase()
 	{
 		$fileset = FilesetBuilder::getPublic(true, true);
-		$regex = '/[A-Z]/u';	// A-Z
+		$regex = '/[A-Z][^\/]*$/u';	// A-Z
 		static::testIfFilesetMatches($fileset, $regex, Loc::getMessage('INTERVOLGA_EDU.NOT_LOWER_CASE'));
 	}
 
