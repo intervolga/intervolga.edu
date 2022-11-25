@@ -21,6 +21,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestMenu::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestLocalPhpInterface::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestDumpFunction::class,
+			\Intervolga\Edu\Tests\Course1\Lesson3\TestTemplates::class,
 		];
 	}
 
