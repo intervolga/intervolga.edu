@@ -54,22 +54,9 @@ class TestLesson3 extends BaseTest
 	protected static function testCustomCoreCheck()
 	{
 		$files = static::getLessonFilesToCheck();
-		$example = 'B_PROLOG_INCLUDED === true || die()';
-		$re = '/B_PROLOG_INCLUDED ?=== ?true ?\|\| ?die(\(\))?/mi';
-
-		foreach ($files as $file) {
-			if ($file->isExists() && $file->isFile()) {
-				$content = $file->getContents();
-				preg_match_all($re, $content, $matches, PREG_SET_ORDER, 0);
-				if (!$matches) {
-					static::registerError(Loc::getMessage('INTERVOLGA_EDU.CUSTOM_CORE_CHECK_NOT_FOUND', [
-						'#PATH#' => $file->getName(),
-						'#ADMIN_LINK#' => Admin::getFileManUrl($file),
-						'#EXAMPLE#' => $example,
-					]));
-				}
-			}
-		}
+		$fileset = new Fileset($files);
+		$regex = new Regex('/B_PROLOG_INCLUDED ?=== ?true ?\|\| ?die(\(\))?/mi', 'B_PROLOG_INCLUDED === true || die()');
+		static::testFilesetContentNotFoundByRegex($fileset, [$regex], Loc::getMessage('INTERVOLGA_EDU.CUSTOM_CORE_CHECK'));
 	}
 
 	/**

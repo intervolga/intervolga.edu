@@ -77,13 +77,38 @@ abstract class BaseTest
 						if ($tip) {
 							$code = 'INTERVOLGA_EDU.CONTENT_REPLACE_REQUIRED';
 						} else {
-							$code = 'INTERVOLGA_EDU.CONTENT_ACTION_REQUIRED';
+							$code = 'INTERVOLGA_EDU.CONTENT_DELETE_REQUIRED';
 						}
 						static::registerError(Loc::getMessage($code, [
 							'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
 							'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
-							'#OLD#' => htmlspecialchars($regexObject->getRegexExplanation()),
-							'#NEW#' => htmlspecialchars($regexObject->getTipToReplace()),
+							'#REGEX_EXPLAIN#' => htmlspecialchars($regexObject->getRegexExplanation()),
+							'#NEW#' => htmlspecialchars($tip),
+							'#REASON#' => $reason,
+						]));
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * @param Fileset $fileset
+	 * @param Regex[] $regexes
+	 * @param string $reason
+	 */
+	protected static function testFilesetContentNotFoundByRegex($fileset, $regexes, $reason)
+	{
+		foreach ($fileset->getFileSystemEntries() as $fileSystemEntry) {
+			if ($fileSystemEntry->isFile()) {
+				$content = $fileSystemEntry->getContents();
+				foreach ($regexes as $regexObject) {
+					preg_match_all($regexObject->getRegex(), $content, $matches, PREG_SET_ORDER, 0);
+					if (!$matches) {
+						static::registerError(Loc::getMessage('INTERVOLGA_EDU.CONTENT_ADD_REQUIRED', [
+							'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
+							'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
+							'#REGEX_EXPLAIN#' => htmlspecialchars($regexObject->getRegexExplanation()),
 							'#REASON#' => $reason,
 						]));
 					}
