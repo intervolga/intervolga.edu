@@ -29,7 +29,7 @@ class TestLesson41 extends BaseTest
 		$fileset = FilesetBuilder::getLocalTemplatesComponentsInner(true, false);
 		$regex = '/\/menu\/.*\/images/ui';	// /menu/*/images/
 
-		static::testFilesetToBeDeleted($fileset, $regex, Loc::getMessage('INTERVOLGA_EDU.IMAGES_DELETE_REASON'));
+		static::testIfFilesetMatches($fileset, $regex, Loc::getMessage('INTERVOLGA_EDU.IMAGES_DELETE_REASON'));
 	}
 
 	protected static function testUglyCheckResult()

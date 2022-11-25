@@ -14,12 +14,6 @@ Loc::loadMessages(__FILE__);
 
 class TestLesson2 extends BaseTest
 {
-	const POSSIBLE_PARTNERS_NAMES = [
-		'/for-partners/',
-		'/partner/',
-		'/partners/',
-	];
-
 	public static function getTitle()
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.TEST_COURSE_1_LESSON_2');
@@ -40,67 +34,25 @@ class TestLesson2 extends BaseTest
 	{
 		$fileset = FilesetBuilder::getPublic(true, false);
 		$regex = '/\/services$/ui';	// /services/
-
-		static::testFilesetToBeDeleted($fileset, $regex, Loc::getMessage('INTERVOLGA_EDU.SERVICES_DELETE_REASON'));
-		$dirsToDelete = [
-			'/services/'
-		];
+		static::testIfFilesetMatches($fileset, $regex, Loc::getMessage('INTERVOLGA_EDU.SERVICES_DELETE'));
 	}
 
 	protected static function testLowerCase()
 	{
-		$lowerCaseDirs = [
-			'/',
-			'/company/',
-		];
-		$lowerCaseDirs = array_merge($lowerCaseDirs, static::POSSIBLE_PARTNERS_NAMES);
-		foreach ($lowerCaseDirs as $lowerCaseDir) {
-			$directory = new Directory(Application::getDocumentRoot() . $lowerCaseDir);
-			if ($directory->isExists()) {
-				foreach ($directory->getChildren() as $child) {
-					if ($child->getName() != strtolower($child->getName())) {
-						$path = $child->getPath();
-						$path = str_replace(Application::getDocumentRoot(), '', $path);
-						if ($child->isDirectory()) {
-							$path .= '/';
-							static::registerError(Loc::getMessage(
-								'INTERVOLGA_EDU.DIR_NOT_LOWER_CASE',
-								[
-									'#PATH#' => $path,
-									'#ADMIN_LINK#' => Admin::getFileManUrl($child),
-								]
-							));
-						} else {
-							static::registerError(Loc::getMessage(
-								'INTERVOLGA_EDU.FILE_NOT_LOWER_CASE',
-								[
-									'#PATH#' => $path,
-									'#ADMIN_LINK#' => Admin::getFileManUrl($child),
-								]
-							));
-						}
-					}
-				}
-			}
-
-		}
+		$fileset = FilesetBuilder::getPublic(true, true);
+		$regex = '/[A-Z]/u';	// A-Z
+		static::testIfFilesetMatches($fileset, $regex, Loc::getMessage('INTERVOLGA_EDU.NOT_LOWER_CASE'));
 	}
 
 	protected static function testPartnersDir()
 	{
-		$found = false;
-		foreach (static::POSSIBLE_PARTNERS_NAMES as $possiblePartnerName) {
-			$directory = new Directory(Application::getDocumentRoot() . $possiblePartnerName);
-			if ($directory->isExists() && $directory->isDirectory()) {
-				$found = true;
-			}
-		}
+		$partnersSection = FilesetBuilder::getPartnersSection();
 
-		if (!$found) {
+		if (!$partnersSection) {
 			static::registerError(
 				Loc::getMessage(
 					'INTERVOLGA_EDU.PARTNERS_DIR_NOT_FOUND',
-					['#POSSIBLE#' => implode(', ', static::POSSIBLE_PARTNERS_NAMES)]
+					['#POSSIBLE#' => implode(', ', FilesetBuilder::POSSIBLE_PARTNERS_NAMES)]
 				)
 			);
 		}
@@ -108,7 +60,7 @@ class TestLesson2 extends BaseTest
 
 	protected static function testPartnersPage()
 	{
-		foreach (static::POSSIBLE_PARTNERS_NAMES as $possiblePartnerName) {
+		foreach (FilesetBuilder::POSSIBLE_PARTNERS_NAMES as $possiblePartnerName) {
 			$directory = new Directory(Application::getDocumentRoot() . $possiblePartnerName);
 			if ($directory->isExists() && $directory->isDirectory()) {
 				$indexPath = $directory->getPath() . '/index.php';

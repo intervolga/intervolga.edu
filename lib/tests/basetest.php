@@ -2,6 +2,7 @@
 namespace Intervolga\Edu\Tests;
 
 use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Tests\Filesets\Fileset;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
 
@@ -40,12 +41,17 @@ abstract class BaseTest
 		return (array)static::$errors[get_called_class()];
 	}
 
-	protected static function testFilesetToBeDeleted($fileset, $regex, $reason)
+	/**
+	 * @param Fileset $fileset
+	 * @param string $regex
+	 * @param string $reason
+	 */
+	protected static function testIfFilesetMatches($fileset, $regex, $reason)
 	{
-		$imagesDirs = $fileset->getByRegex($regex);
+		$filesetRegexed = $fileset->getByRegex($regex);
 
-		foreach ($imagesDirs->getFileSystemEntries() as $fileSystemEntry) {
-			static::registerError(Loc::getMessage('INTERVOLGA_EDU.REMOVE_REQUIRED', [
+		foreach ($filesetRegexed->getFileSystemEntries() as $fileSystemEntry) {
+			static::registerError(Loc::getMessage('INTERVOLGA_EDU.ACTION_REQUIRED', [
 				'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
 				'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
 				'#REASON#' => $reason,
