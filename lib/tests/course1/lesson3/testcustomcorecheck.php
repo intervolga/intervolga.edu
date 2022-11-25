@@ -20,7 +20,7 @@ class TestCustomCoreCheck extends BaseTest
 	/**
 	 * @return \Bitrix\Main\IO\FileSystemEntry[]
 	 */
-	protected static function getLessonFilesToCheck()
+	public static function getLessonFilesToCheck()
 	{
 		$templatesToCheck = [
 			'/local/templates/',
