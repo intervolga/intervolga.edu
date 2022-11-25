@@ -6,15 +6,15 @@ use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTest;
+use Intervolga\Edu\Tests\Filesets\Fileset;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
+use Intervolga\Edu\Util\Regex;
 
 Loc::loadMessages(__FILE__);
 
 class TestLesson3 extends BaseTest
 {
-	const MAX_LINES_IN_REPORT = 5;
-
 	public static function getTitle()
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.TEST_COURSE_1_LESSON_3');
@@ -94,36 +94,13 @@ class TestLesson3 extends BaseTest
 
 	protected static function testLongPhpTag()
 	{
-		$files = static::getLessonFilesToCheck();
-		$re = '/<\?[^=p].*/m'; // Not <?=, mot <?p...
-		$errors = [];
-		foreach ($files as $file) {
-			if ($file->isExists() && $file->isFile()) {
-				$content = $file->getContents();
-				preg_match_all($re, $content, $matches, PREG_SET_ORDER, 0);
-				if ($matches) {
-					foreach ($matches as $match) {
-						$errors[] = Loc::getMessage('INTERVOLGA_EDU.SHORT_PHP_TAG_FOUND', [
-							'#LINE#' => htmlspecialchars($match[0]),
-							'#PATH#' => $file->getName(),
-							'#ADMIN_LINK#' => Admin::getFileManUrl($file),
-						]);
-					}
-				}
-			}
-		}
+		$regexes = [
+			new Regex('/<\?[^=p].*/m', '<?', '<?php'),
+		];
 
-		if (count($errors)>static::MAX_LINES_IN_REPORT) {
-			$countWas = count($errors);
-			$errors = array_slice($errors, 0, static::MAX_LINES_IN_REPORT);
-			static::registerError(Loc::getMessage('INTERVOLGA_EDU.NUM_SHOWN', [
-				'#NUM#' => static::MAX_LINES_IN_REPORT,
-				'#TOTAL#' => $countWas,
-				]));
-		}
-		foreach ($errors as $error) {
-			static::registerError($error);
-		}
+		$files = static::getLessonFilesToCheck();
+		$fileset = new Fileset($files);
+		static::testFilesetContentByRegex($fileset, $regexes, Loc::getMessage('INTERVOLGA_EDU.SHORT_PHP_TAG_RESTRICTED'));
 	}
 
 	protected static function testScripts()
@@ -162,42 +139,15 @@ class TestLesson3 extends BaseTest
 
 	protected static function testCoreD7()
 	{
-		$oldFunctions = [
-			'/SetAdditionalCSS/mi' => [
-				'OLD' => '$APPLICATION->SetAdditionalCSS()',
-				'NEW' => '\Bitrix\Main\Page\Asset::addCss()',
-			],
-			'/AddHeadScript/mi' => [
-				'OLD' => '$APPLICATION->AddHeadScript()',
-				'NEW' => '\Bitrix\Main\Page\Asset::addJs()',
-			],
-			'/[^:]getMessage/mi' => [
-				'OLD' => 'GetMessage()',
-				'NEW' => '\Bitrix\Main\Localization\Loc::getMessage()',
-			],
-			'/IncludeTemplateLangFile/mi' => [
-				'OLD' => 'IncludeTemplateLangFile()',
-				'NEW' => '\Bitrix\Main\Localization\Loc::loadMessages()',
-			],
+		$regexes = [
+			new Regex('/SetAdditionalCSS/mi', '$APPLICATION->SetAdditionalCSS()', '\Bitrix\Main\Page\Asset::addCss()'),
+			new Regex('/AddHeadScript/mi', '$APPLICATION->AddHeadScript()', '\Bitrix\Main\Page\Asset::addJs()'),
+			new Regex('/[^:]getMessage/mi', 'GetMessage()', '\Bitrix\Main\Localization\Loc::getMessage()'),
+			new Regex('/IncludeTemplateLangFile/mi', 'IncludeTemplateLangFile()', '\Bitrix\Main\Localization\Loc::loadMessages()'),
 		];
 
 		$files = static::getLessonFilesToCheck();
-
-		foreach ($files as $file) {
-			if ($file->isExists() && $file->isFile()) {
-				$content = $file->getContents();
-				foreach ($oldFunctions as $oldFunctionRe => $comments) {
-					preg_match_all($oldFunctionRe, $content, $matches, PREG_SET_ORDER, 0);
-					if ($matches) {
-						static::registerError(Loc::getMessage('INTERVOLGA_EDU.OLD_FUNCTION_FOUND', [
-							'#PATH#' => FileSystem::getLocalPath($file),
-							'#ADMIN_LINK#' => Admin::getFileManUrl($file),
-							'#OLD#' => $comments['OLD'],
-							'#NEW#' => $comments['NEW'],
-						]));
-					}
-				}
-			}
-		}
+		$fileset = new Fileset($files);
+		static::testFilesetContentByRegex($fileset, $regexes, Loc::getMessage('INTERVOLGA_EDU.OLD_CODE_USAGE'));
 	}
 }
