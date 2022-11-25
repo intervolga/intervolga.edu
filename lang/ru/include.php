@@ -21,6 +21,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PARTNERS'] = 'Создание разде�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PARTNERSPAGE'] = 'Контент страницы &laquo;Условия сотрудничества&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_MENU'] = 'В меню нет index.php-ссылок';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_LOCALPHPINTERFACE'] = 'Код размещен в /local/php_interface/';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_DUMPFUNCTION'] = 'Объявлена свободная функция test_dump';
 
 $MESS['INTERVOLGA_EDU.LICENSE_NAME'] = 'Стандарт';
 $MESS['INTERVOLGA_EDU.INCORRECT_LICENSE'] = 'Некорректная редакция! Требуется &laquo;Стандарт&raquo;, сейчас &laquo;#LICENSE#&raquo;';
@@ -39,6 +40,7 @@ $MESS['INTERVOLGA_EDU.NOT_FOUND_IMG_TAG'] = 'должна быть картин�
 $MESS['INTERVOLGA_EDU.NOT_FOUND_TABLE_TAG'] = 'должна быть таблица';
 $MESS['INTERVOLGA_EDU.FOUND_INDEX_PHP_MENU_LINK'] = 'index.php-ссылок не должно быть';
 $MESS['INTERVOLGA_EDU.LOCAL_PHP_INTERFACE_NOT_FOUND'] = 'используйте /local/php_interface/';
+$MESS['INTERVOLGA_EDU.TEST_DUMP_NOT_FOUND'] = 'Функция test_dump не найдена';
 
 $MESS['INTERVOLGA_EDU.DELETE_FILE_SYSTEM_ENTRY'] = 'Требуется удалить <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
 $MESS['INTERVOLGA_EDU.LOST_FILE_SYSTEM_ENTRY'] = 'Не найден <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
