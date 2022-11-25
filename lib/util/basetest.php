@@ -1,6 +1,7 @@
 <?php
 namespace Intervolga\Edu\Util;
 
+use Bitrix\Main\IO\File;
 use Bitrix\Main\IO\FileSystemEntry;
 use Bitrix\Main\Localization\Loc;
 
@@ -134,7 +135,7 @@ abstract class BaseTest
 	 * @param Regex[] $regexes
 	 * @param string $reason
 	 */
-	protected static function testFilesetContentNotFoundByRegex($fileset, $regexes, $reason)
+	protected static function testFilesetContentNotFoundByRegex($fileset, $regexes)
 	{
 		foreach ($fileset->getFileSystemEntries() as $fileSystemEntry) {
 			if ($fileSystemEntry->isFile()) {
@@ -146,7 +147,7 @@ abstract class BaseTest
 							'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
 							'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
 							'#REGEX_EXPLAIN#' => htmlspecialchars($regexObject->getRegexExplanation()),
-							'#REASON#' => $reason,
+							'#REASON#' => $regexObject->getTipToReplace(),
 						]));
 					}
 				}
