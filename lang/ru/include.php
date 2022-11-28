@@ -18,12 +18,13 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_LICENSE'] = 'Проверка редакц
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_UPDATES'] = 'Проверка обновлений';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_SERVICESDELETED'] = 'Удаление раздела &laquo;Услуги&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_REVIEWS'] = 'Создание раздела &laquo;Отзывы&raquo;';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_LOWERCASE'] = 'Названия файлов и папок в нижнем регистре';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_LOWERCASE'] = 'Названия файлов и папок в нижнем регистре (для совместимости на разных ОС)';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PARTNERS'] = 'Создание раздела &laquo;Партнерам&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PARTNERSPAGE'] = 'Контент страницы &laquo;Условия сотрудничества&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_MENU'] = 'В меню нет index.php-ссылок';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_LOCALPHPINTERFACE'] = 'Код размещен в /local/php_interface/';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_DUMPFUNCTION'] = 'Объявлена свободная функция test_dump';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PRODUCTS'] = 'Продукция переименована в Каталог в меню';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_TEMPLATES'] = 'В /local/templates/ шаблоны: main, inner, .default';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_CUSTOMCORECHECK'] = 'Современная проверка ядра Битрикса';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_LONGPHPTAG'] = 'Использование запрещенных коротких php-тегов';
@@ -62,6 +63,8 @@ $MESS['INTERVOLGA_EDU.CUSTOM_CORE_CHECK'] = 'надо добавить';
 $MESS['INTERVOLGA_EDU.UGLY_RESULT_CHECK_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> используется избыточная проверка <i>if (!empty($arResult))</i> вместо короткой <i>if ($arResult)</i>';
 $MESS['INTERVOLGA_EDU.IMAGES_DELETE_REASON'] = 'удалить, не требуется для выполнения задания';
 $MESS['INTERVOLGA_EDU.SEARCH_FORM_ACTION_HAS_INDEX_PHP'] = 'Форма поиска должна быть настроена на раздел поиска, а не на его index.php-страницу';
+$MESS['INTERVOLGA_EDU.PRODUCTS_CORRECT_NAME'] = 'Каталог';
+$MESS['INTERVOLGA_EDU.PRODUCTS_MENU_INCORRECT_NAME'] = 'Пункт меню «Продукция» переименовать в «Каталог»';
 
 $MESS['INTERVOLGA_EDU.DELETE_FILE_SYSTEM_ENTRY'] = 'Требуется удалить <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
 $MESS['INTERVOLGA_EDU.LOST_FILE_SYSTEM_ENTRY'] = 'Не найден <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
