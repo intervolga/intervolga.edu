@@ -44,6 +44,7 @@ $MESS['INTERVOLGA_EDU.IBLOCKS_NOT_FOUND'] = 'Инфоблоки не найде�
 $MESS['INTERVOLGA_EDU.SITE_CHECK_ERROR'] = '<b>#TITLE#</b>: #ERROR#';
 $MESS['INTERVOLGA_EDU.EMPTY_SITE_CHECK_LOG'] = 'Проверка системы не запускалась';
 $MESS['INTERVOLGA_EDU.SERVICES_DELETE_REASON'] = 'по заданию';
+$MESS['INTERVOLGA_EDU.SERVICES_MENU_DELETE'] = 'Удалить раздел &laquo;Услуги&raquo; из меню';
 $MESS['INTERVOLGA_EDU.REVIEWS_SECTION_NEED'] = 'раздел &laquo;Отзывы&raquo; должен быть где-то тут';
 $MESS['INTERVOLGA_EDU.NOT_LOWER_CASE'] = 'привести имя к нижнему регистру, чтобы не было проблем на разных ОС';
 $MESS['INTERVOLGA_EDU.PARTNERS_DIR_NOT_FOUND'] = 'раздел &laquo;Партнерам&raquo; должен быть где-то тут';
