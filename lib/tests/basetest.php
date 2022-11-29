@@ -205,4 +205,26 @@ abstract class BaseTest
 			}
 		}
 	}
+
+	protected static function registerErrorIfIblockPropertyLost(array $iblock, array $property, string $name, string $possible)
+	{
+		if (!$property) {
+			static::registerError(Loc::getMessage('INTERVOLGA_EDU.PROPERTY_NOT_FOUND', [
+				'#IBLOCK_LINK#' => Admin::getIblockUrl($iblock),
+				'#IBLOCK#' => $iblock['NAME'],
+				'#PROPERTY#' => $name,
+				'#POSSIBLE#' => $possible,
+			]));
+		}
+	}
+
+	protected static function registerErrorIfIblockLost(array $iblock, string $name, string $possible)
+	{
+		if (!$iblock) {
+			static::registerError(Loc::getMessage('INTERVOLGA_EDU.IBLOCK_NOT_FOUND', [
+				'#IBLOCK#' => $name,
+				'#POSSIBLE#' => $possible,
+			]));
+		}
+	}
 }
