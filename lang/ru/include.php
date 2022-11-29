@@ -47,7 +47,8 @@ $MESS['INTERVOLGA_EDU.SERVICES_DELETE_REASON'] = 'по заданию';
 $MESS['INTERVOLGA_EDU.SERVICES_MENU_DELETE'] = 'Удалить раздел &laquo;Услуги&raquo; из меню';
 $MESS['INTERVOLGA_EDU.REVIEWS_SECTION_NEED'] = 'раздел &laquo;Отзывы&raquo; должен быть где-то тут';
 $MESS['INTERVOLGA_EDU.REVIEWS_MENU_NEED'] = 'Раздел &laquo;Отзывы&raquo; должен быть в меню раздела &laquo;О компании&raquo;';
-$MESS['INTERVOLGA_EDU.NOT_LOWER_CASE'] = 'привести имя к нижнему регистру, чтобы не было проблем на разных ОС';
+$MESS['INTERVOLGA_EDU.UPPER_CASE_LETTERS'] = 'буквы верхнего регистра';
+$MESS['INTERVOLGA_EDU.NOT_LOWER_CASE'] = 'привести имя файла/папки к нижнему регистру';
 $MESS['INTERVOLGA_EDU.PARTNERS_DIR_NOT_FOUND'] = 'раздел &laquo;Партнерам&raquo; должен быть где-то тут';
 $MESS['INTERVOLGA_EDU.UPLOAD_SRC'] = 'картинка должна быть в /upload/';
 $MESS['INTERVOLGA_EDU.NOT_FOUND_IMG_TAG'] = 'должна быть картинка';
@@ -77,4 +78,4 @@ $MESS['INTERVOLGA_EDU.CONTENT_REPLACE_REQUIRED'] = 'Проблема в <a href=
 $MESS['INTERVOLGA_EDU.CONTENT_DELETE_REQUIRED'] = 'Проблема в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, нужно убрать #REGEX_EXPLAIN# (#REASON#)';
 $MESS['INTERVOLGA_EDU.CONTENT_NOT_FOUND'] = 'Проблема в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, отсутствует #REGEX_EXPLAIN# (#REASON#)';
 $MESS['INTERVOLGA_EDU.CONTENT_FOUND'] = 'Проблема в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, #REGEX_EXPLAIN# (#REASON#)';
-$MESS['INTERVOLGA_EDU.FILE_SYSTEM_ENTRY_MATCH'] = 'Проблема с <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
+$MESS['INTERVOLGA_EDU.FILE_SYSTEM_ENTRY_MATCH'] = 'Проблема с <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, #REGEX_EXPLAIN# (#REASON#)';
