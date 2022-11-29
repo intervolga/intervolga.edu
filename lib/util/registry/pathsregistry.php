@@ -78,8 +78,7 @@ class PathsRegistry
 		$result = [];
 		$modulesDirs = PathMaskParser::getFileSystemEntriesByMask('/local/modules/intervolga.*/');
 		foreach ($modulesDirs as $moduleDir) {
-			if ($moduleDir->getName() != 'intervolga.edu')
-			{
+			if ($moduleDir->getName() != 'intervolga.edu') {
 				$result[] = $moduleDir;
 			}
 		}
@@ -90,7 +89,7 @@ class PathsRegistry
 	/**
 	 * @return Directory[]
 	 */
-	public static function getReviewsCarouselPossibleDirectories()
+	public static function getReviewsCarouselPossibleDirs()
 	{
 		return [
 			FileSystem::getDirectory('/local/templates/.default/components/bitrix/news.list/carousel/'),

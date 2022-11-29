@@ -93,6 +93,10 @@ $MESS['INTERVOLGA_EDU.IBLOCK_REVIEW'] = 'Отзывы';
 $MESS['INTERVOLGA_EDU.IBLOCK_PROMO'] = 'Акции';
 $MESS['INTERVOLGA_EDU.CAROUSEL_TEMPLATE_VARIANTS'] = 'варианты названия шаблона компонента';
 $MESS['INTERVOLGA_EDU.USELESS_TRASH'] = 'бесполезный мусор';
+$MESS['INTERVOLGA_EDU.USE_FIELDS_FOR_FIELDS'] = 'обращение к полям только через [FIELDS][#ПОЛЕ#]';
+$MESS['INTERVOLGA_EDU.USE_DISPLAY_PROPERTIES_FOR_PROPERTIES'] = 'обращение к свойствам только через [DISPLAY_PROPERTIES][#СВОЙСТВО#]';
+$MESS['INTERVOLGA_EDU.USE_DISPLAY_PROPERTIES_FOR_PROPERTIES_ECHO'] = 'вывод свойств только через [DISPLAY_PROPERTIES][#СВОЙСТВО#][DISPLAY_VALUE]';
+$MESS['INTERVOLGA_EDU.EMPTY_HREF'] = 'href не может быть пустым';
 
 $MESS['INTERVOLGA_EDU.DELETE_FILE_SYSTEM_ENTRY'] = 'Требуется удалить <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
 $MESS['INTERVOLGA_EDU.LOST_FILE_SYSTEM_ENTRY'] = 'Не найден <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
