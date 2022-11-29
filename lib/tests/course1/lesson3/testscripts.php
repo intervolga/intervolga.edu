@@ -4,8 +4,8 @@ namespace Intervolga\Edu\Tests\Course1\Lesson3;
 use Bitrix\Main\Application;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Tests\BaseTest;
+use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
 
 class TestScripts extends BaseTest

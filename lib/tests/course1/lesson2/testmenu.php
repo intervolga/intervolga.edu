@@ -3,8 +3,8 @@ namespace Intervolga\Edu\Tests\Course1\Lesson2;
 
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTest;
-use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\PathMaskParser;
+use Intervolga\Edu\Util\PathsRegistry;
 use Intervolga\Edu\Util\Regex;
 
 class TestMenu extends BaseTest
@@ -12,7 +12,7 @@ class TestMenu extends BaseTest
 	public static function run()
 	{
 		$menuFiles = PathMaskParser::getFileSystemEntriesByMask('*.menu.php');
-		$publicDirs = FileSystem::getPublicDirsLevelOne();
+		$publicDirs = PathsRegistry::getPublicDirsLevelOne();
 		$innerMenuFiles = PathMaskParser::getFileSystemEntriesByMasks(
 			[
 				'*.menu.php',
