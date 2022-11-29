@@ -3,14 +3,14 @@ namespace Intervolga\Edu\Tests\Course1\Lesson41;
 
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTest;
-use Intervolga\Edu\Util\PathMask;
+use Intervolga\Edu\Util\PathMaskParser;
 use Intervolga\Edu\Util\Regex;
 
 class TestUglyCheckResult extends BaseTest
 {
 	public static function run()
 	{
-		$files = PathMask::getFileSystemEntriesByMasks(
+		$files = PathMaskParser::getFileSystemEntriesByMasks(
 			[
 				'/local/templates/*/components/bitrix/*/*.php',
 				'/local/templates/*/components/bitrix/*/*/*.php',

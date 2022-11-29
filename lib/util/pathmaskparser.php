@@ -4,7 +4,7 @@ namespace Intervolga\Edu\Util;
 use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\FileSystemEntry;
 
-class PathMask
+class PathMaskParser
 {
 	/**
 	 * @param string[] $masks

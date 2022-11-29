@@ -4,7 +4,7 @@ namespace Intervolga\Edu\Tests\Course1\Lesson2;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\FileSystem;
-use Intervolga\Edu\Util\PathMask;
+use Intervolga\Edu\Util\PathMaskParser;
 use Intervolga\Edu\Util\Regex;
 
 class TestLowerCase extends BaseTest
@@ -12,7 +12,7 @@ class TestLowerCase extends BaseTest
 	public static function run()
 	{
 		$publicDirs = FileSystem::getPublicDirsLevelOne();
-		$entriesToCheck = PathMask::getFileSystemEntriesByMasks(
+		$entriesToCheck = PathMaskParser::getFileSystemEntriesByMasks(
 			[
 				'*',
 				'*/',
@@ -29,7 +29,7 @@ class TestLowerCase extends BaseTest
 			],
 			$publicDirs
 		);
-		$entriesToCheck = array_merge($entriesToCheck, PathMask::getFileSystemEntriesByMask('*'));
+		$entriesToCheck = array_merge($entriesToCheck, PathMaskParser::getFileSystemEntriesByMask('*'));
 		$entriesToCheck = array_merge($entriesToCheck, $publicDirs);
 
 		$regexes = [
