@@ -71,6 +71,7 @@ $MESS['INTERVOLGA_EDU.DELETE_THIS_JS'] = 'Подключен #JS# в <a href="#A
 $MESS['INTERVOLGA_EDU.OLD_FUNCTION_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> вместо #NEW# используется устаревший код: #OLD#';
 $MESS['INTERVOLGA_EDU.CUSTOM_CORE_CHECK'] = 'надо добавить';
 $MESS['INTERVOLGA_EDU.UGLY_RESULT_CHECK_FOUND'] = 'достаточно для работы и удобно для восприятия: #NEW#';
+$MESS['INTERVOLGA_EDU.PREFIX_NOTATION_SUCKS'] = 'избавляемся от венгерской нотации: #NEW#';
 $MESS['INTERVOLGA_EDU.IMAGES_DELETE_REASON'] = 'мусор';
 $MESS['INTERVOLGA_EDU.SEARCH_FORM_ACTION_HAS_INDEX_PHP'] = 'Форма поиска должна быть настроена на раздел поиска, а не на его index.php-страницу';
 $MESS['INTERVOLGA_EDU.PRODUCTS_CORRECT_NAME'] = 'Каталог';
@@ -91,6 +92,7 @@ $MESS['INTERVOLGA_EDU.COMPANY_PROPERTY'] = 'Компания';
 $MESS['INTERVOLGA_EDU.IBLOCK_REVIEW'] = 'Отзывы';
 $MESS['INTERVOLGA_EDU.IBLOCK_PROMO'] = 'Акции';
 $MESS['INTERVOLGA_EDU.CAROUSEL_TEMPLATE_VARIANTS'] = 'варианты названия шаблона компонента';
+$MESS['INTERVOLGA_EDU.USELESS_TRASH'] = 'бесполезный мусор';
 
 $MESS['INTERVOLGA_EDU.DELETE_FILE_SYSTEM_ENTRY'] = 'Требуется удалить <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
 $MESS['INTERVOLGA_EDU.LOST_FILE_SYSTEM_ENTRY'] = 'Не найден <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';

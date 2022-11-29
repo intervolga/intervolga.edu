@@ -141,7 +141,7 @@ abstract class BaseTest
 	{
 		if ($fileSystemEntry->isExists()) {
 			static::registerError(Loc::getMessage('INTERVOLGA_EDU.DELETE_FILE_SYSTEM_ENTRY', [
-				'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
+				'#PATH#' => $fileSystemEntry->getName(),
 				'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
 				'#REASON#' => $reason,
 			]));

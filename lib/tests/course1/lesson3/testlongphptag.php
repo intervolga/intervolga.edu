@@ -8,7 +8,7 @@ class TestLongPhpTag extends BaseTest
 {
 	public static function run()
 	{
-		$regexes = RegexRegistry::getLongPhpTag();
+		$regexes = RegexRegistry::getShortPhpTag();
 
 		$files = TestCustomCoreCheck::getLessonFilesToCheck();
 		static::registerErrorIfFileContentFoundByRegex($files, $regexes);

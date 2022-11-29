@@ -9,7 +9,7 @@ class RegexRegistry
 	/**
 	 * @return Regex[]
 	 */
-	public static function getNewCore()
+	public static function getOldCore()
 	{
 		return [
 			new Regex(
@@ -35,6 +35,9 @@ class RegexRegistry
 		];
 	}
 
+	/**
+	 * @return Regex[]
+	 */
 	public static function getCustomCore()
 	{
 		return [
@@ -46,13 +49,49 @@ class RegexRegistry
 		];
 	}
 
-	public static function getLongPhpTag()
+	/**
+	 * @return Regex[]
+	 */
+	public static function getShortPhpTag()
 	{
 		return [
 			new Regex(
 				'/<\?[^=p].*/m',
 				'<?',
 				Loc::getMessage('INTERVOLGA_EDU.SHORT_PHP_TAG_RESTRICTED')
+			),
+		];
+	}
+
+	/**
+	 * @return Regex[]
+	 */
+	public static function getUglyCodeFragments()
+	{
+		return [
+			new Regex(
+				'/if \(!empty\(\$arResult\)\)/mi',
+				'if (!empty($arResult))',
+				Loc::getMessage('INTERVOLGA_EDU.UGLY_RESULT_CHECK_FOUND', ['#NEW#' => 'if ($arResult)'])
+			),
+			new Regex(
+				'/if \(empty\(\$arResult\)\)/mi',
+				'if (empty($arResult))',
+				Loc::getMessage('INTERVOLGA_EDU.UGLY_RESULT_CHECK_FOUND', ['#NEW#' => 'if (!$arResult)'])
+			),
+		];
+	}
+
+	/**
+	 * @return Regex[]
+	 */
+	public static function getPrefixNotaionFragments()
+	{
+		return [
+			new Regex(
+				'/\$arItem/mi',
+				'$arItem',
+				Loc::getMessage('INTERVOLGA_EDU.PREFIX_NOTATION_SUCKS', ['#NEW#' => '$item'])
 			),
 		];
 	}

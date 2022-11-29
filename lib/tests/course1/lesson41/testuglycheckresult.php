@@ -1,10 +1,9 @@
 <?php
 namespace Intervolga\Edu\Tests\Course1\Lesson41;
 
-use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\PathMaskParser;
-use Intervolga\Edu\Util\Regex;
+use Intervolga\Edu\Util\Registry\RegexRegistry;
 
 class TestUglyCheckResult extends BaseTest
 {
@@ -17,18 +16,7 @@ class TestUglyCheckResult extends BaseTest
 				'/local/templates/*/components/bitrix/*/*/*/*.php',
 			]
 		);
-		$regexes = [
-			new Regex(
-				'/if \(!empty\(\$arResult\)\)/mi',
-				'if (!empty($arResult))',
-				Loc::getMessage('INTERVOLGA_EDU.UGLY_RESULT_CHECK_FOUND', ['#NEW#' => 'if ($arResult)'])
-			),
-			new Regex(
-				'/if \(empty\(\$arResult\)\)/mi',
-				'if (empty($arResult))',
-				Loc::getMessage('INTERVOLGA_EDU.UGLY_RESULT_CHECK_FOUND', ['#NEW#' => 'if (!$arResult)'])
-			),
-		];
+		$regexes = RegexRegistry::getUglyCodeFragments();
 		static::registerErrorIfFileContentFoundByRegex($files, $regexes);
 	}
 }

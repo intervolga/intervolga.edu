@@ -8,7 +8,7 @@ class TestCoreD7 extends BaseTest
 {
 	public static function run()
 	{
-		$regexes = RegexRegistry::getNewCore();
+		$regexes = RegexRegistry::getOldCore();
 
 		$files = TestCustomCoreCheck::getLessonFilesToCheck();
 		static::registerErrorIfFileContentFoundByRegex($files, $regexes);
