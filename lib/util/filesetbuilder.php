@@ -12,17 +12,6 @@ class FilesetBuilder
 		'/local/',
 	];
 
-	const POSSIBLE_REVIEWS_NAMES = [
-		'/company/reviews/',
-		'/company/review/',
-	];
-
-	const POSSIBLE_PARTNERS_NAMES = [
-		'/for-partners/',
-		'/partner/',
-		'/partners/',
-	];
-
 	/**
 	 * @return Directory
 	 */
@@ -32,6 +21,7 @@ class FilesetBuilder
 	}
 
 	/**
+	 * @deprecated
 	 * @return Fileset
 	 */
 	public static function getLocalTemplates()
@@ -42,6 +32,7 @@ class FilesetBuilder
 	}
 
 	/**
+	 * @deprecated
 	 * @return Fileset
 	 */
 	public static function getLocalTemplatesComponents()
@@ -61,6 +52,7 @@ class FilesetBuilder
 	}
 
 	/**
+	 * @deprecated
 	 * @param bool $getDirs
 	 * @param bool $getFiles
 	 * @return Fileset
@@ -77,6 +69,7 @@ class FilesetBuilder
 	}
 
 	/**
+	 * @deprecated
 	 * @param bool $getDirs
 	 * @param bool $getFiles
 	 * @return Fileset
@@ -101,6 +94,7 @@ class FilesetBuilder
 	}
 
 	/**
+	 * @deprecated
 	 * @param Directory $root
 	 * @param bool $getDirs
 	 * @param bool $getFiles
@@ -123,6 +117,7 @@ class FilesetBuilder
 	}
 
 	/**
+	 * @deprecated
 	 * @param Directory $root
 	 * @param bool $getDirs
 	 * @param bool $getFiles
@@ -143,49 +138,5 @@ class FilesetBuilder
 		}
 
 		return $result;
-	}
-
-	/**
-	 * @return Directory
-	 */
-	public static function getReviewsSection()
-	{
-		$return = null;
-		$publicDirs = static::getPublic(true, false);
-		foreach ($publicDirs->getFileSystemEntries() as $publicDir) {
-			if (in_array(FileSystem::getLocalPath($publicDir) . '/', static::POSSIBLE_REVIEWS_NAMES)) {
-				$return = $publicDir;
-			}
-		}
-
-		return $return;
-	}
-
-	/**
-	 * @return Directory
-	 */
-	public static function getPartnersSection()
-	{
-		$return = null;
-		$publicDirs = static::getPublic(true, false);
-		foreach ($publicDirs->getFileSystemEntries() as $publicDir) {
-			if (in_array('/' . $publicDir->getName() . '/', static::POSSIBLE_PARTNERS_NAMES)) {
-				$return = $publicDir;
-			}
-		}
-
-		return $return;
-	}
-
-	/**
-	 * @param bool $getDirs
-	 * @param bool $getFiles
-	 * @return Fileset
-	 */
-	public static function getLocalPhpInterface($getDirs = true, $getFiles = true)
-	{
-		$root = new Directory(Application::getDocumentRoot() . '/local/php_interface/');
-
-		return static::getChildrenRecursive($root, $getDirs, $getFiles);
 	}
 }

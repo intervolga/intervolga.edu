@@ -87,24 +87,7 @@ abstract class BaseTest
 	}
 
 	/**
-	 * @param Fileset $fileset
-	 * @param string $regex
-	 * @param string $reason
-	 */
-	protected static function testIfFilesetMatches($fileset, $regex, $reason)
-	{
-		$filesetRegexed = $fileset->getByRegex($regex);
-
-		foreach ($filesetRegexed->getFileSystemEntries() as $fileSystemEntry) {
-			static::registerError(Loc::getMessage('INTERVOLGA_EDU.ACTION_REQUIRED', [
-				'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
-				'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
-				'#REASON#' => $reason,
-			]));
-		}
-	}
-
-	/**
+	 * @deprecated
 	 * @param Fileset $fileset
 	 * @param Regex[] $regexes
 	 * @param string $reason
@@ -137,6 +120,7 @@ abstract class BaseTest
 	}
 
 	/**
+	 * @deprecated
 	 * @param Fileset $fileset
 	 * @param Regex[] $regexes
 	 * @param string $reason
@@ -162,6 +146,7 @@ abstract class BaseTest
 	}
 
 	/**
+	 * @deprecated
 	 * @param Fileset $fileset
 	 * @param Regex[] $regexes
 	 * @param string $reason
