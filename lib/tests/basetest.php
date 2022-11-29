@@ -5,6 +5,7 @@ use Bitrix\Main\IO\FileSystemEntry;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
+use Intervolga\Edu\Util\Param;
 use Intervolga\Edu\Util\Regex;
 
 Loc::loadMessages(__FILE__);
@@ -225,6 +226,35 @@ abstract class BaseTest
 				'#IBLOCK#' => $name,
 				'#POSSIBLE#' => $possible,
 			]));
+		}
+	}
+	/**
+	 * @param Param[] $params
+	 * @param array $iblock
+	 */
+	protected static function registerErrorIfIblockParamCheckFailed(array $params, array $iblock)
+	{
+		static::registerErrorIfParamCheckFailed($params, Loc::getMessage('INTERVOLGA_EDU.IBLOCK_CONTEXT', [
+			'#IBLOCK_LINK#' => Admin::getIblockUrl($iblock),
+			'#IBLOCK#' => $iblock['NAME'],
+		]));
+	}
+
+	/**
+	 * @param Param[] $params
+	 * @param string $context
+	 */
+	protected static function registerErrorIfParamCheckFailed(array $params, string $context)
+	{
+		foreach ($params as $param) {
+			if ($param->getValue() != $param->getAssertValue())
+			{
+				static::registerError(Loc::getMessage('INTERVOLGA_EDU.PARAM_CHECK_FAILED', [
+					'#CONTEXT#' => $context,
+					'#PARAM#' => $param->getName(),
+					'#ASSERT_VALUE#' => $param->getAssertValue(),
+				]));
+			}
 		}
 	}
 }
