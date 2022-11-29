@@ -3,8 +3,8 @@ namespace Intervolga\Edu\Tests\Course1\Lesson2;
 
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTest;
-use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Menu;
+use Intervolga\Edu\Util\PathsRegistry;
 
 class TestReviews extends BaseTest
 {
@@ -24,11 +24,10 @@ class TestReviews extends BaseTest
 
 	protected static function checkDir()
 	{
-		$paths = [];
-		foreach (static::getPossiblePaths() as $path) {
-			$paths[] = FileSystem::getDirectory($path);
-		}
-		static::registerErrorIfAllFileSystemEntriesLost($paths, Loc::getMessage('INTERVOLGA_EDU.REVIEWS_SECTION_NEED'));
+		static::registerErrorIfAllFileSystemEntriesLost(
+			PathsRegistry::getReviewsPossibleDirectories(),
+			Loc::getMessage('INTERVOLGA_EDU.REVIEWS_SECTION_NEED')
+		);
 	}
 
 	protected static function checkMenu()

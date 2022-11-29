@@ -42,4 +42,15 @@ class PathsRegistry
 			FileSystem::getDirectory('/partner/'),
 		];
 	}
+
+	/**
+	 * @return Directory[]
+	 */
+	public static function getReviewsPossibleDirectories()
+	{
+		return [
+			FileSystem::getDirectory('/company/reviews/'),
+			FileSystem::getDirectory('/company/review/'),
+		];
+	}
 }
