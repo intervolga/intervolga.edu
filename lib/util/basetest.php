@@ -121,13 +121,13 @@ abstract class BaseTest
 
 	/**
 	 * @deprecated
-	 * @param Fileset $fileset
+	 * @param FileSystemEntry[] $files
 	 * @param Regex[] $regexes
 	 * @param string $reason
 	 */
-	protected static function testFilesetContentNotFoundByRegex($fileset, $regexes)
+	protected static function testFilesetContentNotFoundByRegex($files, $regexes)
 	{
-		foreach ($fileset->getFileSystemEntries() as $fileSystemEntry) {
+		foreach ($files as $fileSystemEntry) {
 			if ($fileSystemEntry->isFile()) {
 				$content = $fileSystemEntry->getContents();
 				foreach ($regexes as $regexObject) {

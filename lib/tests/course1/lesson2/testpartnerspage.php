@@ -12,13 +12,13 @@ class TestPartnersPage extends BaseTest
 	public static function run()
 	{
 		$possibleDirectories = TestPartners::getPossibleDirectories();
-		$fileset = new Fileset();
+		$files = [];
 		foreach ($possibleDirectories as $possibleDirectory) {
 			if ($possibleDirectory->isExists()) {
 				$indexPath = $possibleDirectory->getPath() . '/index.php';
 				$indexFile = new File($indexPath);
 				if ($indexFile->isExists()) {
-					$fileset->add($indexFile);
+					$files[] = $indexFile;
 				}
 			}
 		}
@@ -28,6 +28,6 @@ class TestPartnersPage extends BaseTest
 			new Regex('/<table/i', '<table>', Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_TABLE_TAG')),
 			new Regex('/\/upload\//i', '/upload/', Loc::getMessage('INTERVOLGA_EDU.UPLOAD_SRC')),
 		];
-		static::testFilesetContentNotFoundByRegex($fileset, $regexes, Loc::getMessage('INTERVOLGA_EDU.CUSTOM_CORE_CHECK'));
+		static::testFilesetContentNotFoundByRegex($files, $regexes, Loc::getMessage('INTERVOLGA_EDU.CUSTOM_CORE_CHECK'));
 	}
 }
