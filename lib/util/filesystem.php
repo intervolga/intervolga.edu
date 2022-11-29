@@ -36,8 +36,9 @@ class FileSystem
 
 	/**
 	 * @return Directory[]
+	 * @throws \Bitrix\Main\IO\FileNotFoundException
 	 */
-	public static function getPublicDirsLevelOne()
+	public static function getPublicDirsLevelOne(): array
 	{
 		$result = [];
 		$directory = new Directory(Application::getDocumentRoot());
@@ -47,50 +48,6 @@ class FileSystem
 					$result[] = $child;
 				}
 			}
-		}
-
-		return $result;
-	}
-
-	/**
-	 * @param FileSystemEntry[] $dirs
-	 * @param string $pathRegex
-	 * @return File[]
-	 */
-	public static function getFilesRecursiveByPathRegex($dirs, $pathRegex)
-	{
-		return static::getFilesByPathRegex($dirs, $pathRegex, true);
-	}
-
-	/**
-	 * @param Directory[] $dirs
-	 * @param string $pathRegex
-	 * @param bool $isRecursive
-	 * @return File[]
-	 */
-	protected static function getFilesByPathRegex($dirs, $pathRegex, $isRecursive)
-	{
-		$dirsToCheck = [];
-		$result = [];
-		foreach ($dirs as $dir) {
-			if ($dir->isExists()) {
-				foreach ($dir->getChildren() as $child) {
-					if ($child->isDirectory()) {
-						if ($isRecursive) {
-							$dirsToCheck[] = $child;
-						}
-					} else {
-						preg_match_all($pathRegex, $child->getPath(), $matches, PREG_SET_ORDER, 0);
-
-						if ($matches) {
-							$result[] = $child;
-						}
-					}
-				}
-			}
-		}
-		if ($dirsToCheck) {
-			$result = array_merge($result, static::getFilesByPathRegex($dirsToCheck, $pathRegex, $isRecursive));
 		}
 
 		return $result;
