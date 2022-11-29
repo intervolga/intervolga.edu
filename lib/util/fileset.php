@@ -27,24 +27,6 @@ class Fileset
 	}
 
 	/**
-	 * @param string $regex
-	 * @return Fileset
-	 */
-	public function getByRegex($regex)
-	{
-		$result = new Fileset();
-		foreach ($this->fileSystemEntries as $fileSystemEntry) {
-			$matches = [];
-			preg_match_all($regex, $fileSystemEntry->getPath(), $matches, PREG_SET_ORDER);
-			if ($matches) {
-				$result->add($fileSystemEntry);
-			}
-		}
-
-		return $result;
-	}
-
-	/**
 	 * @param FileSystemEntry $fileEntry
 	 */
 	public function add(FileSystemEntry $fileEntry)
