@@ -62,7 +62,7 @@ $MESS['INTERVOLGA_EDU.ADD_THIS_JS'] = 'Не подключен #JS# в <a href="
 $MESS['INTERVOLGA_EDU.DELETE_THIS_JS'] = 'Подключен #JS# в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>';
 $MESS['INTERVOLGA_EDU.OLD_FUNCTION_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> вместо #NEW# используется устаревший код: #OLD#';
 $MESS['INTERVOLGA_EDU.CUSTOM_CORE_CHECK'] = 'надо добавить';
-$MESS['INTERVOLGA_EDU.UGLY_RESULT_CHECK_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> используется избыточная проверка <i>if (!empty($arResult))</i> вместо короткой <i>if ($arResult)</i>';
+$MESS['INTERVOLGA_EDU.UGLY_RESULT_CHECK_FOUND'] = 'достаточно для работы и удобно для восприятия: #NEW#';
 $MESS['INTERVOLGA_EDU.IMAGES_DELETE_REASON'] = 'удалить, не требуется для выполнения задания';
 $MESS['INTERVOLGA_EDU.SEARCH_FORM_ACTION_HAS_INDEX_PHP'] = 'Форма поиска должна быть настроена на раздел поиска, а не на его index.php-страницу';
 $MESS['INTERVOLGA_EDU.PRODUCTS_CORRECT_NAME'] = 'Каталог';

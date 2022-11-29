@@ -3,7 +3,7 @@ namespace Intervolga\Edu\Tests\Course1\Lesson3;
 
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Util\BaseTest;
-use Intervolga\Edu\Util\FileSystem;
+use Intervolga\Edu\Util\PathMask;
 use Intervolga\Edu\Util\Regex;
 
 class TestCustomCoreCheck extends BaseTest
@@ -18,20 +18,15 @@ class TestCustomCoreCheck extends BaseTest
 	/**
 	 * @return \Bitrix\Main\IO\FileSystemEntry[]
 	 */
-	public static function getLessonFilesToCheck()
+	public static function getLessonFilesToCheck(): array
 	{
-		$templatesToCheck = [
-			'/local/templates/',
-			[
-				'main/',
-				'inner/'
-			],
-			[
-				'header.php',
-				'footer.php'
-			]
-		];
+		$result = PathMask::getFileSystemEntriesByMasks([
+			'/local/templates/main/header.php',
+			'/local/templates/main/footer.php',
+			'/local/templates/inner/header.php',
+			'/local/templates/inner/footer.php',
+		]);
 
-		return FileSystem::getComboEntries($templatesToCheck);
+		return $result;
 	}
 }

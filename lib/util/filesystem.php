@@ -14,66 +14,17 @@ class FileSystem
 		'/local/',
 	];
 
-	/**
-	 * @param string $localPath
-	 * @return Directory
-	 */
-	public static function getDirectory($localPath)
+	public static function getDirectory(string $localPath): Directory
 	{
 		return new Directory(Application::getDocumentRoot() . $localPath);
 	}
 
-	/**
-	 * @param string $localPath
-	 * @return File
-	 */
-	public static function getFile($localPath)
+	public static function getFile(string $localPath): File
 	{
 		return new File(Application::getDocumentRoot() . $localPath);
 	}
 
-	/**
-	 * @param array $partsToCombo
-	 * @return FileSystemEntry[]
-	 */
-	public static function getComboEntries(array $partsToCombo)
-	{
-		$result = [];
-		$resultPaths = [''];
-		foreach ($partsToCombo as $partToCombo) {
-			if (is_array($partToCombo)) {
-				$newResult = [];
-				foreach ($partToCombo as $subPartToCombo) {
-					foreach ($resultPaths as $item) {
-						$newResult[] = $item . $subPartToCombo;
-					}
-				}
-				$resultPaths = $newResult;
-			} else {
-				foreach ($resultPaths as $i => $item) {
-					$resultPaths[$i] .= $partToCombo;
-				}
-			}
-		}
-
-		foreach ($resultPaths as $resultPath) {
-			if (mb_strlen($resultPath)) {
-				if (mb_substr($resultPath, '-1', '1') == '/') {
-					$result [] = new Directory(Application::getDocumentRoot() . $resultPath);
-				} else {
-					$result [] = new File(Application::getDocumentRoot() . $resultPath);
-				}
-			}
-		}
-
-		return $result;
-	}
-
-	/**
-	 * @param FileSystemEntry $entry
-	 * @return string
-	 */
-	public static function getLocalPath(FileSystemEntry $entry)
+	public static function getLocalPath(FileSystemEntry $entry): string
 	{
 		$path = str_replace(Application::getDocumentRoot(), '', $entry->getPath());
 		if ($entry->isDirectory()) {

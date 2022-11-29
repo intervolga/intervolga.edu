@@ -8,7 +8,7 @@ class PathMask
 {
 	/**
 	 * @param string[] $masks
-	 * @param Directory[] array $roots
+	 * @param Directory[] $roots
 	 * @return FileSystemEntry[]
 	 */
 	public static function getFileSystemEntriesByMasks(array $masks, array $roots = []): array
