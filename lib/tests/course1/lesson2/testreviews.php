@@ -1,10 +1,10 @@
 <?php
 namespace Intervolga\Edu\Tests\Course1\Lesson2;
 
-use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Util\BaseTest;
 use Intervolga\Edu\Util\FileSystem;
+use Intervolga\Edu\Util\Menu;
 
 class TestReviews extends BaseTest
 {
@@ -33,20 +33,9 @@ class TestReviews extends BaseTest
 
 	protected static function checkMenu()
 	{
-		Loader::includeModule('fileman');
-		$file = FileSystem::getFile('/company/.left.menu.php');
-		if ($file->isExists()) {
-			$menu = \CFileMan::getMenuArray($file->getPath());
-			$found = false;
-			foreach ($menu['aMenuLinks'] as $menuLink) {
-				if (in_array($menuLink[1], static::getPossiblePaths())) {
-					$found = true;
-				}
-			}
-			if (!$found)
-			{
-				static::registerError(Loc::getMessage('INTERVOLGA_EDU.REVIEWS_MENU_NEED'));
-			}
+		$links = Menu::getMenuLinks('/company/.left.menu.php');
+		if (!array_intersect(static::getPossiblePaths(), array_keys($links))) {
+			static::registerError(Loc::getMessage('INTERVOLGA_EDU.REVIEWS_MENU_NEED'));
 		}
 	}
 }
