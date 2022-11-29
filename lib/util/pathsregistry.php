@@ -57,6 +57,20 @@ class PathsRegistry
 	/**
 	 * @return Directory[]
 	 */
+	public static function getPromoPossibleDirectories()
+	{
+		return [
+			FileSystem::getDirectory('/promo/'),
+			FileSystem::getDirectory('/discounts/'),
+			FileSystem::getDirectory('/discount/'),
+			FileSystem::getDirectory('/stocks/'),
+			FileSystem::getDirectory('/stock/'),
+		];
+	}
+
+	/**
+	 * @return Directory[]
+	 */
 	public static function getCustomModuleDirectories()
 	{
 		$result = [];

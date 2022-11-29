@@ -18,13 +18,14 @@ class Tester
 
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestServicesDeleted::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestReviews::class,
-			\Intervolga\Edu\Tests\Course1\Lesson2\TestLowerCase::class,
+			\Intervolga\Edu\Tests\Course1\Lesson2\TestProducts::class,
+			\Intervolga\Edu\Tests\Course1\Lesson2\TestPromo::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestPartners::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestPartnersPage::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestMenu::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestLocalPhpInterface::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestDumpFunction::class,
-			\Intervolga\Edu\Tests\Course1\Lesson2\TestProducts::class,
+			\Intervolga\Edu\Tests\Course1\Lesson2\TestLowerCase::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestTemplates::class,
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestCustomCoreCheck::class,
