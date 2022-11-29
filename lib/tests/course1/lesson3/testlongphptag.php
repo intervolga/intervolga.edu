@@ -3,7 +3,6 @@ namespace Intervolga\Edu\Tests\Course1\Lesson3;
 
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Util\BaseTest;
-use Intervolga\Edu\Util\Fileset;
 use Intervolga\Edu\Util\Regex;
 
 class TestLongPhpTag extends BaseTest
