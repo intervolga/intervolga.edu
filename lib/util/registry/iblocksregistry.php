@@ -26,7 +26,7 @@ class IblocksRegistry
 		return static::guessIblock(static::PROMO_POSSIBLE_CODES);
 	}
 
-	protected static function guessIblock(array $codes): array
+	public static function guessIblock(array $codes): array
 	{
 		$result = [];
 		$iblocks = static::getIblocks();

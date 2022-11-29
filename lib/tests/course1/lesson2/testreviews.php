@@ -37,7 +37,9 @@ class TestReviews extends BaseTest
 		}
 
 		if (!$found) {
-			static::registerError(Loc::getMessage('INTERVOLGA_EDU.REVIEWS_MENU_NEED'));
+			static::registerError(Loc::getMessage('INTERVOLGA_EDU.REVIEWS_MENU_NEED', [
+				'#VARIANT#' => FileSystem::getLocalPath($dirs[0]),
+			]));
 		}
 	}
 }

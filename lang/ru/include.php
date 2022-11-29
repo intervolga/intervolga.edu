@@ -45,13 +45,12 @@ $MESS['INTERVOLGA_EDU.INCORRECT_LICENSE'] = 'Некорректная редак
 $MESS['INTERVOLGA_EDU.UPDATES_AVAILABLE'] = 'Доступно обновлений модулей: #COUNT#. Последнее обновление: #LAST_UPDATE#';
 $MESS['INTERVOLGA_EDU.MODULE_SITECORPORATE_NOT_INSTALLED'] = 'Модуль bitrix.sitecorporate не установлен';
 $MESS['INTERVOLGA_EDU.MODULE_PAGE'] = 'Куда дели страницу модуля?';
-$MESS['INTERVOLGA_EDU.IBLOCKS_NOT_FOUND'] = 'Инфоблоки не найдены: #CODES#';
 $MESS['INTERVOLGA_EDU.SITE_CHECK_ERROR'] = '<b>#TITLE#</b>: #ERROR#';
 $MESS['INTERVOLGA_EDU.EMPTY_SITE_CHECK_LOG'] = 'Проверка системы не запускалась';
 $MESS['INTERVOLGA_EDU.SERVICES_DELETE_REASON'] = 'по заданию';
 $MESS['INTERVOLGA_EDU.SERVICES_MENU_DELETE'] = 'Удалить раздел &laquo;Услуги&raquo; из меню';
 $MESS['INTERVOLGA_EDU.REVIEWS_SECTION_NEED'] = 'раздел &laquo;Отзывы&raquo; должен быть где-то тут';
-$MESS['INTERVOLGA_EDU.REVIEWS_MENU_NEED'] = 'Раздел &laquo;Отзывы&raquo; должен быть в меню раздела &laquo;О компании&raquo;';
+$MESS['INTERVOLGA_EDU.REVIEWS_MENU_NEED'] = 'Раздел &laquo;Отзывы&raquo; должен быть в меню раздела &laquo;О компании&raquo; (например #VARIANT#)';
 $MESS['INTERVOLGA_EDU.UPPER_CASE_LETTERS'] = 'буквы верхнего регистра';
 $MESS['INTERVOLGA_EDU.NOT_LOWER_CASE'] = 'привести имя файла/папки к нижнему регистру';
 $MESS['INTERVOLGA_EDU.PARTNERS_DIR_NOT_FOUND'] = 'раздел &laquo;Партнерам&raquo; должен быть где-то тут';
@@ -70,7 +69,7 @@ $MESS['INTERVOLGA_EDU.DELETE_THIS_JS'] = 'Подключен #JS# в <a href="#A
 $MESS['INTERVOLGA_EDU.OLD_FUNCTION_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> вместо #NEW# используется устаревший код: #OLD#';
 $MESS['INTERVOLGA_EDU.CUSTOM_CORE_CHECK'] = 'надо добавить';
 $MESS['INTERVOLGA_EDU.UGLY_RESULT_CHECK_FOUND'] = 'достаточно для работы и удобно для восприятия: #NEW#';
-$MESS['INTERVOLGA_EDU.IMAGES_DELETE_REASON'] = 'удалить, не требуется для выполнения задания';
+$MESS['INTERVOLGA_EDU.IMAGES_DELETE_REASON'] = 'мусор';
 $MESS['INTERVOLGA_EDU.SEARCH_FORM_ACTION_HAS_INDEX_PHP'] = 'Форма поиска должна быть настроена на раздел поиска, а не на его index.php-страницу';
 $MESS['INTERVOLGA_EDU.PRODUCTS_CORRECT_NAME'] = 'Каталог';
 $MESS['INTERVOLGA_EDU.PRODUCTS_MENU_INCORRECT_NAME'] = 'Пункт меню «Продукция» переименовать в «Каталог»';
@@ -84,6 +83,11 @@ $MESS['INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG'] = 'Проблема с ИБ <a href=
 $MESS['INTERVOLGA_EDU.SET_PERMISSION_EVERYONE_R'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: задайте доступ для всех пользователей Чтение';
 $MESS['INTERVOLGA_EDU.FIELD_SURNAME'] = 'Фамилия';
 $MESS['INTERVOLGA_EDU.RENAME_FIELD_NAME'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: переименуйте поле Название в #RENAME# в форме редактирования элемента';
+$MESS['INTERVOLGA_EDU.PRICE_PROPERTY'] = 'Цена';
+$MESS['INTERVOLGA_EDU.POST_PROPERTY'] = 'Должность';
+$MESS['INTERVOLGA_EDU.COMPANY_PROPERTY'] = 'Компания';
+$MESS['INTERVOLGA_EDU.IBLOCK_REVIEW'] = 'Отзывы';
+$MESS['INTERVOLGA_EDU.IBLOCK_PROMO'] = 'Акции';
 
 $MESS['INTERVOLGA_EDU.DELETE_FILE_SYSTEM_ENTRY'] = 'Требуется удалить <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
 $MESS['INTERVOLGA_EDU.LOST_FILE_SYSTEM_ENTRY'] = 'Не найден <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
@@ -95,7 +99,7 @@ $MESS['INTERVOLGA_EDU.CONTENT_DELETE_REQUIRED'] = 'Проблема в <a href="
 $MESS['INTERVOLGA_EDU.CONTENT_NOT_FOUND'] = 'Проблема в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, отсутствует #REGEX_EXPLAIN# (#REASON#)';
 $MESS['INTERVOLGA_EDU.CONTENT_FOUND'] = 'Проблема в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, #REGEX_EXPLAIN# (#REASON#)';
 $MESS['INTERVOLGA_EDU.FILE_SYSTEM_ENTRY_MATCH'] = 'Проблема с <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, #REGEX_EXPLAIN# (#REASON#)';
-$MESS['INTERVOLGA_EDU.IBLOCK_NOT_FOUND'] = 'Не найден ИБ #IBLOCK# (варианты: #POSSIBLE#)';
-$MESS['INTERVOLGA_EDU.PROPERTY_NOT_FOUND'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: не найдено свойство #PROPERTY# (варианты: #POSSIBLE#)';
+$MESS['INTERVOLGA_EDU.IBLOCK_NOT_FOUND'] = 'Проблема с ИБ #IBLOCK#: не найден с хорошим символьным кодом (варианты: #POSSIBLE#)';
+$MESS['INTERVOLGA_EDU.PROPERTY_NOT_FOUND'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: не найдено свойство #PROPERTY# с хорошим символьным кодом (варианты: #POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.PARAM_CHECK_FAILED'] = 'Проблема с #CONTEXT#: параметр #PARAM# должен быть #ASSERT_VALUE#';
 $MESS['INTERVOLGA_EDU.IBLOCK_CONTEXT'] = 'ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>';
