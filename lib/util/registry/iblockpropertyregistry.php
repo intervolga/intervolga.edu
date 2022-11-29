@@ -16,6 +16,15 @@ class IblockPropertyRegistry
 		'COMPANY',
 	];
 
+	const PRICE_POSSIBLE_CODES = [
+		'PRICE',
+	];
+
+	public static function getPriceProperty(array $iblock): array
+	{
+		return static::getPropertyByCodes($iblock, static::PRICE_POSSIBLE_CODES);
+	}
+
 	public static function getPostProperty(array $iblock): array
 	{
 		return static::getPropertyByCodes($iblock, static::POST_POSSIBLE_CODES);
