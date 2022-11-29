@@ -28,6 +28,6 @@ class TestPartnersPage extends BaseTest
 			new Regex('/<table/i', '<table>', Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_TABLE_TAG')),
 			new Regex('/\/upload\//i', '/upload/', Loc::getMessage('INTERVOLGA_EDU.UPLOAD_SRC')),
 		];
-		static::testFilesetContentNotFoundByRegex($files, $regexes, Loc::getMessage('INTERVOLGA_EDU.CUSTOM_CORE_CHECK'));
+		static::registerErrorIfFileContentNotFoundByRegex($files, $regexes, Loc::getMessage('INTERVOLGA_EDU.CUSTOM_CORE_CHECK'));
 	}
 }

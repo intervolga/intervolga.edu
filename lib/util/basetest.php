@@ -119,12 +119,10 @@ abstract class BaseTest
 	}
 
 	/**
-	 * @deprecated
 	 * @param FileSystemEntry[] $files
 	 * @param Regex[] $regexes
-	 * @param string $reason
 	 */
-	protected static function testFilesetContentNotFoundByRegex($files, $regexes)
+	protected static function registerErrorIfFileContentNotFoundByRegex(array $files, array $regexes)
 	{
 		foreach ($files as $fileSystemEntry) {
 			if ($fileSystemEntry->isFile()) {
