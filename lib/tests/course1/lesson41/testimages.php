@@ -2,7 +2,7 @@
 namespace Intervolga\Edu\Tests\Course1\Lesson41;
 
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Util\BaseTest;
+use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\PathMask;
 
 class TestImages extends BaseTest

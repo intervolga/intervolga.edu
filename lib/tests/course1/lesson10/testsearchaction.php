@@ -3,7 +3,7 @@ namespace Intervolga\Edu\Tests\Course1\Lesson10;
 
 use Bitrix\Main\Component\ParametersTable;
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Util\BaseTest;
+use Intervolga\Edu\Tests\BaseTest;
 
 class TestSearchAction extends BaseTest
 {

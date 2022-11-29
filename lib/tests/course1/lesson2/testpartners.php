@@ -3,7 +3,7 @@ namespace Intervolga\Edu\Tests\Course1\Lesson2;
 
 use Bitrix\Main\IO\Directory;
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Util\BaseTest;
+use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\FileSystem;
 
 class TestPartners extends BaseTest

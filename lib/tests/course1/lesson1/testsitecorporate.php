@@ -4,7 +4,7 @@ namespace Intervolga\Edu\Tests\Course1\Lesson1;
 use Bitrix\Iblock\IblockTable;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Util\BaseTest;
+use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\FileSystem;
 
 class TestSiteCorporate extends BaseTest

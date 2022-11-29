@@ -1,10 +1,12 @@
 <?php
 namespace Intervolga\Edu;
 
+use Intervolga\Edu\Tests\BaseTest;
+
 class Tester
 {
 	/**
-	 * @return string[]|\Intervolga\Edu\Util\BaseTest[]
+	 * @return string[]|BaseTest[]
 	 */
 	protected static function getTestClasses()
 	{
@@ -42,7 +44,7 @@ class Tester
 	public static function run()
 	{
 		/**
-		 * @var \Intervolga\Edu\Util\BaseTest $testClass
+		 * @var BaseTest $testClass
 		 */
 		foreach (static::getTestClasses() as $testClass) {
 			$testClass::run();
@@ -56,7 +58,7 @@ class Tester
 	{
 		$errors = [];
 		/**
-		 * @var \Intervolga\Edu\Util\BaseTest $testClass
+		 * @var BaseTest $testClass
 		 */
 		foreach (static::getTestClasses() as $testClass) {
 			$errors[$testClass::getCourseCode()][$testClass::getLessonCode()][$testClass] = $testClass::getErrors();
@@ -66,7 +68,7 @@ class Tester
 	}
 
 	/**
-	 * @return array|\Intervolga\Edu\Util\BaseTest[]
+	 * @return array|BaseTest[]
 	 */
 	public static function getTestsTree()
 	{
