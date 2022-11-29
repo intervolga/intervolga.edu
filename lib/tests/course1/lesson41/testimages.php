@@ -3,15 +3,15 @@ namespace Intervolga\Edu\Tests\Course1\Lesson41;
 
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Util\BaseTest;
-use Intervolga\Edu\Util\FilesetBuilder;
+use Intervolga\Edu\Util\PathMask;
 
 class TestImages extends BaseTest
 {
 	public static function run()
 	{
-		$fileset = FilesetBuilder::getLocalTemplatesComponentsInner(true, false);
-		$regex = '/\/menu\/.*\/images/ui';	// /menu/*/images/
-
-		static::testIfFilesetMatches($fileset, $regex, Loc::getMessage('INTERVOLGA_EDU.IMAGES_DELETE_REASON'));
+		$dirs = PathMask::getFileSystemEntriesByMask('/local/templates/*/components/*/menu/*/images/');
+		foreach ($dirs as $dir) {
+			static::registerErrorIfFileSystemEntryExists($dir, Loc::getMessage('INTERVOLGA_EDU.IMAGES_DELETE_REASON'));
+		}
 	}
 }
