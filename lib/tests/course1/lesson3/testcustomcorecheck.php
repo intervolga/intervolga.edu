@@ -11,7 +11,7 @@ class TestCustomCoreCheck extends BaseTest
 	{
 		$files = static::getLessonFilesToCheck();
 		$regexes = RegexRegistry::getCustomCore();
-		static::registerErrorIfFileContentNotFoundByRegex($files, [$regex]);
+		static::registerErrorIfFileContentNotFoundByRegex($files, $regexes);
 	}
 
 	/**
