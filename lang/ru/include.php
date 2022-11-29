@@ -86,5 +86,5 @@ $MESS['INTERVOLGA_EDU.CONTENT_DELETE_REQUIRED'] = 'Проблема в <a href="
 $MESS['INTERVOLGA_EDU.CONTENT_NOT_FOUND'] = 'Проблема в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, отсутствует #REGEX_EXPLAIN# (#REASON#)';
 $MESS['INTERVOLGA_EDU.CONTENT_FOUND'] = 'Проблема в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, #REGEX_EXPLAIN# (#REASON#)';
 $MESS['INTERVOLGA_EDU.FILE_SYSTEM_ENTRY_MATCH'] = 'Проблема с <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, #REGEX_EXPLAIN# (#REASON#)';
-$MESS['INTERVOLGA_EDU.IBLOCK_NOT_FOUND'] = 'Не найден Инфоблок #IBLOCK# (#POSSIBLE#)';
-$MESS['INTERVOLGA_EDU.PROPERTY_NOT_FOUND'] = 'Проблема с Инфоблоком <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: не найдено свойство #PROPERTY# (#POSSIBLE#)';
+$MESS['INTERVOLGA_EDU.IBLOCK_NOT_FOUND'] = 'Не найден Инфоблок #IBLOCK# (варианты: #POSSIBLE#)';
+$MESS['INTERVOLGA_EDU.PROPERTY_NOT_FOUND'] = 'Проблема с Инфоблоком <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: не найдено свойство #PROPERTY# (варианты: #POSSIBLE#)';
