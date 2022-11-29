@@ -1,8 +1,10 @@
 <?php
-namespace Intervolga\Edu\Util;
+namespace Intervolga\Edu\Util\Registry;
 
 use Bitrix\Main\Application;
 use Bitrix\Main\IO\Directory;
+use Intervolga\Edu\Util\FileSystem;
+use Intervolga\Edu\Util\PathMaskParser;
 
 class PathsRegistry
 {

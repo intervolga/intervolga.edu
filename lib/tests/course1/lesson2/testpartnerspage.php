@@ -4,8 +4,8 @@ namespace Intervolga\Edu\Tests\Course1\Lesson2;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTest;
-use Intervolga\Edu\Util\PathsRegistry;
 use Intervolga\Edu\Util\Regex;
+use Intervolga\Edu\Util\Registry\PathsRegistry;
 
 class TestPartnersPage extends BaseTest
 {

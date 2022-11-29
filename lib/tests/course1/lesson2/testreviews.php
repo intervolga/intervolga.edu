@@ -5,7 +5,7 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Menu;
-use Intervolga\Edu\Util\PathsRegistry;
+use Intervolga\Edu\Util\Registry\PathsRegistry;
 
 class TestReviews extends BaseTest
 {
