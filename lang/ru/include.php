@@ -9,6 +9,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON2'] = '2. Структура Bitrix Framewor
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3'] = '3. Интеграция HTML шаблона';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41'] = '4.1 Компоненты. Часть 1';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42'] = '4.2 Компоненты. Часть 2';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON6'] = '6. Вывод динамической информации';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10'] = '10. Поиск';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1'] = '1. Создание модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы';
