@@ -10,10 +10,14 @@ class TestLongPhpTag extends BaseTest
 	public static function run()
 	{
 		$regexes = [
-			new Regex('/<\?[^=p].*/m', '<?', '<?php'),
+			new Regex(
+				'/<\?[^=p].*/m',
+				'<?',
+				Loc::getMessage('INTERVOLGA_EDU.SHORT_PHP_TAG_RESTRICTED')
+			),
 		];
 
 		$files = TestCustomCoreCheck::getLessonFilesToCheck();
-		static::testFilesetContentByRegex($files, $regexes, Loc::getMessage('INTERVOLGA_EDU.SHORT_PHP_TAG_RESTRICTED'));
+		static::registerErrorIfFileContentFoundByRegex($files, $regexes);
 	}
 }

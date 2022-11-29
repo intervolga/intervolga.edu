@@ -86,39 +86,6 @@ abstract class BaseTest
 	}
 
 	/**
-	 * @deprecated
-	 * @param FileSystemEntry[] $files
-	 * @param Regex[] $regexes
-	 * @param string $reason
-	 */
-	protected static function testFilesetContentByRegex(array $files, $regexes, $reason)
-	{
-		foreach ($files as $fileSystemEntry) {
-			if ($fileSystemEntry->isFile()) {
-				$content = $fileSystemEntry->getContents();
-				foreach ($regexes as $regexObject) {
-					preg_match_all($regexObject->getRegex(), $content, $matches, PREG_SET_ORDER, 0);
-					if ($matches) {
-						$tip = $regexObject->getTipToReplace();
-						if ($tip) {
-							$code = 'INTERVOLGA_EDU.CONTENT_REPLACE_REQUIRED';
-						} else {
-							$code = 'INTERVOLGA_EDU.CONTENT_DELETE_REQUIRED';
-						}
-						static::registerError(Loc::getMessage($code, [
-							'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
-							'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
-							'#REGEX_EXPLAIN#' => htmlspecialchars($regexObject->getRegexExplanation()),
-							'#NEW#' => htmlspecialchars($tip),
-							'#REASON#' => $reason,
-						]));
-					}
-				}
-			}
-		}
-	}
-
-	/**
 	 * @param FileSystemEntry[] $files
 	 * @param Regex[] $regexes
 	 */
@@ -134,7 +101,7 @@ abstract class BaseTest
 							'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
 							'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
 							'#REGEX_EXPLAIN#' => htmlspecialchars($regexObject->getRegexExplanation()),
-							'#REASON#' => $regexObject->getTipToReplace(),
+							'#REASON#' => htmlspecialchars($regexObject->getTipToReplace()),
 						]));
 					}
 				}
@@ -158,7 +125,7 @@ abstract class BaseTest
 							'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
 							'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
 							'#REGEX_EXPLAIN#' => htmlspecialchars($regexObject->getRegexExplanation()),
-							'#REASON#' => $regexObject->getTipToReplace(),
+							'#REASON#' => htmlspecialchars($regexObject->getTipToReplace()),
 						]));
 					}
 				}
