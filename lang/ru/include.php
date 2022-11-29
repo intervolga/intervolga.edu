@@ -35,6 +35,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SCRIPTS'] = 'Плагины слайдер
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_CORED7'] = 'Использование современных аналогов старых функций';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_IMAGES'] = 'Оставлен мусор в шаблонах компонентов';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_UGLYCHECKRESULT'] = 'Использованы аккуратнные проверки if ($arResult) вместо if (!empty($arResult))';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON6_IBLOCKS'] = 'Проверка Инфоблоков Отзывы и Акции';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION'] = 'Форма поиска в шапке настроена на раздел, а не на его index.php-страницу';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Собственный модуль intervolga.#ВАШЕ НАЗВАНИЕ#';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Собственное UF-свойство';
@@ -75,6 +76,14 @@ $MESS['INTERVOLGA_EDU.PRODUCTS_CORRECT_NAME'] = 'Каталог';
 $MESS['INTERVOLGA_EDU.PRODUCTS_MENU_INCORRECT_NAME'] = 'Пункт меню «Продукция» переименовать в «Каталог»';
 $MESS['INTERVOLGA_EDU.NO_INTERVOLGA_MODULES'] = 'Собственный модуль в /local/modules/ с названием вида intervolga.#ВАШЕ НАЗВАНИЕ# не найден';
 $MESS['INTERVOLGA_EDU.INTERVOLGA_MODULE_NOT_INSTALLED'] = 'Собственный модуль #MODULE# не установлен';
+$MESS['INTERVOLGA_EDU.IBLOCK_OPTIONS_LOST'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: не заданы настройки формы редактирования элемента (с флагом Для всех)';
+$MESS['INTERVOLGA_EDU.IBLOCK_ELEMENTS_NOT_ENOUGH'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: недостаточно элементов, должно быть хотя бы #COUNT#';
+$MESS['INTERVOLGA_EDU.USE_ONE_TAB_FOR_IBLOCK_FORM'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: разместите все поля при редактировании элемента на одной вкладке';
+$MESS['INTERVOLGA_EDU.WRONG_IBLOCK_TYPE'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: тип ИБ должен быть #TYPE#';
+$MESS['INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: включите всё логирование действий с элементами';
+$MESS['INTERVOLGA_EDU.SET_PERMISSION_EVERYONE_R'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: задайте доступ для всех пользователей Чтение';
+$MESS['INTERVOLGA_EDU.FIELD_SURNAME'] = 'Фамилия';
+$MESS['INTERVOLGA_EDU.RENAME_FIELD_NAME'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: переименуйте поле Название в #RENAME# в форме редактирования элемента';
 
 $MESS['INTERVOLGA_EDU.DELETE_FILE_SYSTEM_ENTRY'] = 'Требуется удалить <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
 $MESS['INTERVOLGA_EDU.LOST_FILE_SYSTEM_ENTRY'] = 'Не найден <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
@@ -86,7 +95,7 @@ $MESS['INTERVOLGA_EDU.CONTENT_DELETE_REQUIRED'] = 'Проблема в <a href="
 $MESS['INTERVOLGA_EDU.CONTENT_NOT_FOUND'] = 'Проблема в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, отсутствует #REGEX_EXPLAIN# (#REASON#)';
 $MESS['INTERVOLGA_EDU.CONTENT_FOUND'] = 'Проблема в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, #REGEX_EXPLAIN# (#REASON#)';
 $MESS['INTERVOLGA_EDU.FILE_SYSTEM_ENTRY_MATCH'] = 'Проблема с <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, #REGEX_EXPLAIN# (#REASON#)';
-$MESS['INTERVOLGA_EDU.IBLOCK_NOT_FOUND'] = 'Не найден Инфоблок #IBLOCK# (варианты: #POSSIBLE#)';
-$MESS['INTERVOLGA_EDU.PROPERTY_NOT_FOUND'] = 'Проблема с Инфоблоком <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: не найдено свойство #PROPERTY# (варианты: #POSSIBLE#)';
+$MESS['INTERVOLGA_EDU.IBLOCK_NOT_FOUND'] = 'Не найден ИБ #IBLOCK# (варианты: #POSSIBLE#)';
+$MESS['INTERVOLGA_EDU.PROPERTY_NOT_FOUND'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: не найдено свойство #PROPERTY# (варианты: #POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.PARAM_CHECK_FAILED'] = 'Проблема с #CONTEXT#: параметр #PARAM# должен быть #ASSERT_VALUE#';
 $MESS['INTERVOLGA_EDU.IBLOCK_CONTEXT'] = 'ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>';
