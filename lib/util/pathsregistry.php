@@ -30,4 +30,16 @@ class PathsRegistry
 
 		return $result;
 	}
+
+	/**
+	 * @return Directory[]
+	 */
+	public static function getPartnersPossibleDirectories()
+	{
+		return [
+			FileSystem::getDirectory('/for-partners/'),
+			FileSystem::getDirectory('/partners/'),
+			FileSystem::getDirectory('/partner/'),
+		];
+	}
 }

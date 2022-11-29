@@ -4,13 +4,14 @@ namespace Intervolga\Edu\Tests\Course1\Lesson2;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTest;
+use Intervolga\Edu\Util\PathsRegistry;
 use Intervolga\Edu\Util\Regex;
 
 class TestPartnersPage extends BaseTest
 {
 	public static function run()
 	{
-		$possibleDirectories = TestPartners::getPossibleDirectories();
+		$possibleDirectories = PathsRegistry::getPartnersPossibleDirectories();
 		$files = [];
 		foreach ($possibleDirectories as $possibleDirectory) {
 			if ($possibleDirectory->isExists()) {
