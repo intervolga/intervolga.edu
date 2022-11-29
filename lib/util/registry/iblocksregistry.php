@@ -7,13 +7,13 @@ use Bitrix\Main\Loader;
 class IblocksRegistry
 {
 	const REVIEW_POSSIBLE_CODES = [
-		'review',
+		'reviews',
 	];
 
 	const PROMO_POSSIBLE_CODES = [
 		'promo',
+		'promos',
 		'stock',
-		'discount',
 	];
 
 	public static function getReviewsIblock(): array
@@ -31,10 +31,8 @@ class IblocksRegistry
 		$result = [];
 		$iblocks = static::getIblocks();
 		foreach ($iblocks as $iblock) {
-			foreach ($codes as $codePart) {
-				if (mb_substr_count($iblock['CODE'], $codePart)) {
-					$result = $iblock;
-				}
+			if (in_array($iblock['CODE'], $codes)) {
+				$result = $iblock;
 			}
 		}
 
