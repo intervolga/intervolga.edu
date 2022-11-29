@@ -15,7 +15,6 @@ class TestLongPhpTag extends BaseTest
 		];
 
 		$files = TestCustomCoreCheck::getLessonFilesToCheck();
-		$fileset = new Fileset($files);
-		static::testFilesetContentByRegex($fileset, $regexes, Loc::getMessage('INTERVOLGA_EDU.SHORT_PHP_TAG_RESTRICTED'));
+		static::testFilesetContentByRegex($files, $regexes, Loc::getMessage('INTERVOLGA_EDU.SHORT_PHP_TAG_RESTRICTED'));
 	}
 }

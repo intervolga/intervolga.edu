@@ -55,29 +55,6 @@ class FilesetBuilder
 	 * @return FileSystemEntry[]
 	 * @throws FileNotFoundException
 	 */
-	protected static function getChildrenNonRecursive(Directory $root, bool $getDirs = true, bool $getFiles = true): array
-	{
-		$result = [];
-		foreach ($root->getChildren() as $child) {
-			if ($child->isDirectory()) {
-				if ($getDirs) {
-					$result[] = $child;
-				}
-			} elseif ($getFiles) {
-				$result[] = $child;
-			}
-		}
-
-		return $result;
-	}
-
-	/**
-	 * @param Directory $root
-	 * @param bool $getDirs
-	 * @param bool $getFiles
-	 * @return FileSystemEntry[]
-	 * @throws FileNotFoundException
-	 */
 	protected static function getChildrenRecursive(Directory $root, bool $getDirs = true, bool $getFiles = true): array
 	{
 		$result = [];

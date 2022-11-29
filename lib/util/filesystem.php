@@ -114,16 +114,6 @@ class FileSystem
 	/**
 	 * @param Directory[] $dirs
 	 * @param string $pathRegex
-	 * @return File[]
-	 */
-	public static function getFilesNonRecursiveByPathRegex($dirs, $pathRegex)
-	{
-		return static::getFilesByPathRegex($dirs, $pathRegex, false);
-	}
-
-	/**
-	 * @param Directory[] $dirs
-	 * @param string $pathRegex
 	 * @param bool $isRecursive
 	 * @return File[]
 	 */

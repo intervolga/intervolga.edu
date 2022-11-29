@@ -12,9 +12,8 @@ class TestCustomCoreCheck extends BaseTest
 	public static function run()
 	{
 		$files = static::getLessonFilesToCheck();
-		$fileset = new Fileset($files);
 		$regex = new Regex('/B_PROLOG_INCLUDED ?=== ?true ?\|\| ?die(\(\))?/mi', 'B_PROLOG_INCLUDED === true || die()', Loc::getMessage('INTERVOLGA_EDU.CUSTOM_CORE_CHECK'));
-		static::testFilesetContentNotFoundByRegex($fileset, [$regex]);
+		static::testFilesetContentNotFoundByRegex($files, [$regex]);
 	}
 
 	/**

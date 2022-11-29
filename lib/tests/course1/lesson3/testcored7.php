@@ -18,7 +18,6 @@ class TestCoreD7 extends BaseTest
 		];
 
 		$files = TestCustomCoreCheck::getLessonFilesToCheck();
-		$fileset = new Fileset($files);
-		static::testFilesetContentByRegex($fileset, $regexes, Loc::getMessage('INTERVOLGA_EDU.OLD_CODE_USAGE'));
+		static::testFilesetContentByRegex($files, $regexes, Loc::getMessage('INTERVOLGA_EDU.OLD_CODE_USAGE'));
 	}
 }
