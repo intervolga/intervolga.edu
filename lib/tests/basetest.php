@@ -172,7 +172,7 @@ abstract class BaseTest
 				$found = true;
 			} else {
 				$links[] = Loc::getMessage('INTERVOLGA_EDU.FILE_SYSTEM_ENTRY', [
-					'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
+					'#PATH#' => $fileSystemEntry->getName(),
 					'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
 				]);
 			}

@@ -86,4 +86,16 @@ class PathsRegistry
 
 		return $result;
 	}
+
+	/**
+	 * @return Directory[]
+	 */
+	public static function getReviewsCarouselPossibleDirectories()
+	{
+		return [
+			FileSystem::getDirectory('/local/templates/.default/components/bitrix/news.list/carousel/'),
+			FileSystem::getDirectory('/local/templates/.default/components/bitrix/news.list/reviews_carousel/'),
+			FileSystem::getDirectory('/local/templates/.default/components/bitrix/news.list/reviews.carousel/'),
+		];
+	}
 }

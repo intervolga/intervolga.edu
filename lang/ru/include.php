@@ -37,6 +37,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_IMAGES'] = 'Оставлен мусор �
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_UGLYCHECKRESULT'] = 'Использованы аккуратнные проверки if ($arResult) вместо if (!empty($arResult))';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON6_REVIEWSIBLOCK'] = 'Проверка ИБ Отзывы';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON6_PROMOIBLOCK'] = 'Проверка ИБ Акции';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON6_REVIEWSCAROUSEL'] = 'Проверка шаблона карусели отзывов на главной';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION'] = 'Форма поиска в шапке настроена на раздел, а не на его index.php-страницу';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Собственный модуль intervolga.#ВАШЕ НАЗВАНИЕ#';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Собственное UF-свойство';
@@ -89,6 +90,7 @@ $MESS['INTERVOLGA_EDU.POST_PROPERTY'] = 'Должность';
 $MESS['INTERVOLGA_EDU.COMPANY_PROPERTY'] = 'Компания';
 $MESS['INTERVOLGA_EDU.IBLOCK_REVIEW'] = 'Отзывы';
 $MESS['INTERVOLGA_EDU.IBLOCK_PROMO'] = 'Акции';
+$MESS['INTERVOLGA_EDU.CAROUSEL_TEMPLATE_VARIANTS'] = 'варианты названия шаблона компонента';
 
 $MESS['INTERVOLGA_EDU.DELETE_FILE_SYSTEM_ENTRY'] = 'Требуется удалить <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
 $MESS['INTERVOLGA_EDU.LOST_FILE_SYSTEM_ENTRY'] = 'Не найден <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
