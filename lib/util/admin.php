@@ -31,4 +31,16 @@ class Admin
 		$url = '/bitrix/admin/iblock_edit.php?type=' . urlencode($iblock['IBLOCK_TYPE_ID']) . '&lang=' . LANGUAGE_ID . '&ID=' . $iblock['ID'];
 		return $url;
 	}
+
+	public static function getIblockElementsUrl(array $iblock): string
+	{
+		$url = '/bitrix/admin/iblock_element_admin.php?IBLOCK_ID=' . $iblock['ID'] . '&type=' . urlencode($iblock['IBLOCK_TYPE_ID']) . '&lang=' . LANGUAGE_ID . '&apply_filter=Y';
+		return $url;
+	}
+
+	public static function getIblockElementAddUrl(array $iblock): string
+	{
+		$url = '/bitrix/admin/iblock_element_edit.php?IBLOCK_ID=' . $iblock['ID'] . '&type=' . urlencode($iblock['IBLOCK_TYPE_ID']) . '&lang=' . LANGUAGE_ID . '&ID=0&find_section_section=-1&IBLOCK_SECTION_ID=-1';
+		return $url;
+	}
 }
