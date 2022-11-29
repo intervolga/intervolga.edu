@@ -3,6 +3,7 @@ namespace Intervolga\Edu\Tests\Course1\Lesson2;
 
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTest;
+use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Menu;
 use Intervolga\Edu\Util\PathsRegistry;
 
@@ -12,14 +13,6 @@ class TestReviews extends BaseTest
 	{
 		static::checkDir();
 		static::checkMenu();
-	}
-
-	protected static function getPossiblePaths()
-	{
-		return [
-			'/company/reviews/',
-			'/company/review/',
-		];
 	}
 
 	protected static function checkDir()
@@ -32,8 +25,18 @@ class TestReviews extends BaseTest
 
 	protected static function checkMenu()
 	{
+		$dirs = PathsRegistry::getReviewsPossibleDirectories();
 		$links = Menu::getMenuLinks('/company/.left.menu.php');
-		if (!array_intersect(static::getPossiblePaths(), array_keys($links))) {
+
+		$found = false;
+		foreach ($dirs as $dir) {
+			$dirPath = FileSystem::getLocalPath($dir);
+			if (in_array($dirPath, array_keys($links))) {
+				$found = true;
+			}
+		}
+
+		if (!$found) {
 			static::registerError(Loc::getMessage('INTERVOLGA_EDU.REVIEWS_MENU_NEED'));
 		}
 	}
