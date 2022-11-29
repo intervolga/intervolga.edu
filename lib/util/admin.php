@@ -25,4 +25,10 @@ class Admin
 
 		return $url;
 	}
+
+	public static function getIblockUrl(array $iblock): string
+	{
+		$url = '/bitrix/admin/iblock_edit.php?type=' . urlencode($iblock['IBLOCK_TYPE_ID']) . '&lang=' . LANGUAGE_ID . '&ID=' . $iblock['ID'];
+		return $url;
+	}
 }
