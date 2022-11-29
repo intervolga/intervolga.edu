@@ -10,7 +10,8 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON3'] = '3. Интеграция HTML шабл
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41'] = '4.1 Компоненты. Часть 1';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42'] = '4.2 Компоненты. Часть 2';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10'] = '10. Поиск';
-$MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы.pdf';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON1'] = '1. Создание модуля';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы';
 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATE'] = 'Проверка модуля «Корпоративный сайт производственной компании» (bitrix.sitecorporate)';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECHECKER'] = 'Проверка системы';
@@ -33,6 +34,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_CORED7'] = 'Использование с�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_IMAGES'] = 'Оставлен мусор в шаблонах компонентов';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_UGLYCHECKRESULT'] = 'Использованы аккуратнные проверки if ($arResult) вместо if (!empty($arResult))';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION'] = 'Форма поиска в шапке настроена на раздел, а не на его index.php-страницу';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Собственный модуль intervolga.#ВАШЕ НАЗВАНИЕ#';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Собственное UF-свойство';
 
 $MESS['INTERVOLGA_EDU.LICENSE_NAME'] = 'Стандарт';
@@ -68,6 +70,8 @@ $MESS['INTERVOLGA_EDU.IMAGES_DELETE_REASON'] = 'удалить, не требу�
 $MESS['INTERVOLGA_EDU.SEARCH_FORM_ACTION_HAS_INDEX_PHP'] = 'Форма поиска должна быть настроена на раздел поиска, а не на его index.php-страницу';
 $MESS['INTERVOLGA_EDU.PRODUCTS_CORRECT_NAME'] = 'Каталог';
 $MESS['INTERVOLGA_EDU.PRODUCTS_MENU_INCORRECT_NAME'] = 'Пункт меню «Продукция» переименовать в «Каталог»';
+$MESS['INTERVOLGA_EDU.NO_INTERVOLGA_MODULES'] = 'Собственный модуль в /local/modules/ с названием вида intervolga.#ВАШЕ НАЗВАНИЕ# не найден';
+$MESS['INTERVOLGA_EDU.INTERVOLGA_MODULE_NOT_INSTALLED'] = 'Собственный модуль #MODULE# не установлен';
 
 $MESS['INTERVOLGA_EDU.DELETE_FILE_SYSTEM_ENTRY'] = 'Требуется удалить <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
 $MESS['INTERVOLGA_EDU.LOST_FILE_SYSTEM_ENTRY'] = 'Не найден <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
