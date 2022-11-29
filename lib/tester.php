@@ -53,7 +53,7 @@ class Tester
 		 * @var BaseTest $testClass
 		 */
 		foreach (static::getTestClasses() as $testClass) {
-			$testClass::run();
+			$testClass::runSafe();
 		}
 	}
 

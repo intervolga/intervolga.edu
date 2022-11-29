@@ -115,3 +115,4 @@ $MESS['INTERVOLGA_EDU.IBLOCK_NOT_FOUND'] = 'Проблема с ИБ #IBLOCK#: �
 $MESS['INTERVOLGA_EDU.PROPERTY_NOT_FOUND'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: не найдено свойство #PROPERTY# с хорошим символьным кодом (варианты: #POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.PARAM_CHECK_FAILED'] = 'Проблема с #CONTEXT#: параметр #PARAM# должен быть #ASSERT_VALUE#';
 $MESS['INTERVOLGA_EDU.IBLOCK_CONTEXT'] = 'ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>';
+$MESS['INTERVOLGA_EDU.THROWABLE'] = 'Ошибка #TYPE#: #ERROR#<br><br>#TRACE#';

@@ -7,6 +7,7 @@ use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Param;
 use Intervolga\Edu\Util\Regex;
+use Intervolga\Edu\Util\Registry\Iblock\BaseIblock;
 
 Loc::loadMessages(__FILE__);
 
@@ -65,6 +66,21 @@ abstract class BaseTest
 			return $loc;
 		} else {
 			return $code;
+		}
+	}
+
+	public static function runSafe()
+	{
+		try {
+			static::run();
+		} catch (\Throwable $throwable) {
+			static::registerError(Loc::getMessage('INTERVOLGA_EDU.THROWABLE',
+				[
+					'#TYPE#' => get_class($throwable),
+					'#ERROR#' => $throwable->getMessage(),
+					'#TRACE#' => $throwable->getTraceAsString()
+				]
+			));
 		}
 	}
 
@@ -219,15 +235,19 @@ abstract class BaseTest
 		}
 	}
 
-	protected static function registerErrorIfIblockLost(array $iblock, string $name, string $possible)
+	/**
+	 * @param string|BaseIblock $iblock
+	 */
+	protected static function registerErrorIfIblockLost($iblock)
 	{
-		if (!$iblock) {
+		if (!$iblock::find()) {
 			static::registerError(Loc::getMessage('INTERVOLGA_EDU.IBLOCK_NOT_FOUND', [
-				'#IBLOCK#' => $name,
-				'#POSSIBLE#' => $possible,
+				'#IBLOCK#' => $iblock::getName(),
+				'#POSSIBLE#' => $iblock::getPossibleTips(),
 			]));
 		}
 	}
+
 	/**
 	 * @param Param[] $params
 	 * @param array $iblock
@@ -247,8 +267,7 @@ abstract class BaseTest
 	protected static function registerErrorIfParamCheckFailed(array $params, string $context)
 	{
 		foreach ($params as $param) {
-			if ($param->getValue() != $param->getAssertValue())
-			{
+			if ($param->getValue() != $param->getAssertValue()) {
 				static::registerError(Loc::getMessage('INTERVOLGA_EDU.PARAM_CHECK_FAILED', [
 					'#CONTEXT#' => $context,
 					'#PARAM#' => $param->getName(),
