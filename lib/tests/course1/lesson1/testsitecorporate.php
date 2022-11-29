@@ -6,6 +6,7 @@ use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\FileSystem;
+use Intervolga\Edu\Util\Registry\IblocksRegistry;
 
 class TestSiteCorporate extends BaseTest
 {
@@ -42,30 +43,9 @@ class TestSiteCorporate extends BaseTest
 			'furniture_services_s1',
 			'furniture_news_s1',
 		];
-		$foundCodes = [];
-		if (Loader::includeModule('iblock')) {
-			$getList = IblockTable::getList([
-				'filter' => [
-					'=CODE' => $codes,
-				],
-				'select' => [
-					'ID',
-					'CODE',
-				],
-			]);
-			while ($fetch = $getList->fetch()) {
-				$foundCodes[] = $fetch['CODE'];
-			}
-			if (count($foundCodes)<count($codes)) {
-				static::registerError(
-					Loc::getMessage(
-						'INTERVOLGA_EDU.IBLOCKS_NOT_FOUND',
-						[
-							'#CODES#' => implode(', ', array_diff($codes, $foundCodes)),
-						]
-					)
-				);
-			}
+		foreach ($codes as $code) {
+			$iblock = IblocksRegistry::guessIblock([$code]);
+			static::registerErrorIfIblockLost($iblock, $code, $code);
 		}
 	}
 }
