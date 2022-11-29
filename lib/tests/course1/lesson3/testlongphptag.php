@@ -1,21 +1,14 @@
 <?php
 namespace Intervolga\Edu\Tests\Course1\Lesson3;
 
-use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTest;
-use Intervolga\Edu\Util\Regex;
+use Intervolga\Edu\Util\Registry\RegexRegistry;
 
 class TestLongPhpTag extends BaseTest
 {
 	public static function run()
 	{
-		$regexes = [
-			new Regex(
-				'/<\?[^=p].*/m',
-				'<?',
-				Loc::getMessage('INTERVOLGA_EDU.SHORT_PHP_TAG_RESTRICTED')
-			),
-		];
+		$regexes = RegexRegistry::getLongPhpTag();
 
 		$files = TestCustomCoreCheck::getLessonFilesToCheck();
 		static::registerErrorIfFileContentFoundByRegex($files, $regexes);

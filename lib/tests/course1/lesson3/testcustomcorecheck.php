@@ -1,17 +1,16 @@
 <?php
 namespace Intervolga\Edu\Tests\Course1\Lesson3;
 
-use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\PathMaskParser;
-use Intervolga\Edu\Util\Regex;
+use Intervolga\Edu\Util\Registry\RegexRegistry;
 
 class TestCustomCoreCheck extends BaseTest
 {
 	public static function run()
 	{
 		$files = static::getLessonFilesToCheck();
-		$regex = new Regex('/B_PROLOG_INCLUDED ?=== ?true ?\|\| ?die(\(\))?/mi', 'B_PROLOG_INCLUDED === true || die()', Loc::getMessage('INTERVOLGA_EDU.CUSTOM_CORE_CHECK'));
+		$regexes = RegexRegistry::getCustomCore();
 		static::registerErrorIfFileContentNotFoundByRegex($files, [$regex]);
 	}
 
