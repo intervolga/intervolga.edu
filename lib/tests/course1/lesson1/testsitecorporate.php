@@ -2,8 +2,6 @@
 namespace Intervolga\Edu\Tests\Course1\Lesson1;
 
 use Bitrix\Iblock\IblockTable;
-use Bitrix\Main\Application;
-use Bitrix\Main\IO\File;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Util\BaseTest;
