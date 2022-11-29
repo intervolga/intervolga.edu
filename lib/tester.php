@@ -36,7 +36,8 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestImages::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestUglyCheckResult::class,
 
-			\Intervolga\Edu\Tests\Course1\Lesson6\TestIblocks::class,
+			\Intervolga\Edu\Tests\Course1\Lesson6\TestReviewsIblock::class,
+			\Intervolga\Edu\Tests\Course1\Lesson6\TestPromoIblock::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson10\TestSearchAction::class,
 
