@@ -1,7 +1,6 @@
 <?php
 namespace Intervolga\Edu\Util;
 
-use Bitrix\Main\IO\File;
 use Bitrix\Main\IO\FileSystemEntry;
 use Bitrix\Main\Localization\Loc;
 
@@ -146,18 +145,16 @@ abstract class BaseTest
 	}
 
 	/**
-	 * @deprecated
-	 * @param Fileset $fileset
+	 * @param FileSystemEntry[] $fileSystemEntries
 	 * @param Regex[] $regexes
-	 * @param string $reason
 	 */
-	protected static function testFilesetContentFoundByRegex($fileset, $regexes)
+	protected static function registerErrorIfFileContentFoundByRegex(array $fileSystemEntries, array $regexes)
 	{
-		foreach ($fileset->getFileSystemEntries() as $fileSystemEntry) {
+		foreach ($fileSystemEntries as $fileSystemEntry) {
 			if ($fileSystemEntry->isFile()) {
 				$content = $fileSystemEntry->getContents();
 				foreach ($regexes as $regexObject) {
-					preg_match_all($regexObject->getRegex(), $content, $matches, PREG_SET_ORDER, 0);
+					preg_match_all($regexObject->getRegex(), $content, $matches, PREG_SET_ORDER);
 					if ($matches) {
 						static::registerError(Loc::getMessage('INTERVOLGA_EDU.CONTENT_FOUND', [
 							'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),

@@ -6,6 +6,10 @@ use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\FileNotFoundException;
 use Bitrix\Main\IO\FileSystemEntry;
 
+/**
+ * @deprecated use FileSystem
+ * @package Intervolga\Edu\Util
+ */
 class FilesetBuilder
 {
 	const NON_PUBLIC_DIRS = [

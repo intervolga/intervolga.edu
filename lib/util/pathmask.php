@@ -1,17 +1,38 @@
 <?php
 namespace Intervolga\Edu\Util;
 
+use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\FileSystemEntry;
 
 class PathMask
 {
 	/**
-	 * @param string $mask
+	 * @param string[] $masks
+	 * @param Directory[] array $roots
 	 * @return FileSystemEntry[]
 	 */
-	public static function getFileSystemEntriesByMask(string $mask): array
+	public static function getFileSystemEntriesByMasks(array $masks, array $roots = []): array
+	{
+		$result = [];
+		foreach ($masks as $mask) {
+			$result = array_merge($result, static::getFileSystemEntriesByMask($mask, $roots));
+		}
+
+		return $result;
+	}
+
+	/**
+	 * @param string $mask
+	 * @param Directory[] array $roots
+	 * @return FileSystemEntry[]
+	 */
+	public static function getFileSystemEntriesByMask(string $mask, array $roots = []): array
 	{
 		$currents = [FileSystem::getDirectory('/')];
+		if ($roots) {
+			$currents = $roots;
+		}
+
 		$parsed = static::parseMask($mask);
 		foreach ($parsed as $parsedItem) {
 			$newCurrents = [];
@@ -28,7 +49,7 @@ class PathMask
 		return $currents;
 	}
 
-	public static function parseMask(string $mask): array
+	protected static function parseMask(string $mask): array
 	{
 		if (mb_substr($mask, 0, 1) == '/') {
 			$mask = mb_substr($mask, 1);

@@ -15,21 +15,21 @@ class FileSystem
 	];
 
 	/**
-	 * @param string $path
+	 * @param string $localPath
 	 * @return Directory
 	 */
-	public static function getDirectory($path)
+	public static function getDirectory($localPath)
 	{
-		return new Directory(Application::getDocumentRoot() . $path);
+		return new Directory(Application::getDocumentRoot() . $localPath);
 	}
 
 	/**
-	 * @param string $path
+	 * @param string $localPath
 	 * @return File
 	 */
-	public static function getFile($path)
+	public static function getFile($localPath)
 	{
-		return new File(Application::getDocumentRoot() . $path);
+		return new File(Application::getDocumentRoot() . $localPath);
 	}
 
 	/**
