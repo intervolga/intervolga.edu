@@ -7,6 +7,7 @@ use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Param;
 use Intervolga\Edu\Util\Regex;
+use Intervolga\Edu\Util\Registry\Directory\BaseDirectory;
 use Intervolga\Edu\Util\Registry\Iblock\BaseIblock;
 use Intervolga\Edu\Util\Registry\Iblock\Property\BaseProperty;
 
@@ -177,27 +178,22 @@ abstract class BaseTest
 	}
 
 	/**
-	 * @param FileSystemEntry[] $fileSystemEntries
-	 * @param string $reason
+	 * @param BaseDirectory|string $directory
 	 */
-	protected static function registerErrorIfAllFileSystemEntriesLost(array $fileSystemEntries, $reason)
+	protected static function registerErrorIfRegistryDirectoryLost($directory)
 	{
-		$found = false;
-		$links = [];
-		foreach ($fileSystemEntries as $fileSystemEntry) {
-			if ($fileSystemEntry->isExists()) {
-				$found = true;
-			} else {
+		if (!$directory::find())
+		{
+			$links = [];
+			foreach ($directory::getPathObjects() as $pathObject) {
 				$links[] = Loc::getMessage('INTERVOLGA_EDU.FILE_SYSTEM_ENTRY', [
-					'#PATH#' => $fileSystemEntry->getName(),
-					'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
+					'#PATH#' => $pathObject->getName(),
+					'#ADMIN_LINK#' => Admin::getFileManUrl($pathObject),
 				]);
 			}
-		}
-		if (!$found) {
-			static::registerError(Loc::getMessage('INTERVOLGA_EDU.ALL_FILE_SYSTEM_ENTRIES_LOST', [
+			static::registerError(Loc::getMessage('INTERVOLGA_EDU.REGISTRY_DIRECTORY_LOST', [
+				'#DIRECTORY#' => $directory::getName(),
 				'#LINKS#' => implode(', ', $links),
-				'#REASON#' => $reason,
 			]));
 		}
 	}

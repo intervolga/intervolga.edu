@@ -3,7 +3,6 @@ namespace Intervolga\Edu\Util\Registry;
 
 use Bitrix\Main\Application;
 use Bitrix\Main\IO\Directory;
-use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\PathMaskParser;
 
 class PathsRegistry
@@ -36,43 +35,6 @@ class PathsRegistry
 	/**
 	 * @return Directory[]
 	 */
-	public static function getPartnersPossibleDirectories()
-	{
-		return [
-			FileSystem::getDirectory('/for-partners/'),
-			FileSystem::getDirectory('/partners/'),
-			FileSystem::getDirectory('/partner/'),
-		];
-	}
-
-	/**
-	 * @return Directory[]
-	 */
-	public static function getReviewsPossibleDirectories()
-	{
-		return [
-			FileSystem::getDirectory('/company/reviews/'),
-			FileSystem::getDirectory('/company/review/'),
-		];
-	}
-
-	/**
-	 * @return Directory[]
-	 */
-	public static function getPromoPossibleDirectories()
-	{
-		return [
-			FileSystem::getDirectory('/promo/'),
-			FileSystem::getDirectory('/discounts/'),
-			FileSystem::getDirectory('/discount/'),
-			FileSystem::getDirectory('/stocks/'),
-			FileSystem::getDirectory('/stock/'),
-		];
-	}
-
-	/**
-	 * @return Directory[]
-	 */
 	public static function getCustomModuleDirectories()
 	{
 		$result = [];
@@ -84,17 +46,5 @@ class PathsRegistry
 		}
 
 		return $result;
-	}
-
-	/**
-	 * @return Directory[]
-	 */
-	public static function getReviewsCarouselPossibleDirs()
-	{
-		return [
-			FileSystem::getDirectory('/local/templates/.default/components/bitrix/news.list/carousel/'),
-			FileSystem::getDirectory('/local/templates/.default/components/bitrix/news.list/reviews_carousel/'),
-			FileSystem::getDirectory('/local/templates/.default/components/bitrix/news.list/reviews.carousel/'),
-		];
 	}
 }

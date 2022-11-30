@@ -100,6 +100,10 @@ $MESS['INTERVOLGA_EDU.USE_FIELDS_FOR_FIELDS'] = 'обращение к поля�
 $MESS['INTERVOLGA_EDU.USE_DISPLAY_PROPERTIES_FOR_PROPERTIES'] = 'обращение к свойствам только через [DISPLAY_PROPERTIES][#СВОЙСТВО#]';
 $MESS['INTERVOLGA_EDU.USE_DISPLAY_PROPERTIES_FOR_PROPERTIES_ECHO'] = 'вывод свойств только через [DISPLAY_PROPERTIES][#СВОЙСТВО#][DISPLAY_VALUE]';
 $MESS['INTERVOLGA_EDU.EMPTY_HREF'] = 'href не может быть пустым';
+$MESS['INTERVOLGA_EDU.PARTNERS_DIRECTORY'] = 'Партнерам';
+$MESS['INTERVOLGA_EDU.REVIEWS_DIRECTORY'] = 'Отзывы';
+$MESS['INTERVOLGA_EDU.PROMO_DIRECTORY'] = 'Акции';
+$MESS['INTERVOLGA_EDU.REVIEWS_CAROUSEL_TEMPLATE_DIRECTORY'] = 'Шаблон компонента карусели отзывов';
 
 $MESS['INTERVOLGA_EDU.DELETE_FILE_SYSTEM_ENTRY'] = 'Требуется удалить <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
 $MESS['INTERVOLGA_EDU.LOST_FILE_SYSTEM_ENTRY'] = 'Не найден <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
@@ -116,3 +120,4 @@ $MESS['INTERVOLGA_EDU.PROPERTY_NOT_FOUND'] = 'Проблема с ИБ <a href="
 $MESS['INTERVOLGA_EDU.PARAM_CHECK_FAILED'] = 'Проблема с #CONTEXT#: параметр #PARAM# должен быть #ASSERT_VALUE#';
 $MESS['INTERVOLGA_EDU.IBLOCK_CONTEXT'] = 'ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>';
 $MESS['INTERVOLGA_EDU.THROWABLE'] = 'Произошло ужасное, проверяльщик сломался!<br>Ошибка #TYPE#: #ERROR#<br><br>#TRACE#';
+$MESS['INTERVOLGA_EDU.REGISTRY_DIRECTORY_LOST'] = 'Проблема с папкой #DIRECTORY#: не найдена по ожидаемым путям (#LINKS#)';

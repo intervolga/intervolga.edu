@@ -5,7 +5,7 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Menu;
-use Intervolga\Edu\Util\Registry\PathsRegistry;
+use Intervolga\Edu\Util\Registry\Directory\ReviewsDirectory;
 
 class TestReviews extends BaseTest
 {
@@ -17,29 +17,19 @@ class TestReviews extends BaseTest
 
 	protected static function checkDir()
 	{
-		static::registerErrorIfAllFileSystemEntriesLost(
-			PathsRegistry::getReviewsPossibleDirectories(),
-			Loc::getMessage('INTERVOLGA_EDU.REVIEWS_SECTION_NEED')
-		);
+		static::registerErrorIfRegistryDirectoryLost(ReviewsDirectory::class);
 	}
 
 	protected static function checkMenu()
 	{
-		$dirs = PathsRegistry::getReviewsPossibleDirectories();
-		$links = Menu::getMenuLinks('/company/.left.menu.php');
-
-		$found = false;
-		foreach ($dirs as $dir) {
-			$dirPath = FileSystem::getLocalPath($dir);
-			if (in_array($dirPath, array_keys($links))) {
-				$found = true;
+		$dirPath = ReviewsDirectory::find();
+		if ($dirPath) {
+			$links = Menu::getMenuLinks('/company/.left.menu.php');
+			if (!array_key_exists(FileSystem::getLocalPath($dirPath), $links)) {
+				static::registerError(Loc::getMessage('INTERVOLGA_EDU.REVIEWS_MENU_NEED', [
+					'#VARIANT#' => FileSystem::getLocalPath($dirPath),
+				]));
 			}
-		}
-
-		if (!$found) {
-			static::registerError(Loc::getMessage('INTERVOLGA_EDU.REVIEWS_MENU_NEED', [
-				'#VARIANT#' => FileSystem::getLocalPath($dirs[0]),
-			]));
 		}
 	}
 }

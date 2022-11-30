@@ -5,21 +5,18 @@ use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\Regex;
-use Intervolga\Edu\Util\Registry\PathsRegistry;
+use Intervolga\Edu\Util\Registry\Directory\PartnersDirectory;
 
 class TestPartnersPage extends BaseTest
 {
 	public static function run()
 	{
-		$possibleDirectories = PathsRegistry::getPartnersPossibleDirectories();
-		$files = [];
-		foreach ($possibleDirectories as $possibleDirectory) {
-			if ($possibleDirectory->isExists()) {
-				$indexPath = $possibleDirectory->getPath() . '/index.php';
-				$indexFile = new File($indexPath);
-				if ($indexFile->isExists()) {
-					$files[] = $indexFile;
-				}
+		$directory = PartnersDirectory::find();
+		if ($directory) {
+			$indexPath = $directory->getPath() . '/index.php';
+			$indexFile = new File($indexPath);
+			if ($indexFile->isExists()) {
+				$files[] = $indexFile;
 			}
 		}
 

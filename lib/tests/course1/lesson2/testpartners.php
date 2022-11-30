@@ -1,15 +1,13 @@
 <?php
 namespace Intervolga\Edu\Tests\Course1\Lesson2;
 
-use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTest;
-use Intervolga\Edu\Util\Registry\PathsRegistry;
+use Intervolga\Edu\Util\Registry\Directory\PartnersDirectory;
 
 class TestPartners extends BaseTest
 {
 	public static function run()
 	{
-		$paths = PathsRegistry::getPartnersPossibleDirectories();
-		static::registerErrorIfAllFileSystemEntriesLost($paths, Loc::getMessage('INTERVOLGA_EDU.PARTNERS_DIR_NOT_FOUND'));
+		static::registerErrorIfRegistryDirectoryLost(PartnersDirectory::class);
 	}
 }

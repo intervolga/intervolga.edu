@@ -9,20 +9,17 @@ use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Regex;
+use Intervolga\Edu\Util\Registry\Directory\ReviewsCarouselTemplateDirectory;
 use Intervolga\Edu\Util\Registry\Iblock\ReviewsIblock;
-use Intervolga\Edu\Util\Registry\PathsRegistry;
 use Intervolga\Edu\Util\Registry\RegexRegistry;
 
 class TestReviewsCarousel extends BaseTest
 {
 	public static function run()
 	{
-		$templateDirs = PathsRegistry::getReviewsCarouselPossibleDirs();
-		static::registerErrorIfAllFileSystemEntriesLost($templateDirs, Loc::getMessage('INTERVOLGA_EDU.CAROUSEL_TEMPLATE_VARIANTS'));
-		foreach ($templateDirs as $templateDir) {
-			if ($templateDir->isExists()) {
-				static::checkTemplateDir($templateDir);
-			}
+		static::registerErrorIfRegistryDirectoryLost(ReviewsCarouselTemplateDirectory::class);
+		if ($templateDir = ReviewsCarouselTemplateDirectory::find()) {
+			static::checkTemplateDir($templateDir);
 		}
 	}
 
