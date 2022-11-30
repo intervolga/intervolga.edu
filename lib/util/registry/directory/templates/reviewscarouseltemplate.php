@@ -1,11 +1,11 @@
 <?php
-namespace Intervolga\Edu\Util\Registry\Directory;
+namespace Intervolga\Edu\Util\Registry\Directory\Templates;
 
 use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Util\Registry\Directory\BaseDirectory;
 
-class ReviewsCarouselTemplateDirectory extends BaseDirectory
+class ReviewsCarouselTemplate extends BaseDirectory
 {
-
 	public static function getPaths(): array
 	{
 		return [
