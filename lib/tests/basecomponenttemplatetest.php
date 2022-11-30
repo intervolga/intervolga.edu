@@ -8,7 +8,6 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Regex;
-use Intervolga\Edu\Util\Registry\Iblock\ReviewsIblock;
 use Intervolga\Edu\Util\Registry\RegexRegistry;
 
 abstract class BaseComponentTemplateTest extends BaseTest
