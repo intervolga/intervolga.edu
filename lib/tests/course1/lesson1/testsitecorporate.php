@@ -5,7 +5,9 @@ use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\FileSystem;
-use Intervolga\Edu\Util\Registry\IblocksRegistry;
+use Intervolga\Edu\Util\Registry\Iblock\NewsIblock;
+use Intervolga\Edu\Util\Registry\Iblock\ProductsIblock;
+use Intervolga\Edu\Util\Registry\Iblock\ServicesIblock;
 
 class TestSiteCorporate extends BaseTest
 {
@@ -13,7 +15,7 @@ class TestSiteCorporate extends BaseTest
 	{
 		static::testSiteCorporateModule();
 		static::testSiteCorporatePublic();
-		static::testSiteCorporateIblock();
+		static::testSiteCorporateIblocks();
 	}
 
 	protected static function testSiteCorporateModule()
@@ -35,16 +37,10 @@ class TestSiteCorporate extends BaseTest
 		}
 	}
 
-	protected static function testSiteCorporateIblock()
+	protected static function testSiteCorporateIblocks()
 	{
-		$codes = [
-			'furniture_products_s1',
-			'furniture_services_s1',
-			'furniture_news_s1',
-		];
-		foreach ($codes as $code) {
-			$iblock = IblocksRegistry::guessIblock([$code]);
-			static::registerErrorIfIblockLost($iblock, $code, $code);
-		}
+		static::registerErrorIfIblockLost(ProductsIblock::class);
+		static::registerErrorIfIblockLost(ServicesIblock::class);
+		static::registerErrorIfIblockLost(NewsIblock::class);
 	}
 }

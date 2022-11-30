@@ -6,8 +6,9 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTestIblock;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\AdminFormOptions;
-use Intervolga\Edu\Util\Registry\IblockPropertyRegistry;
-use Intervolga\Edu\Util\Registry\IblocksRegistry;
+use Intervolga\Edu\Util\Registry\Iblock\Property\CompanyProperty;
+use Intervolga\Edu\Util\Registry\Iblock\Property\PostProperty;
+use Intervolga\Edu\Util\Registry\Iblock\ReviewsIblock;
 
 class TestReviewsIblock extends BaseTestIblock
 {
@@ -16,16 +17,11 @@ class TestReviewsIblock extends BaseTestIblock
 	public static function run()
 	{
 		Loader::includeModule('iblock');
-		$iblock = IblocksRegistry::getReviewsIblock();
-		static::registerErrorIfIblockLost(
-			$iblock,
-			Loc::getMessage('INTERVOLGA_EDU.IBLOCK_REVIEW'),
-			implode(', ', IblocksRegistry::REVIEW_POSSIBLE_CODES)
-		);
-		if ($iblock) {
+		static::registerErrorIfIblockLost(ReviewsIblock::class);
+		if ($iblock = ReviewsIblock::find()) {
 			$options = AdminFormOptions::getFormOptionsForIblock($iblock['ID']);
 			static::commonChecks($iblock, $options, static::COUNT_REVIEWS_ELEMENTS);
-			static::checkPostAndCompanyProperties($iblock);
+			static::checkPostAndCompanyProperties();
 			if ($options) {
 				static::checkRenamedSurname($iblock, $options);
 			}
@@ -47,22 +43,9 @@ class TestReviewsIblock extends BaseTestIblock
 		}
 	}
 
-	protected static function checkPostAndCompanyProperties(array $iblock)
+	protected static function checkPostAndCompanyProperties()
 	{
-		$property = IblockPropertyRegistry::getPostProperty($iblock);
-		static::registerErrorIfIblockPropertyLost(
-			$iblock,
-			$property,
-			Loc::getMessage('INTERVOLGA_EDU.POST_PROPERTY'),
-			implode(', ', IblockPropertyRegistry::POST_POSSIBLE_CODES)
-		);
-
-		$property = IblockPropertyRegistry::getCompanyProperty($iblock);
-		static::registerErrorIfIblockPropertyLost(
-			$iblock,
-			$property,
-			Loc::getMessage('INTERVOLGA_EDU.COMPANY_PROPERTY'),
-			implode(', ', IblockPropertyRegistry::COMPANY_POSSIBLE_CODES)
-		);
+		static::registerErrorIfIblockPropertyLost(PostProperty::class);
+		static::registerErrorIfIblockPropertyLost(CompanyProperty::class);
 	}
 }

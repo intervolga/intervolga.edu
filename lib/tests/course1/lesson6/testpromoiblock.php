@@ -7,8 +7,8 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tests\BaseTestIblock;
 use Intervolga\Edu\Util\AdminFormOptions;
 use Intervolga\Edu\Util\Param;
-use Intervolga\Edu\Util\Registry\IblockPropertyRegistry;
-use Intervolga\Edu\Util\Registry\IblocksRegistry;
+use Intervolga\Edu\Util\Registry\Iblock\PromoIblock;
+use Intervolga\Edu\Util\Registry\Iblock\Property\PriceProperty;
 
 class TestPromoIblock extends BaseTestIblock
 {
@@ -17,17 +17,12 @@ class TestPromoIblock extends BaseTestIblock
 	public static function run()
 	{
 		Loader::includeModule('iblock');
-		$iblock = IblocksRegistry::getPromoIblock();
-		static::registerErrorIfIblockLost(
-			$iblock,
-			Loc::getMessage('INTERVOLGA_EDU.IBLOCK_PROMO'),
-			implode(', ', IblocksRegistry::PROMO_POSSIBLE_CODES)
-		);
-		if ($iblock) {
+		static::registerErrorIfIblockLost(PromoIblock::class);
+		if ($iblock = PromoIblock::find()) {
 			$options = AdminFormOptions::getFormOptionsForIblock($iblock['ID']);
 			static::commonChecks($iblock, $options, static::COUNT_PROMO_ELEMENTS);
 			static::checkFields($iblock);
-			static::checkPriceProperty($iblock);
+			static::checkPriceProperty();
 		}
 	}
 
@@ -80,14 +75,8 @@ class TestPromoIblock extends BaseTestIblock
 		static::registerErrorIfIblockParamCheckFailed($params, $iblock);
 	}
 
-	protected static function checkPriceProperty(array $iblock)
+	protected static function checkPriceProperty()
 	{
-		$property = IblockPropertyRegistry::getPriceProperty($iblock);
-		static::registerErrorIfIblockPropertyLost(
-			$iblock,
-			$property,
-			Loc::getMessage('INTERVOLGA_EDU.PRICE_PROPERTY'),
-			implode(', ', IblockPropertyRegistry::PRICE_POSSIBLE_CODES)
-		);
+		static::registerErrorIfIblockPropertyLost(PriceProperty::class);
 	}
 }

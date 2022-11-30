@@ -8,6 +8,7 @@ use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Param;
 use Intervolga\Edu\Util\Regex;
 use Intervolga\Edu\Util\Registry\Iblock\BaseIblock;
+use Intervolga\Edu\Util\Registry\Iblock\Property\BaseProperty;
 
 Loc::loadMessages(__FILE__);
 
@@ -223,14 +224,18 @@ abstract class BaseTest
 		}
 	}
 
-	protected static function registerErrorIfIblockPropertyLost(array $iblock, array $property, string $name, string $possible)
+	/**
+	 * @param string|BaseProperty $property
+	 */
+	protected static function registerErrorIfIblockPropertyLost($property)
 	{
-		if (!$property) {
+		if (!$property::find()) {
+			$iblock = $property::getIblock()::find();
 			static::registerError(Loc::getMessage('INTERVOLGA_EDU.PROPERTY_NOT_FOUND', [
 				'#IBLOCK_LINK#' => Admin::getIblockUrl($iblock),
 				'#IBLOCK#' => $iblock['NAME'],
-				'#PROPERTY#' => $name,
-				'#POSSIBLE#' => $possible,
+				'#PROPERTY#' => $property::getName(),
+				'#POSSIBLE#' => $property::getPossibleTips(),
 			]));
 		}
 	}

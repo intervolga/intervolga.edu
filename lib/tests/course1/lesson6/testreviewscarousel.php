@@ -9,7 +9,7 @@ use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Regex;
-use Intervolga\Edu\Util\Registry\IblocksRegistry;
+use Intervolga\Edu\Util\Registry\Iblock\ReviewsIblock;
 use Intervolga\Edu\Util\Registry\PathsRegistry;
 use Intervolga\Edu\Util\Registry\RegexRegistry;
 
@@ -69,7 +69,7 @@ class TestReviewsCarousel extends BaseTest
 	{
 		$vars = static::parseVarsWithIndexes($file);
 		$propertiesCodes = [];
-		$iblock = IblocksRegistry::getReviewsIblock();
+		$iblock = ReviewsIblock::find();
 		if ($iblock) {
 			$getList = PropertyTable::getList([
 				'filter' => [
@@ -86,10 +86,10 @@ class TestReviewsCarousel extends BaseTest
 					$propertiesCodes[] = $fetch['CODE'];
 				}
 			}
-		}
-		foreach ($vars as $var) {
-			static::checkFieldVar($var, $file);
-			static::checkPropertyVar($var, $file, $propertiesCodes);
+			foreach ($vars as $var) {
+				static::checkFieldVar($var, $file);
+				static::checkPropertyVar($var, $file, $propertiesCodes);
+			}
 		}
 	}
 

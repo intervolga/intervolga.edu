@@ -20,7 +20,7 @@ abstract class BaseIblock
 			],
 			'filter' => static::getFilter(),
 		]);
-		while ($fetch = $getList->fetch()) {
+		if ($fetch = $getList->fetch()) {
 			$result = $fetch;
 		}
 
@@ -32,12 +32,10 @@ abstract class BaseIblock
 		$result = [];
 		$filter = static::getFilter();
 		foreach ($filter as $field => $value) {
-			if (mb_substr($field, 0, 1) == '=')
-			{
+			if (mb_substr($field, 0, 1) == '=') {
 				$field = mb_substr($field, 1);
 			}
-			if (!is_array($value))
-			{
+			if (!is_array($value)) {
 				$value = [$value];
 			}
 			$result[] = $field . '=' . implode('||', $value);

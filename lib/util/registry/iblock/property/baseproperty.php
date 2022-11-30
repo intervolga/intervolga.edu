@@ -3,7 +3,6 @@ namespace Intervolga\Edu\Util\Registry\Iblock\Property;
 
 use Bitrix\Iblock\PropertyTable;
 use Bitrix\Main\Loader;
-use Intervolga\Edu\Exceptions\IblockPropertyException;
 use Intervolga\Edu\Util\Registry\Iblock\BaseIblock;
 
 abstract class BaseProperty
