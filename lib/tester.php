@@ -40,6 +40,8 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson6\TestPromoIblock::class,
 			\Intervolga\Edu\Tests\Course1\Lesson6\TestReviewsCarousel::class,
 			\Intervolga\Edu\Tests\Course1\Lesson6\TestReviewsRand::class,
+			\Intervolga\Edu\Tests\Course1\Lesson6\TestLastPromo::class,
+			\Intervolga\Edu\Tests\Course1\Lesson6\TestReviewsList::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson10\TestSearchAction::class,
 
