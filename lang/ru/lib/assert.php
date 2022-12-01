@@ -11,3 +11,4 @@ $MESS['INTERVOLGA_EDU.ASSERT_DIRECTORY_EXISTS'] = 'Папка #VALUE# не на�
 $MESS['INTERVOLGA_EDU.FSE'] = '<a href="#FILEMAN_URL#" target="_blank">#NAME#</a>';
 $MESS['INTERVOLGA_EDU.ASSERT_MODULE_INSTALLED'] = 'Модуль #VALUE# должен быть установлен';
 $MESS['INTERVOLGA_EDU.ASSERT_REGISTRY_IBLOCK'] = 'Инфоблок <b>#IBLOCK#</b> не найден (#POSSIBLE#)';
+$MESS['INTERVOLGA_EDU.ASSERT_REGISTRY_DIRECTORY'] = 'Папка #DIRECTORY# <b>не найдена</b> (#LINKS#)';

@@ -6,6 +6,9 @@ use Intervolga\Edu\Util\FileSystem;
 
 abstract class BaseDirectory
 {
+	/**
+	 * @return string[]
+	 */
 	abstract public static function getPaths(): array;
 
 	abstract public static function getName(): string;

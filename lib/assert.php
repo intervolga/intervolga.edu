@@ -10,6 +10,7 @@ use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Regex;
+use Intervolga\Edu\Util\Registry\Directory\BaseDirectory;
 use Intervolga\Edu\Util\Registry\Iblock\BaseIblock;
 
 Loc::loadMessages(__FILE__);
@@ -98,9 +99,13 @@ class Assert
 	public static function functionExists($value, string $message = '')
 	{
 		if (!function_exists($value)) {
-			static::registerError(Loc::getMessage('INTERVOLGA_EDU.ASSERT_FUNCTION_EXISTS', [
-				'#VALUE#' => $value,
-			]));
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_FUNCTION_EXISTS',
+				[
+					'#VALUE#' => static::valueToString($value),
+				],
+				$message
+			));
 		}
 	}
 
@@ -162,8 +167,7 @@ class Assert
 	{
 		static::fseExists($value);
 		$content = $value->getContents();
-		if ($content)
-		{
+		if ($content) {
 			preg_match_all($regex->getRegex(), $content, $matches, PREG_SET_ORDER);
 			if ($matches) {
 				static::registerError(static::getCustomOrLocMessage(
@@ -236,10 +240,43 @@ class Assert
 	public static function registryIblock($value, string $message = '')
 	{
 		if (!$value::find()) {
-			static::registerError(Loc::getMessage('INTERVOLGA_EDU.ASSERT_REGISTRY_IBLOCK', [
-				'#IBLOCK#' => $value::getName(),
-				'#POSSIBLE#' => $value::getPossibleTips(),
-			]));
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_REGISTRY_IBLOCK',
+				[
+					'#IBLOCK#' => $value::getName(),
+					'#POSSIBLE#' => $value::getPossibleTips(),
+				],
+				$message
+			));
+
+		}
+	}
+
+	/**
+	 * @param string|BaseDirectory $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function registryDirectiry($value, string $message = '')
+	{
+		if (!$value::find()) {
+			$links = [];
+			foreach ($value::getPaths() as $path) {
+				$links[] = Loc::getMessage('INTERVOLGA_EDU.FSE', [
+					'#NAME#' => FileSystem::getDirectory($path)->getName(),
+					'#PATH#' => $path,
+					'#FILEMAN_URL#' => Admin::getFileManUrl(FileSystem::getDirectory($path)),
+				]);
+			}
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_REGISTRY_DIRECTORY',
+				[
+					'#DIRECTORY#' => $value::getName(),
+					'#LINKS#' => implode(', ', $links),
+				],
+				$message
+			));
+
 		}
 	}
 
