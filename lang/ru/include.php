@@ -14,7 +14,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON10'] = '10. Поиск';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1'] = '1. Создание модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы';
 
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATE'] = 'Проверка модуля «Корпоративный сайт производственной компании» (bitrix.sitecorporate)';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATE'] = 'Проверка модуля «Корпоративный сайт производственной компании»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECHECKER'] = 'Проверка системы';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_LICENSE'] = 'Проверка редакции';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_UPDATES'] = 'Проверка обновлений';
