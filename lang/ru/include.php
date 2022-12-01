@@ -37,6 +37,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_IMAGES'] = 'Оставлен мусор �
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_UGLYCHECKRESULT'] = 'Использованы аккуратнные проверки if ($arResult) вместо if (!empty($arResult))';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_INCLUDEAREA'] = 'Включаемая область, особый контент в разделе Партнеры';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_REGISTERPAGEOPTION'] = 'Проверка настройки Главного модуля «Страница регистрации (для системного компонента авторизации)»';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON42_EMAIL'] = 'Проверка ссылки на восстановление пароля в почтовом шаблоне «Запрос на смену пароля» (USER_PASS_REQUEST)';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON6_REVIEWSIBLOCK'] = 'Проверка ИБ Отзывы';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON6_PROMOIBLOCK'] = 'Проверка ИБ Акции';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON6_REVIEWSCAROUSEL'] = 'Проверка шаблона карусели отзывов на главной';
@@ -116,6 +117,9 @@ $MESS['INTERVOLGA_EDU.PARTNERS_SECT_INC_NOT_FOUND'] = 'Не найден фай�
 $MESS['INTERVOLGA_EDU.ROOT_SECT_INC_NOT_FOUND'] = 'Не найден файл включаемой области в корне сайта (поиск велся по подстрокам: #POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.REGISTER_PAGE_OPTION_NOT_SET'] = 'Настройка не задана';
 $MESS['INTERVOLGA_EDU.REGISTER_PAGE_OPTION_INVALID'] = 'Должна быть локальной ссылкой вида /path/to/register/ (сейчас #OPTION#)';
+$MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_TEXT_PROBLEM'] = 'Шаблон письма «Запрос на смену пароля» не найден или пуст, <a href="/bitrix/admin/type_edit.php?EVENT_NAME=USER_PASS_REQUEST" target="_blank">проверьте</a>';
+$MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_URL_PROBLEM'] = 'В шаблоне письма «Запрос на смену пароля» нет валидной ссылки';
+$MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_PAGE_PROBLEM'] = 'ссылка из письма';
 
 $MESS['INTERVOLGA_EDU.DELETE_FILE_SYSTEM_ENTRY'] = 'Требуется удалить <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
 $MESS['INTERVOLGA_EDU.LOST_FILE_SYSTEM_ENTRY'] = 'Не найден <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
