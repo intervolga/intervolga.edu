@@ -3,6 +3,7 @@ namespace Intervolga\Edu\Tests;
 
 use Bitrix\Main\IO\FileSystemEntry;
 use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Param;
@@ -71,10 +72,16 @@ abstract class BaseTest
 		}
 	}
 
+	/**
+	 * @deprecated remove when asserts will be everywhere
+	 * @throws AssertException
+	 */
 	public static function runSafe()
 	{
 		try {
 			static::run();
+		} catch (AssertException $exception) {
+			throw $exception;
 		} catch (\Throwable $throwable) {
 			static::registerError(Loc::getMessage('INTERVOLGA_EDU.THROWABLE',
 				[
@@ -92,6 +99,7 @@ abstract class BaseTest
 	}
 
 	/**
+	 * @deprecated remove when asserts will be everywhere
 	 * @param string $error
 	 */
 	protected static function registerError($error)
@@ -275,30 +283,5 @@ abstract class BaseTest
 				]));
 			}
 		}
-	}
-
-	protected static function assertEq($value, $expect, $message = '')
-	{
-		if ($value != $expect) {
-			static::registerError(static::getCustomOrLocMessage(
-				'INTERVOLGA_EDU.ASSERT_EQUAL',
-				[
-					'#VALUE#' => $value,
-					'#EXPECT#' => $expect,
-				],
-				$message
-			));
-		}
-	}
-
-	protected static function getCustomOrLocMessage(string $locCode, array $replace, $customMessage = ''): string
-	{
-		if ($customMessage) {
-			$result = strtr($customMessage, $replace);
-		} else {
-			$result = Loc::getMessage($locCode, $replace);
-		}
-
-		return $result;
 	}
 }

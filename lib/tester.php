@@ -1,10 +1,16 @@
 <?php
 namespace Intervolga\Edu;
 
+use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Tests\BaseTest;
 
 class Tester
 {
+	/**
+	 * @var AssertException[]
+	 */
+	protected static $exceptions = [];
+
 	/**
 	 * @return string[]|BaseTest[]
 	 */
@@ -60,7 +66,11 @@ class Tester
 		 * @var BaseTest $testClass
 		 */
 		foreach (static::getTestClasses() as $testClass) {
-			$testClass::runSafe();
+			try {
+				$testClass::runSafe();
+			} catch (AssertException $assertException) {
+				static::$exceptions[$testClass] = $assertException;
+			}
 		}
 	}
 
@@ -75,6 +85,10 @@ class Tester
 		 */
 		foreach (static::getTestClasses() as $testClass) {
 			$errors[$testClass::getCourseCode()][$testClass::getLessonCode()][$testClass] = $testClass::getErrors();
+			if ($exception = static::$exceptions[$testClass])
+			{
+				$errors[$testClass::getCourseCode()][$testClass::getLessonCode()][$testClass][] = $exception->getMessage();
+			}
 		}
 
 		return $errors;
