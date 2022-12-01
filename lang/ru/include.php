@@ -49,7 +49,6 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Собственный мод�
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Собственное UF-свойство';
 
 $MESS['INTERVOLGA_EDU.LICENSE_NAME'] = 'Стандарт';
-$MESS['INTERVOLGA_EDU.INCORRECT_LICENSE'] = 'Некорректная редакция! Требуется &laquo;Стандарт&raquo;, сейчас &laquo;#LICENSE#&raquo;';
 $MESS['INTERVOLGA_EDU.UPDATES_AVAILABLE'] = 'Доступно обновлений модулей: #COUNT#. Последнее обновление: #LAST_UPDATE#';
 $MESS['INTERVOLGA_EDU.MODULE_SITECORPORATE_NOT_INSTALLED'] = 'Модуль bitrix.sitecorporate не установлен';
 $MESS['INTERVOLGA_EDU.MODULE_PAGE'] = 'Куда дели страницу модуля?';
@@ -137,3 +136,4 @@ $MESS['INTERVOLGA_EDU.PARAM_CHECK_FAILED'] = 'Проблема с #CONTEXT#: п�
 $MESS['INTERVOLGA_EDU.IBLOCK_CONTEXT'] = 'ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>';
 $MESS['INTERVOLGA_EDU.THROWABLE'] = 'Произошло ужасное, проверяльщик сломался!<br>Ошибка #TYPE#: #ERROR#<br><br>#TRACE#';
 $MESS['INTERVOLGA_EDU.REGISTRY_DIRECTORY_LOST'] = 'Проблема с папкой #DIRECTORY#: не найдена по ожидаемым путям (#LINKS#)';
+$MESS['INTERVOLGA_EDU.ASSERT_EQUAL'] = 'Должно быть <b>#EXPECT#</b>, сейчас «#VALUE#»';

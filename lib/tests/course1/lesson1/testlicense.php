@@ -10,11 +10,10 @@ class TestLicense extends BaseTest
 	public static function run()
 	{
 		if ($status = UpdateSystem::getStatus()) {
-			if ($license = $status['LICENSE']) {
-				if ($license != Loc::getMessage('INTERVOLGA_EDU.LICENSE_NAME')) {
-					static::registerError(Loc::getMessage('INTERVOLGA_EDU.INCORRECT_LICENSE', ['#LICENSE#' => $license]));
-				}
-			}
+			static::assertEq(
+				$status['LICENSE'],
+				Loc::getMessage('INTERVOLGA_EDU.LICENSE_NAME')
+			);
 		}
 	}
 }

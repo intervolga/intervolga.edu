@@ -182,8 +182,7 @@ abstract class BaseTest
 	 */
 	protected static function registerErrorIfRegistryDirectoryLost($directory)
 	{
-		if (!$directory::find())
-		{
+		if (!$directory::find()) {
 			$links = [];
 			foreach ($directory::getPathObjects() as $pathObject) {
 				$links[] = Loc::getMessage('INTERVOLGA_EDU.FILE_SYSTEM_ENTRY', [
@@ -276,5 +275,30 @@ abstract class BaseTest
 				]));
 			}
 		}
+	}
+
+	protected static function assertEq($value, $expect, $message = '')
+	{
+		if ($value != $expect) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_EQUAL',
+				[
+					'#VALUE#' => $value,
+					'#EXPECT#' => $expect,
+				],
+				$message
+			));
+		}
+	}
+
+	protected static function getCustomOrLocMessage(string $locCode, array $replace, $customMessage = ''): string
+	{
+		if ($customMessage) {
+			$result = strtr($customMessage, $replace);
+		} else {
+			$result = Loc::getMessage($locCode, $replace);
+		}
+
+		return $result;
 	}
 }
