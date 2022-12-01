@@ -136,4 +136,3 @@ $MESS['INTERVOLGA_EDU.PARAM_CHECK_FAILED'] = 'Проблема с #CONTEXT#: п�
 $MESS['INTERVOLGA_EDU.IBLOCK_CONTEXT'] = 'ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>';
 $MESS['INTERVOLGA_EDU.THROWABLE'] = 'Произошло ужасное, проверяльщик сломался!<br>Ошибка #TYPE#: #ERROR#<br><br>#TRACE#';
 $MESS['INTERVOLGA_EDU.REGISTRY_DIRECTORY_LOST'] = 'Проблема с папкой #DIRECTORY#: не найдена по ожидаемым путям (#LINKS#)';
-$MESS['INTERVOLGA_EDU.ASSERT_EQUAL'] = 'Должно быть <b>#EXPECT#</b>, сейчас «#VALUE#»';
