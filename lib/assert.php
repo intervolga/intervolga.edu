@@ -20,12 +20,53 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_EQUAL',
 				[
-					'#VALUE#' => $value,
-					'#EXPECT#' => $expect,
+					'#VALUE#' => static::valueToString($value),
+					'#EXPECT#' => static::valueToString($expect),
 				],
 				$message
 			));
 		}
+	}
+
+	/**
+	 * @param $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function notEmpty($value, string $message = '')
+	{
+		if (empty($value)) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_NOT_EMPTY',
+				[
+					'#VALUE#' => static::valueToString($value),
+				],
+				$message
+			));
+		}
+	}
+
+	/**
+	 * @param $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function empty($value, string $message = '')
+	{
+		if (!empty($value)) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_EMPTY',
+				[
+					'#VALUE#' => static::valueToString($value),
+				],
+				$message
+			));
+		}
+	}
+
+	protected static function valueToString($value): string
+	{
+		return var_export($value, true);
 	}
 
 	protected static function getCustomOrLocMessage(string $locCode, array $replace, $customMessage = ''): string
