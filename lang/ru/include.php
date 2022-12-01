@@ -50,8 +50,6 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Собственное UF-свой
 
 $MESS['INTERVOLGA_EDU.LICENSE_NAME'] = 'Стандарт';
 $MESS['INTERVOLGA_EDU.UPDATES_AVAILABLE'] = 'Доступно обновлений модулей: #COUNT#. Последнее обновление: #LAST_UPDATE#';
-$MESS['INTERVOLGA_EDU.MODULE_SITECORPORATE_NOT_INSTALLED'] = 'Модуль bitrix.sitecorporate не установлен';
-$MESS['INTERVOLGA_EDU.MODULE_PAGE'] = 'Куда дели страницу модуля?';
 $MESS['INTERVOLGA_EDU.SITE_CHECK_ERROR'] = '<b>#TITLE#</b>: #ERROR#';
 $MESS['INTERVOLGA_EDU.EMPTY_SITE_CHECK_LOG'] = 'Проверка системы не запускалась';
 $MESS['INTERVOLGA_EDU.SERVICES_DELETE_REASON'] = 'по заданию';
@@ -130,7 +128,6 @@ $MESS['INTERVOLGA_EDU.CONTENT_DELETE_REQUIRED'] = 'Проблема в <a href="
 $MESS['INTERVOLGA_EDU.CONTENT_NOT_FOUND'] = 'Проблема в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, отсутствует #REGEX_EXPLAIN# (#REASON#)';
 $MESS['INTERVOLGA_EDU.CONTENT_FOUND'] = 'Проблема в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, #REGEX_EXPLAIN# (#REASON#)';
 $MESS['INTERVOLGA_EDU.FILE_SYSTEM_ENTRY_MATCH'] = 'Проблема с <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, #REGEX_EXPLAIN# (#REASON#)';
-$MESS['INTERVOLGA_EDU.IBLOCK_NOT_FOUND'] = 'Проблема с ИБ #IBLOCK#: не найден с хорошим символьным кодом (варианты: #POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.PROPERTY_NOT_FOUND'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: не найдено свойство #PROPERTY# с хорошим символьным кодом (варианты: #POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.PARAM_CHECK_FAILED'] = 'Проблема с #CONTEXT#: параметр #PARAM# должен быть #ASSERT_VALUE#';
 $MESS['INTERVOLGA_EDU.IBLOCK_CONTEXT'] = 'ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>';

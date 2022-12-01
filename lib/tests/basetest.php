@@ -244,6 +244,7 @@ abstract class BaseTest
 	}
 
 	/**
+	 * @deprecated Asset
 	 * @param string|BaseIblock $iblock
 	 */
 	protected static function registerErrorIfIblockLost($iblock)

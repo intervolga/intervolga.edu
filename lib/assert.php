@@ -1,8 +1,14 @@
 <?php
 namespace Intervolga\Edu;
 
+use Bitrix\Main\IO\Directory;
+use Bitrix\Main\IO\FileSystemEntry;
+use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Exceptions\AssertException;
+use Intervolga\Edu\Util\Admin;
+use Intervolga\Edu\Util\FileSystem;
+use Intervolga\Edu\Util\Registry\Iblock\BaseIblock;
 
 Loc::loadMessages(__FILE__);
 
@@ -61,6 +67,107 @@ class Assert
 				],
 				$message
 			));
+		}
+	}
+
+	/**
+	 * @param $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function true($value, string $message = '')
+	{
+		if ($value !== true) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_TRUE',
+				[
+					'#VALUE#' => static::valueToString($value),
+				],
+				$message
+			));
+		}
+	}
+
+	/**
+	 * @param FileSystemEntry $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function fseExists(FileSystemEntry $value, string $message = '')
+	{
+		if (!$value->isExists()) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_FSE_EXISTS',
+				[
+					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+						'#NAME#' => $value->getName(),
+						'#PATH#' => FileSystem::getLocalPath($value),
+						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
+					]),
+					'#NAME#' => $value->getName(),
+					'#PATH#' => FileSystem::getLocalPath($value),
+					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
+				],
+				$message
+			));
+		}
+	}
+
+	/**
+	 * @param Directory $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function directoryExists(Directory $value, string $message = '')
+	{
+		if (!$value->isExists()) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_DIRECTORY_EXISTS',
+				[
+					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+						'#NAME#' => $value->getName(),
+						'#PATH#' => FileSystem::getLocalPath($value),
+						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
+					]),
+					'#NAME#' => $value->getName(),
+					'#PATH#' => FileSystem::getLocalPath($value),
+					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
+				],
+				$message
+			));
+		}
+	}
+
+	/**
+	 * @param $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function moduleInstalled($value, string $message = '')
+	{
+		if (!Loader::includeModule($value)) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_MODULE_INSTALLED',
+				[
+					'#VALUE#' => static::valueToString($value),
+				],
+				$message
+			));
+		}
+	}
+
+	/**
+	 * @param string|BaseIblock $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function registryIblock($value, string $message = '')
+	{
+		if (!$value::find()) {
+			static::registerError(Loc::getMessage('INTERVOLGA_EDU.ASSERT_REGISTRY_IBLOCK', [
+				'#IBLOCK#' => $value::getName(),
+				'#POSSIBLE#' => $value::getPossibleTips(),
+			]));
 		}
 	}
 
