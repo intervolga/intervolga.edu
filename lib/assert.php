@@ -2,6 +2,7 @@
 namespace Intervolga\Edu;
 
 use Bitrix\Main\IO\Directory;
+use Bitrix\Main\IO\File;
 use Bitrix\Main\IO\FileSystemEntry;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
@@ -154,6 +155,33 @@ class Assert
 				],
 				$message
 			));
+		}
+	}
+
+	public static function fileContentNotMatches(File $value, Regex $regex, string $message = '')
+	{
+		static::fseExists($value);
+		$content = $value->getContents();
+		if ($content)
+		{
+			preg_match_all($regex->getRegex(), $content, $matches, PREG_SET_ORDER);
+			if ($matches) {
+				static::registerError(static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_FILE_CONTENT_NOT_MATCH',
+					[
+						'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+							'#NAME#' => $value->getName(),
+							'#PATH#' => FileSystem::getLocalPath($value),
+							'#FILEMAN_URL#' => Admin::getFileManUrl($value),
+						]),
+						'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
+						'#NAME#' => $value->getName(),
+						'#PATH#' => FileSystem::getLocalPath($value),
+						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
+					],
+					$message
+				));
+			}
 		}
 	}
 

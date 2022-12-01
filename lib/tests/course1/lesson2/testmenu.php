@@ -1,7 +1,7 @@
 <?php
 namespace Intervolga\Edu\Tests\Course1\Lesson2;
 
-use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\PathMaskParser;
 use Intervolga\Edu\Util\Regex;
@@ -22,9 +22,12 @@ class TestMenu extends BaseTest
 			$publicDirs
 		);
 		$menuFiles = array_merge($menuFiles, $innerMenuFiles);
-		$regexes = [
-			new Regex('/(\/.*)?index\.php/i', 'index.php', Loc::getMessage('INTERVOLGA_EDU.FOUND_INDEX_PHP_MENU_LINK')),
-		];
-		static::registerErrorIfFileContentFoundByRegex($menuFiles, $regexes);
+		$regex = new Regex('/(\/.*)?index\.php/i', 'index.php', '');
+		foreach ($menuFiles as $menuFile) {
+			Assert::fileContentNotMatches(
+				$menuFile,
+				$regex
+			);
+		}
 	}
 }
