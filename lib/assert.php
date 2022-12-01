@@ -89,6 +89,20 @@ class Assert
 	}
 
 	/**
+	 * @param $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function functionExists($value, string $message = '')
+	{
+		if (!function_exists($value)) {
+			static::registerError(Loc::getMessage('INTERVOLGA_EDU.ASSERT_FUNCTION_EXISTS', [
+				'#VALUE#' => $value,
+			]));
+		}
+	}
+
+	/**
 	 * @param FileSystemEntry $value
 	 * @param string $message
 	 * @throws AssertException

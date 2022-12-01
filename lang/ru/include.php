@@ -65,7 +65,6 @@ $MESS['INTERVOLGA_EDU.NOT_FOUND_IMG_TAG'] = 'должна быть картин�
 $MESS['INTERVOLGA_EDU.NOT_FOUND_TABLE_TAG'] = 'должна быть таблица';
 $MESS['INTERVOLGA_EDU.FOUND_INDEX_PHP_MENU_LINK'] = 'index.php-ссылок не должно быть';
 $MESS['INTERVOLGA_EDU.LOCAL_PHP_INTERFACE_NOT_FOUND'] = 'используйте /local/php_interface/';
-$MESS['INTERVOLGA_EDU.TEST_DUMP_NOT_FOUND'] = 'Функция test_dump не найдена';
 $MESS['INTERVOLGA_EDU.UNKNOWN_TEMPLATE_FOUND'] = 'Шаблон сайта <a href="#ADMIN_LINK#" target="_blank">#NAME#</a> нужно удалить';
 $MESS['INTERVOLGA_EDU.SHORT_PHP_TAG_RESTRICTED'] = 'запрещены короткие открывающие PHP-теги';
 $MESS['INTERVOLGA_EDU.OLD_CODE_REPLACE'] = 'заменить на современный аналог #NEW#';
