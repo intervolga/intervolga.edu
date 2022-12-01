@@ -206,28 +206,6 @@ abstract class BaseTest
 	}
 
 	/**
-	 * @param FileSystemEntry[] $fileSystemEntries
-	 * @param Regex[] $regexes
-	 */
-	protected static function registerErrorForFileSystemEntriesNameMatch(array $fileSystemEntries, array $regexes)
-	{
-		foreach ($fileSystemEntries as $fileSystemEntry) {
-			foreach ($regexes as $regexObject) {
-				$matches = [];
-				preg_match_all($regexObject->getRegex(), $fileSystemEntry->getName(), $matches, PREG_SET_ORDER);
-				if ($matches) {
-					static::registerError(Loc::getMessage('INTERVOLGA_EDU.FILE_SYSTEM_ENTRY_MATCH', [
-						'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
-						'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
-						'#REGEX_EXPLAIN#' => htmlspecialchars($regexObject->getRegexExplanation()),
-						'#REASON#' => htmlspecialchars($regexObject->getTipToReplace()),
-					]));
-				}
-			}
-		}
-	}
-
-	/**
 	 * @param string|BaseProperty $property
 	 */
 	protected static function registerErrorIfIblockPropertyLost($property)

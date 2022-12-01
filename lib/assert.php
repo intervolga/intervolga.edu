@@ -8,6 +8,7 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
+use Intervolga\Edu\Util\Regex;
 use Intervolga\Edu\Util\Registry\Iblock\BaseIblock;
 
 Loc::loadMessages(__FILE__);
@@ -118,6 +119,35 @@ class Assert
 						'#PATH#' => FileSystem::getLocalPath($value),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
 					]),
+					'#NAME#' => $value->getName(),
+					'#PATH#' => FileSystem::getLocalPath($value),
+					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
+				],
+				$message
+			));
+		}
+	}
+
+	/**
+	 * @param FileSystemEntry $value
+	 * @param Regex $regex
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function fseNameMatches(FileSystemEntry $value, Regex $regex, string $message = '')
+	{
+		$matches = [];
+		preg_match_all($regex->getRegex(), $value->getName(), $matches, PREG_SET_ORDER);
+		if (!$matches) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_FSE_NAME_MATCH',
+				[
+					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+						'#NAME#' => $value->getName(),
+						'#PATH#' => FileSystem::getLocalPath($value),
+						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
+					]),
+					'#EXPECT#' => htmlspecialchars($regex->getTipToReplace()),
 					'#NAME#' => $value->getName(),
 					'#PATH#' => FileSystem::getLocalPath($value),
 					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
