@@ -10,11 +10,10 @@ class TestLicense extends BaseTest
 {
 	public static function run()
 	{
-		if ($status = UpdateSystem::getStatus()) {
-			Assert::eq(
-				$status['LICENSE'],
-				Loc::getMessage('INTERVOLGA_EDU.LICENSE_NAME')
-			);
-		}
+		$status = UpdateSystem::getStatus();
+		Assert::eq(
+			$status['LICENSE'],
+			Loc::getMessage('INTERVOLGA_EDU.LICENSE_NAME')
+		);
 	}
 }
