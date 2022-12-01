@@ -50,8 +50,8 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Собственное UF-свой
 
 $MESS['INTERVOLGA_EDU.LICENSE_NAME'] = 'Стандарт';
 $MESS['INTERVOLGA_EDU.UPDATES_AVAILABLE'] = 'Доступно обновлений модулей: #COUNT#. Последнее обновление: #LAST_UPDATE#';
-$MESS['INTERVOLGA_EDU.SITE_CHECK_ERROR'] = '<b>#TITLE#</b>: #ERROR#';
 $MESS['INTERVOLGA_EDU.EMPTY_SITE_CHECK_LOG'] = 'Проверка системы не запускалась';
+$MESS['INTERVOLGA_EDU.SITE_CHECK_ERROR'] = 'Найдены ошибки в журнале проверки системы (#COUNT# шт, последняя проверка запускалась #DATE_CHECK#)';
 $MESS['INTERVOLGA_EDU.SERVICES_DELETE_REASON'] = 'по заданию';
 $MESS['INTERVOLGA_EDU.SERVICES_MENU_DELETE'] = 'Удалить раздел &laquo;Услуги&raquo; из меню';
 $MESS['INTERVOLGA_EDU.REVIEWS_SECTION_NEED'] = 'раздел &laquo;Отзывы&raquo; должен быть где-то тут';
