@@ -1,8 +1,8 @@
 <?php
 namespace Intervolga\Edu\Tests\Course1\Lesson6;
 
-use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Assert;
 use Intervolga\Edu\Tests\BaseTestIblock;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\AdminFormOptions;
@@ -16,8 +16,7 @@ class TestReviewsIblock extends BaseTestIblock
 
 	public static function run()
 	{
-		Loader::includeModule('iblock');
-		static::registerErrorIfIblockLost(ReviewsIblock::class);
+		Assert::registryIblock(ReviewsIblock::class);
 		if ($iblock = ReviewsIblock::find()) {
 			$options = AdminFormOptions::getFormOptionsForIblock($iblock['ID']);
 			static::commonChecks($iblock, $options, static::COUNT_REVIEWS_ELEMENTS);
@@ -45,7 +44,7 @@ class TestReviewsIblock extends BaseTestIblock
 
 	protected static function checkPostAndCompanyProperties()
 	{
-		static::registerErrorIfIblockPropertyLost(PostProperty::class);
-		static::registerErrorIfIblockPropertyLost(CompanyProperty::class);
+		Assert::registryProperty(PostProperty::class);
+		Assert::registryProperty(CompanyProperty::class);
 	}
 }

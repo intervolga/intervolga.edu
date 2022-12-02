@@ -99,13 +99,6 @@ $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_URL_PROBLEM'] = 'В шаблоне пи�
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_PAGE_PROBLEM'] = 'ссылка из письма';
 
 $MESS['INTERVOLGA_EDU.LOST_FILE_SYSTEM_ENTRY'] = 'Не найден <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
-$MESS['INTERVOLGA_EDU.ALL_FILE_SYSTEM_ENTRIES_LOST'] = 'Не найдены #LINKS# (#REASON#)';
-$MESS['INTERVOLGA_EDU.ACTION_REQUIRED'] = 'Проблема с <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
-$MESS['INTERVOLGA_EDU.CONTENT_REPLACE_REQUIRED'] = 'Проблема в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, требуется заменить #REGEX_EXPLAIN# на #NEW# (#REASON#)';
-$MESS['INTERVOLGA_EDU.CONTENT_DELETE_REQUIRED'] = 'Проблема в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, нужно убрать #REGEX_EXPLAIN# (#REASON#)';
-$MESS['INTERVOLGA_EDU.CONTENT_NOT_FOUND'] = 'Проблема в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, отсутствует #REGEX_EXPLAIN# (#REASON#)';
-$MESS['INTERVOLGA_EDU.CONTENT_FOUND'] = 'Проблема в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, #REGEX_EXPLAIN# (#REASON#)';
-$MESS['INTERVOLGA_EDU.PROPERTY_NOT_FOUND'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: не найдено свойство #PROPERTY# с хорошим символьным кодом (варианты: #POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.PARAM_CHECK_FAILED'] = 'Проблема с #CONTEXT#: параметр #PARAM# должен быть #ASSERT_VALUE#';
 $MESS['INTERVOLGA_EDU.IBLOCK_CONTEXT'] = 'ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>';
 $MESS['INTERVOLGA_EDU.THROWABLE'] = 'Произошло ужасное, проверяльщик сломался!<br>Ошибка #TYPE#: #ERROR#<br><br>#TRACE#';

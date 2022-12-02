@@ -118,56 +118,6 @@ abstract class BaseTest
 
 	/**
 	 * @deprecated remove when asserts will be everywhere
-	 * @param FileSystemEntry[] $files
-	 * @param Regex[] $regexes
-	 */
-	protected static function registerErrorIfFileContentNotFoundByRegex(array $files, array $regexes)
-	{
-		foreach ($files as $fileSystemEntry) {
-			if ($fileSystemEntry->isFile()) {
-				$content = $fileSystemEntry->getContents();
-				foreach ($regexes as $regexObject) {
-					preg_match_all($regexObject->getRegex(), $content, $matches, PREG_SET_ORDER, 0);
-					if (!$matches) {
-						static::registerError(Loc::getMessage('INTERVOLGA_EDU.CONTENT_NOT_FOUND', [
-							'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
-							'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
-							'#REGEX_EXPLAIN#' => htmlspecialchars($regexObject->getRegexExplanation()),
-							'#REASON#' => htmlspecialchars($regexObject->getTipToReplace()),
-						]));
-					}
-				}
-			}
-		}
-	}
-
-	/**
-	 * @deprecated remove when asserts will be everywhere
-	 * @param FileSystemEntry[] $fileSystemEntries
-	 * @param Regex[] $regexes
-	 */
-	protected static function registerErrorIfFileContentFoundByRegex(array $fileSystemEntries, array $regexes)
-	{
-		foreach ($fileSystemEntries as $fileSystemEntry) {
-			if ($fileSystemEntry->isFile()) {
-				$content = $fileSystemEntry->getContents();
-				foreach ($regexes as $regexObject) {
-					preg_match_all($regexObject->getRegex(), $content, $matches, PREG_SET_ORDER);
-					if ($matches) {
-						static::registerError(Loc::getMessage('INTERVOLGA_EDU.CONTENT_FOUND', [
-							'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
-							'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
-							'#REGEX_EXPLAIN#' => htmlspecialchars($regexObject->getRegexExplanation()),
-							'#REASON#' => htmlspecialchars($regexObject->getTipToReplace()),
-						]));
-					}
-				}
-			}
-		}
-	}
-
-	/**
-	 * @deprecated remove when asserts will be everywhere
 	 * @param FileSystemEntry $fileSystemEntry
 	 * @param $reason
 	 */
@@ -178,37 +128,6 @@ abstract class BaseTest
 				'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
 				'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
 				'#REASON#' => $reason,
-			]));
-		}
-	}
-
-	/**
-	 * @deprecated remove when asserts will be everywhere
-	 * @param string|BaseProperty $property
-	 */
-	protected static function registerErrorIfIblockPropertyLost($property)
-	{
-		if (!$property::find()) {
-			$iblock = $property::getIblock()::find();
-			static::registerError(Loc::getMessage('INTERVOLGA_EDU.PROPERTY_NOT_FOUND', [
-				'#IBLOCK_LINK#' => Admin::getIblockUrl($iblock),
-				'#IBLOCK#' => $iblock['NAME'],
-				'#PROPERTY#' => $property::getName(),
-				'#POSSIBLE#' => $property::getPossibleTips(),
-			]));
-		}
-	}
-
-	/**
-	 * @deprecated Asset
-	 * @param string|BaseIblock $iblock
-	 */
-	protected static function registerErrorIfIblockLost($iblock)
-	{
-		if (!$iblock::find()) {
-			static::registerError(Loc::getMessage('INTERVOLGA_EDU.IBLOCK_NOT_FOUND', [
-				'#IBLOCK#' => $iblock::getName(),
-				'#POSSIBLE#' => $iblock::getPossibleTips(),
 			]));
 		}
 	}

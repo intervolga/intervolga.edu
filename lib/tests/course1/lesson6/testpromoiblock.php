@@ -2,8 +2,8 @@
 namespace Intervolga\Edu\Tests\Course1\Lesson6;
 
 use Bitrix\Main\Application;
-use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Assert;
 use Intervolga\Edu\Tests\BaseTestIblock;
 use Intervolga\Edu\Util\AdminFormOptions;
 use Intervolga\Edu\Util\Param;
@@ -16,13 +16,12 @@ class TestPromoIblock extends BaseTestIblock
 
 	public static function run()
 	{
-		Loader::includeModule('iblock');
-		static::registerErrorIfIblockLost(PromoIblock::class);
+		Assert::registryIblock(PromoIblock::class);
 		if ($iblock = PromoIblock::find()) {
 			$options = AdminFormOptions::getFormOptionsForIblock($iblock['ID']);
 			static::commonChecks($iblock, $options, static::COUNT_PROMO_ELEMENTS);
 			static::checkFields($iblock);
-			static::checkPriceProperty();
+			Assert::registryProperty(PriceProperty::class);
 		}
 	}
 
@@ -73,10 +72,5 @@ class TestPromoIblock extends BaseTestIblock
 			),
 		];
 		static::registerErrorIfIblockParamCheckFailed($params, $iblock);
-	}
-
-	protected static function checkPriceProperty()
-	{
-		static::registerErrorIfIblockPropertyLost(PriceProperty::class);
 	}
 }

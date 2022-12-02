@@ -13,6 +13,7 @@ use Intervolga\Edu\Util\Menu;
 use Intervolga\Edu\Util\Regex;
 use Intervolga\Edu\Util\Registry\Directory\BaseDirectory;
 use Intervolga\Edu\Util\Registry\Iblock\BaseIblock;
+use Intervolga\Edu\Util\Registry\Iblock\Property\BaseProperty;
 
 Loc::loadMessages(__FILE__);
 
@@ -347,6 +348,26 @@ class Assert
 				'INTERVOLGA_EDU.ASSERT_REGISTRY_IBLOCK',
 				[
 					'#IBLOCK#' => $value::getName(),
+					'#POSSIBLE#' => $value::getPossibleTips(),
+				],
+				$message
+			));
+
+		}
+	}
+
+	/**
+	 * @param string|BaseProperty $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function registryProperty($value, string $message = '')
+	{
+		if (!$value::find()) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_REGISTRY_PROPERTY',
+				[
+					'#PROPERTY#' => $value::getName(),
 					'#POSSIBLE#' => $value::getPossibleTips(),
 				],
 				$message
