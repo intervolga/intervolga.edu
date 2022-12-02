@@ -4,7 +4,6 @@ namespace Intervolga\Edu\Tests\Course1\Lesson6;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Assert;
 use Intervolga\Edu\Tests\BaseTestIblock;
-use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\AdminFormOptions;
 use Intervolga\Edu\Util\Registry\Iblock\Property\CompanyProperty;
 use Intervolga\Edu\Util\Registry\Iblock\Property\PostProperty;
@@ -31,13 +30,11 @@ class TestReviewsIblock extends BaseTestIblock
 	{
 		foreach ($options['TABS'] as $tab) {
 			if (mb_strlen($tab['FIELDS']['NAME'])) {
-				if ($tab['FIELDS']['NAME'] != Loc::getMessage('INTERVOLGA_EDU.FIELD_SURNAME')) {
-					static::registerError(Loc::getMessage('INTERVOLGA_EDU.RENAME_FIELD_NAME', [
-						'#IBLOCK_LINK#' => Admin::getIblockElementAddUrl($iblock),
-						'#IBLOCK#' => $iblock['NAME'],
-						'#RENAME#' => Loc::getMessage('INTERVOLGA_EDU.FIELD_SURNAME'),
-					]));
-				}
+				Assert::eq(
+					$tab['FIELDS']['NAME'],
+					Loc::getMessage('INTERVOLGA_EDU.FIELD_SURNAME'),
+					Loc::getMessage('INTERVOLGA_EDU.RENAME_FIELD_NAME')
+				);
 			}
 		}
 	}

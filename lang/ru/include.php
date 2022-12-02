@@ -70,7 +70,7 @@ $MESS['INTERVOLGA_EDU.WRONG_IBLOCK_TYPE'] = 'Проблема с ИБ <a href="#
 $MESS['INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: включите всё логирование действий с элементами';
 $MESS['INTERVOLGA_EDU.SET_PERMISSION_EVERYONE_R'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: задайте доступ для всех пользователей Чтение';
 $MESS['INTERVOLGA_EDU.FIELD_SURNAME'] = 'Фамилия';
-$MESS['INTERVOLGA_EDU.RENAME_FIELD_NAME'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: переименуйте поле Название в #RENAME# в форме редактирования элемента';
+$MESS['INTERVOLGA_EDU.RENAME_FIELD_NAME'] = 'Переименуйте поле #VALUE# в #EXPECT# в форме редактирования элемента';
 $MESS['INTERVOLGA_EDU.PRICE_PROPERTY'] = 'Цена';
 $MESS['INTERVOLGA_EDU.POST_PROPERTY'] = 'Должность';
 $MESS['INTERVOLGA_EDU.COMPANY_PROPERTY'] = 'Компания';
