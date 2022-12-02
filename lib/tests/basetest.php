@@ -52,14 +52,30 @@ abstract class BaseTest
 		return preg_replace('/^Test/', '', $tmpArray[2]);
 	}
 
+	protected static function getTestLocCode(): string
+	{
+		return 'INTERVOLGA_EDU.' . mb_strtoupper(static::getCourseCode()) . '_' . mb_strtoupper(static::getLessonCode()) . '_' . mb_strtoupper(static::getTestCode());
+	}
+
 	public static function getTestLoc(): string
 	{
-		$code = 'INTERVOLGA_EDU.' . mb_strtoupper(static::getCourseCode()) . '_' . mb_strtoupper(static::getLessonCode()) . '_' . mb_strtoupper(static::getTestCode());
+		$code = static::getTestLocCode();
 		$loc = Loc::getMessage($code);
 		if (mb_strlen($loc)) {
 			return $loc;
 		} else {
-			return $code;
+			return '<<' . $code . '>>';
+		}
+	}
+
+	public static function getDescription(): string
+	{
+		$code = static::getTestLocCode() . '_DESCRIPTION';
+		$loc = Loc::getMessage($code);
+		if (mb_strlen($loc)) {
+			return $loc;
+		} else {
+			return '';
 		}
 	}
 

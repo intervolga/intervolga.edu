@@ -12,15 +12,10 @@ class TestUpdates extends BaseTest
 	public static function run()
 	{
 		$status = UpdateSystem::getStatus();
-		Assert::empty(
-			$status['MODULE'],
-			Loc::getMessage(
-				'INTERVOLGA_EDU.UPDATES_AVAILABLE',
-				[
-					'#COUNT#' => count($status['MODULE']),
-					'#LAST_UPDATE#' => Option::get('main', 'update_system_update', '-'),
-				]
-			)
+
+		Assert::eq(
+			count($status['MODULES']),
+			0
 		);
 	}
 }

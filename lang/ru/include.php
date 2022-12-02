@@ -17,7 +17,9 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские �
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATE'] = 'Проверка модуля «Корпоративный сайт производственной компании»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECHECKER'] = 'Проверка системы';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_LICENSE'] = 'Проверка редакции';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON1_LICENSE_DESCRIPTION'] = 'Установить «1С-Битрикс: Управление сайтом», редакция «Стандарт»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_UPDATES'] = 'Проверка обновлений';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON1_UPDATES_DESCRIPTION'] = 'Список <a href="/bitrix/admin/update_system.php?refresh=Y&lang=ru" target="_blank">рекомендуемых обновлений</a> должен быть пуст';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_SERVICESDELETED'] = 'Удаление раздела &laquo;Услуги&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_REVIEWS'] = 'Создание раздела &laquo;Отзывы&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_LOWERCASE'] = 'Названия файлов и папок в нижнем регистре (для совместимости на разных ОС)';
@@ -48,7 +50,6 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Собственный мод�
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Собственное UF-свойство';
 
 $MESS['INTERVOLGA_EDU.LICENSE_NAME'] = 'Стандарт';
-$MESS['INTERVOLGA_EDU.UPDATES_AVAILABLE'] = 'Доступно обновлений модулей: #COUNT#. Последнее обновление: #LAST_UPDATE#';
 $MESS['INTERVOLGA_EDU.EMPTY_SITE_CHECK_LOG'] = 'Проверка системы не запускалась';
 $MESS['INTERVOLGA_EDU.SITE_CHECK_ERROR'] = 'Найдены ошибки в журнале проверки системы (#COUNT# шт, последняя проверка запускалась #DATE_CHECK#)';
 $MESS['INTERVOLGA_EDU.NOT_LOWER_CASE'] = 'содержать латинские буквы только в нижнем регистре';

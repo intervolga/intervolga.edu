@@ -81,16 +81,20 @@ foreach ($testsTree as $courseCode => $course) {
 		]);
 		echo '<h2>' . $title . '</h2>';
 		$counter = 1;
-		foreach ($lesson['TESTS'] as $testCode => $testTitle) {
+		foreach ($lesson['TESTS'] as $testCode => $test) {
 			$errors = $errorsTree[$courseCode][$lessonCode][$testCode];
 			$messageParams = [
 				'HTML' => true,
-				'MESSAGE' => Loc::getMessage('INTERVOLGA_EDU.TEST_HEADER', ['#TEST#' => $counter . '. ' . $testTitle]),
+				'MESSAGE' => Loc::getMessage('INTERVOLGA_EDU.TEST_HEADER', ['#TEST#' => $counter . '. ' . $test['TITLE']]),
 			];
+			if ($test['DESCRIPTION'])
+			{
+				$messageParams['DETAILS'] = '<i>' . $test['DESCRIPTION'] . '</i><br><br>';
+			}
 			if ($errors) {
-				$messageParams['DETAILS'] = implode('<br>', $errors);
+				$messageParams['DETAILS'] .= implode('<br>', $errors);
 			} else {
-				$messageParams['DETAILS'] = Loc::getMessage('INTERVOLGA_EDU.TEST_NO_ERRORS');
+				$messageParams['DETAILS'] .= Loc::getMessage('INTERVOLGA_EDU.TEST_NO_ERRORS');
 				$messageParams['TYPE'] = 'OK';
 			}
 			$message = new CAdminMessage($messageParams);
