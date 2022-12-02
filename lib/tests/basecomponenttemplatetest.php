@@ -85,44 +85,52 @@ abstract class BaseComponentTemplateTest extends BaseTest
 
 	protected static function checkFieldVar(array $var, File $file)
 	{
-		if (in_array($var['INDEXES'][0], [
+		$indexIsField = (in_array($var['INDEXES'][0], [
 			'PREVIEW_TEXT',
 			'PREVIEW_PICTURE',
 			'NAME'
-		])) {
-			static::registerError(Loc::getMessage('INTERVOLGA_EDU.CONTENT_FOUND', [
-				'#PATH#' => FileSystem::getLocalPath($file),
-				'#ADMIN_LINK#' => Admin::getFileManUrl($file),
-				'#REGEX_EXPLAIN#' => $var['ORIGINAL'],
-				'#REASON#' => Loc::getMessage('INTERVOLGA_EDU.USE_FIELDS_FOR_FIELDS'),
-			]));
-		}
+		]));
+		Assert::true(
+			$indexIsField,
+			Loc::getMessage(
+				'INTERVOLGA_EDU.CONTENT_FOUND',
+				[
+					'#PATH#' => FileSystem::getLocalPath($file),
+					'#ADMIN_LINK#' => Admin::getFileManUrl($file),
+					'#REGEX_EXPLAIN#' => $var['ORIGINAL'],
+					'#REASON#' => Loc::getMessage('INTERVOLGA_EDU.USE_FIELDS_FOR_FIELDS'),
+				]
+			)
+		);
 	}
 
 	protected static function checkPropertyVar(array $var, File $file, array $propertiesCodes)
 	{
 		if (in_array($var['INDEXES'][1], $propertiesCodes)) {
-			if ($var['INDEXES'][0] == 'PROPERTIES') {
-				static::registerError(Loc::getMessage('INTERVOLGA_EDU.CONTENT_FOUND', [
+			Assert::true(
+				($var['INDEXES'][0] == 'PROPERTIES'),
+				Loc::getMessage('INTERVOLGA_EDU.CONTENT_FOUND', [
 					'#PATH#' => FileSystem::getLocalPath($file),
 					'#ADMIN_LINK#' => Admin::getFileManUrl($file),
 					'#REGEX_EXPLAIN#' => $var['ORIGINAL'],
 					'#REASON#' => Loc::getMessage('INTERVOLGA_EDU.USE_DISPLAY_PROPERTIES_FOR_PROPERTIES'),
-				]));
-			}
-			if (in_array($var['INDEXES'][0], [
+				])
+			);
+
+			$index0isProperty = in_array($var['INDEXES'][0], [
 				'PROPERTIES',
 				'DISPLAY_PROPERTIES'
-			])) {
-				if ($var['INDEXES'][2] == 'VALUE') {
-					static::registerError(Loc::getMessage('INTERVOLGA_EDU.CONTENT_FOUND', [
-						'#PATH#' => FileSystem::getLocalPath($file),
-						'#ADMIN_LINK#' => Admin::getFileManUrl($file),
-						'#REGEX_EXPLAIN#' => $var['ORIGINAL'],
-						'#REASON#' => Loc::getMessage('INTERVOLGA_EDU.USE_DISPLAY_PROPERTIES_FOR_PROPERTIES_ECHO'),
-					]));
-				}
-			}
+			]);
+			$index2isValue = ($var['INDEXES'][2] == 'VALUE');
+			Assert::true(
+				$index0isProperty && $index2isValue,
+				Loc::getMessage('INTERVOLGA_EDU.CONTENT_FOUND', [
+					'#PATH#' => FileSystem::getLocalPath($file),
+					'#ADMIN_LINK#' => Admin::getFileManUrl($file),
+					'#REGEX_EXPLAIN#' => $var['ORIGINAL'],
+					'#REASON#' => Loc::getMessage('INTERVOLGA_EDU.USE_DISPLAY_PROPERTIES_FOR_PROPERTIES_ECHO'),
+				])
+			);
 		}
 	}
 
