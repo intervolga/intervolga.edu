@@ -23,7 +23,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATESECTIONS_DESCRIPTION'] = 'Д�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECHECKER'] = 'Проверка системы';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECHECKER_DESCRIPTION'] = 'Не должно быть ошибок в <a href="/bitrix/admin/site_checker.php?lang=ru" target="_blank">Проверке системы</a>';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_LICENSE'] = 'Проверка редакции';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON1_LICENSE_DESCRIPTION'] = 'Установить «1С-Битрикс: Управление сайтом», редакция «Стандарт»';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON1_LICENSE_DESCRIPTION'] = 'Должен быть установлен «1С-Битрикс: Управление сайтом», редакция «Стандарт»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_UPDATES'] = 'Проверка обновлений';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_UPDATES_DESCRIPTION'] = 'Список <a href="/bitrix/admin/update_system.php?refresh=Y&lang=ru" target="_blank">рекомендуемых обновлений</a> должен быть пуст';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_SERVICESDELETED'] = 'Удаление раздела &laquo;Услуги&raquo;';
@@ -32,7 +32,8 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_LOWERCASE'] = 'Названия файло
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PARTNERSPAGE'] = 'Контент страницы &laquo;Условия сотрудничества&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_MENU'] = 'В меню нет index.php-ссылок';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_LOCALPHPINTERFACE'] = 'Код размещен в /local/php_interface/';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_DUMPFUNCTION'] = 'Объявлена свободная функция test_dump';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_DUMPFUNCTION'] = 'Проверка собственной функции отладки';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_DUMPFUNCTION_DESCRIPTION'] = 'Должна существовать функция test_dump';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PRODUCTS'] = 'Продукция переименована в Каталог в меню';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PROMO'] = 'Создание раздела &laquo;Акции&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_TEMPLATES'] = 'В /local/templates/ шаблоны: main, inner, .default';
