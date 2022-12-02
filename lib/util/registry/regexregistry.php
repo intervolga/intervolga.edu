@@ -15,22 +15,18 @@ class RegexRegistry
 			new Regex(
 				'/SetAdditionalCSS/mi',
 				'$APPLICATION->SetAdditionalCSS',
-				Loc::getMessage('INTERVOLGA_EDU.OLD_CODE_REPLACE', ['#NEW#' => '\Bitrix\Main\Page\Asset::addCss'])
 			),
 			new Regex(
 				'/AddHeadScript/mi',
 				'$APPLICATION->AddHeadScript',
-				Loc::getMessage('INTERVOLGA_EDU.OLD_CODE_REPLACE', ['#NEW#' => '\Bitrix\Main\Page\Asset::addJs'])
 			),
 			new Regex(
 				'/[^:]getMessage/mi',
-				'GetMessage',
-				Loc::getMessage('INTERVOLGA_EDU.OLD_CODE_REPLACE', ['#NEW#' => '\Bitrix\Main\Localization\Loc::getMessage'])
+				'GetMessage'
 			),
 			new Regex(
 				'/IncludeTemplateLangFile/mi',
-				'IncludeTemplateLangFile',
-				Loc::getMessage('INTERVOLGA_EDU.OLD_CODE_REPLACE', ['#NEW#' => '\Bitrix\Main\Localization\Loc::loadMessages'])
+				'IncludeTemplateLangFile'
 			),
 		];
 	}

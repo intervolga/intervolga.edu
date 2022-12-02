@@ -43,11 +43,15 @@ abstract class BaseComponentTemplateTest extends BaseTest
 			),
 		]);
 
-		static::registerErrorIfFileContentFoundByRegex([$file], $regexesNotToFind);
+		foreach ($regexesNotToFind as $regex) {
+			Assert::fileContentNotMatches($file, $regex);
+		}
 
 		$regexesToFind = [];
 		$regexesToFind = array_merge($regexesToFind, RegexRegistry::getCustomCore());
-		static::registerErrorIfFileContentNotFoundByRegex([$file], $regexesToFind);
+		foreach ($regexesToFind as $regex) {
+			Assert::fileContentMatches($file, $regex);
+		}
 
 		static::checkPhpVars($file, $iblock);
 	}
