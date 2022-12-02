@@ -200,27 +200,6 @@ abstract class BaseTest
 
 	/**
 	 * @deprecated remove when asserts will be everywhere
-	 * @param BaseDirectory|string $directory
-	 */
-	protected static function registerErrorIfRegistryDirectoryLost($directory)
-	{
-		if (!$directory::find()) {
-			$links = [];
-			foreach ($directory::getPathObjects() as $pathObject) {
-				$links[] = Loc::getMessage('INTERVOLGA_EDU.FILE_SYSTEM_ENTRY', [
-					'#PATH#' => $pathObject->getName(),
-					'#ADMIN_LINK#' => Admin::getFileManUrl($pathObject),
-				]);
-			}
-			static::registerError(Loc::getMessage('INTERVOLGA_EDU.REGISTRY_DIRECTORY_LOST', [
-				'#DIRECTORY#' => $directory::getName(),
-				'#LINKS#' => implode(', ', $links),
-			]));
-		}
-	}
-
-	/**
-	 * @deprecated remove when asserts will be everywhere
 	 * @param string|BaseProperty $property
 	 */
 	protected static function registerErrorIfIblockPropertyLost($property)

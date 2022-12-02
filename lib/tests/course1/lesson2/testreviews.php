@@ -2,6 +2,7 @@
 namespace Intervolga\Edu\Tests\Course1\Lesson2;
 
 use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Menu;
@@ -17,7 +18,7 @@ class TestReviews extends BaseTest
 
 	protected static function checkDir()
 	{
-		static::registerErrorIfRegistryDirectoryLost(ReviewsDirectory::class);
+		Assert::registryDirectiry(ReviewsDirectory::class);
 	}
 
 	protected static function checkMenu()
