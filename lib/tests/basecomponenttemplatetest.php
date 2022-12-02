@@ -5,6 +5,7 @@ use Bitrix\Iblock\PropertyTable;
 use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Assert;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Regex;
@@ -19,10 +20,10 @@ abstract class BaseComponentTemplateTest extends BaseTest
 				if ($child->getName() == 'template.php') {
 					static::checkTemplateFile($child, $iblock);
 				} else {
-					static::registerErrorIfFileSystemEntryExists($child, Loc::getMessage('INTERVOLGA_EDU.USELESS_TRASH'));
+					Assert::fileNotExists($child);
 				}
 			} else {
-				static::registerErrorIfFileSystemEntryExists($child, Loc::getMessage('INTERVOLGA_EDU.USELESS_TRASH'));
+				Assert::fileNotExists($child);
 			}
 		}
 	}

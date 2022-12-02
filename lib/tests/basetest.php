@@ -171,22 +171,6 @@ abstract class BaseTest
 	 * @param FileSystemEntry $fileSystemEntry
 	 * @param $reason
 	 */
-	protected static function registerErrorIfFileSystemEntryExists(FileSystemEntry $fileSystemEntry, $reason)
-	{
-		if ($fileSystemEntry->isExists()) {
-			static::registerError(Loc::getMessage('INTERVOLGA_EDU.DELETE_FILE_SYSTEM_ENTRY', [
-				'#PATH#' => $fileSystemEntry->getName(),
-				'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
-				'#REASON#' => $reason,
-			]));
-		}
-	}
-
-	/**
-	 * @deprecated remove when asserts will be everywhere
-	 * @param FileSystemEntry $fileSystemEntry
-	 * @param $reason
-	 */
 	protected static function registerErrorIfFileSystemEntryLost(FileSystemEntry $fileSystemEntry, $reason)
 	{
 		if (!$fileSystemEntry->isExists()) {

@@ -51,7 +51,6 @@ $MESS['INTERVOLGA_EDU.LICENSE_NAME'] = 'Стандарт';
 $MESS['INTERVOLGA_EDU.UPDATES_AVAILABLE'] = 'Доступно обновлений модулей: #COUNT#. Последнее обновление: #LAST_UPDATE#';
 $MESS['INTERVOLGA_EDU.EMPTY_SITE_CHECK_LOG'] = 'Проверка системы не запускалась';
 $MESS['INTERVOLGA_EDU.SITE_CHECK_ERROR'] = 'Найдены ошибки в журнале проверки системы (#COUNT# шт, последняя проверка запускалась #DATE_CHECK#)';
-$MESS['INTERVOLGA_EDU.SERVICES_DELETE_REASON'] = 'по заданию';
 $MESS['INTERVOLGA_EDU.SERVICES_MENU_DELETE'] = 'Удалить раздел &laquo;Услуги&raquo; из меню';
 $MESS['INTERVOLGA_EDU.REVIEWS_SECTION_NEED'] = 'раздел &laquo;Отзывы&raquo; должен быть где-то тут';
 $MESS['INTERVOLGA_EDU.REVIEWS_MENU_NEED'] = 'Раздел &laquo;Отзывы&raquo; должен быть в меню раздела &laquo;О компании&raquo; (например #VARIANT#)';
@@ -69,7 +68,6 @@ $MESS['INTERVOLGA_EDU.DELETE_THIS_JS'] = 'Подключен #JS# в <a href="#A
 $MESS['INTERVOLGA_EDU.OLD_FUNCTION_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> вместо #NEW# используется устаревший код: #OLD#';
 $MESS['INTERVOLGA_EDU.UGLY_RESULT_CHECK_FOUND'] = 'достаточно для работы и удобно для восприятия: #NEW#';
 $MESS['INTERVOLGA_EDU.PREFIX_NOTATION_SUCKS'] = 'избавляемся от венгерской нотации: #NEW#';
-$MESS['INTERVOLGA_EDU.IMAGES_DELETE_REASON'] = 'мусор';
 $MESS['INTERVOLGA_EDU.SEARCH_FORM_ACTION_HAS_INDEX_PHP'] = 'Форма поиска должна быть настроена на раздел поиска, а не на его index.php-страницу';
 $MESS['INTERVOLGA_EDU.PRODUCTS_CORRECT_NAME'] = 'Каталог';
 $MESS['INTERVOLGA_EDU.NO_INTERVOLGA_MODULES'] = 'Собственный модуль в /local/modules/ с названием вида intervolga.#ВАШЕ НАЗВАНИЕ# не найден';
@@ -91,7 +89,6 @@ $MESS['INTERVOLGA_EDU.IBLOCK_NEWS'] = 'Новости';
 $MESS['INTERVOLGA_EDU.IBLOCK_PRODUCTS'] = '[s1] Продукция';
 $MESS['INTERVOLGA_EDU.IBLOCK_SERVICES'] = '[s1] Услуги';
 $MESS['INTERVOLGA_EDU.CAROUSEL_TEMPLATE_VARIANTS'] = 'варианты названия шаблона компонента';
-$MESS['INTERVOLGA_EDU.USELESS_TRASH'] = 'бесполезный мусор';
 $MESS['INTERVOLGA_EDU.USE_FIELDS_FOR_FIELDS'] = 'обращение к полям только через [FIELDS][#ПОЛЕ#]';
 $MESS['INTERVOLGA_EDU.USE_DISPLAY_PROPERTIES_FOR_PROPERTIES'] = 'обращение к свойствам только через [DISPLAY_PROPERTIES][#СВОЙСТВО#]';
 $MESS['INTERVOLGA_EDU.USE_DISPLAY_PROPERTIES_FOR_PROPERTIES_ECHO'] = 'вывод свойств только через [DISPLAY_PROPERTIES][#СВОЙСТВО#][DISPLAY_VALUE]';
@@ -111,7 +108,6 @@ $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_TEXT_PROBLEM'] = 'Шаблон пись�
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_URL_PROBLEM'] = 'В шаблоне письма «Запрос на смену пароля» нет валидной ссылки';
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_PAGE_PROBLEM'] = 'ссылка из письма';
 
-$MESS['INTERVOLGA_EDU.DELETE_FILE_SYSTEM_ENTRY'] = 'Требуется удалить <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
 $MESS['INTERVOLGA_EDU.LOST_FILE_SYSTEM_ENTRY'] = 'Не найден <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
 $MESS['INTERVOLGA_EDU.ALL_FILE_SYSTEM_ENTRIES_LOST'] = 'Не найдены #LINKS# (#REASON#)';
 $MESS['INTERVOLGA_EDU.ACTION_REQUIRED'] = 'Проблема с <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
