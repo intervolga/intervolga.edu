@@ -93,6 +93,45 @@ class Assert
 		}
 	}
 
+	public static function greater($value, $limit, string $message = '')
+	{
+		if ($value <= $limit) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_GREATER',
+				[
+					'#VALUE#' => static::valueToString($value),
+				],
+				$message
+			));
+		}
+	}
+
+	public static function greaterEq($value, $limit, string $message = '')
+	{
+		if ($value < $limit) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_GREATER_EQ',
+				[
+					'#VALUE#' => static::valueToString($value),
+				],
+				$message
+			));
+		}
+	}
+
+	public static function less($value, $limit, string $message = '')
+	{
+		if ($value >= $limit) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_GREATER',
+				[
+					'#VALUE#' => static::valueToString($value),
+				],
+				$message
+			));
+		}
+	}
+
 	/**
 	 * @param string $value
 	 * @param Regex $regex
