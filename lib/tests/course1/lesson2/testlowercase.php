@@ -10,6 +10,11 @@ use Intervolga\Edu\Util\Registry\PathsRegistry;
 
 class TestLowerCase extends BaseTest
 {
+	public static function interceptErrors()
+	{
+		return true;
+	}
+
 	protected static function run()
 	{
 		$publicDirs = PathsRegistry::getPublicDirsLevelOne();

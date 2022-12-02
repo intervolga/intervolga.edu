@@ -28,7 +28,8 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_UPDATES'] = 'Проверка обновл
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_UPDATES_DESCRIPTION'] = 'Список <a href="/bitrix/admin/update_system.php?refresh=Y&lang=ru" target="_blank">рекомендуемых обновлений</a> должен быть пуст';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_SERVICESDELETED'] = 'Удаление раздела &laquo;Услуги&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_REVIEWS'] = 'Создание раздела &laquo;Отзывы&raquo;';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_LOWERCASE'] = 'Названия файлов и папок в нижнем регистре (для совместимости на разных ОС)';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_LOWERCASE'] = 'Проверка нижнего регистра в названиях файлов и папок';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_LOWERCASE_DESCRIPTION'] = 'Для предотвращения проблем кроссплатформенной разработки все названия файлов и папок должны быть в нижнем регистре и не содержать кириллицу';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PARTNERSPAGE'] = 'Контент страницы &laquo;Условия сотрудничества&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_MENU'] = 'В меню нет index.php-ссылок';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_LOCALPHPINTERFACE'] = 'Код размещен в папке /local/, не /bitrix/';
@@ -59,7 +60,7 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Собственное UF-свой
 
 $MESS['INTERVOLGA_EDU.LICENSE_NAME'] = 'Стандарт';
 $MESS['INTERVOLGA_EDU.EMPTY_SITE_CHECK_LOG'] = 'Проверка системы не запускалась';
-$MESS['INTERVOLGA_EDU.NOT_LOWER_CASE'] = 'содержать латинские буквы только в нижнем регистре';
+$MESS['INTERVOLGA_EDU.NOT_LOWER_CASE'] = 'буквы a-z, цифры 0-9, символы _-.';
 $MESS['INTERVOLGA_EDU.UPLOAD_PATH'] = 'путь к картинке в /upload/';
 $MESS['INTERVOLGA_EDU.IMG_TAG'] = 'тег <img>';
 $MESS['INTERVOLGA_EDU.TABLE_TAG'] = 'тег <table>';

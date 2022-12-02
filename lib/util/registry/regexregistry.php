@@ -82,8 +82,7 @@ class RegexRegistry
 		return [
 			new Regex(
 				'/\$arItem/mi',
-				'$arItem',
-				Loc::getMessage('INTERVOLGA_EDU.PREFIX_NOTATION_SUCKS', ['#NEW#' => '$item'])
+				'$arItem'
 			),
 		];
 	}
