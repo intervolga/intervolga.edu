@@ -189,6 +189,32 @@ class Assert
 		}
 	}
 
+	public static function fileContentMatches(File $value, Regex $regex, string $message = '')
+	{
+		static::fseExists($value);
+		$content = $value->getContents();
+		if ($content) {
+			preg_match_all($regex->getRegex(), $content, $matches, PREG_SET_ORDER);
+			if (!$matches) {
+				static::registerError(static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_FILE_CONTENT_MATCH',
+					[
+						'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+							'#NAME#' => $value->getName(),
+							'#PATH#' => FileSystem::getLocalPath($value),
+							'#FILEMAN_URL#' => Admin::getFileManUrl($value),
+						]),
+						'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
+						'#NAME#' => $value->getName(),
+						'#PATH#' => FileSystem::getLocalPath($value),
+						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
+					],
+					$message
+				));
+			}
+		}
+	}
+
 	/**
 	 * @param Directory $value
 	 * @param string $message

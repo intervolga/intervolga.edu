@@ -108,6 +108,7 @@ abstract class BaseTest
 	}
 
 	/**
+	 * @deprecated remove when asserts will be everywhere
 	 * @return string[]
 	 */
 	public static function getErrors()
@@ -116,6 +117,7 @@ abstract class BaseTest
 	}
 
 	/**
+	 * @deprecated remove when asserts will be everywhere
 	 * @param FileSystemEntry[] $files
 	 * @param Regex[] $regexes
 	 */
@@ -140,6 +142,7 @@ abstract class BaseTest
 	}
 
 	/**
+	 * @deprecated remove when asserts will be everywhere
 	 * @param FileSystemEntry[] $fileSystemEntries
 	 * @param Regex[] $regexes
 	 */
@@ -163,6 +166,11 @@ abstract class BaseTest
 		}
 	}
 
+	/**
+	 * @deprecated remove when asserts will be everywhere
+	 * @param FileSystemEntry $fileSystemEntry
+	 * @param $reason
+	 */
 	protected static function registerErrorIfFileSystemEntryExists(FileSystemEntry $fileSystemEntry, $reason)
 	{
 		if ($fileSystemEntry->isExists()) {
@@ -174,6 +182,11 @@ abstract class BaseTest
 		}
 	}
 
+	/**
+	 * @deprecated remove when asserts will be everywhere
+	 * @param FileSystemEntry $fileSystemEntry
+	 * @param $reason
+	 */
 	protected static function registerErrorIfFileSystemEntryLost(FileSystemEntry $fileSystemEntry, $reason)
 	{
 		if (!$fileSystemEntry->isExists()) {
@@ -186,6 +199,7 @@ abstract class BaseTest
 	}
 
 	/**
+	 * @deprecated remove when asserts will be everywhere
 	 * @param BaseDirectory|string $directory
 	 */
 	protected static function registerErrorIfRegistryDirectoryLost($directory)
@@ -206,6 +220,7 @@ abstract class BaseTest
 	}
 
 	/**
+	 * @deprecated remove when asserts will be everywhere
 	 * @param string|BaseProperty $property
 	 */
 	protected static function registerErrorIfIblockPropertyLost($property)
@@ -236,6 +251,7 @@ abstract class BaseTest
 	}
 
 	/**
+	 * @deprecated remove when asserts will be everywhere
 	 * @param Param[] $params
 	 * @param array $iblock
 	 */
@@ -248,6 +264,7 @@ abstract class BaseTest
 	}
 
 	/**
+	 * @deprecated remove when asserts will be everywhere
 	 * @param Param[] $params
 	 * @param string $context
 	 */

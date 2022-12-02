@@ -21,7 +21,6 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_UPDATES'] = 'Проверка обновл
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_SERVICESDELETED'] = 'Удаление раздела &laquo;Услуги&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_REVIEWS'] = 'Создание раздела &laquo;Отзывы&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_LOWERCASE'] = 'Названия файлов и папок в нижнем регистре (для совместимости на разных ОС)';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PARTNERS'] = 'Создание раздела &laquo;Партнерам&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PARTNERSPAGE'] = 'Контент страницы &laquo;Условия сотрудничества&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_MENU'] = 'В меню нет index.php-ссылок';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_LOCALPHPINTERFACE'] = 'Код размещен в /local/php_interface/';
@@ -59,16 +58,15 @@ $MESS['INTERVOLGA_EDU.REVIEWS_MENU_NEED'] = 'Раздел &laquo;Отзывы&ra
 $MESS['INTERVOLGA_EDU.NOT_LOWER_CASE'] = 'содержать латинские буквы только в нижнем регистре';
 $MESS['INTERVOLGA_EDU.PARTNERS_DIR_NOT_FOUND'] = 'раздел &laquo;Партнерам&raquo; должен быть где-то тут';
 $MESS['INTERVOLGA_EDU.PROMO_DIR_NOT_FOUND'] = 'раздел &laquo;Акции&raquo; должен быть где-то тут';
-$MESS['INTERVOLGA_EDU.UPLOAD_SRC'] = 'картинка должна быть в /upload/';
-$MESS['INTERVOLGA_EDU.NOT_FOUND_IMG_TAG'] = 'должна быть картинка';
-$MESS['INTERVOLGA_EDU.NOT_FOUND_TABLE_TAG'] = 'должна быть таблица';
+$MESS['INTERVOLGA_EDU.UPLOAD_PATH'] = 'путь к картинке в /upload/';
+$MESS['INTERVOLGA_EDU.IMG_TAG'] = 'тег <img>';
+$MESS['INTERVOLGA_EDU.TABLE_TAG'] = 'тег <table>';
 $MESS['INTERVOLGA_EDU.UNKNOWN_TEMPLATE_FOUND'] = 'Шаблон сайта <a href="#ADMIN_LINK#" target="_blank">#NAME#</a> нужно удалить';
 $MESS['INTERVOLGA_EDU.SHORT_PHP_TAG_RESTRICTED'] = 'запрещены короткие открывающие PHP-теги';
 $MESS['INTERVOLGA_EDU.OLD_CODE_REPLACE'] = 'заменить на современный аналог #NEW#';
 $MESS['INTERVOLGA_EDU.ADD_THIS_JS'] = 'Не подключен #JS# в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>';
 $MESS['INTERVOLGA_EDU.DELETE_THIS_JS'] = 'Подключен #JS# в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>';
 $MESS['INTERVOLGA_EDU.OLD_FUNCTION_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> вместо #NEW# используется устаревший код: #OLD#';
-$MESS['INTERVOLGA_EDU.CUSTOM_CORE_CHECK'] = 'надо добавить';
 $MESS['INTERVOLGA_EDU.UGLY_RESULT_CHECK_FOUND'] = 'достаточно для работы и удобно для восприятия: #NEW#';
 $MESS['INTERVOLGA_EDU.PREFIX_NOTATION_SUCKS'] = 'избавляемся от венгерской нотации: #NEW#';
 $MESS['INTERVOLGA_EDU.IMAGES_DELETE_REASON'] = 'мусор';
