@@ -87,7 +87,16 @@ class Tester
 		foreach (static::getTestClasses() as $testClass) {
 			if ($exception = static::$exceptions[$testClass])
 			{
-				$errors[$testClass::getCourseCode()][$testClass::getLessonCode()][$testClass][] = $exception->getMessage();
+				if ($exception->getExceptions())
+				{
+					foreach ($exception->getExceptions() as $innerException) {
+						$errors[$testClass::getCourseCode()][$testClass::getLessonCode()][$testClass][] = $innerException->getMessage();
+					}
+				}
+				else
+				{
+					$errors[$testClass::getCourseCode()][$testClass::getLessonCode()][$testClass][] = $exception->getMessage();
+				}
 			}
 		}
 
