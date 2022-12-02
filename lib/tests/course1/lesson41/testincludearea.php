@@ -2,6 +2,7 @@
 namespace Intervolga\Edu\Tests\Course1\Lesson41;
 
 use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Registry\Directory\PartnersDirectory;
@@ -15,18 +16,12 @@ class TestIncludeArea extends BaseTest
 
 	public static function run()
 	{
-		if ($sectIncName = static::getSectIncNameFromPartners()) {
-			$fileInRoot = FileSystem::getFile('/' . $sectIncName);
-			if (!$fileInRoot->isExists()) {
-				static::registerError(Loc::getMessage('INTERVOLGA_EDU.ROOT_SECT_INC_NOT_FOUND', [
-					'#POSSIBLE#' => implode(', ', static::FILE_NAME_PARTS),
-				]));
-			}
-		} else {
-			static::registerError(Loc::getMessage('INTERVOLGA_EDU.PARTNERS_SECT_INC_NOT_FOUND', [
-				'#POSSIBLE#' => implode(', ', static::FILE_NAME_PARTS),
-			]));
-		}
+		$sectIncName = static::getSectIncNameFromPartners();
+		Assert::notEmpty($sectIncName, Loc::getMessage('INTERVOLGA_EDU.PARTNERS_SECT_INC_NOT_FOUND', [
+			'#POSSIBLE#' => implode(', ', static::FILE_NAME_PARTS),
+		]));
+		$fileInRoot = FileSystem::getFile('/' . $sectIncName);
+		Assert::fseExists($fileInRoot);
 	}
 
 	protected static function getSectIncNameFromPartners(): string

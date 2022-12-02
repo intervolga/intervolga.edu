@@ -92,7 +92,6 @@ $MESS['INTERVOLGA_EDU.REVIEWS_RAND_TEMPLATE'] = 'Шаблон случайног
 $MESS['INTERVOLGA_EDU.LAST_PROMO_TEMPLATE'] = 'Шаблон последней акции';
 $MESS['INTERVOLGA_EDU.REVIEWS_LIST_TEMPLATE'] = 'Шаблон списка отзывов';
 $MESS['INTERVOLGA_EDU.PARTNERS_SECT_INC_NOT_FOUND'] = 'Не найден файл включаемой области в разделе Партнерам (поиск велся по подстрокам: #POSSIBLE#)';
-$MESS['INTERVOLGA_EDU.ROOT_SECT_INC_NOT_FOUND'] = 'Не найден файл включаемой области в корне сайта (поиск велся по подстрокам: #POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.REGISTER_PAGE_OPTION_NOT_SET'] = 'Настройка не задана';
 $MESS['INTERVOLGA_EDU.REGISTER_PAGE_OPTION_INVALID'] = 'Должна быть локальной ссылкой вида /path/to/register/ (сейчас #OPTION#)';
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_TEXT_PROBLEM'] = 'Шаблон письма «Запрос на смену пароля» не найден или пуст, <a href="/bitrix/admin/type_edit.php?EVENT_NAME=USER_PASS_REQUEST" target="_blank">проверьте</a>';
