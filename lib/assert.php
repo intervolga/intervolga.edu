@@ -19,6 +19,9 @@ Loc::loadMessages(__FILE__);
 
 class Assert
 {
+	protected static $interceptErrors = false;
+	protected static $interceptedErrors = [];
+
 	/**
 	 * @param mixed $value
 	 * @param mixed $expect
@@ -95,7 +98,7 @@ class Assert
 
 	public static function greater($value, $limit, string $message = '')
 	{
-		if ($value <= $limit) {
+		if ($value<=$limit) {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_GREATER',
 				[
@@ -108,7 +111,7 @@ class Assert
 
 	public static function greaterEq($value, $limit, string $message = '')
 	{
-		if ($value < $limit) {
+		if ($value<$limit) {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_GREATER_EQ',
 				[
@@ -121,7 +124,7 @@ class Assert
 
 	public static function less($value, $limit, string $message = '')
 	{
-		if ($value >= $limit) {
+		if ($value>=$limit) {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_GREATER',
 				[
@@ -530,6 +533,33 @@ class Assert
 		}
 	}
 
+	public static function interceptErrorsOn()
+	{
+		if (!static::$interceptErrors)
+		{
+			static::$interceptErrors = true;
+			static::$interceptedErrors = [];
+		}
+	}
+
+	public static function interceptErrorsOff()
+	{
+		if (static::$interceptErrors)
+		{
+			static::$interceptErrors = false;
+		}
+	}
+
+	public static function throwIntercepted()
+	{
+		if (static::$interceptedErrors)
+		{
+			$errors = static::$interceptedErrors;
+			static::$interceptedErrors = [];
+			throw AssertException::createMultiple($errors);
+		}
+	}
+
 	protected static function valueToString($value): string
 	{
 		return var_export($value, true);
@@ -552,6 +582,13 @@ class Assert
 	 */
 	protected static function registerError(string $error)
 	{
-		throw new AssertException($error);
+		if (static::$interceptErrors)
+		{
+			static::$interceptedErrors[] = new AssertException($error);
+		}
+		else
+		{
+			throw new AssertException($error);
+		}
 	}
 }
