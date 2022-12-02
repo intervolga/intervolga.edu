@@ -1,7 +1,6 @@
 <?php
 namespace Intervolga\Edu\Util\Registry;
 
-use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Util\Regex;
 
 class RegexRegistry
