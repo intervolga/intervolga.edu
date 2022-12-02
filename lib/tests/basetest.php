@@ -80,6 +80,31 @@ abstract class BaseTest
 	}
 
 	/**
+	 * @return bool
+	 */
+	public static function interceptErrors()
+	{
+		return false;
+	}
+
+	/**
+	 * @throws AssertException
+	 */
+	public static function runOuter()
+	{
+		if (static::interceptErrors())
+		{
+			Assert::interceptErrorsOn();
+		}
+		static::run();
+		if (static::interceptErrors())
+		{
+			Assert::interceptErrorsOff();
+			Assert::throwIntercepted();
+		}
+	}
+
+	/**
 	 * @throws AssertException
 	 */
 	public static function run()

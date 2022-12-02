@@ -8,12 +8,14 @@ use Intervolga\Edu\Util\Registry\Iblock\ProductsIblock;
 
 class TestSiteCorporateIblocks extends BaseTest
 {
+	public static function interceptErrors()
+	{
+		return true;
+	}
+
 	public static function run()
 	{
-		Assert::interceptErrorsOn();
 		Assert::registryIblock(ProductsIblock::class);
 		Assert::registryIblock(NewsIblock::class);
-		Assert::interceptErrorsOff();
-		Assert::throwIntercepted();
 	}
 }

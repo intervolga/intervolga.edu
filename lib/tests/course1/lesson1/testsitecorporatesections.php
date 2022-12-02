@@ -7,13 +7,15 @@ use Intervolga\Edu\Util\FileSystem;
 
 class TestSiteCorporateSections extends BaseTest
 {
+	public static function interceptErrors()
+	{
+		return true;
+	}
+
 	public static function run()
 	{
-		Assert::interceptErrorsOn();
-		Assert::directoryExists(FileSystem::getDirectory('/products/'));
-		Assert::directoryExists(FileSystem::getDirectory('/company/'));
+		Assert::directoryExists(FileSystem::getDirectory('/1products/'));
+		Assert::directoryExists(FileSystem::getDirectory('/1company/'));
 		Assert::directoryExists(FileSystem::getDirectory('/contacts/'));
-		Assert::interceptErrorsOff();
-		Assert::throwIntercepted();
 	}
 }

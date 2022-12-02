@@ -68,7 +68,7 @@ class Tester
 		 */
 		foreach (static::getTestClasses() as $testClass) {
 			try {
-				$testClass::run();
+				$testClass::runOuter();
 			} catch (AssertException $assertException) {
 				static::$exceptions[$testClass] = $assertException;
 			}
