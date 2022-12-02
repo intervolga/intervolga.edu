@@ -2,8 +2,9 @@
 namespace Intervolga\Edu\Tests\Course1\Lesson10;
 
 use Bitrix\Main\Component\ParametersTable;
-use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Assert;
 use Intervolga\Edu\Tests\BaseTest;
+use Intervolga\Edu\Util\Regex;
 
 class TestSearchAction extends BaseTest
 {
@@ -18,14 +19,14 @@ class TestSearchAction extends BaseTest
 				'PARAMETERS',
 			],
 		]);
-		if ($fetch = $getList->fetch()) {
-			if ($fetch['PARAMETERS']) {
-				$parameters = unserialize($fetch['PARAMETERS']);
-				if (mb_substr_count($parameters['PAGE'], '/index.php'))
-				{
-					static::registerError(Loc::getMessage('INTERVOLGA_EDU.SEARCH_FORM_ACTION_HAS_INDEX_PHP'));
-				}
-			}
-		}
+		$fetch = $getList->fetch();
+		$parameters = unserialize($fetch['PARAMETERS']);
+		Assert::notMatches(
+			$parameters['PAGE'],
+			new Regex(
+				'/\/index\.php/m',
+				'index.php'
+			)
+		);
 	}
 }
