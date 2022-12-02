@@ -55,10 +55,7 @@ $MESS['INTERVOLGA_EDU.NOT_LOWER_CASE'] = 'содержать латинские 
 $MESS['INTERVOLGA_EDU.UPLOAD_PATH'] = 'путь к картинке в /upload/';
 $MESS['INTERVOLGA_EDU.IMG_TAG'] = 'тег <img>';
 $MESS['INTERVOLGA_EDU.TABLE_TAG'] = 'тег <table>';
-$MESS['INTERVOLGA_EDU.UNKNOWN_TEMPLATE_FOUND'] = 'Шаблон сайта <a href="#ADMIN_LINK#" target="_blank">#NAME#</a> нужно удалить';
 $MESS['INTERVOLGA_EDU.SHORT_PHP_TAG_RESTRICTED'] = 'запрещены короткие открывающие PHP-теги';
-$MESS['INTERVOLGA_EDU.ADD_THIS_JS'] = 'Не подключен #JS# в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>';
-$MESS['INTERVOLGA_EDU.DELETE_THIS_JS'] = 'Подключен #JS# в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>';
 $MESS['INTERVOLGA_EDU.OLD_FUNCTION_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> вместо #NEW# используется устаревший код: #OLD#';
 $MESS['INTERVOLGA_EDU.UGLY_RESULT_CHECK_FOUND'] = 'достаточно для работы и удобно для восприятия: #NEW#';
 $MESS['INTERVOLGA_EDU.PREFIX_NOTATION_SUCKS'] = 'избавляемся от венгерской нотации: #NEW#';

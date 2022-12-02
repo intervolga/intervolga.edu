@@ -3,9 +3,8 @@ namespace Intervolga\Edu\Tests\Course1\Lesson3;
 
 use Bitrix\Main\Application;
 use Bitrix\Main\IO\Directory;
-use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Assert;
 use Intervolga\Edu\Tests\BaseTest;
-use Intervolga\Edu\Util\Admin;
 
 class TestTemplates extends BaseTest
 {
@@ -21,10 +20,7 @@ class TestTemplates extends BaseTest
 		foreach ($templatesDirectory->getChildren() as $child) {
 			if ($child->isDirectory()) {
 				if (!in_array($child->getName(), $templatesAllowed)) {
-					static::registerError(Loc::getMessage('INTERVOLGA_EDU.UNKNOWN_TEMPLATE_FOUND', [
-						'#NAME#' => $child->getName(),
-						'#ADMIN_LINK#' => Admin::getFileManUrl($child),
-					]));
+					Assert::directoryNotExists($child);
 				}
 			}
 		}
