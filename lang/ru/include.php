@@ -97,8 +97,7 @@ $MESS['INTERVOLGA_EDU.REGISTER_PAGE_OPTION_INVALID'] = 'Должна быть л
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_TEXT_PROBLEM'] = 'Шаблон письма «Запрос на смену пароля» не найден или пуст, <a href="/bitrix/admin/type_edit.php?EVENT_NAME=USER_PASS_REQUEST" target="_blank">проверьте</a>';
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_URL_PROBLEM'] = 'В шаблоне письма «Запрос на смену пароля» нет валидной ссылки';
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_PAGE_PROBLEM'] = 'ссылка из письма';
+$MESS['INTERVOLGA_EDU.IBLOCK_FIELD_PARAM_SHOULD_BE_SET'] = 'Настройка #PARAM# поля #FIELD# должна быть #EXPECT#';
 
 $MESS['INTERVOLGA_EDU.LOST_FILE_SYSTEM_ENTRY'] = 'Не найден <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
-$MESS['INTERVOLGA_EDU.PARAM_CHECK_FAILED'] = 'Проблема с #CONTEXT#: параметр #PARAM# должен быть #ASSERT_VALUE#';
-$MESS['INTERVOLGA_EDU.IBLOCK_CONTEXT'] = 'ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>';
 $MESS['INTERVOLGA_EDU.THROWABLE'] = 'Произошло ужасное, проверяльщик сломался!<br>Ошибка #TYPE#: #ERROR#<br><br>#TRACE#';
