@@ -7,6 +7,11 @@ use Intervolga\Edu\Util\FileSystem;
 
 class TestServicesDeleted extends BaseTest
 {
+	public static function interceptErrors()
+	{
+		return true;
+	}
+
 	protected static function run()
 	{
 		Assert::directoryNotExists(FileSystem::getDirectory('/services/'));

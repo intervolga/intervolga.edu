@@ -5,7 +5,6 @@ use Bitrix\Main\Localization\Loc;
 
 class ReviewsDirectory extends BaseDirectory
 {
-
 	public static function getPaths(): array
 	{
 		return [
