@@ -1,6 +1,8 @@
 <?php
 namespace Intervolga\Edu\Tests\Course1\Lesson3;
 
+use Bitrix\Main\IO\File;
+use Intervolga\Edu\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\PathMaskParser;
 use Intervolga\Edu\Util\Registry\RegexRegistry;
@@ -11,7 +13,14 @@ class TestCustomCoreCheck extends BaseTest
 	{
 		$files = static::getLessonFilesToCheck();
 		$regexes = RegexRegistry::getCustomCore();
-		static::registerErrorIfFileContentNotFoundByRegex($files, $regexes);
+		foreach ($files as $file) {
+			foreach ($regexes as $regex) {
+				/**
+				 * @var File $file
+				 */
+				Assert::fileContentMatches($file, $regex);
+			}
+		}
 	}
 
 	/**
