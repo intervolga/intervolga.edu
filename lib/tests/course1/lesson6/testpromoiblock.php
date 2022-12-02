@@ -13,7 +13,7 @@ class TestPromoIblock extends BaseTestIblock
 {
 	const COUNT_PROMO_ELEMENTS = 2;
 
-	public static function run()
+	protected static function run()
 	{
 		Assert::registryIblock(PromoIblock::class);
 		if ($iblock = PromoIblock::find()) {

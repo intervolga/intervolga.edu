@@ -8,7 +8,7 @@ use Intervolga\Edu\Tests\BaseTest;
 
 class TestTemplates extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		$templatesAllowed = [
 			'main',

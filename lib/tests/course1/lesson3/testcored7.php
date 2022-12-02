@@ -8,7 +8,7 @@ use Intervolga\Edu\Util\Registry\RegexRegistry;
 
 class TestCoreD7 extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		$regexes = RegexRegistry::getOldCore();
 

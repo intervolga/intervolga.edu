@@ -10,7 +10,7 @@ use Intervolga\Edu\Util\Registry\PathsRegistry;
 
 class TestLowerCase extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		$publicDirs = PathsRegistry::getPublicDirsLevelOne();
 		$entriesToCheck = PathMaskParser::getFileSystemEntriesByMasks(

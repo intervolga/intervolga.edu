@@ -7,7 +7,7 @@ use Intervolga\Edu\Util\FileSystem;
 
 class TestServicesDeleted extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		Assert::directoryNotExists(FileSystem::getDirectory('/services/'));
 		Assert::menuItemNotExists('/.top.menu.php', 'services/');

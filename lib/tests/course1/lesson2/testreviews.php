@@ -8,7 +8,7 @@ use Intervolga\Edu\Util\Registry\Directory\ReviewsDirectory;
 
 class TestReviews extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		Assert::registryDirectiry(ReviewsDirectory::class);
 		Assert::menuItemExists('/company/.left.menu.php', FileSystem::getLocalPath(ReviewsDirectory::find()));

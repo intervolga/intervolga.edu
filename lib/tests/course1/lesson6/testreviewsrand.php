@@ -8,7 +8,7 @@ use Intervolga\Edu\Util\Registry\Iblock\ReviewsIblock;
 
 class TestReviewsRand extends BaseComponentTemplateTest
 {
-	public static function run()
+	protected static function run()
 	{
 		$iblock = ReviewsIblock::find();
 		Assert::registryDirectiry(ReviewsRandTemplate::class);

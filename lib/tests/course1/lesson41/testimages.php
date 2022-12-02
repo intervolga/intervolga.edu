@@ -8,7 +8,7 @@ use Intervolga\Edu\Util\PathMaskParser;
 
 class TestImages extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		/**
 		 * @var Directory[] $dirs

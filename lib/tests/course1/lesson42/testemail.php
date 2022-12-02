@@ -10,7 +10,7 @@ use Intervolga\Edu\Util\FileSystem;
 
 class TestEmail extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		$messageText = static::getMessageText();
 		Assert::notEmpty($messageText, Loc::getMessage('INTERVOLGA_EDU.USER_PASS_REQUEST_TEXT_PROBLEM'));

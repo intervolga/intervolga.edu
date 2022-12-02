@@ -8,7 +8,7 @@ use Intervolga\Edu\Util\Regex;
 
 class TestScripts extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		$mainHeaderFile = FileSystem::getFile('/local/templates/main/header.php');
 		$innerHeaderFile = FileSystem::getFile('/local/templates/inner/header.php');

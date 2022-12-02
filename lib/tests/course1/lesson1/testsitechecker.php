@@ -11,7 +11,7 @@ Loc::loadMessages(__FILE__);
 
 class TestSiteChecker extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		$checkerTest = new \CSiteCheckerTest();
 		$logFile = new File(Application::getDocumentRoot() . $checkerTest->LogFile);

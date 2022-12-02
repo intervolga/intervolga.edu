@@ -9,7 +9,7 @@ use Intervolga\Edu\Util\Registry\RegexRegistry;
 
 class TestUglyCheckResult extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		$files = PathMaskParser::getFileSystemEntriesByMasks(
 			[

@@ -6,7 +6,7 @@ use Intervolga\Edu\Tests\BaseTest;
 
 class TestSiteCorporateModule extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		Assert::moduleInstalled('bitrix.sitecorporate');
 	}

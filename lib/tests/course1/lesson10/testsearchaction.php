@@ -8,7 +8,7 @@ use Intervolga\Edu\Util\Regex;
 
 class TestSearchAction extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		$getList = ParametersTable::getList([
 			'filter' => [

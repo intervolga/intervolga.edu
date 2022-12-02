@@ -13,7 +13,7 @@ class TestReviewsIblock extends BaseTestIblock
 {
 	const COUNT_REVIEWS_ELEMENTS = 6;
 
-	public static function run()
+	protected static function run()
 	{
 		Assert::registryIblock(ReviewsIblock::class);
 		if ($iblock = ReviewsIblock::find()) {

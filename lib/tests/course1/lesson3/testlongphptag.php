@@ -8,7 +8,7 @@ use Intervolga\Edu\Util\Registry\RegexRegistry;
 
 class TestLongPhpTag extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		$regexes = RegexRegistry::getShortPhpTag();
 

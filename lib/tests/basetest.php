@@ -107,7 +107,7 @@ abstract class BaseTest
 	/**
 	 * @throws AssertException
 	 */
-	public static function run()
+	protected static function run()
 	{
 		Assert::true(false, 'Not implemented yet');
 	}

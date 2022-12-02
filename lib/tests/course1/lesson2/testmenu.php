@@ -9,7 +9,7 @@ use Intervolga\Edu\Util\Registry\PathsRegistry;
 
 class TestMenu extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		$menuFiles = PathMaskParser::getFileSystemEntriesByMask('*.menu.php');
 		$publicDirs = PathsRegistry::getPublicDirsLevelOne();

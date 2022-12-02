@@ -9,7 +9,7 @@ use Intervolga\Edu\Util\Regex;
 
 class TestRegisterPageOption extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		$customPage = Option::get('main', 'custom_register_page');
 		Assert::notEmpty($customPage, Loc::getMessage('INTERVOLGA_EDU.REGISTER_PAGE_OPTION_NOT_SET'));

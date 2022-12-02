@@ -7,7 +7,7 @@ use Intervolga\Edu\Util\FileSystem;
 
 class TestLocalPhpInterface extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		Assert::directoryExists(FileSystem::getDirectory('/local/'));
 		Assert::directoryExists(FileSystem::getDirectory('/local/php_interface/'));

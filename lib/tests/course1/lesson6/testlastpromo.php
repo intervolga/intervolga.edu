@@ -8,7 +8,7 @@ use Intervolga\Edu\Util\Registry\Iblock\PromoIblock;
 
 class TestLastPromo extends BaseComponentTemplateTest
 {
-	public static function run()
+	protected static function run()
 	{
 		$iblock = PromoIblock::find();
 		Assert::registryDirectiry(LastPromoTemplate::class);

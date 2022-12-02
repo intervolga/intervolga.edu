@@ -8,7 +8,7 @@ use Intervolga\Edu\Util\Registry\PathsRegistry;
 
 class TestModule extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		$modulesDirs = PathsRegistry::getCustomModuleDirectories();
 		Assert::notEmpty($modulesDirs, Loc::getMessage('INTERVOLGA_EDU.NO_INTERVOLGA_MODULES'));

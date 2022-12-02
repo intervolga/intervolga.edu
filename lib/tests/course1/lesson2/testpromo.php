@@ -7,7 +7,7 @@ use Intervolga\Edu\Util\Registry\Directory\PromoDirectory;
 
 class TestPromo extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		Assert::registryDirectiry(PromoDirectory::class);
 	}

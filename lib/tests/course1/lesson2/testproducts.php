@@ -8,7 +8,7 @@ use Intervolga\Edu\Util\Menu;
 
 class TestProducts extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		$links = Menu::getMenuLinks('/.top.menu.php');
 		Assert::eq(

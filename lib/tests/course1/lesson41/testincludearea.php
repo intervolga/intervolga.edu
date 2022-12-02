@@ -14,7 +14,7 @@ class TestIncludeArea extends BaseTest
 		'inc',
 	];
 
-	public static function run()
+	protected static function run()
 	{
 		$sectIncName = static::getSectIncNameFromPartners();
 		Assert::notEmpty($sectIncName, Loc::getMessage('INTERVOLGA_EDU.PARTNERS_SECT_INC_NOT_FOUND', [

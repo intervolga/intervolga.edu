@@ -8,7 +8,7 @@ use Intervolga\Edu\Util\UpdateSystem;
 
 class TestLicense extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		$status = UpdateSystem::getStatus();
 		Assert::eq(

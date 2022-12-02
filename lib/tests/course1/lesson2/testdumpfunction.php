@@ -6,7 +6,7 @@ use Intervolga\Edu\Tests\BaseTest;
 
 class TestDumpFunction extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		Assert::functionExists('test_dump');
 	}

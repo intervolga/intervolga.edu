@@ -9,7 +9,7 @@ use Intervolga\Edu\Util\UpdateSystem;
 
 class TestUpdates extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		$status = UpdateSystem::getStatus();
 

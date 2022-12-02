@@ -13,7 +13,7 @@ class TestSiteCorporateIblocks extends BaseTest
 		return true;
 	}
 
-	public static function run()
+	protected static function run()
 	{
 		Assert::registryIblock(ProductsIblock::class);
 		Assert::registryIblock(NewsIblock::class);

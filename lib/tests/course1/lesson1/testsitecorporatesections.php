@@ -12,10 +12,10 @@ class TestSiteCorporateSections extends BaseTest
 		return true;
 	}
 
-	public static function run()
+	protected static function run()
 	{
-		Assert::directoryExists(FileSystem::getDirectory('/1products/'));
-		Assert::directoryExists(FileSystem::getDirectory('/1company/'));
+		Assert::directoryExists(FileSystem::getDirectory('/products/'));
+		Assert::directoryExists(FileSystem::getDirectory('/company/'));
 		Assert::directoryExists(FileSystem::getDirectory('/contacts/'));
 	}
 }

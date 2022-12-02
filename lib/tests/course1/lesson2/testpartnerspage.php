@@ -10,7 +10,7 @@ use Intervolga\Edu\Util\Registry\Directory\PartnersDirectory;
 
 class TestPartnersPage extends BaseTest
 {
-	public static function run()
+	protected static function run()
 	{
 		Assert::registryDirectiry(PartnersDirectory::class);
 		$directory = PartnersDirectory::find();
