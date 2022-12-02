@@ -64,7 +64,7 @@ abstract class BaseTest
 		if (mb_strlen($loc)) {
 			return $loc;
 		} else {
-			return '<<' . $code . '>>';
+			return '&lt;' . $code . '&gt;';
 		}
 	}
 

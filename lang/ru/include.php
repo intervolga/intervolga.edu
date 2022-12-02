@@ -14,7 +14,12 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON10'] = '10. Поиск';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1'] = '1. Создание модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы';
 
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATE'] = 'Проверка модуля «Корпоративный сайт производственной компании»';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE'] = 'Проверка установки модуля «Корпоративный сайт производственной компании»';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE_DESCRIPTION'] = 'Модуль должен быть <a href="/bitrix/admin/partner_modules.php?lang=ru" target="_blank">зарегистрирован</a> в системе и установлен';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEIBLOCKS'] = 'Проверка инфоблоков модуля «Корпоративный сайт производственной компании»';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEIBLOCKS_DESCRIPTION'] = 'Должны существовать инфоблоки Новости и [s1] Продукция';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATESECTIONS'] = 'Проверка публичных разделов модуля «Корпоративный сайт производственной компании»';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATESECTIONS_DESCRIPTION'] = 'Должны существовать разделы products, company, contacts';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECHECKER'] = 'Проверка системы';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_LICENSE'] = 'Проверка редакции';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_LICENSE_DESCRIPTION'] = 'Установить «1С-Битрикс: Управление сайтом», редакция «Стандарт»';

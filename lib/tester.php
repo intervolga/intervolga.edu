@@ -19,7 +19,9 @@ class Tester
 		return [
 			\Intervolga\Edu\Tests\Course1\Lesson1\TestLicense::class,
 			\Intervolga\Edu\Tests\Course1\Lesson1\TestUpdates::class,
-			\Intervolga\Edu\Tests\Course1\Lesson1\TestSiteCorporate::class,
+			\Intervolga\Edu\Tests\Course1\Lesson1\TestSiteCorporateModule::class,
+			\Intervolga\Edu\Tests\Course1\Lesson1\TestSiteCorporateIblocks::class,
+			\Intervolga\Edu\Tests\Course1\Lesson1\TestSiteCorporateSections::class,
 			\Intervolga\Edu\Tests\Course1\Lesson1\TestSiteChecker::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestServicesDeleted::class,
