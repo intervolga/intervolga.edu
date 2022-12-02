@@ -9,6 +9,11 @@ use Intervolga\Edu\Util\Registry\PathsRegistry;
 
 class TestMenu extends BaseTest
 {
+	public static function interceptErrors()
+	{
+		return true;
+	}
+
 	protected static function run()
 	{
 		$menuFiles = PathMaskParser::getFileSystemEntriesByMask('*.menu.php');
@@ -22,7 +27,10 @@ class TestMenu extends BaseTest
 			$publicDirs
 		);
 		$menuFiles = array_merge($menuFiles, $innerMenuFiles);
-		$regex = new Regex('/(\/.*)?index\.php/i', 'index.php', '');
+		$regex = new Regex(
+			'/(\/.*)?index\.php/i',
+			'index.php'
+		);
 		foreach ($menuFiles as $menuFile) {
 			Assert::fileContentNotMatches(
 				$menuFile,
