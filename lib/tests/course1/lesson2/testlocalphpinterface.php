@@ -7,6 +7,11 @@ use Intervolga\Edu\Util\FileSystem;
 
 class TestLocalPhpInterface extends BaseTest
 {
+	public static function interceptErrors()
+	{
+		return true;
+	}
+
 	protected static function run()
 	{
 		Assert::directoryExists(FileSystem::getDirectory('/local/'));
