@@ -99,5 +99,4 @@ $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_URL_PROBLEM'] = 'В шаблоне пи�
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_PAGE_PROBLEM'] = 'ссылка из письма';
 $MESS['INTERVOLGA_EDU.IBLOCK_FIELD_PARAM_SHOULD_BE_SET'] = 'Настройка #PARAM# поля #FIELD# должна быть #EXPECT#';
 
-$MESS['INTERVOLGA_EDU.LOST_FILE_SYSTEM_ENTRY'] = 'Не найден <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> (#REASON#)';
 $MESS['INTERVOLGA_EDU.THROWABLE'] = 'Произошло ужасное, проверяльщик сломался!<br>Ошибка #TYPE#: #ERROR#<br><br>#TRACE#';

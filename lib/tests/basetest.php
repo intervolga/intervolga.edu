@@ -1,11 +1,8 @@
 <?php
 namespace Intervolga\Edu\Tests;
 
-use Bitrix\Main\IO\FileSystemEntry;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Exceptions\AssertException;
-use Intervolga\Edu\Util\Admin;
-use Intervolga\Edu\Util\FileSystem;
 
 Loc::loadMessages(__FILE__);
 
@@ -109,21 +106,5 @@ abstract class BaseTest
 	public static function getErrors()
 	{
 		return (array)static::$errors[get_called_class()];
-	}
-
-	/**
-	 * @deprecated remove when asserts will be everywhere
-	 * @param FileSystemEntry $fileSystemEntry
-	 * @param $reason
-	 */
-	protected static function registerErrorIfFileSystemEntryLost(FileSystemEntry $fileSystemEntry, $reason)
-	{
-		if (!$fileSystemEntry->isExists()) {
-			static::registerError(Loc::getMessage('INTERVOLGA_EDU.LOST_FILE_SYSTEM_ENTRY', [
-				'#PATH#' => FileSystem::getLocalPath($fileSystemEntry),
-				'#ADMIN_LINK#' => Admin::getFileManUrl($fileSystemEntry),
-				'#REASON#' => $reason,
-			]));
-		}
 	}
 }
