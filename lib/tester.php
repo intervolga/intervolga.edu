@@ -54,6 +54,8 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson6\TestLastPromo::class,
 			\Intervolga\Edu\Tests\Course1\Lesson6\TestReviewsList::class,
 
+			\Intervolga\Edu\Tests\Course1\Lesson8\TestPromoComponent::class,
+
 			\Intervolga\Edu\Tests\Course1\Lesson10\TestSearchAction::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson1\TestModule::class,

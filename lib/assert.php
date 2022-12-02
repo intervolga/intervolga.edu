@@ -245,6 +245,31 @@ class Assert
 	}
 
 	/**
+	 * @param FileSystemEntry $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function fseNotExists(FileSystemEntry $value, string $message = '')
+	{
+		if ($value->isExists()) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_FSE_NOT_EXISTS',
+				[
+					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+						'#NAME#' => $value->getName(),
+						'#PATH#' => FileSystem::getLocalPath($value),
+						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
+					]),
+					'#NAME#' => $value->getName(),
+					'#PATH#' => FileSystem::getLocalPath($value),
+					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
+				],
+				$message
+			));
+		}
+	}
+
+	/**
 	 * @param File $value
 	 * @param string $message
 	 * @throws AssertException
