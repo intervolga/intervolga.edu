@@ -77,7 +77,7 @@ foreach ($testsTree as $courseCode => $course) {
 		$title = Loc::getMessage('INTERVOLGA_EDU.LESSON_HEADER', [
 			'#LESSON#' => $lesson['TITLE'],
 			'#TOTAL#' => count($lesson['TESTS']),
-			'#DONE#' => $okStat[$courseCode]['LESSONS'][$lessonCode]['ERRORS'],
+			'#DONE#' => intval($okStat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']),
 		]);
 		echo '<h2>' . $title . '</h2>';
 		$counter = 1;
@@ -89,7 +89,7 @@ foreach ($testsTree as $courseCode => $course) {
 			];
 			if ($test['DESCRIPTION'])
 			{
-				$messageParams['DETAILS'] = '<i>' . $test['DESCRIPTION'] . '</i><br><br>';
+				$messageParams['DETAILS'] = '<div class="desc">' . $test['DESCRIPTION'] . '</div>';
 			}
 			if ($errors) {
 				$messageParams['DETAILS'] .= implode('<br>', $errors);
@@ -104,3 +104,16 @@ foreach ($testsTree as $courseCode => $course) {
 	}
 }
 $tabControl->end();
+?>
+<style type="text/css">
+	#tabControl_layout .adm-info-message {
+		margin: 2px 0;
+		padding: 3px 5px 3px 74px;
+	}
+	#tabControl_layout .adm-info-message .desc {
+		padding-top: 3px;
+		padding-bottom: 3px;
+		font-size: smaller;
+		font-style: italic;
+	}
+</style>
