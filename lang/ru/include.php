@@ -72,7 +72,6 @@ $MESS['INTERVOLGA_EDU.PREFIX_NOTATION_SUCKS'] = 'избавляемся от в�
 $MESS['INTERVOLGA_EDU.IMAGES_DELETE_REASON'] = 'мусор';
 $MESS['INTERVOLGA_EDU.SEARCH_FORM_ACTION_HAS_INDEX_PHP'] = 'Форма поиска должна быть настроена на раздел поиска, а не на его index.php-страницу';
 $MESS['INTERVOLGA_EDU.PRODUCTS_CORRECT_NAME'] = 'Каталог';
-$MESS['INTERVOLGA_EDU.PRODUCTS_MENU_INCORRECT_NAME'] = 'Пункт меню «Продукция» переименовать в «Каталог»';
 $MESS['INTERVOLGA_EDU.NO_INTERVOLGA_MODULES'] = 'Собственный модуль в /local/modules/ с названием вида intervolga.#ВАШЕ НАЗВАНИЕ# не найден';
 $MESS['INTERVOLGA_EDU.INTERVOLGA_MODULE_NOT_INSTALLED'] = 'Собственный модуль #MODULE# не установлен';
 $MESS['INTERVOLGA_EDU.IBLOCK_OPTIONS_LOST'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: не заданы настройки формы редактирования элемента (с флагом Для всех)';
