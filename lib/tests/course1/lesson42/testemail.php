@@ -12,19 +12,15 @@ class TestEmail extends BaseTest
 {
 	public static function run()
 	{
-		if ($messageText = static::getMessageText()) {
-			if ($url = static::getUrlFromText($messageText)) {
-				$filePath = static::urlToFilePath($url);
-				$file = FileSystem::getFile($filePath);
-				Assert::fseExists($file, Loc::getMessage('INTERVOLGA_EDU.USER_PASS_REQUEST_PAGE_PROBLEM'));
-			}
-			else {
-				static::registerError(Loc::getMessage('INTERVOLGA_EDU.USER_PASS_REQUEST_URL_PROBLEM'));
-			}
-		}
-		else {
-			static::registerError(Loc::getMessage('INTERVOLGA_EDU.USER_PASS_REQUEST_TEXT_PROBLEM'));
-		}
+		$messageText = static::getMessageText();
+		Assert::notEmpty($messageText, Loc::getMessage('INTERVOLGA_EDU.USER_PASS_REQUEST_TEXT_PROBLEM'));
+
+		$url = static::getUrlFromText($messageText);
+		Assert::notEmpty($url, Loc::getMessage('INTERVOLGA_EDU.USER_PASS_REQUEST_URL_PROBLEM'));
+
+		$filePath = static::urlToFilePath($url);
+		$file = FileSystem::getFile($filePath);
+		Assert::fseExists($file, Loc::getMessage('INTERVOLGA_EDU.USER_PASS_REQUEST_PAGE_PROBLEM'));
 	}
 
 	protected static function getMessageText(): string
