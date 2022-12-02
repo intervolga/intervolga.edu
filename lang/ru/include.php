@@ -61,7 +61,6 @@ $MESS['INTERVOLGA_EDU.UGLY_RESULT_CHECK_FOUND'] = 'достаточно для �
 $MESS['INTERVOLGA_EDU.PREFIX_NOTATION_SUCKS'] = 'избавляемся от венгерской нотации: #NEW#';
 $MESS['INTERVOLGA_EDU.PRODUCTS_CORRECT_NAME'] = 'Каталог';
 $MESS['INTERVOLGA_EDU.NO_INTERVOLGA_MODULES'] = 'Собственный модуль в /local/modules/ с названием вида intervolga.#ВАШЕ НАЗВАНИЕ# не найден';
-$MESS['INTERVOLGA_EDU.INTERVOLGA_MODULE_NOT_INSTALLED'] = 'Собственный модуль #MODULE# не установлен';
 $MESS['INTERVOLGA_EDU.IBLOCK_OPTIONS_LOST'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: не заданы настройки формы редактирования элемента (с флагом Для всех)';
 $MESS['INTERVOLGA_EDU.IBLOCK_ELEMENTS_NOT_ENOUGH'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: недостаточно элементов, должно быть хотя бы #COUNT#';
 $MESS['INTERVOLGA_EDU.USE_ONE_TAB_FOR_IBLOCK_FORM'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: разместите все поля при редактировании элемента на одной вкладке';
