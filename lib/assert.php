@@ -93,6 +93,26 @@ class Assert
 		}
 	}
 
+	/**
+	 * @param string $value
+	 * @param Regex $regex
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function matches(string $value, Regex $regex, string $message = '')
+	{
+		preg_match_all($regex->getRegex(), $value, $matches, PREG_SET_ORDER);
+		if (!$matches) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_MATCHES',
+				[
+					'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
+				],
+				$message
+			));
+		}
+	}
+
 	public static function keyExists($array, $key, $message = '')
 	{
 		if (!array_key_exists($key, $array)) {

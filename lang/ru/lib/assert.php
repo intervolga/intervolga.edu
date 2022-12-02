@@ -3,6 +3,7 @@ $MESS['INTERVOLGA_EDU.ASSERT_EQUAL'] = 'Должно быть <b>#EXPECT#</b>, �
 $MESS['INTERVOLGA_EDU.ASSERT_NOT_EMPTY'] = 'Должно быть <b>задано</b>, сейчас #VALUE#';
 $MESS['INTERVOLGA_EDU.ASSERT_EMPTY'] = 'Должно быть <b>не задано</b>, сейчас #VALUE#';
 $MESS['INTERVOLGA_EDU.ASSERT_TRUE'] = 'Должно быть true, сейчас #VALUE#';
+$MESS['INTERVOLGA_EDU.ASSERT_MATCHES'] = 'Должно содержать текст вида #EXPECT#';
 $MESS['INTERVOLGA_EDU.ASSERT_KEY_EXISTS'] = 'Ключ #VALUE# должен существовать';
 $MESS['INTERVOLGA_EDU.ASSERT_KEY_NOT_EXISTS'] = 'Ключ #VALUE# не должен существовать';
 $MESS['INTERVOLGA_EDU.ASSERT_FUNCTION_EXISTS'] = 'Функция #VALUE# должна существовать';

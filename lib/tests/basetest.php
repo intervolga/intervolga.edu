@@ -2,6 +2,7 @@
 namespace Intervolga\Edu\Tests;
 
 use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Assert;
 use Intervolga\Edu\Exceptions\AssertException;
 
 Loc::loadMessages(__FILE__);
@@ -87,7 +88,7 @@ abstract class BaseTest
 
 	public static function run()
 	{
-		static::registerError('Not implemented yet');
+		Assert::true(false, 'Not implemented yet');
 	}
 
 	/**
