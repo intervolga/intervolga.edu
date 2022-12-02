@@ -9,8 +9,6 @@ Loc::loadMessages(__FILE__);
 
 abstract class BaseTest
 {
-	protected static $errors = [];
-
 	public static function getCourseCode(): string
 	{
 		$class = get_called_class();
@@ -66,46 +64,10 @@ abstract class BaseTest
 	}
 
 	/**
-	 * @deprecated remove when asserts will be everywhere
 	 * @throws AssertException
 	 */
-	public static function runSafe()
-	{
-		try {
-			static::run();
-		} catch (AssertException $exception) {
-			throw $exception;
-		} catch (\Throwable $throwable) {
-			static::registerError(Loc::getMessage('INTERVOLGA_EDU.THROWABLE',
-				[
-					'#TYPE#' => get_class($throwable),
-					'#ERROR#' => $throwable->getMessage(),
-					'#TRACE#' => $throwable->getTraceAsString()
-				]
-			));
-		}
-	}
-
 	public static function run()
 	{
 		Assert::true(false, 'Not implemented yet');
-	}
-
-	/**
-	 * @deprecated remove when asserts will be everywhere
-	 * @param string $error
-	 */
-	protected static function registerError($error)
-	{
-		static::$errors[get_called_class()][] = $error;
-	}
-
-	/**
-	 * @deprecated remove when asserts will be everywhere
-	 * @return string[]
-	 */
-	public static function getErrors()
-	{
-		return (array)static::$errors[get_called_class()];
 	}
 }

@@ -5,13 +5,11 @@ class Regex
 {
 	protected $regex = '';
 	protected $regexExplanation = '';
-	protected $tipToReplace = '';
 
-	public function __construct($regex, $regexExplanation, $tipToReplace = '')
+	public function __construct($regex, $regexExplanation)
 	{
 		$this->regex = $regex;
 		$this->regexExplanation = $regexExplanation;
-		$this->tipToReplace = $tipToReplace;
 	}
 
 	public function getRegex()
@@ -22,14 +20,5 @@ class Regex
 	public function getRegexExplanation()
 	{
 		return $this->regexExplanation;
-	}
-
-	/**
-	 * @deprecated Assert dont use it
-	 * @return mixed|string
-	 */
-	public function getTipToReplace()
-	{
-		return $this->tipToReplace;
 	}
 }

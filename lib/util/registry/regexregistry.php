@@ -39,8 +39,7 @@ class RegexRegistry
 		return [
 			new Regex(
 				'/B_PROLOG_INCLUDED ?=== ?true ?\|\| ?die(\(\))?/mi',
-				'B_PROLOG_INCLUDED === true || die()',
-				Loc::getMessage('INTERVOLGA_EDU.CUSTOM_CORE_CHECK')
+				'B_PROLOG_INCLUDED === true || die()'
 			)
 		];
 	}
@@ -53,8 +52,7 @@ class RegexRegistry
 		return [
 			new Regex(
 				'/<\?[^=p].*/m',
-				'<?',
-				Loc::getMessage('INTERVOLGA_EDU.SHORT_PHP_TAG_RESTRICTED')
+				'<?'
 			),
 		];
 	}
@@ -67,13 +65,11 @@ class RegexRegistry
 		return [
 			new Regex(
 				'/if \(!empty\(\$arResult\)\)/mi',
-				'if (!empty($arResult))',
-				Loc::getMessage('INTERVOLGA_EDU.UGLY_RESULT_CHECK_FOUND', ['#NEW#' => 'if ($arResult)'])
+				'if (!empty($arResult))'
 			),
 			new Regex(
 				'/if \(empty\(\$arResult\)\)/mi',
-				'if (empty($arResult))',
-				Loc::getMessage('INTERVOLGA_EDU.UGLY_RESULT_CHECK_FOUND', ['#NEW#' => 'if (!$arResult)'])
+				'if (empty($arResult))'
 			),
 		];
 	}

@@ -38,8 +38,7 @@ abstract class BaseComponentTemplateTest extends BaseTest
 		$regexesNotToFind = array_merge($regexesNotToFind, [
 			new Regex(
 				'/href=""/i',
-				'href=""',
-				Loc::getMessage('INTERVOLGA_EDU.EMPTY_HREF')
+				'href=""'
 			),
 		]);
 

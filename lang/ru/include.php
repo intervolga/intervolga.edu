@@ -57,8 +57,6 @@ $MESS['INTERVOLGA_EDU.IMG_TAG'] = 'тег <img>';
 $MESS['INTERVOLGA_EDU.TABLE_TAG'] = 'тег <table>';
 $MESS['INTERVOLGA_EDU.SHORT_PHP_TAG_RESTRICTED'] = 'запрещены короткие открывающие PHP-теги';
 $MESS['INTERVOLGA_EDU.OLD_FUNCTION_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> вместо #NEW# используется устаревший код: #OLD#';
-$MESS['INTERVOLGA_EDU.UGLY_RESULT_CHECK_FOUND'] = 'достаточно для работы и удобно для восприятия: #NEW#';
-$MESS['INTERVOLGA_EDU.PREFIX_NOTATION_SUCKS'] = 'избавляемся от венгерской нотации: #NEW#';
 $MESS['INTERVOLGA_EDU.PRODUCTS_CORRECT_NAME'] = 'Каталог';
 $MESS['INTERVOLGA_EDU.NO_INTERVOLGA_MODULES'] = 'Собственный модуль в /local/modules/ с названием вида intervolga.#ВАШЕ НАЗВАНИЕ# не найден';
 $MESS['INTERVOLGA_EDU.IBLOCK_OPTIONS_LOST'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: не заданы настройки формы редактирования элемента (с флагом Для всех)';
@@ -81,7 +79,6 @@ $MESS['INTERVOLGA_EDU.CAROUSEL_TEMPLATE_VARIANTS'] = 'варианты назв�
 $MESS['INTERVOLGA_EDU.USE_FIELDS_FOR_FIELDS'] = 'обращение к полям только через [FIELDS][#ПОЛЕ#]';
 $MESS['INTERVOLGA_EDU.USE_DISPLAY_PROPERTIES_FOR_PROPERTIES'] = 'обращение к свойствам только через [DISPLAY_PROPERTIES][#СВОЙСТВО#]';
 $MESS['INTERVOLGA_EDU.USE_DISPLAY_PROPERTIES_FOR_PROPERTIES_ECHO'] = 'вывод свойств только через [DISPLAY_PROPERTIES][#СВОЙСТВО#][DISPLAY_VALUE]';
-$MESS['INTERVOLGA_EDU.EMPTY_HREF'] = 'href не может быть пустым';
 $MESS['INTERVOLGA_EDU.PARTNERS_DIRECTORY'] = 'Партнерам';
 $MESS['INTERVOLGA_EDU.REVIEWS_DIRECTORY'] = 'Отзывы';
 $MESS['INTERVOLGA_EDU.PROMO_DIRECTORY'] = 'Акции';
@@ -96,5 +93,3 @@ $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_TEXT_PROBLEM'] = 'Шаблон пись�
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_URL_PROBLEM'] = 'В шаблоне письма «Запрос на смену пароля» нет валидной ссылки';
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_PAGE_PROBLEM'] = 'ссылка из письма';
 $MESS['INTERVOLGA_EDU.IBLOCK_FIELD_PARAM_SHOULD_BE_SET'] = 'Настройка #PARAM# поля #FIELD# должна быть #EXPECT#';
-
-$MESS['INTERVOLGA_EDU.THROWABLE'] = 'Произошло ужасное, проверяльщик сломался!<br>Ошибка #TYPE#: #ERROR#<br><br>#TRACE#';

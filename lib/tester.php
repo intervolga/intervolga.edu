@@ -66,7 +66,7 @@ class Tester
 		 */
 		foreach (static::getTestClasses() as $testClass) {
 			try {
-				$testClass::runSafe();
+				$testClass::run();
 			} catch (AssertException $assertException) {
 				static::$exceptions[$testClass] = $assertException;
 			}
@@ -83,7 +83,6 @@ class Tester
 		 * @var BaseTest $testClass
 		 */
 		foreach (static::getTestClasses() as $testClass) {
-			$errors[$testClass::getCourseCode()][$testClass::getLessonCode()][$testClass] = $testClass::getErrors();
 			if ($exception = static::$exceptions[$testClass])
 			{
 				$errors[$testClass::getCourseCode()][$testClass::getLessonCode()][$testClass][] = $exception->getMessage();
