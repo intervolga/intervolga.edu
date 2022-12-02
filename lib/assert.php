@@ -9,6 +9,7 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
+use Intervolga\Edu\Util\Menu;
 use Intervolga\Edu\Util\Regex;
 use Intervolga\Edu\Util\Registry\Directory\BaseDirectory;
 use Intervolga\Edu\Util\Registry\Iblock\BaseIblock;
@@ -85,6 +86,32 @@ class Assert
 				'INTERVOLGA_EDU.ASSERT_TRUE',
 				[
 					'#VALUE#' => static::valueToString($value),
+				],
+				$message
+			));
+		}
+	}
+
+	public static function keyExists($array, $key, $message = '')
+	{
+		if (!array_key_exists($key, $array)) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_KEY_EXISTS',
+				[
+					'#VALUE#' => static::valueToString($key),
+				],
+				$message
+			));
+		}
+	}
+
+	public static function keyNotExists($array, $key, $message = '')
+	{
+		if (array_key_exists($key, $array)) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_KEY_NOT_EXISTS',
+				[
+					'#VALUE#' => static::valueToString($key),
 				],
 				$message
 			));
@@ -353,6 +380,53 @@ class Assert
 				$message
 			));
 
+		}
+	}
+
+	public static function menuItemExists($menuPath, $item, string $message = '')
+	{
+		$menuFile = FileSystem::getFile($menuPath);
+		static::fseExists($menuFile);
+		$links = Menu::getMenuLinks($menuPath);
+		if (!array_key_exists($item, $links)) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_MENU_ITEM_EXISTS',
+				[
+					'#MENU#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+						'#NAME#' => $menuFile->getName(),
+						'#PATH#' => FileSystem::getLocalPath($menuFile),
+						'#FILEMAN_URL#' => Admin::getFileManUrl($menuFile),
+					]),
+					'#ITEM#' => $item,
+					'#NAME#' => $menuFile->getName(),
+					'#PATH#' => FileSystem::getLocalPath($menuFile),
+					'#FILEMAN_URL#' => Admin::getFileManUrl($menuFile),
+				],
+				$message
+			));
+		}
+	}
+
+	public static function menuItemNotExists(string $menuPath, string $item, string $message = '')
+	{
+		$menuFile = FileSystem::getFile($menuPath);
+		$links = Menu::getMenuLinks($menuPath);
+		if (array_key_exists($item, $links)) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_MENU_ITEM_NOT_EXISTS',
+				[
+					'#MENU#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+						'#NAME#' => $menuFile->getName(),
+						'#PATH#' => FileSystem::getLocalPath($menuFile),
+						'#FILEMAN_URL#' => Admin::getFileManUrl($menuFile),
+					]),
+					'#ITEM#' => $item,
+					'#NAME#' => $menuFile->getName(),
+					'#PATH#' => FileSystem::getLocalPath($menuFile),
+					'#FILEMAN_URL#' => Admin::getFileManUrl($menuFile),
+				],
+				$message
+			));
 		}
 	}
 
