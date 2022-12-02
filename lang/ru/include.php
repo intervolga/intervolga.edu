@@ -21,6 +21,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEIBLOCKS_DESCRIPTION'] = 'До
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATESECTIONS'] = 'Проверка публичных разделов модуля «Корпоративный сайт производственной компании»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATESECTIONS_DESCRIPTION'] = 'Должны существовать разделы products, company, contacts';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECHECKER'] = 'Проверка системы';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECHECKER_DESCRIPTION'] = 'Не должно быть ошибок в <a href="/bitrix/admin/site_checker.php?lang=ru" target="_blank">Проверке системы</a>';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_LICENSE'] = 'Проверка редакции';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_LICENSE_DESCRIPTION'] = 'Установить «1С-Битрикс: Управление сайтом», редакция «Стандарт»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_UPDATES'] = 'Проверка обновлений';
@@ -56,7 +57,6 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Собственное UF-свой
 
 $MESS['INTERVOLGA_EDU.LICENSE_NAME'] = 'Стандарт';
 $MESS['INTERVOLGA_EDU.EMPTY_SITE_CHECK_LOG'] = 'Проверка системы не запускалась';
-$MESS['INTERVOLGA_EDU.SITE_CHECK_ERROR'] = 'Найдены ошибки в журнале проверки системы (#COUNT# шт, последняя проверка запускалась #DATE_CHECK#)';
 $MESS['INTERVOLGA_EDU.NOT_LOWER_CASE'] = 'содержать латинские буквы только в нижнем регистре';
 $MESS['INTERVOLGA_EDU.UPLOAD_PATH'] = 'путь к картинке в /upload/';
 $MESS['INTERVOLGA_EDU.IMG_TAG'] = 'тег <img>';
