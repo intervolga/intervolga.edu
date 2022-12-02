@@ -35,7 +35,6 @@ class TestLowerCase extends BaseTest
 
 		$regex = new Regex(
 			'/^[a-z0-9_\-.]+$/u',
-			'',
 			Loc::getMessage('INTERVOLGA_EDU.NOT_LOWER_CASE')
 		);
 

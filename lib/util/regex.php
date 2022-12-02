@@ -24,6 +24,10 @@ class Regex
 		return $this->regexExplanation;
 	}
 
+	/**
+	 * @deprecated Assert dont use it
+	 * @return mixed|string
+	 */
 	public function getTipToReplace()
 	{
 		return $this->tipToReplace;

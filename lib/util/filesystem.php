@@ -8,12 +8,6 @@ use Bitrix\Main\IO\FileSystemEntry;
 
 class FileSystem
 {
-	const NON_PUBLIC_DIRS = [
-		'/upload/',
-		'/bitrix/',
-		'/local/',
-	];
-
 	public static function getDirectory(string $localPath): Directory
 	{
 		return new Directory(Application::getDocumentRoot() . $localPath);

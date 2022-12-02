@@ -7,6 +7,12 @@ class Param
 	protected $assertValue;
 	protected $paramName = '';
 
+	/**
+	 * @deprecated Assert
+	 * @param string $paramName
+	 * @param string $value
+	 * @param string $assertValue
+	 */
 	public function __construct(string $paramName, string $value, string $assertValue)
 	{
 		$this->paramName = $paramName;

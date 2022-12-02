@@ -153,7 +153,7 @@ class Assert
 						'#PATH#' => FileSystem::getLocalPath($value),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
 					]),
-					'#EXPECT#' => htmlspecialchars($regex->getTipToReplace()),
+					'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
 					'#NAME#' => $value->getName(),
 					'#PATH#' => FileSystem::getLocalPath($value),
 					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
