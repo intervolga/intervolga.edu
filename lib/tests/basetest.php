@@ -6,11 +6,6 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
-use Intervolga\Edu\Util\Param;
-use Intervolga\Edu\Util\Regex;
-use Intervolga\Edu\Util\Registry\Directory\BaseDirectory;
-use Intervolga\Edu\Util\Registry\Iblock\BaseIblock;
-use Intervolga\Edu\Util\Registry\Iblock\Property\BaseProperty;
 
 Loc::loadMessages(__FILE__);
 
