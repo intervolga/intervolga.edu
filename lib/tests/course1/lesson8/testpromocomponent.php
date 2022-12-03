@@ -4,6 +4,8 @@ namespace Intervolga\Edu\Tests\Course1\Lesson8;
 use Bitrix\Main\Component\ParametersTable;
 use Intervolga\Edu\Assert;
 use Intervolga\Edu\Tests\BaseTest;
+use Intervolga\Edu\Util\ComponentTemplate;
+use Intervolga\Edu\Util\ComponentTemplates\NewsTemplate;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\PathMaskParser;
 use Intervolga\Edu\Util\Registry\Directory\PromoDirectory;
@@ -30,27 +32,31 @@ class TestPromoComponent extends BaseTest
 		]);
 		$fetch = $getList->fetch();
 		Assert::notEmpty($fetch['TEMPLATE_NAME']);
-
-		$fse = PathMaskParser::getFileSystemEntriesByMask('/local/templates/*/components/*/news/' . $fetch['TEMPLATE_NAME'] . '/');
-		Assert::directoryExists($fse[0]);
-
-		$trash = PathMaskParser::getFileSystemEntriesByMasks(
-			[
-				'/.parameters.php',
-				'/.description.php',
-				'/search.php',
-				'/section.php',
-				'/lang/en/',
-				'/lang/en/*',
-				'/lang/ru/.parameters.php',
-				'/lang/ru/.description.php',
-				'/lang/ru/search.php',
-				'/lang/ru/section.php',
-			],
-			$fse
-		);
-		foreach ($trash as $trashFse) {
-			Assert::fseNotExists($trashFse);
+		if ($fetch['TEMPLATE_NAME']) {
+			$fse = PathMaskParser::getFileSystemEntriesByMask('/local/templates/*/components/*/news/' . $fetch['TEMPLATE_NAME'] . '/');
+			if ($fse) {
+				Assert::directoryExists($fse[0]);
+				$templateObject = new NewsTemplate($fse[0]);
+				foreach ($templateObject->getUnknownFileSystemEntries() as $unknownFileSystemEntry) {
+					Assert::fseNotExists($unknownFileSystemEntry);
+				}
+				Assert::fseNotExists($templateObject->getRssFile());
+				Assert::fseNotExists($templateObject->getRssSectionFile());
+				Assert::fseNotExists($templateObject->getSearchFile());
+				Assert::fseNotExists($templateObject->getSectionFile());
+				foreach ($templateObject->getLangForeignDirs() as $item) {
+					Assert::directoryNotExists($item);
+				}
+				if ($templateObject->getLangRuDir())
+				{
+					foreach ($templateObject->getLangRuDir()->getChildren() as $child) {
+						if (!in_array($child->getName(), ['detail.php', 'news.php']))
+						{
+							Assert::fseNotExists($child);
+						}
+					}
+				}
+			}
 		}
 	}
 }

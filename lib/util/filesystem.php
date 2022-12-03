@@ -37,4 +37,17 @@ class FileSystem
 	{
 		return new File($directory->getPath() . '/' . $innerFileName);
 	}
+
+	/**
+	 * @param FileSystemEntry $fileSystemEntry1
+	 * @param FileSystemEntry $fileSystemEntry2
+	 * @return bool
+	 */
+	public static function isSame(FileSystemEntry $fileSystemEntry1, FileSystemEntry $fileSystemEntry2): bool
+	{
+		$sameTypes = ($fileSystemEntry1->isFile() == $fileSystemEntry2->isFile());
+		$sameNames = $fileSystemEntry1->getPath() == $fileSystemEntry2->getPath();
+		return $sameNames && $sameTypes;
+
+	}
 }
