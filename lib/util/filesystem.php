@@ -27,4 +27,14 @@ class FileSystem
 
 		return $path;
 	}
+
+	public static function getInnerDirectory(Directory $directory, string $innerDirectoryName): Directory
+	{
+		return new Directory($directory->getPath() . '/' . $innerDirectoryName . '/');
+	}
+
+	public static function getInnerFile(Directory $directory, string $innerFileName): File
+	{
+		return new File($directory->getPath() . '/' . $innerFileName);
+	}
 }
