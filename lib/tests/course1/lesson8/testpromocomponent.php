@@ -3,9 +3,9 @@ namespace Intervolga\Edu\Tests\Course1\Lesson8;
 
 use Bitrix\Main\Component\ParametersTable;
 use Intervolga\Edu\Asserts\Assert;
+use Intervolga\Edu\FilesTree\NewsTemplate;
 use Intervolga\Edu\Locator\IO\PromoSection;
 use Intervolga\Edu\Tests\BaseTest;
-use Intervolga\Edu\Util\ComponentTemplates\NewsTemplate;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\PathMaskParser;
 

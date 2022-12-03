@@ -1,5 +1,5 @@
 <?php
-namespace Intervolga\Edu\Util\ComponentTemplates;
+namespace Intervolga\Edu\FilesTree;
 
 use Bitrix\Main\IO\File;
 use Intervolga\Edu\Util\FileSystem;

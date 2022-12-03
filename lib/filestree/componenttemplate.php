@@ -1,5 +1,5 @@
 <?php
-namespace Intervolga\Edu\Util\ComponentTemplates;
+namespace Intervolga\Edu\FilesTree;
 
 use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\File;
@@ -7,7 +7,7 @@ use Bitrix\Main\IO\FileNotFoundException;
 use Bitrix\Main\IO\FileSystemEntry;
 use Intervolga\Edu\Util\FileSystem;
 
-abstract class BaseComponentTemplate extends Directory
+abstract class ComponentTemplate extends Directory
 {
 	public function getLangDir(): Directory
 	{

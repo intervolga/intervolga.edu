@@ -1,21 +1,21 @@
 <?php
 namespace Intervolga\Edu\Asserts;
 
-use Intervolga\Edu\Util\ComponentTemplates\BaseComponentTemplate;
+use Intervolga\Edu\FilesTree\ComponentTemplate;
 
 class AssertComponentTemplate
 {
-	public static function assertNoTrashFiles(BaseComponentTemplate $template)
+	public static function assertNoTrashFiles(ComponentTemplate $template)
 	{
 
 	}
 
-	public static function assertNoUnknownFiles(BaseComponentTemplate $template)
+	public static function assertNoUnknownFiles(ComponentTemplate $template)
 	{
 
 	}
 
-	public static function assertNoEnFiles(BaseComponentTemplate $template)
+	public static function assertNoEnFiles(ComponentTemplate $template)
 	{
 
 	}

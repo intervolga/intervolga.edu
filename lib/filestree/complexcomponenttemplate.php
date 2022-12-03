@@ -1,10 +1,10 @@
 <?php
-namespace Intervolga\Edu\Util\ComponentTemplates;
+namespace Intervolga\Edu\FilesTree;
 
 use Bitrix\Main\IO\Directory;
 use Intervolga\Edu\Util\FileSystem;
 
-class ComplexComponentTemplate extends BaseComponentTemplate
+class ComplexComponentTemplate extends ComponentTemplate
 {
 	public function getInnerTemplatesDir(): Directory
 	{
