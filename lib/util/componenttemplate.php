@@ -119,25 +119,24 @@ class ComponentTemplate
 		return FileSystem::getInnerFile($this->directory, 'template.php');
 	}
 
-	public function getUnknownFiles()
+	public function getUnknownFse()
 	{
 		$result = [];
+		$knownArray = [
+			'.description.php',
+			'.parameters.php',
+			'result_modifier.php',
+			'component_epilog.php',
+			'template.php',
+
+			'bitrix',
+			'lang',
+			'images',
+		];
 		foreach ($this->directory->getChildren() as $item) {
-			if ($item instanceof File)
+			if (!in_array($item->getName(), $knownArray))
 			{
-
-			}
-		}
-		return $result;
-	}
-
-	public function getUnknownDirectories()
-	{
-		$result = [];
-		foreach ($this->directory->getChildren() as $item) {
-			if ($item instanceof Directory)
-			{
-
+				$result[] = $item;
 			}
 		}
 		return $result;
