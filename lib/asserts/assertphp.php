@@ -1,12 +1,10 @@
 <?php
-namespace Intervolga\Edu\Util\Registry;
+namespace Intervolga\Edu\Asserts;
 
+use Bitrix\Main\IO\File;
 use Intervolga\Edu\Util\Regex;
 
-/**
- * @deprecated
- */
-class RegexRegistry
+class AssertPhp extends Assert
 {
 	/**
 	 * @return Regex[]
@@ -91,5 +89,44 @@ class RegexRegistry
 				'$arItem'
 			),
 		];
+	}
+
+	public static function assertGoodPhp(File $phpFile)
+	{
+		static::assertNoOldCore($phpFile);
+		static::assertCustomCoreCheck($phpFile);
+		static::assertLongPhpTags($phpFile);
+		static::assertStyleCode($phpFile);
+	}
+
+	public static function assertNoOldCore(File $phpFile)
+	{
+		foreach (static::getOldCore() as $regex) {
+			Assert::fileContentNotMatches($phpFile, $regex);
+		}
+	}
+
+	public static function assertCustomCoreCheck(File $phpFile)
+	{
+		foreach (static::getCustomCore() as $regex) {
+			Assert::fileContentMatches($phpFile, $regex);
+		}
+	}
+
+	public static function assertLongPhpTags(File $phpFile)
+	{
+		foreach (static::getShortPhpTag() as $regex) {
+			Assert::fileContentNotMatches($phpFile, $regex);
+		}
+	}
+
+	public static function assertStyleCode(File $phpFile)
+	{
+		foreach (static::getUglyCodeFragments() as $regex) {
+			Assert::fileContentNotMatches($phpFile, $regex);
+		}
+		foreach (static::getPrefixNotaionFragments() as $regex) {
+			Assert::fileContentNotMatches($phpFile, $regex);
+		}
 	}
 }
