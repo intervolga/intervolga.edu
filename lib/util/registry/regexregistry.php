@@ -27,6 +27,10 @@ class RegexRegistry
 				'/IncludeTemplateLangFile/mi',
 				'IncludeTemplateLangFile'
 			),
+			new Regex(
+				'/CModule::IncludeModule/mi',
+				'CModule::IncludeModule'
+			),
 		];
 	}
 
