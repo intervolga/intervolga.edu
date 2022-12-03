@@ -86,6 +86,7 @@ class Tester
 		 * @var BaseTest $testClass
 		 */
 		foreach (static::getTestClasses() as $testClass) {
+			$errors[$testClass::getCourseCode()][$testClass::getLessonCode()][$testClass] = [];
 			if ($exception = static::$exceptions[$testClass])
 			{
 				if ($exception->getExceptions())
