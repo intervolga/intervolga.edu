@@ -35,10 +35,8 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestLowerCase::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestTemplates::class,
-			\Intervolga\Edu\Tests\Course1\Lesson3\TestCustomCoreCheck::class,
-			\Intervolga\Edu\Tests\Course1\Lesson3\TestLongPhpTag::class,
+			\Intervolga\Edu\Tests\Course1\Lesson3\TestCode::class,
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestScripts::class,
-			\Intervolga\Edu\Tests\Course1\Lesson3\TestCoreD7::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestImages::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestUglyCheckResult::class,

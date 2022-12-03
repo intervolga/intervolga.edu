@@ -91,36 +91,36 @@ class AssertPhp extends Assert
 		];
 	}
 
-	public static function assertGoodPhp(File $phpFile)
+	public static function goodCode(File $phpFile)
 	{
-		static::assertNoOldCore($phpFile);
-		static::assertCustomCoreCheck($phpFile);
-		static::assertLongPhpTags($phpFile);
-		static::assertStyleCode($phpFile);
+		static::noOldCore($phpFile);
+		static::customCoreCheck($phpFile);
+		static::longPhpTags($phpFile);
+		static::styleCode($phpFile);
 	}
 
-	public static function assertNoOldCore(File $phpFile)
+	public static function noOldCore(File $phpFile)
 	{
 		foreach (static::getOldCore() as $regex) {
 			Assert::fileContentNotMatches($phpFile, $regex);
 		}
 	}
 
-	public static function assertCustomCoreCheck(File $phpFile)
+	public static function customCoreCheck(File $phpFile)
 	{
 		foreach (static::getCustomCore() as $regex) {
 			Assert::fileContentMatches($phpFile, $regex);
 		}
 	}
 
-	public static function assertLongPhpTags(File $phpFile)
+	public static function longPhpTags(File $phpFile)
 	{
 		foreach (static::getShortPhpTag() as $regex) {
 			Assert::fileContentNotMatches($phpFile, $regex);
 		}
 	}
 
-	public static function assertStyleCode(File $phpFile)
+	public static function styleCode(File $phpFile)
 	{
 		foreach (static::getUglyCodeFragments() as $regex) {
 			Assert::fileContentNotMatches($phpFile, $regex);

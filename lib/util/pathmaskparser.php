@@ -2,6 +2,7 @@
 namespace Intervolga\Edu\Util;
 
 use Bitrix\Main\IO\Directory;
+use Bitrix\Main\IO\File;
 use Bitrix\Main\IO\FileSystemEntry;
 
 class PathMaskParser
@@ -9,7 +10,7 @@ class PathMaskParser
 	/**
 	 * @param string[] $masks
 	 * @param Directory[] $roots
-	 * @return FileSystemEntry[]
+	 * @return File[]|Directory[]
 	 */
 	public static function getFileSystemEntriesByMasks(array $masks, array $roots = []): array
 	{
