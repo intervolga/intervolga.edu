@@ -2,7 +2,7 @@
 namespace Intervolga\Edu\Tests\Course1\Lesson6;
 
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Assert;
+use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTestIblock;
 use Intervolga\Edu\Util\AdminFormOptions;
 use Intervolga\Edu\Util\Registry\Iblock\Property\CompanyProperty;

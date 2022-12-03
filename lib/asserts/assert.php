@@ -1,5 +1,5 @@
 <?php
-namespace Intervolga\Edu;
+namespace Intervolga\Edu\Asserts;
 
 use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\File;

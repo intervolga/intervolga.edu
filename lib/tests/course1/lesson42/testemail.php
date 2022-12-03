@@ -4,7 +4,7 @@ namespace Intervolga\Edu\Tests\Course1\Lesson42;
 use Bitrix\Main\Context;
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\Mail\Internal\EventMessageTable;
-use Intervolga\Edu\Assert;
+use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\FileSystem;
 

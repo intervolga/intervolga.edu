@@ -3,7 +3,7 @@ namespace Intervolga\Edu\Tests;
 
 use Bitrix\Iblock\ElementTable;
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Assert;
+use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Util\Admin;
 
 abstract class BaseTestIblock extends BaseTest

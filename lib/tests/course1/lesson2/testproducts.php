@@ -2,7 +2,7 @@
 namespace Intervolga\Edu\Tests\Course1\Lesson2;
 
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Assert;
+use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\Menu;
 

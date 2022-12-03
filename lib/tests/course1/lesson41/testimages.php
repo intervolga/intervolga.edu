@@ -2,7 +2,7 @@
 namespace Intervolga\Edu\Tests\Course1\Lesson41;
 
 use Bitrix\Main\IO\Directory;
-use Intervolga\Edu\Assert;
+use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\PathMaskParser;
 

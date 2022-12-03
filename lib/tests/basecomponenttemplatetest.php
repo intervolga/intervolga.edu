@@ -5,7 +5,7 @@ use Bitrix\Iblock\PropertyTable;
 use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Assert;
+use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Regex;

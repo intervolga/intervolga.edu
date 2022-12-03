@@ -2,7 +2,7 @@
 namespace Intervolga\Edu\Tests\Course1\Lesson10;
 
 use Bitrix\Main\Component\ParametersTable;
-use Intervolga\Edu\Assert;
+use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\Regex;
 

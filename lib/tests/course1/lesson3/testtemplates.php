@@ -3,7 +3,7 @@ namespace Intervolga\Edu\Tests\Course1\Lesson3;
 
 use Bitrix\Main\Application;
 use Bitrix\Main\IO\Directory;
-use Intervolga\Edu\Assert;
+use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 
 class TestTemplates extends BaseTest
