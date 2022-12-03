@@ -1,8 +1,8 @@
 <?php
 namespace Intervolga\Edu\Util\Registry\Directory;
 
+use Bitrix\Main\Application;
 use Bitrix\Main\IO\Directory;
-use Intervolga\Edu\Util\FileSystem;
 
 abstract class BaseDirectory
 {
@@ -14,30 +14,18 @@ abstract class BaseDirectory
 	abstract public static function getName(): string;
 
 	/**
+	 * @param Directory|string $class
 	 * @return Directory|null
 	 */
-	public static function find()
+	public static function find($class = Directory::class)
 	{
 		$result = null;
 		foreach (static::getPaths() as $path) {
-			$directory = FileSystem::getDirectory($path);
+			$directory = new $class(Application::getDocumentRoot() . $path);
 			if ($directory->isExists() && $directory->isDirectory())
 			{
 				$result = $directory;
 			}
-		}
-
-		return $result;
-	}
-
-	/**
-	 * @return Directory[]
-	 */
-	public static function getPathObjects()
-	{
-		$result = [];
-		foreach (static::getPaths() as $path) {
-			$result[] = FileSystem::getDirectory($path);
 		}
 
 		return $result;

@@ -8,32 +8,32 @@ class NewsTemplate extends ComplexComponentTemplate
 {
 	public function getNewsFile(): File
 	{
-		return FileSystem::getInnerFile($this->directory, 'news.php');
+		return FileSystem::getInnerFile($this, 'news.php');
 	}
 
 	public function getSectionFile(): File
 	{
-		return FileSystem::getInnerFile($this->directory, 'section.php');
+		return FileSystem::getInnerFile($this, 'section.php');
 	}
 
 	public function getSearchFile(): File
 	{
-		return FileSystem::getInnerFile($this->directory, 'search.php');
+		return FileSystem::getInnerFile($this, 'search.php');
 	}
 
 	public function getRssFile(): File
 	{
-		return FileSystem::getInnerFile($this->directory, 'rss.php');
+		return FileSystem::getInnerFile($this, 'rss.php');
 	}
 
 	public function getRssSectionFile(): File
 	{
-		return FileSystem::getInnerFile($this->directory, 'rss_section.php');
+		return FileSystem::getInnerFile($this, 'rss_section.php');
 	}
 
 	public function getDetailFile(): File
 	{
-		return FileSystem::getInnerFile($this->directory, 'detail.php');
+		return FileSystem::getInnerFile($this, 'detail.php');
 	}
 
 	/**

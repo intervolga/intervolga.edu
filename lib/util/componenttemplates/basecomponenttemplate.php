@@ -7,21 +7,11 @@ use Bitrix\Main\IO\FileNotFoundException;
 use Bitrix\Main\IO\FileSystemEntry;
 use Intervolga\Edu\Util\FileSystem;
 
-abstract class BaseComponentTemplate
+abstract class BaseComponentTemplate extends Directory
 {
-	/**
-	 * @var null|Directory
-	 */
-	protected $directory = null;
-
-	public function __construct(Directory $dir)
-	{
-		$this->directory = $dir;
-	}
-
 	public function getLangDir(): Directory
 	{
-		return FileSystem::getInnerDirectory($this->directory, 'lang');
+		return FileSystem::getInnerDirectory($this, 'lang');
 	}
 
 	public function getLangRuDir(): Directory
@@ -50,7 +40,7 @@ abstract class BaseComponentTemplate
 
 	public function getImagesDir(): Directory
 	{
-		return FileSystem::getInnerDirectory($this->directory, 'images');
+		return FileSystem::getInnerDirectory($this, 'images');
 	}
 
 	/**
@@ -60,7 +50,7 @@ abstract class BaseComponentTemplate
 	public function getCssFiles(): array
 	{
 		$result = [];
-		foreach ($this->directory->getChildren() as $item) {
+		foreach ($this->getChildren() as $item) {
 			if ($item instanceof File) {
 				if ($item->getExtension() == 'css') {
 					$result[] = $item;
@@ -78,7 +68,7 @@ abstract class BaseComponentTemplate
 	public function getJsFiles(): array
 	{
 		$result = [];
-		foreach ($this->directory->getChildren() as $item) {
+		foreach ($this->getChildren() as $item) {
 			if ($item instanceof File) {
 				if ($item->getExtension() == 'js') {
 					$result[] = $item;
@@ -91,22 +81,22 @@ abstract class BaseComponentTemplate
 
 	public function getDescriptionFile(): File
 	{
-		return FileSystem::getInnerFile($this->directory, '.description.php');
+		return FileSystem::getInnerFile($this, '.description.php');
 	}
 
 	public function getParametersFile(): File
 	{
-		return FileSystem::getInnerFile($this->directory, '.parameters.php');
+		return FileSystem::getInnerFile($this, '.parameters.php');
 	}
 
 	public function getResultModifier(): File
 	{
-		return FileSystem::getInnerFile($this->directory, 'result_modifier.php');
+		return FileSystem::getInnerFile($this, 'result_modifier.php');
 	}
 
 	public function getComponentEpilogFile(): File
 	{
-		return FileSystem::getInnerFile($this->directory, 'component_epilog.php');
+		return FileSystem::getInnerFile($this, 'component_epilog.php');
 	}
 
 	/**
@@ -146,7 +136,7 @@ abstract class BaseComponentTemplate
 	public function getUnknownFileSystemEntries(): array
 	{
 		$result = [];
-		foreach ($this->directory->getChildren() as $item) {
+		foreach ($this->getChildren() as $item) {
 			$found = false;
 			if ($item->isFile()) {
 				foreach ($this->getKnownFiles() as $knownFile) {

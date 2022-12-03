@@ -8,7 +8,7 @@ class SimpleComponentTemplate extends BaseComponentTemplate
 {
 	public function getTemplateFile(): File
 	{
-		return FileSystem::getInnerFile($this->directory, 'template.php');
+		return FileSystem::getInnerFile($this, 'template.php');
 	}
 
 	/**

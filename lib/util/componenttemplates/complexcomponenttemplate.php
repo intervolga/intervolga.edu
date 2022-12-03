@@ -8,7 +8,7 @@ class ComplexComponentTemplate extends BaseComponentTemplate
 {
 	public function getInnerTemplatesDir(): Directory
 	{
-		return FileSystem::getInnerDirectory($this->directory, 'bitrix');
+		return FileSystem::getInnerDirectory($this, 'bitrix');
 	}
 
 	/**

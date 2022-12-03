@@ -1,10 +1,10 @@
 <?php
 namespace Intervolga\Edu\Tests\Course1\Lesson8;
 
+use Bitrix\Main\Application;
 use Bitrix\Main\Component\ParametersTable;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
-use Intervolga\Edu\Util\ComponentTemplate;
 use Intervolga\Edu\Util\ComponentTemplates\NewsTemplate;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\PathMaskParser;
@@ -36,7 +36,7 @@ class TestPromoComponent extends BaseTest
 			$fse = PathMaskParser::getFileSystemEntriesByMask('/local/templates/*/components/*/news/' . $fetch['TEMPLATE_NAME'] . '/');
 			if ($fse) {
 				Assert::directoryExists($fse[0]);
-				$templateObject = new NewsTemplate($fse[0]);
+				$templateObject = new NewsTemplate($fse[0]->getPath());
 				foreach ($templateObject->getUnknownFileSystemEntries() as $unknownFileSystemEntry) {
 					Assert::fseNotExists($unknownFileSystemEntry);
 				}
