@@ -65,7 +65,7 @@ foreach ($testsTree as $courseCode => $course) {
 if ($fatalThrowable) {
 	$message = new CAdminMessage([
 		'MESSAGE' => Loc::getMessage('INTERVOLGA_EDU.FATAL_ERROR', ['#ERROR#' => $fatalThrowable->getMessage()]),
-		'DETAILS' => $fatalThrowable->getTraceAsString(),
+		'DETAILS' => $fatalThrowable->getFile() . ':' . $fatalThrowable->getLine() . '<br>' . $fatalThrowable->getTraceAsString(),
 	]);
 	echo $message->show();
 }
@@ -87,8 +87,7 @@ foreach ($testsTree as $courseCode => $course) {
 				'HTML' => true,
 				'MESSAGE' => Loc::getMessage('INTERVOLGA_EDU.TEST_HEADER', ['#TEST#' => $counter . '. ' . $test['TITLE']]),
 			];
-			if ($test['DESCRIPTION'])
-			{
+			if ($test['DESCRIPTION']) {
 				$messageParams['DETAILS'] = '<div class="desc">' . $test['DESCRIPTION'] . '</div>';
 			}
 			if ($errors) {
@@ -110,6 +109,7 @@ $tabControl->end();
 		margin: 2px 0;
 		padding: 3px 5px 3px 74px;
 	}
+
 	#tabControl_layout .adm-info-message .desc {
 		padding-top: 3px;
 		padding-bottom: 3px;
