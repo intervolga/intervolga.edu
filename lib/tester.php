@@ -33,6 +33,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestLocalPhpInterface::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestDumpFunction::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestLowerCase::class,
+			\Intervolga\Edu\Tests\Course1\Lesson2\TestCode::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestTemplates::class,
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestCode::class,

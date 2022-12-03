@@ -2,6 +2,7 @@
 namespace Intervolga\Edu\Asserts;
 
 use Bitrix\Main\IO\File;
+use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Util\Regex;
 
 class AssertPhp extends Assert
@@ -42,8 +43,8 @@ class AssertPhp extends Assert
 	{
 		return [
 			new Regex(
-				'/B_PROLOG_INCLUDED ?=== ?true ?\|\| ?die(\(\))?/mi',
-				'B_PROLOG_INCLUDED === true || die()'
+				'/!defined ?\("?\'?B_PROLOG_INCLUDED"?\'?\)?/mi',
+				'if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die()'
 			)
 		];
 	}
@@ -109,7 +110,7 @@ class AssertPhp extends Assert
 	public static function customCoreCheck(File $phpFile)
 	{
 		foreach (static::getCustomCore() as $regex) {
-			Assert::fileContentMatches($phpFile, $regex);
+			Assert::fileContentNotMatches($phpFile, $regex, Loc::getMessage('INTERVOLGA_EDU.ADD_CUSTOM_CORE_CHECK'));
 		}
 	}
 

@@ -45,6 +45,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PRODUCTS'] = 'Проверка пункт�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PRODUCTS_DESCRIPTION'] = 'Пункт меню должен быть переименован в Каталог';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PROMO'] = 'Проверка раздела &laquo;Акции&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PROMO_DESCRIPTION'] = 'Должен быть создан с очевидным именем';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_CODE_FILES'] = 'init.php';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_CODE_FILES'] = 'header.php и footer.php шаблонов main, inner';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_TEMPLATES'] = 'В /local/templates/ шаблоны: main, inner, .default';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SCRIPTS'] = 'Плагины слайдера и карусели только в main-шаблоне';
@@ -112,3 +113,4 @@ $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_URL_PROBLEM'] = 'В шаблоне пи�
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_PAGE_PROBLEM'] = 'ссылка из письма';
 $MESS['INTERVOLGA_EDU.IBLOCK_FIELD_PARAM_SHOULD_BE_SET'] = 'Настройка #PARAM# поля #FIELD# должна быть #EXPECT#';
 $MESS['INTERVOLGA_EDU.CONTENT_FOUND'] = 'Проблема в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, #REGEX_EXPLAIN# (#REASON#)';
+$MESS['INTERVOLGA_EDU.ADD_CUSTOM_CORE_CHECK'] = 'Более краткий вариант: B_PROLOG_INCLUDED === true || die()';
