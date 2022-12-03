@@ -9,7 +9,7 @@ use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Regex;
-use Intervolga\Edu\Util\Registry\RegexRegistry;
+use Intervolga\Edu\Util\Regexes;
 
 abstract class BaseComponentTemplateTest extends BaseTest
 {
@@ -31,10 +31,10 @@ abstract class BaseComponentTemplateTest extends BaseTest
 	protected static function checkTemplateFile(File $file, array $iblock)
 	{
 		$regexesNotToFind = [];
-		$regexesNotToFind = array_merge($regexesNotToFind, RegexRegistry::getShortPhpTag());
-		$regexesNotToFind = array_merge($regexesNotToFind, RegexRegistry::getOldCore());
-		$regexesNotToFind = array_merge($regexesNotToFind, RegexRegistry::getUglyCodeFragments());
-		$regexesNotToFind = array_merge($regexesNotToFind, RegexRegistry::getPrefixNotaionFragments());
+		$regexesNotToFind = array_merge($regexesNotToFind, Regexes::getShortPhpTag());
+		$regexesNotToFind = array_merge($regexesNotToFind, Regexes::getOldCore());
+		$regexesNotToFind = array_merge($regexesNotToFind, Regexes::getUglyCodeFragments());
+		$regexesNotToFind = array_merge($regexesNotToFind, Regexes::getPrefixNotaionFragments());
 		$regexesNotToFind = array_merge($regexesNotToFind, [
 			new Regex(
 				'/href=""/i',
@@ -47,7 +47,7 @@ abstract class BaseComponentTemplateTest extends BaseTest
 		}
 
 		$regexesToFind = [];
-		$regexesToFind = array_merge($regexesToFind, RegexRegistry::getCustomCore());
+		$regexesToFind = array_merge($regexesToFind, Regexes::getCustomCore());
 		foreach ($regexesToFind as $regex) {
 			Assert::fileContentMatches($file, $regex);
 		}

@@ -1,9 +1,9 @@
 <?php
-namespace Intervolga\Edu\Util\Registry\Directory;
+namespace Intervolga\Edu\Locator\IO;
 
 use Bitrix\Main\Localization\Loc;
 
-class ReviewsDirectory extends BaseDirectory
+class ReviewsSection extends DirectoryLocator
 {
 	public static function getPaths(): array
 	{
@@ -13,7 +13,7 @@ class ReviewsDirectory extends BaseDirectory
 		];
 	}
 
-	public static function getName(): string
+	public static function getNameLoc(): string
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.REVIEWS_DIRECTORY');
 	}

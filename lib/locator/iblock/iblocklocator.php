@@ -1,10 +1,10 @@
 <?php
-namespace Intervolga\Edu\Util\Registry\Iblock;
+namespace Intervolga\Edu\Locator\Iblock;
 
 use Bitrix\Iblock\IblockTable;
 use Bitrix\Main\Loader;
 
-abstract class BaseIblock
+abstract class IblockLocator
 {
 	abstract public static function getFilter(): array;
 

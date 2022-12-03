@@ -1,11 +1,10 @@
 <?php
-namespace Intervolga\Edu\Util\Registry;
+namespace Intervolga\Edu\Util;
 
 use Bitrix\Main\Application;
 use Bitrix\Main\IO\Directory;
-use Intervolga\Edu\Util\PathMaskParser;
 
-class PathsRegistry
+class Paths
 {
 	const NON_PUBLIC_DIRS = [
 		'/upload/',

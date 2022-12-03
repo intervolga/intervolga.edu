@@ -1,10 +1,9 @@
 <?php
-namespace Intervolga\Edu\Util\Registry\Directory\Templates;
+namespace Intervolga\Edu\Locator\IO;
 
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Util\Registry\Directory\BaseDirectory;
 
-class ReviewsListTemplate extends BaseDirectory
+class ReviewsListTemplate extends DirectoryLocator
 {
 	public static function getPaths(): array
 	{
@@ -16,7 +15,7 @@ class ReviewsListTemplate extends BaseDirectory
 		];
 	}
 
-	public static function getName(): string
+	public static function getNameLoc(): string
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.REVIEWS_LIST_TEMPLATE');
 	}

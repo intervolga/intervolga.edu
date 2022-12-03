@@ -4,10 +4,10 @@ namespace Intervolga\Edu\Tests\Course1\Lesson6;
 use Bitrix\Main\Application;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
+use Intervolga\Edu\Locator\Iblock\PromoIblock;
+use Intervolga\Edu\Locator\Iblock\Property\PriceProperty;
 use Intervolga\Edu\Tests\BaseTestIblock;
 use Intervolga\Edu\Util\AdminFormOptions;
-use Intervolga\Edu\Util\Registry\Iblock\PromoIblock;
-use Intervolga\Edu\Util\Registry\Iblock\Property\PriceProperty;
 
 class TestPromoIblock extends BaseTestIblock
 {
@@ -15,12 +15,12 @@ class TestPromoIblock extends BaseTestIblock
 
 	protected static function run()
 	{
-		Assert::registryIblock(PromoIblock::class);
+		Assert::iblockLocator(PromoIblock::class);
 		if ($iblock = PromoIblock::find()) {
 			$options = AdminFormOptions::getFormOptionsForIblock($iblock['ID']);
 			static::commonChecks($iblock, $options, static::COUNT_PROMO_ELEMENTS);
 			static::checkFields($iblock);
-			Assert::registryProperty(PriceProperty::class);
+			Assert::propertyLocator(PriceProperty::class);
 		}
 	}
 

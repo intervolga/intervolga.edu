@@ -1,10 +1,9 @@
 <?php
-namespace Intervolga\Edu\Util\Registry\Directory\Templates;
+namespace Intervolga\Edu\Locator\IO;
 
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Util\Registry\Directory\BaseDirectory;
 
-class LastPromoTemplate extends BaseDirectory
+class LastPromoTemplate extends DirectoryLocator
 {
 	public static function getPaths(): array
 	{
@@ -14,7 +13,7 @@ class LastPromoTemplate extends BaseDirectory
 		];
 	}
 
-	public static function getName(): string
+	public static function getNameLoc(): string
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.LAST_PROMO_TEMPLATE');
 	}

@@ -5,8 +5,8 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\PathMaskParser;
+use Intervolga\Edu\Util\Paths;
 use Intervolga\Edu\Util\Regex;
-use Intervolga\Edu\Util\Registry\PathsRegistry;
 
 class TestLowerCase extends BaseTest
 {
@@ -17,7 +17,7 @@ class TestLowerCase extends BaseTest
 
 	protected static function run()
 	{
-		$publicDirs = PathsRegistry::getPublicDirsLevelOne();
+		$publicDirs = Paths::getPublicDirsLevelOne();
 		$entriesToCheck = PathMaskParser::getFileSystemEntriesByMasks(
 			[
 				'*',

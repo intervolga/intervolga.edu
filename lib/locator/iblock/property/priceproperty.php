@@ -1,10 +1,10 @@
 <?php
-namespace Intervolga\Edu\Util\Registry\Iblock\Property;
+namespace Intervolga\Edu\Locator\Iblock\Property;
 
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Util\Registry\Iblock\PromoIblock;
+use Intervolga\Edu\Locator\Iblock\PromoIblock;
 
-class PriceProperty extends BaseProperty
+class PriceProperty extends PropertyLocator
 {
 	public static function getIblock()
 	{

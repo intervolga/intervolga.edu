@@ -5,7 +5,7 @@ use Bitrix\Main\IO\File;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\PathMaskParser;
-use Intervolga\Edu\Util\Registry\RegexRegistry;
+use Intervolga\Edu\Util\Regexes;
 
 class TestUglyCheckResult extends BaseTest
 {
@@ -18,7 +18,7 @@ class TestUglyCheckResult extends BaseTest
 				'/local/templates/*/components/bitrix/*/*/*/*.php',
 			]
 		);
-		$regexes = RegexRegistry::getUglyCodeFragments();
+		$regexes = Regexes::getUglyCodeFragments();
 
 		foreach ($files as $file) {
 			foreach ($regexes as $regex) {

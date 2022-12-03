@@ -1,12 +1,10 @@
 <?php
-namespace Intervolga\Edu\Util\Registry;
-
-use Intervolga\Edu\Util\Regex;
+namespace Intervolga\Edu\Util;
 
 /**
  * @deprecated
  */
-class RegexRegistry
+class Regexes
 {
 	/**
 	 * @return Regex[]

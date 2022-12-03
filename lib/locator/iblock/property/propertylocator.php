@@ -1,14 +1,14 @@
 <?php
-namespace Intervolga\Edu\Util\Registry\Iblock\Property;
+namespace Intervolga\Edu\Locator\Iblock\Property;
 
 use Bitrix\Iblock\PropertyTable;
 use Bitrix\Main\Loader;
-use Intervolga\Edu\Util\Registry\Iblock\BaseIblock;
+use Intervolga\Edu\Locator\Iblock\IblockLocator;
 
-abstract class BaseProperty
+abstract class PropertyLocator
 {
 	/**
-	 * @return string|BaseIblock
+	 * @return string|IblockLocator
 	 */
 	abstract public static function getIblock();
 

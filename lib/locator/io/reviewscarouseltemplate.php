@@ -1,10 +1,9 @@
 <?php
-namespace Intervolga\Edu\Util\Registry\Directory\Templates;
+namespace Intervolga\Edu\Locator\IO;
 
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Util\Registry\Directory\BaseDirectory;
 
-class ReviewsCarouselTemplate extends BaseDirectory
+class ReviewsCarouselTemplate extends DirectoryLocator
 {
 	public static function getPaths(): array
 	{
@@ -15,7 +14,7 @@ class ReviewsCarouselTemplate extends BaseDirectory
 		];
 	}
 
-	public static function getName(): string
+	public static function getNameLoc(): string
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.REVIEWS_CAROUSEL_TEMPLATE_DIRECTORY');
 	}

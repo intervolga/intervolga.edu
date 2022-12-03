@@ -1,14 +1,13 @@
 <?php
 namespace Intervolga\Edu\Tests\Course1\Lesson8;
 
-use Bitrix\Main\Application;
 use Bitrix\Main\Component\ParametersTable;
 use Intervolga\Edu\Asserts\Assert;
+use Intervolga\Edu\Locator\IO\PromoSection;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\ComponentTemplates\NewsTemplate;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\PathMaskParser;
-use Intervolga\Edu\Util\Registry\Directory\PromoDirectory;
 
 class TestPromoComponent extends BaseTest
 {
@@ -19,7 +18,7 @@ class TestPromoComponent extends BaseTest
 
 	protected static function run()
 	{
-		$template = PromoDirectory::find();
+		$template = PromoSection::find();
 		$getList = ParametersTable::getList([
 			'filter' => [
 				'=COMPONENT_NAME' => 'bitrix:news',

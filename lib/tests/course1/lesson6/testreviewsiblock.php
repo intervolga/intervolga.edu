@@ -3,11 +3,11 @@ namespace Intervolga\Edu\Tests\Course1\Lesson6;
 
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
+use Intervolga\Edu\Locator\Iblock\Property\CompanyProperty;
+use Intervolga\Edu\Locator\Iblock\Property\PostProperty;
+use Intervolga\Edu\Locator\Iblock\ReviewsIblock;
 use Intervolga\Edu\Tests\BaseTestIblock;
 use Intervolga\Edu\Util\AdminFormOptions;
-use Intervolga\Edu\Util\Registry\Iblock\Property\CompanyProperty;
-use Intervolga\Edu\Util\Registry\Iblock\Property\PostProperty;
-use Intervolga\Edu\Util\Registry\Iblock\ReviewsIblock;
 
 class TestReviewsIblock extends BaseTestIblock
 {
@@ -15,7 +15,7 @@ class TestReviewsIblock extends BaseTestIblock
 
 	protected static function run()
 	{
-		Assert::registryIblock(ReviewsIblock::class);
+		Assert::iblockLocator(ReviewsIblock::class);
 		if ($iblock = ReviewsIblock::find()) {
 			$options = AdminFormOptions::getFormOptionsForIblock($iblock['ID']);
 			static::commonChecks($iblock, $options, static::COUNT_REVIEWS_ELEMENTS);
@@ -41,7 +41,7 @@ class TestReviewsIblock extends BaseTestIblock
 
 	protected static function checkPostAndCompanyProperties()
 	{
-		Assert::registryProperty(PostProperty::class);
-		Assert::registryProperty(CompanyProperty::class);
+		Assert::propertyLocator(PostProperty::class);
+		Assert::propertyLocator(CompanyProperty::class);
 	}
 }

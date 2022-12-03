@@ -7,13 +7,13 @@ use Bitrix\Main\IO\FileSystemEntry;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Exceptions\AssertException;
+use Intervolga\Edu\Locator\Iblock\IblockLocator;
+use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
+use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Menu;
 use Intervolga\Edu\Util\Regex;
-use Intervolga\Edu\Util\Registry\Directory\BaseDirectory;
-use Intervolga\Edu\Util\Registry\Iblock\BaseIblock;
-use Intervolga\Edu\Util\Registry\Iblock\Property\BaseProperty;
 
 Loc::loadMessages(__FILE__);
 
@@ -444,15 +444,15 @@ class Assert
 	}
 
 	/**
-	 * @param string|BaseIblock $value
+	 * @param string|IblockLocator $value
 	 * @param string $message
 	 * @throws AssertException
 	 */
-	public static function registryIblock($value, string $message = '')
+	public static function iblockLocator($value, string $message = '')
 	{
 		if (!$value::find()) {
 			static::registerError(static::getCustomOrLocMessage(
-				'INTERVOLGA_EDU.ASSERT_REGISTRY_IBLOCK',
+				'INTERVOLGA_EDU.ASSERT_IBLOCK_LOCATOR',
 				[
 					'#IBLOCK#' => $value::getName(),
 					'#POSSIBLE#' => $value::getPossibleTips(),
@@ -464,15 +464,15 @@ class Assert
 	}
 
 	/**
-	 * @param string|BaseProperty $value
+	 * @param string|PropertyLocator $value
 	 * @param string $message
 	 * @throws AssertException
 	 */
-	public static function registryProperty($value, string $message = '')
+	public static function propertyLocator($value, string $message = '')
 	{
 		if (!$value::find()) {
 			static::registerError(static::getCustomOrLocMessage(
-				'INTERVOLGA_EDU.ASSERT_REGISTRY_PROPERTY',
+				'INTERVOLGA_EDU.ASSERT_PROPERTY_LOCATOR',
 				[
 					'#PROPERTY#' => $value::getName(),
 					'#POSSIBLE#' => $value::getPossibleTips(),
@@ -484,11 +484,11 @@ class Assert
 	}
 
 	/**
-	 * @param string|BaseDirectory $value
+	 * @param string|DirectoryLocator $value
 	 * @param string $message
 	 * @throws AssertException
 	 */
-	public static function registryDirectiry($value, string $message = '')
+	public static function directoryLocator($value, string $message = '')
 	{
 		if (!$value::find()) {
 			$links = [];
@@ -500,9 +500,9 @@ class Assert
 				]);
 			}
 			static::registerError(static::getCustomOrLocMessage(
-				'INTERVOLGA_EDU.ASSERT_REGISTRY_DIRECTORY',
+				'INTERVOLGA_EDU.ASSERT_DIRECTORY_LOCATOR',
 				[
-					'#DIRECTORY#' => $value::getName(),
+					'#DIRECTORY#' => $value::getNameLoc(),
 					'#LINKS#' => implode(', ', $links),
 				],
 				$message

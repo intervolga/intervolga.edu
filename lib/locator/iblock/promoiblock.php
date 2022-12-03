@@ -1,21 +1,23 @@
 <?php
-namespace Intervolga\Edu\Util\Registry\Iblock;
+namespace Intervolga\Edu\Locator\Iblock;
 
 use Bitrix\Main\Localization\Loc;
 
-class ReviewsIblock extends BaseIblock
+class PromoIblock extends IblockLocator
 {
 	public static function getFilter(): array
 	{
 		return [
 			'=CODE' => [
-				'reviews',
+				'promo',
+				'promos',
+				'stock',
 			],
 		];
 	}
 
 	public static function getName(): string
 	{
-		return Loc::getMessage('INTERVOLGA_EDU.IBLOCK_REVIEWS');
+		return Loc::getMessage('INTERVOLGA_EDU.IBLOCK_PROMO');
 	}
 }

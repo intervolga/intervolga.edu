@@ -3,9 +3,9 @@ namespace Intervolga\Edu\Tests\Course1\Lesson41;
 
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
+use Intervolga\Edu\Locator\IO\PartnersSection;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\FileSystem;
-use Intervolga\Edu\Util\Registry\Directory\PartnersDirectory;
 
 class TestIncludeArea extends BaseTest
 {
@@ -27,7 +27,7 @@ class TestIncludeArea extends BaseTest
 	protected static function getSectIncNameFromPartners(): string
 	{
 		$result = '';
-		$directory = PartnersDirectory::find();
+		$directory = PartnersSection::find();
 		if ($directory->getChildren()) {
 			foreach ($directory->getChildren() as $child) {
 				if ($child->isFile()) {

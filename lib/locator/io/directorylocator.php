@@ -1,17 +1,17 @@
 <?php
-namespace Intervolga\Edu\Util\Registry\Directory;
+namespace Intervolga\Edu\Locator\IO;
 
 use Bitrix\Main\Application;
 use Bitrix\Main\IO\Directory;
 
-abstract class BaseDirectory
+abstract class DirectoryLocator
 {
 	/**
 	 * @return string[]
 	 */
 	abstract public static function getPaths(): array;
 
-	abstract public static function getName(): string;
+	abstract public static function getNameLoc(): string;
 
 	/**
 	 * @param Directory|string $class

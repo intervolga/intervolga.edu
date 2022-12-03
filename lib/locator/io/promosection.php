@@ -1,9 +1,9 @@
 <?php
-namespace Intervolga\Edu\Util\Registry\Directory;
+namespace Intervolga\Edu\Locator\IO;
 
 use Bitrix\Main\Localization\Loc;
 
-class PromoDirectory extends BaseDirectory
+class PromoSection extends DirectoryLocator
 {
 	public static function getPaths(): array
 	{
@@ -16,7 +16,7 @@ class PromoDirectory extends BaseDirectory
 		];
 	}
 
-	public static function getName(): string
+	public static function getNameLoc(): string
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.PROMO_DIRECTORY');
 	}

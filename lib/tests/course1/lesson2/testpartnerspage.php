@@ -4,9 +4,9 @@ namespace Intervolga\Edu\Tests\Course1\Lesson2;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
+use Intervolga\Edu\Locator\IO\PartnersSection;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\Regex;
-use Intervolga\Edu\Util\Registry\Directory\PartnersDirectory;
 
 class TestPartnersPage extends BaseTest
 {
@@ -17,8 +17,8 @@ class TestPartnersPage extends BaseTest
 
 	protected static function run()
 	{
-		Assert::registryDirectiry(PartnersDirectory::class);
-		$directory = PartnersDirectory::find();
+		Assert::directoryLocator(PartnersSection::class);
+		$directory = PartnersSection::find();
 		$indexPath = $directory->getPath() . '/index.php';
 		$indexFile = new File($indexPath);
 		Assert::fileContentMatches(
