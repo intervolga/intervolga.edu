@@ -12,6 +12,27 @@ class ComplexComponentTemplate extends ComponentTemplate
 	}
 
 	/**
+	 * @return SimpleComponentTemplate[]
+	 * @throws \Bitrix\Main\IO\FileNotFoundException
+	 */
+	public function getInnerTemplatesTrees(): array
+	{
+		$result = [];
+		$innerTemplates = $this->getInnerTemplatesDir();
+		if ($innerTemplates->isExists()) {
+			foreach ($innerTemplates->getChildren() as $innerComponentDir) {
+				if ($innerComponentDir instanceof Directory) {
+					foreach ($innerComponentDir->getChildren() as $innerTemplateDir) {
+						$result[] = new SimpleComponentTemplate($innerTemplateDir->getPath());
+					}
+				}
+			}
+		}
+
+		return $result;
+	}
+
+	/**
 	 * @return Directory[]
 	 */
 	public function getKnownDirs(): array

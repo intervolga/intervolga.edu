@@ -1,9 +1,7 @@
 <?php
 namespace Intervolga\Edu\Tests;
 
-use Bitrix\Main\IO\Directory;
 use Intervolga\Edu\FilesTree\ComplexComponentTemplate;
-use Intervolga\Edu\FilesTree\SimpleComponentTemplate;
 
 abstract class BaseComplexComponentTemplateTest extends BaseComponentTemplateTest
 {
@@ -15,16 +13,10 @@ abstract class BaseComplexComponentTemplateTest extends BaseComponentTemplateTes
 		/**
 		 * @var ComplexComponentTemplate $templateDir
 		 */
-		$innerTemplates = $templateDir->getInnerTemplatesDir();
-		if ($innerTemplates->isExists()) {
-			foreach ($innerTemplates->getChildren() as $innerComponentDir) {
-				if ($innerComponentDir instanceof Directory) {
-					foreach ($innerComponentDir->getChildren() as $innerTemplateDir) {
-						static::testTemplateTrash(new SimpleComponentTemplate($innerTemplateDir->getPath()));
-						static::testTemplateCode(new SimpleComponentTemplate($innerTemplateDir->getPath()));
-					}
-				}
-			}
+		$innerTrees = $templateDir->getInnerTemplatesTrees();
+		foreach ($innerTrees as $innerTree) {
+			static::testTemplateTrash($innerTree);
+			static::testTemplateCode($innerTree);
 		}
 	}
 }
