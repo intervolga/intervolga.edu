@@ -41,6 +41,7 @@ class Tester
 
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestImages::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestIncludeArea::class,
+			\Intervolga\Edu\Tests\Course1\Lesson41\TestTopMenu::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson42\TestRegisterPageOption::class,
 			\Intervolga\Edu\Tests\Course1\Lesson42\TestEmail::class,

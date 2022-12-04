@@ -516,7 +516,7 @@ class Assert
 				'INTERVOLGA_EDU.ASSERT_DIRECTORY_LOCATOR',
 				[
 					'#DIRECTORY#' => $value::getNameLoc(),
-					'#POSSIBLE	#' => $value::getPossibleTips(),
+					'#POSSIBLE#' => $value::getPossibleTips(),
 				],
 				$message
 			));
