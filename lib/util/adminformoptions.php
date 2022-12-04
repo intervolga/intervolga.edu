@@ -3,7 +3,7 @@ namespace Intervolga\Edu\Util;
 
 class AdminFormOptions
 {
-	protected static function foo(array $filter): array
+	protected static function getUserOptions(array $filter): array
 	{
 		$result = [];
 		$getList = \CUserOptions::getList([], $filter);
@@ -14,9 +14,9 @@ class AdminFormOptions
 		return $result;
 	}
 
-	public static function getFormOptionsForIblock(int $iblockId): array
+	public static function getForIblock(int $iblockId): array
 	{
-		$options = static::foo([
+		$options = static::getUserOptions([
 			'CATEGORY' => 'form',
 			'NAME' => 'form_element_' . $iblockId,
 			'COMMON' => 'Y',
@@ -43,13 +43,9 @@ class AdminFormOptions
 							$resultTab['CODE'] = $code;
 							$resultTab['TITLE'] = $title;
 							$firstField = false;
-						}
-						else
-						{
-							if ($firstSign = mb_substr($title, 0, 1))
-							{
-								if ($firstSign == '*')
-								{
+						} else {
+							if ($firstSign = mb_substr($title, 0, 1)) {
+								if ($firstSign == '*') {
 									$result['REQUIRED'][] = $code;
 									$title = mb_substr($title, 1);
 								}

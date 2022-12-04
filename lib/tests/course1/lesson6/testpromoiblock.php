@@ -4,27 +4,45 @@ namespace Intervolga\Edu\Tests\Course1\Lesson6;
 use Bitrix\Main\Application;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
+use Intervolga\Edu\Locator\Iblock\IblockLocator;
 use Intervolga\Edu\Locator\Iblock\PromoIblock;
 use Intervolga\Edu\Locator\Iblock\Property\PriceProperty;
+use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
 use Intervolga\Edu\Tests\BaseTestIblock;
-use Intervolga\Edu\Util\AdminFormOptions;
 
 class TestPromoIblock extends BaseTestIblock
 {
-	const COUNT_PROMO_ELEMENTS = 2;
+	/**
+	 * @return string|IblockLocator
+	 */
+	protected static function getLocator()
+	{
+		return PromoIblock::class;
+	}
+
+	protected static function getMinCount(): int
+	{
+		return 2;
+	}
+
+	/**
+	 * @return PropertyLocator[]
+	 */
+	protected static function getPropertiesLocators(): array
+	{
+		return [
+			PriceProperty::class,
+		];
+	}
 
 	protected static function run()
 	{
-		Assert::iblockLocator(PromoIblock::class);
-		if ($iblock = PromoIblock::find()) {
-			$options = AdminFormOptions::getFormOptionsForIblock($iblock['ID']);
-			static::commonChecks($iblock, $options, static::COUNT_PROMO_ELEMENTS);
-			static::checkFields($iblock);
-			Assert::propertyLocator(PriceProperty::class);
+		if ($iblock = static::getLocator()::find()) {
+			static::testFields($iblock);
 		}
 	}
 
-	protected static function checkFields(array $iblock)
+	protected static function testFields(array $iblock)
 	{
 		Loc::loadMessages(Application::getDocumentRoot() . '/bitrix/modules/iblock/admin/iblock_edit.php');
 		$fields = \CIBlock::getFields($iblock['ID']);

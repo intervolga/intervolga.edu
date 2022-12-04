@@ -22,7 +22,7 @@ class PostProperty extends PropertyLocator
 		];
 	}
 
-	public static function getName(): string
+	public static function getNameLoc(): string
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.POST_PROPERTY');
 	}

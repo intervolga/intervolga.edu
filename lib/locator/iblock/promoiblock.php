@@ -16,7 +16,7 @@ class PromoIblock extends IblockLocator
 		];
 	}
 
-	public static function getName(): string
+	public static function getNameLoc(): string
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.IBLOCK_PROMO');
 	}

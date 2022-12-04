@@ -20,7 +20,7 @@ class PriceProperty extends PropertyLocator
 		];
 	}
 
-	public static function getName(): string
+	public static function getNameLoc(): string
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.PRICE_PROPERTY');
 	}

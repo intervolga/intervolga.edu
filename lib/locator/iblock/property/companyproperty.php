@@ -20,7 +20,7 @@ class CompanyProperty extends PropertyLocator
 		];
 	}
 
-	public static function getName(): string
+	public static function getNameLoc(): string
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.COMPANY_PROPERTY');
 	}

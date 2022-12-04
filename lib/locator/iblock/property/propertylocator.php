@@ -14,7 +14,7 @@ abstract class PropertyLocator
 
 	abstract public static function getFilter(): array;
 
-	abstract public static function getName(): string;
+	abstract public static function getNameLoc(): string;
 
 	public static function find(): array
 	{

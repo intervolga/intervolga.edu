@@ -3,30 +3,49 @@ namespace Intervolga\Edu\Tests\Course1\Lesson6;
 
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
+use Intervolga\Edu\Locator\Iblock\IblockLocator;
 use Intervolga\Edu\Locator\Iblock\Property\CompanyProperty;
 use Intervolga\Edu\Locator\Iblock\Property\PostProperty;
+use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
 use Intervolga\Edu\Locator\Iblock\ReviewsIblock;
 use Intervolga\Edu\Tests\BaseTestIblock;
 use Intervolga\Edu\Util\AdminFormOptions;
 
 class TestReviewsIblock extends BaseTestIblock
 {
-	const COUNT_REVIEWS_ELEMENTS = 6;
+	/**
+	 * @return string|IblockLocator
+	 */
+	protected static function getLocator()
+	{
+		return ReviewsIblock::class;
+	}
+
+	protected static function getMinCount(): int
+	{
+		return 6;
+	}
+
+	/**
+	 * @return PropertyLocator[]
+	 */
+	protected static function getPropertiesLocators(): array
+	{
+		return [
+			PostProperty::class,
+			CompanyProperty::class
+		];
+	}
 
 	protected static function run()
 	{
-		Assert::iblockLocator(ReviewsIblock::class);
-		if ($iblock = ReviewsIblock::find()) {
-			$options = AdminFormOptions::getFormOptionsForIblock($iblock['ID']);
-			static::commonChecks($iblock, $options, static::COUNT_REVIEWS_ELEMENTS);
-			static::checkPostAndCompanyProperties();
-			if ($options) {
-				static::checkRenamedSurname($iblock, $options);
-			}
+		if ($iblock = static::getLocator()::find()) {
+			$options = AdminFormOptions::getForIblock($iblock['ID']);
+			static::testRenamedSurname($options);
 		}
 	}
 
-	protected static function checkRenamedSurname(array $iblock, array $options)
+	protected static function testRenamedSurname(array $options)
 	{
 		foreach ($options['TABS'] as $tab) {
 			if (mb_strlen($tab['FIELDS']['NAME'])) {
@@ -37,11 +56,5 @@ class TestReviewsIblock extends BaseTestIblock
 				);
 			}
 		}
-	}
-
-	protected static function checkPostAndCompanyProperties()
-	{
-		Assert::propertyLocator(PostProperty::class);
-		Assert::propertyLocator(CompanyProperty::class);
 	}
 }

@@ -475,7 +475,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_IBLOCK_LOCATOR',
 				[
-					'#IBLOCK#' => $value::getName(),
+					'#IBLOCK#' => $value::getNameLoc(),
 					'#POSSIBLE#' => $value::getPossibleTips(),
 				],
 				$message
@@ -495,7 +495,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_PROPERTY_LOCATOR',
 				[
-					'#PROPERTY#' => $value::getName(),
+					'#PROPERTY#' => $value::getNameLoc(),
 					'#POSSIBLE#' => $value::getPossibleTips(),
 				],
 				$message

@@ -4,42 +4,84 @@ namespace Intervolga\Edu\Tests;
 use Bitrix\Iblock\ElementTable;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
+use Intervolga\Edu\Locator\Iblock\IblockLocator;
+use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
 use Intervolga\Edu\Util\Admin;
+use Intervolga\Edu\Util\AdminFormOptions;
 
 abstract class BaseTestIblock extends BaseTest
 {
 	const ALL_USERS_GROUP = 2;
 
-	protected static function commonChecks(array $iblock, array $options, int $countElements)
+	/**
+	 * @return string|IblockLocator
+	 */
+	abstract protected static function getLocator();
+
+	abstract protected static function getMinCount(): int;
+
+	/**
+	 * @return PropertyLocator[]
+	 */
+	protected static function getPropertiesLocators(): array
 	{
-		static::checkIblockType($iblock);
-		static::checkElementsLog($iblock);
-		static::checkPermission($iblock);
-		static::checkElementsCount($iblock, $countElements);
-		Assert::notEmpty($options, Loc::getMessage('INTERVOLGA_EDU.IBLOCK_OPTIONS_LOST', [
-			'#IBLOCK_LINK#' => Admin::getIblockElementAddUrl($iblock),
-			'#IBLOCK#' => $iblock['NAME'],
-		]));
-		static::checkOneTab($iblock, $options);
+		return [];
 	}
 
-	protected static function checkElementsCount(array $iblock, int $count)
+	public static function interceptErrors()
+	{
+		return true;
+	}
+
+	public static function getTestLoc(): string
+	{
+		return Loc::getMessage('INTERVOLGA_EDU.TEST_IBLOCK_NAME', [
+			'#IBLOCK#' => static::getLocator()::getNameLoc(),
+		]);
+	}
+
+	public static function getDescription(): string
+	{
+		return Loc::getMessage('INTERVOLGA_EDU.TEST_IBLOCK_DESCRIPTION');
+	}
+
+	protected static function run()
+	{
+		Assert::iblockLocator(static::getLocator());
+		if ($iblock = static::getLocator()::find()) {
+			$options = AdminFormOptions::getForIblock($iblock['ID']);
+			static::testIblockType($iblock);
+			static::testElementsLog($iblock);
+			static::testPermission($iblock);
+			static::testElementsCount($iblock);
+			Assert::notEmpty($options, Loc::getMessage('INTERVOLGA_EDU.IBLOCK_OPTIONS_LOST', [
+				'#IBLOCK_LINK#' => Admin::getIblockElementAddUrl($iblock),
+				'#IBLOCK#' => $iblock['NAME'],
+			]));
+			static::testOneTab($iblock, $options);
+			foreach (static::getPropertiesLocators() as $propertyLocator) {
+				Assert::propertyLocator($propertyLocator);
+			}
+		}
+	}
+
+	protected static function testElementsCount(array $iblock)
 	{
 		Assert::greaterEq(
 			static::countElements($iblock['ID']),
-			$count,
+			static::getMinCount(),
 			Loc::getMessage(
 				'INTERVOLGA_EDU.IBLOCK_ELEMENTS_NOT_ENOUGH',
 				[
 					'#IBLOCK_LINK#' => Admin::getIblockElementsUrl($iblock),
 					'#IBLOCK#' => $iblock['NAME'],
-					'#EXPECT#' => $count,
+					'#EXPECT#' => static::getMinCount(),
 				]
 			)
 		);
 	}
 
-	protected static function checkOneTab(array $iblock, array $options)
+	protected static function testOneTab(array $iblock, array $options)
 	{
 		Assert::eq(
 			count($options['TABS']),
@@ -51,7 +93,7 @@ abstract class BaseTestIblock extends BaseTest
 		);
 	}
 
-	protected static function checkIblockType(array $iblock)
+	protected static function testIblockType(array $iblock)
 	{
 		Assert::eq(
 			$iblock['IBLOCK_TYPE_ID'],
@@ -64,7 +106,7 @@ abstract class BaseTestIblock extends BaseTest
 		);
 	}
 
-	protected static function checkElementsLog(array $iblock)
+	protected static function testElementsLog(array $iblock)
 	{
 		$fields = \CIBlock::getFields($iblock['ID']);
 		Assert::eq(
@@ -93,7 +135,7 @@ abstract class BaseTestIblock extends BaseTest
 		);
 	}
 
-	protected static function checkPermission(array $iblock)
+	protected static function testPermission(array $iblock)
 	{
 		$tmp = \CIBlock::getGroupPermissions($iblock['ID']);
 		Assert::eq(
