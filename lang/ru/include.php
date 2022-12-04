@@ -55,12 +55,6 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_REGISTERPAGEOPTION'] = 'Проверка 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_EMAIL'] = 'Проверка ссылки на восстановление пароля в почтовом шаблоне «Запрос на смену пароля» (USER_PASS_REQUEST)';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON6_REVIEWSIBLOCK'] = 'Проверка ИБ Отзывы';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON6_PROMOIBLOCK'] = 'Проверка ИБ Акции';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON6_REVIEWSCAROUSEL'] = 'Проверка шаблона карусели отзывов на главной';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON6_REVIEWSRAND'] = 'Проверка шаблона случайного отзыва';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON6_LASTPROMO'] = 'Проверка шаблона последней акции';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON6_REVIEWSLIST'] = 'Проверка шаблона списка отзывов';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON8_PROMOCOMPONENT'] = 'Проверка шаблона news Акций';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON8_PROMOCOMPONENT_DESCRIPTION'] = 'В шаблоне news не должно быть мусора от скопированного шаблона';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION'] = 'Форма поиска в шапке настроена на раздел, а не на его index.php-страницу';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Собственный модуль intervolga.#ВАШЕ НАЗВАНИЕ#';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Собственное UF-свойство';
@@ -111,7 +105,7 @@ $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_TEXT_PROBLEM'] = 'Шаблон пись�
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_URL_PROBLEM'] = 'В шаблоне письма «Запрос на смену пароля» нет валидной ссылки';
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_PAGE_PROBLEM'] = 'ссылка из письма';
 $MESS['INTERVOLGA_EDU.IBLOCK_FIELD_PARAM_SHOULD_BE_SET'] = 'Настройка #PARAM# поля #FIELD# должна быть #EXPECT#';
-$MESS['INTERVOLGA_EDU.CONTENT_FOUND'] = 'Проблема в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, #REGEX_EXPLAIN# (#REASON#)';
+$MESS['INTERVOLGA_EDU.CONTENT_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#NAME#</a> не должно быть #REGEX_EXPLAIN# (#REASON#)';
 $MESS['INTERVOLGA_EDU.ADD_CUSTOM_CORE_CHECK'] = 'Более краткий вариант: B_PROLOG_INCLUDED === true || die()';
 $MESS['INTERVOLGA_EDU.CUSTOM_MODULE'] = 'intervolga.?';
 $MESS['INTERVOLGA_EDU.CUSTOM_MODULE_TIP'] = 'intervolga.? в #MODULES#';
@@ -122,3 +116,4 @@ $MESS['INTERVOLGA_EDU.LEFT_MENU_TEMPLATE'] = 'Шаблон левого меню
 $MESS['INTERVOLGA_EDU.BOTTOM_MENU_TEMPLATE'] = 'Шаблон меню О магазине';
 $MESS['INTERVOLGA_EDU.BREADCRUMB_TEMPLATE'] = 'Шаблон хлебных крошек';
 $MESS['INTERVOLGA_EDU.AUTHORIZE_TEMPLATE'] = 'Шаблон формы авторизации в шапке';
+$MESS['INTERVOLGA_EDU.PROMO_NEWS_TEMPLATE_DIRECTORY'] = 'Шаблон акций';

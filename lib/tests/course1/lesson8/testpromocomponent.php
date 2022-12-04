@@ -1,61 +1,32 @@
 <?php
 namespace Intervolga\Edu\Tests\Course1\Lesson8;
 
-use Bitrix\Main\Component\ParametersTable;
 use Intervolga\Edu\Asserts\Assert;
+use Intervolga\Edu\FilesTree\ComponentTemplate;
 use Intervolga\Edu\FilesTree\NewsTemplate;
-use Intervolga\Edu\Locator\IO\PromoSection;
-use Intervolga\Edu\Tests\BaseTest;
-use Intervolga\Edu\Util\FileSystem;
-use Intervolga\Edu\Util\PathMaskParser;
+use Intervolga\Edu\Locator\IO\PromoNewsTemplate;
+use Intervolga\Edu\Tests\BaseComplexComponentTemplateTest;
 
-class TestPromoComponent extends BaseTest
+class TestPromoComponent extends BaseComplexComponentTemplateTest
 {
-	public static function interceptErrors()
+	protected static function getLocator()
 	{
-		return true;
+		return PromoNewsTemplate::class;
 	}
 
-	protected static function run()
+	protected static function getComponentTemplateTree()
 	{
-		$template = PromoSection::find();
-		$getList = ParametersTable::getList([
-			'filter' => [
-				'=COMPONENT_NAME' => 'bitrix:news',
-				'=REAL_PATH' => FileSystem::getLocalPath($template) . 'index.php',
-			],
-			'select' => [
-				'ID',
-				'TEMPLATE_NAME',
-			],
-		]);
-		$fetch = $getList->fetch();
-		Assert::notEmpty($fetch['TEMPLATE_NAME']);
-		if ($fetch['TEMPLATE_NAME']) {
-			$fse = PathMaskParser::getFileSystemEntriesByMask('/local/templates/*/components/*/news/' . $fetch['TEMPLATE_NAME'] . '/');
-			if ($fse) {
-				Assert::directoryExists($fse[0]);
-				$templateObject = new NewsTemplate($fse[0]->getPath());
-				foreach ($templateObject->getUnknownFileSystemEntries() as $unknownFileSystemEntry) {
-					Assert::fseNotExists($unknownFileSystemEntry);
-				}
-				Assert::fseNotExists($templateObject->getRssFile());
-				Assert::fseNotExists($templateObject->getRssSectionFile());
-				Assert::fseNotExists($templateObject->getSearchFile());
-				Assert::fseNotExists($templateObject->getSectionFile());
-				foreach ($templateObject->getLangForeignDirs() as $item) {
-					Assert::directoryNotExists($item);
-				}
-				if ($templateObject->getLangRuDir())
-				{
-					foreach ($templateObject->getLangRuDir()->getChildren() as $child) {
-						if (!in_array($child->getName(), ['detail.php', 'news.php']))
-						{
-							Assert::fseNotExists($child);
-						}
-					}
-				}
-			}
+		return NewsTemplate::class;
+	}
+
+	protected static function testTemplateTrash(ComponentTemplate $templateDir)
+	{
+		parent::testTemplateTrash($templateDir);
+		if ($templateDir instanceof NewsTemplate) {
+			Assert::fseNotExists($templateDir->getSectionFile());
+			Assert::fseNotExists($templateDir->getSearchFile());
+			Assert::fseNotExists($templateDir->getRssFile());
+			Assert::fseNotExists($templateDir->getRssSectionFile());
 		}
 	}
 }

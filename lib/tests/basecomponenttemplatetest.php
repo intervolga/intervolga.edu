@@ -6,6 +6,8 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Asserts\AssertPhp;
 use Intervolga\Edu\FilesTree\ComponentTemplate;
+use Intervolga\Edu\FilesTree\NewsTemplate;
+use Intervolga\Edu\FilesTree\SimpleComponentTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
@@ -47,19 +49,54 @@ abstract class BaseComponentTemplateTest extends BaseTest
 			/**
 			 * @var ComponentTemplate $templateDir
 			 */
-			foreach ($templateDir->getUnknownFileSystemEntries() as $unknownFileSystemEntry) {
-				Assert::fseNotExists($unknownFileSystemEntry);
+			static::testTemplateTrash($templateDir);
+			static::testTemplateCode($templateDir);
+		}
+	}
+
+	protected static function testTemplateCode(ComponentTemplate $templateDir)
+	{
+		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
+			if ($knownPhpFile->isExists()) {
+				AssertPhp::goodCode($knownPhpFile);
+				static::checkPhpVars($knownPhpFile);
 			}
-			Assert::fseNotExists($templateDir->getImagesDir());
-			Assert::fseNotExists($templateDir->getParametersFile());
-			Assert::fseNotExists($templateDir->getDescriptionFile());
-			foreach ($templateDir->getLangForeignDirs() as $langForeignDir) {
-				Assert::directoryNotExists($langForeignDir);
-			}
-			foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
-				if ($knownPhpFile->isExists()) {
-					AssertPhp::goodCode($knownPhpFile);
-					static::checkPhpVars($knownPhpFile);
+		}
+	}
+
+	protected static function testTemplateTrash(ComponentTemplate $templateDir)
+	{
+		foreach ($templateDir->getUnknownFileSystemEntries() as $unknownFileSystemEntry) {
+			Assert::fseNotExists($unknownFileSystemEntry);
+		}
+		Assert::fseNotExists($templateDir->getImagesDir());
+		Assert::fseNotExists($templateDir->getParametersFile());
+		Assert::fseNotExists($templateDir->getDescriptionFile());
+		foreach ($templateDir->getLangForeignDirs() as $langForeignDir) {
+			Assert::directoryNotExists($langForeignDir);
+		}
+		static::testTemplateLangRuTrash($templateDir);
+	}
+
+	protected static function testTemplateLangRuTrash(ComponentTemplate $templateDir)
+	{
+		if ($templateDir->getLangRuDir()->isExists()) {
+			foreach ($templateDir->getLangRuDir()->getChildren() as $child) {
+				if ($child->getName() == $templateDir->getDescriptionFile()->getName()) {
+					Assert::fseNotExists($child);
+				}
+				elseif ($child->getName() == $templateDir->getParametersFile()->getName()) {
+					Assert::fseNotExists($child);
+				}
+				elseif ($templateDir instanceof SimpleComponentTemplate) {
+					if ($child->getName() != $templateDir->getTemplateFile()) {
+						Assert::fseNotExists($child);
+					}
+				}
+				elseif ($templateDir instanceof NewsTemplate) {
+					if (!in_array($child->getName(), [$templateDir->getNewsFile()->getName(), $templateDir->getDetailFile()->getName()])) {
+						Assert::fseNotExists($child);
+					}
 				}
 			}
 		}
@@ -87,6 +124,7 @@ abstract class BaseComponentTemplateTest extends BaseTest
 				'INTERVOLGA_EDU.CONTENT_FOUND',
 				[
 					'#PATH#' => FileSystem::getLocalPath($file),
+					'#NAME#' => $file->getName(),
 					'#ADMIN_LINK#' => Admin::getFileManUrl($file),
 					'#REGEX_EXPLAIN#' => $var['ORIGINAL'],
 					'#REASON#' => Loc::getMessage('INTERVOLGA_EDU.USE_FIELDS_FOR_FIELDS'),
@@ -102,6 +140,7 @@ abstract class BaseComponentTemplateTest extends BaseTest
 				false,
 				Loc::getMessage('INTERVOLGA_EDU.CONTENT_FOUND', [
 					'#PATH#' => FileSystem::getLocalPath($file),
+					'#NAME#' => $file->getName(),
 					'#ADMIN_LINK#' => Admin::getFileManUrl($file),
 					'#REGEX_EXPLAIN#' => $var['ORIGINAL'],
 					'#REASON#' => Loc::getMessage('INTERVOLGA_EDU.USE_DISPLAY_PROPERTIES_FOR_PROPERTIES'),
@@ -119,6 +158,7 @@ abstract class BaseComponentTemplateTest extends BaseTest
 				false,
 				Loc::getMessage('INTERVOLGA_EDU.CONTENT_FOUND', [
 					'#PATH#' => FileSystem::getLocalPath($file),
+					'#NAME#' => $file->getName(),
 					'#ADMIN_LINK#' => Admin::getFileManUrl($file),
 					'#REGEX_EXPLAIN#' => $var['ORIGINAL'],
 					'#REASON#' => Loc::getMessage('INTERVOLGA_EDU.USE_DISPLAY_PROPERTIES_FOR_PROPERTIES_ECHO'),
