@@ -27,6 +27,18 @@ abstract class BaseComponentTemplateTest extends BaseTest
 		return true;
 	}
 
+	public static function getTestLoc(): string
+	{
+		return Loc::getMessage('INTERVOLGA_EDU.TEST_COMPONENT_TEMPLATE_NAME', [
+			'#TEMPLATE#' => static::getLocator()::getNameLoc(),
+		]);
+	}
+
+	public static function getDescription(): string
+	{
+		return Loc::getMessage('INTERVOLGA_EDU.TEST_COMPONENT_TEMPLATE_DESCRIPTION');
+	}
+
 	protected static function run()
 	{
 		$locatorClass = static::getLocator();

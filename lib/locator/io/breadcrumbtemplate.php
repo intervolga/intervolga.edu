@@ -8,9 +8,9 @@ class BreadcrumbTemplate extends DirectoryLocator
 	protected static function getPaths(): array
 	{
 		return [
-			'local/templates/.default/components/bitrix/breadcrumb/nav/',
-			'local/templates/.default/components/bitrix/breadcrumb/breadcrumb/',
-			'local/templates/.default/components/bitrix/breadcrumb/breadcrumbs/',
+			'/local/templates/.default/components/bitrix/breadcrumb/nav/',
+			'/local/templates/.default/components/bitrix/breadcrumb/breadcrumb/',
+			'/local/templates/.default/components/bitrix/breadcrumb/breadcrumbs/',
 		];
 	}
 

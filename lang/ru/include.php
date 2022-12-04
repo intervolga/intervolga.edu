@@ -51,7 +51,6 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_TEMPLATES'] = 'В /local/templates/ шаб
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SCRIPTS'] = 'Плагины слайдера и карусели только в main-шаблоне';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_IMAGES'] = 'Оставлен мусор в шаблонах компонентов';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_INCLUDEAREA'] = 'Включаемая область, особый контент в разделе Партнеры';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON41_TOPMENU'] = 'Проверка шаблона верхнего меню';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_REGISTERPAGEOPTION'] = 'Проверка настройки Главного модуля «Страница регистрации (для системного компонента авторизации)»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_EMAIL'] = 'Проверка ссылки на восстановление пароля в почтовом шаблоне «Запрос на смену пароля» (USER_PASS_REQUEST)';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON6_REVIEWSIBLOCK'] = 'Проверка ИБ Отзывы';
@@ -68,6 +67,8 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Собственное UF-свой
 
 $MESS['INTERVOLGA_EDU.TEST_CODE_NAME'] = 'Проверка кода #FILES#';
 $MESS['INTERVOLGA_EDU.TEST_CODE_DESCRIPTION'] = 'Современная проверка ядра Битрикса, использование длинных php-тегов, запрет на устаревшие функции';
+$MESS['INTERVOLGA_EDU.TEST_COMPONENT_TEMPLATE_NAME'] = 'Проверка папки #TEMPLATE#';
+$MESS['INTERVOLGA_EDU.TEST_COMPONENT_TEMPLATE_DESCRIPTION'] = 'Проверка лишних файлов шаблона и общая проверка кода (современная проверка ядра Битрикса, использование длинных php-тегов, запрет на устаревшие функции)';
 $MESS['INTERVOLGA_EDU.LICENSE_NAME'] = 'Стандарт';
 $MESS['INTERVOLGA_EDU.EMPTY_SITE_CHECK_LOG'] = 'Проверка системы не запускалась';
 $MESS['INTERVOLGA_EDU.NOT_LOWER_CASE'] = 'буквы a-z, цифры 0-9, символы _-.';
