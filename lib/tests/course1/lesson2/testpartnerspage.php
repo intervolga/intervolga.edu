@@ -6,6 +6,7 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Locator\IO\PartnersSection;
 use Intervolga\Edu\Tests\BaseTest;
+use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Regex;
 
 class TestPartnersPage extends BaseTest
@@ -19,8 +20,7 @@ class TestPartnersPage extends BaseTest
 	{
 		Assert::directoryLocator(PartnersSection::class);
 		$directory = PartnersSection::find();
-		$indexPath = $directory->getPath() . '/index.php';
-		$indexFile = new File($indexPath);
+		$indexFile = FileSystem::getInnerFile($directory, 'index.php');
 		Assert::fileContentMatches(
 			$indexFile,
 			new Regex('/<img/i', Loc::getMessage('INTERVOLGA_EDU.IMG_TAG'))
