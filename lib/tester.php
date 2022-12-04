@@ -40,7 +40,6 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestScripts::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestImages::class,
-			\Intervolga\Edu\Tests\Course1\Lesson41\TestUglyCheckResult::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestIncludeArea::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson42\TestRegisterPageOption::class,
