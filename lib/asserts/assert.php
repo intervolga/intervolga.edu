@@ -10,6 +10,7 @@ use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Locator\Iblock\IblockLocator;
 use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
+use Intervolga\Edu\Locator\IO\FileLocator;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Menu;
@@ -515,7 +516,27 @@ class Assert
 				'INTERVOLGA_EDU.ASSERT_DIRECTORY_LOCATOR',
 				[
 					'#DIRECTORY#' => $value::getNameLoc(),
-					'#LINKS#' => $value::getPossibleTips(),
+					'#POSSIBLE	#' => $value::getPossibleTips(),
+				],
+				$message
+			));
+
+		}
+	}
+
+	/**
+	 * @param string|FileLocator $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function fileLocator($value, string $message = '')
+	{
+		if (!$value::find()) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_FILE_LOCATOR',
+				[
+					'#FILE#' => $value::getNameLoc(),
+					'#POSSIBLE#' => $value::getPossibleTips(),
 				],
 				$message
 			));

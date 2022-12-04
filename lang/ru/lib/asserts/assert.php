@@ -24,6 +24,7 @@ $MESS['INTERVOLGA_EDU.FSE'] = '<a href="#FILEMAN_URL#" target="_blank">#NAME#</a
 $MESS['INTERVOLGA_EDU.ASSERT_MODULE_INSTALLED'] = 'Модуль #VALUE# должен быть установлен';
 $MESS['INTERVOLGA_EDU.ASSERT_IBLOCK_LOCATOR'] = 'Инфоблок <b>#IBLOCK#</b> не найден (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.ASSERT_PROPERTY_LOCATOR'] = 'Свойство <b>#PROPERTY#</b> не найдено (#POSSIBLE#)';
-$MESS['INTERVOLGA_EDU.ASSERT_DIRECTORY_LOCATOR'] = 'Папка #DIRECTORY# <b>не найдена</b> (#LINKS#)';
+$MESS['INTERVOLGA_EDU.ASSERT_DIRECTORY_LOCATOR'] = 'Папка #DIRECTORY# <b>не найдена</b> (#POSSIBLE#)';
+$MESS['INTERVOLGA_EDU.ASSERT_FILE_LOCATOR'] = 'Файл #FILE# <b>не найден</b> (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.ASSERT_MENU_ITEM_NOT_EXISTS'] = 'Пункт #ITEM# в меню #MENU# должен быть удален';
 $MESS['INTERVOLGA_EDU.ASSERT_MENU_ITEM_EXISTS'] = 'Пункт #ITEM# в меню #MENU# не найден, должен существовать';

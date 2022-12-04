@@ -103,7 +103,6 @@ $MESS['INTERVOLGA_EDU.REVIEWS_CAROUSEL_TEMPLATE_DIRECTORY'] = 'Шаблон ка
 $MESS['INTERVOLGA_EDU.REVIEWS_RAND_TEMPLATE'] = 'Шаблон случайного отзыва';
 $MESS['INTERVOLGA_EDU.LAST_PROMO_TEMPLATE'] = 'Шаблон последней акции';
 $MESS['INTERVOLGA_EDU.REVIEWS_LIST_TEMPLATE'] = 'Шаблон списка отзывов';
-$MESS['INTERVOLGA_EDU.PARTNERS_SECT_INC_NOT_FOUND'] = 'Не найден файл включаемой области в разделе Партнерам (поиск велся по подстрокам: #POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.REGISTER_PAGE_OPTION_NOT_SET'] = 'Настройка не задана';
 $MESS['INTERVOLGA_EDU.REGISTER_PAGE_OPTION_VALID'] = '/path/to/register/';
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_TEXT_PROBLEM'] = 'Шаблон письма «Запрос на смену пароля» не найден или пуст, <a href="/bitrix/admin/type_edit.php?EVENT_NAME=USER_PASS_REQUEST" target="_blank">проверьте</a>';
@@ -114,3 +113,5 @@ $MESS['INTERVOLGA_EDU.CONTENT_FOUND'] = 'Проблема в <a href="#ADMIN_LIN
 $MESS['INTERVOLGA_EDU.ADD_CUSTOM_CORE_CHECK'] = 'Более краткий вариант: B_PROLOG_INCLUDED === true || die()';
 $MESS['INTERVOLGA_EDU.CUSTOM_MODULE'] = 'intervolga.?';
 $MESS['INTERVOLGA_EDU.CUSTOM_MODULE_TIP'] = 'intervolga.? в #MODULES#';
+$MESS['INTERVOLGA_EDU.INCLUDEAREA_PARTNERS'] = 'Включаемая область в разделе Партнерам';
+$MESS['INTERVOLGA_EDU.INCLUDEAREA_PARTNERS_TIPS'] = 'в названии должно быть: #PARTS#';
