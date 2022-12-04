@@ -121,3 +121,4 @@ $MESS['INTERVOLGA_EDU.TOP_MENU_TEMPLATE'] = 'Шаблон верхнего ме�
 $MESS['INTERVOLGA_EDU.LEFT_MENU_TEMPLATE'] = 'Шаблон левого меню';
 $MESS['INTERVOLGA_EDU.BOTTOM_MENU_TEMPLATE'] = 'Шаблон меню О магазине';
 $MESS['INTERVOLGA_EDU.BREADCRUMB_TEMPLATE'] = 'Шаблон хлебных крошек';
+$MESS['INTERVOLGA_EDU.AUTHORIZE_TEMPLATE'] = 'Шаблон формы авторизации в шапке';
