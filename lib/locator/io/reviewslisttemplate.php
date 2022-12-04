@@ -5,7 +5,7 @@ use Bitrix\Main\Localization\Loc;
 
 class ReviewsListTemplate extends DirectoryLocator
 {
-	public static function getPaths(): array
+	protected static function getPaths(): array
 	{
 		return [
 			'/local/templates/.default/components/bitrix/news.list/reviews_list/',

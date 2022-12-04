@@ -6,33 +6,25 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Asserts\AssertPhp;
 use Intervolga\Edu\FilesTree\ComponentTemplate;
-use Intervolga\Edu\FilesTree\SimpleComponentTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
-use Intervolga\Edu\Locator\IO\LastPromoTemplate;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
 
 abstract class BaseComponentTemplateTest extends BaseTest
 {
-	public static function interceptErrors()
-	{
-		return true;
-	}
-
 	/**
 	 * @return string|DirectoryLocator
 	 */
-	protected static function getLocator()
-	{
-		return LastPromoTemplate::class;
-	}
+	abstract protected static function getLocator();
 
 	/**
 	 * @return string|ComponentTemplate
 	 */
-	protected static function getComponentTemplateTree()
+	abstract protected static function getComponentTemplateTree();
+
+	public static function interceptErrors()
 	{
-		return SimpleComponentTemplate::class;
+		return true;
 	}
 
 	protected static function run()

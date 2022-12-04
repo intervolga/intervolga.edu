@@ -3,13 +3,16 @@ namespace Intervolga\Edu\Locator\IO;
 
 use Bitrix\Main\Application;
 use Bitrix\Main\IO\Directory;
+use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Util\Admin;
+use Intervolga\Edu\Util\FileSystem;
 
 abstract class DirectoryLocator
 {
 	/**
 	 * @return string[]
 	 */
-	abstract public static function getPaths(): array;
+	abstract protected static function getPaths(): array;
 
 	abstract public static function getNameLoc(): string;
 
@@ -29,5 +32,23 @@ abstract class DirectoryLocator
 		}
 
 		return $result;
+	}
+
+	/**
+	 * @return string
+	 */
+	public static function getPossibleTips()
+	{
+		$result = [];
+		$paths = static::getPaths();
+		foreach ($paths as $path) {
+			$links[] = Loc::getMessage('INTERVOLGA_EDU.FSE', [
+				'#NAME#' => FileSystem::getDirectory($path)->getName(),
+				'#PATH#' => $path,
+				'#FILEMAN_URL#' => Admin::getFileManUrl(FileSystem::getDirectory($path)),
+			]);
+		}
+
+		return implode('||', $result);
 	}
 }

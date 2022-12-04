@@ -5,7 +5,7 @@ use Bitrix\Main\Localization\Loc;
 
 class ReviewsSection extends DirectoryLocator
 {
-	public static function getPaths(): array
+	protected static function getPaths(): array
 	{
 		return [
 			'/company/reviews/',

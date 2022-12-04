@@ -50,7 +50,6 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_CODE_FILES'] = 'header.php и footer.php �
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_TEMPLATES'] = 'В /local/templates/ шаблоны: main, inner, .default';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SCRIPTS'] = 'Плагины слайдера и карусели только в main-шаблоне';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_IMAGES'] = 'Оставлен мусор в шаблонах компонентов';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON41_UGLYCHECKRESULT'] = 'Использованы аккуратнные проверки if ($arResult) вместо if (!empty($arResult))';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_INCLUDEAREA'] = 'Включаемая область, особый контент в разделе Партнеры';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_REGISTERPAGEOPTION'] = 'Проверка настройки Главного модуля «Страница регистрации (для системного компонента авторизации)»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_EMAIL'] = 'Проверка ссылки на восстановление пароля в почтовом шаблоне «Запрос на смену пароля» (USER_PASS_REQUEST)';
@@ -77,7 +76,6 @@ $MESS['INTERVOLGA_EDU.TABLE_TAG'] = 'тег <table>';
 $MESS['INTERVOLGA_EDU.SHORT_PHP_TAG_RESTRICTED'] = 'запрещены короткие открывающие PHP-теги';
 $MESS['INTERVOLGA_EDU.OLD_FUNCTION_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> вместо #NEW# используется устаревший код: #OLD#';
 $MESS['INTERVOLGA_EDU.PRODUCTS_CORRECT_NAME'] = 'Каталог';
-$MESS['INTERVOLGA_EDU.NO_INTERVOLGA_MODULES'] = 'Собственный модуль в /local/modules/ с названием вида intervolga.#ВАШЕ НАЗВАНИЕ# не найден';
 $MESS['INTERVOLGA_EDU.IBLOCK_OPTIONS_LOST'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: не заданы настройки формы редактирования элемента (с флагом Для всех)';
 $MESS['INTERVOLGA_EDU.IBLOCK_ELEMENTS_NOT_ENOUGH'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: недостаточно элементов, должно быть хотя бы #EXPECT#';
 $MESS['INTERVOLGA_EDU.USE_ONE_TAB_FOR_IBLOCK_FORM'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: разместите все поля при редактировании элемента на одной вкладке';
@@ -114,3 +112,5 @@ $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_PAGE_PROBLEM'] = 'ссылка из пи
 $MESS['INTERVOLGA_EDU.IBLOCK_FIELD_PARAM_SHOULD_BE_SET'] = 'Настройка #PARAM# поля #FIELD# должна быть #EXPECT#';
 $MESS['INTERVOLGA_EDU.CONTENT_FOUND'] = 'Проблема в <a href="#ADMIN_LINK#" target="_blank">#PATH#</a>, #REGEX_EXPLAIN# (#REASON#)';
 $MESS['INTERVOLGA_EDU.ADD_CUSTOM_CORE_CHECK'] = 'Более краткий вариант: B_PROLOG_INCLUDED === true || die()';
+$MESS['INTERVOLGA_EDU.CUSTOM_MODULE'] = 'intervolga.?';
+$MESS['INTERVOLGA_EDU.CUSTOM_MODULE_TIP'] = 'intervolga.? в #MODULES#';

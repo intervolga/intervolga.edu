@@ -7,6 +7,11 @@ use Intervolga\Edu\Asserts\AssertPhp;
 
 abstract class BaseTestCode extends BaseTest
 {
+	/**
+	 * @return File[];
+	 */
+	abstract static function getFilesToTestCode(): array;
+
 	public static function interceptErrors()
 	{
 		return true;
@@ -23,11 +28,6 @@ abstract class BaseTestCode extends BaseTest
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.TEST_CODE_DESCRIPTION');
 	}
-
-	/**
-	 * @return File[];
-	 */
-	abstract static function getFilesToTestCode(): array;
 
 	static function getFilesLoc(): string
 	{

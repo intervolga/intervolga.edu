@@ -5,7 +5,7 @@ use Bitrix\Main\Localization\Loc;
 
 class PromoSection extends DirectoryLocator
 {
-	public static function getPaths(): array
+	protected static function getPaths(): array
 	{
 		return [
 			'/promo/',

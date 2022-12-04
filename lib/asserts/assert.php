@@ -491,19 +491,11 @@ class Assert
 	public static function directoryLocator($value, string $message = '')
 	{
 		if (!$value::find()) {
-			$links = [];
-			foreach ($value::getPaths() as $path) {
-				$links[] = Loc::getMessage('INTERVOLGA_EDU.FSE', [
-					'#NAME#' => FileSystem::getDirectory($path)->getName(),
-					'#PATH#' => $path,
-					'#FILEMAN_URL#' => Admin::getFileManUrl(FileSystem::getDirectory($path)),
-				]);
-			}
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_DIRECTORY_LOCATOR',
 				[
 					'#DIRECTORY#' => $value::getNameLoc(),
-					'#LINKS#' => implode(', ', $links),
+					'#LINKS#' => $value::getPossibleTips(),
 				],
 				$message
 			));
