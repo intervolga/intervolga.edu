@@ -591,6 +591,15 @@ class Assert
 		}
 	}
 
+	/**
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function custom(string $message)
+	{
+		static::registerError($message);
+	}
+
 	public static function interceptErrorsOn()
 	{
 		if (!static::$interceptErrors) {
