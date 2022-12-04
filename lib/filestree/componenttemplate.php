@@ -7,7 +7,7 @@ use Bitrix\Main\IO\FileNotFoundException;
 use Bitrix\Main\IO\FileSystemEntry;
 use Intervolga\Edu\Util\FileSystem;
 
-abstract class ComponentTemplate extends Directory
+abstract class ComponentTemplate extends FilesTree
 {
 	public function getLangDir(): Directory
 	{
@@ -29,9 +29,11 @@ abstract class ComponentTemplate extends Directory
 	{
 		$result = [];
 		$langDirectory = $this->getLangDir();
-		foreach ($langDirectory->getChildren() as $item) {
-			if ($item->getName() != 'ru') {
-				$result[] = $item;
+		if ($langDirectory->isExists()) {
+			foreach ($langDirectory->getChildren() as $item) {
+				if ($item->getName() != 'ru') {
+					$result[] = $item;
+				}
 			}
 		}
 
@@ -125,6 +127,18 @@ abstract class ComponentTemplate extends Directory
 			$this->getImagesDir(),
 			$this->getLangDir(),
 		];
+
+		return $result;
+	}
+
+	public function getKnownPhpFiles(): array
+	{
+		$result = [];
+		foreach ($this->getKnownFiles() as $knownFile) {
+			if ($knownFile->getExtension() == 'php') {
+				$result[] = $knownFile;
+			}
+		}
 
 		return $result;
 	}

@@ -1,19 +1,27 @@
 <?php
 namespace Intervolga\Edu\Tests\Course1\Lesson6;
 
-use Intervolga\Edu\Asserts\Assert;
-use Intervolga\Edu\Locator\Iblock\PromoIblock;
+use Intervolga\Edu\FilesTree\ComponentTemplate;
+use Intervolga\Edu\FilesTree\SimpleComponentTemplate;
+use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Locator\IO\LastPromoTemplate;
 use Intervolga\Edu\Tests\BaseComponentTemplateTest;
 
 class TestLastPromo extends BaseComponentTemplateTest
 {
-	protected static function run()
+	/**
+	 * @return string|DirectoryLocator
+	 */
+	protected static function getLocator()
 	{
-		$iblock = PromoIblock::find();
-		Assert::directoryLocator(LastPromoTemplate::class);
-		if ($templateDir = LastPromoTemplate::find()) {
-			static::checkTemplateDir($templateDir, $iblock);
-		}
+		return LastPromoTemplate::class;
+	}
+
+	/**
+	 * @return string|ComponentTemplate
+	 */
+	protected static function getComponentTemplateTree()
+	{
+		return SimpleComponentTemplate::class;
 	}
 }

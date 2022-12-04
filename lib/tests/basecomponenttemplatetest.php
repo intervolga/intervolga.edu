@@ -1,84 +1,72 @@
 <?php
 namespace Intervolga\Edu\Tests;
 
-use Bitrix\Iblock\PropertyTable;
-use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
+use Intervolga\Edu\Asserts\AssertPhp;
+use Intervolga\Edu\FilesTree\ComponentTemplate;
+use Intervolga\Edu\FilesTree\SimpleComponentTemplate;
+use Intervolga\Edu\Locator\IO\DirectoryLocator;
+use Intervolga\Edu\Locator\IO\LastPromoTemplate;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
-use Intervolga\Edu\Util\Regex;
-use Intervolga\Edu\Util\Regexes;
 
 abstract class BaseComponentTemplateTest extends BaseTest
 {
-	protected static function checkTemplateDir(Directory $templateDir, array $iblock)
+	public static function interceptErrors()
 	{
-		foreach ($templateDir->getChildren() as $child) {
-			if ($child->isFile()) {
-				if ($child->getName() == 'template.php') {
-					static::checkTemplateFile($child, $iblock);
-				} else {
-					Assert::fileNotExists($child);
+		return true;
+	}
+
+	/**
+	 * @return string|DirectoryLocator
+	 */
+	protected static function getLocator()
+	{
+		return LastPromoTemplate::class;
+	}
+
+	/**
+	 * @return string|ComponentTemplate
+	 */
+	protected static function getComponentTemplateTree()
+	{
+		return SimpleComponentTemplate::class;
+	}
+
+	protected static function run()
+	{
+		$locatorClass = static::getLocator();
+		Assert::directoryLocator($locatorClass);
+		if ($templateDir = $locatorClass::find(static::getComponentTemplateTree())) {
+			/**
+			 * @var ComponentTemplate $templateDir
+			 */
+			foreach ($templateDir->getUnknownFileSystemEntries() as $unknownFileSystemEntry) {
+				Assert::fseNotExists($unknownFileSystemEntry);
+			}
+			Assert::fseNotExists($templateDir->getImagesDir());
+			Assert::fseNotExists($templateDir->getParametersFile());
+			Assert::fseNotExists($templateDir->getDescriptionFile());
+			foreach ($templateDir->getLangForeignDirs() as $langForeignDir) {
+				Assert::directoryNotExists($langForeignDir);
+			}
+			foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
+				if ($knownPhpFile->isExists()) {
+					AssertPhp::goodCode($knownPhpFile);
+					static::checkPhpVars($knownPhpFile);
 				}
-			} else {
-				Assert::fileNotExists($child);
 			}
 		}
 	}
 
-	protected static function checkTemplateFile(File $file, array $iblock)
-	{
-		$regexesNotToFind = [];
-		$regexesNotToFind = array_merge($regexesNotToFind, Regexes::getShortPhpTag());
-		$regexesNotToFind = array_merge($regexesNotToFind, Regexes::getOldCore());
-		$regexesNotToFind = array_merge($regexesNotToFind, Regexes::getUglyCodeFragments());
-		$regexesNotToFind = array_merge($regexesNotToFind, Regexes::getPrefixNotaionFragments());
-		$regexesNotToFind = array_merge($regexesNotToFind, [
-			new Regex(
-				'/href=""/i',
-				'href=""'
-			),
-		]);
-
-		foreach ($regexesNotToFind as $regex) {
-			Assert::fileContentNotMatches($file, $regex);
-		}
-
-		$regexesToFind = [];
-		$regexesToFind = array_merge($regexesToFind, Regexes::getCustomCore());
-		foreach ($regexesToFind as $regex) {
-			Assert::fileContentMatches($file, $regex);
-		}
-
-		static::checkPhpVars($file, $iblock);
-	}
-
-	protected static function checkPhpVars(File $file, array $iblock)
+	protected static function checkPhpVars(File $file)
 	{
 		$vars = static::parseVarsWithIndexes($file);
-		$propertiesCodes = [];
-		if ($iblock) {
-			$getList = PropertyTable::getList([
-				'filter' => [
-					'IBLOCK_ID' => $iblock['ID'],
-				],
-				'select' => [
-					'ID',
-					'CODE',
-				],
-			]);
-
-			while ($fetch = $getList->fetch()) {
-				if (mb_strlen($fetch['CODE'])) {
-					$propertiesCodes[] = $fetch['CODE'];
-				}
-			}
-			foreach ($vars as $var) {
-				static::checkFieldVar($var, $file);
-				static::checkPropertyVar($var, $file, $propertiesCodes);
-			}
+		foreach ($vars as $var) {
+			static::checkFieldVar($var, $file);
+			static::checkPropertyVar($var, $file);
 		}
 	}
 
@@ -90,7 +78,7 @@ abstract class BaseComponentTemplateTest extends BaseTest
 			'NAME'
 		]));
 		Assert::true(
-			$indexIsField,
+			!$indexIsField,
 			Loc::getMessage(
 				'INTERVOLGA_EDU.CONTENT_FOUND',
 				[
@@ -103,11 +91,11 @@ abstract class BaseComponentTemplateTest extends BaseTest
 		);
 	}
 
-	protected static function checkPropertyVar(array $var, File $file, array $propertiesCodes)
+	protected static function checkPropertyVar(array $var, File $file)
 	{
-		if (in_array($var['INDEXES'][1], $propertiesCodes)) {
+		if ($var['INDEXES'][0] == 'PROPERTIES') {
 			Assert::true(
-				($var['INDEXES'][0] == 'PROPERTIES'),
+				false,
 				Loc::getMessage('INTERVOLGA_EDU.CONTENT_FOUND', [
 					'#PATH#' => FileSystem::getLocalPath($file),
 					'#ADMIN_LINK#' => Admin::getFileManUrl($file),
@@ -115,14 +103,16 @@ abstract class BaseComponentTemplateTest extends BaseTest
 					'#REASON#' => Loc::getMessage('INTERVOLGA_EDU.USE_DISPLAY_PROPERTIES_FOR_PROPERTIES'),
 				])
 			);
+		}
 
-			$index0isProperty = in_array($var['INDEXES'][0], [
-				'PROPERTIES',
-				'DISPLAY_PROPERTIES'
-			]);
-			$index2isValue = ($var['INDEXES'][2] == 'VALUE');
+		$index0isProperty = in_array($var['INDEXES'][0], [
+			'PROPERTIES',
+			'DISPLAY_PROPERTIES'
+		]);
+		$index2isValue = ($var['INDEXES'][2] == 'VALUE');
+		if ($index0isProperty && $index2isValue) {
 			Assert::true(
-				$index0isProperty && $index2isValue,
+				false,
 				Loc::getMessage('INTERVOLGA_EDU.CONTENT_FOUND', [
 					'#PATH#' => FileSystem::getLocalPath($file),
 					'#ADMIN_LINK#' => Admin::getFileManUrl($file),
