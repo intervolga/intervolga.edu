@@ -175,6 +175,26 @@ class Assert
 		}
 	}
 
+	/**
+	 * @param array $array
+	 * @param int $number
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function count(array $array, int $number, string $message = '')
+	{
+		if (count($array) != $number) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_COUNT',
+				[
+					'#EXPECT#' => $number,
+					'#VALUE#' => count($array),
+				],
+				$message
+			));
+		}
+	}
+
 	public static function keyExists($array, $key, $message = '')
 	{
 		if (!array_key_exists($key, $array)) {
@@ -552,8 +572,7 @@ class Assert
 
 	public static function interceptErrorsOn()
 	{
-		if (!static::$interceptErrors)
-		{
+		if (!static::$interceptErrors) {
 			static::$interceptErrors = true;
 			static::$interceptedErrors = [];
 		}
@@ -561,16 +580,14 @@ class Assert
 
 	public static function interceptErrorsOff()
 	{
-		if (static::$interceptErrors)
-		{
+		if (static::$interceptErrors) {
 			static::$interceptErrors = false;
 		}
 	}
 
 	public static function throwIntercepted()
 	{
-		if (static::$interceptedErrors)
-		{
+		if (static::$interceptedErrors) {
 			$errors = static::$interceptedErrors;
 			static::$interceptedErrors = [];
 			throw AssertException::createMultiple($errors);
@@ -599,12 +616,9 @@ class Assert
 	 */
 	protected static function registerError(string $error)
 	{
-		if (static::$interceptErrors)
-		{
+		if (static::$interceptErrors) {
 			static::$interceptedErrors[] = new AssertException($error);
-		}
-		else
-		{
+		} else {
 			throw new AssertException($error);
 		}
 	}

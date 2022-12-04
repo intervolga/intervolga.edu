@@ -19,9 +19,6 @@ class TestSiteChecker extends BaseTest
 		$re = '/(?<DATE>\d{4}-.{3}-\d{2} \d{2}:\d{2}:\d{2}) (?<TITLE>.*) \((?<CODE>.*)\): Fail\n(?<ERROR>.*)/m';
 		preg_match_all($re, $logFile->getContents(), $matches, PREG_SET_ORDER);
 
-		Assert::eq(
-			count($matches),
-			0
-		);
+		Assert::count($matches, 0);
 	}
 }

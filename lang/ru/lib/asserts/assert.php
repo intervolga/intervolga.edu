@@ -8,6 +8,7 @@ $MESS['INTERVOLGA_EDU.ASSERT_GREATER_EQ'] = 'Должно быть больше 
 $MESS['INTERVOLGA_EDU.ASSERT_LESS'] = 'Должно быть меньше #EXPECT#, сейчас #VALUE#';
 $MESS['INTERVOLGA_EDU.ASSERT_MATCHES'] = 'Должно содержать текст вида #EXPECT#';
 $MESS['INTERVOLGA_EDU.ASSERT_NOT_MATCHES'] = 'Не должно содержать текст вида #EXPECT#';
+$MESS['INTERVOLGA_EDU.ASSERT_COUNT'] = 'Количество должно быть #EXPECT#, сейчас #VALUE#';
 $MESS['INTERVOLGA_EDU.ASSERT_KEY_EXISTS'] = 'Ключ #VALUE# должен существовать';
 $MESS['INTERVOLGA_EDU.ASSERT_KEY_NOT_EXISTS'] = 'Ключ #VALUE# не должен существовать';
 $MESS['INTERVOLGA_EDU.ASSERT_FUNCTION_EXISTS'] = 'Функция #VALUE# должна существовать';

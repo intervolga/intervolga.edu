@@ -11,9 +11,6 @@ class TestUpdates extends BaseTest
 	{
 		$status = UpdateSystem::getStatus();
 
-		Assert::eq(
-			count($status['MODULES']),
-			0
-		);
+		Assert::count($status['MODULES'], 0);
 	}
 }
