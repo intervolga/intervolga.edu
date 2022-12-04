@@ -30,20 +30,4 @@ class Paths
 
 		return $result;
 	}
-
-	/**
-	 * @return Directory[]
-	 */
-	public static function getCustomModuleDirectories()
-	{
-		$result = [];
-		$modulesDirs = PathMaskParser::getFileSystemEntriesByMask('/local/modules/intervolga.*/');
-		foreach ($modulesDirs as $moduleDir) {
-			if ($moduleDir->getName() != 'intervolga.edu') {
-				$result[] = $moduleDir;
-			}
-		}
-
-		return $result;
-	}
 }
