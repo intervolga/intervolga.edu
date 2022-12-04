@@ -117,3 +117,6 @@ $MESS['INTERVOLGA_EDU.CUSTOM_MODULE_TIP'] = 'intervolga.? в #MODULES#';
 $MESS['INTERVOLGA_EDU.INCLUDEAREA_PARTNERS'] = 'Включаемая область в разделе Партнерам';
 $MESS['INTERVOLGA_EDU.INCLUDEAREA_PARTNERS_TIPS'] = 'в названии должно быть: #PARTS#';
 $MESS['INTERVOLGA_EDU.TOP_MENU_TEMPLATE'] = 'Шаблон верхнего меню';
+$MESS['INTERVOLGA_EDU.LEFT_MENU_TEMPLATE'] = 'Шаблон левого меню';
+$MESS['INTERVOLGA_EDU.BOTTOM_MENU_TEMPLATE'] = 'Шаблон меню О магазине';
+$MESS['INTERVOLGA_EDU.BREADCRUMB_TEMPLATE'] = 'Шаблон хлебных крошек';
