@@ -54,8 +54,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SCRIPTS'] = 'Проверка js-плаг�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SCRIPTS_DESCRIPTION'] = 'Плагины слайдера и карусели должны подключаться только в main-шаблоне';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_SMARTFILTERISEXIST'] = 'Проверка на наличие включенного фильтра';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_SMARTFILTERISEXIST_DESCRIPTION'] = 'В компоненте каталог должен быть включен фильтр';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST'] = 'Проверка на наличие свойства';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST_DESCRIPTION'] = 'Инфоблок должен иметь свойство "В наличии"';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST_DESCRIPTION'] = 'Инфоблок должен иметь свойство "В наличии", оно должно быть заполненно хотя бы у одного элемента';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER'] = 'Используется в умном фильтре';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER_DESCRIPTION'] = 'Проверка у свойства на наличие флага "использовать в умном фильтре"';
 
