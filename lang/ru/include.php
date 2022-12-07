@@ -131,3 +131,4 @@ $MESS['INTERVOLGA_EDU.AUTHORIZE_TEMPLATE'] = 'Шаблон формы автор
 $MESS['INTERVOLGA_EDU.PROMO_NEWS_TEMPLATE_DIRECTORY'] = 'Шаблон акций';
 $MESS['INTERVOLGA_EDU.TEST_IBLOCK_NAME'] = 'Проверка Инфоблока #IBLOCK#';
 $MESS['INTERVOLGA_EDU.TEST_IBLOCK_DESCRIPTION'] = 'Проверка типа, прав, количества элементов, свойств по заданию, формы редактирования в админке';
+$MESS['INTERVOLGA_EDU.SEARCH_FORM_TEMPLATE'] = 'Шаблон формы поиска';
