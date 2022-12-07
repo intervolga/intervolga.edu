@@ -4,23 +4,15 @@ namespace Intervolga\Edu\Tests\Course1\Lesson10;
 use Bitrix\Main\Component\ParametersTable;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
+use Intervolga\Edu\Util\ComponentParameters;
 use Intervolga\Edu\Util\Regex;
 
 class TestSearchAction extends BaseTest
 {
 	protected static function run()
 	{
-		$getList = ParametersTable::getList([
-			'filter' => [
-				'=COMPONENT_NAME' => 'bitrix:search.form',
-			],
-			'select' => [
-				'ID',
-				'PARAMETERS',
-			],
-		]);
-		$fetch = $getList->fetch();
-		$parameters = unserialize($fetch['PARAMETERS']);
+		$parameters = ComponentParameters::getComponentParameters('bitrix:search.form');
+		
 		Assert::notMatches(
 			$parameters['PAGE'],
 			new Regex(
