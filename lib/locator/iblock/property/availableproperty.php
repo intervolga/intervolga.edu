@@ -2,10 +2,9 @@
 
 namespace Intervolga\Edu\Locator\Iblock\Property;
 
-use Bitrix\Iblock\ElementTable;
+use Bitrix\Iblock\ElementPropertyTable;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Locator\Iblock\ProductsIblock;
-use Intervolga\Edu\Locator\Iblock\Section\SoftFornitureSection;
 
 class AvailableProperty extends PropertyLocator
 {
@@ -23,25 +22,23 @@ class AvailableProperty extends PropertyLocator
 			],
 		];
 	}
-	public static function getCountNotEmtyProperty(){
-		$count = ElementTable::GetList(
-			[
-				'filter' =>
-					[
-						"IBLOCK_ID"=> ProductsIblock::find()['ID'],
-						"IBLOCK_SECTION_ID" => SoftFornitureSection::find()['ID'],
-						'=CODE' =>
-							[
-							'AVAILABLE',
-							'AVAILABILITY',
-							],
-					],
-				'select' => ['CNT'],
-			]
-		);
+	
+	public static function getCountNotEmtyProperty()
+	{
+		$count = 0;
+		if (AvailableProperty::find())
+		{
+			$count = ElementPropertyTable::GetCount(
+				[
+					'IBLOCK_PROPERTY_ID' => AvailableProperty::find()['ID'],
+				
+				],
+			);
+		}
 		
 		return $count;
 	}
+	
 	public static function getNameLoc(): string
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.AVAILABLE_PROPERTY');

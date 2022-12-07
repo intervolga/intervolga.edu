@@ -7,27 +7,10 @@ use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Locator\Iblock\IblockLocator;
 use Intervolga\Edu\Locator\Iblock\ProductsIblock;
 use Intervolga\Edu\Locator\Iblock\Property\AvailableProperty;
-use Intervolga\Edu\Tests\BaseTestIblock;
+use Intervolga\Edu\Tests\BaseTest;
 
-class TestPropertyIsExist extends BaseTestIblock
+class TestPropertyIsExist extends BaseTest
 {
-	/**
-	 * @return string|IblockLocator
-	 */
-	protected static function getLocator()
-	{
-		return ProductsIblock::class;
-	}
-	protected static function getPropertiesLocators(): array
-	{
-		return [
-			AvailableProperty::class
-		];
-	}
-	protected static function getMinCount(): int
-	{
-		return 1;
-	}
 	public static function getDescription(): string
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST_DESCRIPTION');
@@ -36,10 +19,25 @@ class TestPropertyIsExist extends BaseTestIblock
 	protected static function run()
 	{
 		if (static::getLocator()::find()) {
-			foreach ( self::getPropertiesLocators() as $property) {
+			foreach (self::getPropertiesLocators() as $property) {
 				Assert::propertyLocator($property);
-				Assert::greaterEq(AvailableProperty::getCountNotEmtyProperty(), 0);
+				Assert::greaterEq(AvailableProperty::getCountNotEmtyProperty(), 1);
 			}
 		}
+	}
+	
+	/**
+	 * @return string|IblockLocator
+	 */
+	protected static function getLocator()
+	{
+		return ProductsIblock::class;
+	}
+	
+	protected static function getPropertiesLocators(): array
+	{
+		return [
+			AvailableProperty::class,
+		];
 	}
 }
