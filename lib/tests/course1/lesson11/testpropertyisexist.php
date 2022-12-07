@@ -7,8 +7,6 @@ use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Locator\Iblock\IblockLocator;
 use Intervolga\Edu\Locator\Iblock\ProductsIblock;
 use Intervolga\Edu\Locator\Iblock\Property\AvailableProperty;
-
-use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
 use Intervolga\Edu\Tests\BaseTestIblock;
 
 class TestPropertyIsExist extends BaseTestIblock
@@ -40,10 +38,8 @@ class TestPropertyIsExist extends BaseTestIblock
 		if (static::getLocator()::find()) {
 			foreach ( self::getPropertiesLocators() as $property) {
 				Assert::propertyLocator($property);
-				Assert::notEmpty(AvailableProperty::getPropertyBind());
+				Assert::greaterEq(AvailableProperty::getCountNotEmtyProperty(), 0);
 			}
 		}
 	}
-	
-	
 }
