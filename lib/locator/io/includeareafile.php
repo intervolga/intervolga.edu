@@ -37,13 +37,15 @@ class IncludeAreaFile extends FileLocator
 	{
 		$result = null;
 		$directory = PartnersSection::find();
-		if ($directory->getChildren()) {
-			foreach ($directory->getChildren() as $child) {
-				if ($child->isFile()) {
-					if (mb_substr($child->getName(), 0, 1) != '.') {
-						foreach (static::FILE_NAME_PARTS as $namePart) {
-							if (mb_substr_count($child->getName(), $namePart)) {
-								$result = $child;
+		if ($directory && $directory->isExists()) {
+			if ($directory->getChildren()) {
+				foreach ($directory->getChildren() as $child) {
+					if ($child->isFile()) {
+						if (mb_substr($child->getName(), 0, 1) != '.') {
+							foreach (static::FILE_NAME_PARTS as $namePart) {
+								if (mb_substr_count($child->getName(), $namePart)) {
+									$result = $child;
+								}
 							}
 						}
 					}

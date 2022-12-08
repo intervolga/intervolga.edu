@@ -17,6 +17,7 @@ class TestTemplates extends BaseTest
 		];
 
 		$templatesDirectory = new Directory(Application::getDocumentRoot() . '/local/templates/');
+		Assert::directoryExists($templatesDirectory);
 		foreach ($templatesDirectory->getChildren() as $child) {
 			if ($child->isDirectory()) {
 				if (!in_array($child->getName(), $templatesAllowed)) {
