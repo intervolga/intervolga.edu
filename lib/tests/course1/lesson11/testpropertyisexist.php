@@ -19,7 +19,7 @@ class TestPropertyIsExist extends BaseTest
 	protected static function run()
 	{
 		if (static::getLocator()::find()) {
-			foreach (self::getPropertiesLocators() as $property) {
+			foreach (static::getPropertiesLocators() as $property) {
 				Assert::propertyLocator($property);
 				Assert::greaterEq(AvailableProperty::getCountNotEmtyProperty(), 1);
 			}

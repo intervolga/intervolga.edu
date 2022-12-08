@@ -26,7 +26,7 @@ class AvailableProperty extends PropertyLocator
 	public static function getCountNotEmtyProperty()
 	{
 		$count = 0;
-		if (AvailableProperty::find())
+		if (!empty(AvailableProperty::find()))
 		{
 			$count = ElementPropertyTable::GetCount(
 				[
