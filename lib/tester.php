@@ -64,9 +64,6 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson11\TestPropertyIsExist::class,
 			\Intervolga\Edu\Tests\Course1\Lesson11\TestSmartFilterIsExist::class,
 			\Intervolga\Edu\Tests\Course1\Lesson11\TestPropertyInFilter::class,
-			\Intervolga\Edu\Tests\Course1\Lesson11\TestCatalogRating::class,
-			\Intervolga\Edu\Tests\Course1\Lesson11\TestCheckSetViewTarget::class,
-			\Intervolga\Edu\Tests\Course1\Lesson11\TestCheckShowContent::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson1\TestModule::class,
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUf::class,

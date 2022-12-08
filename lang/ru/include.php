@@ -58,12 +58,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST'] = 'Проверка с�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST_DESCRIPTION'] = 'Инфоблок должен иметь свойство "В наличии", оно должно быть заполненно хотя бы у одного элемента';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER'] = 'Используется в умном фильтре';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER_DESCRIPTION'] = 'Проверка у свойства на наличие флага "использовать в умном фильтре"';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CATALOGRATING'] = 'Проверка на наличие включенного рейтинга';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CATALOGRATING_DESCRIPTION'] = 'В настройках детального просмотра должен быть включен рейтинг';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSETVIEWTARGET'] = 'Проверка SetViewTarget';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSETVIEWTARGET_DESCRIPTION'] = 'В шаблоне компонента Каталог вывод рейтинга должен быть заключен в SetViewTarget';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSHOWCONTENT'] = 'Проверка ShowViewContent';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSHOWCONTENT_DESCRIPTION'] = 'ShowViewContent должен быть размещен в правильном месте';
+
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_INCLUDEAREA'] = 'Проверка включаемой области';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_INCLUDEAREA_DESCRIPTION'] = 'Должен быть файл в разделе Партнерам и в корне сайта';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_REGISTERPAGEOPTION'] = 'Проверка настройки «Страница регистрации»';
@@ -85,7 +80,6 @@ $MESS['INTERVOLGA_EDU.NOT_LOWER_CASE'] = 'буквы a-z, цифры 0-9, сим
 $MESS['INTERVOLGA_EDU.UPLOAD_PATH'] = 'путь к картинке в /upload/';
 $MESS['INTERVOLGA_EDU.IMG_TAG'] = 'тег <img>';
 $MESS['INTERVOLGA_EDU.SET_VIEW_TARGET'] = 'SetViewTarget';
-$MESS['INTERVOLGA_EDU.SHOW_VIEW_CONTENT'] = 'Show View Content после <div> с классом main_title';
 $MESS['INTERVOLGA_EDU.TABLE_TAG'] = 'тег <table>';
 $MESS['INTERVOLGA_EDU.SHORT_PHP_TAG_RESTRICTED'] = 'запрещены короткие открывающие PHP-теги';
 $MESS['INTERVOLGA_EDU.OLD_FUNCTION_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> вместо #NEW# используется устаревший код: #OLD#';
