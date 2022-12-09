@@ -116,7 +116,7 @@ $MESS['INTERVOLGA_EDU.REGISTER_PAGE_OPTION_VALID'] = '/path/to/register/';
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_TEXT_PROBLEM'] = 'Шаблон письма «Запрос на смену пароля» не найден или пуст, <a href="/bitrix/admin/type_edit.php?EVENT_NAME=USER_PASS_REQUEST" target="_blank">проверьте</a>';
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_URL_PROBLEM'] = 'В шаблоне письма «Запрос на смену пароля» нет валидной ссылки';
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_PAGE_PROBLEM'] = 'ссылка из письма';
-$MESS['INTERVOLGA_EDU.IBLOCK_FIELD_PARAM_SHOULD_BE_SET'] = 'Настройка #PARAM# поля #FIELD# должна быть #EXPECT#';
+$MESS['INTERVOLGA_EDU.IBLOCK_FIELD_PARAM_SHOULD_BE_SET'] = 'Настройка <b>#PARAM#</b> поля <b>#FIELD#</b> должна быть <b>#EXPECT#</b>';
 $MESS['INTERVOLGA_EDU.CONTENT_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#NAME#</a> не должно быть #REGEX_EXPLAIN# (#REASON#)';
 $MESS['INTERVOLGA_EDU.ADD_CUSTOM_CORE_CHECK'] = 'Более краткий вариант: B_PROLOG_INCLUDED === true || die()';
 $MESS['INTERVOLGA_EDU.CUSTOM_MODULE'] = 'intervolga.?';
