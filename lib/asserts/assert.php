@@ -6,7 +6,10 @@ use Bitrix\Main\IO\File;
 use Bitrix\Main\IO\FileSystemEntry;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
+use Bitrix\MessageService\Sender\Sms\Dummy;
 use Intervolga\Edu\Exceptions\AssertException;
+use Intervolga\Edu\Locator\Event\EventLocator;
+use Intervolga\Edu\Locator\Event\MediaType;
 use Intervolga\Edu\Locator\Iblock\IblockLocator;
 use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
@@ -544,6 +547,29 @@ class Assert
 		}
 	}
 
+	public static function moduleEventExists($value, $message = '')
+	{
+		$result = $value::getModuleEvent();
+		if (!$result)
+		{
+			static::registerError(
+				static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_EVENT_EXISTS',
+							["#EVENT_DESCRIPTION#" => $value::getDescription()],
+							$message
+				));
+		} else {
+			if (!$value::checkBaseType($result)) {
+				static::registerError(
+					static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_REQUIRED_TYPE_BASE',
+						["#TYPE_BASE#" => $value::getRequiredType()],
+						$message
+				));
+			}
+		}
+	}
+
 	public static function menuItemExists($menuPath, $item, string $message = '')
 	{
 		$menuFile = FileSystem::getFile($menuPath);
@@ -636,7 +662,6 @@ class Assert
 		} else {
 			$result = Loc::getMessage($locCode, $replace);
 		}
-
 		return $result;
 	}
 

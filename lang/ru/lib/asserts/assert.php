@@ -28,3 +28,5 @@ $MESS['INTERVOLGA_EDU.ASSERT_DIRECTORY_LOCATOR'] = 'Папка #DIRECTORY# <b>н
 $MESS['INTERVOLGA_EDU.ASSERT_FILE_LOCATOR'] = 'Файл #FILE# <b>не найден</b> (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.ASSERT_MENU_ITEM_NOT_EXISTS'] = 'Пункт #ITEM# в меню #MENU# должен быть удален';
 $MESS['INTERVOLGA_EDU.ASSERT_MENU_ITEM_EXISTS'] = 'Пункт #ITEM# в меню #MENU# не найден, должен существовать';
+$MESS['INTERVOLGA_EDU.ASSERT_EVENT_EXISTS'] = 'Событие "#EVENT_DESCRIPTION#" не найдено, должно существовать';
+$MESS['INTERVOLGA_EDU.ASSERT_REQUIRED_TYPE_BASE'] = 'Класс должен наследоваться от #TYPE_BASE';
