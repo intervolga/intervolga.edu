@@ -11,19 +11,18 @@ abstract class SectionLocator
 	 * @return string|IblockLocator
 	 */
 	abstract public static function getIblock();
-	
+
 	abstract public static function getFilter(): array;
-	
+
 	abstract public static function getNameLoc(): string;
-	
+
 	public static function find(): array
 	{
 		$result = [];
 		Loader::includeModule('iblock');
 		$iblockClass = static::getIblock();
 		$iblockArray = $iblockClass::find();
-		if ($iblockArray)
-		{
+		if ($iblockArray) {
 			$getList = SectionTable::getList([
 				'order' => [
 					'ID' => 'ASC',
@@ -39,7 +38,7 @@ abstract class SectionLocator
 				$result = $fetch;
 			}
 		}
-		
+
 		return $result;
 	}
 }

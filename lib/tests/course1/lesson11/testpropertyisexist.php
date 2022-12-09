@@ -1,5 +1,4 @@
 <?php
-
 namespace Intervolga\Edu\Tests\Course1\Lesson11;
 
 use Bitrix\Main\Localization\Loc;
@@ -15,7 +14,7 @@ class TestPropertyIsExist extends BaseTest
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST_DESCRIPTION');
 	}
-	
+
 	protected static function run()
 	{
 		if (static::getLocator()::find()) {
@@ -25,7 +24,7 @@ class TestPropertyIsExist extends BaseTest
 			}
 		}
 	}
-	
+
 	/**
 	 * @return string|IblockLocator
 	 */
@@ -33,7 +32,7 @@ class TestPropertyIsExist extends BaseTest
 	{
 		return ProductsIblock::class;
 	}
-	
+
 	protected static function getPropertiesLocators(): array
 	{
 		return [

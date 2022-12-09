@@ -1,5 +1,4 @@
 <?php
-
 namespace Intervolga\Edu\Tests\Course1\Lesson11;
 
 use Bitrix\Main\Loader;
@@ -12,7 +11,7 @@ use Intervolga\Edu\Tests\BaseTest;
 
 class TestPropertyInFilter extends BaseTest
 {
-	
+
 	protected static function run()
 	{
 		if (Loader::includeModule("iblock")) {
@@ -24,6 +23,6 @@ class TestPropertyInFilter extends BaseTest
 				}
 			}
 		}
-		
+
 	}
 }
