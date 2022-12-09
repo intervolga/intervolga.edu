@@ -52,17 +52,6 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_TEMPLATES'] = 'Проверка шабло
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_TEMPLATES_DESCRIPTION'] = 'В /local/templates/ должны быть только эти шаблоны: main, inner, .default';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SCRIPTS'] = 'Проверка js-плагинов';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SCRIPTS_DESCRIPTION'] = 'Плагины слайдера и карусели должны подключаться только в main-шаблоне';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_SMARTFILTERISEXIST'] = 'Проверка на наличие включенного фильтра';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_SMARTFILTERISEXIST_DESCRIPTION'] = 'В компоненте каталог должен быть включен фильтр';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST_DESCRIPTION'] = 'Инфоблок должен иметь свойство "В наличии", оно должно быть заполненно хотя бы у одного элемента';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER'] = 'Используется в умном фильтре';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER_DESCRIPTION'] = 'Проверка у свойства на наличие флага "использовать в умном фильтре"';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CATALOGRATING'] = 'Проверка на наличие включенного рейтинга';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CATALOGRATING_DESCRIPTION'] = 'В настройках детального просмотра должен быть включен рейтинг';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSETVIEWTARGET'] = 'Проверка SetViewTarget';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSETVIEWTARGET_DESCRIPTION'] = 'В шаблоне компонента Каталог вывод рейтинга должен быть заключен в SetViewTarget';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSHOWCONTENT'] = 'Проверка ShowViewContent';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSHOWCONTENT_DESCRIPTION'] = 'ShowViewContent должен быть размещен в правильном месте';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_INCLUDEAREA'] = 'Проверка включаемой области';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_INCLUDEAREA_DESCRIPTION'] = 'Должен быть файл в разделе Партнерам и в корне сайта';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_REGISTERPAGEOPTION'] = 'Проверка настройки «Страница регистрации»';
@@ -71,6 +60,12 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_EMAIL'] = 'Проверка ссылки 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_EMAIL_DESCRIPTION'] = 'Ссылка в почтовом шаблоне «Запрос на смену пароля» (USER_PASS_REQUEST) должна вести на корректную страницу';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION'] = 'Проверка формы поиска';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION_DESCRIPTION'] = 'Должна быть настроена на раздел, а не на index.php-страницу';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CATALOGRATING'] = 'Проверка на наличие включенного рейтинга';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CATALOGRATING_DESCRIPTION'] = 'В настройках детального просмотра должен быть включен рейтинг';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSETVIEWTARGET'] = 'Проверка SetViewTarget';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSETVIEWTARGET_DESCRIPTION'] = 'В шаблоне компонента Каталог вывод рейтинга должен быть заключен в SetViewTarget';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSHOWCONTENT'] = 'Проверка ShowViewContent';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSHOWCONTENT_DESCRIPTION'] = 'ShowViewContent должен быть размещен в правильном месте';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Проверка собственного UF-свойства';
 
@@ -84,7 +79,7 @@ $MESS['INTERVOLGA_EDU.NOT_LOWER_CASE'] = 'буквы a-z, цифры 0-9, сим
 $MESS['INTERVOLGA_EDU.UPLOAD_PATH'] = 'путь к картинке в /upload/';
 $MESS['INTERVOLGA_EDU.IMG_TAG'] = 'тег <img>';
 $MESS['INTERVOLGA_EDU.SET_VIEW_TARGET'] = 'SetViewTarget';
-$MESS['INTERVOLGA_EDU.SHOW_VIEW_CONTENT'] = 'Show View Content после <div> с классом main_title';
+$MESS['INTERVOLGA_EDU.SHOW_VIEW_CONTENT'] = 'Show View Content после <p> с классом title';
 $MESS['INTERVOLGA_EDU.TABLE_TAG'] = 'тег <table>';
 $MESS['INTERVOLGA_EDU.SHORT_PHP_TAG_RESTRICTED'] = 'запрещены короткие открывающие PHP-теги';
 $MESS['INTERVOLGA_EDU.OLD_FUNCTION_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> вместо #NEW# используется устаревший код: #OLD#';
@@ -122,7 +117,7 @@ $MESS['INTERVOLGA_EDU.REGISTER_PAGE_OPTION_VALID'] = '/path/to/register/';
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_TEXT_PROBLEM'] = 'Шаблон письма «Запрос на смену пароля» не найден или пуст, <a href="/bitrix/admin/type_edit.php?EVENT_NAME=USER_PASS_REQUEST" target="_blank">проверьте</a>';
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_URL_PROBLEM'] = 'В шаблоне письма «Запрос на смену пароля» нет валидной ссылки';
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_PAGE_PROBLEM'] = 'ссылка из письма';
-$MESS['INTERVOLGA_EDU.IBLOCK_FIELD_PARAM_SHOULD_BE_SET'] = 'Настройка #PARAM# поля #FIELD# должна быть #EXPECT#';
+$MESS['INTERVOLGA_EDU.IBLOCK_FIELD_PARAM_SHOULD_BE_SET'] = 'Настройка <b>#PARAM#</b> поля <b>#FIELD#</b> должна быть <b>#EXPECT#</b>';
 $MESS['INTERVOLGA_EDU.CONTENT_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#NAME#</a> не должно быть #REGEX_EXPLAIN# (#REASON#)';
 $MESS['INTERVOLGA_EDU.ADD_CUSTOM_CORE_CHECK'] = 'Более краткий вариант: B_PROLOG_INCLUDED === true || die()';
 $MESS['INTERVOLGA_EDU.CUSTOM_MODULE'] = 'intervolga.?';

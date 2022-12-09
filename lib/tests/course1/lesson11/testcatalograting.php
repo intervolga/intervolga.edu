@@ -1,5 +1,4 @@
 <?php
-
 namespace Intervolga\Edu\Tests\Course1\Lesson11;
 
 use Intervolga\Edu\Asserts\Assert;

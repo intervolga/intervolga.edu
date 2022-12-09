@@ -1,5 +1,4 @@
 <?php
-
 namespace Intervolga\Edu\Tests\Course1\Lesson11;
 
 use Bitrix\Main\Localization\Loc;
@@ -21,7 +20,7 @@ class TestCheckShowContent extends BaseTest
 		foreach ($files as $file)
 			Assert::fileContentMatches(
 				$file,
-				new Regex('/\<div\s*class\s*=\s*\"\s*main_title\s*\">\s*\<\?(php\s*|=\s*)\$APPLICATION\s*->\s*ShowViewContent/i', Loc::getMessage('INTERVOLGA_EDU.SHOW_VIEW_CONTENT'))
+				new Regex('/<p\s*class\s*=\s*"\s*title\s*"\s*>\s*.*<\/p>\s*<\?(php|=)\s*\$APPLICATION\s*->\s*ShowViewContent\(.*rating.*/i', Loc::getMessage('INTERVOLGA_EDU.SHOW_VIEW_CONTENT'))
 			);
 	}
 }
