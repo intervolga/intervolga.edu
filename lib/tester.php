@@ -3,6 +3,7 @@ namespace Intervolga\Edu;
 
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Tests\BaseTest;
+use Intervolga\Edu\Tests\Course2\Lesson1\TestCatalogBindingProperty;
 
 class Tester
 {
@@ -64,6 +65,8 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson11\TestPropertyIsExist::class,
 			\Intervolga\Edu\Tests\Course1\Lesson11\TestSmartFilterIsExist::class,
 			\Intervolga\Edu\Tests\Course1\Lesson11\TestPropertyInFilter::class,
+
+			\Intervolga\Edu\Tests\Course2\Lesson1\TestCatalogBindingProperty::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson1\TestModule::class,
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUf::class,

@@ -13,6 +13,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON6'] = '6. Вывод динамическо�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON8'] = '8. Комплексные компоненты';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10'] = '10. Поиск';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11'] = '11. Полезные возможности';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON1'] = '1. Получение связанных элементов';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1'] = '1. Создание модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы';
 
@@ -94,6 +95,7 @@ $MESS['INTERVOLGA_EDU.RENAME_FIELD_NAME'] = 'Переименуйте поле #
 $MESS['INTERVOLGA_EDU.PRICE_PROPERTY'] = 'Цена';
 $MESS['INTERVOLGA_EDU.POST_PROPERTY'] = 'Должность';
 $MESS['INTERVOLGA_EDU.COMPANY_PROPERTY'] = 'Компания';
+$MESS['INTERVOLGA_EDU.CATALOGBINDING_PROPERTY'] = 'Привязка к каталогу';
 $MESS['INTERVOLGA_EDU.AVAILABLE_PROPERTY'] = 'В наличии';
 $MESS['INTERVOLGA_EDU.IBLOCK_REVIEWS'] = 'Отзывы';
 $MESS['INTERVOLGA_EDU.IBLOCK_PROMO'] = 'Акции';
