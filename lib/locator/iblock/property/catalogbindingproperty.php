@@ -5,10 +5,14 @@ namespace Intervolga\Edu\Locator\Iblock\Property;
 use Bitrix\Main\Localization\Loc;
 use CIBlockElement;
 use CIBlockProperty;
+use Intervolga\Edu\Locator\Iblock\IblockLocator;
 use Intervolga\Edu\Locator\Iblock\PromoIblock;
 
 class CatalogBindingProperty extends PropertyLocator
 {
+	/**
+	 * @return string|IblockLocator
+	 */
 	public static function getIblock()
 	{
 		return PromoIblock::class;
@@ -27,7 +31,7 @@ class CatalogBindingProperty extends PropertyLocator
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.CATALOGBINDING_PROPERTY');
 	}
-	public static function getCountNotEmtyProperty()
+	public static function getCountNotEmptyProperty()
 	{
 		$count = 0;
 		if (!empty(CatalogBindingProperty::find())) {
