@@ -11,19 +11,20 @@ abstract class TemplateLocator
 		$result = [];
 		if (static::getComponent()::find()) {
 			$getList = ParametersTable::getList([
-				'filter' => array_merge(static::getComponent()::getFilter(), static::getFilter()),
+				'filter' => array_merge(['=COMPONENT_NAME' => static::getComponent()::getComponentName()], static::getFilter()),
 				'select' => [
 					'ID',
 					'COMPONENT_NAME',
 					'PARAMETERS'
 				]
 			]);
-			while($rows = $getList->fetch()){
-				if(!empty($rows)){
+			while ($rows = $getList->fetch()) {
+				if (!empty($rows)) {
 					$result = $rows;
 					$result['PARAMETERS'] = unserialize($rows['PARAMETERS']);
 				}
 			}
+
 			return $result;
 		}
 
@@ -35,6 +36,7 @@ abstract class TemplateLocator
 	 * @return string|ComponentLocator
 	 */
 	abstract public static function getComponent(): string;
+
 	abstract public static function getFilter(): array;
 
 }

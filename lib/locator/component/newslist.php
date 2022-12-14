@@ -1,12 +1,11 @@
 <?php
-
 namespace Intervolga\Edu\Locator\Component;
 
 class NewsList extends ComponentLocator
 {
 
-	public static function getFilter(): array
+	public static function getComponentName(): string
 	{
-		return ['=COMPONENT_NAME' => 'bitrix:news.list'];
+		return 'bitrix:news.list';
 	}
 }
