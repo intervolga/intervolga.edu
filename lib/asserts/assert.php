@@ -6,7 +6,6 @@ use Bitrix\Main\IO\File;
 use Bitrix\Main\IO\FileSystemEntry;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
-use Bitrix\MessageService\Sender\Sms\Dummy;
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Locator\Event\EventLocator;
 use Intervolga\Edu\Locator\Event\MediaType;
@@ -547,26 +546,65 @@ class Assert
 		}
 	}
 
+	public static function compareUserField($event, $class, $message = '')
+	{
+		$list = \CUserTypeEntity::GetList(["ID" => "ASC"], ["FIELD_NAME"]);
+		$requiredList = $class::getRules();
+		while ($r = $list->Fetch()) {
+			if ($r["USER_TYPE_ID"] == $event::getUserTypeId() && $r["ENTITY_ID"] == "USER") {
+				foreach ($requiredList as $k => $rules) {
+					$flag = true;
+					foreach ($rules as $key => $rule) {
+						if ($r[$key] != $rule) {
+							$flag = false;
+							break;
+						}
+					}
+					if ($flag) {
+						$requiredList[$k]["HAS"] = true;
+					}
+				}
+			}
+		}
+		$flag = false;
+		foreach ($requiredList as $item) {
+			if (!$item["HAS"]) {
+				$flag = true;
+				break;
+			}
+		}
+		if ($flag) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_REQUIRED_RULES_USERFIELD',
+				[
+					'#FIELD#' => $event::getUserTypeId(),
+					'#REQUIRED_PROPERTIES#' => 1
+				],
+				$message
+			));
+		}
+	}
+
 	public static function moduleEventExists($value, $message = '')
 	{
-		$result = $value::getModuleEvent();
-		if (!$result)
-		{
+		$result = $value::find();
+		if (!$result) {
 			static::registerError(
 				static::getCustomOrLocMessage(
 					'INTERVOLGA_EDU.ASSERT_EVENT_EXISTS',
-							["#EVENT_DESCRIPTION#" => $value::getDescription()],
-							$message
+					["#EVENT_DESCRIPTION#" => $value::getDescription()],
+					$message
 				));
-		} else {
-			if (!$value::checkBaseType($result)) {
-				static::registerError(
-					static::getCustomOrLocMessage(
-				'INTERVOLGA_EDU.ASSERT_REQUIRED_TYPE_BASE',
-						["#TYPE_BASE#" => $value::getRequiredType()],
-						$message
+		} elseif (!$value::checkBaseType($result)) {
+			static::registerError(
+				static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_REQUIRED_TYPE_BASE',
+					[
+						"#CURRENT_TYPE#" => $result["USER_TYPE_ID"],
+						"#TYPE_BASE#" => $value::getRequiredBaseType()
+					],
+					$message
 				));
-			}
 		}
 	}
 
@@ -662,6 +700,7 @@ class Assert
 		} else {
 			$result = Loc::getMessage($locCode, $replace);
 		}
+
 		return $result;
 	}
 

@@ -8,7 +8,7 @@ abstract class EventLocator
 	/**
 	 * @return bool|mixed|null
 	 */
-	abstract public static function getModuleEvent();
+	abstract public static function find();
 
 	/**
 	 * @param array $resultHandler

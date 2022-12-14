@@ -6,10 +6,10 @@ use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Locator\Event;
 use Intervolga\Edu\Locator\UserField;
 
-class TestUf extends BaseTest
+class TestUfClass extends BaseTest
 {
 	protected static function run()
 	{
-		Assert::moduleEventExists(Event\MediaType::class);
+		Assert::compareUserField(Event\MediaType::class, UserField\Media::class);
 	}
 }
