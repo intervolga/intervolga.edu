@@ -598,13 +598,13 @@ class Assert
 
 	/**
 	 * @param mixed $event
-	 * @param array $requiredListProperties
 	 * @param Regex $regexID
+	 * @param array $requiredListProperties
 	 * @param string $message
 	 * @return void
 	 * @throws AssertException
 	 */
-	public static function userFieldExistsByRegex($event, array $requiredListProperties, Regex $regexID, string $message = '')
+	public static function userFieldExistsByRegex($event, Regex $regexID, array $requiredListProperties=[], string $message = '')
 	{
 		$list = \CUserTypeEntity::GetList(["ID" => "ASC"], [
 			"USER_TYPE_ID" => $event::getUserTypeId()

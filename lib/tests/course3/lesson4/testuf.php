@@ -9,7 +9,6 @@ class TestUf extends BaseTest
 {
 	protected static function run()
 	{
-		// Есть вероятность, что ложно сработает, если класс будет назван так же
 		Assert::moduleEventExists(Event\MediaType::class);
 	}
 }
