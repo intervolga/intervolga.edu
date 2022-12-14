@@ -546,43 +546,108 @@ class Assert
 		}
 	}
 
-	public static function compareUserField($event, $class, $message = '')
+	protected static function getStringFromArray($separator, $array, $endString="<br>"): string
 	{
-		$list = \CUserTypeEntity::GetList(["ID" => "ASC"], ["FIELD_NAME"]);
-		$requiredList = $class::getRules();
-		while ($r = $list->Fetch()) {
-			if ($r["USER_TYPE_ID"] == $event::getUserTypeId() && $r["ENTITY_ID"] == "USER") {
-				foreach ($requiredList as $k => $rules) {
-					$flag = true;
-					foreach ($rules as $key => $rule) {
-						if ($r[$key] != $rule) {
-							$flag = false;
-							break;
-						}
-					}
-					if ($flag) {
-						$requiredList[$k]["HAS"] = true;
-					}
+		$result = '';
+		foreach ($array as $k => $v) {
+			$result .= $k . $separator . $v . $endString;
+		}
+
+		return $result;
+	}
+
+	/**
+	 * @param mixed $event
+	 * @param array $requiredListProperties
+	 * @param string $entityID
+	 * @param string $message
+	 * @return void
+	 * @throws AssertException
+	 */
+	public static function userFieldExistsByString($event, array $requiredListProperties, string $entityID, string $message = '')
+	{
+		$list = \CUserTypeEntity::GetList(["ID" => "ASC"], [
+			"USER_TYPE_ID" => $event::getUserTypeId(),
+			"ENTITY_ID" => $entityID
+		]);
+		$result = false;
+		while ($field = $list->fetch()) {
+			foreach ($requiredListProperties as $k => $rule) {
+				if ($field[$k] == $rule) {
+					$result = true;
+				} else {
+					$result = false;
+					break;
 				}
 			}
-		}
-		$flag = false;
-		foreach ($requiredList as $item) {
-			if (!$item["HAS"]) {
-				$flag = true;
+			if ($result) {
 				break;
 			}
 		}
-		if ($flag) {
+		if (!$result) {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_REQUIRED_RULES_USERFIELD',
 				[
 					'#FIELD#' => $event::getUserTypeId(),
-					'#REQUIRED_PROPERTIES#' => 1
+					'#REQUIRED_PROPERTIES#' => static::getStringFromArray(":", $requiredListProperties)
 				],
 				$message
 			));
 		}
+	}
+
+	/**
+	 * @param mixed $event
+	 * @param array $requiredListProperties
+	 * @param Regex $regexID
+	 * @param string $message
+	 * @return void
+	 * @throws AssertException
+	 */
+	public static function userFieldExistsByRegex($event, array $requiredListProperties, Regex $regexID, string $message = '')
+	{
+		$list = \CUserTypeEntity::GetList(["ID" => "ASC"], [
+			"USER_TYPE_ID" => $event::getUserTypeId()
+		]);
+		$result = false;
+		$wasFoundField = false;
+		while ($field = $list->fetch()) {
+			if (preg_match($regexID->getRegex(), $field["ENTITY_ID"])) {
+				$wasFoundField = true;
+				foreach ($requiredListProperties as $k => $rule) {
+					if ($field[$k] == $rule) {
+						$result = true;
+					} else {
+						$result = false;
+						break;
+					}
+				}
+				if ($result) {
+					break;
+				}
+			}
+		}
+		if (!$wasFoundField){
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_NOT_FOUND_USERFIELD',
+				[
+					'#FIELD#' => $event::getUserTypeId(),
+					'#ASSERT_NOT_FOUND_USERFIELD#' => $regexID->getRegexExplanation()
+				],
+				$message
+			));
+		}
+		else if (!$result) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_REQUIRED_RULES_USERFIELD',
+				[
+					'#FIELD#' => $event::getUserTypeId(),
+					'#REQUIRED_PROPERTIES#' => static::getStringFromArray(":", $requiredListProperties)
+				],
+				$message
+			));
+		}
+
 	}
 
 	public static function moduleEventExists($value, $message = '')

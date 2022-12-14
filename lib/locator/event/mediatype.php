@@ -49,7 +49,7 @@ class MediaType extends EventLocator
 	public static function checkBaseType(array $resultHandler): bool
 	{
 		if (!static::getParams()['REQUIRED_TYPE']) {
-			if ($resultHandler['BASE_TYPE'] === static::getParams()['REQUIRED_TYPE']) {
+			if ($resultHandler['BASE_TYPE'] === static::getRequiredBaseType()) {
 				return true;
 			}
 

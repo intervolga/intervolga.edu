@@ -30,4 +30,5 @@ $MESS['INTERVOLGA_EDU.ASSERT_MENU_ITEM_NOT_EXISTS'] = 'Пункт #ITEM# в ме
 $MESS['INTERVOLGA_EDU.ASSERT_MENU_ITEM_EXISTS'] = 'Пункт #ITEM# в меню #MENU# не найден, должен существовать';
 $MESS['INTERVOLGA_EDU.ASSERT_EVENT_EXISTS'] = 'Обработчик события "#EVENT_DESCRIPTION#" не найдено, должно существовать';
 $MESS['INTERVOLGA_EDU.ASSERT_REQUIRED_TYPE_BASE'] = 'Класс "#CURRENT_TYPE#" должен наследоваться от "#TYPE_BASE#"';
-$MESS['INTERVOLGA_EDU.ASSERT_REQUIRED_RULES_USERFIELD'] = 'Нет пользовательского поля типа "#FIELD#" с необходимыми полями.';
+$MESS['INTERVOLGA_EDU.ASSERT_REQUIRED_RULES_USERFIELD'] = 'Нет пользовательского поля типа "#FIELD#" с необходимыми полями.<br>#REQUIRED_PROPERTIES#';
+$MESS['INTERVOLGA_EDU.ASSERT_NOT_FOUND_USERFIELD'] = 'Не найден пользовательский тип "#FIELD#" для раздела инфоблоков (к примеру, "#REQUIRED_OBJECT#")';
