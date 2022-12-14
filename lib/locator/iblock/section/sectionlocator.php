@@ -7,13 +7,6 @@ use Intervolga\Edu\Locator\Iblock\IblockLocator;
 
 abstract class SectionLocator
 {
-	/**
-	 * @return string|IblockLocator
-	 */
-	abstract public static function getIblock();
-
-	abstract public static function getFilter(): array;
-
 	abstract public static function getNameLoc(): string;
 
 	public static function find(): array
@@ -41,4 +34,11 @@ abstract class SectionLocator
 
 		return $result;
 	}
+
+	/**
+	 * @return string|IblockLocator
+	 */
+	abstract public static function getIblock();
+
+	abstract public static function getFilter(): array;
 }
