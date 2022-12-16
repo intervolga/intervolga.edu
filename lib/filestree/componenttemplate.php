@@ -109,6 +109,7 @@ abstract class ComponentTemplate extends FilesTree
 	{
 		$result = [
 			$this->getComponentEpilogFile(),
+			$this->getResultModifier(),
 			$this->getParametersFile(),
 			$this->getDescriptionFile(),
 		];
