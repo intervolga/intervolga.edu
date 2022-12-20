@@ -1,6 +1,7 @@
 <?php
-namespace Intervolga\Edu\Tests\Course2\Lesson1;
+namespace Intervolga\Edu\Tests\Course2\Lesson1_2;
 
+use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Locator\Iblock\Property\CatalogBindingProperty;
 use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
@@ -8,12 +9,13 @@ use Intervolga\Edu\Tests\BaseTest;
 
 class TestCatalogBindingProperty extends BaseTest
 {
+	protected const MIN_COUNT_IBLOCK = 3;
 	protected static function run()
 	{
-		Assert::notEmpty(static::getPropertiesLocators()::getIblock()::find());
+		Assert::iblockLocator(static::getPropertiesLocators()::getIblock());
 		Assert::propertyLocator(static::getPropertiesLocators());
-		Assert::greaterEq(static::getPropertiesLocators()::getCountNotEmptyProperty(), 3);
-		Assert::eq(static::getPropertiesLocators()::getPropertyParameters()['PROPERTY_TYPE'], 'E');
+		Assert::greaterEq(static::getPropertiesLocators()::getCountNotEmptyProperty(), static::MIN_COUNT_IBLOCK);
+		Assert::eq(static::getPropertiesLocators()::getPropertyParameters()['PROPERTY_TYPE'], 'E', Loc::getMessage('INTERVOLGA_EDU.BINDING_PROPERTY_E'));
 
 	}
 

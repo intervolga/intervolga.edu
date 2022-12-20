@@ -1,7 +1,7 @@
 <?php
+namespace Intervolga\Edu\Tests\Course2\Lesson1_2;
 
-namespace Intervolga\Edu\Tests\Course2\Lesson1;
-
+use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Locator\Iblock\Property\PriceProperty;
 use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
@@ -13,7 +13,7 @@ class TestPropertyPrice extends BaseTest
 	{
 		Assert::notEmpty(static::getPropertiesLocators()::getIblock()::find());
 		Assert::propertyLocator(static::getPropertiesLocators());
-		Assert::eq(static::getPropertiesLocators()::getPropertyParameters()['PROPERTY_TYPE'], 'S');
+		Assert::eq(static::getPropertiesLocators()::getPropertyParameters()['PROPERTY_TYPE'], 'S', Loc::getMessage('INTERVOLGA_EDU.PRICE_PROPERTY_S'));
 	}
 
 	/**
