@@ -1,17 +1,17 @@
 <?php
 namespace Intervolga\Edu\Tests\Course1\Lesson11;
-use Bitrix\Main\Component\ParametersTable;
+
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\ComponentParameters;
 
-class TestSmartFilterIsExist extends BaseTest
+class TestCatalogRating extends BaseTest
 {
 	protected static function run()
 	{
 		$parameters = ComponentParameters::getComponentParameters('bitrix:catalog');
 		Assert::eq(
-			$parameters['USE_FILTER'],
+			$parameters['DETAIL_USE_VOTE_RATING'],
 			'Y'
 		);
 	}
