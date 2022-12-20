@@ -13,6 +13,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON6'] = '6. Вывод динамическо�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON8'] = '8. Комплексные компоненты';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10'] = '10. Поиск';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11'] = '11. Полезные возможности';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON2'] = '2. Технологии: параметры модулей, почтовая системы, агенты, журнал событий';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1'] = '1. Создание модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы';
 
@@ -67,6 +68,14 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_EMAIL'] = 'Проверка ссылки 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_EMAIL_DESCRIPTION'] = 'Ссылка в почтовом шаблоне «Запрос на смену пароля» (USER_PASS_REQUEST) должна вести на корректную страницу';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION'] = 'Проверка формы поиска';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION_DESCRIPTION'] = 'Должна быть настроена на раздел, а не на index.php-страницу';
+
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON2_AGENTEXIST'] = 'Проверка на существование файла агента';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON2_AGENTEXIST_DESCRIPTION'] = 'Файл агента должен лежать в /local/php_interface/agent.php';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON2_AGENTPARAMETERS'] = 'Проверка параметров агента';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON2_AGENTPARAMETERS_DESCRIPTION'] = 'Агент должен быть активен, принадлежать модулю main и иметь интервал 86400 сек';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON2_POSTEVENT'] = 'Проверка существования почтового события и почтового шаблона';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON2_POSTEVENT_DESCRIPTION'] = 'Должны существовать почтовое событие и закрепленный за ним почтовый шаблон';
+
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Проверка собственного UF-свойства';
 
@@ -132,3 +141,7 @@ $MESS['INTERVOLGA_EDU.PROMO_NEWS_TEMPLATE_DIRECTORY'] = 'Шаблон акций
 $MESS['INTERVOLGA_EDU.TEST_IBLOCK_NAME'] = 'Проверка Инфоблока #IBLOCK#';
 $MESS['INTERVOLGA_EDU.TEST_IBLOCK_DESCRIPTION'] = 'Проверка типа, прав, количества элементов, свойств по заданию, формы редактирования в админке';
 $MESS['INTERVOLGA_EDU.SEARCH_FORM_TEMPLATE'] = 'Шаблон формы поиска';
+$MESS['INTERVOLGA_EDU.AGENT_PARAMETERS_NOT_FOUND'] = 'В административной панели не создан агент, либо у него не задана функция, лежащая в agent.php';
+$MESS['INTERVOLGA_EDU.POST_EVENT_NOT_FOUND'] = 'Почтовый шаблон с почтовым событием CHECK_OLDER_STOCKS не найден';
+
+
