@@ -16,7 +16,14 @@ class TestPropertyInFilter extends BaseTest
 	{
 		if (Loader::includeModule("iblock")) {
 			$sectionProps = new CIBlockSectionPropertyLink;
+			Assert::iblockLocator(ProductsIblock::class);
+			Assert::sectionLocator(SoftFornitureSection::class);
+
 			$properties = $sectionProps->GetArray(ProductsIblock::find()['ID'], SoftFornitureSection::find()['ID']);
+			Assert::notEmpty($properties);
+
+			Assert::greaterEq(AvailableProperty::getCountNotEmptyProperty(), 1);
+
 			foreach ($properties as $property) {
 				if ($property['PROPERTY_ID'] == AvailableProperty::find()['ID']) {
 					Assert::eq($property['SMART_FILTER'], 'Y');
