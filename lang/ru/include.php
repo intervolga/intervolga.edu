@@ -63,9 +63,9 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION_DESCRIPTION'] = 'Должн�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CATALOGRATING'] = 'Проверка на наличие включенного рейтинга';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CATALOGRATING_DESCRIPTION'] = 'В настройках bitrix:catalog должен быть установлен параметр «Включить рейтинг товара»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSETVIEWTARGET'] = 'Проверка SetViewTarget';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSETVIEWTARGET_DESCRIPTION'] = 'В шаблоне компонента Каталог вывод рейтинга должен быть заключен в SetViewTarget';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSETVIEWTARGET_DESCRIPTION'] = 'В шаблоне компонента bitrix:catalog должен использоваться метод SetViewTarget';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSHOWCONTENT'] = 'Проверка ShowViewContent';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSHOWCONTENT_DESCRIPTION'] = 'ShowViewContent должен быть размещен в правильном месте';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSHOWCONTENT_DESCRIPTION'] = 'ShowViewContent должен быть размещен в header.php после &lt;p&gt; с классом title';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Проверка собственного UF-свойства';
 
@@ -79,8 +79,8 @@ $MESS['INTERVOLGA_EDU.NOT_LOWER_CASE'] = 'буквы a-z, цифры 0-9, сим
 $MESS['INTERVOLGA_EDU.UPLOAD_PATH'] = 'путь к картинке в /upload/';
 $MESS['INTERVOLGA_EDU.IMG_TAG'] = 'тег <img>';
 $MESS['INTERVOLGA_EDU.SET_VIEW_TARGET'] = 'SetViewTarget';
-$MESS['INTERVOLGA_EDU.SHOW_VIEW_CONTENT'] = 'Show View Content после <p> с классом title';
-$MESS['INTERVOLGA_EDU.SHOW_VIEW_CONTENT_RATING'] = 'Название переносимой области должно содержать rating';
+$MESS['INTERVOLGA_EDU.SHOW_VIEW_CONTENT'] = 'ShowViewContent после <p> с классом title';
+$MESS['INTERVOLGA_EDU.SHOW_VIEW_CONTENT_RATING'] = 'ShowViewContent для области rating после <p> с классом title';
 $MESS['INTERVOLGA_EDU.TABLE_TAG'] = 'тег <table>';
 $MESS['INTERVOLGA_EDU.SHORT_PHP_TAG_RESTRICTED'] = 'запрещены короткие открывающие PHP-теги';
 $MESS['INTERVOLGA_EDU.OLD_FUNCTION_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> вместо #NEW# используется устаревший код: #OLD#';
