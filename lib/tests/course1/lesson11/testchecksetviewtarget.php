@@ -18,10 +18,11 @@ class TestCheckSetViewTarget extends BaseTest
 	protected static function run()
 	{
 		$files = static::getFilesToTestCode();
-		foreach ($files as $file)
+		foreach ($files as $file) {
 			Assert::fileContentMatches(
 				$file,
 				new Regex('/\$this\s*->\s*SetViewTarget/i', Loc::getMessage('INTERVOLGA_EDU.SET_VIEW_TARGET'))
 			);
+		}
 	}
 }
