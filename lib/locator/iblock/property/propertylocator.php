@@ -57,6 +57,6 @@ abstract class PropertyLocator
 			$result[] = $field . '=' . implode('||', $value);
 		}
 
-		return implode(';', $result);
+		return implode(';', $result) . '; IBLOCK_' . static::getIblock()::getPossibleTips() . ')';
 	}
 }
