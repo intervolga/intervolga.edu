@@ -22,8 +22,7 @@ abstract class PropertyLocator
 		Loader::includeModule('iblock');
 		$iblockClass = static::getIblock();
 		$iblockArray = $iblockClass::find();
-		if ($iblockArray)
-		{
+		if ($iblockArray) {
 			$getList = PropertyTable::getList([
 				'order' => [
 					'ID' => 'ASC',
