@@ -143,7 +143,3 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETNEWS_DESCRIPTION'] = 'В ша
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWTARGETNEWS'] = 'Проверка ShowViewContent';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWTARGETNEWS_DESCRIPTION'] = 'ShowViewContent должен быть размещен в header.php перед &lt;p&gt; с классом title';
 
-
-
-$MESS['INTERVOLGA_EDU.INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETNEWS'] = 'Show View Content для области news перед <p> с классом title';
-
