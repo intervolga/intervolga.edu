@@ -18,4 +18,9 @@ class RandomReview extends TemplateLocator
 	{
 		return NewsList::class;
 	}
+
+	public static function getNameLoc(): string
+	{
+		return 'rand_reviews || rand_review || random_review || random_reviews';
+	}
 }
