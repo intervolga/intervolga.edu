@@ -131,6 +131,19 @@ $MESS['INTERVOLGA_EDU.BOTTOM_MENU_TEMPLATE'] = 'Шаблон меню О маг�
 $MESS['INTERVOLGA_EDU.BREADCRUMB_TEMPLATE'] = 'Шаблон хлебных крошек';
 $MESS['INTERVOLGA_EDU.AUTHORIZE_TEMPLATE'] = 'Шаблон формы авторизации в шапке';
 $MESS['INTERVOLGA_EDU.PROMO_NEWS_TEMPLATE_DIRECTORY'] = 'Шаблон акций';
+$MESS['INTERVOLGA_EDU.NEWS_TEMPLATE'] = 'Шаблон новостей';
 $MESS['INTERVOLGA_EDU.TEST_IBLOCK_NAME'] = 'Проверка Инфоблока #IBLOCK#';
 $MESS['INTERVOLGA_EDU.TEST_IBLOCK_DESCRIPTION'] = 'Проверка типа, прав, количества элементов, свойств по заданию, формы редактирования в админке';
 $MESS['INTERVOLGA_EDU.SEARCH_FORM_TEMPLATE'] = 'Шаблон формы поиска';
+$MESS['INTERVOLGA_EDU.SHOW_VIEW_CONTENT_NOT_FOUND'] = 'Show View Content перед <p> с классом title';
+$MESS['INTERVOLGA_EDU.SHOW_VIEW_CONTENT_NEWS'] = 'Show View Content для области news перед <p> с классом title';
+
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETNEWS'] = 'Проверка SetViewTarget';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETNEWS_DESCRIPTION'] = 'В шаблоне компонента bitrix:news в шаблоне просмотра детальной страницы news.detail должен использоваться метод SetViewTarget';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWTARGETNEWS'] = 'Проверка ShowViewContent';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWTARGETNEWS_DESCRIPTION'] = 'ShowViewContent должен быть размещен в header.php перед &lt;p&gt; с классом title';
+
+
+
+$MESS['INTERVOLGA_EDU.INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETNEWS'] = 'Show View Content для области news перед <p> с классом title';
+
