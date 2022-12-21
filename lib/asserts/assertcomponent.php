@@ -45,7 +45,7 @@ class AssertComponent extends Assert
 	{
 		if (!$value::find()) {
 			static::registerError(static::getCustomOrLocMessage(
-				'INTERVOLGA_EDU.ASSERT_COMPONENT_LOCATOR',
+				'INTERVOLGA_EDU.ASSERT_TEMPLATE_LOCATOR',
 				[
 					'#TEMPLATE#' => $value::getNameLoc(),
 					'#COMPONENT#' => $value::getComponent()::getComponentName(),
