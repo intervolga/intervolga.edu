@@ -66,6 +66,10 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSETVIEWTARGET'] = 'Проверка 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSETVIEWTARGET_DESCRIPTION'] = 'В шаблоне компонента bitrix:catalog должен использоваться метод SetViewTarget';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSHOWCONTENT'] = 'Проверка ShowViewContent';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSHOWCONTENT_DESCRIPTION'] = 'ShowViewContent должен быть размещен в header.php после &lt;p&gt; с классом title';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETMATERIALS'] = 'Проверка SetViewTarget';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETMATERIALS_DESCRIPTION'] = 'SetViewTarget должен быть размещен в catalog.section в template.php';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWCONTENTMATERIALS'] = 'Проверка ShowViewContent';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWCONTENTMATERIALS_DESCRIPTION'] = 'ShowViewContent должен быть размещен в inner/footer.php';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Проверка собственного UF-свойства';
 
@@ -134,3 +138,5 @@ $MESS['INTERVOLGA_EDU.PROMO_NEWS_TEMPLATE_DIRECTORY'] = 'Шаблон акций
 $MESS['INTERVOLGA_EDU.TEST_IBLOCK_NAME'] = 'Проверка Инфоблока #IBLOCK#';
 $MESS['INTERVOLGA_EDU.TEST_IBLOCK_DESCRIPTION'] = 'Проверка типа, прав, количества элементов, свойств по заданию, формы редактирования в админке';
 $MESS['INTERVOLGA_EDU.SEARCH_FORM_TEMPLATE'] = 'Шаблон формы поиска';
+$MESS['INTERVOLGA_EDU.CATALOG_SECTION_TEMPLATE'] = 'Шаблон секций каталога';
+$MESS['INTERVOLGA_EDU.SHOW_VIEW_CONTENT_NOT_FOUND_MATERIALS'] = 'Show View Content для области материалов';
