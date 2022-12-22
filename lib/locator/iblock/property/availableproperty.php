@@ -23,11 +23,11 @@ class AvailableProperty extends PropertyLocator
 	public static function getCountNotEmptyProperty()
 	{
 		$count = 0;
-		if (!empty(AvailableProperty::find())) {
+		if ($property = AvailableProperty::find()) {
 			$filter = [
 				"IBLOCK_ID" => static::getIblock()::find()['ID'],
 				"SECTION_ID" => static::getSection()::find()['ID'],
-				'!=PROPERTY_AVAILABILITY_VALUE' => false
+				'!=PROPERTY_' . $property['CODE'] . '_VALUE' => false
 			];
 
 			$count = CIblockElement::getList(false, $filter, []);
