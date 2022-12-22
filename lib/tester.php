@@ -95,16 +95,12 @@ class Tester
 		 */
 		foreach (static::getTestClasses() as $testClass) {
 			$errors[$testClass::getCourseCode()][$testClass::getLessonCode()][$testClass] = [];
-			if ($exception = static::$exceptions[$testClass])
-			{
-				if ($exception->getExceptions())
-				{
+			if ($exception = static::$exceptions[$testClass]) {
+				if ($exception->getExceptions()) {
 					foreach ($exception->getExceptions() as $innerException) {
 						$errors[$testClass::getCourseCode()][$testClass::getLessonCode()][$testClass][] = $innerException->getMessage();
 					}
-				}
-				else
-				{
+				} else {
 					$errors[$testClass::getCourseCode()][$testClass::getLessonCode()][$testClass][] = $exception->getMessage();
 				}
 			}
@@ -121,10 +117,14 @@ class Tester
 		$tree = [];
 		$classes = static::getTestClasses();
 		foreach ($classes as $testClass) {
+			$path = explode('\\', $testClass);
+			$code = array_pop($path);
+
 			$tree[$testClass::getCourseCode()]['TITLE'] = $testClass::getCourseLoc();
 			$tree[$testClass::getCourseCode()]['COUNT']++;
 			$tree[$testClass::getCourseCode()]['LESSONS'][$testClass::getLessonCode()]['TITLE'] = $testClass::getLessonLoc();
 			$tree[$testClass::getCourseCode()]['LESSONS'][$testClass::getLessonCode()]['COUNT']++;
+			$tree[$testClass::getCourseCode()]['LESSONS'][$testClass::getLessonCode()]['TESTS'][$testClass]['CODE'] = $code;
 			$tree[$testClass::getCourseCode()]['LESSONS'][$testClass::getLessonCode()]['TESTS'][$testClass]['TITLE'] = $testClass::getTestLoc();
 			$tree[$testClass::getCourseCode()]['LESSONS'][$testClass::getLessonCode()]['TESTS'][$testClass]['DESCRIPTION'] = $testClass::getDescription();
 		}
