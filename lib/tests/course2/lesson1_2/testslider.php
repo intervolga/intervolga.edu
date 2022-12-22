@@ -65,7 +65,7 @@ class TestSlider extends BaseTest
 
 	protected static function testComponentEpilogFile(ComponentTemplate $templateDir)
 	{
-		Assert::fileContentMatches($templateDir->getComponentEpilogFile(), new Regex('/->\s*addJs\s*\([\w\s<>?=$\[\]\'"\%\&\;\:\.\(\)]*\/js\/slides\.min\.jquery\.js/is', Loc::getMessage('INTERVOLGA_EDU.JS_NOT_FOUND_IN_COMPONENT_EPILOG')));
+		Assert::fileContentMatches($templateDir->getComponentEpilogFile(), new Regex('/slides\.min\.jquery\.js/is', Loc::getMessage('INTERVOLGA_EDU.JS_NOT_FOUND_IN_COMPONENT_EPILOG')));
 	}
 
 }
