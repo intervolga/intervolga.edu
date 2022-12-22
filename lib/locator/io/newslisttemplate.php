@@ -12,6 +12,7 @@ class NewsListTemplate extends DirectoryLocator
 		return [
 			'/local/templates/.default/components/bitrix/news/news_dir/bitrix/news.detail/.default',
 			'/local/templates/.default/components/bitrix/news/news_for_news/bitrix/news.detail/.default',
+			'/local/templates/.default/components/bitrix/news/news/bitrix/news.detail/.default',
 		];
 	}
 
