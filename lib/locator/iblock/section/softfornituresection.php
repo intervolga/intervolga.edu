@@ -16,7 +16,8 @@ class SoftFornitureSection extends SectionLocator
 	{
 		return [
 			'=CODE' => [
-				'myagkaya-mebel'
+				'myagkaya-mebel',
+				'cushioned-furniture',
 			],
 		];
 	}
