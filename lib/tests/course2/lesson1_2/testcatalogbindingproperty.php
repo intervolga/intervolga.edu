@@ -13,10 +13,8 @@ class TestCatalogBindingProperty extends BaseTest
 	protected static function run()
 	{
 		Assert::iblockLocator(static::getPropertiesLocators()::getIblock());
-		Assert::propertyLocator(static::getPropertiesLocators());
+		Assert::propertyLocator(static::getPropertiesLocators(), Loc::getMessage('INTERVOLGA_EDU.BINDING_PROPERTY_E'));
 		Assert::greaterEq(static::getPropertiesLocators()::getCountNotEmptyProperty(), static::MIN_COUNT_IBLOCK);
-		Assert::eq(static::getPropertiesLocators()::getPropertyParameters()['PROPERTY_TYPE'], 'E', Loc::getMessage('INTERVOLGA_EDU.BINDING_PROPERTY_E'));
-
 	}
 
 	/**

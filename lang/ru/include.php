@@ -138,5 +138,5 @@ $MESS['INTERVOLGA_EDU.PROMO_NEWS_TEMPLATE_DIRECTORY'] = 'Шаблон акций
 $MESS['INTERVOLGA_EDU.TEST_IBLOCK_NAME'] = 'Проверка Инфоблока #IBLOCK#';
 $MESS['INTERVOLGA_EDU.TEST_IBLOCK_DESCRIPTION'] = 'Проверка типа, прав, количества элементов, свойств по заданию, формы редактирования в админке';
 $MESS['INTERVOLGA_EDU.SEARCH_FORM_TEMPLATE'] = 'Шаблон формы поиска';
-$MESS['INTERVOLGA_EDU.BINDING_PROPERTY_E'] = 'Тип свойства должен быть <b>привязка к каталогу<b>';
-$MESS['INTERVOLGA_EDU.PRICE_PROPERTY_S'] = 'Тип свойства должен быть <b>строка<b>';
+$MESS['INTERVOLGA_EDU.BINDING_PROPERTY_E'] = 'Свойство "привязка к каталогу" с типом свойства <b>привязка к каталогу</b> не найдено';
+$MESS['INTERVOLGA_EDU.PRICE_PROPERTY_S'] = 'Свойство "цена" с типом свойства <b>строка</b> не найдено';

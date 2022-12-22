@@ -24,6 +24,9 @@ class CatalogBindingProperty extends PropertyLocator
 			'=CODE' => [
 				'LINK',
 			],
+			'PROPERTY_TYPE' => [
+				'E'
+			]
 		];
 	}
 

@@ -12,8 +12,7 @@ class TestPropertyPrice extends BaseTest
 	protected static function run()
 	{
 		Assert::notEmpty(static::getPropertiesLocators()::getIblock()::find());
-		Assert::propertyLocator(static::getPropertiesLocators());
-		Assert::eq(static::getPropertiesLocators()::getPropertyParameters()['PROPERTY_TYPE'], 'S', Loc::getMessage('INTERVOLGA_EDU.PRICE_PROPERTY_S'));
+		Assert::propertyLocator(static::getPropertiesLocators(), Loc::getMessage('INTERVOLGA_EDU.PRICE_PROPERTY_S'));
 	}
 
 	/**

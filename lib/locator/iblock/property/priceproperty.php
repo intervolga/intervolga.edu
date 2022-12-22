@@ -18,6 +18,9 @@ class PriceProperty extends PropertyLocator
 			'=CODE' => [
 				'PRICE',
 			],
+			'PROPERTY_TYPE' => [
+				'S'
+			]
 		];
 	}
 
