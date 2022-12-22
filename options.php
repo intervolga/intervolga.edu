@@ -85,7 +85,13 @@ foreach ($testsTree as $courseCode => $course) {
 			$errors = $errorsTree[$courseCode][$lessonCode][$testCode];
 			$messageParams = [
 				'HTML' => true,
-				'MESSAGE' => Loc::getMessage('INTERVOLGA_EDU.TEST_HEADER', ['#TEST#' => $counter . '. ' . $test['TITLE']]),
+				'MESSAGE' => Loc::getMessage(
+						'INTERVOLGA_EDU.TEST_HEADER',
+						[
+								'#NUMBER#' => $counter,
+								'#TEST#' => $test['TITLE'],
+								'#CODE#' => $test['CODE'],
+						]),
 			];
 			if ($test['DESCRIPTION']) {
 				$messageParams['DETAILS'] = '<div class="desc">' . $test['DESCRIPTION'] . '</div>';

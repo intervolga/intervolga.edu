@@ -66,6 +66,13 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSETVIEWTARGET'] = 'Проверка 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSETVIEWTARGET_DESCRIPTION'] = 'В шаблоне компонента bitrix:catalog должен использоваться метод SetViewTarget';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSHOWCONTENT'] = 'Проверка ShowViewContent';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSHOWCONTENT_DESCRIPTION'] = 'ShowViewContent должен быть размещен в header.php после &lt;p&gt; с классом title';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_SMARTFILTERISEXIST'] = 'Проверка на наличие включенного фильтра';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_SMARTFILTERISEXIST_DESCRIPTION'] = 'В bitrix:catalog должен быть задан параметр «Показывать фильтр»';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST'] = 'Проверка свойства "В наличии"';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST_DESCRIPTION'] = 'Инфоблок должен иметь свойство "В наличии", оно должно быть заполненно хотя бы у 1 элемента раздела "Мягкая мебель"';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER'] = 'Используется в умном фильтре';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER_DESCRIPTION'] = 'Проверка параметра свойства "использовать в умном фильтре"';
+
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Проверка собственного UF-свойства';
 
@@ -94,6 +101,7 @@ $MESS['INTERVOLGA_EDU.SET_PERMISSION_EVERYONE_R'] = 'Проблема с ИБ <a
 $MESS['INTERVOLGA_EDU.FIELD_SURNAME'] = 'Фамилия';
 $MESS['INTERVOLGA_EDU.RENAME_FIELD_NAME'] = 'Переименуйте поле #VALUE# в #EXPECT# в форме редактирования элемента';
 $MESS['INTERVOLGA_EDU.PRICE_PROPERTY'] = 'Цена';
+$MESS['INTERVOLGA_EDU.SOFT_FORNITURE_SECTION'] = 'Мягкая мебель';
 $MESS['INTERVOLGA_EDU.POST_PROPERTY'] = 'Должность';
 $MESS['INTERVOLGA_EDU.COMPANY_PROPERTY'] = 'Компания';
 $MESS['INTERVOLGA_EDU.AVAILABLE_PROPERTY'] = 'В наличии';
