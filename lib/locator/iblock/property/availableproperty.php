@@ -1,4 +1,3 @@
-
 <?php
 namespace Intervolga\Edu\Locator\Iblock\Property;
 
