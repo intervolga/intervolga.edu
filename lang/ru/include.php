@@ -68,10 +68,10 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_EMAIL'] = 'Проверка ссылки 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_EMAIL_DESCRIPTION'] = 'Ссылка в почтовом шаблоне «Запрос на смену пароля» (USER_PASS_REQUEST) должна вести на корректную страницу';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION'] = 'Проверка формы поиска';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION_DESCRIPTION'] = 'Должна быть настроена на раздел, а не на index.php-страницу';
-$MESS['INTERVOLGA_EDU.COURSE2_LESSON1_CATALOGBINDINGPROPERTY'] = 'Проверка свойства "Привязка к каталогу"';
-$MESS['INTERVOLGA_EDU.COURSE2_LESSON1_CATALOGBINDINGPROPERTY_DESCRIPTION'] = 'Свойство должно существовать, должно быть заполненно хотя бы у 3 элементов и иметь тип "привязка к инфоблокам"';
-$MESS['INTERVOLGA_EDU.COURSE2_LESSON1_PROPERTYPRICE'] = 'Проверка свойства "Цена"';
-$MESS['INTERVOLGA_EDU.COURSE2_LESSON1_PROPERTYPRICE_DESCRIPTION'] = 'Свойство должно существовать, иметь тип "строка"';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_CATALOGBINDINGPROPERTY'] = 'Проверка свойства "Привязка к каталогу"';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_CATALOGBINDINGPROPERTY_DESCRIPTION'] = 'Свойство должно существовать, должно быть заполненно хотя бы у 3 элементов и иметь тип "привязка к инфоблокам"';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_PROPERTYPRICE'] = 'Проверка свойства "Цена"';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_PROPERTYPRICE_DESCRIPTION'] = 'Свойство должно существовать, иметь тип "строка"';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Проверка собственного UF-свойства';
 
