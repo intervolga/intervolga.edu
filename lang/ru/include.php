@@ -63,9 +63,9 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION_DESCRIPTION'] = 'Должн�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_SMARTFILTERISEXIST'] = 'Проверка на наличие включенного фильтра';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_SMARTFILTERISEXIST_DESCRIPTION'] = 'В bitrix:catalog должен быть задан параметр «Показывать фильтр»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST'] = 'Проверка свойства "В наличии"';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST_DESCRIPTION'] = 'Инфоблок должен иметь свойство "В наличии", оно должно быть заполненно хотя бы у одного элемента';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST_DESCRIPTION'] = 'Инфоблок должен иметь свойство "В наличии", оно должно быть заполненно хотя бы у 1 элемента раздела "Мягкая мебель"';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER'] = 'Используется в умном фильтре';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER_DESCRIPTION'] = 'Проверка у свойства на наличие флага "использовать в умном фильтре"';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER_DESCRIPTION'] = 'Проверка параметра свойства "использовать в умном фильтре"';
 
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Проверка собственного UF-свойства';
