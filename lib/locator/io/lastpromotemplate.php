@@ -10,6 +10,7 @@ class LastPromoTemplate extends DirectoryLocator
 		return [
 			'/local/templates/.default/components/bitrix/news.list/last_promo/',
 			'/local/templates/.default/components/bitrix/news.list/last.promo/',
+			'/local/templates/.default/components/bitrix/news.list/stocks_list/',
 		];
 	}
 

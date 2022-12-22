@@ -1,19 +1,12 @@
 <?php
-namespace Intervolga\Edu\Locator\Iblock\Property;
+namespace Intervolga\Edu\Locator\Iblock\Section;
 
-use Bitrix\Iblock\PropertyTable;
+use Bitrix\Iblock\SectionTable;
 use Bitrix\Main\Loader;
 use Intervolga\Edu\Locator\Iblock\IblockLocator;
 
-abstract class PropertyLocator
+abstract class SectionLocator
 {
-	/**
-	 * @return string|IblockLocator
-	 */
-	abstract public static function getIblock();
-
-	abstract public static function getFilter(): array;
-
 	abstract public static function getNameLoc(): string;
 
 	public static function find(): array
@@ -23,7 +16,7 @@ abstract class PropertyLocator
 		$iblockClass = static::getIblock();
 		$iblockArray = $iblockClass::find();
 		if ($iblockArray) {
-			$getList = PropertyTable::getList([
+			$getList = SectionTable::getList([
 				'order' => [
 					'ID' => 'ASC',
 				],
@@ -42,6 +35,16 @@ abstract class PropertyLocator
 		return $result;
 	}
 
+	/**
+	 * @return string|IblockLocator
+	 */
+	abstract public static function getIblock();
+
+	abstract public static function getFilter(): array;
+
+	/**
+	 * @return string
+	 */
 	public static function getPossibleTips()
 	{
 		$result = [];
@@ -56,6 +59,6 @@ abstract class PropertyLocator
 			$result[] = $field . '=' . implode('||', $value);
 		}
 
-		return implode(';', $result) . '; IBLOCK_' . static::getIblock()::getPossibleTips() . ')';
+		return implode(';', $result);
 	}
 }
