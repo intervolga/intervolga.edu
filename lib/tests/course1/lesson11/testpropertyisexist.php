@@ -17,6 +17,7 @@ class TestPropertyIsExist extends BaseTest
 
 	protected static function run()
 	{
+		Assert::propertyLocator(static::getLocator());
 		if (static::getLocator()::find()) {
 			foreach (static::getPropertiesLocators() as $property) {
 				Assert::propertyLocator($property);
