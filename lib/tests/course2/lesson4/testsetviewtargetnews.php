@@ -5,7 +5,7 @@ use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
-use Intervolga\Edu\Locator\IO\NewsListTemplate;
+use Intervolga\Edu\Locator\IO\NewsDetailTemplate;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\Regex;
 
@@ -26,7 +26,7 @@ class TestSetViewTargetNews extends BaseTest
 	 */
 	static function getDirectoryLocator()
 	{
-		return NewsListTemplate::class;
+		return NewsDetailTemplate::class;
 	}
 
 	static function getTemplateFile()

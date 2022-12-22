@@ -13,6 +13,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON6'] = '6. Вывод динамическо�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON8'] = '8. Комплексные компоненты';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10'] = '10. Поиск';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11'] = '11. Полезные возможности';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON4'] = '4. Отложенные функции';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1'] = '1. Создание модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы';
 

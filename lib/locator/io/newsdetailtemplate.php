@@ -1,12 +1,10 @@
 <?php
-
 namespace Intervolga\Edu\Locator\IO;
 
 use Bitrix\Main\Localization\Loc;
 
-class NewsListTemplate extends DirectoryLocator
+class NewsDetailTemplate extends DirectoryLocator
 {
-
 	protected static function getPaths(): array
 	{
 		return [
