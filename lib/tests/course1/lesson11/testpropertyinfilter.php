@@ -21,8 +21,6 @@ class TestPropertyInFilter extends BaseTest
 			$properties = $sectionProps->GetArray(ProductsIblock::find()['ID'], SoftFornitureSection::find()['ID']);
 			Assert::notEmpty($properties);
 
-			Assert::greaterEq(AvailableProperty::getCountNotEmptyProperty(), 1);
-
 			foreach ($properties as $property) {
 				if ($property['PROPERTY_ID'] == AvailableProperty::find()['ID']) {
 					Assert::eq($property['SMART_FILTER'], 'Y');
