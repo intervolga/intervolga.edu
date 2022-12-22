@@ -528,6 +528,8 @@ class Assert
 				'INTERVOLGA_EDU.ASSERT_SECTION_LOCATOR',
 				[
 					'#SECTION#' => $value::getNameLoc(),
+					'#IBLOCK#' => $value::getIblock()::getNameLoc(),
+					'#POSSIBLE#' => $value::getPossibleTips(),
 				],
 				$message
 			));
