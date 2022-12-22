@@ -24,13 +24,13 @@ class AvailableProperty extends PropertyLocator
 	{
 		$count = 0;
 		if (!empty(AvailableProperty::find())) {
-			$arFilter = [
+			$filter = [
 				"IBLOCK_ID" => static::getIblock()::find()['ID'],
 				"SECTION_ID" => static::getSection()::find()['ID'],
 				'!=PROPERTY_AVAILABILITY_VALUE' => false
 			];
 
-			$count = CIblockElement::getList(false, $arFilter, []);
+			$count = CIblockElement::getList(false, $filter, []);
 		}
 
 		return $count;

@@ -11,7 +11,6 @@ use Intervolga\Edu\Tests\BaseTest;
 
 class TestPropertyInFilter extends BaseTest
 {
-
 	protected static function run()
 	{
 		if (Loader::includeModule("iblock")) {
