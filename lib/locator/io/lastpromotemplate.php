@@ -16,6 +16,6 @@ class LastPromoTemplate extends DirectoryLocator
 
 	public static function getNameLoc(): string
 	{
-		return Loc::getMessage('INTERVOLGA_EDU.LAST_PROMO_TEMPLATE');
+		return Loc::getMessage('INTERVOLGA_EDU.LAST_PROMO_TEMPLATE_DIRECTORY');
 	}
 }

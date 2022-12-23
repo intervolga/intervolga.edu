@@ -17,6 +17,6 @@ class ReviewsListTemplate extends DirectoryLocator
 
 	public static function getNameLoc(): string
 	{
-		return Loc::getMessage('INTERVOLGA_EDU.REVIEWS_LIST_TEMPLATE');
+		return Loc::getMessage('INTERVOLGA_EDU.REVIEWS_LIST_TEMPLATE_DIRECTORY');
 	}
 }
