@@ -93,6 +93,9 @@ class Tester
 			} catch (AssertException $assertException) {
 				static::$exceptions[$testClass] = $assertException;
 			}
+			catch (\Throwable $throwable) {
+				static::$exceptions[$testClass] = AssertException::createThrowable($throwable);
+			}
 		}
 	}
 
