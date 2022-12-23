@@ -39,4 +39,24 @@ abstract class TemplateLocator
 	abstract public static function getNameLoc(): string;
 	abstract public static function getFilter(): array;
 
+	/**
+	 * @return string
+	 */
+	public static function getPossibleTips()
+	{
+		$result = [];
+		$filter = static::getFilter();
+		foreach ($filter as $field => $value) {
+			if (mb_substr($field, 0, 1) == '=') {
+				$field = mb_substr($field, 1);
+			}
+			if (!is_array($value)) {
+				$value = [$value];
+			}
+			$result[] = $field . '=' . implode('||', $value);
+		}
+
+		return implode(';', $result);
+	}
+
 }

@@ -49,6 +49,7 @@ class AssertComponent extends Assert
 				[
 					'#TEMPLATE#' => $value::getNameLoc(),
 					'#COMPONENT#' => $value::getComponent()::getComponentName(),
+					'#POSSIBLE#' => $value::getPossibleTips(),
 				],
 				$message
 			));
