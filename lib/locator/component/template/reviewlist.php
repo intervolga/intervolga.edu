@@ -1,17 +1,17 @@
 <?php
-
 namespace Intervolga\Edu\Locator\Component\Template;
 
+use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Locator\Component\ComponentLocator;
 use Intervolga\Edu\Locator\Component\NewsList;
-use Intervolga\Edu\Locator\IO\ReviewsListTemplate;
 
 class ReviewList extends TemplateLocator
 {
-
 	public static function getFilter(): array
 	{
-		return ['?TEMPLATE_NAME' => 'review_list || reviews_list || list_review || list_reviews'];
+		return [
+			'=TEMPLATE_NAME' => INTERVOLGA_EDU_GUESS_VARIANTS['TEMPLATES']['REVIEWS_LIST'],
+		];
 	}
 
 	/**
@@ -24,6 +24,6 @@ class ReviewList extends TemplateLocator
 
 	public static function getNameLoc(): string
 	{
-		return 'review_list || reviews_list || list_review || list_reviews';
+		return Loc::getMessage('INTERVOLGA_EDU.REVIEWS_LIST_TEMPLATE');
 	}
 }

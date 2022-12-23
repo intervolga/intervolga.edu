@@ -7,7 +7,6 @@ use Intervolga\Edu\Tests\BaseTestTemplateParameters;
 
 class TestReviewList extends BaseTestTemplateParameters
 {
-
 	/**
 	 * @return string|TemplateLocator
 	 */

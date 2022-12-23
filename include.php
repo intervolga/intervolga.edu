@@ -11,5 +11,11 @@ const INTERVOLGA_EDU_GUESS_VARIANTS = [
 			'last_promo',
 			'last.promo',
 		],
+		'REVIEWS_LIST' => [
+			'reviews_list',
+			'reviews.list',
+			'list_review',
+			'list_reviews',
+		],
 	],
 ];
