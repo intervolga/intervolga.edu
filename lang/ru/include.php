@@ -170,3 +170,5 @@ $MESS['INTERVOLGA_EDU.REVIEWS_CAROUSEL_TEMPLATE_DIRECTORY'] = 'Шаблон ка
 $MESS['INTERVOLGA_EDU.REVIEWS_RAND_TEMPLATE'] = 'Шаблон случайного отзыва';
 $MESS['INTERVOLGA_EDU.LAST_PROMO_TEMPLATE'] = 'Последняя акция';
 $MESS['INTERVOLGA_EDU.REVIEWS_LIST_TEMPLATE'] = 'Шаблон списка отзывов';
+$MESS['INTERVOLGA_EDU.ASSERT_COMPONENT_PARAMETERS_CACHE_TYPE'] = 'В компоненте <b>#COMPONENT#</b> (шаблон <b>#TEMPLATE#</b>) в файле #PATH# кеширование должно быть <b>отключено</b>';
+$MESS['INTERVOLGA_EDU.ASSERT_COMPONENT_PARAMETERS_CACHE_GROUPS'] = 'В компоненте <b>#COMPONENT#</b> (шаблон <b>#TEMPLATE#</b>) в файле #PATH# флаг "учитывать права доступа" в настройках кеширования должен быть <b>снят</b>';

@@ -1,7 +1,6 @@
 <?php
 namespace Intervolga\Edu\Tests\Course1\Lesson7;
 
-use Bitrix\Main\Component\ParametersTable;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Asserts\AssertComponent;
@@ -11,35 +10,40 @@ use Intervolga\Edu\Tests\BaseTest;
 
 class TestMenu extends BaseTest
 {
+	public static function interceptErrors()
+	{
+		return true;
+	}
 
 	protected static function run()
 	{
-		AssertComponent::checkComponentInTable(static::getLocator());
-		$parametersMenu = static::getComponentParameters(static::getLocator()::getCode());
-		foreach ($parametersMenu as $parameter) {
+		AssertComponent::componentLocator(static::getLocator());
+		$components = static::getLocator()::findAll();
+		foreach ($components as $component) {
 			Assert::eq(
-				$parameter['MENU_CACHE_TYPE'],
+				$component['PARAMETERS']['MENU_CACHE_TYPE'],
 				'N',
 				Loc::getMessage('INTERVOLGA_EDU.ASSERT_COMPONENT_PARAMETERS_CACHE_TYPE',
 					[
-						'#COMPONENT#' => var_export(static::getLocator()::getCode(), true),
-						'#TEMPLATE#' => var_export($parameter['COMPONENT_TEMPLATE'], true),
+						'#COMPONENT#' => static::getLocator()::getCode(),
+						'#TEMPLATE#' => $component['PARAMETERS']['COMPONENT_TEMPLATE'],
+						'#PATH#' => $component['REAL_PATH'],
 					]
 				)
 			);
 
 			Assert::eq(
-				$parameter['MENU_CACHE_USE_GROUPS'],
+				$component['PARAMETERS']['MENU_CACHE_USE_GROUPS'],
 				'N',
 				Loc::getMessage('INTERVOLGA_EDU.ASSERT_COMPONENT_PARAMETERS_CACHE_GROUPS',
 					[
-						'#COMPONENT#' => var_export(static::getLocator()::getCode(), true),
-						'#TEMPLATE#' => var_export($parameter['COMPONENT_TEMPLATE'], true),
+						'#COMPONENT#' => static::getLocator()::getCode(),
+						'#TEMPLATE#' => $component['PARAMETERS']['COMPONENT_TEMPLATE'],
+						'#PATH#' => $component['REAL_PATH'],
 					]
 				)
 			);
 		}
-
 	}
 
 	/**
@@ -48,26 +52,5 @@ class TestMenu extends BaseTest
 	protected static function getLocator()
 	{
 		return Menu::class;
-	}
-
-	protected static function getComponentParameters($componentName)
-	{
-		$filter = [
-			'=COMPONENT_NAME' => $componentName,
-		];
-
-		$getList = ParametersTable::getList([
-			'filter' => $filter,
-			'select' => [
-				'ID',
-				'PARAMETERS',
-			],
-		]);
-		while ($row = $getList->fetch()) {
-			$parameters[] = unserialize($row['PARAMETERS']);
-		}
-
-		return $parameters;
-
 	}
 }
