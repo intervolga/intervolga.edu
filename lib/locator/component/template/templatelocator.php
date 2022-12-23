@@ -11,11 +11,13 @@ abstract class TemplateLocator
 		$result = [];
 		if (static::getComponent()::find()) {
 			$getList = ParametersTable::getList([
-				'filter' => array_merge(['=COMPONENT_NAME' => static::getComponent()::getComponentName()], static::getFilter()),
+				'filter' => array_merge(['=COMPONENT_NAME' => static::getComponent()::getCode()], static::getFilter()),
 				'select' => [
 					'ID',
 					'COMPONENT_NAME',
-					'PARAMETERS'
+					'TEMPLATE_NAME',
+					'PARAMETERS',
+					'REAL_PATH',
 				]
 			]);
 			while ($rows = $getList->fetch()) {
@@ -36,7 +38,29 @@ abstract class TemplateLocator
 	 * @return string|ComponentLocator
 	 */
 	abstract public static function getComponent(): string;
+
 	abstract public static function getNameLoc(): string;
+
 	abstract public static function getFilter(): array;
+
+	/**
+	 * @return string
+	 */
+	public static function getPossibleTips()
+	{
+		$result = [];
+		$filter = static::getFilter();
+		foreach ($filter as $field => $value) {
+			if (mb_substr($field, 0, 1) == '=') {
+				$field = mb_substr($field, 1);
+			}
+			if (!is_array($value)) {
+				$value = [$value];
+			}
+			$result[] = $field . '=' . implode('||', $value);
+		}
+
+		return implode(';', $result);
+	}
 
 }

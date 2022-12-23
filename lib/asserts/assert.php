@@ -159,9 +159,24 @@ class Assert
 	{
 		if ($value>=$limit) {
 			static::registerError(static::getCustomOrLocMessage(
-				'INTERVOLGA_EDU.ASSERT_GREATER',
+				'INTERVOLGA_EDU.ASSERT_LESS',
 				[
 					'#VALUE#' => static::valueToString($value),
+					'#EXPECT#' => static::valueToString($limit),
+				],
+				$message
+			));
+		}
+	}
+
+	public static function lessEq($value, $limit, string $message = '')
+	{
+		if ($value>$limit) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_LESS_EQ',
+				[
+					'#VALUE#' => static::valueToString($value),
+					'#EXPECT#' => static::valueToString($limit),
 				],
 				$message
 			));
