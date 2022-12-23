@@ -18,15 +18,17 @@ class TestRandomReview extends BaseTestTemplateParameters
 				'#COMPONENT#' => $template['COMPONENT_NAME'],
 				'#TEMPLATE#' => $template['TEMPLATE_NAME'],
 				'#PATH#' => $template['REAL_PATH'],
+				'#TIME#' => 60,
 			];
 
 			if ($template['PARAMETERS']['CACHE_TYPE'] == 'A') {
 				Assert::lessEq(
 					$template['PARAMETERS']['CACHE_TIME'],
-					60,
-					Loc::getMessage('INTERVOLGA_EDU.CACHE_TYPE_A_LIMITED', $replace)
+					$replace['#TIME#'],
+					Loc::getMessage('INTERVOLGA_EDU.CACHE_TIME_MAX', $replace)
 				);
-			} else {
+			}
+			if ($template['PARAMETERS']['CACHE_TYPE'] == 'Y') {
 				Assert::eq(
 					$template['PARAMETERS']['CACHE_TYPE'],
 					'N',
