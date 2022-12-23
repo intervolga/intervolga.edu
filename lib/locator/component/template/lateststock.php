@@ -1,5 +1,4 @@
 <?php
-
 namespace Intervolga\Edu\Locator\Component\Template;
 
 use Bitrix\Main\Localization\Loc;
@@ -8,13 +7,13 @@ use Intervolga\Edu\Locator\Component\NewsList;
 
 class LatestStock extends TemplateLocator
 {
-
 	public static function getFilter(): array
 	{
 		return [
 			'=TEMPLATE_NAME' => INTERVOLGA_EDU_GUESS_VARIANTS['TEMPLATES']['LAST_PROMO'],
 		];
 	}
+
 	/**
 	 * @return string|ComponentLocator
 	 */

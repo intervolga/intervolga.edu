@@ -24,14 +24,14 @@ abstract class BaseTestTemplateParameters extends BaseTest
 	{
 		return [
 			[
-				'NAME' =>'CACHE_TYPE',
-				'EXPECTED'=>'A',
-				'MESSAGE'=>'INTERVOLGA_EDU.CACHE_TYPE_A'
+				'NAME' => 'CACHE_TYPE',
+				'EXPECTED' => 'A',
+				'MESSAGE' => Loc::getMessage('INTERVOLGA_EDU.CACHE_TYPE_A'),
 			],
 			[
-				'NAME' =>'CACHE_GROUPS',
-				'EXPECTED'=>'N',
-				'MESSAGE'=>'INTERVOLGA_EDU.CACHE_GROUPS'
+				'NAME' => 'CACHE_GROUPS',
+				'EXPECTED' => 'N',
+				'MESSAGE' => Loc::getMessage('INTERVOLGA_EDU.CACHE_GROUPS'),
 			]
 		];
 	}
@@ -45,11 +45,8 @@ abstract class BaseTestTemplateParameters extends BaseTest
 			Assert::eq(
 				$parameters[$parameterExpected['NAME']],
 				$parameterExpected['EXPECTED'],
-				Loc::getMessage($parameterExpected['MESSAGE'])
+				$parameterExpected['MESSAGE']
 			);
-
 		}
-
 	}
-
 }
