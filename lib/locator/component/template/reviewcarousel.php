@@ -1,16 +1,17 @@
 <?php
-
 namespace Intervolga\Edu\Locator\Component\Template;
 
+use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Locator\Component\ComponentLocator;
 use Intervolga\Edu\Locator\Component\NewsList;
 
 class ReviewCarousel extends TemplateLocator
 {
-
 	public static function getFilter(): array
 	{
-		return ['?TEMPLATE_NAME' => 'reviewCarousel || review_carousel || reviews_carousel || carousel'];
+		return [
+			'=TEMPLATE_NAME' => INTERVOLGA_EDU_GUESS_VARIANTS['TEMPLATES']['REVIEWS_CAROUSEL'],
+		];
 	}
 
 	/**
@@ -23,6 +24,6 @@ class ReviewCarousel extends TemplateLocator
 
 	public static function getNameLoc(): string
 	{
-		return 'reviewCarousel || review_carousel || reviews_carousel || carousel';
+		return Loc::getMessage('INTERVOLGA_EDU.REVIEWS_CAROUSEL_TEMPLATE');
 	}
 }

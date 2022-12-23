@@ -15,7 +15,9 @@ abstract class TemplateLocator
 				'select' => [
 					'ID',
 					'COMPONENT_NAME',
-					'PARAMETERS'
+					'TEMPLATE_NAME',
+					'PARAMETERS',
+					'REAL_PATH',
 				]
 			]);
 			while ($rows = $getList->fetch()) {
@@ -36,7 +38,9 @@ abstract class TemplateLocator
 	 * @return string|ComponentLocator
 	 */
 	abstract public static function getComponent(): string;
+
 	abstract public static function getNameLoc(): string;
+
 	abstract public static function getFilter(): array;
 
 	/**

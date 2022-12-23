@@ -45,18 +45,4 @@ class AssertComponent extends Assert
 
 		}
 	}
-
-	public static function templateComponentIsExist($templateParameters, $templateNames, $message = '')
-	{
-		if (empty($templateParameters)) {
-			$templates = stristr(static::valueToString($templateNames), '=> ');
-			static::registerError(static::getCustomOrLocMessage(
-				'INTERVOLGA_EDU.ASSERT_TEMPLATE_NOT_FOUND',
-				[
-					'#TEMPLATES#' => $templates,
-				],
-				$message
-			));
-		}
-	}
 }

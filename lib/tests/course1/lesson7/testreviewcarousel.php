@@ -7,7 +7,6 @@ use Intervolga\Edu\Tests\BaseTestTemplateParameters;
 
 class TestReviewCarousel extends BaseTestTemplateParameters
 {
-
 	/**
 	 * @return string|TemplateLocator
 	 */

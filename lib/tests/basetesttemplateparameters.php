@@ -8,6 +8,11 @@ use Intervolga\Edu\Locator\Component\Template\TemplateLocator;
 
 abstract class BaseTestTemplateParameters extends BaseTest
 {
+	public static function interceptErrors()
+	{
+		return true;
+	}
+
 	protected static function run()
 	{
 		AssertComponent::templateLocator(static::getLocator());
@@ -26,27 +31,35 @@ abstract class BaseTestTemplateParameters extends BaseTest
 			[
 				'NAME' => 'CACHE_TYPE',
 				'EXPECTED' => 'A',
-				'MESSAGE' => Loc::getMessage('INTERVOLGA_EDU.CACHE_TYPE_A'),
+				'MESSAGE' => 'INTERVOLGA_EDU.CACHE_TYPE_A',
 			],
 			[
 				'NAME' => 'CACHE_GROUPS',
 				'EXPECTED' => 'N',
-				'MESSAGE' => Loc::getMessage('INTERVOLGA_EDU.CACHE_GROUPS'),
+				'MESSAGE' => 'INTERVOLGA_EDU.CACHE_GROUPS',
 			]
 		];
 	}
 
 	protected static function checkParameters($parametersExpected)
 	{
-		$parameters = static::getLocator()::find()['PARAMETERS'];
-		AssertComponent::templateComponentIsExist($parameters, static::getLocator()::getFilter());
-
-		foreach ($parametersExpected as $parameterExpected) {
-			Assert::eq(
-				$parameters[$parameterExpected['NAME']],
-				$parameterExpected['EXPECTED'],
-				$parameterExpected['MESSAGE']
-			);
+		$template = static::getLocator()::find();
+		if ($template) {
+			foreach ($parametersExpected as $parameterExpected) {
+				$replace = [
+					'#COMPONENT#' => $template['COMPONENT_NAME'],
+					'#TEMPLATE#' => $template['TEMPLATE_NAME'],
+					'#PATH#' => $template['REAL_PATH'],
+				];
+				Assert::eq(
+					$template['PARAMETERS'][$parameterExpected['NAME']],
+					$parameterExpected['EXPECTED'],
+					Loc::getMessage(
+						$parameterExpected['MESSAGE'],
+						$replace
+					)
+				);
+			}
 		}
 	}
 }
