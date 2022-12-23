@@ -7,11 +7,12 @@ class LastPromoTemplate extends DirectoryLocator
 {
 	protected static function getPaths(): array
 	{
-		return [
-			'/local/templates/.default/components/bitrix/news.list/last_promo/',
-			'/local/templates/.default/components/bitrix/news.list/last.promo/',
-			'/local/templates/.default/components/bitrix/news.list/stocks_list/',
-		];
+		$result = [];
+		$basePath = '/local/templates/.default/components/bitrix/news.list/';
+		foreach (INTERVOLGA_EDU_GUESS_VARIANTS['TEMPLATES']['LAST_PROMO'] as $template) {
+			$result[] = $basePath . $template . '/';
+		}
+		return $result;
 	}
 
 	public static function getNameLoc(): string

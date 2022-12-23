@@ -166,3 +166,7 @@ $MESS['INTERVOLGA_EDU.CACHE_TYPE_A'] = 'Тип кеширования долже
 $MESS['INTERVOLGA_EDU.CACHE_GROUPS'] = 'Флаг "учитывать права доступа" в настройках кеширования должен быть <b>снят</b>';
 $MESS['INTERVOLGA_EDU.CACHE_TYPE_A_LIMITED'] = 'Тип кеширования должен быть <b>Авто</b> и иметь время кеширования <b>меньше 60 сек</b> или быть отключеным';
 $MESS['INTERVOLGA_EDU.UNKNOWN_ERROR'] = 'Непредвиденная ошибка <b>#CLASS#</b> при тестировании: <b>#MESSAGE#</b><br>#TRACE#';
+$MESS['INTERVOLGA_EDU.REVIEWS_CAROUSEL_TEMPLATE_DIRECTORY'] = 'Шаблон карусели отзывов';
+$MESS['INTERVOLGA_EDU.REVIEWS_RAND_TEMPLATE'] = 'Шаблон случайного отзыва';
+$MESS['INTERVOLGA_EDU.LAST_PROMO_TEMPLATE'] = 'Последняя акция';
+$MESS['INTERVOLGA_EDU.REVIEWS_LIST_TEMPLATE'] = 'Шаблон списка отзывов';

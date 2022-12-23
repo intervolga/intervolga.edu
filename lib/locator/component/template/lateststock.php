@@ -2,6 +2,7 @@
 
 namespace Intervolga\Edu\Locator\Component\Template;
 
+use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Locator\Component\ComponentLocator;
 use Intervolga\Edu\Locator\Component\NewsList;
 
@@ -10,7 +11,9 @@ class LatestStock extends TemplateLocator
 
 	public static function getFilter(): array
 	{
-		return ['?TEMPLATE_NAME' => 'latest_promo || latest_stock || stock_panel || promo_panel'];
+		return [
+			'=TEMPLATE_NAME' => INTERVOLGA_EDU_GUESS_VARIANTS['TEMPLATES']['LAST_PROMO'],
+		];
 	}
 	/**
 	 * @return string|ComponentLocator
@@ -22,6 +25,6 @@ class LatestStock extends TemplateLocator
 
 	public static function getNameLoc(): string
 	{
-		return 'latest_promo || latest_stock || stock_panel || promo_panel';
+		return Loc::getMessage('INTERVOLGA_EDU.LAST_PROMO_TEMPLATE');
 	}
 }
