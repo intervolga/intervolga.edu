@@ -10,7 +10,7 @@ abstract class BaseTestTemplateParameters extends BaseTest
 {
 	protected static function run()
 	{
-		AssertComponent::checkTemplateInTable(static::getLocator());
+		AssertComponent::templateLocator(static::getLocator());
 		$parametersExpected = static::getParametersExpectedList();
 		static::checkParameters($parametersExpected);
 	}
@@ -39,7 +39,7 @@ abstract class BaseTestTemplateParameters extends BaseTest
 	protected static function checkParameters($parametersExpected)
 	{
 		$parameters = static::getLocator()::find()['PARAMETERS'];
-		AssertComponent::templateComponentIsExist($parameters, static::getLocator()::getFilter());
+		AssertComponent::t1emplateComponentIsExist($parameters, static::getLocator()::getFilter());
 
 		foreach ($parametersExpected as $parameterExpected) {
 			Assert::eq(
