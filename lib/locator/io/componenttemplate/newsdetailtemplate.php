@@ -1,7 +1,8 @@
 <?php
-namespace Intervolga\Edu\Locator\IO;
+namespace Intervolga\Edu\Locator\IO\ComponentTemplate;
 
 use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Locator\IO\DirectoryLocator;
 
 class NewsDetailTemplate extends DirectoryLocator
 {

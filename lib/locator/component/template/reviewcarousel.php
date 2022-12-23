@@ -5,15 +5,15 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Locator\Component\ComponentLocator;
 use Intervolga\Edu\Locator\Component\NewsList;
 
-class RandomReview extends TemplateLocator
+class ReviewCarousel extends TemplateLocator
 {
-
 	public static function getFilter(): array
 	{
 		return [
-			'=TEMPLATE_NAME' => INTERVOLGA_EDU_GUESS_VARIANTS['TEMPLATES']['RANDOM_REVIEWS'],
+			'=TEMPLATE_NAME' => INTERVOLGA_EDU_GUESS_VARIANTS['TEMPLATES']['REVIEWS_CAROUSEL'],
 		];
 	}
+
 	/**
 	 * @return string|ComponentLocator
 	 */
@@ -24,6 +24,6 @@ class RandomReview extends TemplateLocator
 
 	public static function getNameLoc(): string
 	{
-		return Loc::getMessage('INTERVOLGA_EDU.REVIEWS_RAND_TEMPLATE');
+		return Loc::getMessage('INTERVOLGA_EDU.REVIEWS_CAROUSEL_TEMPLATE');
 	}
 }
