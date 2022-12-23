@@ -11,7 +11,7 @@ abstract class TemplateLocator
 		$result = [];
 		if (static::getComponent()::find()) {
 			$getList = ParametersTable::getList([
-				'filter' => array_merge(['=COMPONENT_NAME' => static::getComponent()::getComponentName()], static::getFilter()),
+				'filter' => array_merge(['=COMPONENT_NAME' => static::getComponent()::getCode()], static::getFilter()),
 				'select' => [
 					'ID',
 					'COMPONENT_NAME',

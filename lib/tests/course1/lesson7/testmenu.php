@@ -15,14 +15,14 @@ class TestMenu extends BaseTest
 	protected static function run()
 	{
 		AssertComponent::checkComponentInTable(static::getLocator());
-		$parametersMenu = static::getComponentParameters(static::getLocator()::getComponentName());
+		$parametersMenu = static::getComponentParameters(static::getLocator()::getCode());
 		foreach ($parametersMenu as $parameter) {
 			Assert::eq(
 				$parameter['MENU_CACHE_TYPE'],
 				'N',
 				Loc::getMessage('INTERVOLGA_EDU.ASSERT_COMPONENT_PARAMETERS_CACHE_TYPE',
 					[
-						'#COMPONENT#' => var_export(static::getLocator()::getComponentName(), true),
+						'#COMPONENT#' => var_export(static::getLocator()::getCode(), true),
 						'#TEMPLATE#' => var_export($parameter['COMPONENT_TEMPLATE'], true),
 					]
 				)
@@ -33,7 +33,7 @@ class TestMenu extends BaseTest
 				'N',
 				Loc::getMessage('INTERVOLGA_EDU.ASSERT_COMPONENT_PARAMETERS_CACHE_GROUPS',
 					[
-						'#COMPONENT#' => var_export(static::getLocator()::getComponentName(), true),
+						'#COMPONENT#' => var_export(static::getLocator()::getCode(), true),
 						'#TEMPLATE#' => var_export($parameter['COMPONENT_TEMPLATE'], true),
 					]
 				)

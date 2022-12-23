@@ -39,7 +39,7 @@ abstract class BaseTestTemplateParameters extends BaseTest
 	protected static function checkParameters($parametersExpected)
 	{
 		$parameters = static::getLocator()::find()['PARAMETERS'];
-		AssertComponent::t1emplateComponentIsExist($parameters, static::getLocator()::getFilter());
+		AssertComponent::templateComponentIsExist($parameters, static::getLocator()::getFilter());
 
 		foreach ($parametersExpected as $parameterExpected) {
 			Assert::eq(

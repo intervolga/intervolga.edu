@@ -5,12 +5,10 @@ use Bitrix\Main\Component\ParametersTable;
 
 abstract class ComponentLocator
 {
-
 	public static function find(): array
 	{
-
 		$getList = ParametersTable::getList([
-			'filter' => ['=COMPONENT_NAME' => static::getComponentName()],
+			'filter' => ['=COMPONENT_NAME' => static::getCode()],
 			'select' => [
 				'ID',
 				'COMPONENT_NAME',
@@ -23,5 +21,5 @@ abstract class ComponentLocator
 		return $result;
 	}
 
-	abstract public static function getComponentName(): string;
+	abstract public static function getCode(): string;
 }
