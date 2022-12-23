@@ -56,6 +56,12 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson6\TestLastPromo::class,
 			\Intervolga\Edu\Tests\Course1\Lesson6\TestReviewsList::class,
 
+			\Intervolga\Edu\Tests\Course1\Lesson7\TestLatestStock::class,
+			\Intervolga\Edu\Tests\Course1\Lesson7\TestMenu::class,
+			\Intervolga\Edu\Tests\Course1\Lesson7\TestReviewList::class,
+			\Intervolga\Edu\Tests\Course1\Lesson7\TestReviewCarousel::class,
+			\Intervolga\Edu\Tests\Course1\Lesson7\TestRandomReview::class,
+
 			\Intervolga\Edu\Tests\Course1\Lesson8\TestPromoComponent::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson10\TestSearchAction::class,
