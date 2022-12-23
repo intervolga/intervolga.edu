@@ -1,7 +1,9 @@
 <?php
-namespace Intervolga\Edu\Locator\IO;
+namespace Intervolga\Edu\Locator\IO\ComponentTemplate;
 
 use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Locator\IO\DirectoryLocator;
+use const INTERVOLGA_EDU_GUESS_VARIANTS;
 
 class LastPromoTemplate extends DirectoryLocator
 {
