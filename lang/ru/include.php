@@ -90,7 +90,8 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETNEWS'] = 'Проверка Se
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETNEWS_DESCRIPTION'] = 'В шаблоне компонента bitrix:news в шаблоне просмотра детальной страницы news.detail должен использоваться метод SetViewTarget';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWTARGETNEWS'] = 'Проверка ShowViewContent для даты новостей';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWTARGETNEWS_DESCRIPTION'] = 'ShowViewContent должен быть размещен в header.php перед &lt;p&gt; с классом title';
-
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1_DESCRIPTION'] = 'Проверка файла .description.php';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1_DESCRIPTION_DESCRIPTION'] = 'В файле .description.php текст должен быть вынесен в lang-файл, подключение news_list.gif должно быть убрано';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Проверка собственного UF-свойства';
 
