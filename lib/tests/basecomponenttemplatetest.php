@@ -12,16 +12,6 @@ use Intervolga\Edu\Util\Sniffer;
 
 abstract class BaseComponentTemplateTest extends BaseTest
 {
-	/**
-	 * @return string|DirectoryLocator
-	 */
-	abstract protected static function getLocator();
-
-	/**
-	 * @return string|ComponentTemplate
-	 */
-	abstract protected static function getComponentTemplateTree();
-
 	public static function interceptErrors()
 	{
 		return true;
@@ -33,6 +23,11 @@ abstract class BaseComponentTemplateTest extends BaseTest
 			'#TEMPLATE#' => static::getLocator()::getNameLoc(),
 		]);
 	}
+
+	/**
+	 * @return string|DirectoryLocator
+	 */
+	abstract protected static function getLocator();
 
 	public static function getDescription(): string
 	{
@@ -52,15 +47,10 @@ abstract class BaseComponentTemplateTest extends BaseTest
 		}
 	}
 
-	protected static function testTemplateCode(ComponentTemplate $templateDir)
-	{
-		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
-			if ($knownPhpFile->isExists()) {
-				AssertPhp::goodCode($knownPhpFile);
-				Sniffer::testTemplateFile($knownPhpFile);
-			}
-		}
-	}
+	/**
+	 * @return string|ComponentTemplate
+	 */
+	abstract protected static function getComponentTemplateTree();
 
 	protected static function testTemplateTrash(ComponentTemplate $templateDir)
 	{
@@ -85,7 +75,7 @@ abstract class BaseComponentTemplateTest extends BaseTest
 				} elseif ($child->getName() == $templateDir->getParametersFile()->getName()) {
 					Assert::fseNotExists($child);
 				} elseif ($templateDir instanceof SimpleComponentTemplate) {
-					if ($child->getName() != $templateDir->getTemplateFile()) {
+					if ($child->getName() != $templateDir->getTemplateFile()->getName()) {
 						Assert::fseNotExists($child);
 					}
 				} elseif ($templateDir instanceof NewsTemplate) {
@@ -96,6 +86,16 @@ abstract class BaseComponentTemplateTest extends BaseTest
 						Assert::fseNotExists($child);
 					}
 				}
+			}
+		}
+	}
+
+	protected static function testTemplateCode(ComponentTemplate $templateDir)
+	{
+		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
+			if ($knownPhpFile->isExists()) {
+				AssertPhp::goodCode($knownPhpFile);
+				Sniffer::testTemplateFile($knownPhpFile);
 			}
 		}
 	}
