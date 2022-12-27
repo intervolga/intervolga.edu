@@ -5,6 +5,11 @@ use Bitrix\Main\Localization\Loc;
 
 class CustomComponent extends DirectoryLocator
 {
+	public static function getNameLoc(): string
+	{
+		return Loc::getMessage('INTERVOLGA_EDU.CUSTOM_COMPONENT');
+	}
+
 	protected static function getPaths(): array
 	{
 		return [
@@ -13,13 +18,5 @@ class CustomComponent extends DirectoryLocator
 			'/local/components/mycomponents/vacancies.list',
 		];
 	}
-
-	public static function getNameLoc(): string
-	{
-		return Loc::getMessage('INTERVOLGA_EDU.CUSTOM_COMPONENT');
-	}
-
-}
-{
 
 }

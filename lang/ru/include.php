@@ -92,6 +92,9 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWTARGETNEWS'] = 'Проверка S
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWTARGETNEWS_DESCRIPTION'] = 'ShowViewContent должен быть размещен в header.php перед &lt;p&gt; с классом title';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1_DESCRIPTION'] = 'Проверка файла .description.php';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1_DESCRIPTION_DESCRIPTION'] = 'В файле .description.php текст должен быть вынесен в lang-файл, подключение news_list.gif должно быть убрано';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1_HERMITAGE'] = 'Проверка файла подключения эрмитажа';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1_HERMITAGE_DESCRIPTION'] = 'В шаблоне должен быть подключен эрмитаж (для разделов и для элементов)';
+
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Проверка собственного UF-свойства';
 
