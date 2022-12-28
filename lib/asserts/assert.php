@@ -546,15 +546,6 @@ class Assert
 		}
 	}
 
-	protected static function getStringFromArray($separator, $array, $endString="<br>"): string
-	{
-		$result = '';
-		foreach ($array as $k => $v) {
-			$result .= $k . $separator . $v . $endString;
-		}
-
-		return $result;
-	}
 
 	/**
 	 * @param mixed $event
@@ -564,11 +555,11 @@ class Assert
 	 * @return void
 	 * @throws AssertException
 	 */
-	public static function userFieldExistsByString($event, array $requiredListProperties, string $entityID, string $message = '')
+	public static function userFieldExistsByString(array $event, array $requiredListProperties, string $entityID, string $message = '')
 	{
-		$list = \CUserTypeEntity::GetList(["ID" => "ASC"], [
-			"USER_TYPE_ID" => $event::getUserTypeId(),
-			"ENTITY_ID" => $entityID
+		$list = \CUserTypeEntity::GetList(['ID' => 'ASC'], [
+			'USER_TYPE_ID' => $event['USER_TYPE_ID'],
+			'ENTITY_ID' => $entityID
 		]);
 		$result = false;
 		while ($field = $list->fetch()) {
@@ -588,8 +579,8 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_REQUIRED_RULES_USERFIELD',
 				[
-					'#FIELD#' => $event::getUserTypeId(),
-					'#REQUIRED_PROPERTIES#' => static::getStringFromArray(":", $requiredListProperties)
+					'#FIELD#' => $event['USER_TYPE_ID'],
+					'#REQUIRED_PROPERTIES#' => static::getStringFromArray(':', $requiredListProperties)
 				],
 				$message
 			));
@@ -604,15 +595,15 @@ class Assert
 	 * @return void
 	 * @throws AssertException
 	 */
-	public static function userFieldExistsByRegex($event, Regex $regexID, array $requiredListProperties=[], string $message = '')
+	public static function userFieldExistsByRegex(array $event, Regex $regexID, array $requiredListProperties = [], string $message = '')
 	{
-		$list = \CUserTypeEntity::GetList(["ID" => "ASC"], [
-			"USER_TYPE_ID" => $event::getUserTypeId()
+		$list = \CUserTypeEntity::GetList(['ID' => 'ASC'], [
+			'USER_TYPE_ID' => $event['USER_TYPE_ID']
 		]);
 		$result = false;
 		$wasFoundField = false;
 		while ($field = $list->fetch()) {
-			if (preg_match($regexID->getRegex(), $field["ENTITY_ID"])) {
+			if (preg_match($regexID->getRegex(), $field['ENTITY_ID'])) {
 				$wasFoundField = true;
 				foreach ($requiredListProperties as $k => $rule) {
 					if ($field[$k] == $rule) {
@@ -627,22 +618,21 @@ class Assert
 				}
 			}
 		}
-		if (!$wasFoundField){
+		if (!$wasFoundField) {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_NOT_FOUND_USERFIELD',
 				[
-					'#FIELD#' => $event::getUserTypeId(),
-					'#ASSERT_NOT_FOUND_USERFIELD#' => $regexID->getRegexExplanation()
+					'#FIELD#' => $event['USER_TYPE_ID'],
+					'#REQUIRED_PROPERTIES#' => $regexID->getRegexExplanation()
 				],
 				$message
 			));
-		}
-		else if (!$result) {
+		} elseif (!$result) {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_REQUIRED_RULES_USERFIELD',
 				[
-					'#FIELD#' => $event::getUserTypeId(),
-					'#REQUIRED_PROPERTIES#' => static::getStringFromArray(":", $requiredListProperties)
+					'#FIELD#' => $event['USER_TYPE_ID'],
+					'#REQUIRED_PROPERTIES#' => static::getStringFromArray(':', $requiredListProperties)
 				],
 				$message
 			));
@@ -650,23 +640,33 @@ class Assert
 
 	}
 
-	public static function moduleEventExists($value, $message = '')
+	public static function eventExists(string $value, $message = '')
 	{
 		$result = $value::find();
 		if (!$result) {
 			static::registerError(
 				static::getCustomOrLocMessage(
 					'INTERVOLGA_EDU.ASSERT_EVENT_EXISTS',
-					["#EVENT_DESCRIPTION#" => $value::getDescription()],
+					[
+						'#MESSAGE_ID#' => $value::getMessageID(),
+						'#MODULE_ID#' => $value::getModuleID(),
+						'#REQUIRED_RULES#' => static::getStringFromArray(':', $value::getRules())
+					],
 					$message
 				));
-		} elseif (!$value::checkBaseType($result)) {
+		}
+	}
+	public static function isCorrectBaseTypeUF(string $value, $required_type, $message = '')
+	{
+		$result = $value::find();
+		if ($result["BASE_TYPE"] == $required_type) {
 			static::registerError(
 				static::getCustomOrLocMessage(
 					'INTERVOLGA_EDU.ASSERT_REQUIRED_TYPE_BASE',
 					[
-						"#CURRENT_TYPE#" => $result["USER_TYPE_ID"],
-						"#TYPE_BASE#" => $value::getRequiredBaseType()
+						"#CURRENT_CLASS#" => $result["USER_TYPE_ID"],
+						"#TYPE_BASE#" => $required_type,
+						"#NOW_BASE_TYPE#" => $result["BASE_TYPE"]
 					],
 					$message
 				));
@@ -756,6 +756,15 @@ class Assert
 	protected static function valueToString($value): string
 	{
 		return var_export($value, true);
+	}
+	protected static function getStringFromArray($separator, $array, $endString = "<br>"): string
+	{
+		$result = '';
+		foreach ($array as $k => $v) {
+			$result .= $k . $separator . $v . $endString;
+		}
+
+		return $result;
 	}
 
 	protected static function getCustomOrLocMessage(string $locCode, array $replace, $customMessage = ''): string

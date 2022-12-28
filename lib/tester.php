@@ -69,6 +69,7 @@ class Tester
 
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUf::class,
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUfClass::class,
+			\Intervolga\Edu\Tests\Course3\Lesson4\TestUFClassIblock::class,
 		];
 	}
 
@@ -97,16 +98,12 @@ class Tester
 		 */
 		foreach (static::getTestClasses() as $testClass) {
 			$errors[$testClass::getCourseCode()][$testClass::getLessonCode()][$testClass] = [];
-			if ($exception = static::$exceptions[$testClass])
-			{
-				if ($exception->getExceptions())
-				{
+			if ($exception = static::$exceptions[$testClass]) {
+				if ($exception->getExceptions()) {
 					foreach ($exception->getExceptions() as $innerException) {
 						$errors[$testClass::getCourseCode()][$testClass::getLessonCode()][$testClass][] = $innerException->getMessage();
 					}
-				}
-				else
-				{
+				} else {
 					$errors[$testClass::getCourseCode()][$testClass::getLessonCode()][$testClass][] = $exception->getMessage();
 				}
 			}

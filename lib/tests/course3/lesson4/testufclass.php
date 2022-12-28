@@ -28,11 +28,10 @@ class TestUfClass extends BaseTest
 				'MULTIPLE' => 'Y'
 			],
 		];
+		$event = Event\MediaType::find();
 
 		foreach ($rules as $rule) {
-			Assert::userFieldExistsByString(Event\MediaType::class, $rule, 'USER');
+			Assert::userFieldExistsByString($event, $rule, 'USER');
 		}
-		$regex = new Regex('/IBLOCK_[^0-9]_SECTION/', "IBLOCK_0_SECTION");
-		Assert::userFieldExistsByRegex(Event\MediaType::class, $regex);
 	}
 }

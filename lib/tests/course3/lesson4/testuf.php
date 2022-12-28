@@ -9,6 +9,6 @@ class TestUf extends BaseTest
 {
 	protected static function run()
 	{
-		Assert::moduleEventExists(Event\MediaType::class);
+		Assert::eventExists(Event\MediaType::class);
 	}
 }

@@ -11,9 +11,25 @@ abstract class EventLocator
 	abstract public static function find();
 
 	/**
-	 * @param array $resultHandler
-	 * @return bool
+	 * @return array
 	 */
-	abstract public static function checkBaseType(array $resultHandler): bool;
+	public static function getRules(): array
+	{
+		return static::getParams()['RULES'] ?? [];
+	}
+	/**
+	 * @return string
+	 */
+	public static function getModuleID(): string
+	{
+		return static::getParams()['MODULE_ID'] ?? '';
+	}
 
+	/**
+	 * @return string
+	 */
+	public static function getMessageID(): string
+	{
+		return static::getParams()['MESSAGE_ID'] ?? '';
+	}
 }

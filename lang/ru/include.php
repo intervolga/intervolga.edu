@@ -69,7 +69,8 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION'] = 'Проверка фор
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION_DESCRIPTION'] = 'Должна быть настроена на раздел, а не на index.php-страницу';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Проверка собственного UF-свойства';
-$MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UFCLASS'] = 'Проверка собственного UF-свойства с требуемыми свойствами.';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UFCLASS'] = 'Проверка собственного UF-свойства с требуемыми свойствами для объекта USER.';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UFCLASSIBLOCK'] = 'Проверка собственного UF-свойства с требуемыми свойствами для раздела Инфоблока.';
 
 $MESS['INTERVOLGA_EDU.EVENT_CLASS_DESCRIPTION'] = 'Привязка к коллекции медиабиблиотеки';
 $MESS['INTERVOLGA_EDU.TEST_CODE_NAME'] = 'Проверка кода #FILES#';
