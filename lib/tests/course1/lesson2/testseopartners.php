@@ -1,5 +1,4 @@
 <?php
-
 namespace Intervolga\Edu\Tests\Course1\Lesson2;
 
 use Bitrix\Main\Localization\Loc;
@@ -8,6 +7,7 @@ use Intervolga\Edu\Locator\IO\HowBecomePartner;
 use Intervolga\Edu\Locator\IO\PartnersSection;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\FileSystem;
+use Intervolga\Edu\Util\Menu;
 use Intervolga\Edu\Util\Regex;
 
 class TestSeoPartners extends BaseTest
@@ -40,6 +40,22 @@ class TestSeoPartners extends BaseTest
 			Assert::fileContentMatches(
 				$directoryPage,
 				new Regex('/SetPageProperty\s*\((\'|")\s*keywords\s*(\'|")\s*,\s*(\'|")\s*\w*,\s*\w*/iu', Loc::getMessage('INTERVOLGA_EDU.KEYWORDS_PAGE_BECOME_PARTNERS'))
+			);
+			Assert::fileContentMatches(
+				$directoryPage,
+				new Regex('/SetTitle\((\'|")\s*Как\s*стать\s*партнером\s*(\'|")/iu', Loc::getMessage('INTERVOLGA_EDU.TITLE_PAGE_BECOME_PARTNERS'))
+			);
+
+			$links = Menu::getMenuLinks('/' . $directory->getName() . '/.left.menu.php');
+
+			foreach ($links as $key => $link) {
+				$key = preg_replace('/\//', '', $key);
+				$links[$key] = $link;
+			}
+
+			Assert::eq(
+				$links[$directory->getName() . $directoryPage->getName()],
+				Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_PARTNERS_HOW_BECOME_PAGE')
 			);
 		}
 	}
