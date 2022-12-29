@@ -41,7 +41,7 @@ class TestCheckPartnersSection extends BaseTest
 			}
 
 			Assert::eq(
-				$links['partners' . $sectionName],
+				$links[$directory->getName() . $sectionName],
 				Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_PARTNERS_EVENT_PAGE')
 			);
 
