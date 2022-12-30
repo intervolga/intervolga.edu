@@ -1,16 +1,12 @@
 <?php
 B_PROLOG_INCLUDED === true || die();
-if (LANGUAGE_ID != 'ru') {
-	$message = new CAdminMessage('Switch language to RU');
-	echo $message->show();
-
-	return;
-}
 
 /**
  * @var string $mid module id from GET
  */
 
+use Bitrix\Main\Config\Option;
+use Bitrix\Main\Context;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Tester;
@@ -22,6 +18,7 @@ CJSCore::Init([
 Loc::loadMessages(__FILE__);
 
 global $APPLICATION, $USER;
+$APPLICATION->setAdditionalCSS('/local/modules/intervolga.edu/admin.css');
 
 $module_id = 'intervolga.edu';
 Loader::includeModule($module_id);
@@ -32,6 +29,19 @@ $options = [
 	],
 ];
 
+
+$request = Context::getCurrent()->getRequest();
+if ($request->isPost()) {
+	if ($optionName = $request->getPost('ADD')) {
+		Option::set($module_id, $optionName, date('d.m.Y H:i'));
+	} elseif ($optionName = $request->getPost('REMOVE')) {
+		Option::delete($module_id, [
+			'name' => $optionName
+		]);
+	}
+	LocalRedirect($request->getRequestUri());
+}
+
 $fatalThrowable = null;
 try {
 	$testsTree = Tester::getTestsTree();
@@ -41,16 +51,27 @@ try {
 }
 $errorsTree = Tester::getErrorsTree();
 $okStat = [];
+
+$claimsDatetimes = Option::getForModule($module_id);
+$isFemale = CUser::GetByID($USER->GetID())->fetch()['PERSONAL_GENDER'] == 'F';
 foreach ($errorsTree as $courseCode => $lessonCodes) {
 	$courseOkCount = 0;
 	foreach ($lessonCodes as $lessonCode => $testErrors) {
 		$lessonOkCount = 0;
-		foreach ($testErrors as $testError) {
-			if (!$testError) {
+		foreach ($testErrors as $testClassName => $testError) {
+			$newTestCode = strtolower($testsTree[$courseCode]['LESSONS'][$lessonCode]['TESTS'][$testClassName]['CODE']);
+			$reportId = $courseCode . "_" . $lessonCode . "_" . $newTestCode . "_problem";
+			if (!$testError || array_key_exists($reportId, $claimsDatetimes)) {
 				$courseOkCount++;
 				$lessonOkCount++;
 			}
+			if (!$testError && array_key_exists($reportId, $claimsDatetimes)) {
+				Option::delete($module_id, [
+					'name' => $reportId
+				]);
+			}
 		}
+		$reportCounts = 0;
 		$okStat[$courseCode]['LESSONS'][$lessonCode]['ERRORS'] = $lessonOkCount;
 	}
 	$okStat[$courseCode]['ERRORS'] = $courseOkCount;
@@ -77,6 +98,7 @@ if ($fatalThrowable) {
 }
 $tabControl = new CAdminTabControl('tabControl', $tabs);
 $tabControl->begin();
+
 foreach ($testsTree as $courseCode => $course) {
 	$tabControl->beginNextTab();
 	foreach ($course['LESSONS'] as $lessonCode => $lesson) {
@@ -108,6 +130,26 @@ foreach ($testsTree as $courseCode => $course) {
 				$messageParams['DETAILS'] .= Loc::getMessage('INTERVOLGA_EDU.TEST_NO_ERRORS');
 				$messageParams['TYPE'] = 'OK';
 			}
+			$reportId = $courseCode . "_" .$lessonCode . "_" . strtolower($test['CODE']) . "_problem";
+
+			if ($messageParams['TYPE'] !== 'OK') {
+				$messCode = 'INTERVOLGA_EDU.REPORT_MALE';
+				$code = 'ADD';
+				$buttonClass = '';
+				if (array_key_exists($reportId, $claimsDatetimes)) {
+					$buttonClass = 'adm-btn';
+					$messCode = 'INTERVOLGA_EDU.REMOVE_REPORT';
+					$code = 'REMOVE';
+				} else {
+					$buttonClass = 'adm-btn adm-btn-save';
+					if ($isFemale) {
+						$messCode = 'INTERVOLGA_EDU.REPORT_FEMALE';
+					}
+				}
+				$messageParams["DETAILS"] .= '<form method="post">';
+				$messageParams["DETAILS"] .= '<button type="submit" class="' . $buttonClass . '" name="' . $code . '" value="' . $reportId . '">' . Loc::getMessage($messCode, ["#TIME#" => $claimsDatetimes[$reportId]]) . '</button>';
+				$messageParams["DETAILS"] .= '</form>';
+			}
 			$message = new CAdminMessage($messageParams);
 			echo $message->show();
 			$counter++;
@@ -116,16 +158,3 @@ foreach ($testsTree as $courseCode => $course) {
 }
 $tabControl->end();
 ?>
-<style type="text/css">
-	#tabControl_layout .adm-info-message {
-		margin: 2px 0;
-		padding: 3px 5px 3px 74px;
-	}
-
-	#tabControl_layout .adm-info-message .desc {
-		padding-top: 3px;
-		padding-bottom: 3px;
-		font-size: smaller;
-		font-style: italic;
-	}
-</style>

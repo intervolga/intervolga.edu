@@ -5,3 +5,6 @@ $MESS['INTERVOLGA_EDU.LESSON_HEADER'] = 'Урок #LESSON# (#DONE#/#TOTAL#)';
 $MESS['INTERVOLGA_EDU.TEST_HEADER'] = '#NUMBER#. #TEST# (#CODE#)';
 $MESS['INTERVOLGA_EDU.TEST_NO_ERRORS'] = 'Проверка пройдена';
 $MESS['INTERVOLGA_EDU.FATAL_ERROR'] = 'При проверке произошло что-то ужасное (#ERROR#)';
+$MESS['INTERVOLGA_EDU.REPORT_MALE'] = 'Не согласен';
+$MESS['INTERVOLGA_EDU.REPORT_FEMALE'] = 'Не согласна';
+$MESS['INTERVOLGA_EDU.REMOVE_REPORT'] = 'Снять жалобу от #TIME#';
