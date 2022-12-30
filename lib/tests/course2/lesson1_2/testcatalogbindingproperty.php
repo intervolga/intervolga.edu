@@ -10,6 +10,7 @@ use Intervolga\Edu\Tests\BaseTest;
 class TestCatalogBindingProperty extends BaseTest
 {
 	protected const MIN_COUNT_IBLOCK = 3;
+
 	protected static function run()
 	{
 		Assert::iblockLocator(static::getPropertiesLocators()::getIblock());

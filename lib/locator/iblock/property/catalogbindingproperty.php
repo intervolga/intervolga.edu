@@ -34,6 +34,7 @@ class CatalogBindingProperty extends PropertyLocator
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.CATALOGBINDING_PROPERTY');
 	}
+
 	public static function getCountNotEmptyProperty()
 	{
 		$count = 0;
@@ -48,8 +49,11 @@ class CatalogBindingProperty extends PropertyLocator
 
 		return $count;
 	}
-	public static function getPropertyParameters(){
-		$result =  CIBlockProperty::GetByID("LINK", PromoIblock::find()['ID']);
+
+	public static function getPropertyParameters()
+	{
+		$result = CIBlockProperty::GetByID("LINK", PromoIblock::find()['ID']);
+
 		return $result->fetch();
 	}
 }

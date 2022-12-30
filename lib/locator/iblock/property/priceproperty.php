@@ -28,8 +28,11 @@ class PriceProperty extends PropertyLocator
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.PRICE_PROPERTY');
 	}
-	public static function getPropertyParameters(){
-		$result =  CIBlockProperty::GetByID("PRICE", PromoIblock::find()['ID']);
+
+	public static function getPropertyParameters()
+	{
+		$result = CIBlockProperty::GetByID("PRICE", PromoIblock::find()['ID']);
+
 		return $result->fetch();
 	}
 }
