@@ -1,5 +1,11 @@
 <?php
 B_PROLOG_INCLUDED === true || die();
+if (LANGUAGE_ID != 'ru') {
+	$message = new CAdminMessage('Switch language to RU');
+	echo $message->show();
+
+	return;
+}
 
 /**
  * @var string $mid module id from GET
@@ -27,8 +33,8 @@ $options = [
 ];
 
 $fatalThrowable = null;
-$testsTree = Tester::getTestsTree();
 try {
+	$testsTree = Tester::getTestsTree();
 	Tester::run();
 } catch (Throwable $throwable) {
 	$fatalThrowable = $throwable;
