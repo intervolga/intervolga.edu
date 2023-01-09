@@ -152,13 +152,13 @@ abstract class BaseTestIblock extends BaseTest
 
 	protected static function testProperties(array $iblock)
 	{
-		$properties = \CIBlock::GetProperties($iblock["ID"]);
-		while ($property = $properties->fetch()["CODE"]) {
-			Assert::matches($property, new Regex("/^[_A-Z0-9]*$/", "PRICE"),
-				Loc::getMessage("INTERVOLGA_EDU.IB_PROPERTY_HAS_LOWER_CASE",
+		$properties = \CIBlock::getProperties($iblock['ID']);
+		while ($property = $properties->fetch()['CODE']) {
+			Assert::matches($property, new Regex('/^[_A-Z0-9]*$/', 'PRICE'),
+				Loc::getMessage('INTERVOLGA_EDU.IB_PROPERTY_HAS_LOWER_CASE',
 					[
-						"#IB#" => $iblock["NAME"],
-						"#PROPERTY#" => $property
+						'#IB#' => $iblock['NAME'],
+						'#PROPERTY#' => $property
 					]));
 		}
 	}

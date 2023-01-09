@@ -115,7 +115,7 @@ $MESS['INTERVOLGA_EDU.USE_ONE_TAB_FOR_IBLOCK_FORM'] = 'Проблема с ИБ 
 $MESS['INTERVOLGA_EDU.WRONG_IBLOCK_TYPE'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: тип ИБ должен быть #TYPE#';
 $MESS['INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: включите всё логирование действий с элементами';
 $MESS['INTERVOLGA_EDU.SET_PERMISSION_EVERYONE_R'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: задайте доступ для всех пользователей Чтение';
-$MESS['INTERVOLGA_EDU.IB_PROPERTY_HAS_LOWER_CASE'] = 'Код свойства \'#PROPERTY#\' инфоблока \'IB\' имеет нижний регистр (должен быть верхнем).';
+$MESS['INTERVOLGA_EDU.IB_PROPERTY_HAS_LOWER_CASE'] = 'Символьный код свойства \'#PROPERTY#\' (Инфоблок \'#IB#\') должен быть в верхнем регистре, без кириллицы!';
 $MESS['INTERVOLGA_EDU.FIELD_SURNAME'] = 'Фамилия';
 $MESS['INTERVOLGA_EDU.RENAME_FIELD_NAME'] = 'Переименуйте поле #VALUE# в #EXPECT# в форме редактирования элемента';
 $MESS['INTERVOLGA_EDU.PRICE_PROPERTY'] = 'Цена';
