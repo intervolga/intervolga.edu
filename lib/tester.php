@@ -67,6 +67,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson9\TestCatalogIblock::class,
 			\Intervolga\Edu\Tests\Course1\Lesson9\TestComponentOptions::class,
 			\Intervolga\Edu\Tests\Course1\Lesson9\TestSymbolicCode::class,
+			\Intervolga\Edu\Tests\Course1\Lesson9\TestNavPage::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson10\TestSearchAction::class,
 			\Intervolga\Edu\Tests\Course1\Lesson10\TestSearchTemplate::class,

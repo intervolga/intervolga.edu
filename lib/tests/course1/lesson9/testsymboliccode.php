@@ -1,7 +1,7 @@
 <?php
-
 namespace Intervolga\Edu\Tests\Course1\Lesson9;
 
+use Bitrix\Main\Localization\Loc;
 use CIBlock;
 use CIBlockElement;
 use Intervolga\Edu\Asserts\Assert;
@@ -14,14 +14,16 @@ class TestSymbolicCode extends BaseTest
 	{
 		Assert::iblockLocator(ProductsIblock::class);
 
-		$allIblock = CIblockElement::getList(false,['IBLOCK_ID' => ProductsIblock::find()['ID']],[]);
-		$iblockWithoutCode = CIblockElement::getList(false,['IBLOCK_ID' => ProductsIblock::find()['ID'], '!CODE' => false], []);
-		Assert::eq($allIblock, $iblockWithoutCode, 'Кол-во инфоблоков, у которых не заполнен символьный код: '.($allIblock-$iblockWithoutCode));
-
 		$parameterCode = CIBlock::GetFields(ProductsIblock::find()['ID'])['CODE']['IS_REQUIRED'];
-		Assert::eq($parameterCode, 'Y', 'Символьный код не является обязательным полем');
+		Assert::eq($parameterCode, 'Y', Loc::getMessage('INTERVOLGA_EDU.LESSON_1_9_CODE_IS_REQUIRED'));
+
+		$allIblock = CIblockElement::getList(false, ['IBLOCK_ID' => ProductsIblock::find()['ID']], []);
+		$iblockWithoutCode = CIblockElement::getList(false, [
+			'IBLOCK_ID' => ProductsIblock::find()['ID'],
+			'!CODE' => false
+		], []);
+		Assert::eq($allIblock, $iblockWithoutCode, Loc::getMessage('INTERVOLGA_EDU.LESSON_1_9_CODE_IS_EMPTY') . ($allIblock - $iblockWithoutCode));
 
 	}
-
 
 }
