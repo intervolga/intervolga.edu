@@ -37,6 +37,7 @@ class Tester
 
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestTemplates::class,
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestCode::class,
+			\Intervolga\Edu\Tests\Course1\Lesson3\TestOption::class,
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestScripts::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestIncludeArea::class,

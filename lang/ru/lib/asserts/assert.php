@@ -31,3 +31,4 @@ $MESS['INTERVOLGA_EDU.ASSERT_COMPONENT_LOCATOR'] = 'Компонент #COMPONEN
 $MESS['INTERVOLGA_EDU.ASSERT_TEMPLATE_LOCATOR'] = 'Использование шаблона <b>#TEMPLATE#</b> компонента <b>#COMPONENT#</b> не обнаружено (#POSSIBLE#). Если компонент существует, пересохраните его.';
 $MESS['INTERVOLGA_EDU.ASSERT_MENU_ITEM_NOT_EXISTS'] = 'Пункт #ITEM# в меню #MENU# должен быть удален';
 $MESS['INTERVOLGA_EDU.ASSERT_MENU_ITEM_EXISTS'] = 'Пункт #ITEM# в меню #MENU# не найден, должен существовать';
+$MESS['INTERVOLGA_EDU.NOT_CORRECT_MODULE_OPTION'] = 'У модуля \'#MODULE#\' опция \'#OPTION#\' сейчас стоит \'#NOW_VALUE#\' (нужно \'#REQUIRED_VALUE#\').';
