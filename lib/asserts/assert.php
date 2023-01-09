@@ -451,18 +451,11 @@ class Assert
 	public static function directoryNotEmpty(Directory $value, string $message = ''){
 		if(!$value->getChildren()){
 			static::registerError(static::getCustomOrLocMessage(
-				'директория пуста',
+				'INTERVOLGA_EDU.ASSERT_DIRECTORY_IS_EMPTY',
 				[
-					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-					]),
-					'#NAME#' => $value->getName(),
-					'#PATH#' => FileSystem::getLocalPath($value),
-					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
+					'#PATH#' => FileSystem::getLocalPath($value)
 				],
-
+				$message
 			));
 		}
 	}
