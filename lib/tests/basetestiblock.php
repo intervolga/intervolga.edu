@@ -154,10 +154,11 @@ abstract class BaseTestIblock extends BaseTest
 	{
 		$properties = \CIBlock::getProperties($iblock['ID']);
 		while ($property = $properties->fetch()['CODE']) {
-			Assert::matches($property, new Regex('/^[_A-Z0-9]*$/', 'PRICE'),
+			Assert::matches($property, new Regex('/^[_A-Z0-9]*$/', ''),
 				Loc::getMessage('INTERVOLGA_EDU.IB_PROPERTY_HAS_LOWER_CASE',
 					[
-						'#IB#' => $iblock['NAME'],
+						'#IBLOCK_LINK#' => Admin::getIblockUrl($iblock),
+						'#IBLOCK#' => $iblock['NAME'],
 						'#PROPERTY#' => $property
 					]));
 		}
