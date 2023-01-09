@@ -30,8 +30,8 @@ class TestSeoPartners extends BaseTest
 			);
 		}
 
+		Assert::fileLocator(HowBecomePartner::class);
 		$directoryPage = HowBecomePartner::find();
-		Assert::fseExists($directoryPage);
 		if ($directoryPage) {
 			Assert::fileContentMatches(
 				$directoryPage,
