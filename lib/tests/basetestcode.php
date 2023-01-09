@@ -43,6 +43,7 @@ abstract class BaseTestCode extends BaseTest
 	protected static function run()
 	{
 		$files = static::getFilesToTestCode();
+		Assert::notEmpty($files, Loc::getMessage('INTERVOLGA_EDU.TEST_CODE_EMPTY_FILES'));
 		foreach ($files as $file) {
 			Assert::fseExists($file);
 			if ($file->isExists()) {

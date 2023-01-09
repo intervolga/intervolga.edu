@@ -448,6 +448,24 @@ class Assert
 	 * @param string $message
 	 * @throws AssertException
 	 */
+	public static function directoryNotEmpty(Directory $value, string $message = ''){
+		if(!$value->getChildren()){
+			static::registerError(static::getCustomOrLocMessage(
+				'директория пуста',
+				[
+					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+						'#NAME#' => $value->getName(),
+						'#PATH#' => FileSystem::getLocalPath($value),
+						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
+					]),
+					'#NAME#' => $value->getName(),
+					'#PATH#' => FileSystem::getLocalPath($value),
+					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
+				],
+
+			));
+		}
+	}
 	public static function directoryExists(Directory $value, string $message = '')
 	{
 		if (!$value->isExists()) {
