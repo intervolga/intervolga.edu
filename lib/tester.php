@@ -74,6 +74,8 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson11\TestSmartFilterIsExist::class,
 			\Intervolga\Edu\Tests\Course1\Lesson11\TestPropertyInFilter::class,
 
+			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestCatalogBindingProperty::class,
+			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestPropertyPrice::class,
 			\Intervolga\Edu\Tests\Course2\Lesson4\TestSetViewTargetNews::class,
 			\Intervolga\Edu\Tests\Course2\Lesson4\TestShowViewTargetNews::class,
 
