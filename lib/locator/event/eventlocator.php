@@ -32,4 +32,21 @@ abstract class EventLocator
 	{
 		return static::getParams()['MESSAGE_ID'] ?? '';
 	}
+
+	public static function getPossibleTips()
+	{
+		$result = [];
+		$filter = static::getRules();
+		foreach ($filter as $field => $value) {
+			if (mb_substr($field, 0, 1) == '=') {
+				$field = mb_substr($field, 1);
+			}
+			if (!is_array($value)) {
+				$value = [$value];
+			}
+			$result[] = $field . '=' . implode('||', $value);
+		}
+
+		return implode(';', $result);
+	}
 }

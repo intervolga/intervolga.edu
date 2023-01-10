@@ -708,6 +708,11 @@ class Assert
 
 	}
 
+	/**
+	 * @param string|EventLocator $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
 	public static function eventExists(string $value, $message = '')
 	{
 		$result = $value::find();
@@ -718,7 +723,7 @@ class Assert
 					[
 						'#MESSAGE_ID#' => $value::getMessageID(),
 						'#MODULE_ID#' => $value::getModuleID(),
-						'#REQUIRED_RULES#' => static::getStringFromArray(':', $value::getRules())
+						'#POSSIBLE#' => $value::getPossibleTips()
 					],
 					$message
 				));
