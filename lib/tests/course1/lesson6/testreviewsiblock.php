@@ -39,6 +39,7 @@ class TestReviewsIblock extends BaseTestIblock
 
 	protected static function run()
 	{
+		parent::run();
 		if ($iblock = static::getLocator()::find()) {
 			$options = AdminFormOptions::getForIblock($iblock['ID']);
 			static::testRenamedSurname($options);

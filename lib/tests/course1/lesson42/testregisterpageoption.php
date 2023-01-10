@@ -16,7 +16,7 @@ class TestRegisterPageOption extends BaseTest
 		Assert::matches(
 			$customPage,
 			new Regex(
-				'/^(\/[^\/]+)+$/m',
+				'/^\/([^\/]+\/?)+$/m',
 				Loc::getMessage('INTERVOLGA_EDU.REGISTER_PAGE_OPTION_VALID')
 			)
 		);

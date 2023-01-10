@@ -3,6 +3,7 @@ namespace Intervolga\Edu\Tests;
 
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Asserts\AssertPhp;
 
 abstract class BaseTestCode extends BaseTest
@@ -43,7 +44,10 @@ abstract class BaseTestCode extends BaseTest
 	{
 		$files = static::getFilesToTestCode();
 		foreach ($files as $file) {
-			AssertPhp::goodCode($file);
+			Assert::fseExists($file);
+			if ($file->isExists()) {
+				AssertPhp::goodCode($file);
+			}
 		}
 	}
 }
