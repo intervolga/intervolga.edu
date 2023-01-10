@@ -1,16 +1,31 @@
 <?php
-
 namespace Intervolga\Edu\Tests\Course1\Lesson11;
 
+use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Locator\Iblock\IblockLocator;
 use Intervolga\Edu\Locator\Iblock\ProductsIblock;
 use Intervolga\Edu\Locator\Iblock\Property\AvailableProperty;
+use Intervolga\Edu\Tests\BaseTest;
 
-use Intervolga\Edu\Tests\BaseTestIblock;
-
-class TestPropertyIsExist extends BaseTestIblock
+class TestPropertyIsExist extends BaseTest
 {
+	public static function getDescription(): string
+	{
+		return Loc::getMessage('INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST_DESCRIPTION');
+	}
+
+	protected static function run()
+	{
+		Assert::propertyLocator(static::getLocator());
+		if (static::getLocator()::find()) {
+			foreach (static::getPropertiesLocators() as $property) {
+				Assert::propertyLocator($property);
+				Assert::greaterEq(AvailableProperty::getCountNotEmptyProperty(), 1);
+			}
+		}
+	}
+
 	/**
 	 * @return string|IblockLocator
 	 */
@@ -18,28 +33,11 @@ class TestPropertyIsExist extends BaseTestIblock
 	{
 		return ProductsIblock::class;
 	}
+
 	protected static function getPropertiesLocators(): array
 	{
 		return [
-			AvailableProperty::class
+			AvailableProperty::class,
 		];
 	}
-	protected static function getMinCount(): int
-	{
-		return 1;
-	}
-	
-	protected static function run()
-	{
-		if ($iblock = static::getLocator()::find()) {
-			foreach ( $properties = self::getPropertiesLocators() as $property) {
-				Assert::propertyLocator($property);
-			}
-		}
-	}
-	
-	
-}
-{
-	
 }

@@ -13,6 +13,7 @@ class PromoSection extends DirectoryLocator
 			'/discount/',
 			'/stocks/',
 			'/stock/',
+			'/promotions/'
 		];
 	}
 

@@ -3,7 +3,7 @@ namespace Intervolga\Edu\Tests\Course1\Lesson10;
 
 use Intervolga\Edu\FilesTree\ComponentTemplate;
 use Intervolga\Edu\FilesTree\SimpleComponentTemplate;
-use Intervolga\Edu\Locator\IO\SearchFormTemplate;
+use Intervolga\Edu\Locator\IO\ComponentTemplate\SearchFormTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Tests\BaseComponentTemplateTest;
 

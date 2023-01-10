@@ -37,6 +37,7 @@ class TestPromoIblock extends BaseTestIblock
 
 	protected static function run()
 	{
+		parent::run();
 		if ($iblock = static::getLocator()::find()) {
 			static::testFields($iblock);
 		}
