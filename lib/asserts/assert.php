@@ -7,11 +7,13 @@ use Bitrix\Main\IO\FileSystemEntry;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Exceptions\AssertException;
+use Intervolga\Edu\Locator\Event\EventLocator;
 use Intervolga\Edu\Locator\Iblock\IblockLocator;
 use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
 use Intervolga\Edu\Locator\Iblock\Section\SectionLocator;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Locator\IO\FileLocator;
+use Intervolga\Edu\Locator\Uf\UfLocator;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Menu;
@@ -612,6 +614,41 @@ class Assert
 		}
 	}
 
+	public static function userField(UfLocator $ufLocator, string $message = '')
+	{
+		if (!$ufLocator->find()) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_REQUIRED_RULES_USERFIELD',
+				[
+					'#POSSIBLE#' => $ufLocator->getPossibleTips(),
+				],
+				$message
+			));
+		}
+	}
+
+	/**
+	 * @param string|EventLocator $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function eventExists(string $value, $message = '')
+	{
+		$result = $value::find();
+		if (!$result) {
+			static::registerError(
+				static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_EVENT_EXISTS',
+					[
+						'#MESSAGE_ID#' => $value::getMessageID(),
+						'#MODULE_ID#' => $value::getModuleID(),
+						'#POSSIBLE#' => $value::getPossibleTips()
+					],
+					$message
+				));
+		}
+	}
+
 	public static function menuItemExists($menuPath, $item, string $message = '')
 	{
 		$menuFile = FileSystem::getFile($menuPath);
@@ -690,5 +727,15 @@ class Assert
 			static::$interceptedErrors = [];
 			throw AssertException::createMultiple($errors);
 		}
+	}
+
+	protected static function getStringFromArray($separator, $array, $endString = "<br>"): string
+	{
+		$result = '';
+		foreach ($array as $k => $v) {
+			$result .= $k . $separator . $v . $endString;
+		}
+
+		return $result;
 	}
 }
