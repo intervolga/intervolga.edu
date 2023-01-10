@@ -102,7 +102,13 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWTARGETNEWS'] = 'Проверка S
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWTARGETNEWS_DESCRIPTION'] = 'ShowViewContent должен быть размещен в header.php перед &lt;p&gt; с классом title';
 
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE_DESCRIPTION'] = 'Должна существовать папка /local/modules/intervolga.#Ваше название модуля#/, модуль должен быть установлен';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Проверка собственного UF-свойства';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF_DESCRIPTION'] = 'Должен существовать обработчик события OnUserTypeBuildList модуля main для свойства "Привязка к коллекции медиабиблиотеки"';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UFCLASS'] = 'Проверка собственного UF-свойства с требуемыми свойствами для объекта USER';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UFCLASS_DESCRIPTION'] = 'Должно быть создано UF-свойство у пользователя (все возможные комбинации множественности и обязательности поля)';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UFCLASSIBLOCK'] = 'Проверка собственного UF-свойства с требуемыми свойствами для раздела Инфоблока';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UFCLASSIBLOCK_DESCRIPTION'] = 'Должно быть создано UF-свойство у раздела любого инфоблока (все возможные комбинации множественности и обязательности поля)';
 
 $MESS['INTERVOLGA_EDU.TEST_CODE_NAME'] = 'Проверка кода #FILES#';
 $MESS['INTERVOLGA_EDU.TEST_CODE_DESCRIPTION'] = 'Современная проверка ядра Битрикса, использование длинных php-тегов, запрет на устаревшие функции';
