@@ -3,9 +3,10 @@ namespace Intervolga\Edu\Locator\Event;
 
 use Bitrix\Main\Localization\Loc;
 
+Loc::loadMessages(__FILE__);
+
 class MediaType extends EventLocator
 {
-
 	protected static function getParams(): array
 	{
 		return [
