@@ -8,7 +8,6 @@ use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Locator\Event\EventLocator;
-use Intervolga\Edu\Locator\Event\MediaType;
 use Intervolga\Edu\Locator\Iblock\IblockLocator;
 use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
 use Intervolga\Edu\Locator\Iblock\Section\SectionLocator;
@@ -615,14 +614,7 @@ class Assert
 		}
 	}
 
-
-	/**
-	 * @param UfLocator $ufLocator
-	 * @param string $message
-	 * @return void
-	 * @throws AssertException
-	 */
-	public static function userField($ufLocator, string $message = '')
+	public static function userField(UfLocator $ufLocator, string $message = '')
 	{
 		if (!$ufLocator->find()) {
 			static::registerError(static::getCustomOrLocMessage(
@@ -633,59 +625,6 @@ class Assert
 				$message
 			));
 		}
-	}
-
-	/**
-	 * @param mixed $event
-	 * @param Regex $regexID
-	 * @param array $requiredListProperties
-	 * @param string $message
-	 * @return void
-	 * @throws AssertException
-	 */
-	public static function userFieldExistsByRegex(array $event, Regex $regexID, array $requiredListProperties = [], string $message = '')
-	{
-		$list = \CUserTypeEntity::GetList(['ID' => 'ASC'], [
-			'USER_TYPE_ID' => $event['USER_TYPE_ID']
-		]);
-		$result = false;
-		$wasFoundField = false;
-		while ($field = $list->fetch()) {
-			if (preg_match($regexID->getRegex(), $field['ENTITY_ID'])) {
-				$wasFoundField = true;
-				foreach ($requiredListProperties as $k => $rule) {
-					if ($field[$k] == $rule) {
-						$result = true;
-					} else {
-						$result = false;
-						break;
-					}
-				}
-				if ($result) {
-					break;
-				}
-			}
-		}
-		if (!$wasFoundField) {
-			static::registerError(static::getCustomOrLocMessage(
-				'INTERVOLGA_EDU.ASSERT_NOT_FOUND_USERFIELD',
-				[
-					'#FIELD#' => $event['USER_TYPE_ID'],
-					'#REQUIRED_PROPERTIES#' => $regexID->getRegexExplanation()
-				],
-				$message
-			));
-		} elseif (!$result) {
-			static::registerError(static::getCustomOrLocMessage(
-				'INTERVOLGA_EDU.ASSERT_REQUIRED_RULES_USERFIELD',
-				[
-					'#FIELD#' => $event['USER_TYPE_ID'],
-					'#REQUIRED_PROPERTIES#' => static::getStringFromArray(':', $requiredListProperties)
-				],
-				$message
-			));
-		}
-
 	}
 
 	/**
@@ -704,22 +643,6 @@ class Assert
 						'#MESSAGE_ID#' => $value::getMessageID(),
 						'#MODULE_ID#' => $value::getModuleID(),
 						'#POSSIBLE#' => $value::getPossibleTips()
-					],
-					$message
-				));
-		}
-	}
-	public static function isCorrectBaseTypeUF(string $value, $required_type, $message = '')
-	{
-		$result = $value::find();
-		if ($result["BASE_TYPE"] == $required_type) {
-			static::registerError(
-				static::getCustomOrLocMessage(
-					'INTERVOLGA_EDU.ASSERT_REQUIRED_TYPE_BASE',
-					[
-						"#CURRENT_CLASS#" => $result["USER_TYPE_ID"],
-						"#TYPE_BASE#" => $required_type,
-						"#NOW_BASE_TYPE#" => $result["BASE_TYPE"]
 					],
 					$message
 				));

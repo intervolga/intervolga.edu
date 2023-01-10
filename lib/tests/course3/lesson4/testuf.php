@@ -2,8 +2,8 @@
 namespace Intervolga\Edu\Tests\Course3\Lesson4;
 
 use Intervolga\Edu\Asserts\Assert;
-use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Locator\Event;
+use Intervolga\Edu\Tests\BaseTest;
 
 class TestUf extends BaseTest
 {
