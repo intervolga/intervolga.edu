@@ -2,6 +2,7 @@
 namespace Intervolga\Edu\Locator\Uf;
 
 use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\UserFieldTable;
 
 Loc::loadMessages(__FILE__);
 
@@ -19,13 +20,12 @@ class UfLocator
 		return $this->filter;
 	}
 
-	/**
-	 * @return array
-	 */
-	public function find()
+	public function find(): array
 	{
 		$result = [];
-		$getList = \CUserTypeEntity::getList(['ID' => 'ASC'], $this->getFilter());
+		$getList = UserFieldTable::getList([
+			'filter' => $this->getFilter(),
+		]);
 		if ($fetch = $getList->fetch()) {
 			$result = $fetch;
 		}
@@ -33,7 +33,7 @@ class UfLocator
 		return $result;
 	}
 
-	public function getPossibleTips()
+	public function getPossibleTips(): string
 	{
 		$result = [];
 		$filter = $this->getFilter();
