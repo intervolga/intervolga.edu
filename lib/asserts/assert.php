@@ -14,6 +14,7 @@ use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
 use Intervolga\Edu\Locator\Iblock\Section\SectionLocator;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Locator\IO\FileLocator;
+use Intervolga\Edu\Locator\Uf\UfLocator;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Menu;
@@ -616,39 +617,18 @@ class Assert
 
 
 	/**
-	 * @param mixed $event
-	 * @param array $requiredListProperties
-	 * @param string $entityID
+	 * @param UfLocator $ufLocator
 	 * @param string $message
 	 * @return void
 	 * @throws AssertException
 	 */
-	public static function userFieldExistsByString(array $event, array $requiredListProperties, string $entityID, string $message = '')
+	public static function userField($ufLocator, string $message = '')
 	{
-		$list = \CUserTypeEntity::GetList(['ID' => 'ASC'], [
-			'USER_TYPE_ID' => $event['USER_TYPE_ID'],
-			'ENTITY_ID' => $entityID
-		]);
-		$result = false;
-		while ($field = $list->fetch()) {
-			foreach ($requiredListProperties as $k => $rule) {
-				if ($field[$k] == $rule) {
-					$result = true;
-				} else {
-					$result = false;
-					break;
-				}
-			}
-			if ($result) {
-				break;
-			}
-		}
-		if (!$result) {
+		if (!$ufLocator->find()) {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_REQUIRED_RULES_USERFIELD',
 				[
-					'#FIELD#' => $event['USER_TYPE_ID'],
-					'#REQUIRED_PROPERTIES#' => static::getStringFromArray(':', $requiredListProperties)
+					'#POSSIBLE#' => $ufLocator->getPossibleTips(),
 				],
 				$message
 			));
