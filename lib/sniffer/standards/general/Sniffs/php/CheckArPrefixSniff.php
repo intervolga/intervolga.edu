@@ -2,7 +2,10 @@
 
 namespace Intervolga\Edu\Sniffer\Standards\General\Sniffs\PHP;
 
+use Bitrix\Main\Localization\Loc;
 use PHP_CodeSniffer\Sniffs\Sniff;
+
+Loc::loadMessages(__FILE__);
 
 class CheckArPrefixSniff implements Sniff
 {
@@ -21,7 +24,7 @@ class CheckArPrefixSniff implements Sniff
 				'$arResult',
 				'$arParams'
 			])) {
-				$error = "Недопустимо название переменной {$token['content']}";
+				$error = Loc::getMessage('INTERVOLGA_EDU.AR_PREFIX_VAR', ['#VAR#' => $token['content']]);
 				$phpcsFile->addError($error, $stackPtr, 'A1CheckArPrefix');
 			}
 		}
