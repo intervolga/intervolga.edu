@@ -12,7 +12,7 @@ class StandardsTools
 
         $paths = [];
         foreach ($name as $n) {
-            $paths[] = __DIR__."/Standards/$n/ruleset.xml";
+            $paths[] = __DIR__."/standards/$n/ruleset.xml";
         }
 
         return $paths;
