@@ -17,18 +17,18 @@ class TestCatalogIblock extends BaseTest
 		Assert::eq(
 			$fields['LIST_PAGE_URL'],
 			$expectFields['LIST_PAGE_URL'],
-			Loc::getMessage('INTERVOLGA_EDU.LIST_PAGE_URL')
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_LIST_PAGE_URL')
 		);
 
 		Assert::eq(
 			$fields['DETAIL_PAGE_URL'],
 			$expectFields['DETAIL_PAGE_URL'],
-			Loc::getMessage('INTERVOLGA_EDU.DETAIL_PAGE_URL')
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_DETAIL_PAGE_URL')
 		);
 		Assert::eq(
 			$fields['SECTION_PAGE_URL'],
 			$expectFields['SECTION_PAGE_URL'],
-			Loc::getMessage('INTERVOLGA_EDU.SECTION_PAGE_URL')
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_SECTION_PAGE_URL')
 		);
 	}
 

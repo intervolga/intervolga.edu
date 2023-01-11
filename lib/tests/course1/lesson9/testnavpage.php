@@ -12,10 +12,10 @@ class TestNavPage extends BaseTest
 	{
 		$parameters = Catalog::find()['PARAMETERS'];
 
-		Assert::eq($parameters['PAGE_ELEMENT_COUNT'], 5, Loc::getMessage('INTERVOLGA_EDU.LESSON_1_9_PAGE_ELEMENT_COUNT'));
-		Assert::eq($parameters['PAGER_TEMPLATE'], 'arrows', Loc::getMessage('INTERVOLGA_EDU.LESSON_1_9_PAGER_TEMPLATE'));
+		Assert::eq($parameters['PAGE_ELEMENT_COUNT'], 5, Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_PAGE_ELEMENT_COUNT'));
+		Assert::eq($parameters['PAGER_TEMPLATE'], 'arrows', Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_PAGER_TEMPLATE'));
 		if ($parameters['DISPLAY_TOP_PAGER'] != 'Y') {
-			Assert::eq($parameters['DISPLAY_BOTTOM_PAGER'], 'Y', Loc::getMessage('INTERVOLGA_EDU.LESSON_1_9_DISPLAY_PAGER'));
+			Assert::eq($parameters['DISPLAY_BOTTOM_PAGER'], 'Y', Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_DISPLAY_PAGER'));
 		}
 
 	}

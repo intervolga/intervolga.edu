@@ -15,12 +15,12 @@ class TestComponentOptions extends BaseTest
 		AssertComponent::componentLocator(static::getLocator());
 		$parameters = static::getLocator()::find()['PARAMETERS'];
 
-		Assert::eq($parameters['SEF_MODE'], 'Y', Loc::getMessage('INTERVOLGA_EDU.SEF_MODE'));
-		Assert::eq($parameters['SEF_FOLDER'], '/products/', Loc::getMessage('INTERVOLGA_EDU.SEF_FOLDER'));
-		Assert::eq($parameters['SEF_URL_TEMPLATES']['sections'], '', Loc::getMessage('INTERVOLGA_EDU.SEF_URL_TEMPLATES_SECTIONS'));
-		Assert::eq($parameters['SEF_URL_TEMPLATES']['section'], '#SECTION_CODE#/', Loc::getMessage('INTERVOLGA_EDU.SEF_URL_TEMPLATES_SECTION'));
-		Assert::eq($parameters['SEF_URL_TEMPLATES']['element'], '#SECTION_CODE#/#ELEMENT_CODE#/', Loc::getMessage('INTERVOLGA_EDU.SEF_URL_TEMPLATES_ELEMENT'));
-		Assert::eq($parameters['SEF_URL_TEMPLATES']['compare'], '', Loc::getMessage('INTERVOLGA_EDU.SEF_URL_TEMPLATES_COMPARE'));
+		Assert::eq($parameters['SEF_MODE'], 'Y', Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_SEF_MODE'));
+		Assert::eq($parameters['SEF_FOLDER'], '/products/', Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_SEF_FOLDER'));
+		Assert::eq($parameters['SEF_URL_TEMPLATES']['sections'], '', Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_SEF_URL_TEMPLATES_SECTIONS'));
+		Assert::eq($parameters['SEF_URL_TEMPLATES']['section'], '#SECTION_CODE#/', Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_SEF_URL_TEMPLATES_SECTION'));
+		Assert::eq($parameters['SEF_URL_TEMPLATES']['element'], '#SECTION_CODE#/#ELEMENT_CODE#/', Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_SEF_URL_TEMPLATES_ELEMENT'));
+		Assert::eq($parameters['SEF_URL_TEMPLATES']['compare'], '', Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_SEF_URL_TEMPLATES_COMPARE'));
 
 	}
 

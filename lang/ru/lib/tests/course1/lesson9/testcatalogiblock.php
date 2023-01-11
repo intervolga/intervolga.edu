@@ -1,5 +1,5 @@
 <?php
-$MESS['INTERVOLGA_EDU.LIST_PAGE_URL'] = 'Неправильно задан URL страницы информационного блока.';
-$MESS['INTERVOLGA_EDU.SECTION_PAGE_URL'] = 'Неправильно задан URL страницы раздела.';
-$MESS['INTERVOLGA_EDU.DETAIL_PAGE_URL'] = 'Неправильно задан URL страницы детального просмотра.';
+$MESS['INTERVOLGA_EDU.COURSE_1_LESSON_1_9_LIST_PAGE_URL'] = 'Неправильно задан URL страницы для информационного блока "Продукция" в административном разделе.';
+$MESS['INTERVOLGA_EDU.COURSE_1_LESSON_1_9_SECTION_PAGE_URL'] = 'Неправильно задан URL страницы раздела для информационного блока "Продукция" в административном разделе.';
+$MESS['INTERVOLGA_EDU.COURSE_1_LESSON_1_9_DETAIL_PAGE_URL'] = 'Неправильно задан URL страницы детального просмотра для информационного блока "Продукция" в административном разделе.';
 ?>
