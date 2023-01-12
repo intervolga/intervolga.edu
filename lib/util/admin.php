@@ -52,4 +52,10 @@ class Admin
 	{
 		return '/bitrix/admin/agent_edit.php?ID= ' . $agent['ID'] . '&lang=' . LANGUAGE_ID;
 	}
+
+	public static function getIblockSectionUrl(array $section)
+	{
+		$url = '/bitrix/admin/iblock_section_edit.php?IBLOCK_ID=' . $section['IBLOCK_ID'] . '&lang=' . LANGUAGE_ID . '&ID=' . $section['ID'] . '&find_section_section=0&from=iblock_section_admin';
+		return $url;
+	}
 }

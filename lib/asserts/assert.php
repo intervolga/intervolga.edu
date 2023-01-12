@@ -548,7 +548,9 @@ class Assert
 	 */
 	public static function sectionLocator($value, string $message = '')
 	{
-		if (!$value::find()) {
+		if ($findIblock = $value::find()) {
+			static::registerLocatorFound(SectionLocator::class, $value, $findIblock);
+		} else {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_SECTION_LOCATOR',
 				[
@@ -569,7 +571,9 @@ class Assert
 	 */
 	public static function propertyLocator($value, string $message = '')
 	{
-		if (!$value::find()) {
+		if ($find = $value::find()) {
+			static::registerLocatorFound(PropertyLocator::class, $value, $find);
+		} else {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_PROPERTY_LOCATOR',
 				[
@@ -671,8 +675,7 @@ class Assert
 	{
 		if ($find = $value::find()) {
 			static::registerLocatorFound(AgentLocator::class, $value, $find);
-		}
-		else {
+		} else {
 			static::registerError(
 				static::getCustomOrLocMessage(
 					'INTERVOLGA_EDU.ASSERT_AGENT_EXISTS',
