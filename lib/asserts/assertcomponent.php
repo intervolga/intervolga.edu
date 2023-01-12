@@ -34,7 +34,9 @@ class AssertComponent extends Assert
 	 */
 	public static function templateLocator($value, string $message = '')
 	{
-		if (!$value::find()) {
+		if ($find = $value::find()) {
+			static::registerLocatorFound(TemplateLocator::class, $value, $find);
+		} else {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_TEMPLATE_LOCATOR',
 				[
