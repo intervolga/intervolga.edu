@@ -14,7 +14,9 @@ class AssertComponent extends Assert
 	 */
 	public static function componentLocator($value, string $message = '')
 	{
-		if (!$value::find()) {
+		if ($find = $value::find()) {
+			static::registerLocatorFound(ComponentLocator::class, $value, $find);
+		} else {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_COMPONENT_LOCATOR',
 				[
