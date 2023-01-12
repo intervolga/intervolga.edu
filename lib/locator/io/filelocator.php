@@ -42,7 +42,7 @@ abstract class FileLocator
 		$result = [];
 		$paths = static::getPaths();
 		foreach ($paths as $path) {
-			$links[] = Loc::getMessage('INTERVOLGA_EDU.FSE', [
+			$result[] = Loc::getMessage('INTERVOLGA_EDU.FSE', [
 				'#NAME#' => FileSystem::getDirectory($path)->getName(),
 				'#PATH#' => $path,
 				'#FILEMAN_URL#' => Admin::getFileManUrl(FileSystem::getDirectory($path)),
