@@ -1,6 +1,7 @@
 <?php
 namespace Intervolga\Edu\Asserts;
 
+use Bitrix\Main\Config\Option;
 use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\IO\FileSystemEntry;
@@ -571,6 +572,31 @@ class Assert
 				$message
 			));
 
+		}
+	}
+
+	/**
+	 * @param string $module
+	 * @param string $optionKey
+	 * @param string|int $requiredValue
+	 * @param string $name
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function checkModuleOption(string $module, string $optionKey, $requiredValue, string $name = '', string $message = '')
+	{
+		$realValue = Option::getRealValue($module, $optionKey);
+		if ($realValue !== $requiredValue) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.NOT_CORRECT_MODULE_OPTION',
+				[
+					'#MODULE#' => $module,
+					'#OPTION#' => $name ?? $optionKey,
+					'#NOW_VALUE#' => $realValue,
+					'#REQUIRED_VALUE#' => $requiredValue,
+				],
+				$message
+			));
 		}
 	}
 
