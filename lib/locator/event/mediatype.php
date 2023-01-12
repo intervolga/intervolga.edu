@@ -12,7 +12,7 @@ class MediaType extends EventLocator
 		return [
 			'MODULE_ID' => 'main',
 			'MESSAGE_ID' => 'OnUserTypeBuildList',
-			'RULES' => [
+			'RESULT' => [
 				'DESCRIPTION' => Loc::getMessage('INTERVOLGA_EDU.EVENT_CLASS_DESCRIPTION')
 			]
 		];
@@ -28,20 +28,25 @@ class MediaType extends EventLocator
 	 */
 	public static function find(): ?array
 	{
+		$result = [];
 		$events = GetModuleEvents(static::getParams()['MODULE_ID'], static::getParams()['MESSAGE_ID']);
-		$result = null;
-		$rules = static::getParams()['RULES'];
+		$resultFilter = static::getResult();
 		while ($event = $events->fetch()) {
-			$tempEvent = ExecuteModuleEvent($event);
-			$isCurrent = true;
-			foreach ($rules as $k => $rule) {
-				if ($tempEvent[$k] !== $rule) {
-					$isCurrent = false;
-					break;
+			$found = true;
+			if ($resultFilter) {
+				$eventResult = ExecuteModuleEvent($event);
+				foreach ($resultFilter as $filter => $value) {
+					if ($eventResult[$filter] !== $value) {
+						$found = false;
+						break;
+					}
 				}
 			}
-			if ($isCurrent) {
-				$result = $tempEvent;
+			if ($found) {
+				$result = $event;
+				if ($resultFilter) {
+					$result['RESULT'] = $eventResult;
+				}
 				break;
 			}
 		}

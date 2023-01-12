@@ -15,9 +15,9 @@ abstract class EventLocator extends BaseLocator
 	/**
 	 * @return array
 	 */
-	public static function getRules(): array
+	public static function getResult(): array
 	{
-		return static::getParams()['RULES'] ?? [];
+		return static::getParams()['RESULT'] ?? [];
 	}
 	/**
 	 * @return string
@@ -38,7 +38,7 @@ abstract class EventLocator extends BaseLocator
 	public static function getPossibleTips()
 	{
 		$result = [];
-		$filter = static::getRules();
+		$filter = static::getResult();
 		foreach ($filter as $field => $value) {
 			if (mb_substr($field, 0, 1) == '=') {
 				$field = mb_substr($field, 1);
@@ -54,6 +54,6 @@ abstract class EventLocator extends BaseLocator
 
 	public static function getDisplayText($find): string
 	{
-		return $find['MESSAGE_ID'];
+		return $find['MESSAGE_ID'] . ' -> ' . $find['RESULT']['CLASS_NAME'];
 	}
 }
