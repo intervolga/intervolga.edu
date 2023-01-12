@@ -1,6 +1,7 @@
 <?php
 namespace Intervolga\Edu;
 
+use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Tests\BaseTest;
 
@@ -10,6 +11,7 @@ class Tester
 	 * @var AssertException[]
 	 */
 	protected static $exceptions = [];
+	protected static $locatorsFound = [];
 
 	/**
 	 * @return string[]|BaseTest[]
@@ -98,7 +100,9 @@ class Tester
 		 */
 		foreach (static::getTestClasses() as $testClass) {
 			try {
+				Assert::resetLocatorsFound();
 				$testClass::runOuter();
+				static::$locatorsFound[$testClass] = Assert::getLocatorsFound();
 			} catch (AssertException $assertException) {
 				static::$exceptions[$testClass] = $assertException;
 			}
@@ -154,5 +158,13 @@ class Tester
 		}
 
 		return $tree;
+	}
+
+	/**
+	 * @return array
+	 */
+	public static function getLocatorsFound()
+	{
+		return static::$locatorsFound;
 	}
 }

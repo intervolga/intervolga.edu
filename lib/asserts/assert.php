@@ -9,6 +9,7 @@ use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Locator\Agent\AgentLocator;
+use Intervolga\Edu\Locator\BaseLocator;
 use Intervolga\Edu\Locator\Event\EventLocator;
 use Intervolga\Edu\Locator\Event\Message\MessageLocator;
 use Intervolga\Edu\Locator\Event\Template\TemplateLocator;
@@ -29,6 +30,8 @@ class Assert
 {
 	protected static $interceptErrors = false;
 	protected static $interceptedErrors = [];
+
+	protected static $locators = [];
 
 	/**
 	 * @param mixed $value
@@ -524,7 +527,9 @@ class Assert
 	 */
 	public static function iblockLocator($value, string $message = '')
 	{
-		if (!$value::find()) {
+		if ($findIblock = $value::find()) {
+			static::registerLocatorFound(IblockLocator::class, $value, $findIblock);
+		} else {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_IBLOCK_LOCATOR',
 				[
@@ -533,7 +538,6 @@ class Assert
 				],
 				$message
 			));
-
 		}
 	}
 
@@ -610,7 +614,9 @@ class Assert
 	 */
 	public static function directoryLocator($value, string $message = '')
 	{
-		if (!$value::find()) {
+		if ($findDirectory = $value::find()) {
+			static::registerLocatorFound(DirectoryLocator::class, $value, $findDirectory);
+		} else {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_DIRECTORY_LOCATOR',
 				[
@@ -619,7 +625,6 @@ class Assert
 				],
 				$message
 			));
-
 		}
 	}
 
@@ -828,5 +833,25 @@ class Assert
 		}
 
 		return $result;
+	}
+
+	/**
+	 * @param string|BaseLocator $parentLocatorClass
+	 * @param string|BaseLocator $locatorClass
+	 * @param mixed $found
+	 */
+	protected static function registerLocatorFound($parentLocatorClass, $locatorClass, $found)
+	{
+		static::$locators[$parentLocatorClass][$locatorClass][] = $found;
+	}
+
+	public static function getLocatorsFound()
+	{
+		return static::$locators;
+	}
+
+	public static function resetLocatorsFound()
+	{
+		static::$locators = [];
 	}
 }
