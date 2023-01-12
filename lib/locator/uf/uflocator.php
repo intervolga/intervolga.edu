@@ -2,11 +2,14 @@
 namespace Intervolga\Edu\Locator\Uf;
 
 use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\UserFieldLangTable;
 use Bitrix\Main\UserFieldTable;
+use Intervolga\Edu\Locator\BaseLocator;
+use Intervolga\Edu\Util\Admin;
 
 Loc::loadMessages(__FILE__);
 
-class UfLocator
+class UfLocator extends BaseLocator
 {
 	protected array $filter = [];
 
@@ -27,6 +30,16 @@ class UfLocator
 			'filter' => $this->getFilter(),
 		]);
 		if ($fetch = $getList->fetch()) {
+			$langGetList = UserFieldLangTable::getList([
+				'filter' => [
+					'USER_FIELD_ID' => $fetch['ID'],
+				],
+			]);
+			while ($langFetch = $langGetList->fetch())
+			{
+				$fetch['LANG'][$langFetch['LANGUAGE_ID']] = $langFetch;
+			}
+
 			$result = $fetch;
 		}
 
@@ -51,5 +64,20 @@ class UfLocator
 		}
 
 		return implode(';', $result);
+	}
+
+	public static function getDisplayHref($find): string
+	{
+		return Admin::getUfUrl($find);
+	}
+
+	public static function getDisplayText($find): string
+	{
+		return '[' . $find['ID'] . '] ' .$find['LANG']['ru']['EDIT_FORM_LABEL'];
+	}
+
+	public static function getNameLoc(): string
+	{
+		return Loc::getMessage('INTERVOLGA_EDU.UF_PROPERTY');
 	}
 }

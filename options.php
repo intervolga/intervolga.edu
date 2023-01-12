@@ -17,6 +17,7 @@ use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\ModuleManager;
 use Bitrix\Main\Type\DateTime;
+use Intervolga\Edu\Locator\BaseLocator;
 use Intervolga\Edu\Tester;
 use Intervolga\Edu\Util\Update;
 
@@ -123,6 +124,7 @@ if ($fatalThrowable) {
 }
 $tabControl = new CAdminTabControl('tabControl', $tabs);
 $tabControl->begin();
+$locatorsFound = Tester::getLocatorsFound();
 
 foreach ($testsTree as $courseCode => $course) {
 	$tabControl->beginNextTab();
@@ -175,6 +177,40 @@ foreach ($testsTree as $courseCode => $course) {
 				$messageParams["DETAILS"] .= '<button type="submit" class="' . $buttonClass . '" name="' . $code . '" value="' . $reportId . '">' . Loc::getMessage($messCode, ["#TIME#" => $claimsDatetimes[$reportId]]) . '</button>';
 				$messageParams["DETAILS"] .= '</form>';
 			}
+
+			if ($locatorsFound[$testCode]) {
+				$locatorsInfo = [];
+				foreach ($locatorsFound[$testCode] as $parentLocator => $locatorClasses) {
+					foreach ($locatorClasses as $locatorClass => $founds) {
+						foreach ($founds as $found) {
+							/**
+							 * @var BaseLocator $parentLocator
+							 * @var BaseLocator $locatorClass
+							 */
+							$href = $locatorClass::getDisplayHref($found);
+							if (strlen($href))
+							{
+								$locatorsInfo []= Loc::getMessage('INTERVOLGA_EDU.LOCATOR_FOUND_HREF', [
+									'#LOCATOR#' => $parentLocator::getDisplayName(),
+									'#NAME#' => $locatorClass::getNameLoc(),
+									'#HREF#' => $href,
+									'#TIP#' => $locatorClass::getDisplayText($found),
+								]);
+							}
+							else
+							{
+								$locatorsInfo []= Loc::getMessage('INTERVOLGA_EDU.LOCATOR_FOUND', [
+									'#LOCATOR#' => $parentLocator::getDisplayName(),
+									'#NAME#' => $locatorClass::getNameLoc(),
+									'#TIP#' => $locatorClass::getDisplayText($found),
+								]);
+							}
+						}
+					}
+				}
+				$messageParams["DETAILS"] .= '<div class="locators-info">' . implode('<br>', $locatorsInfo) . '</div>';
+			}
+
 			$message = new CAdminMessage($messageParams);
 			echo $message->show();
 			$counter++;

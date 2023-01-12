@@ -18,25 +18,25 @@ class TestUFClassIblock extends BaseTest
 		Assert::eventExists(Event\MediaType::class);
 		if ($event = Event\MediaType::find()) {
 			Assert::userField(new UfLocator([
-				'=USER_TYPE_ID' => $event['USER_TYPE_ID'],
+				'=USER_TYPE_ID' => $event['RESULT']['USER_TYPE_ID'],
 				'=MANDATORY' => 'N',
 				'=MULTIPLE' => 'N',
 				'ENTITY_ID' => 'IBLOCK_%_SECTION',
 			]));
 			Assert::userField(new UfLocator([
-				'=USER_TYPE_ID' => $event['USER_TYPE_ID'],
+				'=USER_TYPE_ID' => $event['RESULT']['USER_TYPE_ID'],
 				'=MANDATORY' => 'Y',
 				'=MULTIPLE' => 'N',
 				'ENTITY_ID' => 'IBLOCK_%_SECTION',
 			]));
 			Assert::userField(new UfLocator([
-				'=USER_TYPE_ID' => $event['USER_TYPE_ID'],
+				'=USER_TYPE_ID' => $event['RESULT']['USER_TYPE_ID'],
 				'=MANDATORY' => 'N',
 				'=MULTIPLE' => 'Y',
 				'ENTITY_ID' => 'IBLOCK_%_SECTION',
 			]));
 			Assert::userField(new UfLocator([
-				'=USER_TYPE_ID' => $event['USER_TYPE_ID'],
+				'=USER_TYPE_ID' => $event['RESULT']['USER_TYPE_ID'],
 				'=MANDATORY' => 'Y',
 				'=MULTIPLE' => 'Y',
 				'ENTITY_ID' => 'IBLOCK_%_SECTION',
