@@ -10,7 +10,5 @@ class TestAgentExist extends BaseTest
 	protected static function run()
 	{
 		Assert::fseExists(FileSystem::getFile('/local/php_interface/agent.php'));
-
 	}
-
 }

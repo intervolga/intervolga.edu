@@ -9,20 +9,25 @@ use ReflectionFunction;
 
 class TestAgentParameters extends BaseTest
 {
+	public static function interceptErrors()
+	{
+		return true;
+	}
+
 	protected static function run()
 	{
 		$parameters = static::getAgentParameters();
 		Assert::notEmpty($parameters, Loc::getMessage('INTERVOLGA_EDU.AGENT_PARAMETERS_NOT_FOUND'));
-
-		Assert::eq($parameters['ACTIVE'], 'Y');
-		Assert::eq($parameters['MODULE_ID'], 'main');
-		Assert::eq($parameters['AGENT_INTERVAL'], '86400');
-
+		if ($parameters) {
+			Assert::eq($parameters['ACTIVE'], 'Y');
+			Assert::eq($parameters['MODULE_ID'], 'main');
+			Assert::eq($parameters['AGENT_INTERVAL'], 86400);
+		}
 	}
 
 	protected static function getAgentParameters()
 	{
-		$names = CAgent::GetList(false,
+		$names = CAgent::getList(false,
 			['MODULE_ID' => 'main']
 		);
 		while ($rows = $names->fetch()) {
@@ -38,7 +43,6 @@ class TestAgentParameters extends BaseTest
 					$functionPaths[$functionName] = $file_function->getFileName() . ':' . $file_function->getStartLine();
 				}
 			}
-
 		}
 
 		$parameters = CAgent::GetList(false,
@@ -47,5 +51,4 @@ class TestAgentParameters extends BaseTest
 
 		return $parameters;
 	}
-
 }
