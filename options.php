@@ -15,6 +15,8 @@ use Bitrix\Main\Config\Option;
 use Bitrix\Main\Context;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\ModuleManager;
+use Bitrix\Main\Type\DateTime;
 use Intervolga\Edu\Tester;
 use Intervolga\Edu\Util\Update;
 
@@ -36,7 +38,6 @@ $options = [
 	],
 ];
 
-
 $request = Context::getCurrent()->getRequest();
 if ($request->isPost()) {
 	if ($optionName = $request->getPost('ADD')) {
@@ -45,8 +46,7 @@ if ($request->isPost()) {
 		Option::delete($module_id, [
 			'name' => $optionName
 		]);
-	}
-	elseif ($zipName = $request->getPost('UNPACK')) {
+	} elseif ($zipName = $request->getPost('UNPACK')) {
 		Update::unpack($zipName);
 	}
 	LocalRedirect($request->getRequestUri());
@@ -109,7 +109,10 @@ foreach ($testsTree as $courseCode => $course) {
 $tabs[] = [
 	'DIV' => 'update',
 	'TAB' => Loc::getMessage('INTERVOLGA_EDU.MODULE_TAB_UPDATE'),
-	'TITLE' => Loc::getMessage('INTERVOLGA_EDU.MODULE_UPDATE'),
+	'TITLE' => Loc::getMessage('INTERVOLGA_EDU.MODULE_UPDATE', [
+			'#VERSION#' => ModuleManager::getVersion('intervolga.edu')
+		]
+	),
 ];
 if ($fatalThrowable) {
 	$message = new CAdminMessage([
@@ -136,12 +139,12 @@ foreach ($testsTree as $courseCode => $course) {
 			$messageParams = [
 				'HTML' => true,
 				'MESSAGE' => Loc::getMessage(
-						'INTERVOLGA_EDU.TEST_HEADER',
-						[
-								'#NUMBER#' => $counter,
-								'#TEST#' => $test['TITLE'],
-								'#CODE#' => $test['CODE'],
-						]),
+					'INTERVOLGA_EDU.TEST_HEADER',
+					[
+						'#NUMBER#' => $counter,
+						'#TEST#' => $test['TITLE'],
+						'#CODE#' => $test['CODE'],
+					]),
 			];
 			if ($test['DESCRIPTION']) {
 				$messageParams['DETAILS'] = '<div class="desc">' . $test['DESCRIPTION'] . '</div>';
@@ -152,7 +155,7 @@ foreach ($testsTree as $courseCode => $course) {
 				$messageParams['DETAILS'] .= Loc::getMessage('INTERVOLGA_EDU.TEST_NO_ERRORS');
 				$messageParams['TYPE'] = 'OK';
 			}
-			$reportId = $courseCode . "_" .$lessonCode . "_" . strtolower($test['CODE']) . "_problem";
+			$reportId = $courseCode . "_" . $lessonCode . "_" . strtolower($test['CODE']) . "_problem";
 
 			if ($messageParams['TYPE'] !== 'OK') {
 				$messCode = 'INTERVOLGA_EDU.REPORT_MALE';
@@ -193,17 +196,21 @@ $links = [
 	<a href="/bitrix/admin/fileman_file_upload.php?lang=ru&site=s1&path=%2Flocal%2Fmodules"
 	   class="adm-btn" target="_blank"><?=Loc::getMessage('INTERVOLGA_EDU.GOTO_UNZIP_DIR')?></a>
 	<h2>3. <?=Loc::getMessage('INTERVOLGA_EDU.UNPACK')?></h2>
-	<?php foreach (Update::getZipFiles() as $file): ?>
-		<form action="" method="post">
-			<?=bitrix_sessid_post()?>
-			<button type="submit" class="adm-btn adm-btn-save" name="UNPACK" value="<?=$file->getName()?>">
-				<?=Loc::getMessage('INTERVOLGA_EDU.UNPACK_ZIP', [
-					'#ZIP#' => $file->getName(),
-					'#DATETIME#' => \Bitrix\Main\Type\DateTime::createFromTimestamp($file->getModificationTime())->format('d.m.Y H:i'),
-				])?>
-			</button>
-		</form>
-		<br><br>
-	<?php endforeach ?>
+	<?php if (Update::getZipFiles()): ?>
+		<?php foreach (Update::getZipFiles() as $file): ?>
+			<form action="" method="post">
+				<?=bitrix_sessid_post()?>
+				<button type="submit" class="adm-btn adm-btn-save" name="UNPACK" value="<?=$file->getName()?>">
+					<?=Loc::getMessage('INTERVOLGA_EDU.UNPACK_ZIP', [
+						'#ZIP#' => $file->getName(),
+						'#DATETIME#' => DateTime::createFromTimestamp($file->getModificationTime())->format('d.m.Y H:i'),
+					])?>
+				</button>
+			</form>
+			<br><br>
+		<?php endforeach ?>
+	<?php else: ?>
+		<?=Loc::getMessage('INTERVOLGA_EDU.NO_ZIP_FILES')?>
+	<?php endif ?>
 <?php
 $tabControl->end();
