@@ -8,6 +8,7 @@ use Bitrix\Main\IO\FileSystemEntry;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Exceptions\AssertException;
+use Intervolga\Edu\Locator\Agent\AgentLocator;
 use Intervolga\Edu\Locator\Event\EventLocator;
 use Intervolga\Edu\Locator\Iblock\IblockLocator;
 use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
@@ -650,6 +651,26 @@ class Assert
 				],
 				$message
 			));
+		}
+	}
+
+	/**
+	 * @param string|AgentLocator $value
+	 * @param string $message
+	 */
+	public static function agentExists($value, $message = '')
+	{
+		$result = $value::find();
+		if (!$result) {
+			static::registerError(
+				static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_AGENT_EXISTS',
+					[
+						'#NAME#' => $value::getNameLoc(),
+						'#POSSIBLE#' => $value::getPossibleTips()
+					],
+					$message
+				));
 		}
 	}
 

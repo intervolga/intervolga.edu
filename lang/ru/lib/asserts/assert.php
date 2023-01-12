@@ -36,3 +36,4 @@ $MESS['INTERVOLGA_EDU.ASSERT_REQUIRED_TYPE_BASE'] = 'Класс "#CURRENT_CLASS#
 $MESS['INTERVOLGA_EDU.ASSERT_REQUIRED_RULES_USERFIELD'] = 'Не найдено UF-поле (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.ASSERT_NOT_FOUND_USERFIELD'] = 'Не найден пользовательский тип "#FIELD#" для раздела инфоблоков (id к примеру:, "#REQUIRED_PROPERTIES#")';
 $MESS['INTERVOLGA_EDU.NOT_CORRECT_MODULE_OPTION'] = 'Настройка <b>#OPTION#</b> модуля <b>#MODULE#</b> равна #NOW_VALUE# (требуется #REQUIRED_VALUE#)';
+$MESS['INTERVOLGA_EDU.ASSERT_AGENT_EXISTS'] = 'Агент <b>#NAME#</b> не найден (#POSSIBLE#)';

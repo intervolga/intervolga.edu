@@ -101,7 +101,7 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_PROPERTYPRICE_DESCRIPTION'] = 'Свой�
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON2_AGENTEXIST'] = 'Проверка файла агента';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON2_AGENTEXIST_DESCRIPTION'] = 'Проверка файла agent.php в /local/php_interface/';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON2_AGENTPARAMETERS'] = 'Проверка параметров агента';
-$MESS['INTERVOLGA_EDU.COURSE2_LESSON2_AGENTPARAMETERS_DESCRIPTION'] = 'Агент должен быть активен, принадлежать модулю main и иметь интервал 86400 сек';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON2_AGENTPARAMETERS_DESCRIPTION'] = 'Агент должен быть активен и иметь интервал 86400 сек';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON2_POSTEVENT'] = 'Проверка существования почтового события и почтового шаблона';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON2_POSTEVENT_DESCRIPTION'] = 'Должны существовать почтовое событие и закрепленный за ним почтовый шаблон';
 
