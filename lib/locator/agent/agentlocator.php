@@ -1,11 +1,12 @@
 <?php
 namespace Intervolga\Edu\Locator\Agent;
 
-abstract class AgentLocator
+use Intervolga\Edu\Locator\BaseLocator;
+use Intervolga\Edu\Util\Admin;
+
+abstract class AgentLocator extends BaseLocator
 {
 	abstract public static function getNames(): array;
-
-	abstract public static function getNameLoc(): string;
 
 	public static function find(): array
 	{
@@ -29,5 +30,15 @@ abstract class AgentLocator
 		$names = static::getNames();
 
 		return implode('||', $names);
+	}
+
+	public static function getDisplayText($find): string
+	{
+		return '[' . $find['ID'] . '] ' . $find['NAME'];
+	}
+
+	public static function getDisplayHref($find): string
+	{
+		return Admin::getAgentUrl($find);
 	}
 }

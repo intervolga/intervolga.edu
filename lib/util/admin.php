@@ -43,4 +43,13 @@ class Admin
 		$url = '/bitrix/admin/iblock_element_edit.php?IBLOCK_ID=' . $iblock['ID'] . '&type=' . urlencode($iblock['IBLOCK_TYPE_ID']) . '&lang=' . LANGUAGE_ID . '&ID=0&find_section_section=-1&IBLOCK_SECTION_ID=-1';
 		return $url;
 	}
+
+	/**
+	 * @param array $agent
+	 * @return string
+	 */
+	public static function getAgentUrl(array $agent)
+	{
+		return '/bitrix/admin/agent_edit.php?ID= ' . $agent['ID'] . '&lang=' . LANGUAGE_ID;
+	}
 }

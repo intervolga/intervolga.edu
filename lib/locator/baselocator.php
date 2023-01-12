@@ -3,8 +3,6 @@ namespace Intervolga\Edu\Locator;
 
 abstract class BaseLocator
 {
-	abstract public static function getNameLoc(): string;
-
 	abstract public static function getDisplayText($find): string;
 
 	public static function getDisplayHref($find): string

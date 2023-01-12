@@ -635,7 +635,9 @@ class Assert
 	 */
 	public static function fileLocator($value, string $message = '')
 	{
-		if (!$value::find()) {
+		if ($find = $value::find()) {
+			static::registerLocatorFound(FileLocator::class, $value, $find);
+		} else {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_FILE_LOCATOR',
 				[
@@ -667,8 +669,10 @@ class Assert
 	 */
 	public static function agentExists($value, $message = '')
 	{
-		$result = $value::find();
-		if (!$result) {
+		if ($find = $value::find()) {
+			static::registerLocatorFound(AgentLocator::class, $value, $find);
+		}
+		else {
 			static::registerError(
 				static::getCustomOrLocMessage(
 					'INTERVOLGA_EDU.ASSERT_AGENT_EXISTS',
