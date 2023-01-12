@@ -102,13 +102,13 @@ class Tester
 			try {
 				Assert::resetLocatorsFound();
 				$testClass::runOuter();
-				static::$locatorsFound[$testClass] = Assert::getLocatorsFound();
 			} catch (AssertException $assertException) {
 				static::$exceptions[$testClass] = $assertException;
 			}
 			catch (\Throwable $throwable) {
 				static::$exceptions[$testClass] = AssertException::createThrowable($throwable);
 			}
+			static::$locatorsFound[$testClass] = Assert::getLocatorsFound();
 		}
 	}
 
