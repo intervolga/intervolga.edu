@@ -1,11 +1,11 @@
 <?php
-namespace Intervolga\Edu\Locator\Event\Message;
+namespace Intervolga\Edu\Locator\Event\Type;
 
 use Bitrix\Main\Localization\Loc;
 
 Loc::loadMessages(__FILE__);
 
-class CheckOldStocksMessage extends MessageLocator
+class CheckOldStocksType extends TypeLocator
 {
 	public static function getFilter(): array
 	{
@@ -20,6 +20,6 @@ class CheckOldStocksMessage extends MessageLocator
 
 	public static function getNameLoc(): string
 	{
-		return Loc::getMessage('INTERVOLGA_EDU.CHECK_OLDER_STOCKS_MESSAGE');
+		return Loc::getMessage('INTERVOLGA_EDU.CHECK_OLDER_STOCKS_TYPE');
 	}
 }

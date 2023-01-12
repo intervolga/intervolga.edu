@@ -5,7 +5,6 @@ use Bitrix\Iblock\PropertyTable;
 use Bitrix\Main\Loader;
 use Intervolga\Edu\Locator\BaseLocator;
 use Intervolga\Edu\Locator\Iblock\IblockLocator;
-use Intervolga\Edu\Util\Admin;
 
 abstract class PropertyLocator extends BaseLocator
 {

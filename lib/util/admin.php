@@ -53,9 +53,33 @@ class Admin
 		return '/bitrix/admin/agent_edit.php?ID= ' . $agent['ID'] . '&lang=' . LANGUAGE_ID;
 	}
 
+	/**
+	 * @param array $section
+	 * @return string
+	 */
 	public static function getIblockSectionUrl(array $section)
 	{
 		$url = '/bitrix/admin/iblock_section_edit.php?IBLOCK_ID=' . $section['IBLOCK_ID'] . '&lang=' . LANGUAGE_ID . '&ID=' . $section['ID'] . '&find_section_section=0&from=iblock_section_admin';
+		return $url;
+	}
+
+	/**
+	 * @param array $section
+	 * @return string
+	 */
+	public static function getEventMessageUrl(array $eventTemplate)
+	{
+		$url = '/bitrix/admin/message_edit.php?lang=' . LANGUAGE_ID . '&ID=' . $eventTemplate['ID'];
+		return $url;
+	}
+
+	/**
+	 * @param array $eventMessage
+	 * @return string
+	 */
+	public static function getEventTypeUrl(array $eventMessage)
+	{
+		$url = '/bitrix/admin/type_edit.php?EVENT_NAME=' . $eventMessage['EVENT_NAME'];
 		return $url;
 	}
 }

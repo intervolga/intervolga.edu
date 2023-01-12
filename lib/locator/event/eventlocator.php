@@ -1,7 +1,9 @@
 <?php
 namespace Intervolga\Edu\Locator\Event;
 
-abstract class EventLocator
+use Intervolga\Edu\Locator\BaseLocator;
+
+abstract class EventLocator extends BaseLocator
 {
 	abstract protected static function getParams(): array;
 
@@ -48,5 +50,10 @@ abstract class EventLocator
 		}
 
 		return implode(';', $result);
+	}
+
+	public static function getDisplayText($find): string
+	{
+		return $find['MESSAGE_ID'];
 	}
 }

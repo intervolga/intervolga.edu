@@ -1,26 +1,26 @@
 <?php
 namespace Intervolga\Edu\Locator\Event\Template;
 
-use Bitrix\Main\Mail\Internal\EventTable;
-use Intervolga\Edu\Locator\Event\Message\MessageLocator;
+use Bitrix\Main\Mail\Internal\EventMessageTable;
+use Intervolga\Edu\Locator\BaseLocator;
+use Intervolga\Edu\Locator\Event\Type\TypeLocator;
+use Intervolga\Edu\Util\Admin;
 
-abstract class TemplateLocator
+abstract class TemplateLocator extends BaseLocator
 {
 	/**
-	 * @return string|MessageLocator
+	 * @return string|TypeLocator
 	 */
-	abstract public static function getMessageLocator(): string;
-
-	abstract public static function getNameLoc(): string;
+	abstract public static function getTypeLocator(): string;
 
 	public static function find(): array
 	{
 		$result = [];
 
-		$message = static::getMessageLocator()::find();
+		$message = static::getTypeLocator()::find();
 		if ($message)
 		{
-			$fetch = EventTable::getList([
+			$fetch = EventMessageTable::getList([
 				'filter'=> [
 					'=EVENT_NAME' => $message['EVENT_NAME'],
 				],
@@ -35,6 +35,16 @@ abstract class TemplateLocator
 
 	public static function getPossibleTips(): string
 	{
-		return static::getMessageLocator()::getPossibleTips();
+		return static::getTypeLocator()::getPossibleTips();
+	}
+
+	public static function getDisplayText($find): string
+	{
+		return '[' . $find['ID']. '] ' . $find['SUBJECT'];
+	}
+
+	public static function getDisplayHref($find): string
+	{
+		return Admin::getEventMessageUrl($find);
 	}
 }

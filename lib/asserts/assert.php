@@ -11,7 +11,7 @@ use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Locator\Agent\AgentLocator;
 use Intervolga\Edu\Locator\BaseLocator;
 use Intervolga\Edu\Locator\Event\EventLocator;
-use Intervolga\Edu\Locator\Event\Message\MessageLocator;
+use Intervolga\Edu\Locator\Event\Type\TypeLocator;
 use Intervolga\Edu\Locator\Event\Template\TemplateLocator;
 use Intervolga\Edu\Locator\Iblock\IblockLocator;
 use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
@@ -618,8 +618,8 @@ class Assert
 	 */
 	public static function directoryLocator($value, string $message = '')
 	{
-		if ($findDirectory = $value::find()) {
-			static::registerLocatorFound(DirectoryLocator::class, $value, $findDirectory);
+		if ($find = $value::find()) {
+			static::registerLocatorFound(DirectoryLocator::class, $value, $find);
 		} else {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_DIRECTORY_LOCATOR',
@@ -656,7 +656,9 @@ class Assert
 
 	public static function userField(UfLocator $ufLocator, string $message = '')
 	{
-		if (!$ufLocator->find()) {
+		if ($find = $ufLocator->find()) {
+			static::registerLocatorFound(UfLocator::class, UfLocator::class, $find);
+		} else {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_REQUIRED_RULES_USERFIELD',
 				[
@@ -689,14 +691,15 @@ class Assert
 	}
 
 	/**
-	 * @param string|MessageLocator $value
+	 * @param string|TypeLocator $value
 	 * @param string $message
 	 * @throws AssertException
 	 */
 	public static function eventMessageExists($value, $message = '')
 	{
-		$result = $value::find();
-		if (!$result) {
+		if ($find = $value::find()) {
+			static::registerLocatorFound(TypeLocator::class, $value, $find);
+		} else {
 			static::registerError(
 				static::getCustomOrLocMessage(
 					'INTERVOLGA_EDU.ASSERT_EVENT_MESSAGE_EXISTS',
@@ -716,8 +719,9 @@ class Assert
 	 */
 	public static function eventTemplateExists($value, $message = '')
 	{
-		$result = $value::find();
-		if (!$result) {
+		if ($find = $value::find()) {
+			static::registerLocatorFound(TemplateLocator::class, $value, $find);
+		} else {
 			static::registerError(
 				static::getCustomOrLocMessage(
 					'INTERVOLGA_EDU.ASSERT_EVENT_TEMPLATE_EXISTS',
@@ -737,8 +741,9 @@ class Assert
 	 */
 	public static function eventExists(string $value, $message = '')
 	{
-		$result = $value::find();
-		if (!$result) {
+		if ($find = $value::find()) {
+			static::registerLocatorFound(EventLocator::class, $value, $find);
+		} else {
 			static::registerError(
 				static::getCustomOrLocMessage(
 					'INTERVOLGA_EDU.ASSERT_EVENT_EXISTS',

@@ -18,6 +18,11 @@ class MediaType extends EventLocator
 		];
 	}
 
+	public static function getNameLoc(): string
+	{
+		return Loc::getMessage('INTERVOLGA_EDU.EVENT_CLASS_DESCRIPTION');
+	}
+
 	/**
 	 * @return array|null
 	 */
