@@ -10,6 +10,8 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Locator\Agent\AgentLocator;
 use Intervolga\Edu\Locator\Event\EventLocator;
+use Intervolga\Edu\Locator\Event\Message\MessageLocator;
+use Intervolga\Edu\Locator\Event\Template\TemplateLocator;
 use Intervolga\Edu\Locator\Iblock\IblockLocator;
 use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
 use Intervolga\Edu\Locator\Iblock\Section\SectionLocator;
@@ -665,6 +667,48 @@ class Assert
 			static::registerError(
 				static::getCustomOrLocMessage(
 					'INTERVOLGA_EDU.ASSERT_AGENT_EXISTS',
+					[
+						'#NAME#' => $value::getNameLoc(),
+						'#POSSIBLE#' => $value::getPossibleTips()
+					],
+					$message
+				));
+		}
+	}
+
+	/**
+	 * @param string|MessageLocator $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function eventMessageExists($value, $message = '')
+	{
+		$result = $value::find();
+		if (!$result) {
+			static::registerError(
+				static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_EVENT_MESSAGE_EXISTS',
+					[
+						'#NAME#' => $value::getNameLoc(),
+						'#POSSIBLE#' => $value::getPossibleTips()
+					],
+					$message
+				));
+		}
+	}
+
+	/**
+	 * @param string|TemplateLocator $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function eventTemplateExists($value, $message = '')
+	{
+		$result = $value::find();
+		if (!$result) {
+			static::registerError(
+				static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_EVENT_TEMPLATE_EXISTS',
 					[
 						'#NAME#' => $value::getNameLoc(),
 						'#POSSIBLE#' => $value::getPossibleTips()

@@ -202,4 +202,3 @@ $MESS['INTERVOLGA_EDU.REVIEWS_LIST_TEMPLATE'] = 'Cписок отзывов';
 $MESS['INTERVOLGA_EDU.ASSERT_COMPONENT_PARAMETERS_CACHE_TYPE'] = 'В компоненте <b>#COMPONENT#</b> (шаблон <b>#TEMPLATE#</b>) в файле #PATH# кеширование должно быть <b>отключено</b>';
 $MESS['INTERVOLGA_EDU.ASSERT_COMPONENT_PARAMETERS_CACHE_GROUPS'] = 'В компоненте <b>#COMPONENT#</b> (шаблон <b>#TEMPLATE#</b>) в файле #PATH# флаг "учитывать права доступа" в настройках кеширования должен быть <b>снят</b>';
 $MESS['INTERVOLGA_EDU.AGENT_PARAMETERS_NOT_FOUND'] = 'В административной панели не создан агент, либо у него не задана функция, лежащая в agent.php';
-$MESS['INTERVOLGA_EDU.POST_EVENT_NOT_FOUND'] = 'Почтовый шаблон с почтовым событием CHECK_OLDER_STOCKS не найден';
