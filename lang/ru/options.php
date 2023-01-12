@@ -17,3 +17,5 @@ $MESS['INTERVOLGA_EDU.GOTO_UNZIP_DIR'] = 'Перейти в /local/modules/';
 $MESS['INTERVOLGA_EDU.UNPACK'] = 'Запустить распаковщик';
 $MESS['INTERVOLGA_EDU.UNPACK_ZIP'] = 'Распаковать #ZIP# (#DATETIME#)';
 $MESS['INTERVOLGA_EDU.NO_ZIP_FILES'] = 'В /local/modules/ нет архивов';
+$MESS['INTERVOLGA_EDU.LOCATOR_FOUND_HREF'] = 'Локатор #LOCATOR# нашел <a href="#HREF#" target="_blank">#TIP#</a> (<b>#NAME#</b>)';
+$MESS['INTERVOLGA_EDU.LOCATOR_FOUND'] = 'Локатор #LOCATOR# нашел <b>#TIP#</b> (<b>#NAME#</b>)';

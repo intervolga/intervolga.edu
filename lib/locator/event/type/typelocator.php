@@ -1,19 +1,19 @@
 <?php
-namespace Intervolga\Edu\Locator\Event\Message;
+namespace Intervolga\Edu\Locator\Event\Type;
 
-use Bitrix\Main\Mail\Internal\EventMessageTable;
+use Bitrix\Main\Mail\Internal\EventTypeTable;
+use Intervolga\Edu\Locator\BaseLocator;
+use Intervolga\Edu\Util\Admin;
 
-abstract class MessageLocator
+abstract class TypeLocator extends BaseLocator
 {
 	abstract public static function getFilter(): array;
-
-	abstract public static function getNameLoc(): string;
 
 	public static function find(): array
 	{
 		$result = [];
 
-		$fetch = EventMessageTable::getList([
+		$fetch = EventTypeTable::getList([
 			'filter' => static::getFilter(),
 		])->fetch();
 		if ($fetch) {
@@ -38,5 +38,15 @@ abstract class MessageLocator
 		}
 
 		return implode(';', $result);
+	}
+
+	public static function getDisplayText($find): string
+	{
+		return $find['EVENT_NAME'];
+	}
+
+	public static function getDisplayHref($find): string
+	{
+		return Admin::getEventTypeUrl($find);
 	}
 }

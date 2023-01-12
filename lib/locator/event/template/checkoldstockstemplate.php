@@ -2,24 +2,24 @@
 namespace Intervolga\Edu\Locator\Event\Template;
 
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Locator\Event\Message\CheckOldStocksMessage;
-use Intervolga\Edu\Locator\Event\Message\MessageLocator;
+use Intervolga\Edu\Locator\Event\Type\CheckOldStocksType;
+use Intervolga\Edu\Locator\Event\Type\TypeLocator;
 
 Loc::loadMessages(__FILE__);
 
 class CheckOldStocksTemplate extends TemplateLocator
 {
 	/**
-	 * @return string|MessageLocator
+	 * @return string|TypeLocator
 	 */
-	public static function getMessageLocator(): string
+	public static function getTypeLocator(): string
 	{
-		return CheckOldStocksMessage::class;
+		return CheckOldStocksType::class;
 	}
 
 	public static function getNameLoc(): string
 	{
-		$class = static::getMessageLocator();
+		$class = static::getTypeLocator();
 		return $class::getNameLoc();
 	}
 }
