@@ -8,6 +8,7 @@ use Intervolga\Edu\Locator\Iblock\IblockLocator;
 use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\AdminFormOptions;
+use Intervolga\Edu\Util\Regex;
 
 abstract class BaseTestIblock extends BaseTest
 {
@@ -54,6 +55,7 @@ abstract class BaseTestIblock extends BaseTest
 			static::testElementsLog($iblock);
 			static::testPermission($iblock);
 			static::testElementsCount($iblock);
+			static::testProperties($iblock);
 			Assert::notEmpty($options, Loc::getMessage('INTERVOLGA_EDU.IBLOCK_OPTIONS_LOST', [
 				'#IBLOCK_LINK#' => Admin::getIblockElementAddUrl($iblock),
 				'#IBLOCK#' => $iblock['NAME'],
@@ -146,6 +148,20 @@ abstract class BaseTestIblock extends BaseTest
 				'#IBLOCK#' => $iblock['NAME'],
 			])
 		);
+	}
+
+	protected static function testProperties(array $iblock)
+	{
+		$properties = \CIBlock::getProperties($iblock['ID']);
+		while ($property = $properties->fetch()['CODE']) {
+			Assert::matches($property, new Regex('/^[_A-Z0-9]*$/', ''),
+				Loc::getMessage('INTERVOLGA_EDU.IB_PROPERTY_HAS_LOWER_CASE',
+					[
+						'#IBLOCK_LINK#' => Admin::getIblockUrl($iblock),
+						'#IBLOCK#' => $iblock['NAME'],
+						'#PROPERTY#' => $property
+					]));
+		}
 	}
 
 	protected static function countElements(int $iblockId): int
