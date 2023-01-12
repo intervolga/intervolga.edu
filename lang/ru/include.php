@@ -14,6 +14,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON7'] = '7. Кеширование. Основ
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON8'] = '8. Комплексные компоненты';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10'] = '10. Поиск';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11'] = '11. Полезные возможности';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2'] = '1.2 Получение связанных элементов';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4'] = '4. Отложенные функции';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1'] = '1. Создание модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы';
@@ -56,6 +57,12 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SCRIPTS'] = 'Проверка js-плаг�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SCRIPTS_DESCRIPTION'] = 'Плагины слайдера и карусели должны подключаться только в main-шаблоне';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_OPTION'] = 'Проверка настроек JS и CSS главного модуля';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_OPTION_DESCRIPTION'] = 'Требуется включить настройки Объединять CSS файлы, Объединять JS файлы, Создавать сжатую копию объединенных CSS и JS файлов';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_SMARTFILTERISEXIST'] = 'Проверка на наличие включенного фильтра';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_SMARTFILTERISEXIST_DESCRIPTION'] = 'В компоненте каталог должен быть включен фильтр';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST'] = 'Проверка на наличие свойства';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST_DESCRIPTION'] = 'Инфоблок должен иметь свойство "В наличии"';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER'] = 'Используется в умном фильтре';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER_DESCRIPTION'] = 'Проверка у свойства на наличие флага "использовать в умном фильтре"';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_INCLUDEAREA'] = 'Проверка включаемой области';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_INCLUDEAREA_DESCRIPTION'] = 'Должен быть файл в разделе Партнерам и в корне сайта';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_REGISTERPAGEOPTION'] = 'Проверка настройки «Страница регистрации»';
@@ -86,14 +93,23 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST'] = 'Проверка с�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST_DESCRIPTION'] = 'Инфоблок должен иметь свойство "В наличии", оно должно быть заполненно хотя бы у 1 элемента раздела "Мягкая мебель"';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER'] = 'Используется в умном фильтре';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER_DESCRIPTION'] = 'Проверка параметра свойства "использовать в умном фильтре"';
-
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_CATALOGBINDINGPROPERTY'] = 'Проверка свойства "Привязка к каталогу"';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_CATALOGBINDINGPROPERTY_DESCRIPTION'] = 'Свойство должно существовать, иметь тип "Привязка к элементам" и быть заполненно хотя бы у 3 элементов';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_PROPERTYPRICE'] = 'Проверка свойства "Цена"';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_PROPERTYPRICE_DESCRIPTION'] = 'Свойство должно существовать, иметь тип "Строка"';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETNEWS'] = 'Проверка SetViewTarget для даты новостей';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETNEWS_DESCRIPTION'] = 'В шаблоне компонента bitrix:news в шаблоне просмотра детальной страницы news.detail должен использоваться метод SetViewTarget';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWTARGETNEWS'] = 'Проверка ShowViewContent для даты новостей';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWTARGETNEWS_DESCRIPTION'] = 'ShowViewContent должен быть размещен в header.php перед &lt;p&gt; с классом title';
 
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE_DESCRIPTION'] = 'Должна существовать папка /local/modules/intervolga.#Ваше название модуля#/, модуль должен быть установлен';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Проверка собственного UF-свойства';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF_DESCRIPTION'] = 'Должен существовать обработчик события OnUserTypeBuildList модуля main для свойства "Привязка к коллекции медиабиблиотеки"';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UFCLASS'] = 'Проверка собственного UF-свойства с требуемыми свойствами для объекта USER';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UFCLASS_DESCRIPTION'] = 'Должно быть создано UF-свойство у пользователя (все возможные комбинации множественности и обязательности поля)';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UFCLASSIBLOCK'] = 'Проверка собственного UF-свойства с требуемыми свойствами для раздела Инфоблока';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UFCLASSIBLOCK_DESCRIPTION'] = 'Должно быть создано UF-свойство у раздела любого инфоблока (все возможные комбинации множественности и обязательности поля)';
 
 $MESS['INTERVOLGA_EDU.TEST_CODE_NAME'] = 'Проверка кода #FILES#';
 $MESS['INTERVOLGA_EDU.TEST_CODE_DESCRIPTION'] = 'Современная проверка ядра Битрикса, использование длинных php-тегов, запрет на устаревшие функции';
@@ -117,12 +133,14 @@ $MESS['INTERVOLGA_EDU.USE_ONE_TAB_FOR_IBLOCK_FORM'] = 'Проблема с ИБ 
 $MESS['INTERVOLGA_EDU.WRONG_IBLOCK_TYPE'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: тип ИБ должен быть #TYPE#';
 $MESS['INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: включите всё логирование действий с элементами';
 $MESS['INTERVOLGA_EDU.SET_PERMISSION_EVERYONE_R'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: задайте доступ для всех пользователей Чтение';
+$MESS['INTERVOLGA_EDU.IB_PROPERTY_HAS_LOWER_CASE'] = 'Символьный код свойства <b>#PROPERTY#</b> (ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>) должен быть в верхнем регистре, без кириллицы!';
 $MESS['INTERVOLGA_EDU.FIELD_SURNAME'] = 'Фамилия';
 $MESS['INTERVOLGA_EDU.RENAME_FIELD_NAME'] = 'Переименуйте поле #VALUE# в #EXPECT# в форме редактирования элемента';
 $MESS['INTERVOLGA_EDU.PRICE_PROPERTY'] = 'Цена';
 $MESS['INTERVOLGA_EDU.SOFT_FORNITURE_SECTION'] = 'Мягкая мебель';
 $MESS['INTERVOLGA_EDU.POST_PROPERTY'] = 'Должность';
 $MESS['INTERVOLGA_EDU.COMPANY_PROPERTY'] = 'Компания';
+$MESS['INTERVOLGA_EDU.CATALOGBINDING_PROPERTY'] = 'Привязка к каталогу';
 $MESS['INTERVOLGA_EDU.AVAILABLE_PROPERTY'] = 'В наличии';
 $MESS['INTERVOLGA_EDU.IBLOCK_REVIEWS'] = 'Отзывы';
 $MESS['INTERVOLGA_EDU.IBLOCK_PROMO'] = 'Акции';
