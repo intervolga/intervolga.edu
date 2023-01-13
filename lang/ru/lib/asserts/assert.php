@@ -39,3 +39,6 @@ $MESS['INTERVOLGA_EDU.NOT_CORRECT_MODULE_OPTION'] = 'Настройка <b>#OPTI
 $MESS['INTERVOLGA_EDU.ASSERT_AGENT_EXISTS'] = 'Агент <b>#NAME#</b> не найден (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.ASSERT_EVENT_MESSAGE_EXISTS'] = 'Почтовое событие <b>#NAME#</b> не найдено (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.ASSERT_EVENT_TEMPLATE_EXISTS'] = 'Почтовый шаблон <b>#NAME#</b> не найден (#POSSIBLE#)';
+$MESS['INTERVOLGA_EDU.LANG_STRING_NOT_FOUND'] = 'Строка \'#STRING#\' не найдена в языковом файле #FILE#';
+$MESS['INTERVOLGA_EDU.EN_LANG_CODE_NOT_FOUND'] = 'Код \'#CODE#\' не найден в /en/ языковом файле #FILE#';
+$MESS['INTERVOLGA_EDU.LOC_MESSAGE_NOT_FOUND'] = 'Код \'#CODE#\' не найден в файле #FILE#';

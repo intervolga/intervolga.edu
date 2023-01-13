@@ -4,6 +4,7 @@ namespace Intervolga\Edu\Asserts;
 use Bitrix\Main\Config\Option;
 use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\File;
+use Bitrix\Main\IO\FileNotFoundException;
 use Bitrix\Main\IO\FileSystemEntry;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
@@ -805,6 +806,68 @@ class Assert
 	}
 
 	/**
+	 * @param string $dirPath
+	 * @param string $fileName
+	 * @param string $string
+	 * @param string $message
+	 * @throws AssertException
+	 * @throws FileNotFoundException
+	 */
+	public static function langStringExists(string $dirPath, string $fileName, string $string, string $message = '')
+	{
+		$ruLang = FileSystem::getFile($dirPath . "/lang/ru/" . $fileName);
+		$code = static::getLangCodeByValue($ruLang, $string);
+		if (!$code) {
+			static::registerError(
+				static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.LANG_STRING_NOT_FOUND',
+					[
+						'#STRING#' => $string,
+						'#FILE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+							'#NAME#' => $ruLang->getDirectoryName() . '/' . $fileName,
+							'#FILEMAN_URL#' => Admin::getFileManUrl($ruLang),
+						]),
+					],
+					$message
+				));
+
+			return;
+		}
+		$enLang = FileSystem::getFile($dirPath . "/lang/en/" . $fileName);
+		if (!static::langCodeExists($enLang, $code)) {
+			static::registerError(
+				static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.EN_LANG_CODE_NOT_FOUND',
+					[
+						'#CODE#' => $code,
+						'#FILE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+							'#NAME#' => $enLang->getDirectoryName() . '/' . $fileName,
+							'#FILEMAN_URL#' => Admin::getFileManUrl($enLang),
+						]),
+					],
+					$message
+				));
+
+			return;
+		}
+		$file = FileSystem::getFile($dirPath . '/' . $fileName);
+		if (!static::codeInFileExists($file, $code)) {
+			static::registerError(
+				static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.LOC_MESSAGE_NOT_FOUND',
+					[
+						'#CODE#' => $code,
+						'#FILE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+							'#NAME#' => $file->getDirectoryName() . '/' . $fileName,
+							'#FILEMAN_URL#' => Admin::getFileManUrl($file),
+						]),
+					],
+					$message
+				));
+		}
+	}
+
+	/**
 	 * @param string $message
 	 * @throws AssertException
 	 */
@@ -845,6 +908,45 @@ class Assert
 		}
 
 		return $result;
+	}
+
+	/**
+	 * @param File $file
+	 * @param string $value
+	 * @return string|null
+	 * @throws FileNotFoundException
+	 */
+	protected static function getLangCodeByValue(File $file, string $value): ?string
+	{
+		$fileContent = $file->getContents();
+		$regex = new Regex('/\$MESS\[[\'|\"](.*)[\'|\"]\]\s=\s[\'|\"]' . $value . '[\'|\"];/mui',
+			'$MESS["INTERVOLGA.CONTACT"] = "Contact information:";');
+		$res = preg_match($regex->getRegex(), $fileContent, $output);
+		if ($res) {
+			return $output[1];
+		}
+
+		return null;
+	}
+
+	/**
+	 * @throws FileNotFoundException
+	 */
+	protected static function langCodeExists(File $file, string $code): bool
+	{
+		$fileContent = $file->getContents();
+
+		return preg_match('/\$MESS\[[\'|\"]' . $code . '[\'|\"]\]/m', $fileContent);
+	}
+
+	/**
+	 * @throws FileNotFoundException
+	 */
+	protected static function codeInFileExists(File $file, string $code): bool
+	{
+		$fileContent = $file->getContents();
+
+		return preg_match('/Loc::getMessage\([\'|\"]' . $code . '[\'|\"]\)/m', $fileContent);
 	}
 
 	/**
