@@ -21,4 +21,12 @@ class Message
 		$this->message = $message;
 		$this->code = $code;
 	}
+
+	/**
+	 * @return string
+	 */
+	public function getMessage(): string
+	{
+		return $this->message;
+	}
 }
