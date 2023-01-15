@@ -8,6 +8,8 @@ use Intervolga\Edu\FilesTree\ComponentTemplate;
 use Intervolga\Edu\FilesTree\NewsTemplate;
 use Intervolga\Edu\FilesTree\SimpleComponentTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
+use Intervolga\Edu\Util\Regex;
+use Intervolga\Edu\Sniffer as NewSniff;
 use Intervolga\Edu\Util\Sniffer;
 
 abstract class BaseComponentTemplateTest extends BaseTest
@@ -94,9 +96,72 @@ abstract class BaseComponentTemplateTest extends BaseTest
 						$templateDir->getDetailFile()->getName()
 					])) {
 						Assert::fseNotExists($child);
+					} else {
+						static::testTemplateLangRu($templateDir, $child);
 					}
 				}
 			}
 		}
+	}
+
+	/*protected static function testTemplateLangRuCode(ComponentTemplate $templateDir){
+		if ($templateDir->getLangRuDir()->isExists()) {
+			foreach ($templateDir->getLangRuDir()->getChildren() as $child) {
+				if ($child->getName() == $templateDir->getDescriptionFile()->getName()) {
+					Assert::fseNotExists($child);
+				} elseif ($child->getName() == $templateDir->getParametersFile()->getName()) {
+					Assert::fseNotExists($child);
+				} elseif ($templateDir instanceof SimpleComponentTemplate) {
+					if ($child->getName() != $templateDir->getTemplateFile()) {
+						Assert::fseNotExists($child);
+					}
+				} elseif ($templateDir instanceof NewsTemplate) {
+					if (!in_array($child->getName(), [
+						$templateDir->getNewsFile()->getName(),
+						$templateDir->getDetailFile()->getName()
+					])) {
+						Assert::fseNotExists($child);
+					} else {
+						static::testTemplateLangRu($templateDir, $child);
+					}
+				}
+			}
+		}
+	}*/
+
+	protected static function getLangArrayTemplateDir(ComponentTemplate $templateDir)
+	{
+		foreach ($templateDir->getKnownFiles() as $template) {
+
+			$result = NewSniff::run([$template->getPath()], ['langArrayFromTemplateDir']);
+
+			foreach ($result as $message) {
+				$newTest[$template->getName()] = mb_strcut($message->getMessage(), 1, -1);
+
+			}
+		}
+
+		\Bitrix\Main\Diag\Debug::dump($newTest);
+		return $newTest;
+	}
+
+	protected static function testTemplateLangRu(ComponentTemplate $templateDir, $child)
+	{
+
+		$result = NewSniff::run([$child->getPath()], ['langFiles']);
+
+		$test = static::getLangArrayTemplateDir($templateDir);
+
+		foreach ($result as $message) {
+
+			$langNames[$child->getName()][] = $message->getMessage();
+			$tester = mb_strcut($message->getMessage(), 1, -1);
+
+			if (!in_array($tester, $test)) {
+				\Bitrix\Main\Diag\Debug::dump($tester);
+				//\Bitrix\Main\Diag\Debug::dump($test);
+			}
+		}
+
 	}
 }
