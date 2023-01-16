@@ -13,7 +13,7 @@ class Sniffer
 	 * @param string[] $paths
 	 * @return Message[]
 	 */
-	public static function run(array $paths, array $standartName)
+	public static function run(array $paths, array $standartName = ['general'])
 	{
 		$result = [];
 		$standards = StandardsTools::getStandardPathByNames($standartName);
