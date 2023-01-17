@@ -110,6 +110,9 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETNEWS_DESCRIPTION'] = 'В ша
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWTARGETNEWS'] = 'Проверка ShowViewContent для даты новостей';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWTARGETNEWS_DESCRIPTION'] = 'ShowViewContent должен быть размещен в header.php перед &lt;p&gt; с классом title';
 
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7_PERMISSIONCHECKER'] = 'Проверка прав доступа для инфоблока "Акции"';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7_PERMISSIONCHECKER_DESCRIPTION'] = 'Для инфоблока "Акции" для группы "Партнеры" должен быть установлен доступ для редактирования';
+
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE_DESCRIPTION'] = 'Должна существовать папка /local/modules/intervolga.#Ваше название модуля#/, модуль должен быть установлен';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Проверка собственного UF-свойства';
