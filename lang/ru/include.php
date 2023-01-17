@@ -17,6 +17,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON11'] = '11. Полезные возможн�
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2'] = '1.2 Получение связанных элементов';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON2'] = '2. Технологии: параметры модулей, почтовая системы, агенты, журнал событий';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4'] = '4. Отложенные функции';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7'] = '7. Управление доступом и безопасность';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1'] = '1. Создание модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы';
 
@@ -110,6 +111,10 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETNEWS_DESCRIPTION'] = 'В ша
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWTARGETNEWS'] = 'Проверка ShowViewContent для даты новостей';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWTARGETNEWS_DESCRIPTION'] = 'ShowViewContent должен быть размещен в header.php перед &lt;p&gt; с классом title';
 
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7_ACCESSPARTNERSCHEKER'] = 'Проверка прав доступа раздела "Партнерам"';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7_ACCESSPARTNERSCHEKER_DESCRIPTION'] = 'В разделе "Партнерам" доступ для всех пользователей должен быть закрыт, кроме группы "Партнеры" (чтение).';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7_PARTNERSUSERCHEKER'] = 'Проверка группы "Партнеры"';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7_PARTNERSUSERCHEKER_DESCRIPTION'] = 'В группе "Партнеры" должен быть хотя бы один пользователь, дата последней авторизации которого не меньше 30 дней.';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE_DESCRIPTION'] = 'Должна существовать папка /local/modules/intervolga.#Ваше название модуля#/, модуль должен быть установлен';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Проверка собственного UF-свойства';

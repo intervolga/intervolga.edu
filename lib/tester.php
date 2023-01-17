@@ -85,6 +85,9 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson4\TestSetViewTargetNews::class,
 			\Intervolga\Edu\Tests\Course2\Lesson4\TestShowViewTargetNews::class,
 
+			\Intervolga\Edu\Tests\Course2\Lesson7\AccessPartnersCheker::class,
+			\Intervolga\Edu\Tests\Course2\Lesson7\PartnersUserCheker::class,
+
 			\Intervolga\Edu\Tests\Course3\Lesson1\TestModule::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUf::class,
