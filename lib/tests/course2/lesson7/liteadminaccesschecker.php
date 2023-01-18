@@ -28,6 +28,7 @@ class LiteadminAccessChecker extends BaseTest
 	{
 		/* проверка уровней доступа для группы Контент-редакторы */
 		$group = CGroup::GetList(false, false, ['STRING_ID' => 'content_editor'])->fetch();
+		Assert::notEmpty($group, Loc::getMessage());
 		$accessForGroupEditor = static::checkAccessForContentEditorGroup($group);
 		static::checkAccessLevel($group, 'main', $accessForGroupEditor);
 		static::checkAccessLevel($group, 'fileman', static::arrayPermissionsForFileman);
