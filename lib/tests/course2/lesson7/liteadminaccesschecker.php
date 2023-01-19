@@ -5,33 +5,26 @@ use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use CGroup;
 use CIBlock;
+use CMain;
 use CTask;
+use CUser;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Locator\IO\AccessFile;
 use Intervolga\Edu\Tests\BaseTest;
 
 class LiteadminAccessChecker extends BaseTest
 {
-	const arrayPermissionsForFileman = [
-		'fileman_add_element_to_menu',
-		'fileman_edit_menu_elements',
-		'fileman_edit_existent_files',
-		'fileman_edit_existent_folders',
-		'fileman_admin_files',
-		'fileman_admin_folders',
-		'fileman_view_permissions',
-		'fileman_upload_files',
-		'fileman_view_file_structure'
-	];
 
 	protected static function run()
 	{
 		/* проверка уровней доступа для группы Контент-редакторы */
 		$group = CGroup::GetList(false, false, ['STRING_ID' => 'content_editor'])->fetch();
 		Assert::notEmpty($group, Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_7_EDITOR_GROUP_NOT_FOUND'));
-		$accessForGroupEditor = static::checkAccessForContentEditorGroup($group);
-		static::checkAccessLevel($group, 'main', $accessForGroupEditor);
-		static::checkAccessLevel($group, 'fileman', static::arrayPermissionsForFileman);
+
+
+		static::checkAccessLevel($group, 'main', 'Q');
+		static::checkAccessLevel($group, 'fileman', 'F');
+		static::checkAccessForContentEditorGroup($group);
 
 		/* проверка доступа для групп пользователей имеющихся инфоблоков */
 		static::checkAccessIblocks($group);
@@ -39,6 +32,10 @@ class LiteadminAccessChecker extends BaseTest
 		/* проверка на доступ к редактированию всех разделов сайта */
 		include_once AccessFile::find()->getPath();
 		Assert::eq($PERM["/"]['G' . $group['ID']], "W", 'Группа "Контент-редакторы" должны иметь право на редактирование всех разделов сайта');
+
+		/* пользователь в группе */
+		Assert::true(in_array(CUser::GetByLogin('liteadmin')->fetch()['ID'], CGroup::GetGroupUser($group['ID'])),
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_7_USER_NOT_FOUND_IN_GROUP', ['#GROUP_NAME#' => $group['NAME']]));
 
 	}
 
@@ -55,22 +52,13 @@ class LiteadminAccessChecker extends BaseTest
 			'#GROUP_NAME#' => $group['NAME']
 		]));
 
-		return $operations;
 	}
 
 	private static function checkAccessLevel($group, $module_id, $expectPermissions)
 	{
-		$idTask = CGroup::GetModulePermission($group['ID'], $module_id);
-		$operations = CTask::GetOperations($idTask, true);
 
-		Assert::notEmpty($operations, Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_7_CHECK_GROUP_ACCESS_NOT_EXPECT_VALUE', [
-			'#GROUP_NAME#' => $group['NAME'],
-			'#MODULE_NAME#' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_7_MODULE_LOC_' . mb_strtoupper($module_id)),
-			'#EXPECT_VALUE#' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_7_EXPECT_ACCESS_LOC_' . mb_strtoupper($module_id))
-		]));
-
-		$test = array_intersect($expectPermissions, $operations);
-		Assert::true(($test == $operations), Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_7_CHECK_GROUP_ACCESS_NOT_EXPECT_VALUE', [
+		Assert::eq(CMain::GetUserRight($module_id, [$group['ID']]), $expectPermissions,
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_7_CHECK_GROUP_ACCESS_NOT_EXPECT_VALUE', [
 			'#GROUP_NAME#' => $group['NAME'],
 			'#MODULE_NAME#' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_7_MODULE_LOC_' . mb_strtoupper($module_id)),
 			'#EXPECT_VALUE#' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_7_EXPECT_ACCESS_LOC_' . mb_strtoupper($module_id))
