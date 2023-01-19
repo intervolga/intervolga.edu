@@ -2,6 +2,7 @@
 namespace Intervolga\Edu\Tests\Course2\Lesson7;
 
 use Bitrix\Main\Localization\Loc;
+use CGroup;
 use CUser;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
@@ -11,9 +12,7 @@ class PartnersUserCheker extends BaseTest
 {
 	protected static function run()
 	{
-		$groupPartnersId = key(GroupUserList::getGroupList([
-			'STRING_ID' => 'partners',
-		]));
+		$groupPartnersId = CGroup::GetList(false, false, ['STRING_ID' => 'partners'])->fetch()['ID'];
 		Assert::notEmpty($groupPartnersId, Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_7_STRING_ID_PARTNERS'));
 
 		$arUsers = CUser::GetList(
