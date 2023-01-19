@@ -14,7 +14,8 @@ class SubscriptionGroupChecker extends BaseTest
 	{
 		$group = CGroup::GetList(false, false, ['STRING_ID' => 'subscription'])->fetch();
 		Assert::notEmpty($group, Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_7_SUBSCRIBE_GROUP_NOT_FOUND'));
-		Assert::eq(CMain::GetUserRight('subscribe', [$group['ID']]), 'W', '');
+		Assert::eq(CMain::GetUserRight('subscribe', [$group['ID']]), 'W',
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_7_GROUP_SETTINGS_SUBSCRIBE', ['#GROUP_NAME#' => $group['NAME']]));
 		Assert::true(in_array(CUser::GetByLogin('liteadmin')->fetch()['ID'], CGroup::GetGroupUser($group['ID'])),
 			Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_7_USER_NOT_FOUND_IN_GROUP', ['#GROUP_NAME#' => $group['NAME']]));
 	}

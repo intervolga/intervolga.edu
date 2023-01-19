@@ -31,7 +31,7 @@ class LiteadminAccessChecker extends BaseTest
 
 		/* проверка на доступ к редактированию всех разделов сайта */
 		include_once AccessFile::find()->getPath();
-		Assert::eq($PERM["/"]['G' . $group['ID']], "W", 'Группа "Контент-редакторы" должны иметь право на редактирование всех разделов сайта');
+		Assert::eq($PERM["/"]['G' . $group['ID']], "W", Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_7_EDITOR_GROUP_ACCESS_SITE_SECTIONS'));
 
 		/* пользователь в группе */
 		Assert::true(in_array(CUser::GetByLogin('liteadmin')->fetch()['ID'], CGroup::GetGroupUser($group['ID'])),

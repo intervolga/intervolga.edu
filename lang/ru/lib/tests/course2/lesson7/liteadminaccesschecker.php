@@ -9,4 +9,5 @@ $MESS['INTERVOLGA_EDU.COURSE_2_LESSON_7_EXPECT_ACCESS_LOC_MAIN'] = '[Q] Конт
 $MESS['INTERVOLGA_EDU.COURSE_2_LESSON_7_EXPECT_ACCESS_LOC_FILEMAN'] = '[F] Редактирование файлов и папок';
 $MESS['INTERVOLGA_EDU.COURSE_2_LESSON_7_ACCESS_FOR_EDITOR_LPA_TEMPLATE_EDIT'] = 'Ограниченная модификация шаблонов';
 $MESS['INTERVOLGA_EDU.COURSE_2_LESSON_7_ACCESS_FOR_EDITOR_EDIT_PHP'] = 'Изменение PHP-кода';
+$MESS['INTERVOLGA_EDU.COURSE_2_LESSON_7_EDITOR_GROUP_ACCESS_SITE_SECTIONS'] = 'Группа "Контент-редакторы" должны иметь право на редактирование всех разделов сайта';
 
