@@ -104,6 +104,9 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_LITEADMINACCESSCHECKER'] = 'Проверк
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_LITEADMINACCESSCHECKER_DESCRIPTION'] = 'Доступы группы "Контент-редакторы" должны быть изменены в соответствии с заданием';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SUBSCRIPTIONGROUPCHECKER'] = 'Проверка пользователя liteadmin на группу с доступом к модулю "Подписки, рассылки"';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SUBSCRIPTIONGROUPCHECKER_DESCRIPTION'] = 'Пользователь должен находиться в группе, группа должна иметь доступ к модулю "Подписки, рассылки"';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7_PROFILEGROUPEDITCHEKER'] = 'Проверка пользователя liteadmin на группу с доступом к редактированию профилей группы "Партнеры"';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7_PROFILEGROUPEDITCHEKER_DESCRIPTION'] = 'Пользователь должен находиться в группе, группа должна иметь возможность редактировать и просматривать профили группы "Партнеры"';
+
 
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE_DESCRIPTION'] = 'Должна существовать папка /local/modules/intervolga.#Ваше название модуля#/, модуль должен быть установлен';

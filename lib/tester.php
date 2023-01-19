@@ -81,6 +81,7 @@ class Tester
 
 			\Intervolga\Edu\Tests\Course2\Lesson7\LiteadminAccessChecker::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\SubscriptionGroupChecker::class,
+			\Intervolga\Edu\Tests\Course2\Lesson7\ProfileGroupEditCheker::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson1\TestModule::class,
 
