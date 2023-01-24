@@ -16,6 +16,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON10'] = '10. Поиск';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11'] = '11. Полезные возможности';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2'] = '1.2 Получение связанных элементов';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON2'] = '2. Технологии: параметры модулей, почтовая системы, агенты, журнал событий';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON3'] = '3. События';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4'] = '4. Отложенные функции';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1'] = '1. Создание модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы';
@@ -104,6 +105,8 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON2_AGENTPARAMETERS'] = 'Проверка па
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON2_AGENTPARAMETERS_DESCRIPTION'] = 'Агент должен быть активен и иметь интервал 86400 сек';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON2_POSTEVENT'] = 'Проверка существования почтового события и почтового шаблона';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON2_POSTEVENT_DESCRIPTION'] = 'Должны существовать почтовое событие и закрепленный за ним почтовый шаблон';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON3_HANDLERSCHECKER'] = 'Проверка существования обработчика событий';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON3_HANDLERSCHECKER_DESCRIPTION'] = 'Должны быть создан обработчик события с модулем события "iblock" и типом события "OnBeforeIBlockElementUpdate"';
 
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETNEWS'] = 'Проверка SetViewTarget для даты новостей';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETNEWS_DESCRIPTION'] = 'В шаблоне компонента bitrix:news в шаблоне просмотра детальной страницы news.detail должен использоваться метод SetViewTarget';
