@@ -84,6 +84,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson2\TestPostEvent::class,
 
 			\Intervolga\Edu\Tests\Course2\Lesson3\HandlersChecker::class,
+			\Intervolga\Edu\Tests\Course2\Lesson3\DeactivationActiveNews::class,
 
 			\Intervolga\Edu\Tests\Course2\Lesson4\TestSetViewTargetNews::class,
 			\Intervolga\Edu\Tests\Course2\Lesson4\TestShowViewTargetNews::class,
