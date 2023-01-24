@@ -86,6 +86,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson4\TestShowViewTargetNews::class,
 
 			\Intervolga\Edu\Tests\Course2\Lesson7\SecurityLevel::class,
+			\Intervolga\Edu\Tests\Course2\Lesson7\SecureAuthorization::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson1\TestModule::class,
 

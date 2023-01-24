@@ -111,6 +111,8 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWTARGETNEWS'] = 'Проверка S
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWTARGETNEWS_DESCRIPTION'] = 'ShowViewContent должен быть размещен в header.php перед &lt;p&gt; с классом title';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SECURITYLEVEL'] = 'Проверка уровня безопасности';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SECURITYLEVEL_DESCRIPTION'] = 'Уровень безопасности должен быть "Стандартный" или выше.';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SECUREAUTHORIZATION'] = 'Проверка настроек Авторизации';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SECUREAUTHORIZATION_DESCRIPTION'] = 'В настройках главного модуля, в разделе "Авторизация" в параметрах "Безопасной авторизации" должен стоять флаг на передачу пароля в зашифрованном виде и сгенерирован ключ шифрования.';
 
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE_DESCRIPTION'] = 'Должна существовать папка /local/modules/intervolga.#Ваше название модуля#/, модуль должен быть установлен';
