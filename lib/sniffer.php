@@ -1,5 +1,4 @@
 <?php
-
 namespace Intervolga\Edu;
 
 use Intervolga\Edu\Sniffer\ConfigTools;
