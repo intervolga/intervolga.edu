@@ -31,7 +31,7 @@ class CheckOldCoreSniff implements Sniff
 				]),
 				'#VAR#' => $token['content']
 			]);
-			$phpcsFile->addError($error, $stackPtr, 'A1SetAdditionalCSS');
+			$phpcsFile->addError($error, $stackPtr, 'A1CheckOldCoreSniff');
 
 		}
 		if (preg_match('/AddHeadScript/mi', $token['content'])) {
@@ -44,7 +44,7 @@ class CheckOldCoreSniff implements Sniff
 				]),
 				'#VAR#' => $token['content']
 			]);
-			$phpcsFile->addError($error, $stackPtr, 'A1SetAdditionalCSS');
+			$phpcsFile->addError($error, $stackPtr, 'A2CheckOldCoreSniff');
 
 		}
 
@@ -58,7 +58,7 @@ class CheckOldCoreSniff implements Sniff
 				]),
 				'#VAR#' => $token['content']
 			]);
-			$phpcsFile->addError($error, $stackPtr, 'A1SetAdditionalCSS');
+			$phpcsFile->addError($error, $stackPtr, 'A3CheckOldCoreSniff');
 
 		}
 
@@ -74,7 +74,7 @@ class CheckOldCoreSniff implements Sniff
 					]),
 					'#VAR#' => $token['content']
 				]);
-				$phpcsFile->addError($error, $stackPtr, 'A1SetAdditionalCSS');
+				$phpcsFile->addError($error, $stackPtr, 'A4CheckOldCoreSniff');
 			}
 		}
 
@@ -92,7 +92,7 @@ class CheckOldCoreSniff implements Sniff
 						]),
 						'#VAR#' => $token['content'] . $tokens[$nextToken]['content'] . $tokens[$newNextToken]['content']
 					]);
-					$phpcsFile->addError($error, $stackPtr, 'A1SetAdditionalCSS');
+					$phpcsFile->addError($error, $stackPtr, 'A5CheckOldCoreSniff');
 				}
 
 			}

@@ -1,17 +1,24 @@
 <?php
 namespace Intervolga\Edu\Tests;
 
-use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
-use Intervolga\Edu\Asserts\AssertPhp;
+use Intervolga\Edu\Sniffer;
 
 abstract class BaseTestCode extends BaseTest
 {
-	/**
-	 * @return File[];
-	 */
-	abstract static function getFilesToTestCode(): array;
+	protected static function run()
+	{
+		$files = static::getFilesPaths();
+		$result = Sniffer::run($files);
+
+		if (!empty($result)) {
+			foreach ($result as $error) {
+				Assert::empty($error, $error->getMessage());
+			}
+		}
+
+	}
 
 	public static function interceptErrors()
 	{
@@ -40,14 +47,6 @@ abstract class BaseTestCode extends BaseTest
 		}
 	}
 
-	protected static function run()
-	{
-		$files = static::getFilesToTestCode();
-		foreach ($files as $file) {
-			Assert::fseExists($file);
-			if ($file->isExists()) {
-				AssertPhp::goodCode($file);
-			}
-		}
-	}
+	abstract static function getFilesPaths(): array;
+
 }

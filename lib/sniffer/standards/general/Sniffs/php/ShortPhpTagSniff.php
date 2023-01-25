@@ -28,7 +28,7 @@ class ShortPhpTagSniff implements Sniff
 					'#FILEMAN_URL#' => Admin::getFileManUrl($file),
 				]),
 			]);
-			$phpcsFile->addError($error, $stackPtr, 'A1SetAdditionalCSS');
+			$phpcsFile->addError($error, $stackPtr, 'ShortPhpTagSniff');
 
 		}
 
