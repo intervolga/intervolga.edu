@@ -19,6 +19,36 @@ class CheckCustomCoreSniff implements Sniff
 		$tokens = $phpcsFile->getTokens();
 		$token = $tokens[$stackPtr];
 
+		foreach ($tokens as $contentToken){
+			if($contentToken['type'] == 'T_CONSTANT_ENCAPSED_STRING' || $contentToken['type'] == 'T_STRING'){
+				$contents[] = $contentToken['content'] ;
+			}
+		}
+
+		if (!in_array('B_PROLOG_INCLUDED', $contents)) {
+			$erorrs = $phpcsFile->getErrors();
+			foreach ($erorrs as $rows ){
+				foreach ($rows as $row){
+					foreach ($row as $error){
+						$errorSource[] = $error['source'];
+					}
+				}
+			}
+
+			if(!in_array('General.PHP.CheckCustomCore.A2CheckCustomCoreSniffNotFoundPrologIncluded', $errorSource))
+			{
+				$file = new File($phpcsFile->getFilename());
+				$error = Loc::getMessage('INTERVOLGA_EDU.SNIFFER_CUSTOM_CORE_NOT_FOUND', [
+					'#FILE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+						'#NAME#' => $file->getName(),
+						'#PATH#' => FileSystem::getLocalPath($file),
+						'#FILEMAN_URL#' => Admin::getFileManUrl($file),
+					]),
+				]);
+				$phpcsFile->addError($error, $stackPtr, 'A2CheckCustomCoreSniffNotFoundPrologIncluded');
+			}
+		}
+
 		if (preg_match('/B_PROLOG_INCLUDED/mi', $token['content'])) {
 			$prevToken = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), null, true);
 			if ($tokens[$prevToken]['type'] == 'T_OPEN_PARENTHESIS') {
