@@ -109,6 +109,8 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON3_HANDLERSCHECKER'] = 'Проверка су
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON3_HANDLERSCHECKER_DESCRIPTION'] = 'Должны быть создан обработчик события с модулем события "iblock" и типом события "OnBeforeIBlockElementUpdate"';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON3_DEACTIVATIONACTIVENEWS'] = 'Проверка работы обработчика событий (OnBeforeIBlockElementUpdate)';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON3_DEACTIVATIONACTIVENEWS_DESCRIPTION'] = 'Обработчик событий должен выбрасывать ошибку при попытке деактивации свежей новости ($APPLICATION->ThrowException)';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON3_DEACTIVATIONNOTACTIVENEWS'] = 'Проверка работы обработчика событий (OnBeforeIBlockElementUpdate)';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON3_DEACTIVATIONNOTACTIVENEWS_DESCRIPTION'] = 'Обработчик событий не должен отменять изменения в неактивном элементе инфоблока';
 
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETNEWS'] = 'Проверка SetViewTarget для даты новостей';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETNEWS_DESCRIPTION'] = 'В шаблоне компонента bitrix:news в шаблоне просмотра детальной страницы news.detail должен использоваться метод SetViewTarget';
