@@ -39,10 +39,13 @@ class PathMaskParser
 			$newCurrents = [];
 			foreach ($currents as $current) {
 				foreach ($current->getChildren() as $child) {
-					if (static::entryMatches($child, $parsedItem)) {
-						$newCurrents[] = $child;
+					if (!in_array($child->getName(), EXCLUSION_FOLDERS[$child->getDirectory()->getPath()])) {
+						if (static::entryMatches($child, $parsedItem)) {
+							$newCurrents[] = $child;
+						}
 					}
 				}
+
 			}
 			$currents = $newCurrents;
 		}
