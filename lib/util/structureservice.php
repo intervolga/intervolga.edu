@@ -8,17 +8,22 @@ class StructureService
 {
 	public static function getPageProperties(File $directoryPage)
 	{
-		return ParseFileContent($directoryPage->getContents())['PROPERTIES'];
+		$return = [];
+		$properties = parseFileContent($directoryPage->getContents())['PROPERTIES'];
+		foreach ($properties as $name => $value) {
+			$return[strtoupper($name)] = $value;
+		}
+
+		return $return;
 	}
 
 	public static function getDirProperties(Directory $directory)
 	{
 		global $APPLICATION;
-		$result = $APPLICATION->GetDirPropertyList(
+		$result = $APPLICATION->getDirPropertyList(
 			'/' . $directory->getName() . '/'
 		);
 
 		return $result;
 	}
-
 }

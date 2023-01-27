@@ -18,7 +18,7 @@ class HowBecomePartner extends FileLocator
 		Assert::directoryLocator(PartnersSection::class);
 		$path = substr(PartnersSection::find()->getPath(),	strripos(PartnersSection::find()->getPath(), '/'));
 		return [
-			$path . '/how-become-partner.php',
+			$path . '/how-to-become-a-partner.php',
 		];
 	}
 }
