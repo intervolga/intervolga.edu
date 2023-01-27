@@ -5,7 +5,7 @@ namespace Intervolga\Edu\Tests\Course2\Lesson4;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
-use Intervolga\Edu\Locator\IO\CatalogSectionTemplate;
+use Intervolga\Edu\Locator\IO\ComponentTemplate\CatalogSectionTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\Regex;
