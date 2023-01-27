@@ -31,6 +31,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestProducts::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestPromo::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestPartnersPage::class,
+			\Intervolga\Edu\Tests\Course1\Lesson2\TestSeoPartners::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestMenu::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestLocalPhpInterface::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestDumpFunction::class,

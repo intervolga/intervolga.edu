@@ -33,6 +33,8 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_LICENSE'] = 'Проверка редакц
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_LICENSE_DESCRIPTION'] = 'Должен быть установлен «1С-Битрикс: Управление сайтом», редакция «Стандарт»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_UPDATES'] = 'Проверка обновлений';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_UPDATES_DESCRIPTION'] = 'Список <a href="/bitrix/admin/update_system.php?refresh=Y&lang=ru" target="_blank">рекомендуемых обновлений</a> должен быть пуст';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_SEOPARTNERS'] = 'Проверка ключевых слов и описания страниц';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_SEOPARTNERS_DESCRIPTION'] = 'Для раздела "Партнерам" и страницы "Как стать партнером" должны быть заполненны ключевые слова и описание';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_SERVICESDELETED'] = 'Проверка раздела &laquo;Услуги&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_SERVICESDELETED_DESCRIPTION'] = 'Должен быть удален с диска и из верхнего меню';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_REVIEWS'] = 'Проверка раздела &laquo;Отзывы&raquo;';
