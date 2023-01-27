@@ -5,6 +5,7 @@ use Bitrix\Main\Context;
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\Mail\Internal\EventMessageTable;
 use Intervolga\Edu\Asserts\Assert;
+use Intervolga\Edu\Locator\Event\EventMessage\UserPassRequest;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\FileSystem;
 
@@ -25,12 +26,7 @@ class TestEmail extends BaseTest
 
 	protected static function getMessageText(): string
 	{
-		$record = EventMessageTable::getList([
-			'filter' => [
-				'=EVENT_NAME' => 'USER_PASS_REQUEST',
-				'=ACTIVE' => 'Y',
-			],
-		])->fetch();
+		$record = UserPassRequest::find();
 		$replace = [
 			'#SERVER_NAME#' => Context::getCurrent()->getServer()->getServerName(),
 			'#CHECKWORD#' => 'CHECKWORD',

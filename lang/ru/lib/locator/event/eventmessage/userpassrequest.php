@@ -1,0 +1,2 @@
+<?php
+$MESS['INTERVOLGA_EDU.LOCATOR.EVENT_MESSAGE.USER_PASS_REQUEST'] = 'Запрос на смену пароля';
