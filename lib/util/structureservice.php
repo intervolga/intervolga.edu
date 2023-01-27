@@ -4,16 +4,17 @@ namespace Intervolga\Edu\Util;
 use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\File;
 
-class PageProperties
+class StructureService
 {
-	public static function GetPageProperties(File $directoryPage)
+	public static function getPageProperties(File $directoryPage)
 	{
 		return ParseFileContent($directoryPage->getContents())['PROPERTIES'];
 	}
 
-	public static function GetDirProperties(Directory $directory)
+	public static function getDirProperties(Directory $directory)
 	{
-		$result = (new \CMain)->GetDirPropertyList(
+		global $APPLICATION;
+		$result = $APPLICATION->GetDirPropertyList(
 			'/' . $directory->getName() . '/'
 		);
 
