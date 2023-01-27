@@ -26,6 +26,7 @@ class SimpleComponent extends ComponentTemplate
 	{
 		$result = parent::getKnownFiles();
 		$result[] = $this->getComponentFile();
+		$result[] = $this->getClassFile();
 
 		return $result;
 	}
@@ -35,5 +36,8 @@ class SimpleComponent extends ComponentTemplate
 		return FileSystem::getInnerFile($this, 'component.php');
 	}
 
-
+	public function getClassFile(): File
+	{
+		return FileSystem::getInnerFile($this, 'class.php');
+	}
 }
