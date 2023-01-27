@@ -102,7 +102,7 @@ class TestSeoPartners extends BaseTest
 	{
 		$leftMenuFile = FileSystem::getInnerFile($directory, '.left.menu.php');
 		Assert::fseExists($leftMenuFile);
-		if ($leftMenuFile->isExists()) {
+		if ($leftMenuFile->isExists() && HowBecomePartner::find()) {
 			Assert::menuItemExists(FileSystem::getLocalPath($leftMenuFile), FileSystem::getLocalPath(HowBecomePartner::find()));
 		}
 	}
