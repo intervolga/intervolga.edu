@@ -1,7 +1,6 @@
 <?php
 B_PROLOG_INCLUDED === true || die();
 
-use Bitrix\Main\Application;
 use Bitrix\Main\Localization\Loc;
 
 require_once(__DIR__ . '/vendor/autoload.php');
@@ -34,6 +33,3 @@ const INTERVOLGA_EDU_GUESS_VARIANTS = [
 		],
 	],
 ];
-define("EXCLUSION_FOLDERS", [
-	Application::getDocumentRoot() => ['.git'],
-]);
