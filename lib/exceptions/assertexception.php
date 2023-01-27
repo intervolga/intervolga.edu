@@ -1,6 +1,8 @@
 <?php
 namespace Intervolga\Edu\Exceptions;
 
+use Bitrix\Main\Localization\Loc;
+
 class AssertException extends TestException
 {
 	/**
@@ -19,6 +21,21 @@ class AssertException extends TestException
 		}
 		$exception = new static(implode(';', $messages));
 		$exception->exceptions = $exceptions;
+
+		return $exception;
+	}
+
+	/**
+	 * @param \Throwable $throwable
+	 * @return static
+	 */
+	public static function createThrowable(\Throwable $throwable)
+	{
+		$exception = new static(Loc::getMessage('INTERVOLGA_EDU.UNKNOWN_ERROR', [
+			'#CLASS#' => get_class($throwable),
+			'#MESSAGE#' => $throwable->getMessage(),
+			'#TRACE#' => nl2br($throwable->getTraceAsString()),
+		]));
 
 		return $exception;
 	}

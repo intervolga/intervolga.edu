@@ -3,12 +3,14 @@ namespace Intervolga\Edu\Locator\Iblock;
 
 use Bitrix\Iblock\IblockTable;
 use Bitrix\Main\Loader;
+use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Locator\BaseLocator;
+use Intervolga\Edu\Util\Admin;
+use Intervolga\Edu\Util\FileSystem;
 
-abstract class IblockLocator
+abstract class IblockLocator extends BaseLocator
 {
 	abstract public static function getFilter(): array;
-
-	abstract public static function getNameLoc(): string;
 
 	public static function find(): array
 	{
@@ -42,5 +44,15 @@ abstract class IblockLocator
 		}
 
 		return implode(';', $result);
+	}
+
+	public static function getDisplayText($find): string
+	{
+		return '[' . $find['ID'] . '] ' . $find['NAME'];
+	}
+
+	public static function getDisplayHref($find): string
+	{
+		return Admin::getIblockUrl($find);
 	}
 }

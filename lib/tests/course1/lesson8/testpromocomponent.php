@@ -4,7 +4,7 @@ namespace Intervolga\Edu\Tests\Course1\Lesson8;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\FilesTree\ComponentTemplate;
 use Intervolga\Edu\FilesTree\NewsTemplate;
-use Intervolga\Edu\Locator\IO\PromoNewsTemplate;
+use Intervolga\Edu\Locator\IO\ComponentTemplate\PromoNewsTemplate;
 use Intervolga\Edu\Tests\BaseComplexComponentTemplateTest;
 
 class TestPromoComponent extends BaseComplexComponentTemplateTest

@@ -1,16 +1,24 @@
 <?php
 namespace Intervolga\Edu\Asserts;
 
+use Bitrix\Main\Config\Option;
 use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\IO\FileSystemEntry;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Exceptions\AssertException;
+use Intervolga\Edu\Locator\Agent\AgentLocator;
+use Intervolga\Edu\Locator\BaseLocator;
+use Intervolga\Edu\Locator\Event\EventLocator;
+use Intervolga\Edu\Locator\Event\Type\TypeLocator;
+use Intervolga\Edu\Locator\Event\Template\TemplateLocator;
 use Intervolga\Edu\Locator\Iblock\IblockLocator;
 use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
+use Intervolga\Edu\Locator\Iblock\Section\SectionLocator;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Locator\IO\FileLocator;
+use Intervolga\Edu\Locator\Uf\UfLocator;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Menu;
@@ -22,6 +30,8 @@ class Assert
 {
 	protected static $interceptErrors = false;
 	protected static $interceptedErrors = [];
+
+	protected static $locators = [];
 
 	/**
 	 * @param mixed $value
@@ -41,6 +51,35 @@ class Assert
 				$message
 			));
 		}
+	}
+
+	/**
+	 * @param string $error
+	 * @throws AssertException
+	 */
+	protected static function registerError(string $error)
+	{
+		if (static::$interceptErrors) {
+			static::$interceptedErrors[] = new AssertException($error);
+		} else {
+			throw new AssertException($error);
+		}
+	}
+
+	protected static function getCustomOrLocMessage(string $locCode, array $replace, $customMessage = ''): string
+	{
+		if ($customMessage) {
+			$result = strtr($customMessage, $replace);
+		} else {
+			$result = Loc::getMessage($locCode, $replace);
+		}
+
+		return $result;
+	}
+
+	protected static function valueToString($value): string
+	{
+		return var_export($value, true);
 	}
 
 	/**
@@ -104,6 +143,7 @@ class Assert
 				'INTERVOLGA_EDU.ASSERT_GREATER',
 				[
 					'#VALUE#' => static::valueToString($value),
+					'#EXPECT#' => static::valueToString($limit),
 				],
 				$message
 			));
@@ -117,6 +157,7 @@ class Assert
 				'INTERVOLGA_EDU.ASSERT_GREATER_EQ',
 				[
 					'#VALUE#' => static::valueToString($value),
+					'#EXPECT#' => static::valueToString($limit),
 				],
 				$message
 			));
@@ -127,9 +168,24 @@ class Assert
 	{
 		if ($value>=$limit) {
 			static::registerError(static::getCustomOrLocMessage(
-				'INTERVOLGA_EDU.ASSERT_GREATER',
+				'INTERVOLGA_EDU.ASSERT_LESS',
 				[
 					'#VALUE#' => static::valueToString($value),
+					'#EXPECT#' => static::valueToString($limit),
+				],
+				$message
+			));
+		}
+	}
+
+	public static function lessEq($value, $limit, string $message = '')
+	{
+		if ($value>$limit) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_LESS_EQ',
+				[
+					'#VALUE#' => static::valueToString($value),
+					'#EXPECT#' => static::valueToString($limit),
 				],
 				$message
 			));
@@ -245,31 +301,6 @@ class Assert
 	 * @param string $message
 	 * @throws AssertException
 	 */
-	public static function fseExists(FileSystemEntry $value, string $message = '')
-	{
-		if (!$value->isExists()) {
-			static::registerError(static::getCustomOrLocMessage(
-				'INTERVOLGA_EDU.ASSERT_FSE_EXISTS',
-				[
-					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-					]),
-					'#NAME#' => $value->getName(),
-					'#PATH#' => FileSystem::getLocalPath($value),
-					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-				],
-				$message
-			));
-		}
-	}
-
-	/**
-	 * @param FileSystemEntry $value
-	 * @param string $message
-	 * @throws AssertException
-	 */
 	public static function fseNotExists(FileSystemEntry $value, string $message = '')
 	{
 		if ($value->isExists()) {
@@ -367,6 +398,31 @@ class Assert
 					$message
 				));
 			}
+		}
+	}
+
+	/**
+	 * @param FileSystemEntry $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function fseExists(FileSystemEntry $value, string $message = '')
+	{
+		if (!$value->isExists()) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_FSE_EXISTS',
+				[
+					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+						'#NAME#' => $value->getName(),
+						'#PATH#' => FileSystem::getLocalPath($value),
+						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
+					]),
+					'#NAME#' => $value->getName(),
+					'#PATH#' => FileSystem::getLocalPath($value),
+					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
+				],
+				$message
+			));
 		}
 	}
 
@@ -471,11 +527,35 @@ class Assert
 	 */
 	public static function iblockLocator($value, string $message = '')
 	{
-		if (!$value::find()) {
+		if ($findIblock = $value::find()) {
+			static::registerLocatorFound(IblockLocator::class, $value, $findIblock);
+		} else {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_IBLOCK_LOCATOR',
 				[
 					'#IBLOCK#' => $value::getNameLoc(),
+					'#POSSIBLE#' => $value::getPossibleTips(),
+				],
+				$message
+			));
+		}
+	}
+
+	/**
+	 * @param string|SectionLocator $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function sectionLocator($value, string $message = '')
+	{
+		if ($findIblock = $value::find()) {
+			static::registerLocatorFound(SectionLocator::class, $value, $findIblock);
+		} else {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_SECTION_LOCATOR',
+				[
+					'#SECTION#' => $value::getNameLoc(),
+					'#IBLOCK#' => $value::getIblock()::getNameLoc(),
 					'#POSSIBLE#' => $value::getPossibleTips(),
 				],
 				$message
@@ -491,7 +571,9 @@ class Assert
 	 */
 	public static function propertyLocator($value, string $message = '')
 	{
-		if (!$value::find()) {
+		if ($find = $value::find()) {
+			static::registerLocatorFound(PropertyLocator::class, $value, $find);
+		} else {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_PROPERTY_LOCATOR',
 				[
@@ -505,13 +587,40 @@ class Assert
 	}
 
 	/**
+	 * @param string $module
+	 * @param string $optionKey
+	 * @param string|int $requiredValue
+	 * @param string $name
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function checkModuleOption(string $module, string $optionKey, $requiredValue, string $name = '', string $message = '')
+	{
+		$realValue = Option::getRealValue($module, $optionKey);
+		if ($realValue !== $requiredValue) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.NOT_CORRECT_MODULE_OPTION',
+				[
+					'#MODULE#' => $module,
+					'#OPTION#' => $name ?? $optionKey,
+					'#NOW_VALUE#' => $realValue,
+					'#REQUIRED_VALUE#' => $requiredValue,
+				],
+				$message
+			));
+		}
+	}
+
+	/**
 	 * @param string|DirectoryLocator $value
 	 * @param string $message
 	 * @throws AssertException
 	 */
 	public static function directoryLocator($value, string $message = '')
 	{
-		if (!$value::find()) {
+		if ($find = $value::find()) {
+			static::registerLocatorFound(DirectoryLocator::class, $value, $find);
+		} else {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_DIRECTORY_LOCATOR',
 				[
@@ -520,7 +629,6 @@ class Assert
 				],
 				$message
 			));
-
 		}
 	}
 
@@ -531,7 +639,9 @@ class Assert
 	 */
 	public static function fileLocator($value, string $message = '')
 	{
-		if (!$value::find()) {
+		if ($find = $value::find()) {
+			static::registerLocatorFound(FileLocator::class, $value, $find);
+		} else {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_FILE_LOCATOR',
 				[
@@ -541,6 +651,109 @@ class Assert
 				$message
 			));
 
+		}
+	}
+
+	public static function userField(UfLocator $ufLocator, string $message = '')
+	{
+		if ($find = $ufLocator->find()) {
+			static::registerLocatorFound(UfLocator::class, UfLocator::class, $find);
+		} else {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_REQUIRED_RULES_USERFIELD',
+				[
+					'#POSSIBLE#' => $ufLocator->getPossibleTips(),
+				],
+				$message
+			));
+		}
+	}
+
+	/**
+	 * @param string|AgentLocator $value
+	 * @param string $message
+	 */
+	public static function agentExists($value, $message = '')
+	{
+		if ($find = $value::find()) {
+			static::registerLocatorFound(AgentLocator::class, $value, $find);
+		} else {
+			static::registerError(
+				static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_AGENT_EXISTS',
+					[
+						'#NAME#' => $value::getNameLoc(),
+						'#POSSIBLE#' => $value::getPossibleTips()
+					],
+					$message
+				));
+		}
+	}
+
+	/**
+	 * @param string|TypeLocator $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function eventMessageExists($value, $message = '')
+	{
+		if ($find = $value::find()) {
+			static::registerLocatorFound(TypeLocator::class, $value, $find);
+		} else {
+			static::registerError(
+				static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_EVENT_MESSAGE_EXISTS',
+					[
+						'#NAME#' => $value::getNameLoc(),
+						'#POSSIBLE#' => $value::getPossibleTips()
+					],
+					$message
+				));
+		}
+	}
+
+	/**
+	 * @param string|TemplateLocator $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function eventTemplateExists($value, $message = '')
+	{
+		if ($find = $value::find()) {
+			static::registerLocatorFound(TemplateLocator::class, $value, $find);
+		} else {
+			static::registerError(
+				static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_EVENT_TEMPLATE_EXISTS',
+					[
+						'#NAME#' => $value::getNameLoc(),
+						'#POSSIBLE#' => $value::getPossibleTips()
+					],
+					$message
+				));
+		}
+	}
+
+	/**
+	 * @param string|EventLocator $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function eventExists(string $value, $message = '')
+	{
+		if ($find = $value::find()) {
+			static::registerLocatorFound(EventLocator::class, $value, $find);
+		} else {
+			static::registerError(
+				static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_EVENT_EXISTS',
+					[
+						'#MESSAGE_ID#' => $value::getMessageID(),
+						'#MODULE_ID#' => $value::getModuleID(),
+						'#POSSIBLE#' => $value::getPossibleTips()
+					],
+					$message
+				));
 		}
 	}
 
@@ -624,32 +837,33 @@ class Assert
 		}
 	}
 
-	protected static function valueToString($value): string
+	protected static function getStringFromArray($separator, $array, $endString = "<br>"): string
 	{
-		return var_export($value, true);
-	}
-
-	protected static function getCustomOrLocMessage(string $locCode, array $replace, $customMessage = ''): string
-	{
-		if ($customMessage) {
-			$result = strtr($customMessage, $replace);
-		} else {
-			$result = Loc::getMessage($locCode, $replace);
+		$result = '';
+		foreach ($array as $k => $v) {
+			$result .= $k . $separator . $v . $endString;
 		}
 
 		return $result;
 	}
 
 	/**
-	 * @param string $error
-	 * @throws AssertException
+	 * @param string|BaseLocator $parentLocatorClass
+	 * @param string|BaseLocator $locatorClass
+	 * @param mixed $found
 	 */
-	protected static function registerError(string $error)
+	protected static function registerLocatorFound($parentLocatorClass, $locatorClass, $found)
 	{
-		if (static::$interceptErrors) {
-			static::$interceptedErrors[] = new AssertException($error);
-		} else {
-			throw new AssertException($error);
-		}
+		static::$locators[$parentLocatorClass][$locatorClass][] = $found;
+	}
+
+	public static function getLocatorsFound()
+	{
+		return static::$locators;
+	}
+
+	public static function resetLocatorsFound()
+	{
+		static::$locators = [];
 	}
 }
