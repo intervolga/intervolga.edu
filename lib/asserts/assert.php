@@ -11,8 +11,8 @@ use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Locator\Agent\AgentLocator;
 use Intervolga\Edu\Locator\BaseLocator;
 use Intervolga\Edu\Locator\Event\EventLocator;
-use Intervolga\Edu\Locator\Event\Type\TypeLocator;
 use Intervolga\Edu\Locator\Event\Template\TemplateLocator;
+use Intervolga\Edu\Locator\Event\Type\TypeLocator;
 use Intervolga\Edu\Locator\Iblock\IblockLocator;
 use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
 use Intervolga\Edu\Locator\Iblock\Section\SectionLocator;
@@ -798,6 +798,31 @@ class Assert
 					'#NAME#' => $menuFile->getName(),
 					'#PATH#' => FileSystem::getLocalPath($menuFile),
 					'#FILEMAN_URL#' => Admin::getFileManUrl($menuFile),
+				],
+				$message
+			));
+		}
+	}
+
+	public static function isImage(File $file, string $message = '')
+	{
+		$extensions = [
+			'png',
+			'jpeg',
+			'jpg',
+		];
+		if (!in_array($file->getExtension(), $extensions)) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_FILE_IS_IMAGE',
+				[
+					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+						'#NAME#' => $file->getName(),
+						'#PATH#' => FileSystem::getLocalPath($file),
+						'#FILEMAN_URL#' => Admin::getFileManUrl($file),
+					]),
+					'#NAME#' => $file->getName(),
+					'#PATH#' => FileSystem::getLocalPath($file),
+					'#FILEMAN_URL#' => Admin::getFileManUrl($file),
 				],
 				$message
 			));

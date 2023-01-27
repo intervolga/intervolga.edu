@@ -1,7 +1,6 @@
 <?php
 namespace Intervolga\Edu\Tests\Course1\Lesson2;
 
-use Bitrix\Main\Application;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
@@ -43,20 +42,19 @@ class TestPartnersPage extends BaseTest
 	protected static function imgExistChecker(File $indexFile)
 	{
 		$content = $indexFile->getContents();
+		$regexStr = '/src\s*=\s*"(?<SRC>[^"]+)"/m';
+		$regex = new Regex(
+			$regexStr,
+			'<img src="...">'
+		);
+		Assert::fileContentMatches($indexFile, $regex);
 		if ($content) {
-			preg_match_all('/<img\s*src=\"[\w\s\/\.]*\"/i', $content, $matches, PREG_SET_ORDER);
-			$fileImg['path'] = mb_strcut($matches[0][0], mb_stripos($matches[0][0], '"') + 1, -1);
-			$img = new File(Application::getDocumentRoot() . $fileImg['path']);
-
-			Assert::true($img->isExists(), Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_FILE_NOT_EXIST',
-				['#FILE_PATH#' => $fileImg['path']]));
-
-			if ($img->isExists()) {
-				Assert::matches($fileImg['type'], new Regex('/image/i', ''),
-					Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_FILE_NOT_IMG', [
-						'#FILE_PATH#' => $fileImg['path'],
-						'#FILE_TYPE#' => $fileImg['type']
-					]));
+			preg_match_all($regexStr, $content, $matches, PREG_SET_ORDER);
+			if ($matches && $matches[0] && $matches[0]['SRC']) {
+				$src = $matches[0]['SRC'];
+				$img = FileSystem::getFile($src);
+				Assert::fseExists($img);
+				Assert::isImage($img);
 			}
 		}
 	}

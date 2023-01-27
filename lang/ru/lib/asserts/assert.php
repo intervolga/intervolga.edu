@@ -14,6 +14,7 @@ $MESS['INTERVOLGA_EDU.ASSERT_KEY_NOT_EXISTS'] = 'Ключ #VALUE# не долж�
 $MESS['INTERVOLGA_EDU.ASSERT_FUNCTION_EXISTS'] = 'Функция #VALUE# должна существовать';
 $MESS['INTERVOLGA_EDU.ASSERT_FSE_EXISTS'] = 'Файл #VALUE# не найден';
 $MESS['INTERVOLGA_EDU.ASSERT_FSE_NOT_EXISTS'] = '#VALUE# требуется удалить';
+$MESS['INTERVOLGA_EDU.ASSERT_FILE_IS_IMAGE'] = 'Файл #VALUE# должен быть картинкой';
 $MESS['INTERVOLGA_EDU.ASSERT_FSE_NAME_MATCH'] = 'Имя файла должно иметь вид <b>#EXPECT#</b>, сейчас #VALUE#';
 $MESS['INTERVOLGA_EDU.ASSERT_FILE_CONTENT_NOT_MATCH'] = 'Файл #VALUE# содержит <b>#EXPECT#</b>';
 $MESS['INTERVOLGA_EDU.ASSERT_FILE_CONTENT_MATCH'] = 'Файл #VALUE# не содержит <b>#EXPECT#</b>';
