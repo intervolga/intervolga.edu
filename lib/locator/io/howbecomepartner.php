@@ -3,11 +3,10 @@
 namespace Intervolga\Edu\Locator\IO;
 
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Asserts\Assert;
+use Intervolga\Edu\Util\FileSystem;
 
 class HowBecomePartner extends FileLocator
 {
-
 	public static function getNameLoc(): string
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.HOW_BECOME_PARTNER');
@@ -15,10 +14,11 @@ class HowBecomePartner extends FileLocator
 
 	protected static function getPaths(): array
 	{
-		Assert::directoryLocator(PartnersSection::class);
-		$path = substr(PartnersSection::find()->getPath(),	strripos(PartnersSection::find()->getPath(), '/'));
-		return [
-			$path . '/how-to-become-a-partner.php',
-		];
+		$result = [];
+		if ($section = PartnersSection::find()) {
+			$result[] = FileSystem::getLocalPath(FileSystem::getInnerFile($section, 'how-to-become-a-partner.php'));
+		}
+
+		return $result;
 	}
 }
