@@ -12,6 +12,11 @@ use Intervolga\Edu\Util\Regex;
 
 class TestDescription extends BaseTest
 {
+	public static function interceptErrors()
+	{
+		return true;
+	}
+
 	protected static function run()
 	{
 		Assert::directoryLocator(static::getLocator());
