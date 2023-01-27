@@ -15,7 +15,11 @@ use Bitrix\Main\Config\Option;
 use Bitrix\Main\Context;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\ModuleManager;
+use Bitrix\Main\Type\DateTime;
+use Intervolga\Edu\Locator\BaseLocator;
 use Intervolga\Edu\Tester;
+use Intervolga\Edu\Util\Update;
 
 CJSCore::Init([
 	'jquery',
@@ -35,7 +39,6 @@ $options = [
 	],
 ];
 
-
 $request = Context::getCurrent()->getRequest();
 if ($request->isPost()) {
 	if ($optionName = $request->getPost('ADD')) {
@@ -44,6 +47,8 @@ if ($request->isPost()) {
 		Option::delete($module_id, [
 			'name' => $optionName
 		]);
+	} elseif ($zipName = $request->getPost('UNPACK')) {
+		Update::unpack($zipName);
 	}
 	LocalRedirect($request->getRequestUri());
 }
@@ -83,18 +88,33 @@ foreach ($errorsTree as $courseCode => $lessonCodes) {
 	$okStat[$courseCode]['ERRORS'] = $courseOkCount;
 }
 $tabs = [];
+$courseNum = 1;
 foreach ($testsTree as $courseCode => $course) {
 	$tabs[] = [
 		'DIV' => $courseCode,
-		'TAB' => Loc::getMessage('INTERVOLGA_EDU.COURSE_HEADER', [
+		'TAB' => Loc::getMessage('INTERVOLGA_EDU.COURSE_TAB_HEADER', [
+				'#NUM#' => $courseNum,
+				'#DONE#' => $okStat[$courseCode]['ERRORS'],
+				'#TOTAL#' => $course['COUNT'],
+			]
+		),
+		'TITLE' => Loc::getMessage('INTERVOLGA_EDU.COURSE_HEADER', [
 				'#COURSE#' => $course['TITLE'],
 				'#DONE#' => $okStat[$courseCode]['ERRORS'],
 				'#TOTAL#' => $course['COUNT'],
 			]
 		),
-		'TITLE' => Loc::getMessage('INTERVOLGA_EDU.TEST_RESULTS'),
 	];
+	$courseNum++;
 }
+$tabs[] = [
+	'DIV' => 'update',
+	'TAB' => Loc::getMessage('INTERVOLGA_EDU.MODULE_TAB_UPDATE'),
+	'TITLE' => Loc::getMessage('INTERVOLGA_EDU.MODULE_UPDATE', [
+			'#VERSION#' => ModuleManager::getVersion('intervolga.edu')
+		]
+	),
+];
 if ($fatalThrowable) {
 	$message = new CAdminMessage([
 		'MESSAGE' => Loc::getMessage('INTERVOLGA_EDU.FATAL_ERROR', ['#ERROR#' => $fatalThrowable->getMessage()]),
@@ -104,6 +124,7 @@ if ($fatalThrowable) {
 }
 $tabControl = new CAdminTabControl('tabControl', $tabs);
 $tabControl->begin();
+$locatorsFound = Tester::getLocatorsFound();
 
 foreach ($testsTree as $courseCode => $course) {
 	$tabControl->beginNextTab();
@@ -120,12 +141,12 @@ foreach ($testsTree as $courseCode => $course) {
 			$messageParams = [
 				'HTML' => true,
 				'MESSAGE' => Loc::getMessage(
-						'INTERVOLGA_EDU.TEST_HEADER',
-						[
-								'#NUMBER#' => $counter,
-								'#TEST#' => $test['TITLE'],
-								'#CODE#' => $test['CODE'],
-						]),
+					'INTERVOLGA_EDU.TEST_HEADER',
+					[
+						'#NUMBER#' => $counter,
+						'#TEST#' => $test['TITLE'],
+						'#CODE#' => $test['CODE'],
+					]),
 			];
 			if ($test['DESCRIPTION']) {
 				$messageParams['DETAILS'] = '<div class="desc">' . $test['DESCRIPTION'] . '</div>';
@@ -136,7 +157,7 @@ foreach ($testsTree as $courseCode => $course) {
 				$messageParams['DETAILS'] .= Loc::getMessage('INTERVOLGA_EDU.TEST_NO_ERRORS');
 				$messageParams['TYPE'] = 'OK';
 			}
-			$reportId = $courseCode . "_" .$lessonCode . "_" . strtolower($test['CODE']) . "_problem";
+			$reportId = $courseCode . "_" . $lessonCode . "_" . strtolower($test['CODE']) . "_problem";
 
 			if ($messageParams['TYPE'] !== 'OK') {
 				$messCode = 'INTERVOLGA_EDU.REPORT_MALE';
@@ -156,11 +177,76 @@ foreach ($testsTree as $courseCode => $course) {
 				$messageParams["DETAILS"] .= '<button type="submit" class="' . $buttonClass . '" name="' . $code . '" value="' . $reportId . '">' . Loc::getMessage($messCode, ["#TIME#" => $claimsDatetimes[$reportId]]) . '</button>';
 				$messageParams["DETAILS"] .= '</form>';
 			}
+
+			if ($locatorsFound[$testCode]) {
+				$locatorsInfo = [];
+				foreach ($locatorsFound[$testCode] as $parentLocator => $locatorClasses) {
+					foreach ($locatorClasses as $locatorClass => $founds) {
+						foreach ($founds as $found) {
+							/**
+							 * @var BaseLocator $parentLocator
+							 * @var BaseLocator $locatorClass
+							 */
+							$href = $locatorClass::getDisplayHref($found);
+							if (strlen($href))
+							{
+								$locatorsInfo []= Loc::getMessage('INTERVOLGA_EDU.LOCATOR_FOUND_HREF', [
+									'#LOCATOR#' => $parentLocator::getDisplayName(),
+									'#NAME#' => $locatorClass::getNameLoc(),
+									'#HREF#' => $href,
+									'#TIP#' => $locatorClass::getDisplayText($found),
+								]);
+							}
+							else
+							{
+								$locatorsInfo []= Loc::getMessage('INTERVOLGA_EDU.LOCATOR_FOUND', [
+									'#LOCATOR#' => $parentLocator::getDisplayName(),
+									'#NAME#' => $locatorClass::getNameLoc(),
+									'#TIP#' => $locatorClass::getDisplayText($found),
+								]);
+							}
+						}
+					}
+				}
+				$messageParams["DETAILS"] .= '<div class="locators-info">' . implode('<br>', $locatorsInfo) . '</div>';
+			}
+
 			$message = new CAdminMessage($messageParams);
 			echo $message->show();
 			$counter++;
 		}
 	}
 }
-$tabControl->end();
+$tabControl->beginNextTab();
+$links = [
+	'master' => 'https://gitlab.intervolga.ru/common/intervolga.edu/-/archive/master/intervolga.edu-master.zip',
+	'develop' => 'https://gitlab.intervolga.ru/common/intervolga.edu/-/archive/develop/intervolga.edu-develop.zip',
+];
 ?>
+	<h2>1. <?=Loc::getMessage('INTERVOLGA_EDU.DOWNLOAD_ZIP')?></h2>
+	<?php foreach ($links as $branch => $href): ?>
+		<a href="<?=$href?>" class="adm-btn" target="_blank"><?=$branch?></a>
+		<br><br>
+	<?php endforeach ?>
+	<h2>2. <?=Loc::getMessage('INTERVOLGA_EDU.UPLOAD_ZIP')?></h2>
+	<a href="/bitrix/admin/fileman_file_upload.php?lang=ru&site=s1&path=%2Flocal%2Fmodules"
+	   class="adm-btn" target="_blank"><?=Loc::getMessage('INTERVOLGA_EDU.GOTO_UNZIP_DIR')?></a>
+	<h2>3. <?=Loc::getMessage('INTERVOLGA_EDU.UNPACK')?></h2>
+	<?php if (Update::getZipFiles()): ?>
+		<?php foreach (Update::getZipFiles() as $file): ?>
+			<form action="" method="post">
+				<?=bitrix_sessid_post()?>
+				<button type="submit" class="adm-btn adm-btn-save" name="UNPACK" value="<?=$file->getName()?>">
+					<?=Loc::getMessage('INTERVOLGA_EDU.UNPACK_ZIP', [
+						'#ZIP#' => $file->getName(),
+						'#DATETIME#' => DateTime::createFromTimestamp($file->getModificationTime())->format('d.m.Y H:i'),
+					])?>
+				</button>
+			</form>
+			<br><br>
+		<?php endforeach ?>
+	<?php else: ?>
+		<?=Loc::getMessage('INTERVOLGA_EDU.NO_ZIP_FILES')?>
+	<?php endif ?>
+<?php
+$tabControl->end();

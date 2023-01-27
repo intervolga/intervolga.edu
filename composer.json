@@ -1,0 +1,11 @@
+{
+    "name": "intervolga/edu",
+    "description": "",
+    "type": "bitrix-d7-module",
+    "require": {
+        "squizlabs/php_codesniffer": "3.6"
+    },
+    "autoload" : {
+        "files": ["./vendor/squizlabs/php_codesniffer/autoload.php"]
+    }
+}

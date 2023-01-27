@@ -3,6 +3,12 @@
 	padding: 3px 5px 3px 74px;
 }
 
+#bx-admin-prefix #tabControl_layout .adm-info-message .locators-info {
+	padding-top: 15px;
+	font-style: italic;
+	font-size: smaller;
+}
+
 #bx-admin-prefix #tabControl_layout .adm-info-message .desc {
 	padding-top: 3px;
 	padding-bottom: 3px;
