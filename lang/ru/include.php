@@ -104,12 +104,14 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON2_AGENTPARAMETERS'] = 'Проверка па
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON2_AGENTPARAMETERS_DESCRIPTION'] = 'Агент должен быть активен и иметь интервал 86400 сек';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON2_POSTEVENT'] = 'Проверка существования почтового события и почтового шаблона';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON2_POSTEVENT_DESCRIPTION'] = 'Должны существовать почтовое событие и закрепленный за ним почтовый шаблон';
-
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETMATERIALS'] = 'Проверка SetViewTarget для материалов';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETMATERIALS_DESCRIPTION'] = 'SetViewTarget должен быть размещен в catalog.section в template.php';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWCONTENTMATERIALS'] = 'Проверка ShowViewContent для материалов';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWCONTENTMATERIALS_DESCRIPTION'] = 'ShowViewContent должен быть размещен в inner/footer.php';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETNEWS'] = 'Проверка SetViewTarget для даты новостей';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETNEWS_DESCRIPTION'] = 'В шаблоне компонента bitrix:news в шаблоне просмотра детальной страницы news.detail должен использоваться метод SetViewTarget';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWTARGETNEWS'] = 'Проверка ShowViewContent для даты новостей';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWTARGETNEWS_DESCRIPTION'] = 'ShowViewContent должен быть размещен в header.php перед &lt;p&gt; с классом title';
-
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE_DESCRIPTION'] = 'Должна существовать папка /local/modules/intervolga.#Ваше название модуля#/, модуль должен быть установлен';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Проверка собственного UF-свойства';
@@ -188,6 +190,8 @@ $MESS['INTERVOLGA_EDU.NEWS_TEMPLATE'] = 'Шаблон новостей';
 $MESS['INTERVOLGA_EDU.TEST_IBLOCK_NAME'] = 'Проверка Инфоблока #IBLOCK#';
 $MESS['INTERVOLGA_EDU.TEST_IBLOCK_DESCRIPTION'] = 'Проверка типа, прав, количества элементов, свойств по заданию, формы редактирования в админке';
 $MESS['INTERVOLGA_EDU.SEARCH_FORM_TEMPLATE'] = 'Шаблон формы поиска';
+$MESS['INTERVOLGA_EDU.CATALOG_SECTION_TEMPLATE'] = 'Шаблон секций каталога';
+$MESS['INTERVOLGA_EDU.SHOW_VIEW_CONTENT_NOT_FOUND_MATERIALS'] = 'Show View Content для области материалов';
 $MESS['INTERVOLGA_EDU.SHOW_VIEW_CONTENT_NOT_FOUND'] = 'Show View Content перед <p> с классом title';
 $MESS['INTERVOLGA_EDU.SHOW_VIEW_CONTENT_NEWS'] = 'Show View Content для области news перед <p> с классом title';
 $MESS['INTERVOLGA_EDU.CACHE_TYPE_A'] = 'Тип кеширования в компоненте <b>#COMPONENT#</b> (шаблон <b>#TEMPLATE#</b>) в файле #PATH# должен быть <b>Авто</b>';
