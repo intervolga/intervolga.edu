@@ -20,16 +20,19 @@ class TestDescription extends BaseTest
 	protected static function run()
 	{
 		Assert::directoryLocator(static::getLocator());
-		Assert::fseExists(static::getDescriptionFile());
-		Assert::fileContentNotMatches(
-			static::getDescriptionFile(),
-			new Regex('/[а-яё]+/iu', Loc::getMessage('INTERVOLGA_EDU.FOUND_RU_WORDS'))
-		);
-		Assert::fileContentNotMatches(
-			static::getDescriptionFile(),
-			new Regex('/news_list.gif/iu', Loc::getMessage('INTERVOLGA_EDU.FOUND_GIF_NEWS'))
-		);
-
+		if (static::getLocator()::find()) {
+			Assert::fseExists(static::getDescriptionFile());
+			if (static::getDescriptionFile()->isExists()) {
+				Assert::fileContentNotMatches(
+					static::getDescriptionFile(),
+					new Regex('/[а-яё]+/iu', Loc::getMessage('INTERVOLGA_EDU.FOUND_RU_WORDS'))
+				);
+				Assert::fileContentNotMatches(
+					static::getDescriptionFile(),
+					new Regex('/news_list.gif/iu', Loc::getMessage('INTERVOLGA_EDU.FOUND_GIF_NEWS'))
+				);
+			}
+		}
 	}
 
 	/**
