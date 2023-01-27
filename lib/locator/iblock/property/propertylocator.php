@@ -3,9 +3,10 @@ namespace Intervolga\Edu\Locator\Iblock\Property;
 
 use Bitrix\Iblock\PropertyTable;
 use Bitrix\Main\Loader;
+use Intervolga\Edu\Locator\BaseLocator;
 use Intervolga\Edu\Locator\Iblock\IblockLocator;
 
-abstract class PropertyLocator
+abstract class PropertyLocator extends BaseLocator
 {
 	/**
 	 * @return string|IblockLocator
@@ -13,8 +14,6 @@ abstract class PropertyLocator
 	abstract public static function getIblock();
 
 	abstract public static function getFilter(): array;
-
-	abstract public static function getNameLoc(): string;
 
 	public static function find(): array
 	{
@@ -57,5 +56,10 @@ abstract class PropertyLocator
 		}
 
 		return implode(';', $result) . '; IBLOCK_' . static::getIblock()::getPossibleTips() . ')';
+	}
+
+	public static function getDisplayText($find): string
+	{
+		return '[' . $find['ID'] . '] ' . $find['NAME'];
 	}
 }
