@@ -10,9 +10,9 @@ class TestProducts extends BaseTest
 {
 	protected static function run()
 	{
-		$links = Menu::getMenuLinks('/.top.menu.php');
+		$links = Menu::getMenuLinks('/.top.menu.php', true);
 		Assert::eq(
-			$links['products/'],
+			$links['products'],
 			Loc::getMessage('INTERVOLGA_EDU.PRODUCTS_CORRECT_NAME')
 		);
 	}
