@@ -21,7 +21,7 @@ $MESS['INTERVOLGA_EDU.ASSERT_FILE_CONTENT_MATCH'] = 'Файл #VALUE# не со�
 $MESS['INTERVOLGA_EDU.ASSERT_DIRECTORY_EXISTS'] = 'Папка #VALUE# не найдена';
 $MESS['INTERVOLGA_EDU.ASSERT_DIRECTORY_NOT_EXISTS'] = 'Папка #VALUE# существует, должна быть удалена';
 $MESS['INTERVOLGA_EDU.ASSERT_FILE_NOT_EXISTS'] = 'Файл #VALUE# существует, должен быть удален';
-$MESS['INTERVOLGA_EDU.FSE'] = '<a href="#FILEMAN_URL#" target="_blank">#NAME#</a>';
+$MESS['INTERVOLGA_EDU.FSE'] = '#FULL_PATH#<a href="#FILEMAN_URL#" target="_blank"><b>#NAME#</b></a>';
 $MESS['INTERVOLGA_EDU.ASSERT_MODULE_INSTALLED'] = 'Модуль #VALUE# должен быть установлен';
 $MESS['INTERVOLGA_EDU.ASSERT_IBLOCK_LOCATOR'] = 'Инфоблок <b>#IBLOCK#</b> не найден (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.ASSERT_SECTION_LOCATOR'] = 'Раздел <b>#SECTION#</b> инфоблока <b>#IBLOCK#</b> не найден (#POSSIBLE#)';

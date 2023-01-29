@@ -304,12 +304,14 @@ class Assert
 	public static function fseNotExists(FileSystemEntry $value, string $message = '')
 	{
 		if ($value->isExists()) {
+			\Bitrix\Main\Diag\Debug::dump(str_replace($value->getName(), '', FileSystem::getLocalPath($value)));
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_FSE_NOT_EXISTS',
 				[
 					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+						'#FULL_PATH#' => str_replace($value->getName(), '', FileSystem::getLocalPath($value)),
 						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
+
 						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
 					]),
 					'#NAME#' => $value->getName(),
@@ -334,7 +336,7 @@ class Assert
 				[
 					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
 						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
+						'#FULL_PATH#' => mb_strcut(FileSystem::getLocalPath($value),0,-(strlen($value->getName()))),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
 					]),
 					'#NAME#' => $value->getName(),
@@ -362,7 +364,7 @@ class Assert
 				[
 					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
 						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
+						'#FULL_PATH#' => str_replace($value->getName(), '', FileSystem::getLocalPath($value)),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
 					]),
 					'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
@@ -387,7 +389,7 @@ class Assert
 					[
 						'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
 							'#NAME#' => $value->getName(),
-							'#PATH#' => FileSystem::getLocalPath($value),
+							'#FULL_PATH#' => str_replace($value->getName(), '', FileSystem::getLocalPath($value)),
 							'#FILEMAN_URL#' => Admin::getFileManUrl($value),
 						]),
 						'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
@@ -414,7 +416,7 @@ class Assert
 				[
 					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
 						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
+						'#FULL_PATH#' => str_replace($value->getName(), '', FileSystem::getLocalPath($value)),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
 					]),
 					'#NAME#' => $value->getName(),
@@ -440,7 +442,7 @@ class Assert
 				[
 					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
 						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
+						'#FULL_PATH#' => str_replace($value->getName(), '', FileSystem::getLocalPath($value)),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
 					]),
 					'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
@@ -466,7 +468,7 @@ class Assert
 				[
 					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
 						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
+						'#FULL_PATH#' => str_replace($value->getName(), '', FileSystem::getLocalPath($value)),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
 					]),
 					'#NAME#' => $value->getName(),
@@ -486,12 +488,13 @@ class Assert
 	public static function directoryNotExists(Directory $value, string $message = '')
 	{
 		if ($value->isExists()) {
+			\Bitrix\Main\Diag\Debug::dump(FileSystem::getLocalPath($value));
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_DIRECTORY_NOT_EXISTS',
 				[
 					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
+						'#NAME#' => $value->getName().'/',
+						'#FULL_PATH#' => mb_strcut(FileSystem::getLocalPath($value),0,-(strlen($value->getName()))-1),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
 					]),
 					'#NAME#' => $value->getName(),
@@ -769,7 +772,7 @@ class Assert
 				[
 					'#MENU#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
 						'#NAME#' => $menuFile->getName(),
-						'#PATH#' => FileSystem::getLocalPath($menuFile),
+						'#FULL_PATH#' => mb_strcut(FileSystem::getLocalPath($menuFile),0,-(strlen($menuFile->getName()))),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($menuFile),
 					]),
 					'#ITEM#' => $item,
@@ -792,7 +795,7 @@ class Assert
 				[
 					'#MENU#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
 						'#NAME#' => $menuFile->getName(),
-						'#PATH#' => FileSystem::getLocalPath($menuFile),
+						'#FULL_PATH#' => mb_strcut(FileSystem::getLocalPath($menuFile),0,-(strlen($menuFile->getName()))),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($menuFile),
 					]),
 					'#ITEM#' => $item,
@@ -818,7 +821,7 @@ class Assert
 				[
 					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
 						'#NAME#' => $file->getName(),
-						'#PATH#' => FileSystem::getLocalPath($file),
+						'#FULL_PATH#' => str_replace($file->getName(), '', FileSystem::getLocalPath($file)),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($file),
 					]),
 					'#NAME#' => $file->getName(),
