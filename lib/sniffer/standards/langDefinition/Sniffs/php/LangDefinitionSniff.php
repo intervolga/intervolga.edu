@@ -6,13 +6,12 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 Loc::loadMessages(__FILE__);
 
-class LangArrayFromLangDirSniff implements Sniff
+class LangDefinitionSniff implements Sniff
 {
 	public function register()
 	{
 		return [
 			T_OPEN_SQUARE_BRACKET,
-			T_STRING
 		];
 	}
 
@@ -25,7 +24,7 @@ class LangArrayFromLangDirSniff implements Sniff
 			$nextToken = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
 			if ($tokens[$nextToken]['type'] === 'T_CONSTANT_ENCAPSED_STRING') {
 				$error = $tokens[$nextToken]['content'];
-				$phpcsFile->addError($error, $stackPtr, 'A1CheckArPrefix');
+				$phpcsFile->addError($error, $stackPtr, 'langDefinition');
 			}
 		}
 	}

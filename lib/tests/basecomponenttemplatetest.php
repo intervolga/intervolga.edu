@@ -10,9 +10,8 @@ use Intervolga\Edu\FilesTree\SimpleComponentTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
-use Intervolga\Edu\Util\Regex;
-use Intervolga\Edu\Sniffer as NewSniff;
-use Intervolga\Edu\Util\Sniffer;
+use Intervolga\Edu\Sniffer;
+use Intervolga\Edu\Util\Sniffer as OldSniffer;
 
 abstract class BaseComponentTemplateTest extends BaseTest
 {
@@ -61,7 +60,7 @@ abstract class BaseComponentTemplateTest extends BaseTest
 		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
 			if ($knownPhpFile->isExists()) {
 				AssertPhp::goodCode($knownPhpFile);
-				Sniffer::testTemplateFile($knownPhpFile);
+				OldSniffer::testTemplateFile($knownPhpFile);
 			}
 		}
 	}
@@ -109,12 +108,9 @@ abstract class BaseComponentTemplateTest extends BaseTest
 	protected static function getLangArrayTemplateDir(ComponentTemplate $templateDir)
 	{
 		foreach ($templateDir->getKnownFiles() as $template) {
-
-			$result = NewSniff::run([$template->getPath()], ['langArrayFromTemplateDir']);
-
+			$result = Sniffer::run([$template->getPath()], ['langUsage']);
 			foreach ($result as $message) {
 				$newTest[] = mb_strcut($message->getMessage(), 1, -1);
-
 			}
 		}
 
@@ -123,18 +119,13 @@ abstract class BaseComponentTemplateTest extends BaseTest
 
 	protected static function testTemplateLangRu(ComponentTemplate $templateDir, $child)
 	{
-
-		$result = NewSniff::run([$child->getPath()], ['langArrayFromLangDir']);
-
+		$result = Sniffer::run([$child->getPath()], ['langDefinition']);
 		$test = static::getLangArrayTemplateDir($templateDir);
-
 		foreach ($result as $message) {
-
 			$langNames[$child->getName()][] = $message->getMessage();
 			$tester = mb_strcut($message->getMessage(), 1, -1);
-
 			if (!in_array($tester, $test)) {
-				Assert::empty($tester, Loc::getMessage('INTERVOLGA_EDU.SNIFFER_CHECK_LANG_CODE', [
+				Assert::true($tester, Loc::getMessage('INTERVOLGA_EDU.SNIFFER_CHECK_LANG_CODE', [
 					'#FILE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
 						'#NAME#' => $child->getName(),
 						'#PATH#' => FileSystem::getLocalPath($child),
