@@ -142,7 +142,9 @@ $MESS['INTERVOLGA_EDU.IBLOCK_OPTIONS_LOST'] = 'Проблема с ИБ <a href=
 $MESS['INTERVOLGA_EDU.IBLOCK_ELEMENTS_NOT_ENOUGH'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: недостаточно элементов, должно быть хотя бы #EXPECT#';
 $MESS['INTERVOLGA_EDU.USE_ONE_TAB_FOR_IBLOCK_FORM'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: разместите все поля при редактировании элемента на одной вкладке';
 $MESS['INTERVOLGA_EDU.WRONG_IBLOCK_TYPE'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: тип ИБ должен быть #TYPE#';
-$MESS['INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: включите всё логирование действий с элементами';
+$MESS['INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG_ADD'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: установите флаг "Записывать добавление элемента"';
+$MESS['INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG_EDIT'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: установите флаг "Записывать изменение элемента"';
+$MESS['INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG_DELETE'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: установите флаг "Записывать удаление элемента"';
 $MESS['INTERVOLGA_EDU.SET_PERMISSION_EVERYONE_R'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: задайте доступ для всех пользователей Чтение';
 $MESS['INTERVOLGA_EDU.IB_PROPERTY_HAS_LOWER_CASE'] = 'Символьный код свойства <b>#PROPERTY#</b> (ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>) должен быть в верхнем регистре, без кириллицы!';
 $MESS['INTERVOLGA_EDU.FIELD_SURNAME'] = 'Фамилия';
