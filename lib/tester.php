@@ -87,6 +87,10 @@ class Tester
 
 			\Intervolga\Edu\Tests\Course3\Lesson1\TestModule::class,
 
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestResultsPollingIblock::class,
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestPropertyGenderValues::class,
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestLinkWithRespondent::class,
+
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUf::class,
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUfClass::class,
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUFClassIblock::class,
