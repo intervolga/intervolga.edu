@@ -392,9 +392,22 @@ class Assert
 		}
 	}
 
+	public static function fileNotEmpty(File $value)
+	{
+		$content = $value->getContents();
+		Assert::notEmpty($content, Loc::getMessage('INTERVOLGA_EDU.ASSERT_FILE_CONTENT_IS_EMPTY', [
+			'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+				'#NAME#' => $value->getName(),
+				'#PATH#' => FileSystem::getLocalPath($value),
+				'#FILEMAN_URL#' => Admin::getFileManUrl($value),
+			]),
+		]));
+	}
+
 	public static function fileContentNotMatches(File $value, Regex $regex, string $message = '')
 	{
 		static::fseExists($value);
+		Assert::fileNotEmpty($value);
 		$content = $value->getContents();
 		if ($content) {
 			preg_match_all($regex->getRegex(), $content, $matches, PREG_SET_ORDER);
@@ -447,6 +460,7 @@ class Assert
 	{
 		static::fseExists($value);
 		$content = $value->getContents();
+		Assert::notEmpty($content);
 		$matches = [];
 		if ($content) {
 			preg_match_all($regex->getRegex(), $content, $matches, PREG_SET_ORDER);

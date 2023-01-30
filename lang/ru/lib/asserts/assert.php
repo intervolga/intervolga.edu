@@ -18,6 +18,7 @@ $MESS['INTERVOLGA_EDU.ASSERT_FSE_NOT_EXISTS'] = '#VALUE# требуется уд
 $MESS['INTERVOLGA_EDU.ASSERT_FILE_IS_IMAGE'] = 'Файл #VALUE# должен быть картинкой';
 $MESS['INTERVOLGA_EDU.ASSERT_FSE_NAME_MATCH'] = 'Имя файла должно иметь вид <b>#EXPECT#</b>, сейчас #VALUE#';
 $MESS['INTERVOLGA_EDU.ASSERT_FILE_CONTENT_NOT_MATCH'] = 'Файл #VALUE# содержит <b>#EXPECT#</b>';
+$MESS['INTERVOLGA_EDU.ASSERT_FILE_CONTENT_IS_EMPTY'] = 'Файл #VALUE# является пустым';
 $MESS['INTERVOLGA_EDU.ASSERT_FILE_CONTENT_MATCH'] = 'Файл #VALUE# не содержит <b>#EXPECT#</b>';
 $MESS['INTERVOLGA_EDU.ASSERT_DIRECTORY_EXISTS'] = 'Папка #VALUE# не найдена';
 $MESS['INTERVOLGA_EDU.ASSERT_DIRECTORY_NOT_EXISTS'] = 'Папка #VALUE# существует, должна быть удалена';
