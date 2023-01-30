@@ -16,7 +16,8 @@ class PartnersEventsSection extends DirectoryLocator
 			'/event/',
 			'/events/',
 			'/schedule-of-event/',
-			'/schedule-of-events/'
+			'/schedule-of-events/',
+			'/schedule/',
 		];
 	}
 

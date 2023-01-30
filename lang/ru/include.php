@@ -32,7 +32,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_UPDATES'] = 'Проверка обновл
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_UPDATES_DESCRIPTION'] = 'Список <a href="/bitrix/admin/update_system.php?refresh=Y&lang=ru" target="_blank">рекомендуемых обновлений</a> должен быть пуст';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_SERVICESDELETED'] = 'Проверка раздела &laquo;Услуги&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_SERVICESDELETED_DESCRIPTION'] = 'Должен быть удален с диска и из верхнего меню';
-$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_CHECKPARTNERSSECTION'] = 'Проверка раздела "Партнерам" ';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_CHECKPARTNERSSECTION'] = 'Проверка раздела «Партнерам»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_CHECKPARTNERSSECTION_DESCRIPTION'] = 'Заголовок индексной страницы, существование подраздела "Расписание мероприятий", страницы "Условия сотрудничества", проверка левого меню';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_REVIEWS'] = 'Проверка раздела &laquo;Отзывы&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_REVIEWS_DESCRIPTION'] = 'Должен быть создан и добавлен в меню';
