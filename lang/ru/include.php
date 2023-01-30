@@ -18,6 +18,7 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2'] = '1.2 Получение связан
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON2'] = '2. Технологии: параметры модулей, почтовая системы, агенты, журнал событий';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4'] = '4. Отложенные функции';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1'] = '1. Создание модуля';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON3'] = '3. Инфоблоки - Архитектура';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы';
 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE'] = 'Проверка установки модуля «Корпоративный сайт производственной компании»';
@@ -112,7 +113,6 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWTARGETNEWS_DESCRIPTION'] = 'ShowVi
 
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE_DESCRIPTION'] = 'Должна существовать папка /local/modules/intervolga.#Ваше название модуля#/, модуль должен быть установлен';
-$MESS['INTERVOLGA_EDU.COURSE3_LESSON3'] = 'Инфоблоки - Архитектура';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON3_PROPERTYGENDERVALUES'] = 'Проверка свойства \'Пол\'';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON3_LINKWITHRESPONDENT'] = 'Проверка свойства Респондент - привязка к элементам ИБ \'Респонденты\'';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Проверка собственного UF-свойства';
