@@ -30,6 +30,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestReviews::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestProducts::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestPromo::class,
+			\Intervolga\Edu\Tests\Course1\Lesson2\TestCheckPartnersSection::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestPartnersPage::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestSeoPartners::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestMenu::class,
@@ -95,6 +96,10 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestHermitage::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson1\TestModule::class,
+
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestResultsPollingIblock::class,
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestPropertyGenderValues::class,
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestLinkWithRespondent::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUf::class,
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUfClass::class,
