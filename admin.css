@@ -20,3 +20,13 @@
 #bx-admin-prefix #tabControl_layout .adm-info-message .adm-btn {
 	min-height: 29px;
 }
+#bx-admin-prefix .iv-copy-link {
+	display: inline-block;
+	height: 22px;
+	width: 22px;
+	cursor: pointer;
+	border-style: hidden ;
+	border-color: unset;
+	background-image: url(/bitrix/images/fileman/panel/edit_page.gif);
+	background-color: rgba(28,28,28,0);
+}

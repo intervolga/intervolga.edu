@@ -16,6 +16,7 @@ use Bitrix\Main\Context;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\ModuleManager;
+use Bitrix\Main\Page\Asset;
 use Bitrix\Main\Type\DateTime;
 use Intervolga\Edu\Locator\BaseLocator;
 use Intervolga\Edu\Tester;
@@ -29,6 +30,7 @@ Loc::loadMessages(__FILE__);
 
 global $APPLICATION, $USER;
 $APPLICATION->setAdditionalCSS('/local/modules/intervolga.edu/admin.css');
+Asset::getInstance()->addJs('/local/modules/intervolga.edu/admin.js');
 
 $module_id = 'intervolga.edu';
 Loader::includeModule($module_id);
