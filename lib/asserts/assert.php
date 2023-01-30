@@ -252,6 +252,23 @@ class Assert
 		}
 	}
 
+	public static function keyEqValue($array, $key, $value, $message = '')
+	{
+		if (is_array($array)) {
+			if ($array[$key] != $value) {
+				static::registerError(static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_KEY_EQ_VALUE',
+					[
+						'#KEY#' => static::valueToString($key),
+						'#EXPECT#' => static::valueToString($value),
+						'#VALUE#' => static::valueToString($array[$key]),
+					],
+					$message
+				));
+			}
+		}
+	}
+
 	public static function keyExists($array, $key, $message = '')
 	{
 		if (!array_key_exists($key, $array)) {
@@ -755,6 +772,34 @@ class Assert
 					],
 					$message
 				));
+		}
+	}
+
+	/**
+	 * @param array $property
+	 * @param array $values
+	 * @param string $message
+	 * @return void
+	 * @throws AssertException
+	 */
+	public static function propertyTypeListHasValues(array $property, array $values, string $message = '')
+	{
+		$properties = \CIBlockPropertyEnum::GetList([], ['PROPERTY_ID' => $property['ID']]);
+		$nowValues = [];
+		while ($prop = $properties->fetch()) {
+			$nowValues[] = $prop['VALUE'];
+		}
+		$toAdd = array_diff($values, $nowValues);
+		$toDelete = array_diff($nowValues, $values);
+		if ($toAdd || $toDelete) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_PROPERTIES_HASNT_VALUES',
+				[
+					'#PROPERTY#' => $property['NAME'],
+					'#NOW_PROPERTIES#' => implode(', ', $values),
+					'#REQUIRED#'=> implode(', ', $nowValues)
+				]
+			), $message);
 		}
 	}
 

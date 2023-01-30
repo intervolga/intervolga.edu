@@ -114,7 +114,7 @@ abstract class BaseTestIblock extends BaseTest
 		Assert::eq(
 			$fields['LOG_ELEMENT_ADD']['IS_REQUIRED'],
 			'Y',
-			Loc::getMessage('INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG', [
+			Loc::getMessage('INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG_ADD', [
 				'#IBLOCK_LINK#' => Admin::getIblockUrl($iblock),
 				'#IBLOCK#' => $iblock['NAME'],
 			])
@@ -122,7 +122,7 @@ abstract class BaseTestIblock extends BaseTest
 		Assert::eq(
 			$fields['LOG_ELEMENT_EDIT']['IS_REQUIRED'],
 			'Y',
-			Loc::getMessage('INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG', [
+			Loc::getMessage('INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG_EDIT', [
 				'#IBLOCK_LINK#' => Admin::getIblockUrl($iblock),
 				'#IBLOCK#' => $iblock['NAME'],
 			])
@@ -130,7 +130,7 @@ abstract class BaseTestIblock extends BaseTest
 		Assert::eq(
 			$fields['LOG_ELEMENT_DELETE']['IS_REQUIRED'],
 			'Y',
-			Loc::getMessage('INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG', [
+			Loc::getMessage('INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG_DELETE', [
 				'#IBLOCK_LINK#' => Admin::getIblockUrl($iblock),
 				'#IBLOCK#' => $iblock['NAME'],
 			])
