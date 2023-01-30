@@ -58,9 +58,14 @@ class TestCheckPartnersSection extends BaseTest
 			$links[$key] = $link;
 		}
 
+		Assert::menuItemExists(
+			FileSystem::getLocalPath(FileSystem::getInnerFile($directory, '.left.menu.php')),
+			FileSystem::getLocalPath($sectionEvents)
+		);
 		Assert::eq(
 			$links[FileSystem::getLocalPath($sectionEvents)],
-			Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_PARTNERS_EVENT_PAGE')
+			Loc::getMessage('INTERVOLGA_EDU.PARTNERS_EVENTS_DIRECTORY'),
+			Loc::getMessage('INTERVOLGA_EDU.PARTNERS_EVENTS_DIRECTORY_WRONG_NAME')
 		);
 	}
 }
