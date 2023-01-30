@@ -31,6 +31,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestProducts::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestPromo::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestPartnersPage::class,
+			\Intervolga\Edu\Tests\Course1\Lesson2\TestSeoPartners::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestMenu::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestLocalPhpInterface::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestDumpFunction::class,
@@ -79,11 +80,19 @@ class Tester
 
 			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestCatalogBindingProperty::class,
 			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestPropertyPrice::class,
+
 			\Intervolga\Edu\Tests\Course2\Lesson2\TestAgentExist::class,
 			\Intervolga\Edu\Tests\Course2\Lesson2\TestAgentParameters::class,
 			\Intervolga\Edu\Tests\Course2\Lesson2\TestPostEvent::class,
+
 			\Intervolga\Edu\Tests\Course2\Lesson4\TestSetViewTargetNews::class,
 			\Intervolga\Edu\Tests\Course2\Lesson4\TestShowViewTargetNews::class,
+			\Intervolga\Edu\Tests\Course2\Lesson4\TestSetViewTargetMaterials::class,
+			\Intervolga\Edu\Tests\Course2\Lesson4\TestShowViewContentMaterials::class,
+
+			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestComponentDirectory::class,
+			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestDescription::class,
+			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestHermitage::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson1\TestModule::class,
 

@@ -447,25 +447,26 @@ class Assert
 	{
 		static::fseExists($value);
 		$content = $value->getContents();
+		$matches = [];
 		if ($content) {
 			preg_match_all($regex->getRegex(), $content, $matches, PREG_SET_ORDER);
-			if (!$matches) {
-				static::registerError(static::getCustomOrLocMessage(
-					'INTERVOLGA_EDU.ASSERT_FILE_CONTENT_MATCH',
-					[
-						'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-							'#NAME#' => $value->getName(),
-							'#PATH#' => FileSystem::getLocalPath($value),
-							'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-						]),
-						'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
+		}
+		if (!$matches) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_FILE_CONTENT_MATCH',
+				[
+					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
 						'#NAME#' => $value->getName(),
 						'#PATH#' => FileSystem::getLocalPath($value),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-					],
-					$message
-				));
-			}
+					]),
+					'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
+					'#NAME#' => $value->getName(),
+					'#PATH#' => FileSystem::getLocalPath($value),
+					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
+				],
+				$message
+			));
 		}
 	}
 
@@ -843,6 +844,31 @@ class Assert
 					'#NAME#' => $menuFile->getName(),
 					'#PATH#' => FileSystem::getLocalPath($menuFile),
 					'#FILEMAN_URL#' => Admin::getFileManUrl($menuFile),
+				],
+				$message
+			));
+		}
+	}
+
+	public static function isImage(File $file, string $message = '')
+	{
+		$extensions = [
+			'png',
+			'jpeg',
+			'jpg',
+		];
+		if (!in_array($file->getExtension(), $extensions)) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_FILE_IS_IMAGE',
+				[
+					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+						'#NAME#' => $file->getName(),
+						'#PATH#' => FileSystem::getLocalPath($file),
+						'#FILEMAN_URL#' => Admin::getFileManUrl($file),
+					]),
+					'#NAME#' => $file->getName(),
+					'#PATH#' => FileSystem::getLocalPath($file),
+					'#FILEMAN_URL#' => Admin::getFileManUrl($file),
 				],
 				$message
 			));
