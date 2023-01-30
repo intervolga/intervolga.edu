@@ -11,8 +11,8 @@ use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Locator\Agent\AgentLocator;
 use Intervolga\Edu\Locator\BaseLocator;
 use Intervolga\Edu\Locator\Event\EventLocator;
-use Intervolga\Edu\Locator\Event\Type\TypeLocator;
 use Intervolga\Edu\Locator\Event\Template\TemplateLocator;
+use Intervolga\Edu\Locator\Event\Type\TypeLocator;
 use Intervolga\Edu\Locator\Iblock\IblockLocator;
 use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
 use Intervolga\Edu\Locator\Iblock\Section\SectionLocator;
@@ -249,6 +249,23 @@ class Assert
 				],
 				$message
 			));
+		}
+	}
+
+	public static function keyEqValue($array, $key, $value, $message = '')
+	{
+		if (is_array($array)) {
+			if ($array[$key] != $value) {
+				static::registerError(static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_KEY_EQ_VALUE',
+					[
+						'#KEY#' => static::valueToString($key),
+						'#EXPECT#' => static::valueToString($value),
+						'#VALUE#' => static::valueToString($array[$key]),
+					],
+					$message
+				));
+			}
 		}
 	}
 
