@@ -11,7 +11,6 @@ class ResultsPollingIblock extends IblockLocator
 	{
 		return [
 			'=CODE' => [
-				'furniture_news_s1',
 				'result_polling',
 				'result.polling',
 				'results_polling',
