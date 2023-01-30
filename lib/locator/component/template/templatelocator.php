@@ -1,10 +1,14 @@
 <?php
 namespace Intervolga\Edu\Locator\Component\Template;
 
+use Bitrix\Main\Application;
 use Bitrix\Main\Component\ParametersTable;
+use Bitrix\Main\IO\File;
+use Intervolga\Edu\Locator\BaseLocator;
 use Intervolga\Edu\Locator\Component\ComponentLocator;
+use Intervolga\Edu\Util\Admin;
 
-abstract class TemplateLocator
+abstract class TemplateLocator extends BaseLocator
 {
 	public static function find(): array
 	{
@@ -39,8 +43,6 @@ abstract class TemplateLocator
 	 */
 	abstract public static function getComponent(): string;
 
-	abstract public static function getNameLoc(): string;
-
 	abstract public static function getFilter(): array;
 
 	/**
@@ -63,4 +65,15 @@ abstract class TemplateLocator
 		return implode(';', $result);
 	}
 
+	public static function getDisplayText($find): string
+	{
+		return $find['TEMPLATE_NAME'];
+	}
+
+	public static function getDisplayHref($find): string
+	{
+		$file = new File(Application::getDocumentRoot() . $find['REAL_PATH']);
+
+		return Admin::getFileManUrl($file);
+	}
 }

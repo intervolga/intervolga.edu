@@ -7,14 +7,20 @@ class Menu
 {
 	/**
 	 * @param string $localPath
+	 * @param bool $needTrim
 	 * @return string[]
 	 */
-	public static function getMenuLinks(string $localPath): array
+	public static function getMenuLinks(string $localPath, $needTrim = false): array
 	{
 		$result = [];
 		$items = static::getMenuItems($localPath);
 		foreach ($items as $menuLink) {
-			$result[$menuLink[1]] = $menuLink[0];
+			$key = $menuLink[1];
+			if ($needTrim)
+			{
+				$key = trim($key, '/');
+			}
+			$result[$key] = $menuLink[0];
 		}
 
 		return $result;
