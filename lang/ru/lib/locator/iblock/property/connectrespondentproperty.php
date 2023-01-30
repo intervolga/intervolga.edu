@@ -1,0 +1,2 @@
+<?php
+$MESS['INTERVOLGA_EDU.RESPONDENT_PROPERTY'] = 'Респондент';

@@ -3,12 +3,15 @@ namespace Intervolga\Edu\Locator\Iblock;
 
 use Bitrix\Main\Localization\Loc;
 
+Loc::loadMessages(__FILE__);
+
 class ResultsPollingIblock extends IblockLocator
 {
 	public static function getFilter(): array
 	{
 		return [
 			'=CODE' => [
+				'furniture_news_s1',
 				'result_polling',
 				'result.polling',
 				'results_polling',

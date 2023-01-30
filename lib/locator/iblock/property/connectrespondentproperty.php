@@ -2,10 +2,9 @@
 namespace Intervolga\Edu\Locator\Iblock\Property;
 
 use Bitrix\Main\Localization\Loc;
-use CIBlockProperty;
-use Intervolga\Edu\Locator\Iblock\PromoIblock;
-use Intervolga\Edu\Locator\Iblock\RespondentIblock;
 use Intervolga\Edu\Locator\Iblock\ResultsPollingIblock;
+
+Loc::loadMessages(__FILE__);
 
 class ConnectRespondentProperty extends PropertyLocator
 {
@@ -32,5 +31,4 @@ class ConnectRespondentProperty extends PropertyLocator
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.RESPONDENT_PROPERTY');
 	}
-
 }
