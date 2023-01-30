@@ -771,8 +771,9 @@ class Assert
 		while ($prop = $properties->fetch()) {
 			$nowValues[] = $prop['VALUE'];
 		}
-		$smashValues = array_merge($nowValues, $values);
-		if (count($smashValues) !== count($values)) {
+		$toAdd = array_diff($values, $nowValues);
+		$toDelete = array_diff($nowValues, $values);
+		if ($toAdd || $toDelete) {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_PROPERTIES_HASNT_VALUES',
 				[
