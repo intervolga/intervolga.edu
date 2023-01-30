@@ -8,7 +8,7 @@ use Intervolga\Edu\FilesTree\ComponentTemplate;
 use Intervolga\Edu\FilesTree\NewsTemplate;
 use Intervolga\Edu\FilesTree\SimpleComponentTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
-use Intervolga\Edu\Util\Sniffer;
+use Intervolga\Edu\Util\TemplateFileChecker;
 
 abstract class BaseComponentTemplateTest extends BaseTest
 {
@@ -95,7 +95,7 @@ abstract class BaseComponentTemplateTest extends BaseTest
 		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
 			if ($knownPhpFile->isExists()) {
 				AssertPhp::goodCode($knownPhpFile);
-				Sniffer::testTemplateFile($knownPhpFile);
+				TemplateFileChecker::testTemplateFile($knownPhpFile);
 			}
 		}
 	}
