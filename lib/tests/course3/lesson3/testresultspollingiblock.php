@@ -27,4 +27,7 @@ class TestResultsPollingIblock extends BaseTestIblock
 			GenderProperty::class
 		];
 	}
+
+	protected static function testElementsLog(array $iblock)
+	{}
 }
