@@ -18,6 +18,7 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2'] = '1.2 Получение связан
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON2'] = '2. Технологии: параметры модулей, почтовая системы, агенты, журнал событий';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4'] = '4. Отложенные функции';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1'] = '5.1 Создание собственных компонентов';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON5_2'] = '5.2 Настройки кеширования - базовые понятия';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1'] = '1. Создание модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON3'] = '3. Инфоблоки - Архитектура';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы';
@@ -122,6 +123,8 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1_DESCRIPTION'] = 'Проверка фай
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1_DESCRIPTION_DESCRIPTION'] = 'В файле .description.php текст должен быть вынесен в lang-файл, подключение news_list.gif должно быть убрано';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1_HERMITAGE'] = 'Проверка файла подключения эрмитажа';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1_HERMITAGE_DESCRIPTION'] = 'В шаблоне должен быть подключен эрмитаж (для разделов и для элементов)';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON5_2_COMPONENTCACHE'] = 'Проверка кеширования в кастомном компоненте';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON5_2_COMPONENTCACHE_DESCRIPTION'] = 'Компонент дожен иметь настройку кеширования в параметрах компонента, в классе компонента должен быть вызов StartResultCache';
 
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE_DESCRIPTION'] = 'Должна существовать папка /local/modules/intervolga.#Ваше название модуля#/, модуль должен быть установлен';

@@ -1,7 +1,10 @@
 <?php
 namespace Intervolga\Edu\Locator\IO;
 
+
+use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Util\FileSystem;
 
 class CustomComponent extends DirectoryLocator
 {
@@ -18,5 +21,24 @@ class CustomComponent extends DirectoryLocator
 			'/local/components/mycomponents/vacancies.list',
 		];
 	}
+	public static function getComponentFilePath()
+	{
+		if (FileSystem::getInnerFile(static::find(), 'component.php')->isExists()) {
+			$path = FileSystem::getLocalPath(FileSystem::getInnerFile(static::find(), 'component.php'));
+			return new File($path);
+		} elseif (FileSystem::getInnerFile(static::find(), 'class.php')->isExists()) {
+			$path = FileSystem::getLocalPath(FileSystem::getInnerFile(static::find(), 'class.php'));
+			return new File($path);
+		}
+		return false;
+	}
 
+	public static function getParametersFilePath()
+	{
+		if (FileSystem::getInnerFile(static::find(), '.parameters.php')->isExists()) {
+			$path = FileSystem::getLocalPath(FileSystem::getInnerFile(static::find(), '.parameters.php'));
+			return new File($path);
+		}
+		return false;
+	}
 }
