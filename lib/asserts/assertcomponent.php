@@ -1,9 +1,12 @@
 <?php
 namespace Intervolga\Edu\Asserts;
 
+use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Locator\Component\ComponentLocator;
 use Intervolga\Edu\Locator\Component\Template\TemplateLocator;
+
+Loc::loadMessages(__FILE__);
 
 class AssertComponent extends Assert
 {
@@ -46,7 +49,37 @@ class AssertComponent extends Assert
 				],
 				$message
 			));
+		}
+	}
 
+	/**
+	 * @param string|ComponentLocator $value
+	 * @param string $param
+	 * @param string $expect
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function parameterEq($value, string $param, string $expect, string $message = '')
+	{
+		$parameters = $value::find()['PARAMETERS'];
+		if ($parameters) {
+			$paramToCheck = $parameters[$param];
+			if (substr_count($param, '.')) {
+				$paramParts = explode('.', $param);
+				$paramToCheck = $parameters[$paramParts[0]][$paramParts[1]];
+			}
+			if ($paramToCheck != $expect) {
+				static::registerError(static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_COMPONENT_PARAMETER_EQ',
+					[
+						'#COMPONENT#' => $value::getCode(),
+						'#PARAM#' => $param,
+						'#VALUE#' => static::valueToString($paramToCheck),
+						'#EXPECT#' => static::valueToString($expect),
+					],
+					$message
+				));
+			}
 		}
 	}
 }
