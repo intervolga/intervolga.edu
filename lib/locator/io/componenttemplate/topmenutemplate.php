@@ -10,6 +10,7 @@ class TopMenuTemplate extends DirectoryLocator
 	{
 		return [
 			'/local/templates/.default/components/bitrix/menu/top_multi/',
+			'/local/templates/.default/components/bitrix/menu/top_multilvl/',
 			'/local/templates/.default/components/bitrix/menu/top/',
 		];
 	}
