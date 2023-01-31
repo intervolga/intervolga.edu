@@ -434,7 +434,7 @@ class Assert
 						]),
 						'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
 						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
+						'#LOCAL_PATH#' => FileSystem::getLocalPath($value),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
 					],
 					$message

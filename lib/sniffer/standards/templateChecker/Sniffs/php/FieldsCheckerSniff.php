@@ -5,6 +5,7 @@ use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileSystem;
+use Intervolga\Edu\Util\FileMessage;
 use PHP_CodeSniffer\Sniffs\Sniff;
 
 class FieldsCheckerSniff implements Sniff
@@ -30,10 +31,10 @@ class FieldsCheckerSniff implements Sniff
 			if (mb_strcut($tokens[$phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 3), null, true)]['content'], 1, -1) !== 'FIELDS') {
 				$file = new File($phpcsFile->getFilename());
 				$error = Loc::getMessage('INTERVOLGA_EDU.SNIFFER_FIELDS', [
-					'#FILE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+					'#FILE#' => FileMessage::getFileMessage([
 						'#NAME#' => $file->getName(),
-						'#PATH#' => FileSystem::getLocalPath($file),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($file),
+						'#FULL_PATH#' => str_replace($file->getName(), '', FileSystem::getLocalPath($file)),
 					]),
 					'#CODE#' => $token['content']
 				]);
