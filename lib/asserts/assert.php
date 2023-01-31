@@ -594,6 +594,31 @@ class Assert
 	 * @param string $message
 	 * @throws AssertException
 	 */
+	public static function checkModuleOptionNotEmpty(string $module, string $optionKey, string $name = '', string $message = '')
+	{
+		$realValue = Option::getRealValue($module, $optionKey);
+		if (!strlen($realValue)) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.NOT_CORRECT_MODULE_OPTION_NOT_EMPTY',
+				[
+					'#MODULE#' => $module,
+					'#MODULE_URL#' => Admin::getModuleOptionsUrl($module),
+					'#OPTION#' => $name ?? $optionKey,
+					'#NOW_VALUE#' => $realValue,
+				],
+				$message
+			));
+		}
+	}
+
+	/**
+	 * @param string $module
+	 * @param string $optionKey
+	 * @param string|int $requiredValue
+	 * @param string $name
+	 * @param string $message
+	 * @throws AssertException
+	 */
 	public static function checkModuleOption(string $module, string $optionKey, $requiredValue, string $name = '', string $message = '')
 	{
 		$realValue = Option::getRealValue($module, $optionKey);
@@ -602,6 +627,7 @@ class Assert
 				'INTERVOLGA_EDU.NOT_CORRECT_MODULE_OPTION',
 				[
 					'#MODULE#' => $module,
+					'#MODULE_URL#' => Admin::getModuleOptionsUrl($module),
 					'#OPTION#' => $name ?? $optionKey,
 					'#NOW_VALUE#' => $realValue,
 					'#REQUIRED_VALUE#' => $requiredValue,
