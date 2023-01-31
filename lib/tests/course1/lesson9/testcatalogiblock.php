@@ -8,49 +8,36 @@ use Intervolga\Edu\Tests\BaseTest;
 
 class TestCatalogIblock extends BaseTest
 {
-	protected static function run()
+	public static function interceptErrors()
 	{
-		$fields = \CIBlock::GetArrayByID(ProductsIblock::find()['ID']);
-		Assert::notEmpty($fields);
-		$expectFields = static::getVariantUrl($fields);
-
-		Assert::eq(
-			$fields['LIST_PAGE_URL'],
-			$expectFields['LIST_PAGE_URL'],
-			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_LIST_PAGE_URL')
-		);
-
-		Assert::eq(
-			$fields['DETAIL_PAGE_URL'],
-			$expectFields['DETAIL_PAGE_URL'],
-			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_DETAIL_PAGE_URL')
-		);
-		Assert::eq(
-			$fields['SECTION_PAGE_URL'],
-			$expectFields['SECTION_PAGE_URL'],
-			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_SECTION_PAGE_URL')
-		);
+		return true;
 	}
 
-	private static function getVariantUrl($fields)
+	protected static function run()
 	{
-		if (substr_count($fields['LIST_PAGE_URL'], '/') == 2) {
-			$expect['LIST_PAGE_URL'] = '#SITE_DIR#/products/';
-		} else {
-			$expect['LIST_PAGE_URL'] = '#SITE_DIR#products/';
-		}
-		if (substr_count($fields['DETAIL_PAGE_URL'], '/') == 4) {
-			$expect['DETAIL_PAGE_URL'] = '#SITE_DIR#/products/#SECTION_CODE#/#CODE#/';
-		} else {
-			$expect['DETAIL_PAGE_URL'] = '#SITE_DIR#products/#SECTION_CODE#/#CODE#/';
-		}
-		if (substr_count($fields['SECTION_PAGE_URL'], '/') == 3) {
-			$expect['SECTION_PAGE_URL'] = '#SITE_DIR#/products/#SECTION_CODE#/';
-		} else {
-			$expect['SECTION_PAGE_URL'] = '#SITE_DIR#products/#SECTION_CODE#/';
-		}
+		Assert::iblockLocator(ProductsIblock::class);
+		if ($iblock = ProductsIblock::find()) {
+			Assert::eq(
+				static::prepareUrl($iblock['LIST_PAGE_URL']),
+				'#SITE_DIR#products/',
+				Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_ASSERT_EQUAL_LIST_PAGE_URL')
+			);
 
-		return $expect;
+			Assert::eq(
+				static::prepareUrl($iblock['DETAIL_PAGE_URL']),
+				'#SITE_DIR#products/#SECTION_CODE#/#CODE#/',
+				Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_ASSERT_EQUAL_DETAIL_PAGE_URL')
+			);
+			Assert::eq(
+				static::prepareUrl($iblock['SECTION_PAGE_URL']),
+				'#SITE_DIR#products/#SECTION_CODE#/',
+				Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_ASSERT_EQUAL_SECTION_PAGE_URL')
+			);
+		}
+	}
 
+	protected static function prepareUrl($url)
+	{
+		return str_replace('#SITE_DIR#/', '#SITE_DIR#', $url);
 	}
 }
