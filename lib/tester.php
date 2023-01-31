@@ -69,6 +69,11 @@ class Tester
 
 			\Intervolga\Edu\Tests\Course1\Lesson8\TestPromoComponent::class,
 
+			\Intervolga\Edu\Tests\Course1\Lesson9\TestCatalogIblock::class,
+			\Intervolga\Edu\Tests\Course1\Lesson9\TestComponentOptions::class,
+			\Intervolga\Edu\Tests\Course1\Lesson9\TestSymbolicCode::class,
+			\Intervolga\Edu\Tests\Course1\Lesson9\TestNavPage::class,
+
 			\Intervolga\Edu\Tests\Course1\Lesson10\TestSearchAction::class,
 			\Intervolga\Edu\Tests\Course1\Lesson10\TestSearchTemplate::class,
 
@@ -94,6 +99,9 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestComponentDirectory::class,
 			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestDescription::class,
 			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestHermitage::class,
+
+			\Intervolga\Edu\Tests\Course2\Lesson7\SecurityLevel::class,
+			\Intervolga\Edu\Tests\Course2\Lesson7\SecureAuthorization::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson1\TestModule::class,
 

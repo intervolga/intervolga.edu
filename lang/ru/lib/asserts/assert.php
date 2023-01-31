@@ -30,7 +30,7 @@ $MESS['INTERVOLGA_EDU.ASSERT_SECTION_LOCATOR'] = 'Раздел <b>#SECTION#</b> 
 $MESS['INTERVOLGA_EDU.ASSERT_PROPERTY_LOCATOR'] = 'Свойство <b>#PROPERTY#</b> не найдено (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.ASSERT_DIRECTORY_LOCATOR'] = 'Папка #DIRECTORY# <b>не найдена</b> (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.ASSERT_FILE_LOCATOR'] = 'Файл #FILE# <b>не найден</b> (#POSSIBLE#)';
-$MESS['INTERVOLGA_EDU.ASSERT_COMPONENT_LOCATOR'] = 'Компонент #COMPONENT# <b>не найден</b>';
+$MESS['INTERVOLGA_EDU.ASSERT_COMPONENT_LOCATOR'] = 'Компонент #COMPONENT# <b>не найден</b>. Если компонент существует - пересохраните его.';
 $MESS['INTERVOLGA_EDU.ASSERT_TEMPLATE_LOCATOR'] = 'Использование шаблона <b>#TEMPLATE#</b> компонента <b>#COMPONENT#</b> не обнаружено (#POSSIBLE#). Если компонент существует, пересохраните его.';
 $MESS['INTERVOLGA_EDU.ASSERT_MENU_ITEM_NOT_EXISTS'] = 'Пункт #ITEM# в меню #MENU# должен быть удален';
 $MESS['INTERVOLGA_EDU.ASSERT_MENU_ITEM_EXISTS'] = 'Пункт #ITEM# в меню #MENU# не найден, должен существовать';
@@ -39,7 +39,8 @@ $MESS['INTERVOLGA_EDU.ASSERT_EVENT_EXISTS'] = 'Обработчик событи
 $MESS['INTERVOLGA_EDU.ASSERT_REQUIRED_TYPE_BASE'] = 'Класс "#CURRENT_CLASS#" должен наследоваться от "#TYPE_BASE#". Сейчас наследуется от "#NOW_BASE_TYPE#"';
 $MESS['INTERVOLGA_EDU.ASSERT_REQUIRED_RULES_USERFIELD'] = 'Не найдено UF-поле (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.ASSERT_NOT_FOUND_USERFIELD'] = 'Не найден пользовательский тип "#FIELD#" для раздела инфоблоков (id к примеру:, "#REQUIRED_PROPERTIES#")';
-$MESS['INTERVOLGA_EDU.NOT_CORRECT_MODULE_OPTION'] = 'Настройка <b>#OPTION#</b> модуля <b>#MODULE#</b> равна #NOW_VALUE# (требуется #REQUIRED_VALUE#)';
+$MESS['INTERVOLGA_EDU.NOT_CORRECT_MODULE_OPTION'] = 'Настройка <b>#OPTION#</b> модуля <a href="#MODULE_URL#" target="_blank">#MODULE#</a> равна #NOW_VALUE# (требуется #REQUIRED_VALUE#)';
+$MESS['INTERVOLGA_EDU.NOT_CORRECT_MODULE_OPTION_NOT_EMPTY'] = 'Настройка <b>#OPTION#</b> модуля <a href="#MODULE_URL#" target="_blank">#MODULE#</a> должна быть задана';
 $MESS['INTERVOLGA_EDU.ASSERT_AGENT_EXISTS'] = 'Агент <b>#NAME#</b> не найден (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.ASSERT_EVENT_MESSAGE_EXISTS'] = 'Почтовое событие <b>#NAME#</b> не найдено (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.ASSERT_EVENT_TEMPLATE_EXISTS'] = 'Почтовый шаблон <b>#NAME#</b> не найден (#POSSIBLE#)';
