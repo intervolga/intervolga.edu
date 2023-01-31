@@ -8,28 +8,88 @@ use CIBlockSection;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Locator\Iblock\ProductsIblock;
 use Intervolga\Edu\Tests\BaseTest;
+use Intervolga\Edu\Util\Admin;
 
 class TestSymbolicCode extends BaseTest
 {
+	public static function interceptErrors()
+	{
+		return true;
+	}
+
 	protected static function run()
 	{
 		Assert::iblockLocator(ProductsIblock::class);
-
-		$parameterCode = CIBlock::GetFields(ProductsIblock::find()['ID'])['CODE']['IS_REQUIRED'];
-		Assert::eq($parameterCode, 'Y', Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_CODE_IS_REQUIRED'));
-
-		$sectionsCode = CIBlockSection::GetList(false, ['IBLOCK_ID' => ProductsIblock::find()['ID']]);
-		while ($section = $sectionsCode->fetch()) {
-			Assert::notEmpty($section['CODE'], Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_SECTION_CODE_IS_EMPTY', ['#NAME#' => $section['NAME']]));
+		if ($iblock = ProductsIblock::find()) {
+			static::checkCodeRequired($iblock);
+			static::checkSectionsCodes($iblock);
+			static::checkElementsCodes($iblock);
 		}
-
-		$allIblock = CIblockElement::getList(false, ['IBLOCK_ID' => ProductsIblock::find()['ID']], []);
-		$iblockWithoutCode = CIblockElement::getList(false, [
-			'IBLOCK_ID' => ProductsIblock::find()['ID'],
-			'!CODE' => false
-		], []);
-		Assert::eq($allIblock, $iblockWithoutCode, Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_CODE_IS_EMPTY') . ($allIblock - $iblockWithoutCode));
-
 	}
 
+	protected static function checkCodeRequired(array $iblock)
+	{
+		$fields = CIBlock::getFields($iblock['ID']);
+		Assert::eq(
+			$fields['CODE']['IS_REQUIRED'],
+			'Y',
+			Loc::getMessage(
+				'INTERVOLGA_EDU.COURSE_1_LESSON_1_9_CODE_IS_REQUIRED', [
+					'#IBLOCK_LINK#' => Admin::getIblockUrl($iblock),
+					'#IBLOCK#' => $iblock['NAME'],
+				]
+			)
+		);
+		Assert::eq(
+			$fields['SECTION_CODE']['IS_REQUIRED'],
+			'Y',
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_SECTION_CODE_IS_REQUIRED', [
+				'#IBLOCK_LINK#' => Admin::getIblockUrl($iblock),
+				'#IBLOCK#' => $iblock['NAME'],
+			])
+		);
+	}
+
+	protected static function checkSectionsCodes(array $iblock)
+	{
+		$sectionsCode = CIBlockSection::getList(false, ['IBLOCK_ID' => $iblock['ID']]);
+		while ($section = $sectionsCode->fetch()) {
+			Assert::notEmpty(
+				$section['CODE'],
+				Loc::getMessage(
+					'INTERVOLGA_EDU.COURSE_1_LESSON_1_9_SECTION_CODE_IS_EMPTY',
+					[
+						'#SECTION_LINK#' => Admin::getIblockSectionUrl($section),
+						'#SECTION#' => $section['NAME'],
+						'#IBLOCK_LINK#' => Admin::getIblockUrl($iblock),
+						'#IBLOCK#' => $iblock['NAME'],
+					]
+				)
+			);
+		}
+	}
+
+	protected static function checkElementsCodes(array $iblock)
+	{
+		$allIblock = CIblockElement::getList(false, ['IBLOCK_ID' => $iblock['ID']], []);
+		$iblockWithoutCode = CIblockElement::getList(
+			false,
+			[
+				'IBLOCK_ID' => $iblock['ID'],
+				'!CODE' => false
+			],
+			[]
+		);
+		Assert::eq(
+			$allIblock,
+			$iblockWithoutCode,
+			Loc::getMessage(
+				'INTERVOLGA_EDU.COURSE_1_LESSON_1_9_CODE_IS_EMPTY', [
+					'#COUNT#' => ($allIblock - $iblockWithoutCode),
+					'#IBLOCK_LINK#' => Admin::getIblockUrl($iblock),
+					'#IBLOCK#' => $iblock['NAME'],
+				]
+			)
+		);
+	}
 }
