@@ -38,6 +38,16 @@ class TestCatalogIblock extends BaseTest
 
 	protected static function prepareUrl($url)
 	{
-		return str_replace('#SITE_DIR#/', '#SITE_DIR#', $url);
+		return str_replace(
+			[
+				'#SITE_DIR#/',
+				'#ELEMENT_CODE#'
+			],
+			[
+				'#SITE_DIR#',
+				'#CODE#'
+			],
+			$url
+		);
 	}
 }
