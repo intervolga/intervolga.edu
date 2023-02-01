@@ -8,7 +8,7 @@ use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Locator\Iblock\NewsIblock;
 use Intervolga\Edu\Tests\BaseTest;
 
-class DeactivationActiveNews extends BaseTest
+class TestDeactivationActiveNews extends BaseTest
 {
 	protected static function run()
 	{
