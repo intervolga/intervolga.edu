@@ -83,7 +83,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson2\TestAgentParameters::class,
 			\Intervolga\Edu\Tests\Course2\Lesson2\TestPostEvent::class,
 
-			\Intervolga\Edu\Tests\Course2\Lesson3\HandlersChecker::class,
+			\Intervolga\Edu\Tests\Course2\Lesson3\TestHandlersChecker::class,
 			\Intervolga\Edu\Tests\Course2\Lesson3\DeactivationActiveNews::class,
 			\Intervolga\Edu\Tests\Course2\Lesson3\DeactivationNotActiveNews::class,
 
@@ -109,8 +109,7 @@ class Tester
 				$testClass::runOuter();
 			} catch (AssertException $assertException) {
 				static::$exceptions[$testClass] = $assertException;
-			}
-			catch (\Throwable $throwable) {
+			} catch (\Throwable $throwable) {
 				static::$exceptions[$testClass] = AssertException::createThrowable($throwable);
 			}
 			static::$locatorsFound[$testClass] = Assert::getLocatorsFound();
