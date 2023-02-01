@@ -9,7 +9,6 @@ use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Locator\Agent\AgentLocator;
-use Intervolga\Edu\Locator\BaseLocator;
 use Intervolga\Edu\Locator\Event\EventLocator;
 use Intervolga\Edu\Locator\Event\Template\TemplateLocator;
 use Intervolga\Edu\Locator\Event\Type\TypeLocator;
@@ -309,7 +308,7 @@ class Assert
 				'INTERVOLGA_EDU.ASSERT_FSE_NOT_EXISTS',
 				[
 					'#VALUE#' => FileMessage::getFileMessage([
-						'#FULL_PATH#' => str_replace($value->getName(), '', FileSystem::getLocalPath($value)),
+						'#FULL_PATH#' => FileSystem::getLocalPath($value),
 						'#NAME#' => $value->getName(),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
 					]),
@@ -335,7 +334,7 @@ class Assert
 				[
 					'#VALUE#' => FileMessage::getFileMessage([
 						'#NAME#' => $value->getName(),
-						'#FULL_PATH#' => str_replace($value->getName(), '', FileSystem::getLocalPath($value)),
+						'#FULL_PATH#' => FileSystem::getLocalPath($value),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
 					]),
 					'#NAME#' => $value->getName(),
@@ -363,7 +362,7 @@ class Assert
 				[
 					'#VALUE#' => FileMessage::getFileMessage([
 						'#NAME#' => $value->getName(),
-						'#FULL_PATH#' => str_replace($value->getName(), '', FileSystem::getLocalPath($value)),
+						'#FULL_PATH#' => FileSystem::getLocalPath($value),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
 					]),
 					'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
@@ -388,7 +387,7 @@ class Assert
 					[
 						'#VALUE#' => FileMessage::getFileMessage([
 							'#NAME#' => $value->getName(),
-							'#FULL_PATH#' => str_replace($value->getName(), '', FileSystem::getLocalPath($value)),
+							'#FULL_PATH#' => FileSystem::getLocalPath($value),
 							'#FILEMAN_URL#' => Admin::getFileManUrl($value),
 						]),
 						'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
@@ -415,7 +414,7 @@ class Assert
 				[
 					'#VALUE#' => FileMessage::getFileMessage([
 						'#NAME#' => $value->getName(),
-						'#FULL_PATH#' => str_replace($value->getName(), '', FileSystem::getLocalPath($value)),
+						'#FULL_PATH#' => FileSystem::getLocalPath($value),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
 					]),
 					'#NAME#' => $value->getName(),
@@ -441,7 +440,7 @@ class Assert
 				[
 					'#VALUE#' => FileMessage::getFileMessage([
 						'#NAME#' => $value->getName(),
-						'#FULL_PATH#' => str_replace($value->getName(), '', FileSystem::getLocalPath($value)),
+						'#FULL_PATH#' => FileSystem::getLocalPath($value),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
 					]),
 					'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
@@ -466,10 +465,10 @@ class Assert
 				'INTERVOLGA_EDU.ASSERT_DIRECTORY_EXISTS',
 				[
 					'#VALUE#' => FileMessage::getFileMessage([
-						'#NAME#' => $value->getName() . '/',
-						'#FULL_PATH#' => str_replace($value->getName().'/', '', FileSystem::getLocalPath($value)),
+						'#NAME#' => $value->getName(),
+						'#FULL_PATH#' => FileSystem::getLocalPath($value),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-					]),
+					], true),
 					'#NAME#' => $value->getName(),
 					'#PATH#' => FileSystem::getLocalPath($value),
 					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
@@ -491,10 +490,10 @@ class Assert
 				'INTERVOLGA_EDU.ASSERT_DIRECTORY_NOT_EXISTS',
 				[
 					'#VALUE#' => FileMessage::getFileMessage([
-						'#NAME#' => $value->getName() . '/',
-						'#FULL_PATH#' => str_replace($value->getName().'/', '', FileSystem::getLocalPath($value)),
+						'#NAME#' => $value->getName(),
+						'#FULL_PATH#' => FileSystem::getLocalPath($value),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($value)
-					]),
+					], true),
 					'#NAME#' => $value->getName(),
 					'#PATH#' => FileSystem::getLocalPath($value),
 					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
@@ -770,7 +769,7 @@ class Assert
 				[
 					'#MENU#' => FileMessage::getFileMessage([
 						'#NAME#' => $menuFile->getName(),
-						'#FULL_PATH#' => str_replace($menuFile->getName(), '', FileSystem::getLocalPath($menuFile)),
+						'#FULL_PATH#' => FileSystem::getLocalPath($menuFile),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($menuFile),
 					]),
 					'#ITEM#' => $item,
@@ -793,7 +792,7 @@ class Assert
 				[
 					'#MENU#' => FileMessage::getFileMessage([
 						'#NAME#' => $menuFile->getName(),
-						'#FULL_PATH#' => str_replace($menuFile->getName(), '', FileSystem::getLocalPath($menuFile)),
+						'#FULL_PATH#' => FileSystem::getLocalPath($menuFile),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($menuFile),
 					]),
 					'#ITEM#' => $item,
@@ -819,7 +818,7 @@ class Assert
 				[
 					'#VALUE#' => FileMessage::getFileMessage([
 						'#NAME#' => $file->getName(),
-						'#FULL_PATH#' => str_replace($file->getName(), '', FileSystem::getLocalPath($file)),
+						'#FULL_PATH#' => FileSystem::getLocalPath($file),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($file),
 					]),
 					'#NAME#' => $file->getName(),
@@ -872,25 +871,5 @@ class Assert
 		}
 
 		return $result;
-	}
-
-	/**
-	 * @param string|BaseLocator $parentLocatorClass
-	 * @param string|BaseLocator $locatorClass
-	 * @param mixed $found
-	 */
-	protected static function registerLocatorFound($parentLocatorClass, $locatorClass, $found)
-	{
-		static::$locators[$parentLocatorClass][$locatorClass][] = $found;
-	}
-
-	public static function getLocatorsFound()
-	{
-		return static::$locators;
-	}
-
-	public static function resetLocatorsFound()
-	{
-		static::$locators = [];
 	}
 }
