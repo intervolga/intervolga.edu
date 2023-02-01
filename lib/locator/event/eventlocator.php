@@ -17,33 +17,37 @@ abstract class EventLocator extends BaseLocator
 		$events = static::getEvents(static::getParams()['MODULE_ID'], static::getParams()['MESSAGE_ID']);
 		$events = array_reverse($events);
 		$resultFilter = static::getResult();
-		$afterFilter = static::getParams()['AFTER_FILTER'] ?? [];
+		$afterFilter = static::getAfterFilter();
 		foreach ($events as $event) {
-			$found = true;
 			if ($afterFilter) {
 				if (!static::checkEventByFilter($event, $afterFilter)) {
-					$found = false;
+					continue;
 				}
 			}
 			if ($resultFilter) {
 				$eventResult = ExecuteModuleEvent($event);
 				foreach ($resultFilter as $filter => $value) {
 					if ($eventResult[$filter] !== $value) {
-						$found = false;
-						break;
+						continue 2;
 					}
 				}
 			}
-			if ($found) {
-				$result = $event;
-				if ($resultFilter) {
-					$result['RESULT'] = $eventResult;
-				}
-				break;
+			$result = $event;
+			if ($resultFilter) {
+				$result['RESULT'] = $eventResult;
 			}
+			break;
 		}
 
 		return $result;
+	}
+
+	/**
+	 * @return array
+	 */
+	public static function getAfterFilter(): array
+	{
+		return static::getParams()['AFTER_FILTER'] ?? [];
 	}
 
 	/**
@@ -74,6 +78,16 @@ abstract class EventLocator extends BaseLocator
 	{
 		$result = [];
 		$filter = static::getResult();
+		foreach ($filter as $field => $value) {
+			if (mb_substr($field, 0, 1) == '=') {
+				$field = mb_substr($field, 1);
+			}
+			if (!is_array($value)) {
+				$value = [$value];
+			}
+			$result[] = 'RESULT.' . $field . '=' . implode('||', $value);
+		}
+		$filter = static::getAfterFilter();
 		foreach ($filter as $field => $value) {
 			if (mb_substr($field, 0, 1) == '=') {
 				$field = mb_substr($field, 1);
@@ -123,7 +137,7 @@ abstract class EventLocator extends BaseLocator
 		return $events;
 	}
 
-	protected static function checkEventByFilter(array $event, array $filter)
+	protected static function checkEventByFilter(array $event, array $filter): bool
 	{
 		foreach ($filter as $key => $value) {
 			if ($value === false) {
