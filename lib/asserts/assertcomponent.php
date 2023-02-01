@@ -23,7 +23,8 @@ class AssertComponent extends Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_COMPONENT_LOCATOR',
 				[
-					'#COMPONENT#' => $value::getCode(),
+					'#COMPONENT#' => is_array($value::getCode()) ?
+						$value::getPossibleTypes() : $value::getCode(),
 				],
 				$message
 			));
