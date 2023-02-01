@@ -872,4 +872,24 @@ class Assert
 
 		return $result;
 	}
+	/**
+	 * @param string|BaseLocator $parentLocatorClass
+	 * @param string|BaseLocator $locatorClass
+	 * @param mixed $found
+	 */
+	protected static function registerLocatorFound($parentLocatorClass, $locatorClass, $found)
+	{
+		static::$locators[$parentLocatorClass][$locatorClass][] = $found;
+	}
+
+	public static function getLocatorsFound()
+	{
+		return static::$locators;
+	}
+
+	public static function resetLocatorsFound()
+	{
+		static::$locators = [];
+	}
+
 }
