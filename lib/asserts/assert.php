@@ -54,6 +54,25 @@ class Assert
 	}
 
 	/**
+	 * @param mixed $value
+	 * @param mixed $expect
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function notEq($value, $expect, string $message = '')
+	{
+		if ($value == $expect) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_NOT_EQUAL',
+				[
+					'#VALUE#' => static::valueToString($value),
+					'#EXPECT#' => static::valueToString($expect),
+				],
+				$message
+			));
+		}
+	}
+	/**
 	 * @param string $error
 	 * @throws AssertException
 	 */
@@ -128,6 +147,24 @@ class Assert
 		if ($value !== true) {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_TRUE',
+				[
+					'#VALUE#' => static::valueToString($value),
+				],
+				$message
+			));
+		}
+	}
+
+	/**
+	 * @param $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function false($value, string $message = '')
+	{
+		if ($value !== false) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_FALSE',
 				[
 					'#VALUE#' => static::valueToString($value),
 				],
