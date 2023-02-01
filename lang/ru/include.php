@@ -109,8 +109,8 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON3_HANDLERSCHECKER'] = 'Проверка су
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON3_HANDLERSCHECKER_DESCRIPTION'] = 'Должны быть созданы обработчики событий (на обновление, удаление элементов ИБ, обновление пользователей)';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON3_DEACTIVATIONACTIVENEWS'] = 'Проверка работы обработчика событий (деактивация новости)';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON3_DEACTIVATIONACTIVENEWS_DESCRIPTION'] = 'Должна быть ошибка при попытке деактивации свежей новости';
-$MESS['INTERVOLGA_EDU.COURSE2_LESSON3_DEACTIVATIONNOTACTIVENEWS'] = 'Проверка работы обработчика событий (OnBeforeIBlockElementUpdate)';
-$MESS['INTERVOLGA_EDU.COURSE2_LESSON3_DEACTIVATIONNOTACTIVENEWS_DESCRIPTION'] = 'Обработчик событий не должен отменять изменения в неактивном элементе инфоблока';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON3_DEACTIVATIONNOTACTIVENEWS'] = 'Проверка работы обработчика событий (деактивация уже деактивированной новости)';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON3_DEACTIVATIONNOTACTIVENEWS_DESCRIPTION'] = 'Не должно быть ошибки при попытке деактивировать уже деактивированную новость';
 
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETNEWS'] = 'Проверка SetViewTarget для даты новостей';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETNEWS_DESCRIPTION'] = 'В шаблоне компонента bitrix:news в шаблоне просмотра детальной страницы news.detail должен использоваться метод SetViewTarget';

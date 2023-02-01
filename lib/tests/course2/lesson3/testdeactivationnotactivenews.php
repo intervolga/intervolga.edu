@@ -1,36 +1,29 @@
 <?php
 namespace Intervolga\Edu\Tests\Course2\Lesson3;
 
-use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
-use CIBlockElement;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Locator\Iblock\NewsIblock;
-use Intervolga\Edu\Tests\BaseTest;
+use Intervolga\Edu\Tests\BaseTestNewsElement;
 
-class TestDeactivationNotActiveNews extends BaseTest
+class TestDeactivationNotActiveNews extends BaseTestNewsElement
 {
 	protected static function run()
 	{
-		Loader::includeModule('iblock');
+		Assert::iblockLocator(NewsIblock::class);
+		if ($iblock = NewsIblock::find()) {
+			static::cleanUp($iblock);
 
-		$news = new  CIBlockElement;
-		$idIblock = $news->Add([
-			"ACTIVE" => 'N',
-			"NAME" => 'Новый тестовый неактивный инфоблок',
-			"CODE" => 'new_test_iblock',
-			"IBLOCK_ID" => NewsIblock::find()['ID'],
-		]);
-		Assert::notEmpty($idIblock, Loc::getMessage('INTERVOLGA_EDU.COURSE2_LESSON3_CREATE_NOT_ACTIVE_IB_FAILED'));
-
-		$deactivNews = $news->Update(
-			$idIblock, [
-			"ACTIVE" => 'N',
-		]);
-
-		CIBlockElement::Delete($idIblock);
-
-		Assert::true($deactivNews, Loc::getMessage('INTERVOLGA_EDU.COURSE2_LESSON3_NOT_ACTIVE_NEWS_DEACTIVATED'));
-
+			try {
+				$id = static::addElement($iblock, 'N');
+				Assert::notEmpty($id, Loc::getMessage('INTERVOLGA_EDU.COURSE2_LESSON3_CREATE_NOT_ACTIVE_IB_FAILED'));
+				$updateError = static::getErrorUpdateElement($id, ['ACTIVE' => 'N']);
+				Assert::empty($updateError, Loc::getMessage('INTERVOLGA_EDU.COURSE2_LESSON3_NOT_ACTIVE_NEWS_DEACTIVATED'));
+				static::cleanUp($iblock);
+			} catch (\Throwable $t) {
+				static::cleanUp($iblock);
+				throw $t;
+			}
+		}
 	}
 }
