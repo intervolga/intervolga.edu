@@ -107,8 +107,8 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON2_POSTEVENT'] = 'Проверка сущес
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON2_POSTEVENT_DESCRIPTION'] = 'Должны существовать почтовое событие и закрепленный за ним почтовый шаблон';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON3_HANDLERSCHECKER'] = 'Проверка существования обработчиков событий';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON3_HANDLERSCHECKER_DESCRIPTION'] = 'Должны быть созданы обработчики событий (на обновление, удаление элементов ИБ, обновление пользователей)';
-$MESS['INTERVOLGA_EDU.COURSE2_LESSON3_DEACTIVATIONACTIVENEWS'] = 'Проверка работы обработчика событий (OnBeforeIBlockElementUpdate)';
-$MESS['INTERVOLGA_EDU.COURSE2_LESSON3_DEACTIVATIONACTIVENEWS_DESCRIPTION'] = 'Обработчик событий должен выбрасывать ошибку при попытке деактивации свежей новости ($APPLICATION->ThrowException)';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON3_DEACTIVATIONACTIVENEWS'] = 'Проверка работы обработчика событий (деактивация новости)';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON3_DEACTIVATIONACTIVENEWS_DESCRIPTION'] = 'Должна быть ошибка при попытке деактивации свежей новости';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON3_DEACTIVATIONNOTACTIVENEWS'] = 'Проверка работы обработчика событий (OnBeforeIBlockElementUpdate)';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON3_DEACTIVATIONNOTACTIVENEWS_DESCRIPTION'] = 'Обработчик событий не должен отменять изменения в неактивном элементе инфоблока';
 
