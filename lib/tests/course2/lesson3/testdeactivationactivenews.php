@@ -15,7 +15,7 @@ class TestDeactivationActiveNews extends BaseTestNewsElement
 			static::cleanUp($iblock);
 
 			try {
-				$id = static::addActiveElement($iblock);
+				$id = static::addElement($iblock);
 				Assert::notEmpty($id, Loc::getMessage('INTERVOLGA_EDU.COURSE2_LESSON3_CREATE_IB_FAILED'));
 				$updateError = static::getErrorUpdateElement($id, ['ACTIVE' => 'N']);
 				Assert::notEmpty($updateError, Loc::getMessage('INTERVOLGA_EDU.COURSE2_LESSON3_NEWS_DEACTIVATED'));

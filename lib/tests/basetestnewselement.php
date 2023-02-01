@@ -3,11 +3,11 @@ namespace Intervolga\Edu\Tests;
 
 abstract class BaseTestNewsElement extends BaseTest
 {
-	protected static function addActiveElement(array $iblock): int
+	protected static function addElement(array $iblock, $active = 'Y'): int
 	{
 		$news = new \CIBlockElement();
 		$id = $news->add([
-			'ACTIVE' => 'Y',
+			'ACTIVE' => $active,
 			'NAME' => 'Test ' . time(),
 			'CODE' => str_replace('\\', '_', strtoupper(get_called_class())),
 			'IBLOCK_ID' => $iblock['ID'],
