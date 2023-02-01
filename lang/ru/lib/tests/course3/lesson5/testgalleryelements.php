@@ -1,0 +1,2 @@
+<?php
+$MESS['INTERVOLGA_EDU.NOT_EXISTS_VALUE_OF_KEY'] = 'У элемента <a href="/bitrix/admin/iblock_element_edit.php?IBLOCK_ID=#IBLOCK_ID#&type=content&lang=ru&ID=#ID#"> #NAME#</a> отсутствует <b>#KEY#</b>, должен присутствовать.';
