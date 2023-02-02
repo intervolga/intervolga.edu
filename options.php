@@ -136,7 +136,7 @@ foreach ($testsTree as $courseCode => $course) {
 		$title = Loc::getMessage('INTERVOLGA_EDU.LESSON_HEADER', [
 			'#LESSON#' => $lesson['TITLE'],
 			'#TOTAL#' => count($lesson['TESTS']),
-			'#DONE#' => intval($stat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']),
+			'#DONE#' => count($lesson['TESTS']) - intval($stat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']),
 		]);
 		echo '<h2>' . $title . '</h2>';
 		$counter = 1;
