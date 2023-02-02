@@ -63,20 +63,20 @@ try {
 	$fatalThrowable = $throwable;
 }
 $errorsTree = Tester::getErrorsTree();
-$okStat = [];
+$stat = [];
 
 $claimsDatetimes = Option::getForModule($module_id);
 $isFemale = CUser::GetByID($USER->GetID())->fetch()['PERSONAL_GENDER'] == 'F';
 foreach ($errorsTree as $courseCode => $lessonCodes) {
-	$courseOkCount = 0;
-	foreach ($lessonCodes as $lessonCode => $testErrors) {
-		$lessonOkCount = 0;
-		foreach ($testErrors as $testClassName => $testError) {
+	$stat[$courseCode]['FAILED'] = 0;
+	$stat[$courseCode]['DONE'] = 0;
+	foreach ($lessonCodes as $lessonCode => $lessonTests) {
+		$stat[$courseCode]['LESSONS'][$lessonCode]['ERRORS'] = 0;
+		foreach ($lessonTests as $testClassName => $testError) {
 			$newTestCode = strtolower($testsTree[$courseCode]['LESSONS'][$lessonCode]['TESTS'][$testClassName]['CODE']);
 			$reportId = $courseCode . "_" . $lessonCode . "_" . $newTestCode . "_problem";
-			if (!$testError || array_key_exists($reportId, $claimsDatetimes)) {
-				$courseOkCount++;
-				$lessonOkCount++;
+			if ($testError && !array_key_exists($reportId, $claimsDatetimes)) {
+				$stat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']++;
 			}
 			if (!$testError && array_key_exists($reportId, $claimsDatetimes)) {
 				Option::delete($module_id, [
@@ -84,10 +84,12 @@ foreach ($errorsTree as $courseCode => $lessonCodes) {
 				]);
 			}
 		}
-		$reportCounts = 0;
-		$okStat[$courseCode]['LESSONS'][$lessonCode]['ERRORS'] = $lessonOkCount;
+		if ($stat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']) {
+			$stat[$courseCode]['FAILED']++;
+		} else {
+			$stat[$courseCode]['DONE']++;
+		}
 	}
-	$okStat[$courseCode]['ERRORS'] = $courseOkCount;
 }
 $tabs = [];
 $courseNum = 1;
@@ -96,14 +98,14 @@ foreach ($testsTree as $courseCode => $course) {
 		'DIV' => $courseCode,
 		'TAB' => Loc::getMessage('INTERVOLGA_EDU.COURSE_TAB_HEADER', [
 				'#NUM#' => $courseNum,
-				'#DONE#' => $okStat[$courseCode]['ERRORS'],
-				'#TOTAL#' => $course['COUNT'],
+				'#DONE#' => $stat[$courseCode]['DONE'],
+				'#TOTAL#' => count($course['LESSONS']),
 			]
 		),
 		'TITLE' => Loc::getMessage('INTERVOLGA_EDU.COURSE_HEADER', [
 				'#COURSE#' => $course['TITLE'],
-				'#DONE#' => $okStat[$courseCode]['ERRORS'],
-				'#TOTAL#' => $course['COUNT'],
+				'#DONE#' => $stat[$courseCode]['DONE'],
+				'#TOTAL#' => count($course['LESSONS']),
 			]
 		),
 	];
@@ -134,7 +136,7 @@ foreach ($testsTree as $courseCode => $course) {
 		$title = Loc::getMessage('INTERVOLGA_EDU.LESSON_HEADER', [
 			'#LESSON#' => $lesson['TITLE'],
 			'#TOTAL#' => count($lesson['TESTS']),
-			'#DONE#' => intval($okStat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']),
+			'#DONE#' => intval($stat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']),
 		]);
 		echo '<h2>' . $title . '</h2>';
 		$counter = 1;
