@@ -8,14 +8,15 @@ class GalleryIblock extends IblockLocator
 	public static function getFilter(): array
 	{
 		return [
-			'=NAME' => [
-				'Фотогалерея'
+			'=CODE' => [
+				'gallery',
+				'photos',
 			],
 		];
 	}
 
 	public static function getNameLoc(): string
 	{
-		return Loc::getMessage('INTERVOLGA_EDU.IBLOCK_RESPONDENT');
+		return Loc::getMessage('INTERVOLGA_EDU.IBLOCK_GALLERY');
 	}
 }
