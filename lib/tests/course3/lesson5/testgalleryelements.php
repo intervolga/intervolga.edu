@@ -2,7 +2,6 @@
 namespace Intervolga\Edu\Tests\Course3\Lesson5;
 
 use Bitrix\Main\Localization\Loc;
-use Bitrix\Socialnetwork\Access\VoteAccessResult;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Locator\Iblock\GalleryIblock;
@@ -10,12 +9,10 @@ use Intervolga\Edu\Tests\BaseTestIblockElement;
 
 class TestGalleryElements extends BaseTestIblockElement
 {
-
 	protected static function getIblockLocator(): array
 	{
 		return GalleryIblock::find();
 	}
-
 
 	/**
 	 * @throws AssertException
