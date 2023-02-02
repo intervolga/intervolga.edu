@@ -13,6 +13,7 @@ use Intervolga\Edu\Locator\BaseLocator;
 use Intervolga\Edu\Locator\Event\EventLocator;
 use Intervolga\Edu\Locator\Event\Template\TemplateLocator;
 use Intervolga\Edu\Locator\Event\Type\TypeLocator;
+use Intervolga\Edu\Locator\FunctionLocator;
 use Intervolga\Edu\Locator\Iblock\IblockLocator;
 use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
 use Intervolga\Edu\Locator\Iblock\Section\SectionLocator;
@@ -333,17 +334,18 @@ class Assert
 	}
 
 	/**
-	 * @param $value
+	 * @param string|FunctionLocator $value
 	 * @param string $message
 	 * @throws AssertException
 	 */
 	public static function functionExists($value, string $message = '')
 	{
-		if (!function_exists($value)) {
+		if (!$value::find()) {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_FUNCTION_EXISTS',
 				[
 					'#VALUE#' => static::valueToString($value),
+					'#POSSIBLE#' => $value::getPossibleTips(),
 				],
 				$message
 			));

@@ -116,6 +116,11 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUf::class,
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUfClass::class,
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUFClassIblock::class,
+
+			\Intervolga\Edu\Tests\Course3\Lesson5\TestGalleryIblock::class,
+			\Intervolga\Edu\Tests\Course3\Lesson5\TestGalleryElements::class,
+			\Intervolga\Edu\Tests\Course3\Lesson5\TestTemplateGallery::class,
+			\Intervolga\Edu\Tests\Course3\Lesson5\TestComponentGallery::class,
 		];
 	}
 

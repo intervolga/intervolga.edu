@@ -24,6 +24,7 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON7'] = '7. Управление доступ�
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1'] = '1. Создание модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON3'] = '3. Инфоблоки - Архитектура';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON5'] = '5. JS';
 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE'] = 'Проверка установки модуля «Корпоративный сайт производственной компании»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE_DESCRIPTION'] = 'Модуль должен быть <a href="/bitrix/admin/partner_modules.php?lang=ru" target="_blank">зарегистрирован</a> в системе и установлен';
@@ -157,6 +158,11 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UFCLASS'] = 'Проверка собств
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UFCLASS_DESCRIPTION'] = 'Должно быть создано UF-свойство у пользователя (все возможные комбинации множественности и обязательности поля)';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UFCLASSIBLOCK'] = 'Проверка собственного UF-свойства с требуемыми свойствами для раздела Инфоблока';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UFCLASSIBLOCK_DESCRIPTION'] = 'Должно быть создано UF-свойство у раздела любого инфоблока (все возможные комбинации множественности и обязательности поля)';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON5_TESTGALLERYIBLOCK'] = 'Проверка Инфоблока Фотогалерея';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON5_GALLERYELEMENTS'] = 'Проверка элементов Инфоблока Фотогалерея';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON5_GALLERYELEMENTS_DESCRIPTION'] = 'Должен быть созданы >5 элементов инфоблока gallery с детальной картинкой, описанием и картиной для анонса.';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON5_COMPONENTGALLERY'] = 'Проверка параметров компонента bitrix:news.list gallery';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON5_COMPONENTGALLERY_DESCRIPTION'] = 'Проверка параметров компонента bitrix:news.list на странице gallery.php';
 
 $MESS['INTERVOLGA_EDU.TEST_CODE_NAME'] = 'Проверка кода #FILES#';
 $MESS['INTERVOLGA_EDU.TEST_CODE_DESCRIPTION'] = 'Современная проверка ядра Битрикса, использование длинных php-тегов, запрет на устаревшие функции';
@@ -231,6 +237,7 @@ $MESS['INTERVOLGA_EDU.TEST_IBLOCK_NAME'] = 'Проверка Инфоблока 
 $MESS['INTERVOLGA_EDU.TEST_IBLOCK_DESCRIPTION'] = 'Проверка типа, прав, количества элементов, свойств по заданию, формы редактирования в админке';
 $MESS['INTERVOLGA_EDU.SEARCH_FORM_TEMPLATE'] = 'Шаблон формы поиска';
 $MESS['INTERVOLGA_EDU.CATALOG_SECTION_TEMPLATE'] = 'Шаблон секций каталога';
+$MESS['INTERVOLGA_EDU.GALLERY_TEMPLATE'] = 'Шаблон gallery';
 $MESS['INTERVOLGA_EDU.SHOW_VIEW_CONTENT_NOT_FOUND_MATERIALS'] = 'Show View Content для области материалов';
 $MESS['INTERVOLGA_EDU.SHOW_VIEW_CONTENT_NOT_FOUND'] = 'Show View Content перед <p> с классом title';
 $MESS['INTERVOLGA_EDU.SHOW_VIEW_CONTENT_NEWS'] = 'Show View Content для области news перед <p> с классом title';
