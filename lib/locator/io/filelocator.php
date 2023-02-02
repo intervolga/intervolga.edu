@@ -3,9 +3,8 @@ namespace Intervolga\Edu\Locator\IO;
 
 use Bitrix\Main\Application;
 use Bitrix\Main\IO\File;
-use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Locator\BaseLocator;
-use Intervolga\Edu\Util\Admin;
+use Intervolga\Edu\Util\FileMessage;
 use Intervolga\Edu\Util\FileSystem;
 
 abstract class FileLocator extends BaseLocator
@@ -53,11 +52,7 @@ abstract class FileLocator extends BaseLocator
 		$result = [];
 		$paths = static::getPaths();
 		foreach ($paths as $path) {
-			$result[] = Loc::getMessage('INTERVOLGA_EDU.FSE', [
-				'#NAME#' => FileSystem::getDirectory($path)->getName(),
-				'#PATH#' => $path,
-				'#FILEMAN_URL#' => Admin::getFileManUrl(FileSystem::getDirectory($path)),
-			]);
+			$result[] = FileMessage::get(FileSystem::getFile($path));
 		}
 
 		return implode('||', $result);
