@@ -153,8 +153,8 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UFCLASSIBLOCK_DESCRIPTION'] = 'Должн�
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_TESTGALLERYIBLOCK'] = 'Проверка Инфоблока Фотогалерея';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_GALLERYELEMENTS'] = 'Проверка элементов Инфоблока Фотогалерея';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_GALLERYELEMENTS_DESCRIPTION'] = 'Должен быть созданы >5 элементов инфоблока gallery с детальной картинкой, описанием и картиной для анонса.';
-$MESS['INTERVOLGA_EDU.COURSE3_LESSON5_COMPONENT'] = 'Проверка параметров компонента bitrix:news.list gallery';
-$MESS['INTERVOLGA_EDU.COURSE3_LESSON5_COMPONENT_DESCRIPTION'] = 'Проверка параметров компонента bitrix:news.list gallery на странице gallery.php';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON5_COMPONENTGALLERY'] = 'Проверка параметров компонента bitrix:news.list gallery';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON5_COMPONENTGALLERY_DESCRIPTION'] = 'Проверка параметров компонента bitrix:news.list на странице gallery.php';
 
 $MESS['INTERVOLGA_EDU.TEST_CODE_NAME'] = 'Проверка кода #FILES#';
 $MESS['INTERVOLGA_EDU.TEST_CODE_DESCRIPTION'] = 'Современная проверка ядра Битрикса, использование длинных php-тегов, запрет на устаревшие функции';
