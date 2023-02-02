@@ -24,13 +24,25 @@ abstract class FileLocator extends BaseLocator
 		$result = null;
 		foreach (static::getPaths() as $path) {
 			$file = new $class(Application::getDocumentRoot() . $path);
-			if ($file->isExists() && $file->isFile())
-			{
+			if ($file->isExists() && $file->isFile()) {
 				$result = $file;
 			}
 		}
 
 		return $result;
+	}
+
+	/**
+	 * @param File|null $find
+	 * @return string
+	 */
+	protected static function getFoundFilePath($find)
+	{
+		if ($find) {
+			return $find->getPath();
+		} else {
+			return '';
+		}
 	}
 
 	/**
@@ -54,10 +66,5 @@ abstract class FileLocator extends BaseLocator
 	public static function getDisplayText($find): string
 	{
 		return FileSystem::getLocalPath($find);
-	}
-
-	public static function getDisplayHref($find): string
-	{
-		return Admin::getFileManUrl($find);
 	}
 }
