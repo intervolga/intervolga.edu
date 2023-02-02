@@ -20,8 +20,6 @@ class TestComponentGallery extends BaseTest
 		$page = GalleryPage::find();
 		$templateDirectory = GalleryTemplate::find();
 		if ($page && $templateDirectory) {
-			echo '<pre>' . __FILE__ . ':' . __LINE__ . ':<br>' . print_r($templateDirectory->getName(), true) . '</pre>';
-			echo '<pre>' . __FILE__ . ':' . __LINE__ . ':<br>' . print_r(FileSystem::getLocalPath($page), true) . '</pre>';
 			$parameters = ComponentParameters::getComponentParameters('bitrix:news.list', [
 				'TEMPLATE_NAME' => $templateDirectory->getName(),
 				'REAL_PATH' => FileSystem::getLocalPath($page),
