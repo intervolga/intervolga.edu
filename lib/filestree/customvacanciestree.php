@@ -7,14 +7,10 @@ use Intervolga\Edu\Util\FileSystem;
 
 class CustomVacanciesTree extends ComponentTemplate
 {
-	public function getVacanciesFile(): File
-	{
-		return FileSystem::getInnerFile($this, 'vacancies.php');
-	}
 
-	public function getVacancyFile(): File
+	public static function getTemplateTree(): string
 	{
-		return FileSystem::getInnerFile($this, 'vacancy.php');
+		return CustomVacanciesTemplate::class;
 	}
 	public function getComponentFile(): File
 	{
@@ -25,10 +21,6 @@ class CustomVacanciesTree extends ComponentTemplate
 		return FileSystem::getInnerFile($this, 'class.php');
 	}
 
-	public function getResumeFile(): File
-	{
-		return FileSystem::getInnerFile($this, 'resume.php');
-	}
 	public function getTemplatesDir(): Directory
 	{
 		return FileSystem::getInnerDirectory($this, 'templates');
@@ -44,12 +36,6 @@ class CustomVacanciesTree extends ComponentTemplate
 		$result[] = $this->getComponentFile();
 		$result[] = $this->getClassFile();
 
-		return $result;
-	}
-	public function getKnownDirs(): array
-	{
-		$result = parent::getKnownDirs();
-		$result[] = $this->getTemplatesDir();
 		return $result;
 	}
 }

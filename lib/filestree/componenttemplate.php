@@ -86,6 +86,11 @@ abstract class ComponentTemplate extends FilesTree
 		return FileSystem::getInnerFile($this, '.description.php');
 	}
 
+	public function getTemplateFile(): File
+	{
+		return FileSystem::getInnerFile($this, 'template.php');
+	}
+
 	public function getParametersFile(): File
 	{
 		return FileSystem::getInnerFile($this, '.parameters.php');

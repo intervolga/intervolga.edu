@@ -69,7 +69,11 @@ abstract class BaseComponentTest extends BaseComponentTemplateTest
 		}
 		Assert::fseExists($componentDir->getParametersFile());
 		Assert::fseExists($componentDir->getDescriptionFile());
-		Assert::fseExists($componentDir->getComponentFile());
+		if (!$componentDir->getComponentFile()->isExists()) {
+			Assert::fseExists($componentDir->getClassFile());
+		} else {
+			Assert::fseExists($componentDir->getComponentFile());
+		}
 
 		foreach ($componentDir->getLangForeignDirs() as $langForeignDir) {
 			Assert::directoryNotExists($langForeignDir);
@@ -84,7 +88,6 @@ abstract class BaseComponentTest extends BaseComponentTemplateTest
 
 	protected static function testComponentLangRuTrash(ComponentTemplate $componentDir)
 	{
-
 		if ($componentDir->getLangRuDir()->isExists()) {
 			foreach ($componentDir->getLangRuDir()->getChildren() as $child) {
 				if ($componentDir instanceof SimpleComponent) {
@@ -92,7 +95,6 @@ abstract class BaseComponentTest extends BaseComponentTemplateTest
 						$componentDir->getDescriptionFile()->getName(),
 						$componentDir->getParametersFile()->getName(),
 						$componentDir->getComponentFile()->getName()
-
 					])) {
 						Assert::fseNotExists($child);
 					}
@@ -100,7 +102,4 @@ abstract class BaseComponentTest extends BaseComponentTemplateTest
 			}
 		}
 	}
-}
-
-{
 }

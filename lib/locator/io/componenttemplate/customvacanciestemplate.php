@@ -13,13 +13,13 @@ class CustomVacanciesTemplate extends DirectoryLocator
 	{
 		$paths = [];
 		foreach (INTERVOLGA_EDU_GUESS_VARIANTS['CUSTOM_COMPONENTS'] as $customComponent) {
-			$paths[] = '/local/components/' . $customComponent . '/vacancies';
+			$paths[] = '/local/components/' . $customComponent . '/vacancies/templates/.default';
 		}
 		return $paths;
 	}
 
 	public static function getNameLoc(): string
 	{
-		return 'CustomVacanciesTemplate';
+		return Loc::getMessage('INTERVOLGA_EDU.LOCATOR_IO_CUSTOM_VACANCIES_TEMPLATE');
 	}
 }

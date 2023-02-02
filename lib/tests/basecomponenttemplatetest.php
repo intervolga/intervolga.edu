@@ -57,13 +57,29 @@ abstract class BaseComponentTemplateTest extends BaseTest
 		foreach ($templateDir->getUnknownFileSystemEntries() as $unknownFileSystemEntry) {
 			Assert::fseNotExists($unknownFileSystemEntry);
 		}
-		Assert::fseNotExists($templateDir->getImagesDir());
-		Assert::fseNotExists($templateDir->getParametersFile());
-		Assert::fseNotExists($templateDir->getDescriptionFile());
+		static::checkRequiredFilesTemplate($templateDir);
+		static::checkNotExistingFiles($templateDir);
 		foreach ($templateDir->getLangForeignDirs() as $langForeignDir) {
 			Assert::directoryNotExists($langForeignDir);
 		}
 		static::testTemplateLangRuTrash($templateDir);
+	}
+
+	protected static function checkRequiredFilesTemplate($templateDir)
+	{
+		if ($templateDir instanceof NewsTemplate) {
+			Assert::fseExists($templateDir->getNewsFile());
+			Assert::fseExists($templateDir->getDetailFile());
+		} else {
+			Assert::fseExists($templateDir->getTemplateFile());
+		}
+	}
+
+	protected static function checkNotExistingFiles($templateDir)
+	{
+		Assert::fseNotExists($templateDir->getImagesDir());
+		Assert::fseNotExists($templateDir->getParametersFile());
+		Assert::fseNotExists($templateDir->getDescriptionFile());
 	}
 
 	protected static function testTemplateLangRuTrash(ComponentTemplate $templateDir)
