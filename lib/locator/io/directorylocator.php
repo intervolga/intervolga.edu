@@ -4,7 +4,6 @@ namespace Intervolga\Edu\Locator\IO;
 use Bitrix\Main\Application;
 use Bitrix\Main\IO\Directory;
 use Intervolga\Edu\Locator\BaseLocator;
-use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileMessage;
 use Intervolga\Edu\Util\FileSystem;
 
@@ -51,8 +50,16 @@ abstract class DirectoryLocator extends BaseLocator
 		return FileSystem::getLocalPath($find);
 	}
 
-	public static function getDisplayHref($find): string
+	/**
+	 * @param Directory|null $find
+	 * @return string
+	 */
+	protected static function getFoundDirectoryPath($find)
 	{
-		return Admin::getFileManUrl($find);
+		if ($find) {
+			return $find->getPath();
+		} else {
+			return '';
+		}
 	}
 }

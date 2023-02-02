@@ -189,24 +189,7 @@ foreach ($testsTree as $courseCode => $course) {
 							 * @var BaseLocator $parentLocator
 							 * @var BaseLocator $locatorClass
 							 */
-							$href = $locatorClass::getDisplayHref($found);
-							if (strlen($href))
-							{
-								$locatorsInfo []= Loc::getMessage('INTERVOLGA_EDU.LOCATOR_FOUND_HREF', [
-									'#LOCATOR#' => $parentLocator::getDisplayName(),
-									'#NAME#' => $locatorClass::getNameLoc(),
-									'#HREF#' => $href,
-									'#TIP#' => $locatorClass::getDisplayText($found),
-								]);
-							}
-							else
-							{
-								$locatorsInfo []= Loc::getMessage('INTERVOLGA_EDU.LOCATOR_FOUND', [
-									'#LOCATOR#' => $parentLocator::getDisplayName(),
-									'#NAME#' => $locatorClass::getNameLoc(),
-									'#TIP#' => $locatorClass::getDisplayText($found),
-								]);
-							}
+							$locatorsInfo [] = $locatorClass::getReport($parentLocator, $found);
 						}
 					}
 				}
