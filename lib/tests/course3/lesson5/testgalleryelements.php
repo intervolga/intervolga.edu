@@ -6,12 +6,13 @@ use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Locator\Iblock\GalleryIblock;
 use Intervolga\Edu\Tests\BaseTestIblockElement;
+use Intervolga\Edu\Util\Admin;
 
 class TestGalleryElements extends BaseTestIblockElement
 {
-	protected static function getIblockLocator(): array
+	protected static function getIblockLocator()
 	{
-		return GalleryIblock::find();
+		return GalleryIblock::class;
 	}
 
 	/**
@@ -26,10 +27,9 @@ class TestGalleryElements extends BaseTestIblockElement
 		];
 		foreach ($keys as $key) {
 			Assert::notEmpty($element[$key], Loc::getMessage('INTERVOLGA_EDU.NOT_EXISTS_VALUE_OF_KEY', [
-				'#IBLOCK_ID#' => $element['IBLOCK_ID'],
-				'#ID#' => $element['ID'],
 				'#NAME#' => $element['NAME'],
-				'#KEY#' => $key
+				'#KEY#' => $key,
+				'#IBLOCK_LINK#' => Admin::getIblockElementEditUrl($element),
 			]));
 		}
 	}

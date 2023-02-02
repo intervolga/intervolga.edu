@@ -11,6 +11,7 @@ class GalleryIblock extends IblockLocator
 			'=CODE' => [
 				'gallery',
 				'photos',
+				'furniture_services_s1',
 			],
 		];
 	}
