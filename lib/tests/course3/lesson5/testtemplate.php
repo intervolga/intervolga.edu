@@ -7,7 +7,6 @@ use Intervolga\Edu\Tests\BaseComponentTemplateTest;
 
 class TestTemplate extends BaseComponentTemplateTest
 {
-
 	protected static function getLocator()
 	{
 		return GalleryTemplate::class;
