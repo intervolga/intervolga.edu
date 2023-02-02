@@ -3,12 +3,12 @@ namespace Intervolga\Edu\Locator\Iblock\Section;
 
 use Bitrix\Iblock\SectionTable;
 use Bitrix\Main\Loader;
+use Intervolga\Edu\Locator\BaseLocator;
 use Intervolga\Edu\Locator\Iblock\IblockLocator;
+use Intervolga\Edu\Util\Admin;
 
-abstract class SectionLocator
+abstract class SectionLocator extends BaseLocator
 {
-	abstract public static function getNameLoc(): string;
-
 	public static function find(): array
 	{
 		$result = [];
@@ -60,5 +60,15 @@ abstract class SectionLocator
 		}
 
 		return implode(';', $result);
+	}
+
+	public static function getDisplayText($find): string
+	{
+		return '[' . $find['ID'] . '] ' . $find['NAME'];
+	}
+
+	public static function getDisplayHref($find): string
+	{
+		return Admin::getIblockSectionUrl($find);
 	}
 }

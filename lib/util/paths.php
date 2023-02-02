@@ -10,6 +10,7 @@ class Paths
 		'/upload/',
 		'/bitrix/',
 		'/local/',
+		'/.git/',
 	];
 
 	/**
