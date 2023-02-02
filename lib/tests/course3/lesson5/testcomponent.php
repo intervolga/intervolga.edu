@@ -6,7 +6,7 @@ use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\ComponentParameters;
 
-class TestComponent extends BaseTest
+class TestComponentGallery extends BaseTest
 {
 	protected static function run()
 	{

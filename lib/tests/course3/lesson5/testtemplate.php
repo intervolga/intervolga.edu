@@ -5,7 +5,7 @@ use Intervolga\Edu\FilesTree\SimpleComponentTemplate;
 use Intervolga\Edu\Locator\IO\ComponentTemplate\GalleryTemplate;
 use Intervolga\Edu\Tests\BaseComponentTemplateTest;
 
-class TestTemplate extends BaseComponentTemplateTest
+class TestTemplateGallery extends BaseComponentTemplateTest
 {
 	protected static function getLocator()
 	{
