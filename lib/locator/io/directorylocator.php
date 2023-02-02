@@ -15,14 +15,38 @@ abstract class DirectoryLocator extends BaseLocator
 	abstract protected static function getPaths(): array;
 
 	/**
+	 * @return string|DirectoryLocator
+	 */
+	protected static function getRootLocator()
+	{
+	}
+
+	/**
+	 * @return string
+	 */
+	protected static function getRootLocalPath()
+	{
+		$rootPath = '';
+		if ($rootLocator = static::getRootLocator()) {
+			$rootDirectory = $rootLocator::find();
+			if ($rootDirectory && $rootDirectory->isExists()) {
+				$rootPath = FileSystem::getLocalPath($rootDirectory);
+			}
+		}
+
+		return $rootPath;
+	}
+
+	/**
 	 * @param Directory|string $class
 	 * @return Directory|null
 	 */
 	public static function find($class = Directory::class)
 	{
 		$result = null;
+		$rootLocalPath = static::getRootLocalPath();
 		foreach (static::getPaths() as $path) {
-			$directory = new $class(Application::getDocumentRoot() . $path);
+			$directory = new $class(Application::getDocumentRoot() . $rootLocalPath . $path);
 			if ($directory->isExists() && $directory->isDirectory()) {
 				$result = $directory;
 			}
@@ -37,9 +61,10 @@ abstract class DirectoryLocator extends BaseLocator
 	public static function getPossibleTips()
 	{
 		$result = [];
+		$rootLocalPath = static::getRootLocalPath();
 		$paths = static::getPaths();
 		foreach ($paths as $path) {
-			$result[] = FileMessage::get(FileSystem::getDirectory($path));
+			$result[] = FileMessage::get(FileSystem::getDirectory($rootLocalPath.$path));
 		}
 
 		return implode('||', $result);

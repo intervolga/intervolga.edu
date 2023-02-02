@@ -30,6 +30,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestReviews::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestProducts::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestPromo::class,
+			\Intervolga\Edu\Tests\Course1\Lesson2\TestCheckPartnersSection::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestPartnersPage::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestSeoPartners::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestMenu::class,
@@ -68,6 +69,11 @@ class Tester
 
 			\Intervolga\Edu\Tests\Course1\Lesson8\TestPromoComponent::class,
 
+			\Intervolga\Edu\Tests\Course1\Lesson9\TestCatalogIblock::class,
+			\Intervolga\Edu\Tests\Course1\Lesson9\TestComponentOptions::class,
+			\Intervolga\Edu\Tests\Course1\Lesson9\TestSymbolicCode::class,
+			\Intervolga\Edu\Tests\Course1\Lesson9\TestNavPage::class,
+
 			\Intervolga\Edu\Tests\Course1\Lesson10\TestSearchAction::class,
 			\Intervolga\Edu\Tests\Course1\Lesson10\TestSearchTemplate::class,
 
@@ -85,6 +91,10 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson2\TestAgentParameters::class,
 			\Intervolga\Edu\Tests\Course2\Lesson2\TestPostEvent::class,
 
+			\Intervolga\Edu\Tests\Course2\Lesson3\TestHandlersChecker::class,
+			\Intervolga\Edu\Tests\Course2\Lesson3\TestDeactivationActiveNews::class,
+			\Intervolga\Edu\Tests\Course2\Lesson3\TestDeactivationNotActiveNews::class,
+
 			\Intervolga\Edu\Tests\Course2\Lesson4\TestSetViewTargetNews::class,
 			\Intervolga\Edu\Tests\Course2\Lesson4\TestShowViewTargetNews::class,
 			\Intervolga\Edu\Tests\Course2\Lesson4\TestSetViewTargetMaterials::class,
@@ -94,7 +104,14 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestDescription::class,
 			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestHermitage::class,
 
+			\Intervolga\Edu\Tests\Course2\Lesson7\SecurityLevel::class,
+			\Intervolga\Edu\Tests\Course2\Lesson7\SecureAuthorization::class,
+
 			\Intervolga\Edu\Tests\Course3\Lesson1\TestModule::class,
+
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestResultsPollingIblock::class,
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestPropertyGenderValues::class,
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestLinkWithRespondent::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUf::class,
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUfClass::class,
@@ -113,8 +130,7 @@ class Tester
 				$testClass::runOuter();
 			} catch (AssertException $assertException) {
 				static::$exceptions[$testClass] = $assertException;
-			}
-			catch (\Throwable $throwable) {
+			} catch (\Throwable $throwable) {
 				static::$exceptions[$testClass] = AssertException::createThrowable($throwable);
 			}
 			static::$locatorsFound[$testClass] = Assert::getLocatorsFound();

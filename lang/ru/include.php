@@ -12,13 +12,17 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON42'] = '4.2 Компоненты. Часть
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON6'] = '6. Вывод динамической информации';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON7'] = '7. Кеширование. Основы работы';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON8'] = '8. Комплексные компоненты';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON9'] = '9. ЧПУ, эрмитаж, постраничная навигация';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10'] = '10. Поиск';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11'] = '11. Полезные возможности';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2'] = '1.2 Получение связанных элементов';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON2'] = '2. Технологии: параметры модулей, почтовая системы, агенты, журнал событий';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON3'] = '3. События';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4'] = '4. Отложенные функции';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1'] = '5.1 Создание собственных компонентов';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7'] = '7. Управление доступом и безопасность';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1'] = '1. Создание модуля';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON3'] = '3. Инфоблоки - Архитектура';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы';
 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE'] = 'Проверка установки модуля «Корпоративный сайт производственной компании»';
@@ -37,6 +41,8 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_SEOPARTNERS'] = 'Проверка ключ
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_SEOPARTNERS_DESCRIPTION'] = 'Для раздела "Партнерам" и страницы "Как стать партнером" должны быть заполненны ключевые слова и описание';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_SERVICESDELETED'] = 'Проверка раздела &laquo;Услуги&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_SERVICESDELETED_DESCRIPTION'] = 'Должен быть удален с диска и из верхнего меню';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_CHECKPARTNERSSECTION'] = 'Проверка раздела «Партнерам»';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_CHECKPARTNERSSECTION_DESCRIPTION'] = 'Заголовок индексной страницы, существование подраздела "Расписание мероприятий", страницы "Условия сотрудничества", проверка левого меню';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_REVIEWS'] = 'Проверка раздела &laquo;Отзывы&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_REVIEWS_DESCRIPTION'] = 'Должен быть создан и добавлен в меню';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_LOWERCASE'] = 'Проверка нижнего регистра в названиях файлов и папок';
@@ -83,6 +89,14 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON7_REVIEWCAROUSEL'] = 'Проверка ко�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON7_REVIEWCAROUSEL_DESCRIPTION'] = 'В компоненте Карусель отзывов должны быть установлены авто-кеширование и снят флаг учета прав';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON7_REVIEWLIST'] = 'Проверка компонента Список отзывов';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON7_REVIEWLIST_DESCRIPTION'] = 'В компоненте Список отзывов должны быть установлены авто-кеширование и снят флаг учета прав';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON9_COMPONENTOPTIONS'] = 'Проверка правильности заполнения параметров ЧПУ';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON9_COMPONENTOPTIONS_DESCRIPTION'] = 'В компоненте Каталога должны быть правильно настроены ссылки в режиме ЧПУ';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON9_CATALOGIBLOCK'] = 'Проверка правильности заполнения параметров ЧПУ в административной панели';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON9_CATALOGIBLOCK_DESCRIPTION'] = 'В инфоблоке Каталога в админке должны быть правильно настроены ссылки в режиме ЧПУ';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON9_SYMBOLICCODE_DESCRIPTION'] = 'В настройках ИБ Продукция символьные коды элементов и разделов должны быть обязательными, должны быть заполнены';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON9_SYMBOLICCODE'] = 'Проверка символьного кода у элементов Каталога';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON9_NAVPAGE_DESCRIPTION'] = 'У компонента Каталог должна быть включена постраничная навигация, выбран правильный шаблон и установлен вывод пяти элементов на странице';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON9_NAVPAGE'] = 'Проверка постраничной навигации';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION'] = 'Проверка формы поиска';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION_DESCRIPTION'] = 'Должна быть настроена на раздел, а не на index.php-страницу';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CATALOGRATING'] = 'Проверка на наличие включенного рейтинга';
@@ -97,6 +111,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST'] = 'Проверка с�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST_DESCRIPTION'] = 'Инфоблок должен иметь свойство "В наличии", оно должно быть заполненно хотя бы у 1 элемента раздела "Мягкая мебель"';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER'] = 'Используется в умном фильтре';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER_DESCRIPTION'] = 'Проверка параметра свойства "использовать в умном фильтре"';
+
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_CATALOGBINDINGPROPERTY'] = 'Проверка свойства "Привязка к каталогу"';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_CATALOGBINDINGPROPERTY_DESCRIPTION'] = 'Свойство должно существовать, иметь тип "Привязка к элементам" и быть заполненно хотя бы у 3 элементов';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_PROPERTYPRICE'] = 'Проверка свойства "Цена"';
@@ -107,6 +122,12 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON2_AGENTPARAMETERS'] = 'Проверка па
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON2_AGENTPARAMETERS_DESCRIPTION'] = 'Агент должен быть активен и иметь интервал 86400 сек';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON2_POSTEVENT'] = 'Проверка существования почтового события и почтового шаблона';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON2_POSTEVENT_DESCRIPTION'] = 'Должны существовать почтовое событие и закрепленный за ним почтовый шаблон';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON3_HANDLERSCHECKER'] = 'Проверка существования обработчиков событий';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON3_HANDLERSCHECKER_DESCRIPTION'] = 'Должны быть созданы обработчики событий (на обновление, удаление элементов ИБ, обновление пользователей)';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON3_DEACTIVATIONACTIVENEWS'] = 'Проверка работы обработчика событий (деактивация новости)';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON3_DEACTIVATIONACTIVENEWS_DESCRIPTION'] = 'Должна быть ошибка при попытке деактивации свежей новости';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON3_DEACTIVATIONNOTACTIVENEWS'] = 'Проверка работы обработчика событий (деактивация уже деактивированной новости)';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON3_DEACTIVATIONNOTACTIVENEWS_DESCRIPTION'] = 'Не должно быть ошибки при попытке деактивировать уже деактивированную новость';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETMATERIALS'] = 'Проверка SetViewTarget для материалов';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SETVIEWTARGETMATERIALS_DESCRIPTION'] = 'SetViewTarget должен быть размещен в catalog.section в template.php';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4_SHOWVIEWCONTENTMATERIALS'] = 'Проверка ShowViewContent для материалов';
@@ -119,9 +140,17 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1_DESCRIPTION'] = 'Проверка фай
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1_DESCRIPTION_DESCRIPTION'] = 'В файле .description.php текст должен быть вынесен в lang-файл, подключение news_list.gif должно быть убрано';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1_HERMITAGE'] = 'Проверка файла подключения эрмитажа';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1_HERMITAGE_DESCRIPTION'] = 'В шаблоне должен быть подключен эрмитаж (для разделов и для элементов)';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SECURITYLEVEL'] = 'Проверка уровня безопасности';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SECURITYLEVEL_DESCRIPTION'] = 'Уровень безопасности должен быть "Стандартный" или выше.';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SECUREAUTHORIZATION'] = 'Проверка настроек Авторизации';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SECUREAUTHORIZATION_DESCRIPTION'] = 'В настройках главного модуля, в разделе "Авторизация" в параметрах "Безопасной авторизации" должен стоять флаг на передачу пароля в зашифрованном виде и сгенерирован ключ шифрования.';
 
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE_DESCRIPTION'] = 'Должна существовать папка /local/modules/intervolga.#Ваше название модуля#/, модуль должен быть установлен';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON3_PROPERTYGENDERVALUES'] = 'Проверка свойства "Пол"';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON3_PROPERTYGENDERVALUES_DESCRIPTION'] = 'Списочное свойство должно содержать 2 варианта: "Мужчина" и "Женщина"';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON3_LINKWITHRESPONDENT'] = 'Проверка свойства "Респондент"';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON3_LINKWITHRESPONDENT_DESCRIPTION'] = 'Должно быть привязкой к элементам ИБ "Респонденты"';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Проверка собственного UF-свойства';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF_DESCRIPTION'] = 'Должен существовать обработчик события OnUserTypeBuildList модуля main для свойства "Привязка к коллекции медиабиблиотеки"';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UFCLASS'] = 'Проверка собственного UF-свойства с требуемыми свойствами для объекта USER';
@@ -149,7 +178,9 @@ $MESS['INTERVOLGA_EDU.IBLOCK_OPTIONS_LOST'] = 'Проблема с ИБ <a href=
 $MESS['INTERVOLGA_EDU.IBLOCK_ELEMENTS_NOT_ENOUGH'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: недостаточно элементов, должно быть хотя бы #EXPECT#';
 $MESS['INTERVOLGA_EDU.USE_ONE_TAB_FOR_IBLOCK_FORM'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: разместите все поля при редактировании элемента на одной вкладке';
 $MESS['INTERVOLGA_EDU.WRONG_IBLOCK_TYPE'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: тип ИБ должен быть #TYPE#';
-$MESS['INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: включите всё логирование действий с элементами';
+$MESS['INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG_ADD'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: установите флаг "Записывать добавление элемента"';
+$MESS['INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG_EDIT'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: установите флаг "Записывать изменение элемента"';
+$MESS['INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG_DELETE'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: установите флаг "Записывать удаление элемента"';
 $MESS['INTERVOLGA_EDU.SET_PERMISSION_EVERYONE_R'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: задайте доступ для всех пользователей Чтение';
 $MESS['INTERVOLGA_EDU.IB_PROPERTY_HAS_LOWER_CASE'] = 'Символьный код свойства <b>#PROPERTY#</b> (ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>) должен быть в верхнем регистре, без кириллицы!';
 $MESS['INTERVOLGA_EDU.FIELD_SURNAME'] = 'Фамилия';
@@ -161,6 +192,7 @@ $MESS['INTERVOLGA_EDU.COMPANY_PROPERTY'] = 'Компания';
 $MESS['INTERVOLGA_EDU.CATALOGBINDING_PROPERTY'] = 'Привязка к каталогу';
 $MESS['INTERVOLGA_EDU.AVAILABLE_PROPERTY'] = 'В наличии';
 $MESS['INTERVOLGA_EDU.IBLOCK_REVIEWS'] = 'Отзывы';
+$MESS['INTERVOLGA_EDU.IBLOCK_RESPONDENT'] = 'Респондент';
 $MESS['INTERVOLGA_EDU.IBLOCK_PROMO'] = 'Акции';
 $MESS['INTERVOLGA_EDU.IBLOCK_NEWS'] = 'Новости';
 $MESS['INTERVOLGA_EDU.IBLOCK_PRODUCTS'] = '[s1] Продукция';

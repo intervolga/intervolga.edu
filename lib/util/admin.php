@@ -92,4 +92,11 @@ class Admin
 
 		return $url;
 	}
+
+	public static function getModuleOptionsUrl(string $module)
+	{
+		$url = '/bitrix/admin/settings.php?lang=' . LANGUAGE_ID . '&mid=' . $module;
+
+		return $url;
+	}
 }
