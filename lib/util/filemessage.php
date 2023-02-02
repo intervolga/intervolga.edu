@@ -16,9 +16,7 @@ class FileMessage
 			'#FILEMAN_URL#' => Admin::getFileManUrl($fse),
 
 		];
-		echo '<pre>' . __FILE__ . ':' . __LINE__ . ':<br>' . print_r($replace, true) . '</pre>';
 		$message = Loc::getMessage('INTERVOLGA_EDU.FSE_MESSAGE', $replace);
-		echo '<pre>' . __FILE__ . ':' . __LINE__ . ':<br>' . print_r($message, true) . '</pre>';
 
 		return $message;
 	}
