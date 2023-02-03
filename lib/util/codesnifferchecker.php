@@ -1,24 +1,50 @@
 <?php
 namespace Intervolga\Edu\Util;
 
-use Intervolga\Edu\Util\FileMessage;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Sniffer;
+use Intervolga\Edu\Util\FileMessage;
 
-class TemplateFileChecker
+/**
+ * Here will be real PHP Code Sniffer
+ */
+class CodeSnifferChecker
 {
-	public static function testTemplateFile(File $file)
+	public static function testTemplateFile($filePaths)
 	{
-		$result = Sniffer::run([$file->getPath()], ['templateChecker']);
+		if (!is_array($filePaths)) {
+			$filePaths = [$filePaths];
+		}
+		$result = Sniffer::run($filePaths, ['templateChecker']);
 		if (!empty($result)) {
 			foreach ($result as $error) {
 				Assert::empty($error, $error->getMessage());
 			}
 		}
+	}
 
-		$quotes = Sniffer::run([$file->getPath()], ['customquotes']);
+	public static function goodCode($filePaths)
+	{
+		if (!is_array($filePaths)) {
+			$filePaths = [$filePaths];
+		}
+		foreach ($filePaths as $file) {
+			$result = Sniffer::run($filePaths);
+			if (!empty($result)) {
+				foreach ($result as $error) {
+					Assert::empty($error, $error->getMessage());
+				}
+			}
+			static::checkCustomQuotes($file);
+		}
+
+	}
+
+	public static function checkCustomQuotes($filePath)
+	{
+		$quotes = Sniffer::run([$filePath], ['customquotes']);
 		foreach ($quotes as $message) {
 			if ($message->getMessage()[0] == '\'') {
 				$singleQuotes[] = $message->getMessage();
@@ -28,12 +54,9 @@ class TemplateFileChecker
 		}
 
 		$basicQuotes = static::getCustomQuotes($singleQuotes, $doubleQuotes);
+		$file = new File($filePath);
 		Assert::true($basicQuotes, Loc::getMessage('INTERVOLGA_EDU.UTIL_TEMPLATE_FILE_CHECKER', [
-			'#FILE#' => FileMessage::getFileMessage([
-				'#FULL_PATH#' => str_replace($file->getName(), '', FileSystem::getLocalPath($file)),
-				'#NAME#' => $file->getName(),
-				'#FILEMAN_URL#' => Admin::getFileManUrl($file),
-			]),
+			'#FILE#' => FileMessage::get($file),
 			'#QUOTES#' => $basicQuotes['basic'],
 			'#WRONG_QUOTES#' => implode(', ', $basicQuotes['wrongLines']),
 		]));
@@ -54,5 +77,4 @@ class TemplateFileChecker
 
 		return $result;
 	}
-
 }
