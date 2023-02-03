@@ -31,7 +31,7 @@ class CodeSnifferChecker
 			$filePaths = [$filePaths];
 		}
 		foreach ($filePaths as $file) {
-			$result = Sniffer::run($filePaths);
+			$result = Sniffer::run([$file]);
 			if (!empty($result)) {
 				foreach ($result as $error) {
 					Assert::empty($error, $error->getMessage());
