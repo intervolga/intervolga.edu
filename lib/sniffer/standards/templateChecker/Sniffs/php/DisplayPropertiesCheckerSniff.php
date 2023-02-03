@@ -42,11 +42,7 @@ class DisplayPropertiesCheckerSniff implements Sniff
 			if (mb_strcut($tokens[$phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 6), null, true)]['content'], 1, -1) === 'VALUE') {
 				$file = new File($phpcsFile->getFilename());
 				$error = Loc::getMessage('INTERVOLGA_EDU.SNIFFER_USE_DISPLAY_PROPERTIES', [
-					'#FILE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $file->getName(),
-						'#PATH#' => FileSystem::getLocalPath($file),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($file),
-					]),
+					'#FILE#' => FileMessage::get($file),
 					'#CODE#' => $tokens[$phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 3), null, true)]['content']
 				]);
 				$phpcsFile->addError($error, $stackPtr, 'DisplayPropertiesCheckerSniff');

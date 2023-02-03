@@ -3,9 +3,7 @@ namespace Intervolga\Edu\Sniffer\Standards\General\Sniffs\PHP;
 
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileMessage;
-use Intervolga\Edu\Util\FileSystem;
 use PHP_CodeSniffer\Sniffs\Sniff;
 
 class CheckCustomCoreSniff implements Sniff
@@ -39,11 +37,7 @@ class CheckCustomCoreSniff implements Sniff
 			if (!in_array('General.PHP.CheckCustomCore.A2CheckCustomCoreSniffNotFoundPrologIncluded', $errorSource)) {
 				$file = new File($phpcsFile->getFilename());
 				$error = Loc::getMessage('INTERVOLGA_EDU.SNIFFER_CUSTOM_CORE_NOT_FOUND', [
-					'#FILE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $file->getName(),
-						'#PATH#' => FileSystem::getLocalPath($file),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($file),
-					]),
+					'#FILE#' => FileMessage::get($file),
 				]);
 				$phpcsFile->addError($error, $stackPtr, 'A2CheckCustomCoreSniffNotFoundPrologIncluded');
 			}
@@ -56,11 +50,7 @@ class CheckCustomCoreSniff implements Sniff
 				if (strtolower($tokens[$prevTokenDefine]['content']) == 'defined') {
 					$file = new File($phpcsFile->getFilename());
 					$error = Loc::getMessage('INTERVOLGA_EDU.SNIFFER_CUSTOM_CORE', [
-						'#FILE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-							'#NAME#' => $file->getName(),
-							'#PATH#' => FileSystem::getLocalPath($file),
-							'#FILEMAN_URL#' => Admin::getFileManUrl($file),
-						]),
+						'#FILE#' => FileMessage::get($file),
 					]);
 					$phpcsFile->addError($error, $stackPtr, 'A1CheckCustomCoreSniff');
 				}

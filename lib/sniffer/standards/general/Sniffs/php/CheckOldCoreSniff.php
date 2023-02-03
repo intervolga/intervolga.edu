@@ -8,8 +8,6 @@ use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\FileMessage;
 use PHP_CodeSniffer\Sniffs\Sniff;
 
-Loc::loadMessages(__FILE__);
-
 class CheckOldCoreSniff implements Sniff
 {
 	public function register()
@@ -25,11 +23,7 @@ class CheckOldCoreSniff implements Sniff
 		if (preg_match('/SetAdditionalCSS/mi', $token['content'])) {
 			$file = new File($phpcsFile->getFilename());
 			$error = Loc::getMessage('INTERVOLGA_EDU.SNIFFER_SET_ADDITIONAL_CSS', [
-				'#FILE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-					'#NAME#' => $file->getName(),
-					'#PATH#' => FileSystem::getLocalPath($file),
-					'#FILEMAN_URL#' => Admin::getFileManUrl($file),
-				]),
+				'#FILE#' => FileMessage::get($file),
 				'#VAR#' => $token['content']
 			]);
 			$phpcsFile->addError($error, $stackPtr, 'A1CheckOldCoreSniff');
@@ -37,11 +31,7 @@ class CheckOldCoreSniff implements Sniff
 		if (preg_match('/AddHeadScript/mi', $token['content'])) {
 			$file = new File($phpcsFile->getFilename());
 			$error = Loc::getMessage('INTERVOLGA_EDU.SNIFFER_SET_ADDITIONAL_CSS', [
-				'#FILE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-					'#NAME#' => $file->getName(),
-					'#PATH#' => FileSystem::getLocalPath($file),
-					'#FILEMAN_URL#' => Admin::getFileManUrl($file),
-				]),
+				'#FILE#' => FileMessage::get($file),
 				'#VAR#' => $token['content']
 			]);
 			$phpcsFile->addError($error, $stackPtr, 'A2CheckOldCoreSniff');
@@ -50,11 +40,7 @@ class CheckOldCoreSniff implements Sniff
 		if (preg_match('/IncludeTemplateLangFile/mi', $token['content'])) {
 			$file = new File($phpcsFile->getFilename());
 			$error = Loc::getMessage('INTERVOLGA_EDU.SNIFFER_SET_ADDITIONAL_CSS', [
-				'#FILE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-					'#NAME#' => $file->getName(),
-					'#PATH#' => FileSystem::getLocalPath($file),
-					'#FILEMAN_URL#' => Admin::getFileManUrl($file),
-				]),
+				'#FILE#' => FileMessage::get($file),
 				'#VAR#' => $token['content']
 			]);
 			$phpcsFile->addError($error, $stackPtr, 'A3CheckOldCoreSniff');
@@ -65,11 +51,7 @@ class CheckOldCoreSniff implements Sniff
 			if ($tokens[$prevToken]['content'] !== '::') {
 				$file = new File($phpcsFile->getFilename());
 				$error = Loc::getMessage('INTERVOLGA_EDU.SNIFFER_SET_ADDITIONAL_CSS', [
-					'#FILE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $file->getName(),
-						'#PATH#' => FileSystem::getLocalPath($file),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($file),
-					]),
+					'#FILE#' => FileMessage::get($file),
 					'#VAR#' => $token['content']
 				]);
 				$phpcsFile->addError($error, $stackPtr, 'A4CheckOldCoreSniff');
@@ -83,11 +65,7 @@ class CheckOldCoreSniff implements Sniff
 				if (preg_match('/IncludeModule/mi', $tokens[$newNextToken]['content'])) {
 					$file = new File($phpcsFile->getFilename());
 					$error = Loc::getMessage('INTERVOLGA_EDU.SNIFFER_SET_ADDITIONAL_CSS', [
-						'#FILE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-							'#NAME#' => $file->getName(),
-							'#PATH#' => FileSystem::getLocalPath($file),
-							'#FILEMAN_URL#' => Admin::getFileManUrl($file),
-						]),
+						'#FILE#' => FileMessage::get($file),
 						'#VAR#' => $token['content'] . $tokens[$nextToken]['content'] . $tokens[$newNextToken]['content']
 					]);
 					$phpcsFile->addError($error, $stackPtr, 'A5CheckOldCoreSniff');

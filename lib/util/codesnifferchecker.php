@@ -1,7 +1,6 @@
 <?php
 namespace Intervolga\Edu\Util;
 
-use Bitrix\Main\IO\File;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Sniffer;
 
