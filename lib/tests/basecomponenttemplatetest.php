@@ -99,14 +99,4 @@ abstract class BaseComponentTemplateTest extends BaseTest
 			}
 		}
 	}
-
-	protected static function testTemplateCode(ComponentTemplate $templateDir)
-	{
-		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
-			if ($knownPhpFile->isExists()) {
-				AssertPhp::goodCode($knownPhpFile);
-				Sniffer::testTemplateFile($knownPhpFile);
-			}
-		}
-	}
 }
