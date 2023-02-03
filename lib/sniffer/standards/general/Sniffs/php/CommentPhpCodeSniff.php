@@ -1,11 +1,9 @@
 <?php
-
 namespace Intervolga\Edu\Sniffer\Standards\General\Sniffs\PHP;
 
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Util\Admin;
-use Intervolga\Edu\Util\FileSystem;
+use Intervolga\Edu\Util\FileMessage;
 use PHP_CodeSniffer\Sniffs\Sniff;
 
 class CommentPhpCodeSniff implements Sniff
@@ -40,11 +38,7 @@ class CommentPhpCodeSniff implements Sniff
 
 				$file = new File($phpcsFile->getFilename());
 				$error = Loc::getMessage('INTERVOLGA_EDU.SNIFFER_COMMENT_PHP_CODE', [
-					'#FILE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $file->getName(),
-						'#PATH#' => FileSystem::getLocalPath($file),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($file),
-					]),
+					'#FILE#' => FileMessage::get($file),
 					'#VALUE#' => $commentPhp,
 				]);
 				$phpcsFile->addError($error, $stackPtr, 'CommentPhpCodeSniff');
