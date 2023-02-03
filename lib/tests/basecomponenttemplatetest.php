@@ -3,12 +3,11 @@ namespace Intervolga\Edu\Tests;
 
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
-use Intervolga\Edu\Asserts\AssertPhp;
 use Intervolga\Edu\FilesTree\ComponentTemplate;
 use Intervolga\Edu\FilesTree\NewsTemplate;
 use Intervolga\Edu\FilesTree\SimpleComponentTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
-use Intervolga\Edu\Util\Sniffer;
+use Intervolga\Edu\Util\CodeSnifferChecker;
 
 abstract class BaseComponentTemplateTest extends BaseTest
 {
@@ -47,6 +46,16 @@ abstract class BaseComponentTemplateTest extends BaseTest
 		}
 	}
 
+	protected static function testTemplateCode(ComponentTemplate $templateDir)
+	{
+		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
+			if ($knownPhpFile->isExists()) {
+				CodeSnifferChecker::goodCode($knownPhpFile->getPath());
+				CodeSnifferChecker::testTemplateFile($knownPhpFile->getPath());
+			}
+		}
+	}
+
 	/**
 	 * @return string|ComponentTemplate
 	 */
@@ -57,13 +66,30 @@ abstract class BaseComponentTemplateTest extends BaseTest
 		foreach ($templateDir->getUnknownFileSystemEntries() as $unknownFileSystemEntry) {
 			Assert::fseNotExists($unknownFileSystemEntry);
 		}
-		Assert::fseNotExists($templateDir->getImagesDir());
-		Assert::fseNotExists($templateDir->getParametersFile());
-		Assert::fseNotExists($templateDir->getDescriptionFile());
+
+		static::checkRequiredFilesTemplate($templateDir);
+		static::checkNotExistingFiles($templateDir);
 		foreach ($templateDir->getLangForeignDirs() as $langForeignDir) {
 			Assert::directoryNotExists($langForeignDir);
 		}
 		static::testTemplateLangRuTrash($templateDir);
+	}
+
+	protected static function checkRequiredFilesTemplate($templateDir)
+	{
+		if ($templateDir instanceof NewsTemplate) {
+			Assert::fseExists($templateDir->getNewsFile());
+			Assert::fseExists($templateDir->getDetailFile());
+		} else {
+			Assert::fseExists($templateDir->getTemplateFile());
+		}
+	}
+
+	protected static function checkNotExistingFiles($templateDir)
+	{
+		Assert::fseNotExists($templateDir->getImagesDir());
+		Assert::fseNotExists($templateDir->getParametersFile());
+		Assert::fseNotExists($templateDir->getDescriptionFile());
 	}
 
 	protected static function testTemplateLangRuTrash(ComponentTemplate $templateDir)
@@ -86,16 +112,6 @@ abstract class BaseComponentTemplateTest extends BaseTest
 						Assert::fseNotExists($child);
 					}
 				}
-			}
-		}
-	}
-
-	protected static function testTemplateCode(ComponentTemplate $templateDir)
-	{
-		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
-			if ($knownPhpFile->isExists()) {
-				AssertPhp::goodCode($knownPhpFile);
-				Sniffer::testTemplateFile($knownPhpFile);
 			}
 		}
 	}
