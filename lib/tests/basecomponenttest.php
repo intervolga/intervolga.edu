@@ -16,9 +16,11 @@ abstract class BaseComponentTest extends BaseComponentTemplateTest
 
 	public static function getTestLoc(): string
 	{
-		return Loc::getMessage('INTERVOLGA_EDU.TEST_COMPONENT_NAME', [
-			'#COMPONENT#' => static::getLocator()::getNameLoc(),
-		]);
+		return Loc::getMessage('INTERVOLGA_EDU.TEST_COMPONENT_NAME',
+			[
+				'#COMPONENT#' => static::getLocator()::getNameLoc(),
+			]
+		);
 	}
 
 	/** локатор для компонента
@@ -41,7 +43,6 @@ abstract class BaseComponentTest extends BaseComponentTemplateTest
 			 */
 			static::testComponentTrash($componentDir);
 		}
-
 	}
 
 	/** дерево компонента
@@ -62,7 +63,6 @@ abstract class BaseComponentTest extends BaseComponentTemplateTest
 					static::testTemplateTrash($templateDir);
 					static::testTemplateCode($templateDir);
 				}
-
 			} else {
 				Assert::fseNotExists($unknownFileSystemEntry);
 			}

@@ -16,6 +16,7 @@ class CustomVacancies extends DirectoryLocator
 		foreach (INTERVOLGA_EDU_GUESS_VARIANTS['CUSTOM_COMPONENTS'] as $customComponent) {
 			$paths[] = '/local/components/' . $customComponent . '/vacancies';
 		}
+
 		return $paths;
 	}
 }

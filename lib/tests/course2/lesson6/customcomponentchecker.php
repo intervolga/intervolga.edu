@@ -7,8 +7,8 @@ use Intervolga\Edu\FilesTree\ComponentTemplate;
 use Intervolga\Edu\FilesTree\CustomVacanciesTree;
 use Intervolga\Edu\Locator\Component\CustomVacancies;
 use Intervolga\Edu\Locator\IO\ComponentTemplate\CustomVacanciesTemplate;
-use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Locator\IO\CustomVacancies as CustomVacanciesComponentLocator;
+use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Tests\BaseComponentTest;
 
 class CustomComponentChecker extends BaseComponentTest

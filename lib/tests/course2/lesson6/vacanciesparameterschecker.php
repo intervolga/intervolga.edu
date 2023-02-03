@@ -33,10 +33,15 @@ class VacanciesParametersChecker extends BaseTest
 		}
 
 		if ($componentParameters = CustomVacancies::find()['PARAMETERS']) {
-			Assert::eq($componentParameters['SEF_MODE'], 'Y',
+			Assert::eq(
+				$componentParameters['SEF_MODE'],
+				'Y',
 				Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_EMPTY_SEF_MODE'));
-			Assert::notEmpty($componentParameters['SEF_URL_TEMPLATES'],
+
+			Assert::notEmpty(
+				$componentParameters['SEF_URL_TEMPLATES'],
 				Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_EMPTY_SEF_URL_TEMPLATES'));
+
 			if ($componentParameters['SEF_URL_TEMPLATES']) {
 				Assert::eq(
 					static::prepareUrl($componentParameters['SEF_FOLDER']),
