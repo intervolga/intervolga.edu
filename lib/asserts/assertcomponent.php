@@ -24,7 +24,7 @@ class AssertComponent extends Assert
 				'INTERVOLGA_EDU.ASSERT_COMPONENT_LOCATOR',
 				[
 					'#COMPONENT#' => is_array($value::getCode()) ?
-						$value::getPossibleTypes() : $value::getCode(),
+						$value::getPossibleTips() : $value::getCode(),
 				],
 				$message
 			));

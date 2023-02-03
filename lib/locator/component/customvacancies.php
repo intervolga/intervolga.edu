@@ -17,7 +17,7 @@ class CustomVacancies extends ComponentLocator
 	}
 	public static function getPossibleTips()
 	{
-		return implode(' || ', INTERVOLGA_EDU_GUESS_VARIANTS['CUSTOM_COMPONENTS']);
+		return implode(':vacancies || ', INTERVOLGA_EDU_GUESS_VARIANTS['CUSTOM_COMPONENTS']).':vacancies ';
 	}
 	public static function getNameLoc(): string
 	{
