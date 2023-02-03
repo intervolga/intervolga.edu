@@ -2,24 +2,10 @@
 namespace Intervolga\Edu\Tests;
 
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Asserts\Assert;
-use Intervolga\Edu\Sniffer;
+use Intervolga\Edu\Util\CodeSnifferChecker;
 
 abstract class BaseTestCode extends BaseTest
 {
-	protected static function run()
-	{
-		$files = static::getFilesPaths();
-		$result = Sniffer::run($files);
-
-		if (!empty($result)) {
-			foreach ($result as $error) {
-				Assert::empty($error, $error->getMessage());
-			}
-		}
-
-	}
-
 	public static function interceptErrors()
 	{
 		return true;
@@ -32,11 +18,6 @@ abstract class BaseTestCode extends BaseTest
 		]);
 	}
 
-	public static function getDescription(): string
-	{
-		return Loc::getMessage('INTERVOLGA_EDU.TEST_CODE_DESCRIPTION');
-	}
-
 	static function getFilesLoc(): string
 	{
 		$code = 'INTERVOLGA_EDU.' . mb_strtoupper(static::getCourseCode()) . '_' . mb_strtoupper(static::getLessonCode()) . '_' . mb_strtoupper(static::getTestCode()) . '_FILES';
@@ -47,6 +28,16 @@ abstract class BaseTestCode extends BaseTest
 		}
 	}
 
-	abstract static function getFilesPaths(): array;
+	public static function getDescription(): string
+	{
+		return Loc::getMessage('INTERVOLGA_EDU.TEST_CODE_DESCRIPTION');
+	}
 
+	protected static function run()
+	{
+		$files = static::getFilesPaths();
+		CodeSnifferChecker::goodCode($files);
+	}
+
+	abstract static function getFilesPaths(): array;
 }

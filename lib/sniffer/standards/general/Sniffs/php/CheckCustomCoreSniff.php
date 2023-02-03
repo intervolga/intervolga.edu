@@ -39,10 +39,10 @@ class CheckCustomCoreSniff implements Sniff
 			if (!in_array('General.PHP.CheckCustomCore.A2CheckCustomCoreSniffNotFoundPrologIncluded', $errorSource)) {
 				$file = new File($phpcsFile->getFilename());
 				$error = Loc::getMessage('INTERVOLGA_EDU.SNIFFER_CUSTOM_CORE_NOT_FOUND', [
-					'#FILE#' => FileMessage::getFileMessage([
-						'#FILEMAN_URL#' => Admin::getFileManUrl($file),
+					'#FILE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
 						'#NAME#' => $file->getName(),
-						'#FULL_PATH#' => str_replace($file->getName(), '', FileSystem::getLocalPath($file)),
+						'#PATH#' => FileSystem::getLocalPath($file),
+						'#FILEMAN_URL#' => Admin::getFileManUrl($file),
 					]),
 				]);
 				$phpcsFile->addError($error, $stackPtr, 'A2CheckCustomCoreSniffNotFoundPrologIncluded');
@@ -56,10 +56,10 @@ class CheckCustomCoreSniff implements Sniff
 				if (strtolower($tokens[$prevTokenDefine]['content']) == 'defined') {
 					$file = new File($phpcsFile->getFilename());
 					$error = Loc::getMessage('INTERVOLGA_EDU.SNIFFER_CUSTOM_CORE', [
-						'#FILE#' => FileMessage::getFileMessage([
+						'#FILE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
 							'#NAME#' => $file->getName(),
+							'#PATH#' => FileSystem::getLocalPath($file),
 							'#FILEMAN_URL#' => Admin::getFileManUrl($file),
-							'#FULL_PATH#' => str_replace($file->getName(), '', FileSystem::getLocalPath($file)),
 						]),
 					]);
 					$phpcsFile->addError($error, $stackPtr, 'A1CheckCustomCoreSniff');

@@ -1,5 +1,4 @@
 <?php
-
 namespace Intervolga\Edu\Sniffer\Standards\General\Sniffs\PHP;
 
 use Bitrix\Main\IO\File;
@@ -27,10 +26,10 @@ class UglyCodeFragmentsSniff implements Sniff
 			if($tokens[$nextToken]['type'] === 'T_VARIABLE' && $tokens[$nextToken]['content'] === '$arResult'){
 				$file = new File($phpcsFile->getFilename());
 				$error = Loc::getMessage('INTERVOLGA_EDU.SNIFFER_UGLY_CODE_FRAGMENTS', [
-					'#FILE#' => FileMessage::getFileMessage([
-						'#FILEMAN_URL#' => Admin::getFileManUrl($file),
+					'#FILE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
 						'#NAME#' => $file->getName(),
-						'#FULL_PATH#' => str_replace($file->getName(), '', FileSystem::getLocalPath($file)),
+						'#PATH#' => FileSystem::getLocalPath($file),
+						'#FILEMAN_URL#' => Admin::getFileManUrl($file),
 					]),
 				]);
 				$phpcsFile->addError($error, $stackPtr, 'UglyCodeFragmentsSniff');

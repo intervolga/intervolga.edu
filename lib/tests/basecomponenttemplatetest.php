@@ -3,12 +3,11 @@ namespace Intervolga\Edu\Tests;
 
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
-use Intervolga\Edu\Asserts\AssertPhp;
 use Intervolga\Edu\FilesTree\ComponentTemplate;
 use Intervolga\Edu\FilesTree\NewsTemplate;
 use Intervolga\Edu\FilesTree\SimpleComponentTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
-use Intervolga\Edu\Util\TemplateFileChecker;
+use Intervolga\Edu\Util\CodeSnifferChecker;
 
 
 abstract class BaseComponentTemplateTest extends BaseTest
@@ -52,8 +51,8 @@ abstract class BaseComponentTemplateTest extends BaseTest
 	{
 		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
 			if ($knownPhpFile->isExists()) {
-				AssertPhp::goodCode($knownPhpFile);
-				TemplateFileChecker::testTemplateFile($knownPhpFile);
+				CodeSnifferChecker::goodCode($knownPhpFile->getPath());
+				CodeSnifferChecker::testTemplateFile($knownPhpFile->getPath());
 			}
 		}
 	}

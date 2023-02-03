@@ -510,7 +510,7 @@ class Assert
 				[
 					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
 						'#NAME#' => $value->getName(),
-						'#LOCAL_PATH#' => FileSystem::getLocalPath($value),
+						'#PATH#' => FileSystem::getLocalPath($value),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
 					]),
 					'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
