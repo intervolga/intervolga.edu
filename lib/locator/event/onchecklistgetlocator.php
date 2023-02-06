@@ -7,7 +7,7 @@ class OnCheckListGetLocator extends EventLocator
 {
 	public static function getNameLoc(): string
 	{
-		return Loc::getMessage('INTERVOLGA_EDU.INTERVOLGA_EDU.ON_CHECK_LIST_GET');
+		return Loc::getMessage('INTERVOLGA_EDU.ON_CHECK_LIST_GET');
 	}
 
 	protected static function getParams(): array
