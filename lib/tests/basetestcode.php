@@ -2,7 +2,7 @@
 namespace Intervolga\Edu\Tests;
 
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Util\CodeSnifferChecker;
+use Intervolga\Edu\Asserts\Assert;
 
 abstract class BaseTestCode extends BaseTest
 {
@@ -36,7 +36,7 @@ abstract class BaseTestCode extends BaseTest
 	protected static function run()
 	{
 		$files = static::getFilesPaths();
-		CodeSnifferChecker::goodCode($files);
+		Assert::phpSniffer($files);
 	}
 
 	abstract static function getFilesPaths(): array;
