@@ -53,6 +53,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson42\TestRegisterPageOption::class,
 			\Intervolga\Edu\Tests\Course1\Lesson42\TestEmail::class,
 			\Intervolga\Edu\Tests\Course1\Lesson42\TestAuthorize::class,
+			\Intervolga\Edu\Tests\Course1\Lesson42\TestFeedback::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson6\TestReviewsIblock::class,
 			\Intervolga\Edu\Tests\Course1\Lesson6\TestPromoIblock::class,
