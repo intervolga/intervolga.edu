@@ -221,7 +221,6 @@ $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_URL_PROBLEM'] = 'В шаблоне пи�
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_PAGE_PROBLEM'] = 'ссылка из письма';
 $MESS['INTERVOLGA_EDU.IBLOCK_FIELD_PARAM_SHOULD_BE_SET'] = 'Настройка <b>#PARAM#</b> поля <b>#FIELD#</b> должна быть <b>#EXPECT#</b>';
 $MESS['INTERVOLGA_EDU.CONTENT_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#NAME#</a> не должно быть #REGEX_EXPLAIN# (#REASON#)';
-$MESS['INTERVOLGA_EDU.ADD_CUSTOM_CORE_CHECK'] = 'В файле #VALUE# нужно использовать короткое подключение ядра: B_PROLOG_INCLUDED === true || die()';
 $MESS['INTERVOLGA_EDU.CUSTOM_MODULE'] = 'intervolga.?';
 $MESS['INTERVOLGA_EDU.CUSTOM_MODULE_TIP'] = 'intervolga.? в #MODULES#';
 $MESS['INTERVOLGA_EDU.INCLUDEAREA_PARTNERS'] = 'Включаемая область в разделе Партнерам';
