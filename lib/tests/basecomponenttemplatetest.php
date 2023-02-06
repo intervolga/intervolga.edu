@@ -7,8 +7,6 @@ use Intervolga\Edu\FilesTree\ComponentTemplate;
 use Intervolga\Edu\FilesTree\NewsTemplate;
 use Intervolga\Edu\FilesTree\SimpleComponentTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
-use Intervolga\Edu\Util\CodeSnifferChecker;
-
 
 abstract class BaseComponentTemplateTest extends BaseTest
 {
@@ -49,13 +47,18 @@ abstract class BaseComponentTemplateTest extends BaseTest
 
 	protected static function testTemplateCode(ComponentTemplate $templateDir)
 	{
+		$files = [];
 		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
 			if ($knownPhpFile->isExists()) {
-				CodeSnifferChecker::goodCode($knownPhpFile->getPath());
-				CodeSnifferChecker::testTemplateFile($knownPhpFile->getPath());
+				$files[] = $knownPhpFile->getPath();
 			}
 		}
+		Assert::phpSniffer($files, [
+			'general',
+			'templateChecker'
+		]);
 	}
+
 	/**
 	 * @return string|ComponentTemplate
 	 */

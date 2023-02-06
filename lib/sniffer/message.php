@@ -44,7 +44,7 @@ class Message
 		return $this->message;
 	}
 
-	public function getCode(): int
+	public function getCode(): string
 	{
 		return $this->code;
 	}
