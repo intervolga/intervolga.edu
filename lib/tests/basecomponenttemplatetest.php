@@ -5,7 +5,6 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\FilesTree\ComponentTemplate;
 use Intervolga\Edu\FilesTree\NewsTemplate;
-use Intervolga\Edu\FilesTree\SimpleComponentTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Util\CodeSnifferChecker;
 
@@ -43,16 +42,6 @@ abstract class BaseComponentTemplateTest extends BaseTest
 			 */
 			static::testTemplateTrash($templateDir);
 			static::testTemplateCode($templateDir);
-		}
-	}
-
-	protected static function testTemplateCode(ComponentTemplate $templateDir)
-	{
-		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
-			if ($knownPhpFile->isExists()) {
-				CodeSnifferChecker::goodCode($knownPhpFile->getPath());
-				CodeSnifferChecker::testTemplateFile($knownPhpFile->getPath());
-			}
 		}
 	}
 
@@ -96,22 +85,29 @@ abstract class BaseComponentTemplateTest extends BaseTest
 	{
 		if ($templateDir->getLangRuDir()->isExists()) {
 			foreach ($templateDir->getLangRuDir()->getChildren() as $child) {
-				if ($child->getName() == $templateDir->getDescriptionFile()->getName()) {
+				if (!in_array($child->getName(), static::getKnownFilesNames($templateDir))) {
 					Assert::fseNotExists($child);
-				} elseif ($child->getName() == $templateDir->getParametersFile()->getName()) {
-					Assert::fseNotExists($child);
-				} elseif ($templateDir instanceof SimpleComponentTemplate) {
-					if ($child->getName() != $templateDir->getTemplateFile()->getName()) {
-						Assert::fseNotExists($child);
-					}
-				} elseif ($templateDir instanceof NewsTemplate) {
-					if (!in_array($child->getName(), [
-						$templateDir->getNewsFile()->getName(),
-						$templateDir->getDetailFile()->getName()
-					])) {
-						Assert::fseNotExists($child);
-					}
 				}
+			}
+		}
+	}
+
+	protected static function getKnownFilesNames(ComponentTemplate $templateDir)
+	{
+		$names = [];
+		foreach ($templateDir->getKnownFiles() as $file) {
+			$names[] = $file->getName();
+		}
+
+		return $names;
+	}
+
+	protected static function testTemplateCode(ComponentTemplate $templateDir)
+	{
+		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
+			if ($knownPhpFile->isExists()) {
+				CodeSnifferChecker::goodCode($knownPhpFile->getPath());
+				CodeSnifferChecker::testTemplateFile($knownPhpFile->getPath());
 			}
 		}
 	}

@@ -1,5 +1,4 @@
 <?php
-
 namespace Intervolga\Edu\FilesTree;
 
 use Bitrix\Main\IO\Directory;
@@ -10,10 +9,10 @@ class GadgetTemplate extends SimpleComponentTemplate
 	{
 		$result = parent::getKnownFiles();
 		$result[] = $this->getResultModifier();
-		$result[] = $this->getParametersFile();
 
 		return $result;
 	}
+
 	/**
 	 * @return Directory[]
 	 */
