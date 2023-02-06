@@ -6,15 +6,21 @@ use Bitrix\Main\Localization\Loc;
 
 class FileMessage
 {
-	public static function get(FileSystemEntry $fse): string
+	public static function get(FileSystemEntry $fse, int $line = 0, int $column = 0): string
 	{
+		$fullPath = FileSystem::getLocalPath($fse);
+		if ($line) {
+			$fullPath .= ':' . $line;
+			if ($column) {
+				$fullPath .= ':' . $column;
+			}
+		}
 		$replace = [
-			'#FULL_PATH#' => FileSystem::getLocalPath($fse),
+			'#FULL_PATH#' => $fullPath,
 			'#PATH_START#' => FileSystem::getLocalPath($fse->getDirectory()),
 			'#NAME#' => $fse->getName(),
 			'#PATH_END#' => $fse->isDirectory() ? '/' : '',
 			'#FILEMAN_URL#' => Admin::getFileManUrl($fse),
-
 		];
 		$message = Loc::getMessage('INTERVOLGA_EDU.FSE_MESSAGE', $replace);
 
