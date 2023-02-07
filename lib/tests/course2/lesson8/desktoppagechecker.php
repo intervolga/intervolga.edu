@@ -1,6 +1,7 @@
 <?php
 namespace Intervolga\Edu\Tests\Course2\Lesson8;
 
+use Bitrix\Main\Localization\Loc;
 use CUserOptions;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Asserts\AssertComponent;
@@ -16,11 +17,23 @@ class DesktopPageChecker extends BaseTest
 		Assert::fileLocator(DesktopPage::class);
 		AssertComponent::componentLocator(DesktopComponent::class);
 		Assert::directoryLocator(Gadgets::class);
-		if (Gadgets::find() && DesktopComponent::find()) {
-			Assert::notEmpty(\BXGadget::GetById(Gadgets::find()->getName()), 'гаджет не существует');
+		if (DesktopPage::find() && Gadgets::find() && DesktopComponent::find()) {
+			Assert::notEmpty(\BXGadget::GetById(Gadgets::find()->getName()),
+				Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_GADGET_NOT_FOUND',
+					[
+						'#GADGEET_NAME#' => Gadgets::find()->getName()
+					]
+				)
+			);
 			$idGadget = DesktopComponent::find()['PARAMETERS']['ID'];
 			$arUserOptions = CUserOptions::GetOption('intranet', '~gadgets_' . $idGadget)['GADGETS'];
-			Assert::notEmpty($arUserOptions, 'гаджет не размещен на странице');
+			Assert::notEmpty($arUserOptions,
+				Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_GADGET_NOT_FOUND_ON_PAGE',
+					[
+						'#GADGEET_NAME#' => Gadgets::find()->getName()
+					]
+				)
+			);
 		}
 	}
 }
