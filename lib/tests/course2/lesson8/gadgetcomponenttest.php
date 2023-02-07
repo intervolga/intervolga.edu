@@ -10,6 +10,18 @@ use Intervolga\Edu\Tests\BaseComponentTemplateTest;
 
 class GadgetComponentTest extends BaseComponentTemplateTest
 {
+	protected static function run()
+	{
+		$locatorClass = static::getLocator();
+		Assert::directoryLocator($locatorClass);
+		if ($templateDir = $locatorClass::find(static::getComponentTemplateTree())) {
+			/**
+			 * @var ComponentTemplate $templateDir
+			 */
+			static::testTemplateTrash($templateDir);
+		}
+	}
+
 	/**
 	 * @return string|DirectoryLocator
 	 */
