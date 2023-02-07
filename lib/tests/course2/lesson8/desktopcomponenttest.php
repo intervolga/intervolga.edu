@@ -3,12 +3,12 @@ namespace Intervolga\Edu\Tests\Course2\Lesson8;
 
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\FilesTree\ComponentTemplate;
-use Intervolga\Edu\FilesTree\GadgetTemplate;
+use Intervolga\Edu\FilesTree\DesktopTemplateTree;
 use Intervolga\Edu\Locator\IO\ComponentTemplate\DesktopTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Tests\BaseComponentTemplateTest;
 
-class GadgetComponentTest extends BaseComponentTemplateTest
+class DesktopComponentTest extends BaseComponentTemplateTest
 {
 	protected static function run()
 	{
@@ -35,7 +35,7 @@ class GadgetComponentTest extends BaseComponentTemplateTest
 	 */
 	protected static function getComponentTemplateTree()
 	{
-		return GadgetTemplate::class;
+		return DesktopTemplateTree::class;
 	}
 
 	protected static function checkRequiredFilesTemplate($templateDir)

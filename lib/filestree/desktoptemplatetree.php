@@ -3,7 +3,7 @@ namespace Intervolga\Edu\FilesTree;
 
 use Bitrix\Main\IO\Directory;
 
-class GadgetTemplate extends SimpleComponentTemplate
+class DesktopTemplateTree extends SimpleComponentTemplate
 {
 	public function getKnownFiles(): array
 	{
