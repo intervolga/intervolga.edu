@@ -109,6 +109,7 @@ class Tester
 
 			\Intervolga\Edu\Tests\Course2\Lesson8\GadgetComponentTest::class,
 			\Intervolga\Edu\Tests\Course2\Lesson8\DesktopPageChecker::class,
+			\Intervolga\Edu\Tests\Course2\Lesson8\SettingResultLinks::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson1\TestModule::class,
 
