@@ -47,3 +47,5 @@ $MESS['INTERVOLGA_EDU.NOT_CORRECT_MODULE_OPTION_NOT_EMPTY'] = 'Настройк�
 $MESS['INTERVOLGA_EDU.ASSERT_AGENT_EXISTS'] = 'Агент <b>#NAME#</b> не найден (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.ASSERT_EVENT_MESSAGE_EXISTS'] = 'Почтовое событие <b>#NAME#</b> не найдено (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.ASSERT_EVENT_TEMPLATE_EXISTS'] = 'Почтовый шаблон <b>#NAME#</b> не найден (#POSSIBLE#)';
+$MESS['INTERVOLGA_EDU.TEMPLATE_NOT_EQUALS_CONDITION'] = 'Шаблон <b>#TEMPLATE#</b> имеет неверное условие показа';
+$MESS['INTERVOLGA_EDU.TEMPLATE_NOT_EXISTS'] = 'Шаблон <b>#TEMPLATE#</b> отсутствует';
