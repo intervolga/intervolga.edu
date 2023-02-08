@@ -483,11 +483,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_FSE_EXISTS',
 				[
-					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-					]),
+					'#VALUE#' => FileMessage::get($value),
 					'#NAME#' => $value->getName(),
 					'#PATH#' => FileSystem::getLocalPath($value),
 					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
@@ -833,6 +829,42 @@ class Assert
 		}
 	}
 
+	public static function templateEqCondition(string $needleTemplate, string $condition, $message = '')
+	{
+		$templates = \CSite::GetTemplateList('s1');
+		$notFound = true;
+		$isFail = true;
+		while ($template = $templates->fetch()) {
+			if ($template['TEMPLATE'] == $needleTemplate) {
+				$notFound = false;
+				if ($template['CONDITION'] === $condition) {
+					$isFail = false;
+				} else {
+					static::registerError(
+						static::getCustomOrLocMessage(
+							'INTERVOLGA_EDU.TEMPLATE_NOT_EQUALS_CONDITION',
+							[
+								'#TEMPLATE#' => $template['TEMPLATE']
+							],
+							$message
+						));
+				}
+				break;
+			}
+		}
+		if ($notFound && $isFail) {
+			static::registerError(
+				static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.TEMPLATE_NOT_EXISTS',
+					[
+						'#TEMPLATE#' => $needleTemplate
+					],
+					$message
+				)
+			);
+		}
+	}
+
 	/**
 	 * @param string|EventLocator $value
 	 * @param string $message
@@ -843,16 +875,28 @@ class Assert
 		if ($find = $value::find()) {
 			static::registerLocatorFound(EventLocator::class, $value, $find);
 		} else {
-			static::registerError(
-				static::getCustomOrLocMessage(
+			$possible = $value::getPossibleTips();
+			if ($possible) {
+				$error = static::getCustomOrLocMessage(
 					'INTERVOLGA_EDU.ASSERT_EVENT_EXISTS',
 					[
 						'#MESSAGE_ID#' => $value::getMessageID(),
 						'#MODULE_ID#' => $value::getModuleID(),
-						'#POSSIBLE#' => $value::getPossibleTips()
+						'#POSSIBLE#' => $possible,
 					],
 					$message
-				));
+				);
+			} else {
+				$error = static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_EVENT_EXISTS_NO_FILTER',
+					[
+						'#MESSAGE_ID#' => $value::getMessageID(),
+						'#MODULE_ID#' => $value::getModuleID(),
+					],
+					$message
+				);
+			}
+			static::registerError($error);
 		}
 	}
 
@@ -884,6 +928,25 @@ class Assert
 		}
 	}
 
+	public static function menuItemsCount(string $menuPath, $expect, string $message = '')
+	{
+		$menuFile = FileSystem::getFile($menuPath);
+		static::fseExists($menuFile);
+		$links = Menu::getMenuLinks($menuPath);
+		if (count($links) != $expect)
+		{
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_MENU_ITEMS_COUNT',
+				[
+					'#MENU#' => FileMessage::get($menuFile),
+					'#EXPECT#' => $expect,
+					'#VALUE#' => count($links),
+				],
+				$message
+			));
+		}
+	}
+
 	public static function menuItemExists($menuPath, $item, string $message = '')
 	{
 		$menuFile = FileSystem::getFile($menuPath);
@@ -893,11 +956,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_MENU_ITEM_EXISTS',
 				[
-					'#MENU#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $menuFile->getName(),
-						'#PATH#' => FileSystem::getLocalPath($menuFile),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($menuFile),
-					]),
+					'#MENU#' => FileMessage::get($menuFile),
 					'#ITEM#' => $item,
 					'#NAME#' => $menuFile->getName(),
 					'#PATH#' => FileSystem::getLocalPath($menuFile),
@@ -916,11 +975,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_MENU_ITEM_NOT_EXISTS',
 				[
-					'#MENU#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $menuFile->getName(),
-						'#PATH#' => FileSystem::getLocalPath($menuFile),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($menuFile),
-					]),
+					'#MENU#' => FileMessage::get($menuFile),
 					'#ITEM#' => $item,
 					'#NAME#' => $menuFile->getName(),
 					'#PATH#' => FileSystem::getLocalPath($menuFile),

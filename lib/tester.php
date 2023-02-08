@@ -40,6 +40,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestCode::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestTemplates::class,
+			\Intervolga\Edu\Tests\Course1\Lesson3\TestTemplateConditions::class,
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestCode::class,
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestOption::class,
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestScripts::class,
@@ -48,11 +49,13 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestTopMenu::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestLeftMenu::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestBottomMenu::class,
+			\Intervolga\Edu\Tests\Course1\Lesson41\TestAboutMenuItems::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestBreadcrumb::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson42\TestRegisterPageOption::class,
 			\Intervolga\Edu\Tests\Course1\Lesson42\TestEmail::class,
 			\Intervolga\Edu\Tests\Course1\Lesson42\TestAuthorize::class,
+			\Intervolga\Edu\Tests\Course1\Lesson42\TestFeedback::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson6\TestReviewsIblock::class,
 			\Intervolga\Edu\Tests\Course1\Lesson6\TestPromoIblock::class,
@@ -123,6 +126,10 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson5\TestGalleryElements::class,
 			\Intervolga\Edu\Tests\Course3\Lesson5\TestTemplateGallery::class,
 			\Intervolga\Edu\Tests\Course3\Lesson5\TestComponentGallery::class,
+
+			\Intervolga\Edu\Tests\Course3\Lesson8\TestAcceptedTests::class,
+			\Intervolga\Edu\Tests\Course3\Lesson8\TestThisSiteSupport::class,
+			\Intervolga\Edu\Tests\Course3\Lesson8\TestUserTestExists::class,
 		];
 	}
 
