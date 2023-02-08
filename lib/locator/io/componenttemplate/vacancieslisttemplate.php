@@ -1,9 +1,10 @@
 <?php
-namespace Intervolga\Edu\Locator\IO;
+namespace Intervolga\Edu\Locator\IO\ComponentTemplate;
 
 use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Locator\IO\DirectoryLocator;
 
-class CustomComponentTemplate extends DirectoryLocator
+class VacanciesListTemplate extends DirectoryLocator
 {
 	protected static function getPaths(): array
 	{
@@ -16,7 +17,7 @@ class CustomComponentTemplate extends DirectoryLocator
 
 	public static function getNameLoc(): string
 	{
-		return Loc::getMessage('INTERVOLGA_EDU.CUSTOM_COMPONENT_TEMPLATE');
+		return Loc::getMessage('INTERVOLGA_EDU.VACANCIES_LIST_TEMPLATE');
 	}
 
 }
