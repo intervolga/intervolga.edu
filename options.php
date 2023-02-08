@@ -132,13 +132,29 @@ $locatorsFound = Tester::getLocatorsFound();
 
 foreach ($testsTree as $courseCode => $course) {
 	$tabControl->beginNextTab();
+	?>
+	<ul>
+		<?php foreach ($course['LESSONS'] as $lessonCode => $lesson): ?>
+			<?php
+				$title = Loc::getMessage('INTERVOLGA_EDU.LESSON_HEADER', [
+					'#LESSON#' => $lesson['TITLE'],
+					'#TOTAL#' => count($lesson['TESTS']),
+					'#DONE#' => count($lesson['TESTS']) - intval($stat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']),
+				]);
+			?>
+			<li>
+				<a href="#<?=$courseCode?><?=$lessonCode?>"><?=$title?></a>
+			</li>
+		<?php endforeach ?>
+	</ul>
+	<?php
 	foreach ($course['LESSONS'] as $lessonCode => $lesson) {
 		$title = Loc::getMessage('INTERVOLGA_EDU.LESSON_HEADER', [
 			'#LESSON#' => $lesson['TITLE'],
 			'#TOTAL#' => count($lesson['TESTS']),
 			'#DONE#' => count($lesson['TESTS']) - intval($stat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']),
 		]);
-		echo '<h2>' . $title . '</h2>';
+		echo '<h2 id="' . $courseCode . $lessonCode . '">' . $title . '</h2>';
 		$counter = 1;
 		foreach ($lesson['TESTS'] as $testCode => $test) {
 			$errors = $errorsTree[$courseCode][$lessonCode][$testCode];
