@@ -9,8 +9,6 @@ class TestThisSiteSupport extends BaseTest
 {
 	protected static function run()
 	{
-		Assert::directoryExists(FileSystem::getDirectory('/local/'));
-		Assert::directoryExists(FileSystem::getDirectory('/local/php_interface/'));
 		$file = FileSystem::getFile('/local/php_interface/this_site_support.php');
 		Assert::fseExists($file);
 		Assert::fileNotEmpty($file);

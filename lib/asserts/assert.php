@@ -21,6 +21,7 @@ use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Locator\IO\FileLocator;
 use Intervolga\Edu\Locator\Uf\UfLocator;
 use Intervolga\Edu\Util\Admin;
+use Intervolga\Edu\Util\FileMessage;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Menu;
 use Intervolga\Edu\Util\Regex;
@@ -481,11 +482,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_FSE_EXISTS',
 				[
-					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-					]),
+					'#VALUE#' => FileMessage::get($value),
 					'#NAME#' => $value->getName(),
 					'#PATH#' => FileSystem::getLocalPath($value),
 					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
