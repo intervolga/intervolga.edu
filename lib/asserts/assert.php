@@ -838,16 +838,28 @@ class Assert
 		if ($find = $value::find()) {
 			static::registerLocatorFound(EventLocator::class, $value, $find);
 		} else {
-			static::registerError(
-				static::getCustomOrLocMessage(
+			$possible = $value::getPossibleTips();
+			if ($possible) {
+				$error = static::getCustomOrLocMessage(
 					'INTERVOLGA_EDU.ASSERT_EVENT_EXISTS',
 					[
 						'#MESSAGE_ID#' => $value::getMessageID(),
 						'#MODULE_ID#' => $value::getModuleID(),
-						'#POSSIBLE#' => $value::getPossibleTips()
+						'#POSSIBLE#' => $possible,
 					],
 					$message
-				));
+				);
+			} else {
+				$error = static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_EVENT_EXISTS_NO_FILTER',
+					[
+						'#MESSAGE_ID#' => $value::getMessageID(),
+						'#MODULE_ID#' => $value::getModuleID(),
+					],
+					$message
+				);
+			}
+			static::registerError($error);
 		}
 	}
 

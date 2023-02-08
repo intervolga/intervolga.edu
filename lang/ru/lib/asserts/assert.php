@@ -38,6 +38,7 @@ $MESS['INTERVOLGA_EDU.ASSERT_MENU_ITEM_NOT_EXISTS'] = 'Пункт #ITEM# в ме
 $MESS['INTERVOLGA_EDU.ASSERT_MENU_ITEM_EXISTS'] = 'Пункт #ITEM# в меню #MENU# не найден, должен существовать';
 $MESS['INTERVOLGA_EDU.ASSERT_PROPERTIES_HASNT_VALUES'] = 'Свойство <b>#PROPERTY#</b> должно иметь следующие варианты: #NOW_PROPERTIES#. <b>Сейчас</b>: #REQUIRED#.';
 $MESS['INTERVOLGA_EDU.ASSERT_EVENT_EXISTS'] = 'Обработчик события <b>#MESSAGE_ID#</b> модуля <b>#MODULE_ID#</b> не найден, должен существовать! (#POSSIBLE#)';
+$MESS['INTERVOLGA_EDU.ASSERT_EVENT_EXISTS_NO_FILTER'] = 'Обработчик события <b>#MESSAGE_ID#</b> модуля <b>#MODULE_ID#</b> не найден, должен существовать!';
 $MESS['INTERVOLGA_EDU.ASSERT_REQUIRED_TYPE_BASE'] = 'Класс "#CURRENT_CLASS#" должен наследоваться от "#TYPE_BASE#". Сейчас наследуется от "#NOW_BASE_TYPE#"';
 $MESS['INTERVOLGA_EDU.ASSERT_REQUIRED_RULES_USERFIELD'] = 'Не найдено UF-поле (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.ASSERT_NOT_FOUND_USERFIELD'] = 'Не найден пользовательский тип "#FIELD#" для раздела инфоблоков (id к примеру:, "#REQUIRED_PROPERTIES#")';
