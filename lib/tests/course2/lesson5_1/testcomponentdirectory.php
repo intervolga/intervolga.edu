@@ -3,9 +3,9 @@ namespace Intervolga\Edu\Tests\Course2\Lesson5_1;
 
 use Intervolga\Edu\FilesTree\ComponentTemplate;
 use Intervolga\Edu\FilesTree\SimpleComponent;
-use Intervolga\Edu\Locator\IO\CustomComponent;
 use Intervolga\Edu\Locator\IO\CustomComponentTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
+use Intervolga\Edu\Locator\IO\VacanciesListComponent;
 use Intervolga\Edu\Tests\BaseComponentTest;
 
 class TestComponentDirectory extends BaseComponentTest
@@ -32,7 +32,7 @@ class TestComponentDirectory extends BaseComponentTest
 	 */
 	protected static function getLocator()
 	{
-		return CustomComponent::class;
+		return VacanciesListComponent::class;
 	}
 
 }
