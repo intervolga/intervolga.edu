@@ -108,6 +108,7 @@ foreach ($testsTree as $courseCode => $course) {
 				'#TOTAL#' => count($course['LESSONS']),
 			]
 		),
+		'ONSELECT' => 'intervolgaEduOnTabChanged("' . $courseCode . '");',
 	];
 	$courseNum++;
 }
@@ -115,6 +116,7 @@ $tabs[] = [
 	'DIV' => 'info',
 	'TAB' => Loc::getMessage('INTERVOLGA_EDU.MODULE_TAB_INFO'),
 	'TITLE' => Loc::getMessage('INTERVOLGA_EDU.MODULE_INFO'),
+	'ONSELECT' => 'intervolgaEduOnTabChanged("info");',
 ];
 if ($fatalThrowable) {
 	$message = new CAdminMessage([
