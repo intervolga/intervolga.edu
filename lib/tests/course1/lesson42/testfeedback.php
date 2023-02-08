@@ -1,6 +1,7 @@
 <?php
 namespace Intervolga\Edu\Tests\Course1\Lesson42;
 
+use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Asserts\AssertComponent;
 use Intervolga\Edu\Locator\Component\Feedback;
@@ -12,6 +13,10 @@ class TestFeedback extends BaseTest
 	{
 		AssertComponent::componentLocator(Feedback::class);
 		$feedback = Feedback::find();
-		Assert::eq('/contacts/index.php', $feedback['REAL_PATH']);
+		Assert::eq(
+			$feedback['REAL_PATH'],
+			'/contacts/index.php',
+			Loc::getMessage('INTERVOLGA_EDU.FEEDBACK_NOT_FOUND_AT_PAGE')
+		);
 	}
 }
