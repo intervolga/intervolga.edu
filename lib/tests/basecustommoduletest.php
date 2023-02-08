@@ -10,7 +10,7 @@ abstract class BaseCustomModuleTest extends BaseComponentTemplateTest
 	public static function getTestLoc(): string
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.TEST_CUSTOM_MODULE_NAME', [
-			'#MODULE_NAME#' => static::getLocator()::getNameLoc(),
+			'#MODULE_NAME#' => static::getLocator()::find() ? static::getLocator()::find()->getName() : static::getLocator()::getNameLoc(),
 		]);
 	}
 
