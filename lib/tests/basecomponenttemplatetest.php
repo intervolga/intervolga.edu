@@ -3,12 +3,10 @@ namespace Intervolga\Edu\Tests;
 
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
-use Intervolga\Edu\Asserts\AssertPhp;
 use Intervolga\Edu\FilesTree\ComponentTemplate;
 use Intervolga\Edu\FilesTree\NewsTemplate;
 use Intervolga\Edu\FilesTree\SimpleComponentTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
-use Intervolga\Edu\Util\Sniffer;
 
 abstract class BaseComponentTemplateTest extends BaseTest
 {
@@ -45,6 +43,20 @@ abstract class BaseComponentTemplateTest extends BaseTest
 			static::testTemplateTrash($templateDir);
 			static::testTemplateCode($templateDir);
 		}
+	}
+
+	protected static function testTemplateCode(ComponentTemplate $templateDir)
+	{
+		$files = [];
+		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
+			if ($knownPhpFile->isExists()) {
+				$files[] = $knownPhpFile->getPath();
+			}
+		}
+		Assert::phpSniffer($files, [
+			'general',
+			'templateChecker'
+		]);
 	}
 
 	/**
@@ -86,16 +98,6 @@ abstract class BaseComponentTemplateTest extends BaseTest
 						Assert::fseNotExists($child);
 					}
 				}
-			}
-		}
-	}
-
-	protected static function testTemplateCode(ComponentTemplate $templateDir)
-	{
-		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
-			if ($knownPhpFile->isExists()) {
-				AssertPhp::goodCode($knownPhpFile);
-				Sniffer::testTemplateFile($knownPhpFile);
 			}
 		}
 	}

@@ -20,6 +20,7 @@ use Intervolga\Edu\Locator\Iblock\Section\SectionLocator;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Locator\IO\FileLocator;
 use Intervolga\Edu\Locator\Uf\UfLocator;
+use Intervolga\Edu\Sniffer;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileMessage;
 use Intervolga\Edu\Util\FileSystem;
@@ -960,6 +961,29 @@ class Assert
 				],
 				$message
 			));
+		}
+	}
+
+	/**
+	 * @param string[] $paths
+	 * @param string[] $standartName
+	 */
+	public static function phpSniffer(array $paths, array $standartName = ['general'], $message = '')
+	{
+		$result = Sniffer::run($paths, $standartName);
+		if ($result) {
+			foreach ($result as $error) {
+				Assert::registerError(static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_PHP_SNIFFER',
+					[
+						'#FILE#' => FileMessage::get($error->getFile(), $error->getLine(), $error->getColumn()),
+						'#LINE#' => $error->getLine(),
+						'#COLUMN#' => $error->getColumn(),
+						'#SNIFFER_ERROR#' => $error->getMessage(),
+					],
+					$message
+				));
+			}
 		}
 	}
 
