@@ -6,11 +6,11 @@ use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Util\FileSystem;
 
-class CustomComponent extends DirectoryLocator
+class VacanciesListComponent extends DirectoryLocator
 {
 	public static function getNameLoc(): string
 	{
-		return Loc::getMessage('INTERVOLGA_EDU.CUSTOM_COMPONENT');
+		return Loc::getMessage('INTERVOLGA_EDU.VACANCIES_LIST_COMPONENT');
 	}
 
 	protected static function getPaths(): array

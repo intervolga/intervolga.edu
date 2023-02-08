@@ -4,7 +4,7 @@ namespace Intervolga\Edu\Tests\Course2\Lesson5_2;
 use Bitrix\Main\Application;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
-use Intervolga\Edu\Locator\IO\CustomComponent;
+use Intervolga\Edu\Locator\IO\VacanciesListComponent;
 use Intervolga\Edu\Sniffer;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\FileMessage;
@@ -18,8 +18,8 @@ class TestComponentCache extends BaseTest
 
 	protected static function run()
 	{
-		Assert::directoryLocator(CustomComponent::class);
-		if (CustomComponent::find()) {
+		Assert::directoryLocator(VacanciesListComponent::class);
+		if (VacanciesListComponent::find()) {
 			static::cacheInClassComponent();
 			static::cacheInComponentParameters();
 		}
@@ -27,7 +27,7 @@ class TestComponentCache extends BaseTest
 
 	protected static function cacheInClassComponent()
 	{
-		$classFile = CustomComponent::getComponentFilePath();
+		$classFile = VacanciesListComponent::getComponentFilePath();
 		$cacheComponent = Sniffer::run([Application::getDocumentRoot() . $classFile->getPath()], ['cacheInComponentClass']);
 		foreach ($cacheComponent as $component) {
 			$foundCache .= $component->getMessage();
@@ -50,7 +50,7 @@ class TestComponentCache extends BaseTest
 
 	protected static function cacheInComponentParameters()
 	{
-		$parametersFile = CustomComponent::getParametersFilePath();
+		$parametersFile = VacanciesListComponent::getParametersFilePath();
 		$arComponentParameters = [];
 		include Application::getDocumentRoot() . $parametersFile->getPath();
 		Assert::notEmpty($arComponentParameters['PARAMETERS']['CACHE_TIME'],
