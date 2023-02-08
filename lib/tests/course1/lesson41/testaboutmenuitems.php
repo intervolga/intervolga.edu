@@ -20,8 +20,8 @@ class TestAboutMenuItems extends BaseTest
 			$fields = [
 				'/company/reviews/',
 				'/contacts/',
-				'/company/management/',
-				'/company/history/'
+				'/company/management.php',
+				'/company/history.php'
 			];
 
 			foreach ($fields as $field) {
