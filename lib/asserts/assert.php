@@ -483,11 +483,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_FSE_EXISTS',
 				[
-					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-					]),
+					'#VALUE#' => FileMessage::get($value),
 					'#NAME#' => $value->getName(),
 					'#PATH#' => FileSystem::getLocalPath($value),
 					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
@@ -879,16 +875,28 @@ class Assert
 		if ($find = $value::find()) {
 			static::registerLocatorFound(EventLocator::class, $value, $find);
 		} else {
-			static::registerError(
-				static::getCustomOrLocMessage(
+			$possible = $value::getPossibleTips();
+			if ($possible) {
+				$error = static::getCustomOrLocMessage(
 					'INTERVOLGA_EDU.ASSERT_EVENT_EXISTS',
 					[
 						'#MESSAGE_ID#' => $value::getMessageID(),
 						'#MODULE_ID#' => $value::getModuleID(),
-						'#POSSIBLE#' => $value::getPossibleTips()
+						'#POSSIBLE#' => $possible,
 					],
 					$message
-				));
+				);
+			} else {
+				$error = static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_EVENT_EXISTS_NO_FILTER',
+					[
+						'#MESSAGE_ID#' => $value::getMessageID(),
+						'#MODULE_ID#' => $value::getModuleID(),
+					],
+					$message
+				);
+			}
+			static::registerError($error);
 		}
 	}
 

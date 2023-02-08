@@ -26,6 +26,7 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON1'] = '1. Создание модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON3'] = '3. Инфоблоки - Архитектура';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5'] = '5. JS';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON8'] = '8. Монитор качества';
 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE'] = 'Проверка установки модуля «Корпоративный сайт производственной компании»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE_DESCRIPTION'] = 'Модуль должен быть <a href="/bitrix/admin/partner_modules.php?lang=ru" target="_blank">зарегистрирован</a> в системе и установлен';
@@ -171,6 +172,13 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_GALLERYELEMENTS'] = 'Проверка эл
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_GALLERYELEMENTS_DESCRIPTION'] = 'Должен быть созданы >5 элементов инфоблока gallery с детальной картинкой, описанием и картиной для анонса.';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_COMPONENTGALLERY'] = 'Проверка параметров компонента bitrix:news.list gallery';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_COMPONENTGALLERY_DESCRIPTION'] = 'Проверка параметров компонента bitrix:news.list на странице gallery.php';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON8_ACCEPTEDTESTS'] = 'Проверка тестов безопасности в мониторе качества';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON8_ACCEPTEDTESTS_DESCRIPTION'] = 'Проверка выполнения тестов в <a href="/bitrix/admin/checklist.php?lang=ru" target="_blank">Мониторе качества</a> группы "Безопасность" и 2 пункта из "Сдача проекта" ("Введена информация о техподдержке проекта" и "Введена информация об интеграторе решения")';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON8_THISSITESUPPORT'] = 'Проверка наличия информации о техподдержке проекта';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON8_THISSITESUPPORT_DESCRIPTION'] = 'Должен существовать заполненный this_site_support.php';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON8_USERTESTEXISTS'] = 'Проверка 2-ух собственных тестов в мониторе качества';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON8_USERTESTEXISTS_DESCRIPTION'] = 'Должно быть создано 2 пользовательских теста и они должны быть выполнены в <a href="/bitrix/admin/checklist.php?lang=ru" target="_blank">Мониторе качества</a>';
+
 
 $MESS['INTERVOLGA_EDU.TEST_CODE_NAME'] = 'Проверка кода #FILES#';
 $MESS['INTERVOLGA_EDU.TEST_CODE_DESCRIPTION'] = 'Современная проверка ядра Битрикса, использование длинных php-тегов, запрет на устаревшие функции';
