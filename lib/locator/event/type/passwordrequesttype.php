@@ -10,7 +10,7 @@ class PasswordRequestType extends TypeLocator
 		return [
 			'=EVENT_NAME' =>
 				[
-					'CHECK_OLDER_STOCKS',
+					'USER_PASS_REQUEST',
 				]
 		];
 	}
