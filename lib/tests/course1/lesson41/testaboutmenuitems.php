@@ -4,7 +4,7 @@ namespace Intervolga\Edu\Tests\Course1\Lesson41;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 
-class TestBottomMenuItems extends BaseTest
+class TestAboutMenuItems extends BaseTest
 {
 	public static function interceptErrors()
 	{
@@ -21,9 +21,9 @@ class TestBottomMenuItems extends BaseTest
 		];
 
 		foreach ($fields as $field) {
-			Assert::menuItemExists('/.bottom.menu.php', $field);
+			Assert::menuItemExists('/.about.menu.php', $field);
 		}
 
-		Assert::menuItemsCount('/.bottom.menu.php', count($fields));
+		Assert::menuItemsCount('/.about.menu.php', count($fields));
 	}
 }
