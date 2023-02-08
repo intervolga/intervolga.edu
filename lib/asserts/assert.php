@@ -21,6 +21,7 @@ use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Locator\IO\FileLocator;
 use Intervolga\Edu\Locator\Uf\UfLocator;
 use Intervolga\Edu\Util\Admin;
+use Intervolga\Edu\Util\FileMessage;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Menu;
 use Intervolga\Edu\Util\Regex;
@@ -882,6 +883,25 @@ class Assert
 		}
 	}
 
+	public static function menuItemsCount(string $menuPath, $expect, string $message = '')
+	{
+		$menuFile = FileSystem::getFile($menuPath);
+		static::fseExists($menuFile);
+		$links = Menu::getMenuLinks($menuPath);
+		if (count($links) != $expect)
+		{
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_MENU_ITEMS_COUNT',
+				[
+					'#MENU#' => FileMessage::get($menuFile),
+					'#EXPECT#' => $expect,
+					'#VALUE#' => count($links),
+				],
+				$message
+			));
+		}
+	}
+
 	public static function menuItemExists($menuPath, $item, string $message = '')
 	{
 		$menuFile = FileSystem::getFile($menuPath);
@@ -891,11 +911,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_MENU_ITEM_EXISTS',
 				[
-					'#MENU#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $menuFile->getName(),
-						'#PATH#' => FileSystem::getLocalPath($menuFile),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($menuFile),
-					]),
+					'#MENU#' => FileMessage::get($menuFile),
 					'#ITEM#' => $item,
 					'#NAME#' => $menuFile->getName(),
 					'#PATH#' => FileSystem::getLocalPath($menuFile),
@@ -914,11 +930,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_MENU_ITEM_NOT_EXISTS',
 				[
-					'#MENU#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $menuFile->getName(),
-						'#PATH#' => FileSystem::getLocalPath($menuFile),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($menuFile),
-					]),
+					'#MENU#' => FileMessage::get($menuFile),
 					'#ITEM#' => $item,
 					'#NAME#' => $menuFile->getName(),
 					'#PATH#' => FileSystem::getLocalPath($menuFile),
