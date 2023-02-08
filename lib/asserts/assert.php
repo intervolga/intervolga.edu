@@ -833,6 +833,42 @@ class Assert
 		}
 	}
 
+	public static function templateEqCondition(string $needleTemplate, string $condition, $message = '')
+	{
+		$templates = \CSite::GetTemplateList('s1');
+		$notFound = true;
+		$isFail = true;
+		while ($template = $templates->fetch()) {
+			if ($template['TEMPLATE'] == $needleTemplate) {
+				$notFound = false;
+				if ($template['CONDITION'] === $condition) {
+					$isFail = false;
+				} else {
+					static::registerError(
+						static::getCustomOrLocMessage(
+							'INTERVOLGA_EDU.TEMPLATE_NOT_EQUALS_CONDITION',
+							[
+								'#TEMPLATE#' => $template['TEMPLATE']
+							],
+							$message
+						));
+				}
+				break;
+			}
+		}
+		if ($notFound && $isFail) {
+			static::registerError(
+				static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.TEMPLATE_NOT_EXISTS',
+					[
+						'#TEMPLATE#' => $needleTemplate
+					],
+					$message
+				)
+			);
+		}
+	}
+
 	/**
 	 * @param string|EventLocator $value
 	 * @param string $message
