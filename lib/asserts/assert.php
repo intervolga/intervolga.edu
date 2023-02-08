@@ -13,13 +13,16 @@ use Intervolga\Edu\Locator\BaseLocator;
 use Intervolga\Edu\Locator\Event\EventLocator;
 use Intervolga\Edu\Locator\Event\Template\TemplateLocator;
 use Intervolga\Edu\Locator\Event\Type\TypeLocator;
+use Intervolga\Edu\Locator\FunctionLocator;
 use Intervolga\Edu\Locator\Iblock\IblockLocator;
 use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
 use Intervolga\Edu\Locator\Iblock\Section\SectionLocator;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Locator\IO\FileLocator;
 use Intervolga\Edu\Locator\Uf\UfLocator;
+use Intervolga\Edu\Sniffer;
 use Intervolga\Edu\Util\Admin;
+use Intervolga\Edu\Util\FileMessage;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Menu;
 use Intervolga\Edu\Util\Regex;
@@ -53,6 +56,25 @@ class Assert
 		}
 	}
 
+	/**
+	 * @param mixed $value
+	 * @param mixed $expect
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function notEq($value, $expect, string $message = '')
+	{
+		if ($value == $expect) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_NOT_EQUAL',
+				[
+					'#VALUE#' => static::valueToString($value),
+					'#EXPECT#' => static::valueToString($expect),
+				],
+				$message
+			));
+		}
+	}
 	/**
 	 * @param string $error
 	 * @throws AssertException
@@ -128,6 +150,24 @@ class Assert
 		if ($value !== true) {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_TRUE',
+				[
+					'#VALUE#' => static::valueToString($value),
+				],
+				$message
+			));
+		}
+	}
+
+	/**
+	 * @param $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function false($value, string $message = '')
+	{
+		if ($value !== false) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_FALSE',
 				[
 					'#VALUE#' => static::valueToString($value),
 				],
@@ -296,17 +336,18 @@ class Assert
 	}
 
 	/**
-	 * @param $value
+	 * @param string|FunctionLocator $value
 	 * @param string $message
 	 * @throws AssertException
 	 */
 	public static function functionExists($value, string $message = '')
 	{
-		if (!function_exists($value)) {
+		if (!$value::find()) {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_FUNCTION_EXISTS',
 				[
 					'#VALUE#' => static::valueToString($value),
+					'#POSSIBLE#' => $value::getPossibleTips(),
 				],
 				$message
 			));
@@ -626,6 +667,31 @@ class Assert
 	 * @param string $message
 	 * @throws AssertException
 	 */
+	public static function checkModuleOptionNotEmpty(string $module, string $optionKey, string $name = '', string $message = '')
+	{
+		$realValue = Option::getRealValue($module, $optionKey);
+		if (!strlen($realValue)) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.NOT_CORRECT_MODULE_OPTION_NOT_EMPTY',
+				[
+					'#MODULE#' => $module,
+					'#MODULE_URL#' => Admin::getModuleOptionsUrl($module),
+					'#OPTION#' => $name ?? $optionKey,
+					'#NOW_VALUE#' => $realValue,
+				],
+				$message
+			));
+		}
+	}
+
+	/**
+	 * @param string $module
+	 * @param string $optionKey
+	 * @param string|int $requiredValue
+	 * @param string $name
+	 * @param string $message
+	 * @throws AssertException
+	 */
 	public static function checkModuleOption(string $module, string $optionKey, $requiredValue, string $name = '', string $message = '')
 	{
 		$realValue = Option::getRealValue($module, $optionKey);
@@ -634,6 +700,7 @@ class Assert
 				'INTERVOLGA_EDU.NOT_CORRECT_MODULE_OPTION',
 				[
 					'#MODULE#' => $module,
+					'#MODULE_URL#' => Admin::getModuleOptionsUrl($module),
 					'#OPTION#' => $name ?? $optionKey,
 					'#NOW_VALUE#' => $realValue,
 					'#REQUIRED_VALUE#' => $requiredValue,
@@ -886,6 +953,29 @@ class Assert
 				],
 				$message
 			));
+		}
+	}
+
+	/**
+	 * @param string[] $paths
+	 * @param string[] $standartName
+	 */
+	public static function phpSniffer(array $paths, array $standartName = ['general'], $message = '')
+	{
+		$result = Sniffer::run($paths, $standartName);
+		if ($result) {
+			foreach ($result as $error) {
+				Assert::registerError(static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_PHP_SNIFFER',
+					[
+						'#FILE#' => FileMessage::get($error->getFile(), $error->getLine(), $error->getColumn()),
+						'#LINE#' => $error->getLine(),
+						'#COLUMN#' => $error->getColumn(),
+						'#SNIFFER_ERROR#' => $error->getMessage(),
+					],
+					$message
+				));
+			}
 		}
 	}
 

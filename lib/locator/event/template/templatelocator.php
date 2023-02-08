@@ -43,7 +43,7 @@ abstract class TemplateLocator extends BaseLocator
 		return '[' . $find['ID']. '] ' . $find['SUBJECT'];
 	}
 
-	public static function getDisplayHref($find): string
+	protected static function getDisplayHref($find): string
 	{
 		return Admin::getEventMessageUrl($find);
 	}

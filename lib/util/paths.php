@@ -11,6 +11,7 @@ class Paths
 		'/bitrix/',
 		'/local/',
 		'/.git/',
+		'/log/',
 	];
 
 	/**
