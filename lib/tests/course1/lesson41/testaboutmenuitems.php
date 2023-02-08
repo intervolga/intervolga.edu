@@ -15,8 +15,8 @@ class TestAboutMenuItems extends BaseTest
 	protected static function run()
 	{
 		$menuFile = FileSystem::getFile('/.about.menu.php');
+		Assert::fseExists($menuFile);
 		if ($menuFile->isExists()) {
-			Assert::fseExists($menuFile);
 			$fields = [
 				'/company/reviews/',
 				'/contacts/',
