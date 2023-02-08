@@ -164,11 +164,11 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_GALLERYELEMENTS'] = 'Проверка эл
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_GALLERYELEMENTS_DESCRIPTION'] = 'Должен быть созданы >5 элементов инфоблока gallery с детальной картинкой, описанием и картиной для анонса.';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_COMPONENTGALLERY'] = 'Проверка параметров компонента bitrix:news.list gallery';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_COMPONENTGALLERY_DESCRIPTION'] = 'Проверка параметров компонента bitrix:news.list на странице gallery.php';
-$MESS['INTERVOLGA_EDU.COURSE3_LESSON8_ACCEPTEDTESTS'] = 'Проверка выполнение тестов в Мониторе качества';
-$MESS['INTERVOLGA_EDU.COURSE3_LESSON8_ACCEPTEDTESTS_DESCRIPTION'] = 'Проверка выполнения тестов \'Безопасность\' и  2 пункта из \'Сдача проекта\' (\'Введена информация о техподдержке проекта\' и \'Введена информация об интеграторе решения\')';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON8_ACCEPTEDTESTS'] = 'Проверка тестов безопасности в <a href="/bitrix/admin/checklist.php?lang=ru" target="_blank">Мониторе качества</a>';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON8_ACCEPTEDTESTS_DESCRIPTION'] = 'Проверка выполнения тестов "Безопасность" и  2 пункта из "Сдача проекта" ("Введена информация о техподдержке проекта" и "Введена информация об интеграторе решения")';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON8_THISSITESUPPORT'] = 'Проверка наличия информации о техподдержке проекта';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON8_THISSITESUPPORT_DESCRIPTION'] = 'Должен существовать заполненный this_site_support.php';
-$MESS['INTERVOLGA_EDU.COURSE3_LESSON8_USERTESTEXISTS'] = 'Проверка наличия 2х пользовательских тестов и проверка выполнения в мониторе качества';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON8_USERTESTEXISTS'] = 'Проверка наличия 2-ух пользовательских тестов и проверка выполнения в <a href="/bitrix/admin/checklist.php?lang=ru" target="_blank">Мониторе качества</a>';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON8_USERTESTEXISTS_DESCRIPTION'] = 'Должно быть создано 2 пользовательских теста и они должны быть выполнены в мониторе качества';
 
 

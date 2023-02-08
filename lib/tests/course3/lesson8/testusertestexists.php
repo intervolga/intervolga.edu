@@ -8,6 +8,8 @@ use Intervolga\Edu\Tests\BaseTest;
 
 class TestUserTestExists extends BaseTest
 {
+	const TESTS_COUNT = 2;
+
 	public static function interceptErrors()
 	{
 		return true;
@@ -22,17 +24,23 @@ class TestUserTestExists extends BaseTest
 			$category = array_keys($eventAnswer['CATEGORIES'])[0];
 			$customCategory = $checklist->getPoints($category);
 
-			foreach ($customCategory as $point) {
-				Assert::eq(
-					$point['STATE']['STATUS'],
-					'A',
-					Loc::getMessage(
-						'INTERVOLGA_EDU.WAS_NOT_MADE',
-						[
-							'#NAME#' => $point['NAME']
-						]
-					)
-				);
+			Assert::eq(
+				count($customCategory),
+				static::TESTS_COUNT
+			);
+			if (count($customCategory) == static::TESTS_COUNT) {
+				foreach ($customCategory as $point) {
+					Assert::eq(
+						$point['STATE']['STATUS'],
+						'A',
+						Loc::getMessage(
+							'INTERVOLGA_EDU.WAS_NOT_MADE',
+							[
+								'#NAME#' => $point['NAME']
+							]
+						)
+					);
+				}
 			}
 		}
 	}
