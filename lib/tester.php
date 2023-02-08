@@ -108,8 +108,10 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson7\SecureAuthorization::class,
 
 			\Intervolga\Edu\Tests\Course2\Lesson8\DesktopComponentTest::class,
-			\Intervolga\Edu\Tests\Course2\Lesson8\DesktopPageChecker::class,
+			\Intervolga\Edu\Tests\Course2\Lesson8\GadgetTemplateChecker::class,
 			\Intervolga\Edu\Tests\Course2\Lesson8\SettingResultLinks::class,
+			\Intervolga\Edu\Tests\Course2\Lesson8\DesktopPageChecker::class,
+
 
 			\Intervolga\Edu\Tests\Course3\Lesson1\TestModule::class,
 

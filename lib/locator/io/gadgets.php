@@ -23,10 +23,7 @@ class Gadgets extends DirectoryLocator
 		foreach (static::getPaths() as $path) {
 			$directory = new $class(Application::getDocumentRoot() . $rootLocalPath . $path);
 			if ($directory->isExists() && $directory->isDirectory()) {
-				$gadget = $directory->getChildren()[0];
-				if ($gadget->isExists() && $gadget->isDirectory()) {
-					$result = $gadget;
-				}
+				$result = $directory;
 			}
 		}
 
@@ -35,8 +32,9 @@ class Gadgets extends DirectoryLocator
 
 	protected static function getPaths(): array
 	{
+		$gadgetName = new Directory(Application::getDocumentRoot() .'/local/gadgets/custom/');
 		return [
-			'/local/gadgets/custom/'
+			'/local/gadgets/custom/'.$gadgetName->getChildren()[0]->getName()
 		];
 	}
 }
