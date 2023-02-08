@@ -8,27 +8,32 @@ use Intervolga\Edu\Tests\BaseTest;
 
 class TestUserTestExists extends BaseTest
 {
+	public static function interceptErrors()
+	{
+		return true;
+	}
+
 	protected static function run()
 	{
 		Assert::eventExists(OnCheckListGetLocator::class);
-		$event = OnCheckListGetLocator::find();
+		if ($event = OnCheckListGetLocator::find()) {
+			$checklist = new \CCheckList();
+			$eventAnswer = $event['TO_NAME']([]);
+			$category = array_keys($eventAnswer['CATEGORIES'])[0];
+			$customCategory = $checklist->getPoints($category);
 
-		$checklist = new \CCheckList();
-		$eventAnswer = $event['TO_NAME']([]);
-		$category = array_keys($eventAnswer['CATEGORIES'])[0];
-		$customCategory = $checklist->getPoints($category);
-
-		foreach ($customCategory as $point) {
-			Assert::eq(
-				$point['STATE']['STATUS'],
-				'A',
-				Loc::getMessage(
-					'INTERVOLGA_EDU.WAS_NOT_MADE',
-					[
-						'#NAME#' => $point['NAME']
-					]
-				)
-			);
+			foreach ($customCategory as $point) {
+				Assert::eq(
+					$point['STATE']['STATUS'],
+					'A',
+					Loc::getMessage(
+						'INTERVOLGA_EDU.WAS_NOT_MADE',
+						[
+							'#NAME#' => $point['NAME']
+						]
+					)
+				);
+			}
 		}
 	}
 }

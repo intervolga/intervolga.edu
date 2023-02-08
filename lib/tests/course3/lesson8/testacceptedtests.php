@@ -14,10 +14,17 @@ class TestAcceptedTests extends BaseTest
 		$securityStat = $checklist->GetSectionStat('QSECURITY');
 		$total = $securityStat['TOTAL'];
 		$check = $securityStat['CHECK'];
-		Assert::eq($check, $total, Loc::getMessage('INTERVOLGA_EDU.WAS_NOT_MADE_FROM_SECURITY', [
-			'#CURRENT#' => $check,
-			'#REQUIRED#' => $total
-		]));
+		Assert::eq(
+			$check,
+			$total,
+			Loc::getMessage(
+				'INTERVOLGA_EDU.WAS_NOT_MADE_FROM_SECURITY',
+				[
+					'#CURRENT#' => $check,
+					'#REQUIRED#' => $total
+				]
+			)
+		);
 
 		$points = $checklist->GetPoints('QPROJECT');;
 		$codes = [
@@ -26,9 +33,16 @@ class TestAcceptedTests extends BaseTest
 		];
 		foreach ($codes as $code) {
 			$point = $points[$code];
-			Assert::eq($point['STATE']['STATUS'], 'A', Loc::getMessage('INTERVOLGA_EDU.WAS_NOT_MADE', [
-				'#NAME#' => $point['NAME']
-			]));
+			Assert::eq(
+				$point['STATE']['STATUS'],
+				'A',
+				Loc::getMessage(
+					'INTERVOLGA_EDU.WAS_NOT_MADE',
+					[
+						'#NAME#' => $point['NAME']
+					]
+				)
+			);
 		}
 	}
 
