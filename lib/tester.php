@@ -48,6 +48,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestTopMenu::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestLeftMenu::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestBottomMenu::class,
+			\Intervolga\Edu\Tests\Course1\Lesson41\TestBottomMenuItems::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestBreadcrumb::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson42\TestRegisterPageOption::class,
