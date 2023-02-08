@@ -44,6 +44,13 @@ class Admin
 		return $url;
 	}
 
+	public static function getIblockElementEditUrl(array $element): string
+	{
+		$url = '/bitrix/admin/iblock_element_edit.php?IBLOCK_ID=' . $element['IBLOCK_ID'] . '&type=' . urlencode($element['IBLOCK_TYPE_ID']) . '&lang=' . LANGUAGE_ID . '&ID=' . $element['ID'] . '&find_section_section=-1&IBLOCK_SECTION_ID=-1';
+
+		return $url;
+	}
+
 	/**
 	 * @param array $agent
 	 * @return string
@@ -89,6 +96,13 @@ class Admin
 	public static function getUfUrl(array $uf)
 	{
 		$url = '/bitrix/admin/userfield_edit.php?ID='.$uf['ID'] . '&lang=' . LANGUAGE_ID;
+
+		return $url;
+	}
+
+	public static function getModuleOptionsUrl(string $module)
+	{
+		$url = '/bitrix/admin/settings.php?lang=' . LANGUAGE_ID . '&mid=' . $module;
 
 		return $url;
 	}

@@ -11,15 +11,18 @@ use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Locator\Agent\AgentLocator;
 use Intervolga\Edu\Locator\BaseLocator;
 use Intervolga\Edu\Locator\Event\EventLocator;
-use Intervolga\Edu\Locator\Event\Type\TypeLocator;
 use Intervolga\Edu\Locator\Event\Template\TemplateLocator;
+use Intervolga\Edu\Locator\Event\Type\TypeLocator;
+use Intervolga\Edu\Locator\FunctionLocator;
 use Intervolga\Edu\Locator\Iblock\IblockLocator;
 use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
 use Intervolga\Edu\Locator\Iblock\Section\SectionLocator;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Locator\IO\FileLocator;
 use Intervolga\Edu\Locator\Uf\UfLocator;
+use Intervolga\Edu\Sniffer;
 use Intervolga\Edu\Util\Admin;
+use Intervolga\Edu\Util\FileMessage;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Menu;
 use Intervolga\Edu\Util\Regex;
@@ -53,6 +56,25 @@ class Assert
 		}
 	}
 
+	/**
+	 * @param mixed $value
+	 * @param mixed $expect
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function notEq($value, $expect, string $message = '')
+	{
+		if ($value == $expect) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_NOT_EQUAL',
+				[
+					'#VALUE#' => static::valueToString($value),
+					'#EXPECT#' => static::valueToString($expect),
+				],
+				$message
+			));
+		}
+	}
 	/**
 	 * @param string $error
 	 * @throws AssertException
@@ -128,6 +150,24 @@ class Assert
 		if ($value !== true) {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_TRUE',
+				[
+					'#VALUE#' => static::valueToString($value),
+				],
+				$message
+			));
+		}
+	}
+
+	/**
+	 * @param $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function false($value, string $message = '')
+	{
+		if ($value !== false) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_FALSE',
 				[
 					'#VALUE#' => static::valueToString($value),
 				],
@@ -252,6 +292,23 @@ class Assert
 		}
 	}
 
+	public static function keyEqValue($array, $key, $value, $message = '')
+	{
+		if (is_array($array)) {
+			if ($array[$key] != $value) {
+				static::registerError(static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_KEY_EQ_VALUE',
+					[
+						'#KEY#' => static::valueToString($key),
+						'#EXPECT#' => static::valueToString($value),
+						'#VALUE#' => static::valueToString($array[$key]),
+					],
+					$message
+				));
+			}
+		}
+	}
+
 	public static function keyExists($array, $key, $message = '')
 	{
 		if (!array_key_exists($key, $array)) {
@@ -279,17 +336,18 @@ class Assert
 	}
 
 	/**
-	 * @param $value
+	 * @param string|FunctionLocator $value
 	 * @param string $message
 	 * @throws AssertException
 	 */
 	public static function functionExists($value, string $message = '')
 	{
-		if (!function_exists($value)) {
+		if (!$value::find()) {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_FUNCTION_EXISTS',
 				[
 					'#VALUE#' => static::valueToString($value),
+					'#POSSIBLE#' => $value::getPossibleTips(),
 				],
 				$message
 			));
@@ -375,9 +433,22 @@ class Assert
 		}
 	}
 
+	public static function fileNotEmpty(File $value)
+	{
+		$content = $value->getContents();
+		Assert::notEmpty($content, Loc::getMessage('INTERVOLGA_EDU.ASSERT_FILE_CONTENT_IS_EMPTY', [
+			'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+				'#NAME#' => $value->getName(),
+				'#PATH#' => FileSystem::getLocalPath($value),
+				'#FILEMAN_URL#' => Admin::getFileManUrl($value),
+			]),
+		]));
+	}
+
 	public static function fileContentNotMatches(File $value, Regex $regex, string $message = '')
 	{
 		static::fseExists($value);
+		Assert::fileNotEmpty($value);
 		$content = $value->getContents();
 		if ($content) {
 			preg_match_all($regex->getRegex(), $content, $matches, PREG_SET_ORDER);
@@ -430,25 +501,27 @@ class Assert
 	{
 		static::fseExists($value);
 		$content = $value->getContents();
+		Assert::notEmpty($content);
+		$matches = [];
 		if ($content) {
 			preg_match_all($regex->getRegex(), $content, $matches, PREG_SET_ORDER);
-			if (!$matches) {
-				static::registerError(static::getCustomOrLocMessage(
-					'INTERVOLGA_EDU.ASSERT_FILE_CONTENT_MATCH',
-					[
-						'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-							'#NAME#' => $value->getName(),
-							'#PATH#' => FileSystem::getLocalPath($value),
-							'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-						]),
-						'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
+		}
+		if (!$matches) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_FILE_CONTENT_MATCH',
+				[
+					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
 						'#NAME#' => $value->getName(),
 						'#PATH#' => FileSystem::getLocalPath($value),
 						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-					],
-					$message
-				));
-			}
+					]),
+					'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
+					'#NAME#' => $value->getName(),
+					'#PATH#' => FileSystem::getLocalPath($value),
+					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
+				],
+				$message
+			));
 		}
 	}
 
@@ -594,6 +667,31 @@ class Assert
 	 * @param string $message
 	 * @throws AssertException
 	 */
+	public static function checkModuleOptionNotEmpty(string $module, string $optionKey, string $name = '', string $message = '')
+	{
+		$realValue = Option::getRealValue($module, $optionKey);
+		if (!strlen($realValue)) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.NOT_CORRECT_MODULE_OPTION_NOT_EMPTY',
+				[
+					'#MODULE#' => $module,
+					'#MODULE_URL#' => Admin::getModuleOptionsUrl($module),
+					'#OPTION#' => $name ?? $optionKey,
+					'#NOW_VALUE#' => $realValue,
+				],
+				$message
+			));
+		}
+	}
+
+	/**
+	 * @param string $module
+	 * @param string $optionKey
+	 * @param string|int $requiredValue
+	 * @param string $name
+	 * @param string $message
+	 * @throws AssertException
+	 */
 	public static function checkModuleOption(string $module, string $optionKey, $requiredValue, string $name = '', string $message = '')
 	{
 		$realValue = Option::getRealValue($module, $optionKey);
@@ -602,6 +700,7 @@ class Assert
 				'INTERVOLGA_EDU.NOT_CORRECT_MODULE_OPTION',
 				[
 					'#MODULE#' => $module,
+					'#MODULE_URL#' => Admin::getModuleOptionsUrl($module),
 					'#OPTION#' => $name ?? $optionKey,
 					'#NOW_VALUE#' => $realValue,
 					'#REQUIRED_VALUE#' => $requiredValue,
@@ -757,6 +856,34 @@ class Assert
 		}
 	}
 
+	/**
+	 * @param array $property
+	 * @param array $values
+	 * @param string $message
+	 * @return void
+	 * @throws AssertException
+	 */
+	public static function propertyTypeListHasValues(array $property, array $values, string $message = '')
+	{
+		$properties = \CIBlockPropertyEnum::GetList([], ['PROPERTY_ID' => $property['ID']]);
+		$nowValues = [];
+		while ($prop = $properties->fetch()) {
+			$nowValues[] = $prop['VALUE'];
+		}
+		$toAdd = array_diff($values, $nowValues);
+		$toDelete = array_diff($nowValues, $values);
+		if ($toAdd || $toDelete) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_PROPERTIES_HASNT_VALUES',
+				[
+					'#PROPERTY#' => $property['NAME'],
+					'#NOW_PROPERTIES#' => implode(', ', $values),
+					'#REQUIRED#'=> implode(', ', $nowValues)
+				]
+			), $message);
+		}
+	}
+
 	public static function menuItemExists($menuPath, $item, string $message = '')
 	{
 		$menuFile = FileSystem::getFile($menuPath);
@@ -801,6 +928,54 @@ class Assert
 				],
 				$message
 			));
+		}
+	}
+
+	public static function isImage(File $file, string $message = '')
+	{
+		$extensions = [
+			'png',
+			'jpeg',
+			'jpg',
+		];
+		if (!in_array($file->getExtension(), $extensions)) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_FILE_IS_IMAGE',
+				[
+					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+						'#NAME#' => $file->getName(),
+						'#PATH#' => FileSystem::getLocalPath($file),
+						'#FILEMAN_URL#' => Admin::getFileManUrl($file),
+					]),
+					'#NAME#' => $file->getName(),
+					'#PATH#' => FileSystem::getLocalPath($file),
+					'#FILEMAN_URL#' => Admin::getFileManUrl($file),
+				],
+				$message
+			));
+		}
+	}
+
+	/**
+	 * @param string[] $paths
+	 * @param string[] $standartName
+	 */
+	public static function phpSniffer(array $paths, array $standartName = ['general'], $message = '')
+	{
+		$result = Sniffer::run($paths, $standartName);
+		if ($result) {
+			foreach ($result as $error) {
+				Assert::registerError(static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_PHP_SNIFFER',
+					[
+						'#FILE#' => FileMessage::get($error->getFile(), $error->getLine(), $error->getColumn()),
+						'#LINE#' => $error->getLine(),
+						'#COLUMN#' => $error->getColumn(),
+						'#SNIFFER_ERROR#' => $error->getMessage(),
+					],
+					$message
+				));
+			}
 		}
 	}
 
