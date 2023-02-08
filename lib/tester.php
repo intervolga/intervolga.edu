@@ -104,6 +104,8 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestDescription::class,
 			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestHermitage::class,
 
+			\Intervolga\Edu\Tests\Course2\Lesson5_2\TestComponentCache::class,
+
 			\Intervolga\Edu\Tests\Course2\Lesson7\SecurityLevel::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\SecureAuthorization::class,
 
