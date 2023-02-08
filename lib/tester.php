@@ -105,6 +105,8 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestDescription::class,
 			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestHermitage::class,
 
+			\Intervolga\Edu\Tests\Course2\Lesson5_2\TestComponentCache::class,
+
 			\Intervolga\Edu\Tests\Course2\Lesson7\SecurityLevel::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\SecureAuthorization::class,
 
@@ -123,6 +125,10 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson5\TestTemplateGallery::class,
 			\Intervolga\Edu\Tests\Course3\Lesson5\TestComponentGallery::class,
 		];
+	}
+
+	public static function getTestClassesCount(): int {
+		return count(static::getTestClasses());
 	}
 
 	public static function run()

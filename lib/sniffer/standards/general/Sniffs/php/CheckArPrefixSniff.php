@@ -1,5 +1,4 @@
 <?php
-
 namespace Intervolga\Edu\Sniffer\Standards\General\Sniffs\PHP;
 
 use Bitrix\Main\Localization\Loc;
