@@ -124,6 +124,10 @@ class Tester
 		];
 	}
 
+	public static function getTestClassesCount(): int {
+		return count(static::getTestClasses());
+	}
+
 	public static function run()
 	{
 		/**

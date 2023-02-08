@@ -11,11 +11,11 @@ if (LANGUAGE_ID != 'ru') {
  * @var string $mid module id from GET
  */
 
+use Bitrix\Main\Application;
 use Bitrix\Main\Config\Option;
 use Bitrix\Main\Context;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
-use Bitrix\Main\ModuleManager;
 use Bitrix\Main\Page\Asset;
 use Bitrix\Main\Type\DateTime;
 use Intervolga\Edu\Locator\BaseLocator;
@@ -112,12 +112,9 @@ foreach ($testsTree as $courseCode => $course) {
 	$courseNum++;
 }
 $tabs[] = [
-	'DIV' => 'update',
-	'TAB' => Loc::getMessage('INTERVOLGA_EDU.MODULE_TAB_UPDATE'),
-	'TITLE' => Loc::getMessage('INTERVOLGA_EDU.MODULE_UPDATE', [
-			'#VERSION#' => ModuleManager::getVersion('intervolga.edu')
-		]
-	),
+	'DIV' => 'info',
+	'TAB' => Loc::getMessage('INTERVOLGA_EDU.MODULE_TAB_INFO'),
+	'TITLE' => Loc::getMessage('INTERVOLGA_EDU.MODULE_INFO'),
 ];
 if ($fatalThrowable) {
 	$message = new CAdminMessage([
@@ -225,7 +222,27 @@ $links = [
 	'master' => 'https://gitlab.intervolga.ru/common/intervolga.edu/-/archive/master/intervolga.edu-master.zip',
 	'develop' => 'https://gitlab.intervolga.ru/common/intervolga.edu/-/archive/develop/intervolga.edu-develop.zip',
 ];
+$arModuleVersion = [];
+include Application::getDocumentRoot() . '/local/modules/intervolga.edu/install/version.php';
+$versionDate = $arModuleVersion['VERSION_DATE'];
+if ($versionDate)
+{
+	$dateTime = DateTime::tryParse($versionDate, 'Y-m-d H:i:s');
+	if ($dateTime)
+	{
+		$versionDate = $dateTime->format('d.m.Y H:i');
+	}
+}
 ?>
+	<div><?=Loc::getMessage('INTERVOLGA_EDU.MODULE_VERSION', [
+			'#VERSION#' => $arModuleVersion['VERSION'],
+		])?></div>
+	<div><?=Loc::getMessage('INTERVOLGA_EDU.MODULE_VERSION_DATE', [
+			'#VERSION_DATE#' => $versionDate,
+		])?></div>
+	<div><?=Loc::getMessage('INTERVOLGA_EDU.MODULE_TESTS_COUNT', [
+			'#COUNT#' => Tester::getTestClassesCount(),
+		])?></div>
 	<h2>1. <?=Loc::getMessage('INTERVOLGA_EDU.DOWNLOAD_ZIP')?></h2>
 	<?php foreach ($links as $branch => $href): ?>
 		<a href="<?=$href?>" class="adm-btn" target="_blank"><?=$branch?></a>
