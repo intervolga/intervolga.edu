@@ -8,9 +8,9 @@ class CustomComponentTemplate extends DirectoryLocator
 	protected static function getPaths(): array
 	{
 		return [
-			'/local/components/custom/vacancies.list/templates/.default',
-			'/local/components/custom/vacancy.list/templates/.default',
-			'/local/components/mycomponents/vacancies.list/templates/.default',
+			'/local/components/intervolga/vacancies.list/templates/.default/',
+			'/local/components/intervolga/vacancy.list/templates/.default/',
+			'/local/components/intervolga/vacancies.list/templates/.default/',
 		];
 	}
 

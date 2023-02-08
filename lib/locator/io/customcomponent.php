@@ -16,9 +16,9 @@ class CustomComponent extends DirectoryLocator
 	protected static function getPaths(): array
 	{
 		return [
-			'/local/components/custom/vacancies.list',
-			'/local/components/custom/vacancy.list',
-			'/local/components/mycomponents/vacancies.list',
+			'/local/components/intervolga/vacancies.list/',
+			'/local/components/intervolga/vacancy.list/',
+			'/local/components/intervolga/vacancies.list/',
 		];
 	}
 	public static function getComponentFilePath()
