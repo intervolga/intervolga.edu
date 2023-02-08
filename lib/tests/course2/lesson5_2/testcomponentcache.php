@@ -11,11 +11,18 @@ use Intervolga\Edu\Util\FileMessage;
 
 class TestComponentCache extends BaseTest
 {
+	public static function interceptErrors()
+	{
+		return true;
+	}
+
 	protected static function run()
 	{
 		Assert::directoryLocator(CustomComponent::class);
-		static::cacheInClassComponent();
-		static::cacheInComponentParameters();
+		if (CustomComponent::find()) {
+			static::cacheInClassComponent();
+			static::cacheInComponentParameters();
+		}
 	}
 
 	protected static function cacheInClassComponent()
@@ -44,6 +51,7 @@ class TestComponentCache extends BaseTest
 	protected static function cacheInComponentParameters()
 	{
 		$parametersFile = CustomComponent::getParametersFilePath();
+		$arComponentParameters = [];
 		include Application::getDocumentRoot() . $parametersFile->getPath();
 		Assert::notEmpty($arComponentParameters['PARAMETERS']['CACHE_TIME'],
 			Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_5_2_NOT_FOUND_CACHE_TIME_IN_PARAMETERS',
