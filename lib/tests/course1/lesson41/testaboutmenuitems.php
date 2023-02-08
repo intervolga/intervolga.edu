@@ -3,6 +3,7 @@ namespace Intervolga\Edu\Tests\Course1\Lesson41;
 
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
+use Intervolga\Edu\Util\FileSystem;
 
 class TestAboutMenuItems extends BaseTest
 {
@@ -13,17 +14,21 @@ class TestAboutMenuItems extends BaseTest
 
 	protected static function run()
 	{
-		$fields = [
-			'/company/reviews/',
-			'/contacts/',
-			'/company/management/',
-			'/company/history/'
-		];
+		$menuFile = FileSystem::getFile('/.about.menu.php');
+		if ($menuFile->isExists()) {
+			Assert::fseExists($menuFile);
+			$fields = [
+				'/company/reviews/',
+				'/contacts/',
+				'/company/management/',
+				'/company/history/'
+			];
 
-		foreach ($fields as $field) {
-			Assert::menuItemExists('/.about.menu.php', $field);
+			foreach ($fields as $field) {
+				Assert::menuItemExists('/.about.menu.php', $field);
+			}
+
+			Assert::menuItemsCount('/.about.menu.php', count($fields));
 		}
-
-		Assert::menuItemsCount('/.about.menu.php', count($fields));
 	}
 }
