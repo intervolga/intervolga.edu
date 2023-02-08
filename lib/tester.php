@@ -45,6 +45,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestScripts::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestIncludeArea::class,
+			\Intervolga\Edu\Tests\Course1\Lesson41\TestLAckIncludeArea::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestTopMenu::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestLeftMenu::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestBottomMenu::class,

@@ -33,10 +33,10 @@ class IncludeAreaFile extends FileLocator
 	 * @return File|null
 	 * @throws \Bitrix\Main\IO\FileNotFoundException
 	 */
-	public static function find($class = File::class)
+	public static function find($class = File::class, $directoryClass = PartnersSection::class)
 	{
 		$result = null;
-		$directory = PartnersSection::find();
+		$directory = $directoryClass::find();
 		if ($directory && $directory->isExists()) {
 			if ($directory->getChildren()) {
 				foreach ($directory->getChildren() as $child) {
