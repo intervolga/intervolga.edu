@@ -11,6 +11,7 @@ class TestTemplateConditions extends BaseTest
 		Assert::templateEqCondition('main', 'CSite::InDir(\'/index.php\')');
 		Assert::templateEqCondition('inner', '');
 	}
+
 	public static function interceptErrors()
 	{
 		return true;

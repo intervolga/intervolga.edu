@@ -7,7 +7,6 @@ use Bitrix\Main\IO\File;
 use Bitrix\Main\IO\FileSystemEntry;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
-use CSite;
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Locator\Agent\AgentLocator;
 use Intervolga\Edu\Locator\BaseLocator;
@@ -834,9 +833,9 @@ class Assert
 		}
 	}
 
-	public static function templateEqCondition($needleTemplate, $condition, $message = '')
+	public static function templateEqCondition(string $needleTemplate, string $condition, $message = '')
 	{
-		$templates = CSite::GetTemplateList('s1');
+		$templates = \CSite::GetTemplateList('s1');
 		$notFound = true;
 		$isFail = true;
 		while ($template = $templates->fetch()) {
@@ -865,9 +864,9 @@ class Assert
 						'#TEMPLATE#' => $needleTemplate
 					],
 					$message
-				));
+				)
+			);
 		}
-
 	}
 
 	/**
