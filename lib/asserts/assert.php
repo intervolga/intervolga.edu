@@ -1,6 +1,8 @@
 <?php
 namespace Intervolga\Edu\Asserts;
 
+use Bitrix\Iblock\ElementTable;
+use Bitrix\Iblock\SectionTable;
 use Bitrix\Main\Config\Option;
 use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\File;
@@ -75,6 +77,7 @@ class Assert
 			));
 		}
 	}
+
 	/**
 	 * @param string $error
 	 * @throws AssertException
@@ -922,9 +925,104 @@ class Assert
 				[
 					'#PROPERTY#' => $property['NAME'],
 					'#NOW_PROPERTIES#' => implode(', ', $values),
-					'#REQUIRED#'=> implode(', ', $nowValues)
+					'#REQUIRED#' => implode(', ', $nowValues)
 				]
 			), $message);
+		}
+	}
+
+	public static function checkUnnecessaryProperties(int $idIBlock, $changeTo, $message = '')
+	{
+		$properties = \CIBlock::getProperties($idIBlock);
+		while ($property = $properties->fetch()['CODE']) {
+			foreach ($changeTo as $what => $code) {
+				$reg = new Regex('/' . $what . '/i', '');
+				if (preg_match($reg->getRegex(), $property)) {
+					static::registerError(static::getCustomOrLocMessage(
+						'INTERVOLGA_EDU.REPLACE_TO_PROPERTY', [
+							'#PROPERTY#' => $property,
+							'#REPLACE_TO#' => Loc::getMessage($code)
+						]
+					), $message);
+					break;
+				}
+			}
+		}
+	}
+
+	public static function checkCertainProperties(array $requiredProperties, int $idIBlock, string $message = '')
+	{
+		$codeProperties = [];
+		$properties = \CIBlock::getProperties($idIBlock);
+		while ($property = $properties->fetch()['CODE']) {
+			$codeProperties[] = $property;
+		}
+		$codeReuired = [];
+		foreach ($requiredProperties as $requiredProperty) {
+			$codeReuired[] = $requiredProperty::find()['CODE'];
+		}
+
+		if ($props = array_diff($codeProperties, $codeReuired)) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.HAS_EXTRA_PROPERTY',
+				[
+					'#EXTRA_PROPERTIES#' => implode(', ', $props)
+				]
+			), $message);
+		}
+	}
+
+	public static function checkMinCountSection(int $idIBlock, int $min, string $message = '')
+	{
+		$cnt = SectionTable::getList([
+			'order' => [],
+			'filter' =>
+				[
+					'IBLOCK_ID' => $idIBlock,
+				],
+			'count_total' => true,
+		])->getCount();
+		if ($cnt<$min) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.COUNT_SECTIONS_IS_LESS',
+				[
+					'#REQUIRED#' => $min,
+					'#NOW#' => $cnt
+				]
+			), $message);
+		}
+	}
+
+	public static function checkMinElementsInSection(int $idIBlock, int $min, string $message = '')
+	{
+		$getList = ElementTable::getList([
+			'order' => [],
+			'filter' =>
+				[
+					'IBLOCK_ID' => $idIBlock,
+				]
+		]);
+
+		$sectionOfCount = [];
+		while ($el = $getList->fetch()) {
+			$sectionOfCount[$el['IBLOCK_SECTION_ID']]++;
+		}
+
+		$lessIDs = [];
+		foreach ($sectionOfCount as $section => $count) {
+			if ($count<$min) {
+				$lessIDs[$section] = $count;
+			}
+		}
+		if ($lessIDs) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.COUNT_ELEMENTS_IN_SECTION_IS_LESS',
+				[
+					'#SECTIONS#' => implode(', ', $lessIDs),
+					'#MIN#' => $min,
+				],
+				$message
+			));
 		}
 	}
 
@@ -933,8 +1031,7 @@ class Assert
 		$menuFile = FileSystem::getFile($menuPath);
 		static::fseExists($menuFile);
 		$links = Menu::getMenuLinks($menuPath);
-		if (count($links) != $expect)
-		{
+		if (count($links) != $expect) {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_MENU_ITEMS_COUNT',
 				[
