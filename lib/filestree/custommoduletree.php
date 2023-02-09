@@ -58,6 +58,7 @@ class CustomModuleTree extends ComponentTemplate
 	public function getKnownDirs(): array
 	{
 		$result = [
+			$this->getLangDir(),
 			$this->getAdminDir(),
 			$this->getClassesDir(),
 			$this->getInstallDir(),
