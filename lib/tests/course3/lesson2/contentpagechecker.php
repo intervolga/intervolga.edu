@@ -26,8 +26,7 @@ class ContentPageChecker extends BaseTest
 		Assert::fseExists(TableFile::find());
 		Assert::fileNotEmpty(TableFile::find());
 		if (TableFile::find()) {
-			Assert::fileContentMatches(TableFile::find(), new Regex('/<input/i', '<input'));
-			Assert::fileContentMatches(TableFile::find(), new Regex('/<td/i', '<td'));
+			Assert::fileContentMatches(TableFile::find(), new Regex('/DisplayList/i', 'Вывод страницы (DisplayList)'));
 		}
 	}
 }
