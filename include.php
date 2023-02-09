@@ -32,4 +32,9 @@ const INTERVOLGA_EDU_GUESS_VARIANTS = [
 			'random_reviews',
 		],
 	],
+	'CUSTOM_COMPONENTS' => [
+		'iv_component',
+		'mycomponents',
+		'custom'
+	]
 ];
