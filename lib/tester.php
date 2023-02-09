@@ -111,6 +111,7 @@ class Tester
 
 			\Intervolga\Edu\Tests\Course3\Lesson2\AdminPagesChecker::class,
 			\Intervolga\Edu\Tests\Course3\Lesson2\CustomModuleChecker::class,
+			\Intervolga\Edu\Tests\Course3\Lesson2\ClassesChecker::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestResultsPollingIblock::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestPropertyGenderValues::class,

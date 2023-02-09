@@ -32,6 +32,7 @@ $MESS['INTERVOLGA_EDU.ASSERT_IBLOCK_LOCATOR'] = 'Инфоблок <b>#IBLOCK#</b
 $MESS['INTERVOLGA_EDU.ASSERT_SECTION_LOCATOR'] = 'Раздел <b>#SECTION#</b> инфоблока <b>#IBLOCK#</b> не найден (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.ASSERT_PROPERTY_LOCATOR'] = 'Свойство <b>#PROPERTY#</b> не найдено (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.ASSERT_DIRECTORY_LOCATOR'] = 'Папка #DIRECTORY# <b>не найдена</b> (#POSSIBLE#)';
+$MESS['INTERVOLGA_EDU.ASSERT_CLASS_LOCATOR'] = 'Класс #POSSIBLE# <b>не найден</b>';
 $MESS['INTERVOLGA_EDU.ASSERT_FILE_LOCATOR'] = 'Файл #FILE# <b>не найден</b> (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.ASSERT_COMPONENT_LOCATOR'] = 'Компонент #COMPONENT# <b>не найден</b>. Если компонент существует - пересохраните его.';
 $MESS['INTERVOLGA_EDU.ASSERT_TEMPLATE_LOCATOR'] = 'Использование шаблона <b>#TEMPLATE#</b> компонента <b>#COMPONENT#</b> не обнаружено (#POSSIBLE#). Если компонент существует, пересохраните его.';

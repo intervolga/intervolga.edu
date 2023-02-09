@@ -10,6 +10,7 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Locator\Agent\AgentLocator;
 use Intervolga\Edu\Locator\BaseLocator;
+use Intervolga\Edu\Locator\ClassLocator\ClassLocator;
 use Intervolga\Edu\Locator\Event\EventLocator;
 use Intervolga\Edu\Locator\Event\Template\TemplateLocator;
 use Intervolga\Edu\Locator\Event\Type\TypeLocator;
@@ -709,7 +710,25 @@ class Assert
 			));
 		}
 	}
-
+	/**
+	 * @param string|ClassLocator $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function classLocator($value, string $message = '')
+	{
+		if ($find = $value::find()) {
+			static::registerLocatorFound(ClassLocator::class, $value, $find);
+		} else {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_CLASS_LOCATOR',
+				[
+					'#POSSIBLE#' => $value::getPossibleTips(),
+				],
+				$message
+			));
+		}
+	}
 	/**
 	 * @param string|DirectoryLocator $value
 	 * @param string $message
