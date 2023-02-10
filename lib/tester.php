@@ -128,6 +128,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson5\TestComponentGallery::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson6\CacheComponentCheker::class,
+			\Intervolga\Edu\Tests\Course3\Lesson6\TaggedCacheChecker::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson8\TestAcceptedTests::class,
 			\Intervolga\Edu\Tests\Course3\Lesson8\TestThisSiteSupport::class,
