@@ -127,6 +127,8 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson5\TestTemplateGallery::class,
 			\Intervolga\Edu\Tests\Course3\Lesson5\TestComponentGallery::class,
 
+			\Intervolga\Edu\Tests\Course3\Lesson7\IblockFullnessChecker::class,
+
 			\Intervolga\Edu\Tests\Course3\Lesson8\TestAcceptedTests::class,
 			\Intervolga\Edu\Tests\Course3\Lesson8\TestThisSiteSupport::class,
 			\Intervolga\Edu\Tests\Course3\Lesson8\TestUserTestExists::class,
