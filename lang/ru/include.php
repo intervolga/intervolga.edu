@@ -26,6 +26,7 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON1'] = '1. Создание модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON3'] = '3. Инфоблоки - Архитектура';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5'] = '5. JS';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON7'] = '7. Производительность';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON8'] = '8. Монитор качества';
 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE'] = 'Проверка установки модуля «Корпоративный сайт производственной компании»';
@@ -172,6 +173,8 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_GALLERYELEMENTS'] = 'Проверка эл
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_GALLERYELEMENTS_DESCRIPTION'] = 'Должен быть созданы >5 элементов инфоблока gallery с детальной картинкой, описанием и картиной для анонса.';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_COMPONENTGALLERY'] = 'Проверка параметров компонента bitrix:news.list gallery';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_COMPONENTGALLERY_DESCRIPTION'] = 'Проверка параметров компонента bitrix:news.list на странице gallery.php';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON7_PERFORMANCEPAGE'] = 'Проверка страницы для тестирования производительности';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON7_PERFORMANCEPAGE_DESCRIPTION'] = 'На странице должен быть расположен компонент perf:element.list';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON8_ACCEPTEDTESTS'] = 'Проверка тестов безопасности в мониторе качества';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON8_ACCEPTEDTESTS_DESCRIPTION'] = 'Проверка выполнения тестов в <a href="/bitrix/admin/checklist.php?lang=ru" target="_blank">Мониторе качества</a> группы "Безопасность" и 2 пункта из "Сдача проекта" ("Введена информация о техподдержке проекта" и "Введена информация об интеграторе решения")';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON8_THISSITESUPPORT'] = 'Проверка наличия информации о техподдержке проекта';
