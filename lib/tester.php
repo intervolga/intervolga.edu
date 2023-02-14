@@ -130,6 +130,8 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson8\TestAcceptedTests::class,
 			\Intervolga\Edu\Tests\Course3\Lesson8\TestThisSiteSupport::class,
 			\Intervolga\Edu\Tests\Course3\Lesson8\TestUserTestExists::class,
+
+			\Intervolga\Edu\Tests\Course3\Lesson9\CompositeEnabled::class,
 		];
 	}
 
