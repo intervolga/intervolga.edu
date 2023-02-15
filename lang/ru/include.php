@@ -196,7 +196,6 @@ $MESS['INTERVOLGA_EDU.INCLUDEAREA_PARTNERS'] = 'Включаемая облас�
 $MESS['INTERVOLGA_EDU.INCLUDEAREA_PARTNERS_TIPS'] = 'в названии должно быть: #PARTS#';
 $MESS['INTERVOLGA_EDU.MAIN_HEADER_TEMPLATE'] = 'Шаблон header главной страницы';
 $MESS['INTERVOLGA_EDU.MAIN_HEADER_TEMPLATE_INCLUDE_COMPONENT'] = 'подключение шаблона слайдера компонента списка новостей';
-$MESS['INTERVOLGA_EDU.SLIDER_STOCK_TEMPLATE'] = 'Шаблон слайдера';
 $MESS['INTERVOLGA_EDU.TOP_MENU_TEMPLATE'] = 'Шаблон верхнего меню';
 $MESS['INTERVOLGA_EDU.LEFT_MENU_TEMPLATE'] = 'Шаблон левого меню';
 $MESS['INTERVOLGA_EDU.BOTTOM_MENU_TEMPLATE'] = 'Шаблон меню О магазине';

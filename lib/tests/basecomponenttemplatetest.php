@@ -57,46 +57,56 @@ abstract class BaseComponentTemplateTest extends BaseTest
 		foreach ($templateDir->getUnknownFileSystemEntries() as $unknownFileSystemEntry) {
 			Assert::fseNotExists($unknownFileSystemEntry);
 		}
-		Assert::fseNotExists($templateDir->getImagesDir());
-		Assert::fseNotExists($templateDir->getParametersFile());
-		Assert::fseNotExists($templateDir->getDescriptionFile());
+
+		static::checkRequiredFilesTemplate($templateDir);
 		foreach ($templateDir->getLangForeignDirs() as $langForeignDir) {
 			Assert::directoryNotExists($langForeignDir);
 		}
 		static::testTemplateLangRuTrash($templateDir);
 	}
 
+	protected static function checkRequiredFilesTemplate($templateDir)
+	{
+		if ($templateDir instanceof NewsTemplate) {
+			Assert::fseExists($templateDir->getNewsFile());
+			Assert::fseExists($templateDir->getDetailFile());
+		} else {
+			Assert::fseExists($templateDir->getTemplateFile());
+		}
+	}
+
 	protected static function testTemplateLangRuTrash(ComponentTemplate $templateDir)
 	{
 		if ($templateDir->getLangRuDir()->isExists()) {
 			foreach ($templateDir->getLangRuDir()->getChildren() as $child) {
-				if ($child->getName() == $templateDir->getDescriptionFile()->getName()) {
+				if (!in_array($child->getName(), static::getKnownFilesNames($templateDir))) {
 					Assert::fseNotExists($child);
-				} elseif ($child->getName() == $templateDir->getParametersFile()->getName()) {
-					Assert::fseNotExists($child);
-				} elseif ($templateDir instanceof SimpleComponentTemplate) {
-					if ($child->getName() != $templateDir->getTemplateFile()->getName()) {
-						Assert::fseNotExists($child);
-					}
-				} elseif ($templateDir instanceof NewsTemplate) {
-					if (!in_array($child->getName(), [
-						$templateDir->getNewsFile()->getName(),
-						$templateDir->getDetailFile()->getName()
-					])) {
-						Assert::fseNotExists($child);
-					}
 				}
 			}
 		}
 	}
 
+	protected static function getKnownFilesNames(ComponentTemplate $templateDir)
+	{
+		$names = [];
+		foreach ($templateDir->getKnownFiles() as $file) {
+			$names[] = $file->getName();
+		}
+
+		return $names;
+	}
+
 	protected static function testTemplateCode(ComponentTemplate $templateDir)
 	{
+		$files = [];
 		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
 			if ($knownPhpFile->isExists()) {
-				AssertPhp::goodCode($knownPhpFile);
-				Sniffer::testTemplateFile($knownPhpFile);
+				$files[] = $knownPhpFile->getPath();
 			}
 		}
+		Assert::phpSniffer($files, [
+			'general',
+			'templateChecker'
+		]);
 	}
 }
