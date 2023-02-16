@@ -113,6 +113,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson7\SecureAuthorization::class,
 
 			\Intervolga\Edu\Tests\Course2\Lesson9\WizardTemplateChecker::class,
+			\Intervolga\Edu\Tests\Course2\Lesson9\WizardChecker::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson1\TestModule::class,
 
