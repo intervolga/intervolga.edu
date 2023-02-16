@@ -45,7 +45,7 @@ class LineEndingsSniff implements Sniff
 
     }//end register()
 
-
+	public $error    = 'End of line character is invalid; expected "%s" but found "%s"';
     /**
      * Processes this sniff, when one of its tokens is encountered.
      *
@@ -80,7 +80,7 @@ class LineEndingsSniff implements Sniff
             }
         }
 
-        $error    = 'End of line character is invalid; expected "%s" but found "%s"';
+        
         $expected = $this->eolChar;
         $expected = str_replace("\n", '\n', $expected);
         $expected = str_replace("\r", '\r', $expected);
@@ -88,9 +88,8 @@ class LineEndingsSniff implements Sniff
             $expected,
             $found,
         ];
-
         // Errors are always reported on line 1, no matter where the first PHP tag is.
-        $fix = $phpcsFile->addFixableError($error, 0, 'InvalidEOLChar', $data);
+        $fix = $phpcsFile->addFixableError($this->error, 0, 'InvalidEOLChar', $data);
 
         if ($fix === true) {
             $tokens = $phpcsFile->getTokens();

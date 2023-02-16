@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
-<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         name="general"
-         xsi:noNamespaceSchemaLocation="../../../../vendor/squizlabs/php_codesniffer/phpcs.xsd">
+<ruleset name="general">
+    <rule ref="Generic.Files.LineEndings">
+        <properties>
+            <property name="eolChar" value="\n"/>
+            <property name="error" value='В конце строки должно использоваться "%s", сейчас: "%s"'/>
+        </properties>
+    </rule>
     <description>General custom coding standard.</description>
 </ruleset>
