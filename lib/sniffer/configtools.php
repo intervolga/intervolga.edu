@@ -2,6 +2,7 @@
 
 namespace Intervolga\Edu\Sniffer;
 
+use Bitrix\Main\Application;
 use PHP_CodeSniffer\Config;
 
 class ConfigTools
@@ -10,7 +11,7 @@ class ConfigTools
 	{
 		$config = new Config();
 		$config->restoreDefaults();
-
+		$config->filter = Application::getDocumentRoot().'/local/modules/intervolga.edu/lib/sniffer/filters/filter.php';
 		$config->reports = ['full' => null];
 
 		if ($standardPath) {
