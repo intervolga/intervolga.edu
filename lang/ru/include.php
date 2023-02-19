@@ -3,6 +3,7 @@ $MESS['INTERVOLGA_EDU.COURSE1'] = '1. Интеграция дизайна и н�
 $MESS['INTERVOLGA_EDU.COURSE2'] = '2. Основные технологии и расширение типовых возможностей системы';
 $MESS['INTERVOLGA_EDU.COURSE3'] = '3. Расширенные технологии и производительность';
 $MESS['INTERVOLGA_EDU.COURSE4'] = '4. Разработка на D7. Введение';
+$MESS['INTERVOLGA_EDU.COURSEINTERVOLGA'] = '5. Проверки ИНТЕРВОЛГИ';
 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1'] = '1. Установка платформы';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2'] = '2. Структура Bitrix Framework';
@@ -27,6 +28,7 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON3'] = '3. Инфоблоки - Архите�
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5'] = '5. JS';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON8'] = '8. Монитор качества';
+$MESS['INTERVOLGA_EDU.COURSEINTERVOLGA_LESSON1'] = '1. Поисковая оптимизация';
 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE'] = 'Проверка установки модуля «Корпоративный сайт производственной компании»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE_DESCRIPTION'] = 'Модуль должен быть <a href="/bitrix/admin/partner_modules.php?lang=ru" target="_blank">зарегистрирован</a> в системе и установлен';
@@ -179,6 +181,8 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON8_THISSITESUPPORT_DESCRIPTION'] = 'Долж�
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON8_USERTESTEXISTS'] = 'Проверка 2-ух собственных тестов в мониторе качества';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON8_USERTESTEXISTS_DESCRIPTION'] = 'Должно быть создано 2 пользовательских теста и они должны быть выполнены в <a href="/bitrix/admin/checklist.php?lang=ru" target="_blank">Мониторе качества</a>';
 
+$MESS['INTERVOLGA_EDU.COURSEINTERVOLGA_LESSON1_ROBOTSCHECKER'] = 'Проверка robots.txt';
+$MESS['INTERVOLGA_EDU.COURSEINTERVOLGA_LESSON1_ROBOTSCHECKER_DESCRIPTION'] = 'Файл robots.txt должен существовать, быть заполнен';
 
 $MESS['INTERVOLGA_EDU.TEST_CODE_NAME'] = 'Проверка кода #FILES#';
 $MESS['INTERVOLGA_EDU.TEST_CODE_DESCRIPTION'] = 'Современная проверка ядра Битрикса, использование длинных php-тегов, запрет на устаревшие функции';
