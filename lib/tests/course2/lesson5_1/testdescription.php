@@ -4,8 +4,8 @@ namespace Intervolga\Edu\Tests\Course2\Lesson5_1;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
-use Intervolga\Edu\Locator\IO\CustomComponent;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
+use Intervolga\Edu\Locator\IO\VacanciesListComponent;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Regex;
@@ -40,7 +40,7 @@ class TestDescription extends BaseTest
 	 */
 	protected static function getLocator()
 	{
-		return CustomComponent::class;
+		return VacanciesListComponent::class;
 	}
 
 	/**

@@ -13,13 +13,16 @@ use Intervolga\Edu\Locator\BaseLocator;
 use Intervolga\Edu\Locator\Event\EventLocator;
 use Intervolga\Edu\Locator\Event\Template\TemplateLocator;
 use Intervolga\Edu\Locator\Event\Type\TypeLocator;
+use Intervolga\Edu\Locator\FunctionLocator;
 use Intervolga\Edu\Locator\Iblock\IblockLocator;
 use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
 use Intervolga\Edu\Locator\Iblock\Section\SectionLocator;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Locator\IO\FileLocator;
 use Intervolga\Edu\Locator\Uf\UfLocator;
+use Intervolga\Edu\Sniffer;
 use Intervolga\Edu\Util\Admin;
+use Intervolga\Edu\Util\FileMessage;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Menu;
 use Intervolga\Edu\Util\Regex;
@@ -53,6 +56,25 @@ class Assert
 		}
 	}
 
+	/**
+	 * @param mixed $value
+	 * @param mixed $expect
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function notEq($value, $expect, string $message = '')
+	{
+		if ($value == $expect) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_NOT_EQUAL',
+				[
+					'#VALUE#' => static::valueToString($value),
+					'#EXPECT#' => static::valueToString($expect),
+				],
+				$message
+			));
+		}
+	}
 	/**
 	 * @param string $error
 	 * @throws AssertException
@@ -128,6 +150,24 @@ class Assert
 		if ($value !== true) {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_TRUE',
+				[
+					'#VALUE#' => static::valueToString($value),
+				],
+				$message
+			));
+		}
+	}
+
+	/**
+	 * @param $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function false($value, string $message = '')
+	{
+		if ($value !== false) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_FALSE',
 				[
 					'#VALUE#' => static::valueToString($value),
 				],
@@ -296,17 +336,18 @@ class Assert
 	}
 
 	/**
-	 * @param $value
+	 * @param string|FunctionLocator $value
 	 * @param string $message
 	 * @throws AssertException
 	 */
 	public static function functionExists($value, string $message = '')
 	{
-		if (!function_exists($value)) {
+		if (!$value::find()) {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_FUNCTION_EXISTS',
 				[
 					'#VALUE#' => static::valueToString($value),
+					'#POSSIBLE#' => $value::getPossibleTips(),
 				],
 				$message
 			));
@@ -442,11 +483,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_FSE_EXISTS',
 				[
-					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-					]),
+					'#VALUE#' => FileMessage::get($value),
 					'#NAME#' => $value->getName(),
 					'#PATH#' => FileSystem::getLocalPath($value),
 					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
@@ -792,6 +829,42 @@ class Assert
 		}
 	}
 
+	public static function templateEqCondition(string $needleTemplate, string $condition, $message = '')
+	{
+		$templates = \CSite::GetTemplateList('s1');
+		$notFound = true;
+		$isFail = true;
+		while ($template = $templates->fetch()) {
+			if ($template['TEMPLATE'] == $needleTemplate) {
+				$notFound = false;
+				if ($template['CONDITION'] === $condition) {
+					$isFail = false;
+				} else {
+					static::registerError(
+						static::getCustomOrLocMessage(
+							'INTERVOLGA_EDU.TEMPLATE_NOT_EQUALS_CONDITION',
+							[
+								'#TEMPLATE#' => $template['TEMPLATE']
+							],
+							$message
+						));
+				}
+				break;
+			}
+		}
+		if ($notFound && $isFail) {
+			static::registerError(
+				static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.TEMPLATE_NOT_EXISTS',
+					[
+						'#TEMPLATE#' => $needleTemplate
+					],
+					$message
+				)
+			);
+		}
+	}
+
 	/**
 	 * @param string|EventLocator $value
 	 * @param string $message
@@ -802,16 +875,28 @@ class Assert
 		if ($find = $value::find()) {
 			static::registerLocatorFound(EventLocator::class, $value, $find);
 		} else {
-			static::registerError(
-				static::getCustomOrLocMessage(
+			$possible = $value::getPossibleTips();
+			if ($possible) {
+				$error = static::getCustomOrLocMessage(
 					'INTERVOLGA_EDU.ASSERT_EVENT_EXISTS',
 					[
 						'#MESSAGE_ID#' => $value::getMessageID(),
 						'#MODULE_ID#' => $value::getModuleID(),
-						'#POSSIBLE#' => $value::getPossibleTips()
+						'#POSSIBLE#' => $possible,
 					],
 					$message
-				));
+				);
+			} else {
+				$error = static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_EVENT_EXISTS_NO_FILTER',
+					[
+						'#MESSAGE_ID#' => $value::getMessageID(),
+						'#MODULE_ID#' => $value::getModuleID(),
+					],
+					$message
+				);
+			}
+			static::registerError($error);
 		}
 	}
 
@@ -843,6 +928,25 @@ class Assert
 		}
 	}
 
+	public static function menuItemsCount(string $menuPath, $expect, string $message = '')
+	{
+		$menuFile = FileSystem::getFile($menuPath);
+		static::fseExists($menuFile);
+		$links = Menu::getMenuLinks($menuPath);
+		if (count($links) != $expect)
+		{
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_MENU_ITEMS_COUNT',
+				[
+					'#MENU#' => FileMessage::get($menuFile),
+					'#EXPECT#' => $expect,
+					'#VALUE#' => count($links),
+				],
+				$message
+			));
+		}
+	}
+
 	public static function menuItemExists($menuPath, $item, string $message = '')
 	{
 		$menuFile = FileSystem::getFile($menuPath);
@@ -852,11 +956,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_MENU_ITEM_EXISTS',
 				[
-					'#MENU#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $menuFile->getName(),
-						'#PATH#' => FileSystem::getLocalPath($menuFile),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($menuFile),
-					]),
+					'#MENU#' => FileMessage::get($menuFile),
 					'#ITEM#' => $item,
 					'#NAME#' => $menuFile->getName(),
 					'#PATH#' => FileSystem::getLocalPath($menuFile),
@@ -875,11 +975,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_MENU_ITEM_NOT_EXISTS',
 				[
-					'#MENU#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $menuFile->getName(),
-						'#PATH#' => FileSystem::getLocalPath($menuFile),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($menuFile),
-					]),
+					'#MENU#' => FileMessage::get($menuFile),
 					'#ITEM#' => $item,
 					'#NAME#' => $menuFile->getName(),
 					'#PATH#' => FileSystem::getLocalPath($menuFile),
@@ -912,6 +1008,29 @@ class Assert
 				],
 				$message
 			));
+		}
+	}
+
+	/**
+	 * @param string[] $paths
+	 * @param string[] $standartName
+	 */
+	public static function phpSniffer(array $paths, array $standartName = ['general'], $message = '')
+	{
+		$result = Sniffer::run($paths, $standartName);
+		if ($result) {
+			foreach ($result as $error) {
+				Assert::registerError(static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.ASSERT_PHP_SNIFFER',
+					[
+						'#FILE#' => FileMessage::get($error->getFile(), $error->getLine(), $error->getColumn()),
+						'#LINE#' => $error->getLine(),
+						'#COLUMN#' => $error->getColumn(),
+						'#SNIFFER_ERROR#' => $error->getMessage(),
+					],
+					$message
+				));
+			}
 		}
 	}
 

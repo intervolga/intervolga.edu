@@ -1,12 +1,9 @@
 <?php
 namespace Intervolga\Edu\Locator\Component;
 
-use Bitrix\Main\Application;
 use Bitrix\Main\Component\ParametersTable;
-use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Locator\BaseLocator;
-use Intervolga\Edu\Util\Admin;
 
 Loc::loadMessages(__FILE__);
 
@@ -54,11 +51,9 @@ abstract class ComponentLocator extends BaseLocator
 
 	abstract public static function getCode();
 
-	public static function getDisplayHref($find): string
+	protected static function getFoundFilePath($find)
 	{
-		$file = new File(Application::getDocumentRoot() . $find['REAL_PATH']);
-
-		return Admin::getFileManUrl($file);
+		return $find['REAL_PATH'];
 	}
 
 	public static function getDisplayText($find): string
