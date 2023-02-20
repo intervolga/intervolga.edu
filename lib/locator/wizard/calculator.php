@@ -7,8 +7,6 @@ class Calculator extends WizardLocator
 	{
 		return [
 			'intervolga:calculator',
-			'custom:calculator',
-			'mywizards:calculator'
 		];
 	}
 
