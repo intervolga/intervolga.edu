@@ -110,6 +110,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson5_2\TestComponentCache::class,
 
 			\Intervolga\Edu\Tests\Course2\Lesson6\WebFormsChecker::class,
+			\Intervolga\Edu\Tests\Course2\Lesson6\VacanciesParametersChecker::class,
 			\Intervolga\Edu\Tests\Course2\Lesson6\CustomComponentChecker::class,
 
 			\Intervolga\Edu\Tests\Course2\Lesson7\SecurityLevel::class,
