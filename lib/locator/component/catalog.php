@@ -3,8 +3,8 @@ namespace Intervolga\Edu\Locator\Component;
 
 class Catalog extends ComponentLocator
 {
-	public static function getCode(): string
+	public static function getCode(): array
 	{
-		return 'bitrix:catalog';
+		return ['bitrix:catalog'];
 	}
 }
