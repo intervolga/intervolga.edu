@@ -5,19 +5,9 @@ use Bitrix\Main\Localization\Loc;
 
 class CustomVacancies extends ComponentLocator
 {
-	public static function getCode()
+	public static function getCode(): array
 	{
-		$customCodes = [];
-		foreach (INTERVOLGA_EDU_GUESS_VARIANTS['CUSTOM_COMPONENTS'] as $customNames) {
-			$customCodes[] = $customNames . ':vacancies';
-		}
-
-		return $customCodes;
-	}
-
-	public static function getPossibleTips()
-	{
-		return implode(':vacancies || ', INTERVOLGA_EDU_GUESS_VARIANTS['CUSTOM_COMPONENTS']) . ':vacancies ';
+		return ['intervolga:vacancies'];
 	}
 
 	public static function getNameLoc(): string

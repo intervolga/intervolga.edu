@@ -23,8 +23,7 @@ class AssertComponent extends Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_COMPONENT_LOCATOR',
 				[
-					'#COMPONENT#' => is_array($value::getCode()) ?
-						$value::getPossibleTips() : $value::getCode(),
+					'#COMPONENT#' => $value::getPossibleTips(),
 				],
 				$message
 			));
@@ -45,7 +44,7 @@ class AssertComponent extends Assert
 				'INTERVOLGA_EDU.ASSERT_TEMPLATE_LOCATOR',
 				[
 					'#TEMPLATE#' => $value::getNameLoc(),
-					'#COMPONENT#' => $value::getComponent()::getCode(),
+					'#COMPONENT#' => $value::getComponent()::getPossibleTips(),
 					'#POSSIBLE#' => $value::getPossibleTips(),
 				],
 				$message
@@ -73,7 +72,7 @@ class AssertComponent extends Assert
 				static::registerError(static::getCustomOrLocMessage(
 					'INTERVOLGA_EDU.ASSERT_COMPONENT_PARAMETER_EQ',
 					[
-						'#COMPONENT#' => $value::getCode(),
+						'#COMPONENT#' => $value::getPossibleTips(),
 						'#PARAM#' => $param,
 						'#VALUE#' => static::valueToString($paramToCheck),
 						'#EXPECT#' => static::valueToString($expect),

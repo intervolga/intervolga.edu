@@ -12,10 +12,9 @@ class CustomVacancies extends DirectoryLocator
 
 	protected static function getPaths(): array
 	{
-		$paths = [];
-		foreach (INTERVOLGA_EDU_GUESS_VARIANTS['CUSTOM_COMPONENTS'] as $customComponent) {
-			$paths[] = '/local/components/' . $customComponent . '/vacancies';
-		}
+		$paths = [
+			'/local/components/intervolga/vacancies/'
+		];
 
 		return $paths;
 	}
