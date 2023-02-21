@@ -20,11 +20,11 @@ class WebFormsChecker extends BaseTest
 		Assert::greaterEq($formsList['QUESTIONS'], static::COUNT_QUESTIONS,
 			Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6.COUNT_QUESTIONS',
 				[
+					'#ID_FORM#' => $formsList['ID'],
 					'#EXPECT#' => static::COUNT_QUESTIONS,
 					'#COUNT#' => $formsList['QUESTIONS']
 				]
 			)
 		);
-		//todo сделать проверку на поле id_vacancy = name_vacancy
 	}
 }
