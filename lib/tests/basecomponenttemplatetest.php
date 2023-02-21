@@ -4,8 +4,7 @@ namespace Intervolga\Edu\Tests;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\FilesTree\ComponentTemplate;
-use Intervolga\Edu\FilesTree\NewsTemplate;
-use Intervolga\Edu\FilesTree\SimpleComponentTemplate;
+use Intervolga\Edu\FilesTree\ComponentTemplate\NewsTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 
 abstract class BaseComponentTemplateTest extends BaseTest
@@ -45,6 +44,62 @@ abstract class BaseComponentTemplateTest extends BaseTest
 		}
 	}
 
+	/**
+	 * @return string|ComponentTemplate
+	 */
+	abstract protected static function getComponentTemplateTree();
+
+	protected static function testTemplateTrash(ComponentTemplate $templateDir)
+	{
+		foreach ($templateDir->getUnknownFileSystemEntries() as $unknownFileSystemEntry) {
+			Assert::fseNotExists($unknownFileSystemEntry);
+		}
+		static::checkRequiredFilesTemplate($templateDir);
+		static::checkNotExistingFilesTemplate($templateDir);
+		foreach ($templateDir->getLangForeignDirs() as $langForeignDir) {
+			Assert::directoryNotExists($langForeignDir);
+		}
+		static::testTemplateLangRuTrash($templateDir);
+	}
+
+	protected static function checkRequiredFilesTemplate(ComponentTemplate $templateDir)
+	{
+		if ($templateDir instanceof NewsTemplate) {
+			Assert::fseExists($templateDir->getNewsFile());
+			Assert::fseExists($templateDir->getDetailFile());
+		} else {
+			Assert::fseExists($templateDir->getTemplateFile());
+		}
+	}
+
+	protected static function checkNotExistingFilesTemplate(ComponentTemplate $templateDir)
+	{
+		Assert::fseNotExists($templateDir->getImagesDir());
+		Assert::fseNotExists($templateDir->getParametersFile());
+		Assert::fseNotExists($templateDir->getDescriptionFile());
+	}
+
+	protected static function testTemplateLangRuTrash(ComponentTemplate $templateDir)
+	{
+		if ($templateDir->getLangRuDir()->isExists()) {
+			foreach ($templateDir->getLangRuDir()->getChildren() as $child) {
+				if (!in_array($child->getName(), static::getKnownFilesNames($templateDir))) {
+					Assert::fseNotExists($child);
+				}
+			}
+		}
+	}
+
+	protected static function getKnownFilesNames(ComponentTemplate $templateDir)
+	{
+		$names = [];
+		foreach ($templateDir->getKnownFiles() as $file) {
+			$names[] = $file->getName();
+		}
+
+		return $names;
+	}
+
 	protected static function testTemplateCode(ComponentTemplate $templateDir)
 	{
 		$files = [];
@@ -57,64 +112,5 @@ abstract class BaseComponentTemplateTest extends BaseTest
 			'general',
 			'templateChecker'
 		]);
-	}
-
-	/**
-	 * @return string|ComponentTemplate
-	 */
-	abstract protected static function getComponentTemplateTree();
-
-	protected static function testTemplateTrash(ComponentTemplate $templateDir)
-	{
-		foreach ($templateDir->getUnknownFileSystemEntries() as $unknownFileSystemEntry) {
-			Assert::fseNotExists($unknownFileSystemEntry);
-		}
-		static::checkRequiredFilesTemplate($templateDir);
-		static::checkNotExistingFiles($templateDir);
-		foreach ($templateDir->getLangForeignDirs() as $langForeignDir) {
-			Assert::directoryNotExists($langForeignDir);
-		}
-		static::testTemplateLangRuTrash($templateDir);
-	}
-
-	protected static function checkRequiredFilesTemplate($templateDir)
-	{
-		if ($templateDir instanceof NewsTemplate) {
-			Assert::fseExists($templateDir->getNewsFile());
-			Assert::fseExists($templateDir->getDetailFile());
-		} else {
-			Assert::fseExists($templateDir->getTemplateFile());
-		}
-	}
-
-	protected static function checkNotExistingFiles($templateDir)
-	{
-		Assert::fseNotExists($templateDir->getImagesDir());
-		Assert::fseNotExists($templateDir->getParametersFile());
-		Assert::fseNotExists($templateDir->getDescriptionFile());
-	}
-
-	protected static function testTemplateLangRuTrash(ComponentTemplate $templateDir)
-	{
-		if ($templateDir->getLangRuDir()->isExists()) {
-			foreach ($templateDir->getLangRuDir()->getChildren() as $child) {
-				if ($child->getName() == $templateDir->getDescriptionFile()->getName()) {
-					Assert::fseNotExists($child);
-				} elseif ($child->getName() == $templateDir->getParametersFile()->getName()) {
-					Assert::fseNotExists($child);
-				} elseif ($templateDir instanceof SimpleComponentTemplate) {
-					if ($child->getName() != $templateDir->getTemplateFile()->getName()) {
-						Assert::fseNotExists($child);
-					}
-				} elseif ($templateDir instanceof NewsTemplate) {
-					if (!in_array($child->getName(), [
-						$templateDir->getNewsFile()->getName(),
-						$templateDir->getDetailFile()->getName()
-					])) {
-						Assert::fseNotExists($child);
-					}
-				}
-			}
-		}
 	}
 }

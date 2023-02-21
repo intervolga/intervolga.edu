@@ -1,14 +1,17 @@
 <?php
-namespace Intervolga\Edu\FilesTree;
+namespace Intervolga\Edu\FilesTree\Component;
 
 use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\IO\FileNotFoundException;
 use Bitrix\Main\IO\FileSystemEntry;
+use Intervolga\Edu\FilesTree\FilesTree;
 use Intervolga\Edu\Util\FileSystem;
 
-abstract class ComponentTemplate extends FilesTree
+abstract class Component extends FilesTree
 {
+	abstract public static function getTemplateTree(): string;
+
 	public function getLangRuDir(): Directory
 	{
 		$langDirectory = $this->getLangDir();
@@ -40,7 +43,6 @@ abstract class ComponentTemplate extends FilesTree
 		return $result;
 	}
 
-
 	public function getKnownPhpFiles(): array
 	{
 		$result = [];
@@ -57,44 +59,36 @@ abstract class ComponentTemplate extends FilesTree
 	 * @return File[]
 	 * @throws FileNotFoundException
 	 */
-	abstract public function getKnownFiles(): array;
-
-
-
-	/**
-	 * @return File[]
-	 * @throws FileNotFoundException
-	 */
-	public function getJsFiles(): array
+	public function getKnownFiles(): array
 	{
-		$result = [];
-		foreach ($this->getChildren() as $item) {
-			if ($item instanceof File) {
-				if ($item->getExtension() == 'js') {
-					$result[] = $item;
-				}
-			}
-		}
+		$result = [
+			$this->getComponentFile(),
+			$this->getClassFile(),
+			$this->getDescriptionFile(),
+			$this->getParametersFile(),
+		];
 
 		return $result;
 	}
 
-	/**
-	 * @return File[]
-	 * @throws FileNotFoundException
-	 */
-	public function getCssFiles(): array
+	public function getComponentFile(): File
 	{
-		$result = [];
-		foreach ($this->getChildren() as $item) {
-			if ($item instanceof File) {
-				if ($item->getExtension() == 'css') {
-					$result[] = $item;
-				}
-			}
-		}
+		return FileSystem::getInnerFile($this, 'component.php');
+	}
 
-		return $result;
+	public function getClassFile(): File
+	{
+		return FileSystem::getInnerFile($this, 'class.php');
+	}
+
+	public function getDescriptionFile(): File
+	{
+		return FileSystem::getInnerFile($this, '.description.php');
+	}
+
+	public function getParametersFile(): File
+	{
+		return FileSystem::getInnerFile($this, '.parameters.php');
 	}
 
 	/**
@@ -133,15 +127,15 @@ abstract class ComponentTemplate extends FilesTree
 	public function getKnownDirs(): array
 	{
 		$result = [
-			$this->getImagesDir(),
 			$this->getLangDir(),
+			$this->getTemplatesDir(),
 		];
 
 		return $result;
 	}
 
-	public function getImagesDir(): Directory
+	public function getTemplatesDir(): Directory
 	{
-		return FileSystem::getInnerDirectory($this, 'images');
+		return FileSystem::getInnerDirectory($this, 'templates');
 	}
 }

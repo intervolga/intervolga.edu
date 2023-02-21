@@ -3,8 +3,8 @@ namespace Intervolga\Edu\Tests;
 
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
+use Intervolga\Edu\FilesTree\Component\Component;
 use Intervolga\Edu\FilesTree\ComponentTemplate;
-use Intervolga\Edu\FilesTree\SimpleComponent;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 
 abstract class BaseComponentTest extends BaseComponentTemplateTest
@@ -39,18 +39,18 @@ abstract class BaseComponentTest extends BaseComponentTemplateTest
 		Assert::directoryLocator($locatorComponent);
 		if ($componentDir = $locatorComponent::find(static::getComponentTemplateTree())) {
 			/**
-			 * @var ComponentTemplate $componentDir
+			 * @var Component $componentDir
 			 */
 			static::testComponentTrash($componentDir);
 		}
 	}
 
 	/** дерево компонента
-	 * @return string|ComponentTemplate
+	 * @return string|Component
 	 */
 	abstract protected static function getComponentTemplateTree();
 
-	protected static function testComponentTrash(ComponentTemplate $componentDir)
+	protected static function testComponentTrash(Component $componentDir)
 	{
 		foreach ($componentDir->getUnknownFileSystemEntries() as $unknownFileSystemEntry) {
 			if ($unknownFileSystemEntry->getName() == $componentDir->getTemplatesDir()->getName()) {
@@ -67,13 +67,8 @@ abstract class BaseComponentTest extends BaseComponentTemplateTest
 				Assert::fseNotExists($unknownFileSystemEntry);
 			}
 		}
-		Assert::fseExists($componentDir->getParametersFile());
-		Assert::fseExists($componentDir->getDescriptionFile());
-		if (!$componentDir->getComponentFile()->isExists()) {
-			Assert::fseExists($componentDir->getClassFile());
-		} else {
-			Assert::fseExists($componentDir->getComponentFile());
-		}
+
+		static::checkRequiredFilesComponent($componentDir);
 
 		foreach ($componentDir->getLangForeignDirs() as $langForeignDir) {
 			Assert::directoryNotExists($langForeignDir);
@@ -86,18 +81,28 @@ abstract class BaseComponentTest extends BaseComponentTemplateTest
 	 */
 	abstract protected static function getTemplateLocator();
 
-	protected static function testComponentLangRuTrash(ComponentTemplate $componentDir)
+	protected static function checkRequiredFilesComponent(Component $componentDir)
+	{
+		Assert::fseExists($componentDir->getParametersFile());
+		Assert::fseExists($componentDir->getDescriptionFile());
+		if (!$componentDir->getComponentFile()->isExists()) {
+			Assert::fseExists($componentDir->getClassFile());
+		} else {
+			Assert::fseExists($componentDir->getComponentFile());
+		}
+	}
+
+	protected static function testComponentLangRuTrash(Component $componentDir)
 	{
 		if ($componentDir->getLangRuDir()->isExists()) {
 			foreach ($componentDir->getLangRuDir()->getChildren() as $child) {
-				if ($componentDir instanceof SimpleComponent) {
-					if (!in_array($child->getName(), [
-						$componentDir->getDescriptionFile()->getName(),
-						$componentDir->getParametersFile()->getName(),
-						$componentDir->getComponentFile()->getName()
-					])) {
-						Assert::fseNotExists($child);
-					}
+				if (!in_array($child->getName(), [
+					$componentDir->getDescriptionFile()->getName(),
+					$componentDir->getParametersFile()->getName(),
+					$componentDir->getClassFile()->getName(),
+					$componentDir->getComponentFile()->getName()
+				])) {
+					Assert::fseNotExists($child);
 				}
 			}
 		}
