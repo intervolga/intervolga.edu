@@ -1,4 +1,5 @@
 <?php
+$MESS['INTERVOLGA_EDU.COURSE_TAB_HEADER'] = 'Курс #NUM# (#DONE#/#TOTAL#)';
 $MESS['INTERVOLGA_EDU.COURSE_HEADER'] = 'Курс #COURSE# (#DONE#/#TOTAL#)';
 $MESS['INTERVOLGA_EDU.TEST_RESULTS'] = 'Результаты проверки';
 $MESS['INTERVOLGA_EDU.LESSON_HEADER'] = 'Урок #LESSON# (#DONE#/#TOTAL#)';
@@ -8,3 +9,14 @@ $MESS['INTERVOLGA_EDU.FATAL_ERROR'] = 'При проверке произошл�
 $MESS['INTERVOLGA_EDU.REPORT_MALE'] = 'Не согласен';
 $MESS['INTERVOLGA_EDU.REPORT_FEMALE'] = 'Не согласна';
 $MESS['INTERVOLGA_EDU.REMOVE_REPORT'] = 'Снять жалобу от #TIME#';
+$MESS['INTERVOLGA_EDU.MODULE_TAB_INFO'] = 'О модуле';
+$MESS['INTERVOLGA_EDU.MODULE_INFO'] = 'О модуле проверки Академии';
+$MESS['INTERVOLGA_EDU.MODULE_VERSION'] = 'Версия модуля: <b>#VERSION#</b>';
+$MESS['INTERVOLGA_EDU.MODULE_VERSION_DATE'] = 'Дата обновления: <b>#VERSION_DATE#</b>';
+$MESS['INTERVOLGA_EDU.MODULE_TESTS_COUNT'] = 'Тестов в базе: <b>#COUNT#</b>';
+$MESS['INTERVOLGA_EDU.DOWNLOAD_ZIP'] = 'Для обновления скачать архив модуля из репозитория';
+$MESS['INTERVOLGA_EDU.UPLOAD_ZIP'] = 'Загрузить архив на сайт';
+$MESS['INTERVOLGA_EDU.GOTO_UNZIP_DIR'] = 'Перейти в /local/modules/';
+$MESS['INTERVOLGA_EDU.UNPACK'] = 'Запустить распаковщик';
+$MESS['INTERVOLGA_EDU.UNPACK_ZIP'] = 'Распаковать #ZIP# (#DATETIME#)';
+$MESS['INTERVOLGA_EDU.NO_ZIP_FILES'] = 'В /local/modules/ нет архивов';

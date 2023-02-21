@@ -1,18 +1,11 @@
 <?php
 namespace Intervolga\Edu\Tests;
 
-use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
-use Intervolga\Edu\Asserts\AssertPhp;
 
 abstract class BaseTestCode extends BaseTest
 {
-	/**
-	 * @return File[];
-	 */
-	abstract static function getFilesToTestCode(): array;
-
 	public static function interceptErrors()
 	{
 		return true;
@@ -25,11 +18,6 @@ abstract class BaseTestCode extends BaseTest
 		]);
 	}
 
-	public static function getDescription(): string
-	{
-		return Loc::getMessage('INTERVOLGA_EDU.TEST_CODE_DESCRIPTION');
-	}
-
 	static function getFilesLoc(): string
 	{
 		$code = 'INTERVOLGA_EDU.' . mb_strtoupper(static::getCourseCode()) . '_' . mb_strtoupper(static::getLessonCode()) . '_' . mb_strtoupper(static::getTestCode()) . '_FILES';
@@ -40,15 +28,22 @@ abstract class BaseTestCode extends BaseTest
 		}
 	}
 
+	public static function getDescription(): string
+	{
+		return Loc::getMessage('INTERVOLGA_EDU.TEST_CODE_DESCRIPTION');
+	}
+
 	protected static function run()
 	{
-		$files = static::getFilesToTestCode();
+		$files = static::getFilesPaths();
 		Assert::notEmpty($files, Loc::getMessage('INTERVOLGA_EDU.TEST_CODE_EMPTY_FILES'));
 		foreach ($files as $file) {
 			Assert::fseExists($file);
 			if ($file->isExists()) {
-				AssertPhp::goodCode($file);
+				Assert::phpSniffer($file);
 			}
 		}
 	}
+
+	abstract static function getFilesPaths(): array;
 }

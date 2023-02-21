@@ -3,25 +3,13 @@ namespace Intervolga\Edu\Tests;
 
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
-use Intervolga\Edu\Asserts\AssertPhp;
 use Intervolga\Edu\FilesTree\ComponentTemplate;
 use Intervolga\Edu\FilesTree\NewsTemplate;
 use Intervolga\Edu\FilesTree\SimpleComponentTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
-use Intervolga\Edu\Util\Sniffer;
 
 abstract class BaseComponentTemplateTest extends BaseTest
 {
-	/**
-	 * @return string|DirectoryLocator
-	 */
-	abstract protected static function getLocator();
-
-	/**
-	 * @return string|ComponentTemplate
-	 */
-	abstract protected static function getComponentTemplateTree();
-
 	public static function interceptErrors()
 	{
 		return true;
@@ -33,6 +21,11 @@ abstract class BaseComponentTemplateTest extends BaseTest
 			'#TEMPLATE#' => static::getLocator()::getNameLoc(),
 		]);
 	}
+
+	/**
+	 * @return string|DirectoryLocator
+	 */
+	abstract protected static function getLocator();
 
 	public static function getDescription(): string
 	{
@@ -54,13 +47,22 @@ abstract class BaseComponentTemplateTest extends BaseTest
 
 	protected static function testTemplateCode(ComponentTemplate $templateDir)
 	{
+		$files = [];
 		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
 			if ($knownPhpFile->isExists()) {
-				AssertPhp::goodCode($knownPhpFile);
-				Sniffer::testTemplateFile($knownPhpFile);
+				$files[] = $knownPhpFile->getPath();
 			}
 		}
+		Assert::phpSniffer($files, [
+			'general',
+			'templateChecker'
+		]);
 	}
+
+	/**
+	 * @return string|ComponentTemplate
+	 */
+	abstract protected static function getComponentTemplateTree();
 
 	protected static function testTemplateTrash(ComponentTemplate $templateDir)
 	{
@@ -85,7 +87,7 @@ abstract class BaseComponentTemplateTest extends BaseTest
 				} elseif ($child->getName() == $templateDir->getParametersFile()->getName()) {
 					Assert::fseNotExists($child);
 				} elseif ($templateDir instanceof SimpleComponentTemplate) {
-					if ($child->getName() != $templateDir->getTemplateFile()) {
+					if ($child->getName() != $templateDir->getTemplateFile()->getName()) {
 						Assert::fseNotExists($child);
 					}
 				} elseif ($templateDir instanceof NewsTemplate) {
