@@ -3,7 +3,6 @@ namespace Intervolga\Edu\Tests\Course1\Lesson3;
 
 use Bitrix\Main\Application;
 use Bitrix\Main\IO\Directory;
-use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\FileSystem;
@@ -31,8 +30,8 @@ class TestTemplates extends BaseTest
 					Assert::fileNotExists($child);
 				}
 			}
-			foreach ($templatesAllowed as $template){
-				Assert::directoryExists(FileSystem::getDirectory('/local/templates/'.$template.'/'));
+			foreach ($templatesAllowed as $template) {
+				Assert::directoryExists(FileSystem::getDirectory('/local/templates/' . $template . '/'));
 			}
 		}
 	}
