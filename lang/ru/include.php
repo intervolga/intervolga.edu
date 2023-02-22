@@ -20,12 +20,14 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON2'] = '2. Технологии: параме
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON3'] = '3. События';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4'] = '4. Отложенные функции';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1'] = '5.1 Создание собственных компонентов';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON5_2'] = '5.2 Настройки кеширования - базовые понятия';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON7'] = '7. Управление доступом и безопасность';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON8'] = '8. Гаджеты';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1'] = '1. Создание модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON3'] = '3. Инфоблоки - Архитектура';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5'] = '5. JS';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON8'] = '8. Монитор качества';
 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE'] = 'Проверка установки модуля «Корпоративный сайт производственной компании»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE_DESCRIPTION'] = 'Модуль должен быть <a href="/bitrix/admin/partner_modules.php?lang=ru" target="_blank">зарегистрирован</a> в системе и установлен';
@@ -65,6 +67,8 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_CODE_FILES'] = 'init.php';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_CODE_FILES'] = 'header.php и footer.php шаблонов main, inner';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_TEMPLATES'] = 'Проверка шаблонов сайта';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_TEMPLATES_DESCRIPTION'] = 'В /local/templates/ должны быть только эти шаблоны: main, inner, .default';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_TEMPLATECONDITIONS'] = 'Проверка условий шаблонов сайта';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_TEMPLATECONDITIONS_DESCRIPTION'] = 'Шаблон main должен отображаться только на главной странице, inner на всех остальных';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SCRIPTS'] = 'Проверка js-плагинов';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SCRIPTS_DESCRIPTION'] = 'Плагины слайдера и карусели должны подключаться только в main-шаблоне';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_OPTION'] = 'Проверка настроек JS и CSS главного модуля';
@@ -77,10 +81,14 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER'] = 'Используе�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER_DESCRIPTION'] = 'Проверка у свойства на наличие флага "использовать в умном фильтре"';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_INCLUDEAREA'] = 'Проверка включаемой области';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_INCLUDEAREA_DESCRIPTION'] = 'Должен быть файл в разделе Партнерам и в корне сайта';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON41_ABOUTMENUITEMS'] = 'Проверка пунктов меню "О магазине"';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON41_ABOUTMENUITEMS_DESCRIPTION'] = 'В меню должны быть разделы: Отзывы, Контакты, Руководство, История';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_REGISTERPAGEOPTION'] = 'Проверка настройки «Страница регистрации»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_REGISTERPAGEOPTION_DESCRIPTION'] = 'Настройка Главного модуля «Страница регистрации (для системного компонента авторизации)» должна содержать относительный путь к разделу регистрации';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_EMAIL'] = 'Проверка ссылки на восстановление пароля';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_EMAIL_DESCRIPTION'] = 'Ссылка в почтовом шаблоне «Запрос на смену пароля» (USER_PASS_REQUEST) должна вести на корректную страницу';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON42_FEEDBACK'] = 'Проверка компонента «Обратная связь» на странице «Контакты»';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON42_FEEDBACK_DESCRIPTION'] = 'Компонент bitrix:main.feedback должен находиться на странице Контакты (/contacts/index.php)';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON7_LATESTSTOCK'] = 'Проверка компонента Последняя акция';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON7_LATESTSTOCK_DESCRIPTION'] = 'В компоненте последняя акция должны быть установлены авто-кеширование и снят флаг учета прав';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON7_MENU'] = 'Проверка Меню';
@@ -113,7 +121,6 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST'] = 'Проверка с�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST_DESCRIPTION'] = 'Инфоблок должен иметь свойство "В наличии", оно должно быть заполненно хотя бы у 1 элемента раздела "Мягкая мебель"';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER'] = 'Используется в умном фильтре';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER_DESCRIPTION'] = 'Проверка параметра свойства "использовать в умном фильтре"';
-
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_CATALOGBINDINGPROPERTY'] = 'Проверка свойства "Привязка к каталогу"';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_CATALOGBINDINGPROPERTY_DESCRIPTION'] = 'Свойство должно существовать, иметь тип "Привязка к элементам" и быть заполненно хотя бы у 3 элементов';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_PROPERTYPRICE'] = 'Проверка свойства "Цена"';
@@ -142,6 +149,8 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1_DESCRIPTION'] = 'Проверка фай
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1_DESCRIPTION_DESCRIPTION'] = 'В файле .description.php текст должен быть вынесен в lang-файл, подключение news_list.gif должно быть убрано';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1_HERMITAGE'] = 'Проверка файла подключения эрмитажа';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1_HERMITAGE_DESCRIPTION'] = 'В шаблоне должен быть подключен эрмитаж (для разделов и для элементов)';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON5_2_COMPONENTCACHE'] = 'Проверка кеширования в кастомном компоненте';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON5_2_COMPONENTCACHE_DESCRIPTION'] = 'Компонент дожен иметь настройку кеширования в параметрах компонента, в классе компонента должен быть вызов StartResultCache';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SECURITYLEVEL'] = 'Проверка уровня безопасности';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SECURITYLEVEL_DESCRIPTION'] = 'Уровень безопасности должен быть "Стандартный" или выше.';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SECUREAUTHORIZATION'] = 'Проверка настроек Авторизации';
@@ -168,6 +177,13 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_GALLERYELEMENTS'] = 'Проверка эл
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_GALLERYELEMENTS_DESCRIPTION'] = 'Должен быть созданы >5 элементов инфоблока gallery с детальной картинкой, описанием и картиной для анонса.';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_COMPONENTGALLERY'] = 'Проверка параметров компонента bitrix:news.list gallery';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_COMPONENTGALLERY_DESCRIPTION'] = 'Проверка параметров компонента bitrix:news.list на странице gallery.php';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON8_ACCEPTEDTESTS'] = 'Проверка тестов безопасности в мониторе качества';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON8_ACCEPTEDTESTS_DESCRIPTION'] = 'Проверка выполнения тестов в <a href="/bitrix/admin/checklist.php?lang=ru" target="_blank">Мониторе качества</a> группы "Безопасность" и 2 пункта из "Сдача проекта" ("Введена информация о техподдержке проекта" и "Введена информация об интеграторе решения")';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON8_THISSITESUPPORT'] = 'Проверка наличия информации о техподдержке проекта';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON8_THISSITESUPPORT_DESCRIPTION'] = 'Должен существовать заполненный this_site_support.php';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON8_USERTESTEXISTS'] = 'Проверка 2-ух собственных тестов в мониторе качества';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON8_USERTESTEXISTS_DESCRIPTION'] = 'Должно быть создано 2 пользовательских теста и они должны быть выполнены в <a href="/bitrix/admin/checklist.php?lang=ru" target="_blank">Мониторе качества</a>';
+
 
 $MESS['INTERVOLGA_EDU.TEST_CODE_NAME'] = 'Проверка кода #FILES#';
 $MESS['INTERVOLGA_EDU.TEST_CODE_DESCRIPTION'] = 'Современная проверка ядра Битрикса, использование длинных php-тегов, запрет на устаревшие функции';
@@ -194,8 +210,6 @@ $MESS['INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG_EDIT'] = 'Проблема с ИБ <a 
 $MESS['INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG_DELETE'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: установите флаг "Записывать удаление элемента"';
 $MESS['INTERVOLGA_EDU.SET_PERMISSION_EVERYONE_R'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: задайте доступ для всех пользователей Чтение';
 $MESS['INTERVOLGA_EDU.IB_PROPERTY_HAS_LOWER_CASE'] = 'Символьный код свойства <b>#PROPERTY#</b> (ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>) должен быть в верхнем регистре, без кириллицы!';
-$MESS['INTERVOLGA_EDU.FIELD_SURNAME'] = 'Фамилия';
-$MESS['INTERVOLGA_EDU.RENAME_FIELD_NAME'] = 'Переименуйте поле #VALUE# в #EXPECT# в форме редактирования элемента';
 $MESS['INTERVOLGA_EDU.PRICE_PROPERTY'] = 'Цена';
 $MESS['INTERVOLGA_EDU.SOFT_FORNITURE_SECTION'] = 'Мягкая мебель';
 $MESS['INTERVOLGA_EDU.POST_PROPERTY'] = 'Должность';
@@ -226,7 +240,6 @@ $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_URL_PROBLEM'] = 'В шаблоне пи�
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_PAGE_PROBLEM'] = 'ссылка из письма';
 $MESS['INTERVOLGA_EDU.IBLOCK_FIELD_PARAM_SHOULD_BE_SET'] = 'Настройка <b>#PARAM#</b> поля <b>#FIELD#</b> должна быть <b>#EXPECT#</b>';
 $MESS['INTERVOLGA_EDU.CONTENT_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#NAME#</a> не должно быть #REGEX_EXPLAIN# (#REASON#)';
-$MESS['INTERVOLGA_EDU.ADD_CUSTOM_CORE_CHECK'] = 'В файле #VALUE# нужно использовать короткое подключение ядра: B_PROLOG_INCLUDED === true || die()';
 $MESS['INTERVOLGA_EDU.CUSTOM_MODULE'] = 'intervolga.?';
 $MESS['INTERVOLGA_EDU.CUSTOM_MODULE_TIP'] = 'intervolga.? в #MODULES#';
 $MESS['INTERVOLGA_EDU.INCLUDEAREA_PARTNERS'] = 'Включаемая область в разделе Партнерам';

@@ -45,6 +45,20 @@ abstract class BaseComponentTemplateTest extends BaseTest
 		}
 	}
 
+	protected static function testTemplateCode(ComponentTemplate $templateDir)
+	{
+		$files = [];
+		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
+			if ($knownPhpFile->isExists()) {
+				$files[] = $knownPhpFile->getPath();
+			}
+		}
+		Assert::phpSniffer($files, [
+			'general',
+			'templateChecker'
+		]);
+	}
+
 	/**
 	 * @return string|ComponentTemplate
 	 */
@@ -100,15 +114,5 @@ abstract class BaseComponentTemplateTest extends BaseTest
 		}
 
 		return $names;
-	}
-
-	protected static function testTemplateCode(ComponentTemplate $templateDir)
-	{
-		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
-			if ($knownPhpFile->isExists()) {
-				CodeSnifferChecker::goodCode($knownPhpFile->getPath());
-				CodeSnifferChecker::testTemplateFile($knownPhpFile->getPath());
-			}
-		}
 	}
 }

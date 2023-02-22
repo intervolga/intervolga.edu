@@ -56,6 +56,20 @@ class TestReviewsIblock extends BaseTestIblock
 					Loc::getMessage('INTERVOLGA_EDU.RENAME_FIELD_NAME')
 				);
 			}
+			if (mb_strlen($tab['FIELDS']['PREVIEW_PICTURE'])) {
+				Assert::eq(
+					$tab['FIELDS']['PREVIEW_PICTURE'],
+					Loc::getMessage('INTERVOLGA_EDU.FIELD_PREVIEW_PICTURE'),
+					Loc::getMessage('INTERVOLGA_EDU.RENAME_FIELD_NAME')
+				);
+			}
+			if (mb_strlen($tab['FIELDS']['PREVIEW_TEXT'])) {
+				Assert::eq(
+					$tab['FIELDS']['PREVIEW_TEXT'],
+					Loc::getMessage('INTERVOLGA_EDU.FIELD_PREVIEW_TEXT'),
+					Loc::getMessage('INTERVOLGA_EDU.RENAME_FIELD_NAME')
+				);
+			}
 		}
 	}
 }

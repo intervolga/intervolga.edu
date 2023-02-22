@@ -4,7 +4,7 @@ namespace Intervolga\Edu\Tests\Course2\Lesson5_1;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
-use Intervolga\Edu\Locator\IO\CustomComponentTemplate;
+use Intervolga\Edu\Locator\IO\ComponentTemplate\VacanciesListTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\FileSystem;
@@ -27,7 +27,7 @@ class TestHermitage extends BaseTest
 	 */
 	protected static function getLocator()
 	{
-		return CustomComponentTemplate::class;
+		return VacanciesListTemplate::class;
 	}
 
 	/**
