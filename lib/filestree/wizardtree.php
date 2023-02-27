@@ -6,8 +6,9 @@ use Bitrix\Main\IO\File;
 use Bitrix\Main\IO\FileNotFoundException;
 use Intervolga\Edu\Util\FileSystem;
 
-class WizardTree extends ComponentTemplate
+class WizardTree extends FilesTree
 {
+	use MainFunctions;
 	/**
 	 * @return File[]
 	 * @throws FileNotFoundException
