@@ -108,6 +108,8 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON9_NAVPAGE_DESCRIPTION'] = 'У компоне
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON9_NAVPAGE'] = 'Проверка постраничной навигации';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION'] = 'Проверка формы поиска';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION_DESCRIPTION'] = 'Должна быть настроена на раздел, а не на index.php-страницу';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_SEOCHECKER'] = 'Проверка SEO параметров инфоблока "Продукция"';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_SEOCHECKER_DESCRIPTION'] = 'Проверка правильного заполнения SEO параметров согласно условиям задания';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CATALOGRATING'] = 'Проверка на наличие включенного рейтинга';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CATALOGRATING_DESCRIPTION'] = 'В настройках bitrix:catalog должен быть установлен параметр «Включить рейтинг товара»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSETVIEWTARGET'] = 'Проверка SetViewTarget';
@@ -206,7 +208,6 @@ $MESS['INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG_DELETE'] = 'Проблема с ИБ <
 $MESS['INTERVOLGA_EDU.SET_PERMISSION_EVERYONE_R'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: задайте доступ для всех пользователей Чтение';
 $MESS['INTERVOLGA_EDU.IB_PROPERTY_HAS_LOWER_CASE'] = 'Символьный код свойства <b>#PROPERTY#</b> (ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>) должен быть в верхнем регистре, без кириллицы!';
 $MESS['INTERVOLGA_EDU.PRICE_PROPERTY'] = 'Цена';
-$MESS['INTERVOLGA_EDU.SOFT_FORNITURE_SECTION'] = 'Мягкая мебель';
 $MESS['INTERVOLGA_EDU.POST_PROPERTY'] = 'Должность';
 $MESS['INTERVOLGA_EDU.COMPANY_PROPERTY'] = 'Компания';
 $MESS['INTERVOLGA_EDU.CATALOGBINDING_PROPERTY'] = 'Привязка к каталогу';
