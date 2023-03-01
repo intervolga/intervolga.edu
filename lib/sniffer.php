@@ -1,5 +1,4 @@
 <?php
-
 namespace Intervolga\Edu;
 
 use Intervolga\Edu\Sniffer\ConfigTools;
@@ -13,10 +12,11 @@ class Sniffer
 	 * @param string[] $paths
 	 * @return Message[]
 	 */
-	public static function run(array $paths)
+	public static function run(array $paths, array $standartName = ['general'])
 	{
 		$result = [];
-		$standards = StandardsTools::getStandardPathByNames(['general']);
+
+		$standards = StandardsTools::getStandardPathByNames($standartName);
 		$config = ConfigTools::makeConfig($standards, $paths);
 
 		$runner = new Runner($config);

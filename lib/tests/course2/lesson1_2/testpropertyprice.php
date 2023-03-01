@@ -10,7 +10,7 @@ class TestPropertyPrice extends BaseTest
 {
 	protected static function run()
 	{
-		Assert::notEmpty(static::getPropertiesLocators()::getIblock()::find());
+		Assert::iblockLocator(static::getPropertiesLocators()::getIblock());
 		Assert::propertyLocator(static::getPropertiesLocators());
 	}
 

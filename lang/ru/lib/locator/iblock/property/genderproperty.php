@@ -1,0 +1,2 @@
+<?php
+$MESS['INTERVOLGA_EDU.GENDER_PROPERTY'] = 'Пол';
