@@ -35,6 +35,8 @@ class SettingResultLinks extends BaseTest
 
 	protected static function getGadgetUrls($formId, $templateUrlGeneral, $templateUrlIndividual)
 	{
+		$indexPath = Gadgets::find()->getPath().'/index.php';
+
 		ob_start();
 		$arGadgetParams = [
 			"TITLE_STD" => "new_gadget_test",
@@ -44,11 +46,11 @@ class SettingResultLinks extends BaseTest
 			"TEMPLATE_URL" => "",
 			"FORM_ID" => $formId
 		];
-		include $_SERVER['DOCUMENT_ROOT'] . '/local/gadgets/custom/list_resumes/index.php';
-		$test = ob_get_contents();
+		include $indexPath;
+		$page = ob_get_contents();
 		ob_clean();
 
-		preg_match_all('/href="[\w\s\d\=\'"\/_\.\?&;]*\>/iu', $test, $matches, PREG_SET_ORDER);
+		preg_match_all('/href="[\w\s\d\=\'"\/_\.\?&;]*\>/iu', $page, $matches, PREG_SET_ORDER);
 		foreach ($matches as $match) {
 			$urls[] = mb_strcut($match[0], strpos($match[0], '"') + 1, -2);
 		}
