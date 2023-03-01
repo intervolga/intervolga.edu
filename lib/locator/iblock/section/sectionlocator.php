@@ -67,7 +67,7 @@ abstract class SectionLocator extends BaseLocator
 		return '[' . $find['ID'] . '] ' . $find['NAME'];
 	}
 
-	public static function getDisplayHref($find): string
+	protected static function getDisplayHref($find): string
 	{
 		return Admin::getIblockSectionUrl($find);
 	}

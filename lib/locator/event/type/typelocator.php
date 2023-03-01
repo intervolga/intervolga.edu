@@ -45,7 +45,7 @@ abstract class TypeLocator extends BaseLocator
 		return $find['EVENT_NAME'];
 	}
 
-	public static function getDisplayHref($find): string
+	protected static function getDisplayHref($find): string
 	{
 		return Admin::getEventTypeUrl($find);
 	}

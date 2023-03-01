@@ -66,7 +66,7 @@ class UfLocator extends BaseLocator
 		return implode(';', $result);
 	}
 
-	public static function getDisplayHref($find): string
+	protected static function getDisplayHref($find): string
 	{
 		return Admin::getUfUrl($find);
 	}
