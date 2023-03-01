@@ -5,8 +5,10 @@ use Bitrix\Main\IO\File;
 use Bitrix\Main\IO\FileNotFoundException;
 use Intervolga\Edu\Util\FileSystem;
 
-class GadgetTemplate extends ComponentTemplate
+class GadgetTemplate extends FilesTree
 {
+	use MainFunctions;
+
 	/**
 	 * @return File[]
 	 * @throws FileNotFoundException
@@ -14,7 +16,7 @@ class GadgetTemplate extends ComponentTemplate
 	public function getKnownFiles(): array
 	{
 		$result = [
-			$this->getTemplateFile(),
+			$this->getIndexFile(),
 			$this->getParametersFile(),
 			$this->getDescriptionFile(),
 		];
@@ -22,7 +24,12 @@ class GadgetTemplate extends ComponentTemplate
 		return $result;
 	}
 
-	public function getTemplateFile(): File
+	public function getParametersFile(): File
+	{
+		return FileSystem::getInnerFile($this, '.parameters.php');
+	}
+
+	public function getIndexFile(): File
 	{
 		return FileSystem::getInnerFile($this, 'index.php');
 	}

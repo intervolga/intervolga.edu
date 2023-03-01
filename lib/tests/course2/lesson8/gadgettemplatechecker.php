@@ -3,6 +3,7 @@ namespace Intervolga\Edu\Tests\Course2\Lesson8;
 
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\FilesTree\ComponentTemplate;
+use Intervolga\Edu\FilesTree\FilesTree;
 use Intervolga\Edu\FilesTree\GadgetTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Locator\IO\Gadgets;
@@ -10,20 +11,6 @@ use Intervolga\Edu\Tests\BaseComponentTemplateTest;
 
 class GadgetTemplateChecker extends BaseComponentTemplateTest
 {
-	protected static function run()
-	{
-		$locatorClass = static::getLocator();
-		Assert::directoryLocator($locatorClass);
-
-		if ($templateDir = $locatorClass::find(static::getComponentTemplateTree())) {
-			/**
-			 * @var ComponentTemplate $templateDir
-			 */
-			static::testTemplateTrash($templateDir);
-			static::testTemplateCode($templateDir);
-		}
-	}
-
 	/**
 	 * @return string|DirectoryLocator
 	 */
@@ -33,7 +20,7 @@ class GadgetTemplateChecker extends BaseComponentTemplateTest
 	}
 
 	/**
-	 * @return string|ComponentTemplate
+	 * @return string|FilesTree
 	 */
 	protected static function getComponentTemplateTree()
 	{
@@ -44,8 +31,8 @@ class GadgetTemplateChecker extends BaseComponentTemplateTest
 	{
 		Assert::fseExists($templateDir->getDescriptionFile());
 		Assert::fseExists($templateDir->getParametersFile());
-		Assert::fseExists($templateDir->getTemplateFile());
+		Assert::fseExists($templateDir->getIndexFile());
 	}
 
-	protected static function checkNotExistingFiles($templateDir) {}
+	protected static function checkNotExistingFilesTemplate($templateDir) {}
 }
