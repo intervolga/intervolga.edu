@@ -49,7 +49,7 @@ abstract class ComponentLocator extends BaseLocator
 		return $result;
 	}
 
-	abstract public static function getCode(): array;
+	abstract public static function getCode(): string;
 
 	protected static function getFoundFilePath($find)
 	{
@@ -64,14 +64,7 @@ abstract class ComponentLocator extends BaseLocator
 	public static function getNameLoc(): string
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.COMPONENT_CALL', [
-			'#COMPONENT#' => static::getPossibleTips(),
+			'#COMPONENT#' => static::getCode(),
 		]);
-	}
-
-	public static function getPossibleTips(): string
-	{
-		$result = implode('||', static::getCode());
-
-		return $result;
 	}
 }

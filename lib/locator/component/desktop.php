@@ -3,8 +3,8 @@ namespace Intervolga\Edu\Locator\Component;
 
 class Desktop extends ComponentLocator
 {
-	public static function getCode(): array
+	public static function getCode(): string
 	{
-		return ['bitrix:desktop'];
+		return 'bitrix:desktop';
 	}
 }
