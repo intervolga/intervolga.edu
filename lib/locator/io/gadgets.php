@@ -12,29 +12,14 @@ class Gadgets extends DirectoryLocator
 		return 'gadgets';
 	}
 
-	/**
-	 * @param Directory|string $class
-	 * @return Directory|null
-	 */
-	public static function find($class = Directory::class)
-	{
-		$result = null;
-		$rootLocalPath = static::getRootLocalPath();
-		foreach (static::getPaths() as $path) {
-			$directory = new $class(Application::getDocumentRoot() . $rootLocalPath . $path);
-			if ($directory->isExists() && $directory->isDirectory()) {
-				$result = $directory;
-			}
-		}
 
-		return $result;
-	}
 
 	protected static function getPaths(): array
 	{
-		$gadgetName = new Directory(Application::getDocumentRoot() .'/local/gadgets/custom/');
 		return [
-			'/local/gadgets/custom/'.$gadgetName->getChildren()[0]->getName()
+			'/local/gadgets/intervolga/resume/',
+			'/local/gadgets/intervolga/resumes/',
+			'/local/gadgets/intervolga/list_resumes/'
 		];
 	}
 }

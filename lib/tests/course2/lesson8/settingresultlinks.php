@@ -14,8 +14,9 @@ class SettingResultLinks extends BaseTest
 	protected static function run()
 	{
 		Assert::fileLocator(DesktopPage::class);
+		Assert::directoryLocator(Gadgets::class);
 
-		if (Desktop::find()) {
+		if (Desktop::find() && Gadgets::find()) {
 			$formId = Desktop::find()['PARAMETERS']['G_' . mb_strtoupper(Gadgets::find()->getName()) . '_FORM_ID'];
 			static::urlChecker($formId);
 			static::urlChecker($formId, 'test1');
