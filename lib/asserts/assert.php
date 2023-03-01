@@ -365,11 +365,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_FSE_NOT_EXISTS',
 				[
-					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-					]),
+					'#VALUE#' => FileMessage::get($value),
 					'#NAME#' => $value->getName(),
 					'#PATH#' => FileSystem::getLocalPath($value),
 					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
@@ -390,11 +386,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_FILE_NOT_EXISTS',
 				[
-					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-					]),
+					'#VALUE#' => FileMessage::get($value),
 					'#NAME#' => $value->getName(),
 					'#PATH#' => FileSystem::getLocalPath($value),
 					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
@@ -418,11 +410,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_FSE_NAME_MATCH',
 				[
-					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-					]),
+					'#VALUE#' => FileMessage::get($value),
 					'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
 					'#NAME#' => $value->getName(),
 					'#PATH#' => FileSystem::getLocalPath($value),
@@ -437,11 +425,7 @@ class Assert
 	{
 		$content = $value->getContents();
 		Assert::notEmpty($content, Loc::getMessage('INTERVOLGA_EDU.ASSERT_FILE_CONTENT_IS_EMPTY', [
-			'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-				'#NAME#' => $value->getName(),
-				'#PATH#' => FileSystem::getLocalPath($value),
-				'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-			]),
+			'#VALUE#' => FileMessage::get($value),
 		]));
 	}
 
@@ -456,11 +440,7 @@ class Assert
 				static::registerError(static::getCustomOrLocMessage(
 					'INTERVOLGA_EDU.ASSERT_FILE_CONTENT_NOT_MATCH',
 					[
-						'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-							'#NAME#' => $value->getName(),
-							'#PATH#' => FileSystem::getLocalPath($value),
-							'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-						]),
+						'#VALUE#' => FileMessage::get($value),
 						'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
 						'#NAME#' => $value->getName(),
 						'#PATH#' => FileSystem::getLocalPath($value),
@@ -506,11 +486,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_FILE_CONTENT_MATCH',
 				[
-					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-					]),
+					'#VALUE#' => FileMessage::get($value),
 					'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
 					'#NAME#' => $value->getName(),
 					'#PATH#' => FileSystem::getLocalPath($value),
@@ -532,11 +508,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_DIRECTORY_EXISTS',
 				[
-					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-					]),
+					'#VALUE#' => FileMessage::get($value),
 					'#NAME#' => $value->getName(),
 					'#PATH#' => FileSystem::getLocalPath($value),
 					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
@@ -557,11 +529,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_DIRECTORY_NOT_EXISTS',
 				[
-					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-					]),
+					'#VALUE#' => FileMessage::get($value),
 					'#NAME#' => $value->getName(),
 					'#PATH#' => FileSystem::getLocalPath($value),
 					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
@@ -997,11 +965,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_FILE_IS_IMAGE',
 				[
-					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $file->getName(),
-						'#PATH#' => FileSystem::getLocalPath($file),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($file),
-					]),
+					'#VALUE#' => FileMessage::get($file),
 					'#NAME#' => $file->getName(),
 					'#PATH#' => FileSystem::getLocalPath($file),
 					'#FILEMAN_URL#' => Admin::getFileManUrl($file),
