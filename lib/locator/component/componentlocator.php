@@ -30,7 +30,7 @@ abstract class ComponentLocator extends BaseLocator
 	{
 		$result = [];
 		$getList = ParametersTable::getList([
-			'filter' => ['=COMPONENT_NAME' => static::getCode()],
+			'filter' => static::getFilter(),
 			'select' => [
 				'ID',
 				'COMPONENT_NAME',
@@ -47,6 +47,11 @@ abstract class ComponentLocator extends BaseLocator
 		}
 
 		return $result;
+	}
+
+	public static function getFilter() : array
+	{
+		return ['=COMPONENT_NAME' => static::getCode()];
 	}
 
 	abstract public static function getCode(): string;

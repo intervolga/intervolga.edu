@@ -7,4 +7,9 @@ class Desktop extends ComponentLocator
 	{
 		return 'bitrix:desktop';
 	}
+
+	public static function getFilter(): array
+	{
+		return array_merge(parent::getFilter(), ['=REAL_PATH' => '/desktop.php']);
+	}
 }
