@@ -2,6 +2,7 @@
 namespace Intervolga\Edu\Tests\Course2\Lesson8;
 
 use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\Type\Date;
 use CSite;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Locator\Component\Desktop;
@@ -70,14 +71,12 @@ class SettingResultLinks extends BaseTest
 
 	protected static function getExpectedUrls($formId, $templateUrlGeneral, $templateUrlIndividual)
 	{
-		global $DB;
-
 		$result['generalLink'] = $templateUrlGeneral;
 		$result['todayLink'] = $templateUrlIndividual;
+		$today = (new Date())->toString();
 
 		if (empty($templateUrlGeneral)) {
 			$generalLink = "/bitrix/admin/form_result_list.php?lang=ru&WEB_FORM_ID=#ID#&del_filter=Y";
-			$today = date($DB->DateFormatToPHP(CSite::GetDateFormat("SHORT")), time());
 			$result['generalLink'] = str_replace(
 				[
 					'#ID#',
@@ -91,7 +90,6 @@ class SettingResultLinks extends BaseTest
 		}
 		if (empty($templateUrlIndividual)) {
 			$todayLink = "/bitrix/admin/form_result_list.php?lang=ru&WEB_FORM_ID=#ID#&action=list&find_date_create_1=#DATE#&find_date_create_2=#DATE#&set_filter=Y";
-			$today = date($DB->DateFormatToPHP(CSite::GetDateFormat("SHORT")), time());
 			$result['todayLink'] = str_replace(
 				[
 					'#ID#',
