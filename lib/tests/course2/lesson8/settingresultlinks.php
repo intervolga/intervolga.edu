@@ -18,24 +18,31 @@ class SettingResultLinks extends BaseTest
 
 		if (Desktop::find() && Gadgets::find()) {
 			$formId = Desktop::find()['PARAMETERS']['G_' . mb_strtoupper(Gadgets::find()->getName()) . '_FORM_ID'];
-			static::urlChecker($formId);
+			static::urlChecker($formId, false, false,
+				[
+					'todayLink' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_TODAY_URL'),
+					'generalLink' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_GENERAL_URL')
+				]);
 			static::urlChecker($formId, 'test1');
 			static::urlChecker($formId, '', 'test2');
 			static::urlChecker($formId, 'test3', 'test4');
 		}
 	}
 
-	protected static function urlChecker($formId, $templateUrlGeneral = '', $templateUrlIndividual = '')
+	protected static function urlChecker($formId, $templateUrlGeneral = '', $templateUrlIndividual = '', $message = [])
 	{
+		if (!$message) {
+			$message['todayLink'] = $message['generalLink'] = Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_WRONG_URL');
+		}
 		$gadgetUrls = static::getGadgetUrls($formId, $templateUrlGeneral, $templateUrlIndividual);
 		$expectedUrls = static::getExpectedUrls($formId, $templateUrlGeneral, $templateUrlIndividual);
-		Assert::eq($gadgetUrls['todayLink'], $expectedUrls['todayLink'], Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_TODAY_URL'));
-		Assert::eq($gadgetUrls['generalLink'], $expectedUrls['generalLink'], Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_GENERAL_URL'));
+		Assert::eq($gadgetUrls['todayLink'], $expectedUrls['todayLink'], $message['todayLink']);
+		Assert::eq($gadgetUrls['generalLink'], $expectedUrls['generalLink'], $message['generalLink']);
 	}
 
 	protected static function getGadgetUrls($formId, $templateUrlGeneral, $templateUrlIndividual)
 	{
-		$indexPath = Gadgets::find()->getPath().'/index.php';
+		$indexPath = Gadgets::find()->getPath() . '/index.php';
 
 		ob_start();
 		$arGadgetParams = [
