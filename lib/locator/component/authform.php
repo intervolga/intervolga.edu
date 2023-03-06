@@ -7,5 +7,4 @@ class AuthForm extends ComponentLocator
 	{
 		return 'bitrix:system.auth.form';
 	}
-
 }

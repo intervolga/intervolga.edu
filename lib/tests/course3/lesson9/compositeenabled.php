@@ -1,8 +1,7 @@
 <?php
 namespace Intervolga\Edu\Tests\Course3\Lesson9;
 
-use Bitrix\Main\Component\ParametersTable;
-use Bitrix\Main\Composite\Helper;
+use Bitrix\Main\Composite\Helper as CompositeHelper;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Asserts\AssertComponent;
@@ -15,9 +14,15 @@ class CompositeEnabled extends BaseTest
 {
 	protected static function run()
 	{
-		Assert::true(Helper::isCompositeEnabled(), Loc::getMessage('INTERVOLGA_EDU.COURSE_3_LESSON_9_COMPOSITE_DISABLE'));
-		Assert::matches(Helper::getOptions()['INCLUDE_MASK'], new Regex('/products/i', 'products'),
-			Loc::getMessage('INTERVOLGA_EDU.COURSE_3_LESSON_9_INCLUDE_MASK'));
+		Assert::true(
+			CompositeHelper::isCompositeEnabled(),
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_3_LESSON_9_COMPOSITE_DISABLE')
+		);
+		Assert::matches(
+			CompositeHelper::getOptions()['INCLUDE_MASK'],
+			new Regex('/products/i', 'products'),
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_3_LESSON_9_INCLUDE_MASK')
+		);
 
 		AssertComponent::templateLocator(PhoneIncludeArea::class);
 		static::checkCompositeArea(PhoneIncludeArea::class);
@@ -29,8 +34,11 @@ class CompositeEnabled extends BaseTest
 	protected static function checkCompositeArea($compositeArea)
 	{
 		if ($compositeArea::find()) {
-			Assert::eq($compositeArea::find()['PARAMETERS']['COMPOSITE_FRAME_MODE'], 'A',
-				Loc::getMessage('INTERVOLGA_EDU.COURSE_3_LESSON_9_COMPOSITE_FRAME_MODE',
+			Assert::eq(
+				$compositeArea::find()['PARAMETERS']['COMPOSITE_FRAME_MODE'],
+				'A',
+				Loc::getMessage(
+					'INTERVOLGA_EDU.COURSE_3_LESSON_9_COMPOSITE_FRAME_MODE',
 					[
 						'#COMPONENT_NAME#' => $compositeArea::getNameLoc()
 					]
