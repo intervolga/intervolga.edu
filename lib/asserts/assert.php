@@ -20,6 +20,7 @@ use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
 use Intervolga\Edu\Locator\Iblock\Section\SectionLocator;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Locator\IO\FileLocator;
+use Intervolga\Edu\Locator\Module\ModuleFileLocator;
 use Intervolga\Edu\Locator\Uf\UfLocator;
 use Intervolga\Edu\Sniffer;
 use Intervolga\Edu\Util\Admin;
@@ -450,6 +451,27 @@ class Assert
 					$message
 				));
 			}
+		}
+	}
+
+	/**
+	 * @param ModuleFileLocator|string $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function moduleFileExists($value, string $message = '')
+	{
+		if ($moduleFile = $value::find()) {
+			static::registerLocatorFound(ModuleFileLocator::class, $value, $moduleFile);
+		} else {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_MODULE_FILE_EXISTS',
+				[
+					'#FILE#' => $value::getNameLoc(),
+					'#POSSIBLE#' => $value::getPossibleTips(),
+				],
+				$message
+			));
 		}
 	}
 

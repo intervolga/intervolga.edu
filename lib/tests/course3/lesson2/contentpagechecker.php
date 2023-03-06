@@ -16,17 +16,21 @@ class ContentPageChecker extends BaseTest
 
 	protected static function run()
 	{
-		Assert::fseExists(EditFile::find());
-		Assert::fileNotEmpty(EditFile::find());
+		Assert::moduleFileExists(EditFile::class);
 		if (EditFile::find()) {
-			Assert::fileContentMatches(EditFile::find(), new Regex('/<input/i', '<input'));
-			Assert::fileContentMatches(EditFile::find(), new Regex('/<td/i', '<td'));
+			Assert::fileNotEmpty(EditFile::find());
+			if (EditFile::find()) {
+				Assert::fileContentMatches(EditFile::find(), new Regex('/<input/i', '<input'));
+				Assert::fileContentMatches(EditFile::find(), new Regex('/<td/i', '<td'));
+			}
 		}
 
-		Assert::fseExists(TableFile::find());
-		Assert::fileNotEmpty(TableFile::find());
+		Assert::moduleFileExists(TableFile::class);
 		if (TableFile::find()) {
-			Assert::fileContentMatches(TableFile::find(), new Regex('/DisplayList/i', 'Вывод страницы (DisplayList)'));
+			Assert::fileNotEmpty(TableFile::find());
+			if (TableFile::find()) {
+				Assert::fileContentMatches(TableFile::find(), new Regex('/DisplayList/i', 'Вывод страницы (DisplayList)'));
+			}
 		}
 	}
 }
