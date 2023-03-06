@@ -10,7 +10,7 @@ use Intervolga\Edu\Locator\Component\Template\PhoneIncludeArea;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\Regex;
 
-class CompositeEnabled extends BaseTest
+class TestCompositeEnabled extends BaseTest
 {
 	protected static function run()
 	{
