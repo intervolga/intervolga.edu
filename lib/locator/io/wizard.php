@@ -13,8 +13,6 @@ class Wizard extends DirectoryLocator
 	protected static function getPaths(): array
 	{
 		return [
-			'/bitrix/wizards/mywizards/calculator/',
-			'/bitrix/wizards/custom/calculator/',
 			'/bitrix/wizards/intervolga/calculator/',
 		];
 	}
