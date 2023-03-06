@@ -7,7 +7,7 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Asserts\AssertComponent;
 use Intervolga\Edu\Locator\Component\AuthForm;
-use Intervolga\Edu\Locator\Component\Template\MobilePhoneIncludeArea;
+use Intervolga\Edu\Locator\Component\Template\PhoneIncludeArea;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\Regex;
 
@@ -19,23 +19,20 @@ class CompositeEnabled extends BaseTest
 		Assert::matches(Helper::getOptions()['INCLUDE_MASK'], new Regex('/products/i', 'products'),
 			Loc::getMessage('INTERVOLGA_EDU.COURSE_3_LESSON_9_INCLUDE_MASK'));
 
-		AssertComponent::templateLocator(MobilePhoneIncludeArea::class);
-		if (MobilePhoneIncludeArea::find()) {
-			Assert::eq(MobilePhoneIncludeArea::find()['PARAMETERS']['COMPOSITE_FRAME_MODE'], 'A',
-				Loc::getMessage('INTERVOLGA_EDU.COURSE_3_LESSON_9_COMPOSITE_FRAME_MODE',
-					[
-						'#COMPONENT_NAME#' => MobilePhoneIncludeArea::getNameLoc()
-					]
-				)
-			);
-		}
+		AssertComponent::templateLocator(PhoneIncludeArea::class);
+		static::checkCompositeArea(PhoneIncludeArea::class);
 
-		AssertComponent::templateLocator(AuthForm::class);
-		if (AuthForm::find()) {
-			Assert::eq(AuthForm::find()['PARAMETERS']['COMPOSITE_FRAME_MODE'], 'A',
+		AssertComponent::componentLocator(AuthForm::class);
+		static::checkCompositeArea(AuthForm::class);
+	}
+
+	protected static function checkCompositeArea($compositeArea)
+	{
+		if ($compositeArea::find()) {
+			Assert::eq($compositeArea::find()['PARAMETERS']['COMPOSITE_FRAME_MODE'], 'A',
 				Loc::getMessage('INTERVOLGA_EDU.COURSE_3_LESSON_9_COMPOSITE_FRAME_MODE',
 					[
-						'#COMPONENT_NAME#' => AuthForm::getNameLoc()
+						'#COMPONENT_NAME#' => $compositeArea::getNameLoc()
 					]
 				)
 			);
