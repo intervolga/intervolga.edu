@@ -5,12 +5,12 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Locator\Component\ComponentLocator;
 use Intervolga\Edu\Locator\Component\IncludeArea;
 
-class MobilePhoneIncludeArea extends TemplateLocator
+class PhoneIncludeArea extends TemplateLocator
 {
 	public static function getFilter(): array
 	{
 		return [
-			'%PARAMETERS'=> '/include/mobilephone.php',
+			'%PARAMETERS'=> '/include/phone.php',
 		];
 	}
 
