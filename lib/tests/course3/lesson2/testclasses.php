@@ -6,7 +6,7 @@ use Intervolga\Edu\Locator\ClassLocator\CustomModuleClass;
 use Intervolga\Edu\Locator\ClassLocator\CustomModuleTable;
 use Intervolga\Edu\Tests\BaseTest;
 
-class ClassesChecker extends BaseTest
+class TestClasses extends BaseTest
 {
 	protected static function run()
 	{

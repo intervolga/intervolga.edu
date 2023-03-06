@@ -7,7 +7,7 @@ use Intervolga\Edu\Locator\IO\CustomModule;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Tests\BaseCustomModuleTest;
 
-class CustomModuleChecker extends BaseCustomModuleTest
+class TestCustomModule extends BaseCustomModuleTest
 {
 	/**
 	 * @return string|DirectoryLocator

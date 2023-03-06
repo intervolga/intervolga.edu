@@ -7,7 +7,7 @@ use Intervolga\Edu\Locator\Module\AdminFiles\TableFile;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\Regex;
 
-class ContentPageChecker extends BaseTest
+class TestContentPage extends BaseTest
 {
 	public static function interceptErrors()
 	{

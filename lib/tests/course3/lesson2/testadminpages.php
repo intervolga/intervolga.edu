@@ -9,7 +9,7 @@ use Intervolga\Edu\Locator\Module\InstallFiles\Admin\AdminEditFile;
 use Intervolga\Edu\Locator\Module\InstallFiles\Admin\AdminTableFile;
 use Intervolga\Edu\Tests\BaseTest;
 
-class AdminPagesChecker extends BaseTest
+class TestAdminPages extends BaseTest
 {
 	public static function interceptErrors()
 	{
