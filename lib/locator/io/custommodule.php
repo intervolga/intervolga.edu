@@ -29,7 +29,7 @@ class CustomModule extends DirectoryLocator
 		$modulesDirs = PathMaskParser::getFileSystemEntriesByMask('/local/modules/intervolga.*/');
 		foreach ($modulesDirs as $moduleDir) {
 			if ($moduleDir->getName() != 'intervolga.edu') {
-				$result = $moduleDir;
+				$result =  new $class($moduleDir->getPath().'/');
 			}
 		}
 
