@@ -4,11 +4,12 @@ namespace Intervolga\Edu\FilesTree;
 use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\File;
 use Bitrix\Main\IO\FileNotFoundException;
+use Intervolga\Edu\FilesTree\Traits\FileSystemTrait;
 use Intervolga\Edu\Util\FileSystem;
 
 class WizardTree extends FilesTree
 {
-	use MainFunctions;
+	use FileSystemTrait;
 	/**
 	 * @return File[]
 	 * @throws FileNotFoundException

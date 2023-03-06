@@ -1,5 +1,5 @@
 <?php
-namespace Intervolga\Edu\FilesTree;
+namespace Intervolga\Edu\FilesTree\Traits;
 
 use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\File;
@@ -7,7 +7,7 @@ use Bitrix\Main\IO\FileNotFoundException;
 use Bitrix\Main\IO\FileSystemEntry;
 use Intervolga\Edu\Util\FileSystem;
 
-trait MainFunctions
+trait FileSystemTrait
 {
 	/**
 	 * @return FileSystemEntry[]
