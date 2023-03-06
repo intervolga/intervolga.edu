@@ -5,7 +5,7 @@ use Intervolga\Edu\Asserts\AssertComponent;
 use Intervolga\Edu\Locator\Component\PerfElementList;
 use Intervolga\Edu\Tests\BaseTest;
 
-class PerformancePage extends BaseTest
+class TestPerformancePage extends BaseTest
 {
 	protected static function run()
 	{

@@ -9,6 +9,15 @@ use Intervolga\Edu\Util\PathMaskParser;
 
 class CustomModule extends DirectoryLocator
 {
+	protected static function getKnownIntervolgaModules(): array
+	{
+		return [
+			'intervolga.edu',
+			'intervolga.common',
+			'intervolga.migrato',
+		];
+	}
+
 	protected static function getPaths(): array
 	{
 		return [];
@@ -28,8 +37,8 @@ class CustomModule extends DirectoryLocator
 		$result = null;
 		$modulesDirs = PathMaskParser::getFileSystemEntriesByMask('/local/modules/intervolga.*/');
 		foreach ($modulesDirs as $moduleDir) {
-			if ($moduleDir->getName() != 'intervolga.edu') {
-				$result =  new $class($moduleDir->getPath().'/');
+			if (!in_array($moduleDir->getName(), static::getKnownIntervolgaModules())) {
+				$result = new $class($moduleDir->getPath().'/');
 			}
 		}
 

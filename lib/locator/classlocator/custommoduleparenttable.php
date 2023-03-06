@@ -3,12 +3,12 @@ namespace Intervolga\Edu\Locator\ClassLocator;
 
 use Intervolga\Edu\Locator\IO\CustomModule;
 
-class CustomModuleClass extends ClassLocator
+class CustomModuleParentTable extends ClassLocator
 {
 	static function getClassesNames()
 	{
 		return [
-			static::getPrepareModuleName()
+			'CAllIntervolga' . ucfirst(static::getPrepareModuleName()) . 'Table',
 		];
 	}
 

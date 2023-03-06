@@ -114,10 +114,10 @@ class Tester
 
 			\Intervolga\Edu\Tests\Course3\Lesson1\TestModule::class,
 
-			\Intervolga\Edu\Tests\Course3\Lesson2\AdminPagesChecker::class,
-			\Intervolga\Edu\Tests\Course3\Lesson2\CustomModuleChecker::class,
-			\Intervolga\Edu\Tests\Course3\Lesson2\ClassesChecker::class,
-			\Intervolga\Edu\Tests\Course3\Lesson2\ContentPageChecker::class,
+			\Intervolga\Edu\Tests\Course3\Lesson2\TestAdminPages::class,
+			\Intervolga\Edu\Tests\Course3\Lesson2\TestCustomModule::class,
+			\Intervolga\Edu\Tests\Course3\Lesson2\TestClasses::class,
+			\Intervolga\Edu\Tests\Course3\Lesson2\TestContentPage::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestResultsPollingIblock::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestPropertyGenderValues::class,
@@ -132,14 +132,14 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson5\TestTemplateGallery::class,
 			\Intervolga\Edu\Tests\Course3\Lesson5\TestComponentGallery::class,
 
-			\Intervolga\Edu\Tests\Course3\Lesson7\IblockFullnessChecker::class,
-			\Intervolga\Edu\Tests\Course3\Lesson7\PerformancePage::class,
+			\Intervolga\Edu\Tests\Course3\Lesson7\TestIblockFullness::class,
+			\Intervolga\Edu\Tests\Course3\Lesson7\TestPerformancePage::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson8\TestAcceptedTests::class,
 			\Intervolga\Edu\Tests\Course3\Lesson8\TestThisSiteSupport::class,
 			\Intervolga\Edu\Tests\Course3\Lesson8\TestUserTestExists::class,
 
-			\Intervolga\Edu\Tests\Course3\Lesson9\CompositeEnabled::class,
+			\Intervolga\Edu\Tests\Course3\Lesson9\TestCompositeEnabled::class,
 		];
 	}
 

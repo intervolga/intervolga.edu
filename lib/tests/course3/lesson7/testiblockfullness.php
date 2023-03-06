@@ -8,7 +8,7 @@ use Intervolga\Edu\Locator\Iblock\CustomProducts;
 use Intervolga\Edu\Tests\BaseTestIblock;
 use Intervolga\Edu\Util\Admin;
 
-class IblockFullnessChecker extends BaseTestIblock
+class TestIblockFullness extends BaseTestIblock
 {
 	const MIN_COUNT_CUSTOM_IBLOCK = 200;
 	const MIN_COUNT_CUSTOM_SECTIONS = 5;

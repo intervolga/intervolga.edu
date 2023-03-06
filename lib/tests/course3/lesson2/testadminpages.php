@@ -9,15 +9,20 @@ use Intervolga\Edu\Locator\Module\InstallFiles\Admin\AdminEditFile;
 use Intervolga\Edu\Locator\Module\InstallFiles\Admin\AdminTableFile;
 use Intervolga\Edu\Tests\BaseTest;
 
-class AdminPagesChecker extends BaseTest
+class TestAdminPages extends BaseTest
 {
+	public static function interceptErrors()
+	{
+		return true;
+	}
+
 	protected static function run()
 	{
-		Assert::fileLocator(EditFile::class);
-		Assert::fileLocator(MenuFile::class);
-		Assert::fileLocator(TableFile::class);
+		Assert::moduleFileExists(EditFile::class);
+		Assert::moduleFileExists(MenuFile::class);
+		Assert::moduleFileExists(TableFile::class);
 
-		Assert::fileLocator(AdminEditFile::class);
-		Assert::fileLocator(AdminTableFile::class);
+		Assert::moduleFileExists(AdminEditFile::class);
+		Assert::moduleFileExists(AdminTableFile::class);
 	}
 }

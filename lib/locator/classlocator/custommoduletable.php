@@ -8,7 +8,7 @@ class CustomModuleTable extends ClassLocator
 	static function getClassesNames()
 	{
 		return [
-			static::getPrepareModuleName().'table',
+			'CIntervolga' . ucfirst(static::getPrepareModuleName()) . 'Table',
 		];
 	}
 
