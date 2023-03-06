@@ -17,12 +17,16 @@ class WizardChecker extends BaseTest
 
 	protected static function checkEventLog()
 	{
-		$eventList = CEventLog::getList(false,
+		$eventList = CEventLog::getList(
+			false,
 			[
 				'SEVERITY' => 'INFO',
-				'AUDIT_TYPE_ID' => 'INTERVOLGA_CALCULATOR_RESULT'
+				'AUDIT_TYPE_ID' => 'INTERVOLGA_CALCULATOR_RESULT',
 			]
 		)->fetch();
-		Assert::notEmpty($eventList, Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_9_MASTER_EVENT_LOG_NOT_FOUND'));
+		Assert::notEmpty(
+			$eventList,
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_9_MASTER_EVENT_LOG_NOT_FOUND')
+		);
 	}
 }
