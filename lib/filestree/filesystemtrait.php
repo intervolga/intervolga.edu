@@ -7,7 +7,7 @@ use Bitrix\Main\IO\FileNotFoundException;
 use Bitrix\Main\IO\FileSystemEntry;
 use Intervolga\Edu\Util\FileSystem;
 
-trait MainFunctions
+trait FileSystemTrait
 {
 	/**
 	 * @return FileSystemEntry[]
