@@ -58,6 +58,25 @@ class Assert
 	}
 
 	/**
+	 * @param mixed $value
+	 * @param mixed $expect
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function notEq($value, $expect, string $message = '')
+	{
+		if ($value == $expect) {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_NOT_EQUAL',
+				[
+					'#VALUE#' => static::valueToString($value),
+					'#EXPECT#' => static::valueToString($expect),
+				],
+				$message
+			));
+		}
+	}
+	/**
 	 * @param string $error
 	 * @throws AssertException
 	 */
@@ -87,19 +106,17 @@ class Assert
 	}
 
 	/**
-	 * @param mixed $value
-	 * @param mixed $expect
+	 * @param $value
 	 * @param string $message
 	 * @throws AssertException
 	 */
-	public static function notEq($value, $expect, string $message = '')
+	public static function notEmpty($value, string $message = '')
 	{
-		if ($value == $expect) {
+		if (empty($value)) {
 			static::registerError(static::getCustomOrLocMessage(
-				'INTERVOLGA_EDU.ASSERT_NOT_EQUAL',
+				'INTERVOLGA_EDU.ASSERT_NOT_EMPTY',
 				[
 					'#VALUE#' => static::valueToString($value),
-					'#EXPECT#' => static::valueToString($expect),
 				],
 				$message
 			));
@@ -349,11 +366,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_FSE_NOT_EXISTS',
 				[
-					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-					]),
+					'#VALUE#' => FileMessage::get($value),
 					'#NAME#' => $value->getName(),
 					'#PATH#' => FileSystem::getLocalPath($value),
 					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
@@ -374,11 +387,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_FILE_NOT_EXISTS',
 				[
-					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-					]),
+					'#VALUE#' => FileMessage::get($value),
 					'#NAME#' => $value->getName(),
 					'#PATH#' => FileSystem::getLocalPath($value),
 					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
@@ -402,11 +411,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_FSE_NAME_MATCH',
 				[
-					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-					]),
+					'#VALUE#' => FileMessage::get($value),
 					'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
 					'#NAME#' => $value->getName(),
 					'#PATH#' => FileSystem::getLocalPath($value),
@@ -415,6 +420,14 @@ class Assert
 				$message
 			));
 		}
+	}
+
+	public static function fileNotEmpty(File $value)
+	{
+		$content = $value->getContents();
+		Assert::notEmpty($content, Loc::getMessage('INTERVOLGA_EDU.ASSERT_FILE_CONTENT_IS_EMPTY', [
+			'#VALUE#' => FileMessage::get($value),
+		]));
 	}
 
 	public static function fileContentNotMatches(File $value, Regex $regex, string $message = '')
@@ -428,11 +441,7 @@ class Assert
 				static::registerError(static::getCustomOrLocMessage(
 					'INTERVOLGA_EDU.ASSERT_FILE_CONTENT_NOT_MATCH',
 					[
-						'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-							'#NAME#' => $value->getName(),
-							'#PATH#' => FileSystem::getLocalPath($value),
-							'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-						]),
+						'#VALUE#' => FileMessage::get($value),
 						'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
 						'#NAME#' => $value->getName(),
 						'#PATH#' => FileSystem::getLocalPath($value),
@@ -508,11 +517,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_FILE_CONTENT_MATCH',
 				[
-					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-					]),
+					'#VALUE#' => FileMessage::get($value),
 					'#EXPECT#' => htmlspecialchars($regex->getRegexExplanation()),
 					'#NAME#' => $value->getName(),
 					'#PATH#' => FileSystem::getLocalPath($value),
@@ -534,11 +539,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_DIRECTORY_EXISTS',
 				[
-					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-					]),
+					'#VALUE#' => FileMessage::get($value),
 					'#NAME#' => $value->getName(),
 					'#PATH#' => FileSystem::getLocalPath($value),
 					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
@@ -559,11 +560,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_DIRECTORY_NOT_EXISTS',
 				[
-					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $value->getName(),
-						'#PATH#' => FileSystem::getLocalPath($value),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-					]),
+					'#VALUE#' => FileMessage::get($value),
 					'#NAME#' => $value->getName(),
 					'#PATH#' => FileSystem::getLocalPath($value),
 					'#FILEMAN_URL#' => Admin::getFileManUrl($value),
@@ -1029,11 +1026,7 @@ class Assert
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_FILE_IS_IMAGE',
 				[
-					'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-						'#NAME#' => $file->getName(),
-						'#PATH#' => FileSystem::getLocalPath($file),
-						'#FILEMAN_URL#' => Admin::getFileManUrl($file),
-					]),
+					'#VALUE#' => FileMessage::get($file),
 					'#NAME#' => $file->getName(),
 					'#PATH#' => FileSystem::getLocalPath($file),
 					'#FILEMAN_URL#' => Admin::getFileManUrl($file),
@@ -1099,16 +1092,6 @@ class Assert
 		}
 	}
 
-	public static function getLocatorsFound()
-	{
-		return static::$locators;
-	}
-
-	public static function resetLocatorsFound()
-	{
-		static::$locators = [];
-	}
-
 	protected static function getStringFromArray($separator, $array, $endString = "<br>"): string
 	{
 		$result = '';
@@ -1117,5 +1100,25 @@ class Assert
 		}
 
 		return $result;
+	}
+
+	/**
+	 * @param string|BaseLocator $parentLocatorClass
+	 * @param string|BaseLocator $locatorClass
+	 * @param mixed $found
+	 */
+	protected static function registerLocatorFound($parentLocatorClass, $locatorClass, $found)
+	{
+		static::$locators[$parentLocatorClass][$locatorClass][] = $found;
+	}
+
+	public static function getLocatorsFound()
+	{
+		return static::$locators;
+	}
+
+	public static function resetLocatorsFound()
+	{
+		static::$locators = [];
 	}
 }
