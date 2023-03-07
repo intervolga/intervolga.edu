@@ -127,9 +127,9 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson5\TestTemplateGallery::class,
 			\Intervolga\Edu\Tests\Course3\Lesson5\TestComponentGallery::class,
 
-			\Intervolga\Edu\Tests\Course3\Lesson6\CacheComponentCheker::class,
-			\Intervolga\Edu\Tests\Course3\Lesson6\TaggedCacheChecker::class,
-			\Intervolga\Edu\Tests\Course3\Lesson6\CacheTesting::class,
+			\Intervolga\Edu\Tests\Course3\Lesson6\TestCacheComponentCheker::class,
+			\Intervolga\Edu\Tests\Course3\Lesson6\TestTaggedCacheChecker::class,
+			\Intervolga\Edu\Tests\Course3\Lesson6\TestCacheTesting::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson8\TestAcceptedTests::class,
 			\Intervolga\Edu\Tests\Course3\Lesson8\TestThisSiteSupport::class,

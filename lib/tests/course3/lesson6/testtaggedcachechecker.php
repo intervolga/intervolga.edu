@@ -6,7 +6,7 @@ use Intervolga\Edu\Locator\IO\CustomRespondents;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\Regex;
 
-class TaggedCacheChecker extends BaseTest
+class TestTaggedCacheChecker extends BaseTest
 {
 	protected static function run()
 	{

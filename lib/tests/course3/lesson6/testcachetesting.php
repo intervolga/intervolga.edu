@@ -9,7 +9,7 @@ use Intervolga\Edu\Locator\Iblock\ResultsPollingIblock;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\DBHelper;
 
-class CacheTesting extends BaseTest
+class TestCacheTesting extends BaseTest
 {
 	public static function interceptErrors()
 	{
