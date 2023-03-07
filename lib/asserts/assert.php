@@ -10,6 +10,7 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Locator\Agent\AgentLocator;
 use Intervolga\Edu\Locator\BaseLocator;
+use Intervolga\Edu\Locator\ClassLocator\ClassLocator;
 use Intervolga\Edu\Locator\Event\EventLocator;
 use Intervolga\Edu\Locator\Event\Template\TemplateLocator;
 use Intervolga\Edu\Locator\Event\Type\TypeLocator;
@@ -19,6 +20,7 @@ use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
 use Intervolga\Edu\Locator\Iblock\Section\SectionLocator;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Locator\IO\FileLocator;
+use Intervolga\Edu\Locator\Module\ModuleFileLocator;
 use Intervolga\Edu\Locator\Uf\UfLocator;
 use Intervolga\Edu\Locator\Wizard\WizardLocator;
 use Intervolga\Edu\Sniffer;
@@ -454,6 +456,27 @@ class Assert
 	}
 
 	/**
+	 * @param ModuleFileLocator|string $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function moduleFileExists($value, string $message = '')
+	{
+		if ($moduleFile = $value::find()) {
+			static::registerLocatorFound(ModuleFileLocator::class, $value, $moduleFile);
+		} else {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_MODULE_FILE_EXISTS',
+				[
+					'#FILE#' => $value::getNameLoc(),
+					'#POSSIBLE#' => $value::getPossibleTips(),
+				],
+				$message
+			));
+		}
+	}
+
+	/**
 	 * @param FileSystemEntry $value
 	 * @param string $message
 	 * @throws AssertException
@@ -735,7 +758,25 @@ class Assert
 			));
 		}
 	}
-
+	/**
+	 * @param string|ClassLocator $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function classLocator($value, string $message = '')
+	{
+		if ($find = $value::find()) {
+			static::registerLocatorFound(ClassLocator::class, $value, $find);
+		} else {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_CLASS_LOCATOR',
+				[
+					'#POSSIBLE#' => $value::getPossibleTips(),
+				],
+				$message
+			));
+		}
+	}
 	/**
 	 * @param string|DirectoryLocator $value
 	 * @param string $message

@@ -84,11 +84,28 @@ abstract class BaseComponentTemplateTest extends BaseTest
 	{
 		if ($templateDir->getLangRuDir()->isExists()) {
 			foreach ($templateDir->getLangRuDir()->getChildren() as $child) {
-				if (!in_array($child->getName(), static::getKnownFilesNames($templateDir))) {
-					Assert::fseNotExists($child);
+
+				if ($child->isDirectory()) {
+					if (!in_array($child->getName(), static::getKnownDirNames($templateDir))) {
+						Assert::directoryNotExists($child);
+					}
+				} elseif ($child->isFile()) {
+					if (!in_array($child->getName(), static::getKnownFilesNames($templateDir))) {
+						Assert::fseNotExists($child);
+					}
 				}
 			}
 		}
+	}
+
+	protected static function getKnownDirNames(FilesTree $templateDir)
+	{
+		$names = [];
+		foreach ($templateDir->getKnownDirs() as $file) {
+			$names[] = $file->getName();
+		}
+
+		return $names;
 	}
 
 	protected static function getKnownFilesNames(FilesTree $templateDir)
