@@ -24,7 +24,8 @@ class CustomRespondents extends DirectoryLocator
 	protected static function getPaths(): array
 	{
 		return [
-			'/local/components/intervolga/respondents/'
+			'/local/components/intervolga/respondents/',
+			'/local/components/intervolga/poll_results/'
 		];
 	}
 }
