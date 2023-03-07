@@ -10,21 +10,21 @@ class CustomRespondents extends DirectoryLocator
 		return Loc::getMessage('INTERVOLGA_EDU.CUSTOM_RESPONDENTS');
 	}
 
-	protected static function getPaths(): array
+	public static function getComponentFile()
 	{
-		$paths = [];
-		foreach (INTERVOLGA_EDU_GUESS_VARIANTS['CUSTOM_COMPONENTS'] as $customComponent) {
-			$paths[] = '/local/components/' . $customComponent . '/respondents';
-		}
-
-		return $paths;
-	}
-	public  static function getComponentFile(){
-		foreach (static::find()->getChildren() as $child){
-			if($child->getName() == 'component.php' || $child->getName() == 'class.php'){
+		foreach (static::find()->getChildren() as $child) {
+			if ($child->getName() == 'component.php' || $child->getName() == 'class.php') {
 				return $child;
 			}
 		}
+
 		return [];
+	}
+
+	protected static function getPaths(): array
+	{
+		return [
+			'/local/components/intervolga/respondents/'
+		];
 	}
 }
