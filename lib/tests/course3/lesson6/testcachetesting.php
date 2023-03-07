@@ -7,7 +7,7 @@ use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Locator\Iblock\RespondentIblock;
 use Intervolga\Edu\Locator\Iblock\ResultsPollingIblock;
 use Intervolga\Edu\Tests\BaseTest;
-use Intervolga\Edu\Util\DBHelper;
+use Intervolga\Edu\Util\CacheTagTable;
 
 class TestCacheTesting extends BaseTest
 {
@@ -22,28 +22,34 @@ class TestCacheTesting extends BaseTest
 		static::iblockTestCache(ResultsPollingIblock::class);
 	}
 
-	protected static function testCache($iblockId)
-	{
-		$element = CIBlockElement::GetList(false, ['IBLOCK_ID' => $iblockId])->fetch();
-		$el = new CIBlockElement;
-		$res = $el->Update($element['ID'], ['NAME' => $element['NAME']]);
-		if ($res) {
-			Assert::empty(DBHelper::getCacheFromTag('iblock_id_' . $iblockId['ID']));
-		}
-	}
-
 	protected static function iblockTestCache($iblockLocator)
 	{
 		Assert::iblockLocator($iblockLocator);
 		if ($pollResults = $iblockLocator::find()) {
-			$cache = DBHelper::getCacheFromTag('iblock_id_' . $pollResults['ID']);
-			Assert::notEmpty($cache, Loc::getMessage('INTERVOLGA_EDU.COURSE_3_LESSON_6_NOT_FOUND_CACHE',
+			$cache = CacheTagTable::getCount(['TAG' => 'iblock_id_' . $pollResults['ID']]);
+			Assert::greater($cache, 0, Loc::getMessage('INTERVOLGA_EDU.COURSE_3_LESSON_6_NOT_FOUND_CACHE',
 				[
 					'#TAG#' => 'iblock_id_' . $pollResults['ID'],
 					'#IBLOCK_NAME#' => $iblockLocator::getNameLoc()
 				]
 			));
 			static::testCache($pollResults['ID']);
+		}
+	}
+
+	protected static function testCache($iblockId)
+	{
+		$element = CIBlockElement::GetList(false, ['IBLOCK_ID' => $iblockId])->fetch();
+		$el = new CIBlockElement;
+		$res = $el->Update($element['ID'], ['NAME' => $element['NAME']]);
+		if ($res) {
+			Assert::eq(CacheTagTable::getCount(['TAG' => 'iblock_id_' . $iblockId['ID']]), 0,
+				Loc::getMessage('INTERVOLGA_EDU.COURSE_3_LESSON_6_FOUND_DELETED_CACHE',
+					[
+						'#TAG#' => 'iblock_id_' . $iblockId['ID'],
+					]
+				)
+			);
 		}
 	}
 }
