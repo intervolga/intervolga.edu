@@ -3,7 +3,6 @@ namespace Intervolga\Edu\Tests\Course2\Lesson8;
 
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\Type\Date;
-use CSite;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Locator\Component\Desktop;
 use Intervolga\Edu\Locator\IO\Desktop as DesktopPage;
@@ -12,6 +11,14 @@ use Intervolga\Edu\Tests\BaseTest;
 
 class SettingResultLinks extends BaseTest
 {
+	const TODAY_LINK = '/bitrix/admin/form_result_list.php?lang=ru&WEB_FORM_ID=#ID#&action=list&find_date_create_1=#DATE#&find_date_create_2=#DATE#&set_filter=Y';
+	const GENERAL_LINK = '/bitrix/admin/form_result_list.php?lang=ru&WEB_FORM_ID=#ID#&del_filter=Y';
+
+	public static function interceptErrors()
+	{
+		return true;
+	}
+
 	protected static function run()
 	{
 		Assert::fileLocator(DesktopPage::class);
@@ -33,7 +40,12 @@ class SettingResultLinks extends BaseTest
 	protected static function urlChecker($formId, $templateUrlGeneral = '', $templateUrlIndividual = '', $message = [])
 	{
 		if (!$message) {
-			$message['todayLink'] = $message['generalLink'] = Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_WRONG_URL');
+			$message['todayLink'] = Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_WRONG_URL', [
+				'#LINK#' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_WRONG_URL_GENERAL')
+			]);
+			$message['generalLink'] = Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_WRONG_URL', [
+				'#LINK#' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_WRONG_URL_TODAY')
+			]);
 		}
 		$gadgetUrls = static::getGadgetUrls($formId, $templateUrlGeneral, $templateUrlIndividual);
 		$expectedUrls = static::getExpectedUrls($formId, $templateUrlGeneral, $templateUrlIndividual);
@@ -75,8 +87,7 @@ class SettingResultLinks extends BaseTest
 		$result['todayLink'] = $templateUrlIndividual;
 		$today = (new Date())->toString();
 
-		if (empty($templateUrlGeneral)) {
-			$generalLink = "/bitrix/admin/form_result_list.php?lang=ru&WEB_FORM_ID=#ID#&del_filter=Y";
+		if (!$result['generalLink']) {
 			$result['generalLink'] = str_replace(
 				[
 					'#ID#',
@@ -86,10 +97,9 @@ class SettingResultLinks extends BaseTest
 					$formId,
 					$today
 				],
-				$generalLink);
+				static::GENERAL_LINK);
 		}
-		if (empty($templateUrlIndividual)) {
-			$todayLink = "/bitrix/admin/form_result_list.php?lang=ru&WEB_FORM_ID=#ID#&action=list&find_date_create_1=#DATE#&find_date_create_2=#DATE#&set_filter=Y";
+		if (!$result['todayLink']) {
 			$result['todayLink'] = str_replace(
 				[
 					'#ID#',
@@ -99,7 +109,7 @@ class SettingResultLinks extends BaseTest
 					$formId,
 					$today
 				],
-				$todayLink);
+				static::TODAY_LINK);
 		}
 
 		return $result;
