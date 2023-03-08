@@ -112,6 +112,9 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson7\SecurityLevel::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\SecureAuthorization::class,
 
+			\Intervolga\Edu\Tests\Course2\Lesson9\TestWizardTemplate::class,
+			\Intervolga\Edu\Tests\Course2\Lesson9\TestWizard::class,
+
 			\Intervolga\Edu\Tests\Course3\Lesson1\TestModule::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson2\TestAdminPages::class,
