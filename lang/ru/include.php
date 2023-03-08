@@ -160,6 +160,8 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SECUREAUTHORIZATION'] = 'Проверка 
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SECUREAUTHORIZATION_DESCRIPTION'] = 'В настройках главного модуля, в разделе "Авторизация" в параметрах "Безопасной авторизации" должен стоять флаг на передачу пароля в зашифрованном виде и сгенерирован ключ шифрования.';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON9_WIZARD'] = 'Проверка мастера "Калькулятор"';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON9_WIZARD_DESCRIPTION'] = 'Мастер должен существовать и быть виден в админке';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON9_WIZARDTEMPLATE'] = 'Проверка файлов мастера "Калькулятор"';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON9_WIZARDTEMPLATE_DESCRIPTION'] = 'Должны существовать все файлы мастера: версия, описание, логика';
 
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE_DESCRIPTION'] = 'Должна существовать папка /local/modules/intervolga.#Ваше название модуля#/, модуль должен быть установлен';
