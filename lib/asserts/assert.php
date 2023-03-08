@@ -497,36 +497,6 @@ class Assert
 		}
 	}
 
-	public static function fileNotEmpty(File $value)
-	{
-		$content = $value->getContents();
-		Assert::notEmpty($content, Loc::getMessage('INTERVOLGA_EDU.ASSERT_FILE_CONTENT_IS_EMPTY', [
-			'#VALUE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
-				'#NAME#' => $value->getName(),
-				'#PATH#' => FileSystem::getLocalPath($value),
-				'#FILEMAN_URL#' => Admin::getFileManUrl($value),
-			]),
-		]));
-	}
-
-	/**
-	 * @param $value
-	 * @param string $message
-	 * @throws AssertException
-	 */
-	public static function notEmpty($value, string $message = '')
-	{
-		if (empty($value)) {
-			static::registerError(static::getCustomOrLocMessage(
-				'INTERVOLGA_EDU.ASSERT_NOT_EMPTY',
-				[
-					'#VALUE#' => static::valueToString($value),
-				],
-				$message
-			));
-		}
-	}
-
 	public static function fileContentMatches(File $value, Regex $regex, string $message = '')
 	{
 		static::fseExists($value);
@@ -633,21 +603,11 @@ class Assert
 	}
 
 	/**
-	 * @param string|BaseLocator $parentLocatorClass
-	 * @param string|BaseLocator $locatorClass
-	 * @param mixed $found
-	 */
-	protected static function registerLocatorFound($parentLocatorClass, $locatorClass, $found)
-	{
-		static::$locators[$parentLocatorClass][$locatorClass][] = $found;
-	}
-
-	/**
 	 * @param string|WizardLocator $value
 	 * @param string $message
 	 * @throws AssertException
 	 */
-	public static function WizardLocator($value, string $message = '')
+	public static function wizardLocator($value, string $message = '')
 	{
 		if ($findWizard = $value::find()) {
 			static::registerLocatorFound(WizardLocator::class, $value, $findWizard);

@@ -11,7 +11,7 @@ class TestWizard extends BaseTest
 {
 	protected static function run()
 	{
-		Assert::WizardLocator(Calculator::class);
+		Assert::wizardLocator(Calculator::class);
 		static::checkEventLog();
 	}
 
