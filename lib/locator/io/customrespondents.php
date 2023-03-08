@@ -25,7 +25,6 @@ class CustomRespondents extends DirectoryLocator
 	{
 		return [
 			'/local/components/intervolga/respondents/',
-			'/local/components/custom/respondents/',
 			'/local/components/intervolga/poll_results/'
 		];
 	}
