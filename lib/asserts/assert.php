@@ -22,6 +22,7 @@ use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Locator\IO\FileLocator;
 use Intervolga\Edu\Locator\Module\ModuleFileLocator;
 use Intervolga\Edu\Locator\Uf\UfLocator;
+use Intervolga\Edu\Locator\Wizard\WizardLocator;
 use Intervolga\Edu\Sniffer;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileMessage;
@@ -602,6 +603,27 @@ class Assert
 	}
 
 	/**
+	 * @param string|WizardLocator $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function wizardLocator($value, string $message = '')
+	{
+		if ($findWizard = $value::find()) {
+			static::registerLocatorFound(WizardLocator::class, $value, $findWizard);
+		} else {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_WIZARD_LOCATOR',
+				[
+					'#WIZARD_NAME#' => $value::getNameLoc(),
+					'#POSSIBLE#' => $value::getPossibleTips(),
+				],
+				$message
+			));
+		}
+	}
+
+	/**
 	 * @param string|SectionLocator $value
 	 * @param string $message
 	 * @throws AssertException
@@ -931,7 +953,7 @@ class Assert
 				[
 					'#PROPERTY#' => $property['NAME'],
 					'#NOW_PROPERTIES#' => implode(', ', $values),
-					'#REQUIRED#'=> implode(', ', $nowValues)
+					'#REQUIRED#' => implode(', ', $nowValues)
 				]
 			), $message);
 		}
@@ -942,8 +964,7 @@ class Assert
 		$menuFile = FileSystem::getFile($menuPath);
 		static::fseExists($menuFile);
 		$links = Menu::getMenuLinks($menuPath);
-		if (count($links) != $expect)
-		{
+		if (count($links) != $expect) {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_MENU_ITEMS_COUNT',
 				[

@@ -112,6 +112,9 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson7\SecurityLevel::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\SecureAuthorization::class,
 
+			\Intervolga\Edu\Tests\Course2\Lesson9\TestWizardTemplate::class,
+			\Intervolga\Edu\Tests\Course2\Lesson9\TestWizard::class,
+
 			\Intervolga\Edu\Tests\Course3\Lesson1\TestModule::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson2\TestAdminPages::class,
@@ -131,6 +134,10 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson5\TestGalleryElements::class,
 			\Intervolga\Edu\Tests\Course3\Lesson5\TestTemplateGallery::class,
 			\Intervolga\Edu\Tests\Course3\Lesson5\TestComponentGallery::class,
+
+			\Intervolga\Edu\Tests\Course3\Lesson6\TestCacheComponentCheker::class,
+			\Intervolga\Edu\Tests\Course3\Lesson6\TestTaggedCacheChecker::class,
+			\Intervolga\Edu\Tests\Course3\Lesson6\TestCacheTesting::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson7\TestIblockFullness::class,
 			\Intervolga\Edu\Tests\Course3\Lesson7\TestPerformancePage::class,
