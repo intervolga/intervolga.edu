@@ -4,7 +4,7 @@ namespace Intervolga\Edu\Tests;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\FilesTree\ComponentTemplate;
-use Intervolga\Edu\FilesTree\ComponentTemplate\NewsTemplate;
+use Intervolga\Edu\FilesTree\NewsTemplate;
 use Intervolga\Edu\FilesTree\FilesTree;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 
