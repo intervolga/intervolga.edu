@@ -1,0 +1,4 @@
+<?php
+$MESS['INTERVOLGA_EDU.COURSE_3_LESSON_9_COMPOSITE_DISABLE'] = 'Не включен Композитный режим в настройках <a href="/bitrix/admin/composite.php?lang=ru"target="_blank">композитного сайта</a>';
+$MESS['INTERVOLGA_EDU.COURSE_3_LESSON_9_INCLUDE_MASK'] = 'На странице <a href="/bitrix/admin/composite.php?lang=ru"target="_blank">Композитного сайта</a> в настройках масок включения должен присутствовать раздел /products/';
+$MESS['INTERVOLGA_EDU.COURSE_3_LESSON_9_COMPOSITE_FRAME_MODE'] = 'В настройках компонента <b>#COMPONENT_NAME#</b> "Голосование шаблона компонента по умолчанию" должно стоять <b>Авто</b>';

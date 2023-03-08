@@ -114,6 +114,11 @@ class Tester
 
 			\Intervolga\Edu\Tests\Course3\Lesson1\TestModule::class,
 
+			\Intervolga\Edu\Tests\Course3\Lesson2\TestAdminPages::class,
+			\Intervolga\Edu\Tests\Course3\Lesson2\TestCustomModule::class,
+			\Intervolga\Edu\Tests\Course3\Lesson2\TestClasses::class,
+			\Intervolga\Edu\Tests\Course3\Lesson2\TestContentPage::class,
+
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestResultsPollingIblock::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestPropertyGenderValues::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestLinkWithRespondent::class,
@@ -131,9 +136,14 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson6\TestTaggedCacheChecker::class,
 			\Intervolga\Edu\Tests\Course3\Lesson6\TestCacheTesting::class,
 
+			\Intervolga\Edu\Tests\Course3\Lesson7\TestIblockFullness::class,
+			\Intervolga\Edu\Tests\Course3\Lesson7\TestPerformancePage::class,
+
 			\Intervolga\Edu\Tests\Course3\Lesson8\TestAcceptedTests::class,
 			\Intervolga\Edu\Tests\Course3\Lesson8\TestThisSiteSupport::class,
 			\Intervolga\Edu\Tests\Course3\Lesson8\TestUserTestExists::class,
+
+			\Intervolga\Edu\Tests\Course3\Lesson9\TestCompositeEnabled::class,
 		];
 	}
 

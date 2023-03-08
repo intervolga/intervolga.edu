@@ -23,11 +23,14 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1'] = '5.1 Создание собстве
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_2'] = '5.2 Настройки кеширования - базовые понятия';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON7'] = '7. Управление доступом и безопасность';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1'] = '1. Создание модуля';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON2'] = '2. Расширение административного раздела';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON3'] = '3. Инфоблоки - Архитектура';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5'] = '5. JS';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON6'] = '6. Кеширование';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON7'] = '7. Производительность';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON8'] = '8. Монитор качества';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON9'] = '9. Композитный сайт';
 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE'] = 'Проверка установки модуля «Корпоративный сайт производственной компании»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE_DESCRIPTION'] = 'Модуль должен быть <a href="/bitrix/admin/partner_modules.php?lang=ru" target="_blank">зарегистрирован</a> в системе и установлен';
@@ -158,6 +161,12 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SECUREAUTHORIZATION_DESCRIPTION'] = 'В н
 
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE'] = 'Проверка собственного модуля';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON1_MODULE_DESCRIPTION'] = 'Должна существовать папка /local/modules/intervolga.#Ваше название модуля#/, модуль должен быть установлен';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON2_ADMINPAGES'] = 'Проверка страниц в административной части';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON2_ADMINPAGES_DESCRIPTION'] = 'Должны быть созданы страницы в /local/modules/intervolga.#Ваше название модуля#/admin/ и иметь подключение в /local/modules/intervolga.#Ваше название модуля#/install/admin/';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON2_CLASSES'] = 'Проверка классов модуля';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON2_CLASSES_DESCRIPTION'] = 'Проверка объявления классов, проверка написания методов';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON2_CONTENTPAGE'] = 'Проверка содержимого административных страниц модуля';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON2_CONTENTPAGE_DESCRIPTION'] = 'Проверка содержимого страниц (должна выводиться таблица/должна быть форма редактирования элемента)';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON3_PROPERTYGENDERVALUES'] = 'Проверка свойства "Пол"';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON3_PROPERTYGENDERVALUES_DESCRIPTION'] = 'Списочное свойство должно содержать 2 варианта: "Мужчина" и "Женщина"';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON3_LINKWITHRESPONDENT'] = 'Проверка свойства "Респондент"';
@@ -179,18 +188,23 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON6_CACHECOMPONENTCHEKER'] = 'Проверка
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON6_CACHECOMPONENTCHEKER_DESCRIPTION'] = 'В файле кастомного компонента "Респонденты" должно быть использование основных методов кеширования (класс CPHPCache, InitCache, StartDataCache)';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON6_CACHETESTING'] = 'Проверка работы тегированного кеша';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON6_CACHETESTING_DESCRIPTION'] = 'При изменении элементов тегируемого инфоблока тег кеша должен удаляться. При обновлении страницы с компонентом - появляться вновь';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON7_PERFORMANCEPAGE'] = 'Проверка страницы для тестирования производительности';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON7_PERFORMANCEPAGE_DESCRIPTION'] = 'На странице должен быть расположен компонент perf:element.list';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON8_ACCEPTEDTESTS'] = 'Проверка тестов безопасности в мониторе качества';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON8_ACCEPTEDTESTS_DESCRIPTION'] = 'Проверка выполнения тестов в <a href="/bitrix/admin/checklist.php?lang=ru" target="_blank">Мониторе качества</a> группы "Безопасность" и 2 пункта из "Сдача проекта" ("Введена информация о техподдержке проекта" и "Введена информация об интеграторе решения")';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON8_THISSITESUPPORT'] = 'Проверка наличия информации о техподдержке проекта';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON8_THISSITESUPPORT_DESCRIPTION'] = 'Должен существовать заполненный this_site_support.php';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON8_USERTESTEXISTS'] = 'Проверка 2-ух собственных тестов в мониторе качества';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON8_USERTESTEXISTS_DESCRIPTION'] = 'Должно быть создано 2 пользовательских теста и они должны быть выполнены в <a href="/bitrix/admin/checklist.php?lang=ru" target="_blank">Мониторе качества</a>';
-
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON9_COMPOSITEENABLED'] = 'Проверка настроект Композитного сайта';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON9_COMPOSITEENABLED_DESCRIPTION'] = 'Композитный режим должен быть включен, в настройках компонентов авторизации и включаемой области с номером телефона Голосование шаблона компонента должно стоять авто';
 
 $MESS['INTERVOLGA_EDU.TEST_CODE_NAME'] = 'Проверка кода #FILES#';
 $MESS['INTERVOLGA_EDU.TEST_CODE_DESCRIPTION'] = 'Современная проверка ядра Битрикса, использование длинных php-тегов, запрет на устаревшие функции';
 $MESS['INTERVOLGA_EDU.TEST_COMPONENT_TEMPLATE_NAME'] = 'Проверка папки #TEMPLATE#';
 $MESS['INTERVOLGA_EDU.TEST_COMPONENT_TEMPLATE_DESCRIPTION'] = 'Проверка лишних файлов шаблона и общая проверка кода (современная проверка ядра Битрикса, использование длинных php-тегов, запрет на устаревшие функции)';
+$MESS['INTERVOLGA_EDU.TEST_CUSTOM_MODULE_NAME'] = 'Проверка модуля #MODULE_NAME#';
+$MESS['INTERVOLGA_EDU.TEST_CUSTOM_MODULE_DESCRIPTION'] = 'Проверка лишних файлов модуля и общая проверка кода (современная проверка ядра Битрикса, использование длинных php-тегов, запрет на устаревшие функции)';
 $MESS['INTERVOLGA_EDU.LICENSE_NAME'] = 'Стандарт';
 $MESS['INTERVOLGA_EDU.EMPTY_SITE_CHECK_LOG'] = 'Проверка системы не запускалась';
 $MESS['INTERVOLGA_EDU.NOT_LOWER_CASE'] = 'буквы a-z, цифры 0-9, символы _-.';
