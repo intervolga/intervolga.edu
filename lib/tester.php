@@ -132,6 +132,10 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson5\TestTemplateGallery::class,
 			\Intervolga\Edu\Tests\Course3\Lesson5\TestComponentGallery::class,
 
+			\Intervolga\Edu\Tests\Course3\Lesson6\TestCacheComponentCheker::class,
+			\Intervolga\Edu\Tests\Course3\Lesson6\TestTaggedCacheChecker::class,
+			\Intervolga\Edu\Tests\Course3\Lesson6\TestCacheTesting::class,
+
 			\Intervolga\Edu\Tests\Course3\Lesson7\TestIblockFullness::class,
 			\Intervolga\Edu\Tests\Course3\Lesson7\TestPerformancePage::class,
 

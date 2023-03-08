@@ -27,6 +27,7 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON2'] = '2. Расширение админи�
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON3'] = '3. Инфоблоки - Архитектура';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4'] = '4. Пользовательские поля и типы';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5'] = '5. JS';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON6'] = '6. Кеширование';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON7'] = '7. Производительность';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON8'] = '8. Монитор качества';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON9'] = '9. Композитный сайт';
@@ -181,6 +182,12 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_GALLERYELEMENTS'] = 'Проверка эл
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_GALLERYELEMENTS_DESCRIPTION'] = 'Должен быть созданы >5 элементов инфоблока gallery с детальной картинкой, описанием и картиной для анонса.';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_COMPONENTGALLERY'] = 'Проверка параметров компонента bitrix:news.list gallery';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON5_COMPONENTGALLERY_DESCRIPTION'] = 'Проверка параметров компонента bitrix:news.list на странице gallery.php';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON6_TAGGEDCACHECHECKER'] = 'Проверка подключения тегированного кеша';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON6_TAGGEDCACHECHECKER_DESCRIPTION'] = 'В файле кастомного компонента "Респонденты" должно быть использование основных методов тегированного кеша ($CACHE_MANAGER, StartTagCache, RegisterTag)';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON6_CACHECOMPONENTCHEKER'] = 'Проверка подключения кеша';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON6_CACHECOMPONENTCHEKER_DESCRIPTION'] = 'В файле кастомного компонента "Респонденты" должно быть использование основных методов кеширования (класс CPHPCache, InitCache, StartDataCache)';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON6_CACHETESTING'] = 'Проверка работы тегированного кеша';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON6_CACHETESTING_DESCRIPTION'] = 'При изменении элементов тегируемого инфоблока тег кеша должен удаляться. При обновлении страницы с компонентом - появляться вновь';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON7_PERFORMANCEPAGE'] = 'Проверка страницы для тестирования производительности';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON7_PERFORMANCEPAGE_DESCRIPTION'] = 'На странице должен быть расположен компонент perf:element.list';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON8_ACCEPTEDTESTS'] = 'Проверка тестов безопасности в мониторе качества';
@@ -219,6 +226,8 @@ $MESS['INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG_EDIT'] = 'Проблема с ИБ <a 
 $MESS['INTERVOLGA_EDU.ENABLE_ELEMENTS_LOG_DELETE'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: установите флаг "Записывать удаление элемента"';
 $MESS['INTERVOLGA_EDU.SET_PERMISSION_EVERYONE_R'] = 'Проблема с ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>: задайте доступ для всех пользователей Чтение';
 $MESS['INTERVOLGA_EDU.IB_PROPERTY_HAS_LOWER_CASE'] = 'Символьный код свойства <b>#PROPERTY#</b> (ИБ <a href="#IBLOCK_LINK#" target="_blank">#IBLOCK#</a>) должен быть в верхнем регистре, без кириллицы!';
+$MESS['INTERVOLGA_EDU.FIELD_SURNAME'] = 'Фамилия';
+$MESS['INTERVOLGA_EDU.RENAME_FIELD_NAME'] = 'Переименуйте поле #VALUE# в #EXPECT# в форме редактирования элемента';
 $MESS['INTERVOLGA_EDU.PRICE_PROPERTY'] = 'Цена';
 $MESS['INTERVOLGA_EDU.SOFT_FORNITURE_SECTION'] = 'Мягкая мебель';
 $MESS['INTERVOLGA_EDU.POST_PROPERTY'] = 'Должность';
