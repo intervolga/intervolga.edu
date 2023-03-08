@@ -8,7 +8,7 @@ use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Locator\IO\Wizard;
 use Intervolga\Edu\Tests\BaseComponentTemplateTest;
 
-class WizardTemplateChecker extends BaseComponentTemplateTest
+class TestWizardTemplate extends BaseComponentTemplateTest
 {
 	/**
 	 * @return string|DirectoryLocator

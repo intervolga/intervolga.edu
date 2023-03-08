@@ -7,7 +7,7 @@ use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Locator\Wizard\Calculator;
 use Intervolga\Edu\Tests\BaseTest;
 
-class WizardChecker extends BaseTest
+class TestWizard extends BaseTest
 {
 	protected static function run()
 	{
