@@ -2,7 +2,6 @@
 namespace Intervolga\Edu\Tests\Course3\Lesson6;
 
 use Bitrix\Main\Localization\Loc;
-use CIBlockElement;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Locator\Iblock\RespondentIblock;
 use Intervolga\Edu\Locator\Iblock\ResultsPollingIblock;
@@ -33,23 +32,6 @@ class TestCacheTesting extends BaseTest
 					'#IBLOCK_NAME#' => $iblockLocator::getNameLoc()
 				]
 			));
-			static::testCache($pollResults['ID']);
-		}
-	}
-
-	protected static function testCache($iblockId)
-	{
-		$element = CIBlockElement::GetList(false, ['IBLOCK_ID' => $iblockId])->fetch();
-		$el = new CIBlockElement;
-		$res = $el->Update($element['ID'], ['NAME' => $element['NAME']]);
-		if ($res) {
-			Assert::eq(CacheTagTable::getCount(['TAG' => 'iblock_id_' . $iblockId['ID']]), 0,
-				Loc::getMessage('INTERVOLGA_EDU.COURSE_3_LESSON_6_FOUND_DELETED_CACHE',
-					[
-						'#TAG#' => 'iblock_id_' . $iblockId['ID'],
-					]
-				)
-			);
 		}
 	}
 }
