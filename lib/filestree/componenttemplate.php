@@ -40,7 +40,6 @@ abstract class ComponentTemplate extends FilesTree
 		return $result;
 	}
 
-
 	public function getKnownPhpFiles(): array
 	{
 		$result = [];
@@ -58,8 +57,6 @@ abstract class ComponentTemplate extends FilesTree
 	 * @throws FileNotFoundException
 	 */
 	abstract public function getKnownFiles(): array;
-
-
 
 	/**
 	 * @return File[]
@@ -143,5 +140,25 @@ abstract class ComponentTemplate extends FilesTree
 	public function getImagesDir(): Directory
 	{
 		return FileSystem::getInnerDirectory($this, 'images');
+	}
+
+	public function getComponentEpilogFile(): File
+	{
+		return FileSystem::getInnerFile($this, 'component_epilog.php');
+	}
+
+	public function getParametersFile(): File
+	{
+		return FileSystem::getInnerFile($this, '.parameters.php');
+	}
+
+	public function getResultModifier(): File
+	{
+		return FileSystem::getInnerFile($this, 'result_modifier.php');
+	}
+
+	public function getDescriptionFile(): File
+	{
+		return FileSystem::getInnerFile($this, '.description.php');
 	}
 }
