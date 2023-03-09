@@ -59,8 +59,8 @@ class CustomVacanciesTemplate extends ComplexComponentTemplate
 	public function getInnerTemplatesDir(): array
 	{
 		return [
-			FileSystem::getInnerDirectory($this, 'intervolga'),
-			FileSystem::getInnerDirectory($this, 'bitrix'),
+			FileSystem::getInnerDirectory($this, 'templates/.default/intervolga/'),
+			FileSystem::getInnerDirectory($this, 'templates/.default/bitrix/'),
 		];
 	}
 }
