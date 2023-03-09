@@ -12,7 +12,7 @@ use Intervolga\Edu\Locator\IO\CustomVacancies as CustomVacanciesComponentLocator
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Tests\BaseComponentTest;
 
-class CustomComponentChecker extends BaseComponentTest
+class TestCustomComponentChecker extends BaseComponentTest
 {
 	protected static function run()
 	{

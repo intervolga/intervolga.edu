@@ -7,7 +7,7 @@ use CForm;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 
-class WebFormsChecker extends BaseTest
+class TestWebFormsChecker extends BaseTest
 {
 	const COUNT_QUESTIONS = 5;
 

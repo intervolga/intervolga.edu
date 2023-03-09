@@ -8,7 +8,7 @@ use Intervolga\Edu\Locator\Component\CustomVacancies;
 use Intervolga\Edu\Locator\Iblock\Vacancies;
 use Intervolga\Edu\Tests\BaseTest;
 
-class VacanciesParametersChecker extends BaseTest
+class TestVacanciesParametersChecker extends BaseTest
 {
 	public static function interceptErrors()
 	{
