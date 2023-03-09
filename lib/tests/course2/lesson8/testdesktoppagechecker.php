@@ -11,7 +11,7 @@ use Intervolga\Edu\Locator\IO\Desktop as DesktopPage;
 use Intervolga\Edu\Locator\IO\Gadgets;
 use Intervolga\Edu\Tests\BaseTest;
 
-class DesktopPageChecker extends BaseTest
+class TestDesktopPageChecker extends BaseTest
 {
 	protected static function run()
 	{

@@ -9,7 +9,7 @@ use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Locator\IO\Gadgets;
 use Intervolga\Edu\Tests\BaseComponentTemplateTest;
 
-class GadgetTemplateChecker extends BaseComponentTemplateTest
+class TestGadgetTemplateChecker extends BaseComponentTemplateTest
 {
 	/**
 	 * @return string|DirectoryLocator

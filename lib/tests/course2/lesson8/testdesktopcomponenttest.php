@@ -8,7 +8,7 @@ use Intervolga\Edu\Locator\IO\ComponentTemplate\DesktopTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Tests\BaseComponentTemplateTest;
 
-class DesktopComponentTest extends BaseComponentTemplateTest
+class TestDesktopComponentTest extends BaseComponentTemplateTest
 {
 	protected static function run()
 	{
