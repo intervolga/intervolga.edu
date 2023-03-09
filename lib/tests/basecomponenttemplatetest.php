@@ -4,7 +4,8 @@ namespace Intervolga\Edu\Tests;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\FilesTree\ComponentTemplate;
-use Intervolga\Edu\FilesTree\ComponentTemplate\NewsTemplate;
+use Intervolga\Edu\FilesTree\NewsTemplate;
+use Intervolga\Edu\FilesTree\FilesTree;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 
 abstract class BaseComponentTemplateTest extends BaseTest
@@ -49,7 +50,7 @@ abstract class BaseComponentTemplateTest extends BaseTest
 	 */
 	abstract protected static function getComponentTemplateTree();
 
-	protected static function testTemplateTrash(ComponentTemplate $templateDir)
+	protected static function testTemplateTrash($templateDir)
 	{
 		foreach ($templateDir->getUnknownFileSystemEntries() as $unknownFileSystemEntry) {
 			Assert::fseNotExists($unknownFileSystemEntry);
@@ -62,7 +63,7 @@ abstract class BaseComponentTemplateTest extends BaseTest
 		static::testTemplateLangRuTrash($templateDir);
 	}
 
-	protected static function checkRequiredFilesTemplate(ComponentTemplate $templateDir)
+	protected static function checkRequiredFilesTemplate(FilesTree $templateDir)
 	{
 		if ($templateDir instanceof NewsTemplate) {
 			Assert::fseExists($templateDir->getNewsFile());
@@ -72,25 +73,42 @@ abstract class BaseComponentTemplateTest extends BaseTest
 		}
 	}
 
-	protected static function checkNotExistingFilesTemplate(ComponentTemplate $templateDir)
+	protected static function checkNotExistingFilesTemplate(FilesTree $templateDir)
 	{
 		Assert::fseNotExists($templateDir->getImagesDir());
 		Assert::fseNotExists($templateDir->getParametersFile());
 		Assert::fseNotExists($templateDir->getDescriptionFile());
 	}
 
-	protected static function testTemplateLangRuTrash(ComponentTemplate $templateDir)
+	protected static function testTemplateLangRuTrash(FilesTree $templateDir)
 	{
 		if ($templateDir->getLangRuDir()->isExists()) {
 			foreach ($templateDir->getLangRuDir()->getChildren() as $child) {
-				if (!in_array($child->getName(), static::getKnownFilesNames($templateDir))) {
-					Assert::fseNotExists($child);
+
+				if ($child->isDirectory()) {
+					if (!in_array($child->getName(), static::getKnownDirNames($templateDir))) {
+						Assert::directoryNotExists($child);
+					}
+				} elseif ($child->isFile()) {
+					if (!in_array($child->getName(), static::getKnownFilesNames($templateDir))) {
+						Assert::fseNotExists($child);
+					}
 				}
 			}
 		}
 	}
 
-	protected static function getKnownFilesNames(ComponentTemplate $templateDir)
+	protected static function getKnownDirNames(FilesTree $templateDir)
+	{
+		$names = [];
+		foreach ($templateDir->getKnownDirs() as $file) {
+			$names[] = $file->getName();
+		}
+
+		return $names;
+	}
+
+	protected static function getKnownFilesNames(FilesTree $templateDir)
 	{
 		$names = [];
 		foreach ($templateDir->getKnownFiles() as $file) {
@@ -100,7 +118,7 @@ abstract class BaseComponentTemplateTest extends BaseTest
 		return $names;
 	}
 
-	protected static function testTemplateCode(ComponentTemplate $templateDir)
+	protected static function testTemplateCode(FilesTree $templateDir)
 	{
 		$files = [];
 		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
