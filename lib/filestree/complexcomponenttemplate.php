@@ -17,12 +17,15 @@ abstract class ComplexComponentTemplate extends ComponentTemplate
 	public function getKnownDirs(): array
 	{
 		$result = parent::getKnownDirs();
-		$result[] = $this->getInnerTemplatesDir();
+		$templates = $this->getInnerTemplatesDir();
+		foreach ($templates as $template){
+			$result[] = $template;
+		}
 
 		return $result;
 	}
 
-	abstract public function getInnerTemplatesDir(): Directory;
+	abstract public function getInnerTemplatesDir(): array;
 
 	abstract public function getKnownFiles(): array;
 }

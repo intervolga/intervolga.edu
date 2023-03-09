@@ -13,7 +13,7 @@ class CustomVacanciesTemplate extends DirectoryLocator
 
 	protected static function getPaths(): array
 	{
-		$paths = ['/local/components/intervolga/vacancies/templates/.default'];
+		$paths = ['/local/components/intervolga/vacancies/templates/.default/'];
 
 		return $paths;
 	}

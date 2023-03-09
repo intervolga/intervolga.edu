@@ -4,6 +4,7 @@ namespace Intervolga\Edu\FilesTree\ComponentTemplate;
 use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\File;
 use Intervolga\Edu\FilesTree\ComplexComponentTemplate;
+use Intervolga\Edu\FilesTree\SimpleComponentTemplate;
 use Intervolga\Edu\Util\FileSystem;
 
 class CustomVacanciesTemplate extends ComplexComponentTemplate
@@ -41,11 +42,13 @@ class CustomVacanciesTemplate extends ComplexComponentTemplate
 	public function getInnerTemplatesTrees(): array
 	{
 		$result = [];
-		$innerTemplates = $this->getInnerTemplatesDir();
-		if ($innerTemplates->isExists()) {
-			foreach ($innerTemplates->getChildren() as $innerTemplateDir) {
-				if ($innerTemplateDir instanceof Directory) {
-					$result[] = new SimpleComponentTemplate($innerTemplateDir->getPath());
+		$innerTemplates = static::getInnerTemplatesDir();
+		foreach ($innerTemplates as $innerTemplate){
+			if ($innerTemplate->isExists()) {
+				foreach ($innerTemplate->getChildren() as $innerTemplateDir) {
+					if ($innerTemplateDir instanceof Directory) {
+						$result[] = new SimpleComponentTemplate($innerTemplateDir->getPath());
+					}
 				}
 			}
 		}
@@ -53,8 +56,11 @@ class CustomVacanciesTemplate extends ComplexComponentTemplate
 		return $result;
 	}
 
-	public function getInnerTemplatesDir(): Directory
+	public function getInnerTemplatesDir(): array
 	{
-		return FileSystem::getInnerDirectory($this, 'templates');
+		return [
+			FileSystem::getInnerDirectory($this, 'intervolga'),
+			FileSystem::getInnerDirectory($this, 'bitrix'),
+		];
 	}
 }

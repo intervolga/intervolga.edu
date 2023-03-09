@@ -5,6 +5,7 @@ use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Asserts\AssertComponent;
 use Intervolga\Edu\FilesTree\Component\ComplexComponent;
 use Intervolga\Edu\FilesTree\ComponentTemplate;
+use Intervolga\Edu\FilesTree\FilesTree;
 use Intervolga\Edu\Locator\Component\CustomVacancies;
 use Intervolga\Edu\Locator\IO\ComponentTemplate\CustomVacanciesTemplate;
 use Intervolga\Edu\Locator\IO\CustomVacancies as CustomVacanciesComponentLocator;
@@ -21,7 +22,7 @@ class CustomComponentChecker extends BaseComponentTest
 		}
 	}
 
-	protected static function checkRequiredFilesTemplate(ComponentTemplate $templateDir)
+	protected static function checkRequiredFilesTemplate(FilesTree $templateDir)
 	{
 		Assert::fseExists($templateDir->getResumeFile());
 		Assert::fseExists($templateDir->getVacanciesFile());
