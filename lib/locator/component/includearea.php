@@ -3,8 +3,8 @@ namespace Intervolga\Edu\Locator\Component;
 
 class IncludeArea extends ComponentLocator
 {
-	public static function getCode(): string
+	public static function getCode(): array
 	{
-		return 'bitrix:main.include';
+		return ['bitrix:main.include'];
 	}
 }
