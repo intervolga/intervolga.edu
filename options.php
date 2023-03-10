@@ -20,6 +20,7 @@ use Bitrix\Main\Page\Asset;
 use Bitrix\Main\Type\DateTime;
 use Intervolga\Edu\Locator\BaseLocator;
 use Intervolga\Edu\Tester;
+use Intervolga\Edu\Util\Help;
 use Intervolga\Edu\Util\Update;
 
 CJSCore::Init([
@@ -169,8 +170,14 @@ foreach ($testsTree as $courseCode => $course) {
 			'#TOTAL#' => count($lesson['TESTS']),
 			'#DONE#' => count($lesson['TESTS']) - intval($stat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']),
 		]);
+		$help = Help::get($courseCode, $lessonCode);
 		?>
 		<h2 id="<?=$courseCode . $lessonCode?>">
+			<?php if (!$stat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']): ?>
+				<?=Loc::getMessage('INTERVOLGA_EDU.LESSON_OK')?>
+			<?php else: ?>
+				<?=Loc::getMessage('INTERVOLGA_EDU.LESSON_FAIL')?>
+			<?php endif ?>
 			<?=$title?>
 			<span class="contents-link">
 				<?php if ($prevLessonCode): ?>
@@ -194,6 +201,12 @@ foreach ($testsTree as $courseCode => $course) {
 				<?php endif ?>
 			</span>
 		</h2>
+		<?php if (strlen($help)): ?>
+			<div class="help">
+				<h3><?=Loc::getMessage('INTERVOLGA_EDU.LESSON_HELP')?></h3>
+				<?=$help?>
+			</div>
+		<?php endif ?>
 		<?php
 		$counter = 1;
 		foreach ($lesson['TESTS'] as $testCode => $test) {

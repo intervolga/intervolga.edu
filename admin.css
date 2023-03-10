@@ -48,3 +48,14 @@ h2 span.contents-link,
 .contents-link a {
 	text-decoration-style: dashed;
 }
+.help {
+	border: 2px solid lightblue;
+	border-radius: 5px;
+	padding: 4px;
+	margin-bottom: 10px;
+}
+.help h3 {
+	margin-top: 0;
+	margin-left: 24px;
+	color: mediumblue;
+}

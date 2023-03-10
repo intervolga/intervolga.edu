@@ -26,3 +26,4 @@ $MESS['INTERVOLGA_EDU.LESSON_FAIL'] = '[FAIL]';
 $MESS['INTERVOLGA_EDU.GO_UP'] = 'В начало';
 $MESS['INTERVOLGA_EDU.GO_BACK'] = 'К предыдущему уроку';
 $MESS['INTERVOLGA_EDU.GO_FORWARD'] = 'К следующему уроку';
+$MESS['INTERVOLGA_EDU.LESSON_HELP'] = 'Советы по уроку';
