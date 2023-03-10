@@ -54,6 +54,9 @@ h2 span.contents-link,
 	padding: 4px;
 	margin-bottom: 10px;
 }
+.help ol li {
+	line-height: 1.5em;
+}
 .help h3 {
 	margin-top: 0;
 	margin-left: 24px;
