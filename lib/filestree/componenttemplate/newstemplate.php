@@ -74,6 +74,9 @@ class NewsTemplate extends ComplexComponentTemplate
 		return $result;
 	}
 
+	/**
+	 * @return Directory[]
+	 */
 	public function getInnerTemplatesDir(): array
 	{
 		return [FileSystem::getInnerDirectory($this, 'bitrix')];

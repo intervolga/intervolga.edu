@@ -14,11 +14,14 @@ class TestWebFormsChecker extends BaseTest
 	protected static function run()
 	{
 		Loader::includeModule('form');
-		$formsList = CForm::GetList()->fetch();
+		$formsList = CForm::getList()->fetch();
 		Assert::notEmpty($formsList, Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6.NOT_FOUND_FORM'));
 
-		Assert::greaterEq($formsList['QUESTIONS'], static::COUNT_QUESTIONS,
-			Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6.COUNT_QUESTIONS',
+		Assert::greaterEq(
+			$formsList['QUESTIONS'],
+			static::COUNT_QUESTIONS,
+			Loc::getMessage(
+				'INTERVOLGA_EDU.COURSE_2_LESSON_6.COUNT_QUESTIONS',
 				[
 					'#ID_FORM#' => $formsList['ID'],
 					'#EXPECT#' => static::COUNT_QUESTIONS,

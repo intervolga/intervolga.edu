@@ -25,6 +25,9 @@ abstract class ComplexComponentTemplate extends ComponentTemplate
 		return $result;
 	}
 
+	/**
+	 * @return Directory[]
+	 */
 	abstract public function getInnerTemplatesDir(): array;
 
 	abstract public function getKnownFiles(): array;
