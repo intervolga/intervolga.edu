@@ -198,8 +198,19 @@ class Tester
 			$tree[$testClass::getCourseCode()]['LESSONS'][$testClass::getLessonCode()]['TESTS'][$testClass]['CODE'] = $code;
 			$tree[$testClass::getCourseCode()]['LESSONS'][$testClass::getLessonCode()]['TESTS'][$testClass]['TITLE'] = $testClass::getTestLoc();
 			$tree[$testClass::getCourseCode()]['LESSONS'][$testClass::getLessonCode()]['TESTS'][$testClass]['DESCRIPTION'] = $testClass::getDescription();
+			if ($describe = $testClass::hasInputText()) {
+				$tree[$testClass::getCourseCode()]['LESSONS'][$testClass::getLessonCode()]['TESTS'][$testClass]['INPUTS'][] = [
+					'TYPE' => 'text-area',
+					'DESCRIBE' => $describe
+				];
+			}
+			$count = $testClass::countInputImage();
+			for ($i = 0; $i<$count; $i++) {
+				$tree[$testClass::getCourseCode()]['LESSONS'][$testClass::getLessonCode()]['TESTS'][$testClass]['INPUTS'][] = [
+					'TYPE' => 'image'
+				];
+			}
 		}
-
 		return $tree;
 	}
 

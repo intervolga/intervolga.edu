@@ -40,7 +40,6 @@ $options = [
 
 	],
 ];
-
 $request = Context::getCurrent()->getRequest();
 if ($request->isPost()) {
 	if ($optionName = $request->getPost('ADD')) {
@@ -51,6 +50,17 @@ if ($request->isPost()) {
 		]);
 	} elseif ($zipName = $request->getPost('UNPACK')) {
 		Update::unpack($zipName);
+	}
+	if ($commentName = $request->getPost('COMMENT')) {
+		if ($comment = $request->getPost($commentName . 'Comment')) {
+			Option::set($module_id, $commentName . "Comment", $comment);
+		}
+		foreach ($request->getPostList() as $key => $item) {
+			if (strripos($key, $commentName . 'Photo') === 0) {
+				var_dump($_FILES);
+				var_dump($item);
+			}
+		}
 	}
 	LocalRedirect($request->getRequestUri());
 }
@@ -135,11 +145,11 @@ foreach ($testsTree as $courseCode => $course) {
 	<ul>
 		<?php foreach ($course['LESSONS'] as $lessonCode => $lesson): ?>
 			<?php
-				$title = Loc::getMessage('INTERVOLGA_EDU.LESSON_HEADER', [
-					'#LESSON#' => $lesson['TITLE'],
-					'#TOTAL#' => count($lesson['TESTS']),
-					'#DONE#' => count($lesson['TESTS']) - intval($stat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']),
-				]);
+			$title = Loc::getMessage('INTERVOLGA_EDU.LESSON_HEADER', [
+				'#LESSON#' => $lesson['TITLE'],
+				'#TOTAL#' => count($lesson['TESTS']),
+				'#DONE#' => count($lesson['TESTS']) - intval($stat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']),
+			]);
 			?>
 			<li>
 				<a href="#<?=$courseCode?><?=$lessonCode?>"><?=$title?></a>
@@ -176,6 +186,28 @@ foreach ($testsTree as $courseCode => $course) {
 				$messageParams['DETAILS'] .= Loc::getMessage('INTERVOLGA_EDU.TEST_NO_ERRORS');
 				$messageParams['TYPE'] = 'OK';
 			}
+			if ($test['INPUTS']) {
+				// echo '<form method="post" id="123">';
+				$formID = $courseCode . $lessonCode . $test['CODE'];
+				$photoCount = 0;
+				foreach ($test['INPUTS'] as $input) {
+					if ($input['TYPE'] === 'image') {
+						$image = 'test';
+
+						echo CFile::InputFile($image, 1000, $image, "/upload/".$module_id."/");
+						echo CFile::ShowImage($image, 200, 200, "border=0", "/uploads/".$module_id."/", true);
+
+					} elseif ($input['TYPE'] === 'text-area') {
+						echo'<b>' . $input['DESCRIBE'] . '</b> <br>';
+						$tip = Option::get($module_id, $formID . "Comment");
+						echo '<textarea name="' . $formID . "Comment" . '" rows="5" cols="80">' . $tip . '</textarea>';
+					}
+				}
+				echo '<br><button type="submit" class="adm-btn" name="COMMENT" value="' . $formID . '"> SEND </button>';
+				//echo '</form>';
+
+			}
+
 			$reportId = $courseCode . "_" . $lessonCode . "_" . strtolower($test['CODE']) . "_problem";
 
 			if ($messageParams['TYPE'] !== 'OK') {
@@ -227,11 +259,9 @@ $links = [
 $arModuleVersion = [];
 include Application::getDocumentRoot() . '/local/modules/intervolga.edu/install/version.php';
 $versionDate = $arModuleVersion['VERSION_DATE'];
-if ($versionDate)
-{
+if ($versionDate) {
 	$dateTime = DateTime::tryParse($versionDate, 'Y-m-d H:i:s');
-	if ($dateTime)
-	{
+	if ($dateTime) {
 		$versionDate = $dateTime->format('d.m.Y H:i');
 	}
 }
@@ -246,29 +276,29 @@ if ($versionDate)
 			'#COUNT#' => Tester::getTestClassesCount(),
 		])?></div>
 	<h2>1. <?=Loc::getMessage('INTERVOLGA_EDU.DOWNLOAD_ZIP')?></h2>
-	<?php foreach ($links as $branch => $href): ?>
-		<a href="<?=$href?>" class="adm-btn" target="_blank"><?=$branch?></a>
-		<br><br>
-	<?php endforeach ?>
+<?php foreach ($links as $branch => $href): ?>
+	<a href="<?=$href?>" class="adm-btn" target="_blank"><?=$branch?></a>
+	<br><br>
+<?php endforeach ?>
 	<h2>2. <?=Loc::getMessage('INTERVOLGA_EDU.UPLOAD_ZIP')?></h2>
 	<a href="/bitrix/admin/fileman_file_upload.php?lang=ru&site=s1&path=%2Flocal%2Fmodules"
 	   class="adm-btn" target="_blank"><?=Loc::getMessage('INTERVOLGA_EDU.GOTO_UNZIP_DIR')?></a>
 	<h2>3. <?=Loc::getMessage('INTERVOLGA_EDU.UNPACK')?></h2>
-	<?php if (Update::getZipFiles()): ?>
-		<?php foreach (Update::getZipFiles() as $file): ?>
-			<form action="" method="post">
-				<?=bitrix_sessid_post()?>
-				<button type="submit" class="adm-btn adm-btn-save" name="UNPACK" value="<?=$file->getName()?>">
-					<?=Loc::getMessage('INTERVOLGA_EDU.UNPACK_ZIP', [
-						'#ZIP#' => $file->getName(),
-						'#DATETIME#' => DateTime::createFromTimestamp($file->getModificationTime())->format('d.m.Y H:i'),
-					])?>
-				</button>
-			</form>
-			<br><br>
-		<?php endforeach ?>
-	<?php else: ?>
-		<?=Loc::getMessage('INTERVOLGA_EDU.NO_ZIP_FILES')?>
-	<?php endif ?>
+<?php if (Update::getZipFiles()): ?>
+	<?php foreach (Update::getZipFiles() as $file): ?>
+		<form action="" method="post">
+			<?=bitrix_sessid_post()?>
+			<button type="submit" class="adm-btn adm-btn-save" name="UNPACK" value="<?=$file->getName()?>">
+				<?=Loc::getMessage('INTERVOLGA_EDU.UNPACK_ZIP', [
+					'#ZIP#' => $file->getName(),
+					'#DATETIME#' => DateTime::createFromTimestamp($file->getModificationTime())->format('d.m.Y H:i'),
+				])?>
+			</button>
+		</form>
+		<br><br>
+	<?php endforeach ?>
+<?php else: ?>
+	<?=Loc::getMessage('INTERVOLGA_EDU.NO_ZIP_FILES')?>
+<?php endif ?>
 <?php
 $tabControl->end();
