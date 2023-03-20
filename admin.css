@@ -58,7 +58,8 @@ h2 span.contents-link,
 	line-height: 1.5em;
 }
 .help h3 {
-	margin-top: 0;
+	cursor: pointer;
+	margin-top: 10px;
 	margin-left: 24px;
 	color: mediumblue;
 }
