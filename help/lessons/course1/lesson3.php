@@ -14,7 +14,7 @@ B_PROLOG_INCLUDED === true || die();
 	<li>Используйте <a href="https://www.intervolga.ru/blog/projects/d7-analogi-lyubimykh-funktsiy-v-1s-bitriks/">D7</a>.
 		<ul>
 			<li>Хоть в примере и указывают, что при вынесении общих js и css в шаблон .default используется подключение
-				напрямую через теги <\link\> и <\script\>, но так делать не стоит, найдите пример на D7. </li>
+				напрямую через теги <span><</span>link\> и <span><</span>script\>, но так делать не стоит, найдите пример на D7. </li>
 			<li>На протяжении всего обучения будут встречать GetMessage, заменяйте его на современный аналог из D7.</li>
 		</ul>
 	</li>
