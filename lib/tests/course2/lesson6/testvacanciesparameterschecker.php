@@ -22,12 +22,12 @@ class TestVacanciesParametersChecker extends BaseTest
 		if ($vacancyIblock = Vacancies::find()) {
 			Assert::eq(
 				static::prepareUrl($vacancyIblock['LIST_PAGE_URL']),
-				'#SITE_DIR#company/vacancies/',
+				'/company/vacancies/',
 				Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_VACANCIES_LIST_PAGE_URL')
 			);
 			Assert::eq(
 				static::prepareUrl($vacancyIblock['DETAIL_PAGE_URL']),
-				'#SITE_DIR#company/vacancies/#ELEMENT_ID#/',
+				'/company/vacancies/#ELEMENT_ID#/',
 				Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_VACANCIES_DETAIL_PAGE_URL')
 			);
 		}
@@ -45,7 +45,7 @@ class TestVacanciesParametersChecker extends BaseTest
 			if ($componentParameters['SEF_URL_TEMPLATES']) {
 				Assert::eq(
 					static::prepareUrl($componentParameters['SEF_FOLDER']),
-					'#SITE_DIR#company/vacancies/',
+					'/company/vacancies/',
 					Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_VACANCIES_SEF_FOLDER')
 				);
 				Assert::eq(
