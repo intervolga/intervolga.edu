@@ -5,7 +5,7 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 
-class SecureAuthorization extends BaseTest
+class TestSecureAuthorization extends BaseTest
 {
 	public static function interceptErrors()
 	{
