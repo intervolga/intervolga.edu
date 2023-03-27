@@ -21,6 +21,7 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON3'] = '3. События';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON4'] = '4. Отложенные функции';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1'] = '5.1 Создание собственных компонентов';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_2'] = '5.2 Настройки кеширования - базовые понятия';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON6'] = '6. Создание комплексного компонента';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON7'] = '7. Управление доступом и безопасность';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON8'] = '8. Гаджеты';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON9'] = '9. Создание мастеров';
@@ -156,6 +157,10 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1_HERMITAGE'] = 'Проверка файл
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_1_HERMITAGE_DESCRIPTION'] = 'В шаблоне должен быть подключен эрмитаж (для разделов и для элементов)';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_2_COMPONENTCACHE'] = 'Проверка кеширования в кастомном компоненте';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON5_2_COMPONENTCACHE_DESCRIPTION'] = 'Компонент дожен иметь настройку кеширования в параметрах компонента, в классе компонента должен быть вызов StartResultCache';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON6_WEBFORMSCHECKER'] = 'Проверка Веб-форм для резюме';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON6_WEBFORMSCHECKER_DESCRIPTION'] = 'Должна существовать веб-форма, количество вопросов в форме должно быть не меньше 5';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON6_VACANCIESPARAMETERSCHECKER'] = 'Проверка параметров компонента "Вакансии"';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON6_VACANCIESPARAMETERSCHECKER_DESCRIPTION'] = 'В параметрах компонента должен быть включен режим ЧПУ, должны быть правильно заполненны ссылки, согласно заданию';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SECURITYLEVEL'] = 'Проверка уровня безопасности';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SECURITYLEVEL_DESCRIPTION'] = 'Уровень безопасности должен быть "Стандартный" или выше.';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SECUREAUTHORIZATION'] = 'Проверка настроек Авторизации';
@@ -268,6 +273,7 @@ $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_URL_PROBLEM'] = 'В шаблоне пи�
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_PAGE_PROBLEM'] = 'ссылка из письма';
 $MESS['INTERVOLGA_EDU.IBLOCK_FIELD_PARAM_SHOULD_BE_SET'] = 'Настройка <b>#PARAM#</b> поля <b>#FIELD#</b> должна быть <b>#EXPECT#</b>';
 $MESS['INTERVOLGA_EDU.CONTENT_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#NAME#</a> не должно быть #REGEX_EXPLAIN# (#REASON#)';
+$MESS['INTERVOLGA_EDU.ADD_CUSTOM_CORE_CHECK'] = 'В файле #VALUE# нужно использовать короткое подключение ядра: B_PROLOG_INCLUDED === true || die()';
 $MESS['INTERVOLGA_EDU.CUSTOM_MODULE'] = 'intervolga.?';
 $MESS['INTERVOLGA_EDU.CUSTOM_MODULE_TIP'] = 'intervolga.? в #MODULES#';
 $MESS['INTERVOLGA_EDU.INCLUDEAREA_PARTNERS'] = 'Включаемая область в разделе Партнерам';
