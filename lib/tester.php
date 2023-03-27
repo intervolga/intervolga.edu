@@ -4,6 +4,7 @@ namespace Intervolga\Edu;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Tests\BaseTest;
+use Bitrix\Main\Localization\Loc;
 
 class Tester
 {
@@ -154,7 +155,8 @@ class Tester
 		];
 	}
 
-	public static function getTestClassesCount(): int {
+	public static function getTestClassesCount(): int
+	{
 		return count(static::getTestClasses());
 	}
 
@@ -173,6 +175,13 @@ class Tester
 				static::$exceptions[$testClass] = AssertException::createThrowable($throwable);
 			}
 			static::$locatorsFound[$testClass] = Assert::getLocatorsFound();
+
+			$tmpArray = explode('\\', str_replace('Intervolga\\Edu\\Tests\\', '', $testClass));
+			if (stripos($tmpArray[2], 'test') !== 0) {
+				static::$exceptions[$testClass] =
+					new AssertException(Loc::getMessage('INTERVOLGA_EDU.NAME_TEST_NOT_MATCH_REQUIREMENTS',
+						['#TEST_NAME#' => $tmpArray[2]]));
+			}
 		}
 	}
 
