@@ -126,6 +126,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestPropertyGenderValues::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestLinkWithRespondent::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestRespondentIblock::class,
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestRespondentComponent::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUf::class,
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUfClass::class,
