@@ -24,32 +24,35 @@ class TestSettingResultLinks extends BaseTest
 		Assert::fileLocator(DesktopPage::class);
 		Assert::directoryLocator(Gadgets::class);
 
+		$todayLinkIndex = 0;
+		$allLinkIndex = 1;
+
 		if (Desktop::find() && Gadgets::find()) {
 			$formId = Desktop::find()['PARAMETERS']['G_' . mb_strtoupper(Gadgets::find()->getName()) . '_FORM_ID'];
-			static::urlChecker($formId, false, false,
+			static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, false, false,
 				[
 					'todayLink' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_TODAY_URL'),
 					'generalLink' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_GENERAL_URL')
 				]);
-			static::urlChecker($formId, 'test1');
-			static::urlChecker($formId, '', 'test2');
-			static::urlChecker($formId, 'test3', 'test4');
+			static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, 'test1');
+			static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, '', 'test2');
+			static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, 'test3', 'test4');
 		}
 	}
 
-	protected static function urlChecker($formId, $templateUrlGeneral = '', $templateUrlIndividual = '', $message = [])
+	protected static function urlChecker($formId, &$todayLinkIndex, &$allLinkIndex, $templateUrlGeneral = '', $templateUrlIndividual = '', $message = [])
 	{
 		if (empty($message)) {
 			$message['todayLink'] = Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_WRONG_URL_GENERAL');
 			$message['generalLink'] = Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_WRONG_URL_TODAY');
 		}
-		$gadgetUrls = static::getGadgetUrls($formId, $templateUrlGeneral, $templateUrlIndividual);
+		$gadgetUrls = static::getGadgetUrls($formId, $todayLinkIndex, $allLinkIndex, $templateUrlGeneral, $templateUrlIndividual);
 		$expectedUrls = static::getExpectedUrls($formId, $templateUrlGeneral, $templateUrlIndividual);
 		Assert::eq($gadgetUrls['todayLink'], $expectedUrls['todayLink'], $message['todayLink']);
 		Assert::eq($gadgetUrls['generalLink'], $expectedUrls['generalLink'], $message['generalLink']);
 	}
 
-	protected static function getGadgetUrls($formId, $templateUrlGeneral, $templateUrlIndividual)
+	protected static function getGadgetUrls($formId, &$todayLinkIndex, &$allLinkIndex, $templateUrlGeneral, $templateUrlIndividual)
 	{
 		$indexPath = Gadgets::find()->getPath() . '/index.php';
 
@@ -71,9 +74,14 @@ class TestSettingResultLinks extends BaseTest
 			$urls[] = mb_strcut($match[0], strpos($match[0], '"') + 1, -2);
 		}
 
+		if (strpos($urls[1], 'find_date_create_1')) {
+			$allLinkIndex = 0;
+			$todayLinkIndex = 1;
+		}
+
 		return [
-			'todayLink' => $urls[0],
-			'generalLink' => $urls[1]
+			'todayLink' => $urls[$todayLinkIndex],
+			'generalLink' => $urls[$allLinkIndex]
 		];
 	}
 
