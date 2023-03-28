@@ -10,6 +10,6 @@ class Desktop extends ComponentLocator
 
 	public static function getFilter(): array
 	{
-		return array_merge(parent::getFilter(), ['=REAL_PATH' => '/desktop.php']);
+		return array_merge(parent::getFilter(), ['=REAL_PATH' => INTERVOLGA_EDU_GUESS_VARIANTS['PATHS']['DESKTOP']]);
 	}
 }

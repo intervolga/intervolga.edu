@@ -12,8 +12,6 @@ class Desktop extends FileLocator
 
 	protected static function getPaths(): array
 	{
-		return [
-			'/desktop.php',
-		];
+		return INTERVOLGA_EDU_GUESS_VARIANTS['PATHS']['DESKTOP'];
 	}
 }
