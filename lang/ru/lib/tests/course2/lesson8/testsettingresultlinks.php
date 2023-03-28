@@ -3,3 +3,6 @@ $MESS['INTERVOLGA_EDU.COURSE_2_LESSON_8_WRONG_URL_GENERAL'] = 'Ссылка на
 $MESS['INTERVOLGA_EDU.COURSE_2_LESSON_8_WRONG_URL_TODAY'] = 'Ссылка на просмотр <b>списка резюме за сегодняшний день</b> должна изменяться в зависимости от введенных параметров в настройках гаджета. Если ошибка сохраняется - отключите кеш гаджета.';
 $MESS['INTERVOLGA_EDU.COURSE_2_LESSON_8_GENERAL_URL'] = 'Ссылка на просмотр <b>общего списка резюме</b> должна иметь вид: <b>#EXPECT#</b>, сейчас : #VALUE#';
 $MESS['INTERVOLGA_EDU.COURSE_2_LESSON_8_TODAY_URL'] = 'Ссылка на просмотр <b>списка резюме за сегодняшний день</b> должна иметь вид: <b>#EXPECT#</b>, сейчас : #VALUE#';
+$MESS['INTERVOLGA_EDU.COURSE_2_LESSON_8_PARAM_WEB_FORM_ID'] = 'В массиве параметров гаджета $arParameters название <b>ID веб-формы</b> должно быть <b>WEB_FORM_ID</b>';
+$MESS['INTERVOLGA_EDU.COURSE_2_LESSON_8_PARAM_URL_TEMPLATE_ALL'] = 'В массиве параметров гаджета $arParameters название параметра <b>шаблона ссылки для общих результатов</b> должно быть <b>URL_TEMPLATE_ALL</b>';
+$MESS['INTERVOLGA_EDU.COURSE_2_LESSON_8_PARAM_URL_TEMPLATE_TODAY'] = 'В массиве параметров гаджета $arParameters название <b>шаблона ссылки для сегодняших результатов</b> должно быть <b>URL_TEMPLATE_TODAY</b>';

@@ -26,18 +26,36 @@ class TestSettingResultLinks extends BaseTest
 
 		$todayLinkIndex = 0;
 		$allLinkIndex = 1;
+		$parameters = static::checkParameters();
 
-		if (Desktop::find() && Gadgets::find()) {
-			$formId = Desktop::find()['PARAMETERS']['G_' . mb_strtoupper(Gadgets::find()->getName()) . '_FORM_ID'];
-			static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, false, false,
-				[
-					'todayLink' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_TODAY_URL'),
-					'generalLink' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_GENERAL_URL')
-				]);
-			static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, 'test1');
-			static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, '', 'test2');
-			static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, 'test3', 'test4');
+		if ($parameters) {
+			if (Desktop::find() && Gadgets::find()) {
+				$formId = Desktop::find()['PARAMETERS']['G_' . mb_strtoupper(Gadgets::find()->getName()) . '_WEB_FORM_ID'];
+				static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, false, false,
+					[
+						'todayLink' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_TODAY_URL'),
+						'generalLink' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_GENERAL_URL')
+					]);
+				static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, 'test1');
+				static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, '', 'test2');
+				static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, 'test3', 'test4');
+			}
 		}
+	}
+
+	protected static function checkParameters()
+	{
+		$parametersPath = Gadgets::find()->getPath() . '/.parameters.php';
+		include_once $parametersPath;
+
+		Assert::notEmpty($webForm = $arParameters['PARAMETERS']['WEB_FORM_ID'],
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_PARAM_WEB_FORM_ID'));
+		Assert::notEmpty($urlAll = $arParameters['USER_PARAMETERS']['URL_TEMPLATE_ALL'],
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_PARAM_URL_TEMPLATE_ALL'));
+		Assert::notEmpty($urlToday = $arParameters['USER_PARAMETERS']['URL_TEMPLATE_TODAY'],
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_PARAM_URL_TEMPLATE_TODAY'));
+
+		return ($webForm && $urlAll && $urlToday);
 	}
 
 	protected static function urlChecker($formId, &$todayLinkIndex, &$allLinkIndex, $templateUrlGeneral = '', $templateUrlIndividual = '', $message = [])
@@ -60,10 +78,10 @@ class TestSettingResultLinks extends BaseTest
 		$arGadgetParams = [
 			"TITLE_STD" => "new_gadget_test",
 			"SHOW_UNACTIVE_ELEMENTS" => "Y",
-			"TEMPLATE_URL_GENERAL" => $templateUrlGeneral,
-			"TEMPLATE_URL_INDIVIDUAL" => $templateUrlIndividual,
+			"URL_TEMPLATE_ALL" => $templateUrlGeneral,
+			"URL_TEMPLATE_TODAY" => $templateUrlIndividual,
 			"TEMPLATE_URL" => "",
-			"FORM_ID" => $formId
+			"WEB_FORM_ID" => $formId
 		];
 		include $indexPath;
 		$page = ob_get_contents();
