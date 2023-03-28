@@ -10,6 +10,7 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Locator\Agent\AgentLocator;
 use Intervolga\Edu\Locator\BaseLocator;
+use Intervolga\Edu\Locator\ClassLocator\ClassLocator;
 use Intervolga\Edu\Locator\Event\EventLocator;
 use Intervolga\Edu\Locator\Event\Template\TemplateLocator;
 use Intervolga\Edu\Locator\Event\Type\TypeLocator;
@@ -19,7 +20,9 @@ use Intervolga\Edu\Locator\Iblock\Property\PropertyLocator;
 use Intervolga\Edu\Locator\Iblock\Section\SectionLocator;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Locator\IO\FileLocator;
+use Intervolga\Edu\Locator\Module\ModuleFileLocator;
 use Intervolga\Edu\Locator\Uf\UfLocator;
+use Intervolga\Edu\Locator\Wizard\WizardLocator;
 use Intervolga\Edu\Sniffer;
 use Intervolga\Edu\Util\Admin;
 use Intervolga\Edu\Util\FileMessage;
@@ -453,6 +456,27 @@ class Assert
 	}
 
 	/**
+	 * @param ModuleFileLocator|string $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function moduleFileExists($value, string $message = '')
+	{
+		if ($moduleFile = $value::find()) {
+			static::registerLocatorFound(ModuleFileLocator::class, $value, $moduleFile);
+		} else {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_MODULE_FILE_EXISTS',
+				[
+					'#FILE#' => $value::getNameLoc(),
+					'#POSSIBLE#' => $value::getPossibleTips(),
+				],
+				$message
+			));
+		}
+	}
+
+	/**
 	 * @param FileSystemEntry $value
 	 * @param string $message
 	 * @throws AssertException
@@ -579,6 +603,27 @@ class Assert
 	}
 
 	/**
+	 * @param string|WizardLocator $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function wizardLocator($value, string $message = '')
+	{
+		if ($findWizard = $value::find()) {
+			static::registerLocatorFound(WizardLocator::class, $value, $findWizard);
+		} else {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_WIZARD_LOCATOR',
+				[
+					'#WIZARD_NAME#' => $value::getNameLoc(),
+					'#POSSIBLE#' => $value::getPossibleTips(),
+				],
+				$message
+			));
+		}
+	}
+
+	/**
 	 * @param string|SectionLocator $value
 	 * @param string $message
 	 * @throws AssertException
@@ -673,7 +718,25 @@ class Assert
 			));
 		}
 	}
-
+	/**
+	 * @param string|ClassLocator $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function classLocator($value, string $message = '')
+	{
+		if ($find = $value::find()) {
+			static::registerLocatorFound(ClassLocator::class, $value, $find);
+		} else {
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_CLASS_LOCATOR',
+				[
+					'#POSSIBLE#' => $value::getPossibleTips(),
+				],
+				$message
+			));
+		}
+	}
 	/**
 	 * @param string|DirectoryLocator $value
 	 * @param string $message
@@ -890,7 +953,7 @@ class Assert
 				[
 					'#PROPERTY#' => $property['NAME'],
 					'#NOW_PROPERTIES#' => implode(', ', $values),
-					'#REQUIRED#'=> implode(', ', $nowValues)
+					'#REQUIRED#' => implode(', ', $nowValues)
 				]
 			), $message);
 		}
@@ -901,8 +964,7 @@ class Assert
 		$menuFile = FileSystem::getFile($menuPath);
 		static::fseExists($menuFile);
 		$links = Menu::getMenuLinks($menuPath);
-		if (count($links) != $expect)
-		{
+		if (count($links) != $expect) {
 			static::registerError(static::getCustomOrLocMessage(
 				'INTERVOLGA_EDU.ASSERT_MENU_ITEMS_COUNT',
 				[

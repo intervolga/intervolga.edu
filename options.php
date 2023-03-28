@@ -132,7 +132,8 @@ $locatorsFound = Tester::getLocatorsFound();
 foreach ($testsTree as $courseCode => $course) {
 	$tabControl->beginNextTab();
 	?>
-	<ul>
+	<h2 id="<?=$courseCode?>contents"><?=Loc::getMessage('INTERVOLGA_EDU.COURSE_CONTENTS')?></h2>
+	<ul class="lessons-contents">
 		<?php foreach ($course['LESSONS'] as $lessonCode => $lesson): ?>
 			<?php
 				$title = Loc::getMessage('INTERVOLGA_EDU.LESSON_HEADER', [
@@ -142,18 +143,58 @@ foreach ($testsTree as $courseCode => $course) {
 				]);
 			?>
 			<li>
-				<a href="#<?=$courseCode?><?=$lessonCode?>"><?=$title?></a>
+				<a href="#<?=$courseCode?><?=$lessonCode?>">
+					<?php if (!$stat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']): ?>
+						<?=Loc::getMessage('INTERVOLGA_EDU.LESSON_OK')?>
+					<?php else: ?>
+						<?=Loc::getMessage('INTERVOLGA_EDU.LESSON_FAIL')?>
+					<?php endif ?>
+					<?=$lesson['TITLE']?>
+				</a>
 			</li>
 		<?php endforeach ?>
 	</ul>
 	<?php
+	$prevLessonCode = '';
+	$nextLessonCode = '';
+	$lessonCodes = array_keys($course['LESSONS']);
+	$currentLessonIndex = 0;
 	foreach ($course['LESSONS'] as $lessonCode => $lesson) {
+		if ($currentLessonIndex < count($lessonCodes) + 1)
+		{
+			$nextLessonCode = $lessonCodes[$currentLessonIndex + 1];
+		}
 		$title = Loc::getMessage('INTERVOLGA_EDU.LESSON_HEADER', [
 			'#LESSON#' => $lesson['TITLE'],
 			'#TOTAL#' => count($lesson['TESTS']),
 			'#DONE#' => count($lesson['TESTS']) - intval($stat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']),
 		]);
-		echo '<h2 id="' . $courseCode . $lessonCode . '">' . $title . '</h2>';
+		?>
+		<h2 id="<?=$courseCode . $lessonCode?>">
+			<?=$title?>
+			<span class="contents-link">
+				<?php if ($prevLessonCode): ?>
+					<a href="#<?=$courseCode?><?=$prevLessonCode?>">
+						<?=Loc::getMessage('INTERVOLGA_EDU.GO_BACK')?>
+					</a>
+				<?php else: ?>
+					<?=Loc::getMessage('INTERVOLGA_EDU.GO_BACK')?>
+				<?php endif ?>
+				&nbsp;
+				<a href="#<?=$courseCode?>contents">
+					<?=Loc::getMessage('INTERVOLGA_EDU.GO_UP')?>
+				</a>
+				&nbsp;
+				<?php if ($nextLessonCode): ?>
+					<a href="#<?=$courseCode?><?=$nextLessonCode?>">
+						<?=Loc::getMessage('INTERVOLGA_EDU.GO_FORWARD')?>
+					</a>
+				<?php else: ?>
+					<?=Loc::getMessage('INTERVOLGA_EDU.GO_FORWARD')?>
+				<?php endif ?>
+			</span>
+		</h2>
+		<?php
 		$counter = 1;
 		foreach ($lesson['TESTS'] as $testCode => $test) {
 			$errors = $errorsTree[$courseCode][$lessonCode][$testCode];
@@ -217,7 +258,14 @@ foreach ($testsTree as $courseCode => $course) {
 			echo $message->show();
 			$counter++;
 		}
+		$prevLessonCode = $lessonCode;
+		$currentLessonIndex++;
 	}
+	?>
+	<div class="contents-link">
+		<a href="#<?=$courseCode?>contents"><?=Loc::getMessage('INTERVOLGA_EDU.GO_UP')?></a>
+	</div>
+	<?php
 }
 $tabControl->beginNextTab();
 $links = [

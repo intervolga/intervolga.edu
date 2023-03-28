@@ -8,6 +8,13 @@ Loc::loadMessages(__FILE__);
 
 class CheckArPrefixSniff implements Sniff
 {
+	protected static $exceptionsNames = [
+		'$arResult',
+		'$arParams',
+		'$arWizardVersion',
+		'$arWizardDescription',
+	];
+
 	public function register()
 	{
 		return [T_VARIABLE];
@@ -19,10 +26,7 @@ class CheckArPrefixSniff implements Sniff
 		$token = $tokens[$stackPtr];
 
 		if (preg_match('/\$ar.+/', $token['content'])) {
-			if (!in_array($token['content'], [
-				'$arResult',
-				'$arParams'
-			])) {
+			if (!in_array($token['content'], static::$exceptionsNames)) {
 				$error = Loc::getMessage('INTERVOLGA_EDU.AR_PREFIX_VAR', ['#VAR#' => $token['content']]);
 				$phpcsFile->addError($error, $stackPtr, 'A1CheckArPrefix');
 			}
