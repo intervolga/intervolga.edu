@@ -5,7 +5,6 @@ use Bitrix\Main\Localization\Loc;
 
 class Desktop extends FileLocator
 {
-
 	public static function getNameLoc(): string
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.DESKTOP');
