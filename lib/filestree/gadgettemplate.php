@@ -7,7 +7,7 @@ use Intervolga\Edu\Util\FileSystem;
 
 class GadgetTemplate extends FilesTree
 {
-	use FileSystemTrait;
+	use Traits\FileSystemTrait;
 
 	/**
 	 * @return File[]
