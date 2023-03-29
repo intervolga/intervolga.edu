@@ -116,9 +116,9 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson7\SecurityLevel::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\SecureAuthorization::class,
 
-			\Intervolga\Edu\Tests\Course2\Lesson8\TestGadgetTemplateChecker::class,
+			\Intervolga\Edu\Tests\Course2\Lesson8\TestGadgetTemplate::class,
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestSettingResultLinks::class,
-			\Intervolga\Edu\Tests\Course2\Lesson8\TestDesktopPageChecker::class,
+			\Intervolga\Edu\Tests\Course2\Lesson8\TestDesktopPage::class,
 
 
 			\Intervolga\Edu\Tests\Course2\Lesson9\TestWizardTemplate::class,

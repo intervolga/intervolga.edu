@@ -8,7 +8,7 @@ use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Locator\IO\Gadgets;
 use Intervolga\Edu\Tests\BaseTest;
 
-class TestGadgetTemplateChecker extends BaseTest
+class TestGadgetTemplate extends BaseTest
 {
 	public static function interceptErrors()
 	{
