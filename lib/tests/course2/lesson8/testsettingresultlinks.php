@@ -65,12 +65,12 @@ class TestSettingResultLinks extends BaseTest
 		$gadgetUrls = static::getGadgetUrls($formId, $todayLinkIndex, $allLinkIndex, $templateUrlGeneral, $templateUrlIndividual);
 		$expectedUrls = static::getExpectedUrls($formId, $templateUrlGeneral, $templateUrlIndividual);
 		if (empty($message)) {
-			$message['todayLink'] = Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_TODAY_URL',
+			$message['todayLink'] = Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_WRONG_URL_TODAY',
 				[
 					'#EXPECT#' => $expectedUrls['todayLink'],
 					'#VALUE#' => $gadgetUrls['todayLink']
 				]);
-			$message['generalLink'] = Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_GENERAL_URL',
+			$message['generalLink'] = Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_WRONG_URL_GENERAL',
 				[
 					'#EXPECT#' => $expectedUrls['todayLink'],
 					'#VALUE#' => $gadgetUrls['todayLink']
