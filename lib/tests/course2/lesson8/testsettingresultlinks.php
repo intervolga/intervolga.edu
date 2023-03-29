@@ -30,15 +30,16 @@ class TestSettingResultLinks extends BaseTest
 
 		if ($parameters) {
 			if (Desktop::find() && Gadgets::find()) {
-				$formId = Desktop::find()['PARAMETERS']['G_' . mb_strtoupper(Gadgets::find()->getName()) . '_WEB_FORM_ID'];
+				$formId = Desktop::find()['PARAMETERS']['G_' . mb_strtoupper(Gadgets::find()
+					->getName()) . '_WEB_FORM_ID'];
 				static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, false, false,
 					[
 						'todayLink' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_TODAY_URL'),
 						'generalLink' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_GENERAL_URL')
 					]);
-				static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, 'test1');
-				static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, '', 'test2');
-				static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, 'test3', 'test4');
+				static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, '/id-from-#ID#-to-#ID#/');
+				static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, '', '/id-from-#ID#-to-#ID#/?from=#DATE#&to=#DATE#');
+				static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, '/id-from-#ID#-to-#ID#/', '/id-from-#ID#-to-#ID#/?from=#DATE#&to=#DATE#');
 			}
 		}
 	}
@@ -60,12 +61,20 @@ class TestSettingResultLinks extends BaseTest
 
 	protected static function urlChecker($formId, &$todayLinkIndex, &$allLinkIndex, $templateUrlGeneral = '', $templateUrlIndividual = '', $message = [])
 	{
-		if (empty($message)) {
-			$message['todayLink'] = Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_WRONG_URL_GENERAL');
-			$message['generalLink'] = Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_WRONG_URL_TODAY');
-		}
 		$gadgetUrls = static::getGadgetUrls($formId, $todayLinkIndex, $allLinkIndex, $templateUrlGeneral, $templateUrlIndividual);
 		$expectedUrls = static::getExpectedUrls($formId, $templateUrlGeneral, $templateUrlIndividual);
+		if (empty($message)) {
+			$message['todayLink'] = Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_TODAY_URL',
+				[
+					'#EXPECT#' => $expectedUrls['todayLink'],
+					'#VALUE#' => $gadgetUrls['todayLink']
+				]);
+			$message['generalLink'] = Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_GENERAL_URL',
+				[
+					'#EXPECT#' => $expectedUrls['todayLink'],
+					'#VALUE#' => $gadgetUrls['todayLink']
+				]);
+		}
 		Assert::eq($gadgetUrls['todayLink'], $expectedUrls['todayLink'], $message['todayLink']);
 		Assert::eq($gadgetUrls['generalLink'], $expectedUrls['generalLink'], $message['generalLink']);
 	}
@@ -87,7 +96,7 @@ class TestSettingResultLinks extends BaseTest
 		$page = ob_get_contents();
 		ob_clean();
 
-		preg_match_all('/href="[\w\s\d\=\'"\/_\.\?&;]*\>/iu', $page, $matches, PREG_SET_ORDER);
+		preg_match_all('/href="[\w\s\d\=\'"\/_\.\?&;\-\#\$\%\^:]*\>/iu', $page, $matches, PREG_SET_ORDER);
 		foreach ($matches as $match) {
 			$urls[] = mb_strcut($match[0], strpos($match[0], '"') + 1, -2);
 		}
@@ -107,32 +116,36 @@ class TestSettingResultLinks extends BaseTest
 	{
 		$result['generalLink'] = $templateUrlGeneral;
 		$result['todayLink'] = $templateUrlIndividual;
-		$today = (new Date())->toString();
-
 		if (!$result['generalLink']) {
-			$result['generalLink'] = str_replace(
-				[
-					'#ID#',
-					'#DATE#'
-				],
-				[
-					$formId,
-					$today
-				],
-				static::GENERAL_LINK);
+			$result['generalLink'] = static::GENERAL_LINK;
 		}
 		if (!$result['todayLink']) {
-			$result['todayLink'] = str_replace(
-				[
-					'#ID#',
-					'#DATE#'
-				],
-				[
-					$formId,
-					$today
-				],
-				static::TODAY_LINK);
+			$result['todayLink'] = static::TODAY_LINK;
 		}
+
+		$today = (new Date())->toString();
+
+		$result['generalLink'] = str_replace(
+			[
+				'#ID#',
+				'#DATE#'
+			],
+			[
+				$formId,
+				$today
+			],
+			$result['generalLink']);
+
+		$result['todayLink'] = str_replace(
+			[
+				'#ID#',
+				'#DATE#'
+			],
+			[
+				$formId,
+				$today
+			],
+			$result['todayLink']);
 
 		return $result;
 	}
