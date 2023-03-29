@@ -73,8 +73,14 @@ class TestRespondentComponent extends BaseComponentTest
 			if ($child->isFile() && $child->getExtension() == 'php') {
 				Assert::fileContentNotMatches($child, new Regex('/(Мужчина|Женщина|Заработная плата|Пол|Возраст)/iu',
 					Loc::getMessage('INTERVOLGA_EDU.COURSE_3_LESSON_3_FILE_CONTAINS_INVALID_WORLDS')));
+			} elseif ($child->isDirectory() && $child->getName() == 'lang' && $templateDir->getLangRuDir()
+					->isExists()) {
+				$langDir = $templateDir->getLangRuDir();
+				foreach ($langDir->getChildren() as $langFile) {
+					Assert::fileContentNotMatches($langFile, new Regex('/(Мужчина|Женщина|Заработная плата|Пол|Возраст)/iu',
+						Loc::getMessage('INTERVOLGA_EDU.COURSE_3_LESSON_3_FILE_CONTAINS_INVALID_WORLDS')));
+				}
 			}
-			//todo: lang-папку проверить
 		}
 	}
 
