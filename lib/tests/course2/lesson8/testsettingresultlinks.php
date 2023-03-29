@@ -39,8 +39,8 @@ class TestSettingResultLinks extends BaseTest
 						'todayLink' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_TODAY_URL'),
 						'generalLink' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_GENERAL_URL'),
 					]);
-				static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, '/id-from-#ID#-to-#ID#/');
-				static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, '', '/id-from-#ID#-to-#ID#/?from=#DATE#&to=#DATE#');
+				static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, '/id-from-#ID#-to-#ID#/', '', ['todayLink' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_TODAY_URL')]);
+				static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, '', '/id-from-#ID#-to-#ID#/?from=#DATE#&to=#DATE#', ['generalLink' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_GENERAL_URL')]);
 				static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, '/id-from-#ID#-to-#ID#/', '/id-from-#ID#-to-#ID#/?from=#DATE#&to=#DATE#');
 			}
 		}
