@@ -53,27 +53,29 @@ abstract class BaseComponentTest extends BaseComponentTemplateTest
 	protected static function testComponentTrash(Component $componentDir)
 	{
 		foreach ($componentDir->getUnknownFileSystemEntries() as $unknownFileSystemEntry) {
-			if ($unknownFileSystemEntry->getName() == $componentDir->getTemplatesDir()->getName()) {
-				$locatorTemplate = static::getTemplateLocator();
-				Assert::directoryLocator($locatorTemplate);
-				if ($templateDir = $locatorTemplate::find(static::getComponentTemplateTree()::getTemplateTree())) {
-					/**
-					 * @var ComponentTemplate $templateDir
-					 */
-					static::testTemplateTrash($templateDir);
-					static::testTemplateCode($templateDir);
-				}
-			} else {
-				Assert::fseNotExists($unknownFileSystemEntry);
-			}
+			Assert::fseNotExists($unknownFileSystemEntry);
 		}
 
+		static::checkTemplateDirectory();
 		static::checkRequiredFilesComponent($componentDir);
 
 		foreach ($componentDir->getLangForeignDirs() as $langForeignDir) {
 			Assert::directoryNotExists($langForeignDir);
 		}
 		static::testComponentLangRuTrash($componentDir);
+	}
+
+	protected static function checkTemplateDirectory()
+	{
+		$locatorTemplate = static::getTemplateLocator();
+		Assert::directoryLocator($locatorTemplate);
+		if ($templateDir = $locatorTemplate::find(static::getComponentTemplateTree()::getTemplateTree())) {
+			/**
+			 * @var ComponentTemplate $templateDir
+			 */
+			static::testTemplateTrash($templateDir);
+			static::testTemplateCode($templateDir);
+		}
 	}
 
 	/** локатор для шаблона
