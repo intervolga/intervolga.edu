@@ -1,6 +1,7 @@
 <?php
 namespace Intervolga\Edu\Tests\Course2\Lesson8;
 
+use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\Type\Date;
 use Intervolga\Edu\Asserts\Assert;
@@ -8,6 +9,7 @@ use Intervolga\Edu\Locator\Component\Desktop;
 use Intervolga\Edu\Locator\IO\Desktop as DesktopPage;
 use Intervolga\Edu\Locator\IO\Gadgets;
 use Intervolga\Edu\Tests\BaseTest;
+use Intervolga\Edu\Util\FileMessage;
 
 class TestSettingResultLinks extends BaseTest
 {
@@ -35,7 +37,7 @@ class TestSettingResultLinks extends BaseTest
 				static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, false, false,
 					[
 						'todayLink' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_TODAY_URL'),
-						'generalLink' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_GENERAL_URL')
+						'generalLink' => Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_GENERAL_URL'),
 					]);
 				static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, '/id-from-#ID#-to-#ID#/');
 				static::urlChecker($formId, $todayLinkIndex, $allLinkIndex, '', '/id-from-#ID#-to-#ID#/?from=#DATE#&to=#DATE#');
@@ -46,18 +48,45 @@ class TestSettingResultLinks extends BaseTest
 
 	protected static function checkParameters()
 	{
+		$result = false;
+		$arParameters = [];
 		if (Gadgets::find()) {
 			$parametersPath = Gadgets::find()->getPath() . '/.parameters.php';
-			include_once $parametersPath;
-		}
-		Assert::notEmpty($webForm = $arParameters['PARAMETERS']['WEB_FORM_ID'],
-			Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_PARAM_WEB_FORM_ID'));
-		Assert::notEmpty($urlAll = $arParameters['USER_PARAMETERS']['URL_TEMPLATE_ALL'],
-			Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_PARAM_URL_TEMPLATE_ALL'));
-		Assert::notEmpty($urlToday = $arParameters['USER_PARAMETERS']['URL_TEMPLATE_TODAY'],
-			Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_PARAM_URL_TEMPLATE_TODAY'));
+			$parametersFile = new File($parametersPath);
+			Assert::fseExists($parametersFile);
+			if ($parametersFile->isExists()) {
+				include $parametersPath;
 
-		return ($webForm && $urlAll && $urlToday);
+				Assert::notEmpty(
+					$webForm = $arParameters['PARAMETERS']['WEB_FORM_ID'],
+					Loc::getMessage(
+						'INTERVOLGA_EDU.COURSE_2_LESSON_8_PARAM_WEB_FORM_ID',
+						[
+							'#FILE#' => FileMessage::get($parametersFile),
+						]
+					));
+				Assert::notEmpty(
+					$urlAll = $arParameters['USER_PARAMETERS']['URL_TEMPLATE_ALL'],
+					Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_PARAM_URL_TEMPLATE_ALL',
+						[
+							'#FILE#' => FileMessage::get($parametersFile),
+						]
+					)
+				);
+				Assert::notEmpty(
+					$urlToday = $arParameters['USER_PARAMETERS']['URL_TEMPLATE_TODAY'],
+					Loc::getMessage(
+						'INTERVOLGA_EDU.COURSE_2_LESSON_8_PARAM_URL_TEMPLATE_TODAY',
+						[
+							'#FILE#' => FileMessage::get($parametersFile),
+						]
+					)
+				);
+				$result = ($webForm && $urlAll && $urlToday);
+			}
+		}
+
+		return $result;
 	}
 
 	protected static function urlChecker($formId, &$todayLinkIndex, &$allLinkIndex, $templateUrlGeneral = '', $templateUrlIndividual = '', $message = [])
@@ -68,12 +97,12 @@ class TestSettingResultLinks extends BaseTest
 			$message['todayLink'] = Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_WRONG_URL_TODAY',
 				[
 					'#EXPECT#' => $expectedUrls['todayLink'],
-					'#VALUE#' => $gadgetUrls['todayLink']
+					'#VALUE#' => $gadgetUrls['todayLink'],
 				]);
 			$message['generalLink'] = Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_WRONG_URL_GENERAL',
 				[
 					'#EXPECT#' => $expectedUrls['todayLink'],
-					'#VALUE#' => $gadgetUrls['todayLink']
+					'#VALUE#' => $gadgetUrls['todayLink'],
 				]);
 		}
 		Assert::eq($gadgetUrls['todayLink'], $expectedUrls['todayLink'], $message['todayLink']);
@@ -91,7 +120,7 @@ class TestSettingResultLinks extends BaseTest
 			"URL_TEMPLATE_ALL" => $templateUrlGeneral,
 			"URL_TEMPLATE_TODAY" => $templateUrlIndividual,
 			"TEMPLATE_URL" => "",
-			"WEB_FORM_ID" => $formId
+			"WEB_FORM_ID" => $formId,
 		];
 		include $indexPath;
 		$page = ob_get_contents();
@@ -109,7 +138,7 @@ class TestSettingResultLinks extends BaseTest
 
 		return [
 			'todayLink' => $urls[$todayLinkIndex],
-			'generalLink' => $urls[$allLinkIndex]
+			'generalLink' => $urls[$allLinkIndex],
 		];
 	}
 
@@ -129,22 +158,22 @@ class TestSettingResultLinks extends BaseTest
 		$result['generalLink'] = str_replace(
 			[
 				'#ID#',
-				'#DATE#'
+				'#DATE#',
 			],
 			[
 				$formId,
-				$today
+				$today,
 			],
 			$result['generalLink']);
 
 		$result['todayLink'] = str_replace(
 			[
 				'#ID#',
-				'#DATE#'
+				'#DATE#',
 			],
 			[
 				$formId,
-				$today
+				$today,
 			],
 			$result['todayLink']);
 
