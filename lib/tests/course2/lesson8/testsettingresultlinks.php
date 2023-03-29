@@ -46,9 +46,10 @@ class TestSettingResultLinks extends BaseTest
 
 	protected static function checkParameters()
 	{
-		$parametersPath = Gadgets::find()->getPath() . '/.parameters.php';
-		include_once $parametersPath;
-
+		if (Gadgets::find()) {
+			$parametersPath = Gadgets::find()->getPath() . '/.parameters.php';
+			include_once $parametersPath;
+		}
 		Assert::notEmpty($webForm = $arParameters['PARAMETERS']['WEB_FORM_ID'],
 			Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_8_PARAM_WEB_FORM_ID'));
 		Assert::notEmpty($urlAll = $arParameters['USER_PARAMETERS']['URL_TEMPLATE_ALL'],
