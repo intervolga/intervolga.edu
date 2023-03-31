@@ -20,6 +20,15 @@
 #bx-admin-prefix #tabControl_layout .adm-info-message .adm-btn {
 	min-height: 29px;
 }
+#bx-admin-prefix #tabControl_layout .adm-info-message pre {
+	margin: 2px 0;
+}
+#bx-admin-prefix #tabControl_layout .adm-info-message pre.expect {
+	color: #0A0;
+}
+#bx-admin-prefix #tabControl_layout .adm-info-message pre.value {
+	color: #A00;
+}
 #bx-admin-prefix .iv-copy-link {
 	display: inline-block;
 	height: 15px;
