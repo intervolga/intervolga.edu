@@ -202,8 +202,8 @@ foreach ($testsTree as $courseCode => $course) {
 				</h2>
 				<?php if (strlen($help)): ?>
 					<div class="help">
-						<h3 onclick="intervolgaEduToggleOpen(this)"><?=Loc::getMessage('INTERVOLGA_EDU.LESSON_HELP')?></h3>
-						<div style="display: none">
+						<h3><?=Loc::getMessage('INTERVOLGA_EDU.LESSON_HELP')?></h3>
+						<div>
 							<?=$help?>
 						</div>
 					</div>

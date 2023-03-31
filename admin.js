@@ -39,12 +39,6 @@ function intervolgaEduScrollToTest() {
 	}
 }
 
-
-function intervolgaEduToggleOpen(el){
-	const div = el.nextElementSibling;
-	div.style.display = div.style.display ? '' : 'none';
-}
-
 function intervolgaEduOnTabChanged(tab) {
 	BX.setCookie('intervolga_edu_tab', tab);
 }
