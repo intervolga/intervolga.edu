@@ -50,7 +50,7 @@ abstract class BaseComponentTemplateTest extends BaseTest
 	 */
 	abstract protected static function getComponentTemplateTree();
 
-	protected static function testTemplateTrash($templateDir)
+	protected static function testTemplateTrash(FilesTree $templateDir)
 	{
 		foreach ($templateDir->getUnknownFileSystemEntries() as $unknownFileSystemEntry) {
 			Assert::fseNotExists($unknownFileSystemEntry);
