@@ -21,7 +21,6 @@ use Bitrix\Main\Type\DateTime;
 use Intervolga\Edu\Locator\BaseLocator;
 use Intervolga\Edu\Tester;
 use Intervolga\Edu\Util\Help;
-use Intervolga\Edu\Util\Update;
 
 CJSCore::Init([
 	'jquery',
@@ -50,8 +49,6 @@ if ($request->isPost()) {
 		Option::delete($module_id, [
 			'name' => $optionName
 		]);
-	} elseif ($zipName = $request->getPost('UNPACK')) {
-		Update::unpack($zipName);
 	}
 	LocalRedirect($request->getRequestUri());
 }
@@ -287,10 +284,6 @@ foreach ($testsTree as $courseCode => $course) {
 	<?php
 }
 $tabControl->beginNextTab();
-$links = [
-	'master' => 'https://gitlab.intervolga.ru/common/intervolga.edu/-/archive/master/intervolga.edu-master.zip',
-	'develop' => 'https://gitlab.intervolga.ru/common/intervolga.edu/-/archive/develop/intervolga.edu-develop.zip',
-];
 $arModuleVersion = [];
 include Application::getDocumentRoot() . '/local/modules/intervolga.edu/install/version.php';
 $versionDate = $arModuleVersion['VERSION_DATE'];
@@ -314,31 +307,6 @@ if ($versionDate)
 			<div><?=Loc::getMessage('INTERVOLGA_EDU.MODULE_TESTS_COUNT', [
 					'#COUNT#' => Tester::getTestClassesCount(),
 				])?></div>
-			<h2>1. <?=Loc::getMessage('INTERVOLGA_EDU.DOWNLOAD_ZIP')?></h2>
-			<?php foreach ($links as $branch => $href): ?>
-				<a href="<?=$href?>" class="adm-btn" target="_blank"><?=$branch?></a>
-				<br><br>
-			<?php endforeach ?>
-			<h2>2. <?=Loc::getMessage('INTERVOLGA_EDU.UPLOAD_ZIP')?></h2>
-			<a href="/bitrix/admin/fileman_file_upload.php?lang=ru&site=s1&path=%2Flocal%2Fmodules"
-			   class="adm-btn" target="_blank"><?=Loc::getMessage('INTERVOLGA_EDU.GOTO_UNZIP_DIR')?></a>
-			<h2>3. <?=Loc::getMessage('INTERVOLGA_EDU.UNPACK')?></h2>
-			<?php if (Update::getZipFiles()): ?>
-				<?php foreach (Update::getZipFiles() as $file): ?>
-					<form action="" method="post">
-						<?=bitrix_sessid_post()?>
-						<button type="submit" class="adm-btn adm-btn-save" name="UNPACK" value="<?=$file->getName()?>">
-							<?=Loc::getMessage('INTERVOLGA_EDU.UNPACK_ZIP', [
-								'#ZIP#' => $file->getName(),
-								'#DATETIME#' => DateTime::createFromTimestamp($file->getModificationTime())->format('d.m.Y H:i'),
-							])?>
-						</button>
-					</form>
-					<br><br>
-				<?php endforeach ?>
-			<?php else: ?>
-				<?=Loc::getMessage('INTERVOLGA_EDU.NO_ZIP_FILES')?>
-			<?php endif ?>
 		</td>
 	</tr>
 <?php
