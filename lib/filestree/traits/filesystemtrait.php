@@ -86,4 +86,15 @@ trait FileSystemTrait
 
 		return $result;
 	}
+	/**
+	 * @return Directory[]
+	 */
+	public function getKnownDirs(): array
+	{
+		$result = [
+			$this->getLangDir(),
+		];
+
+		return $result;
+	}
 }
