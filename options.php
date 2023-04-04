@@ -20,7 +20,7 @@ use Bitrix\Main\Page\Asset;
 use Bitrix\Main\Type\DateTime;
 use Intervolga\Edu\Locator\BaseLocator;
 use Intervolga\Edu\Tester;
-use Intervolga\Edu\Util\Update;
+use Intervolga\Edu\Util\Help;
 
 CJSCore::Init([
 	'jquery',
@@ -49,8 +49,6 @@ if ($request->isPost()) {
 		Option::delete($module_id, [
 			'name' => $optionName
 		]);
-	} elseif ($zipName = $request->getPost('UNPACK')) {
-		Update::unpack($zipName);
 	}
 	LocalRedirect($request->getRequestUri());
 }
@@ -132,146 +130,160 @@ $locatorsFound = Tester::getLocatorsFound();
 foreach ($testsTree as $courseCode => $course) {
 	$tabControl->beginNextTab();
 	?>
-	<h2 id="<?=$courseCode?>contents"><?=Loc::getMessage('INTERVOLGA_EDU.COURSE_CONTENTS')?></h2>
-	<ul class="lessons-contents">
-		<?php foreach ($course['LESSONS'] as $lessonCode => $lesson): ?>
+	<tr>
+		<td>
+			<h2 id="<?=$courseCode?>contents"><?=Loc::getMessage('INTERVOLGA_EDU.COURSE_CONTENTS')?></h2>
+			<ul class="lessons-contents">
+				<?php foreach ($course['LESSONS'] as $lessonCode => $lesson): ?>
+					<?php
+						$title = Loc::getMessage('INTERVOLGA_EDU.LESSON_HEADER', [
+							'#LESSON#' => $lesson['TITLE'],
+							'#TOTAL#' => count($lesson['TESTS']),
+							'#DONE#' => count($lesson['TESTS']) - intval($stat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']),
+						]);
+					?>
+					<li>
+						<a href="#<?=$courseCode?><?=$lessonCode?>">
+							<?php if (!$stat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']): ?>
+								<?=Loc::getMessage('INTERVOLGA_EDU.LESSON_OK')?>
+							<?php else: ?>
+								<?=Loc::getMessage('INTERVOLGA_EDU.LESSON_FAIL')?>
+							<?php endif ?>
+							<?=$lesson['TITLE']?>
+						</a>
+					</li>
+				<?php endforeach ?>
+			</ul>
 			<?php
+			$prevLessonCode = '';
+			$nextLessonCode = '';
+			$lessonCodes = array_keys($course['LESSONS']);
+			$currentLessonIndex = 0;
+			foreach ($course['LESSONS'] as $lessonCode => $lesson) {
+				if ($currentLessonIndex < count($lessonCodes) + 1)
+				{
+					$nextLessonCode = $lessonCodes[$currentLessonIndex + 1];
+				}
 				$title = Loc::getMessage('INTERVOLGA_EDU.LESSON_HEADER', [
 					'#LESSON#' => $lesson['TITLE'],
 					'#TOTAL#' => count($lesson['TESTS']),
 					'#DONE#' => count($lesson['TESTS']) - intval($stat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']),
 				]);
-			?>
-			<li>
-				<a href="#<?=$courseCode?><?=$lessonCode?>">
+				$help = Help::get($courseCode, $lessonCode);
+				?>
+				<h2 id="<?=$courseCode . $lessonCode?>">
 					<?php if (!$stat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']): ?>
 						<?=Loc::getMessage('INTERVOLGA_EDU.LESSON_OK')?>
 					<?php else: ?>
 						<?=Loc::getMessage('INTERVOLGA_EDU.LESSON_FAIL')?>
 					<?php endif ?>
-					<?=$lesson['TITLE']?>
-				</a>
-			</li>
-		<?php endforeach ?>
-	</ul>
-	<?php
-	$prevLessonCode = '';
-	$nextLessonCode = '';
-	$lessonCodes = array_keys($course['LESSONS']);
-	$currentLessonIndex = 0;
-	foreach ($course['LESSONS'] as $lessonCode => $lesson) {
-		if ($currentLessonIndex < count($lessonCodes) + 1)
-		{
-			$nextLessonCode = $lessonCodes[$currentLessonIndex + 1];
-		}
-		$title = Loc::getMessage('INTERVOLGA_EDU.LESSON_HEADER', [
-			'#LESSON#' => $lesson['TITLE'],
-			'#TOTAL#' => count($lesson['TESTS']),
-			'#DONE#' => count($lesson['TESTS']) - intval($stat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']),
-		]);
-		?>
-		<h2 id="<?=$courseCode . $lessonCode?>">
-			<?=$title?>
-			<span class="contents-link">
-				<?php if ($prevLessonCode): ?>
-					<a href="#<?=$courseCode?><?=$prevLessonCode?>">
-						<?=Loc::getMessage('INTERVOLGA_EDU.GO_BACK')?>
-					</a>
-				<?php else: ?>
-					<?=Loc::getMessage('INTERVOLGA_EDU.GO_BACK')?>
+					<?=$title?>
+					<span class="contents-link">
+						<?php if ($prevLessonCode): ?>
+							<a href="#<?=$courseCode?><?=$prevLessonCode?>">
+								<?=Loc::getMessage('INTERVOLGA_EDU.GO_BACK')?>
+							</a>
+						<?php else: ?>
+							<?=Loc::getMessage('INTERVOLGA_EDU.GO_BACK')?>
+						<?php endif ?>
+						&nbsp;
+						<a href="#<?=$courseCode?>contents">
+							<?=Loc::getMessage('INTERVOLGA_EDU.GO_UP')?>
+						</a>
+						&nbsp;
+						<?php if ($nextLessonCode): ?>
+							<a href="#<?=$courseCode?><?=$nextLessonCode?>">
+								<?=Loc::getMessage('INTERVOLGA_EDU.GO_FORWARD')?>
+							</a>
+						<?php else: ?>
+							<?=Loc::getMessage('INTERVOLGA_EDU.GO_FORWARD')?>
+						<?php endif ?>
+					</span>
+				</h2>
+				<?php if (strlen($help)): ?>
+					<div class="help">
+						<h3><?=Loc::getMessage('INTERVOLGA_EDU.LESSON_HELP')?></h3>
+						<div>
+							<?=$help?>
+						</div>
+					</div>
 				<?php endif ?>
-				&nbsp;
-				<a href="#<?=$courseCode?>contents">
-					<?=Loc::getMessage('INTERVOLGA_EDU.GO_UP')?>
-				</a>
-				&nbsp;
-				<?php if ($nextLessonCode): ?>
-					<a href="#<?=$courseCode?><?=$nextLessonCode?>">
-						<?=Loc::getMessage('INTERVOLGA_EDU.GO_FORWARD')?>
-					</a>
-				<?php else: ?>
-					<?=Loc::getMessage('INTERVOLGA_EDU.GO_FORWARD')?>
-				<?php endif ?>
-			</span>
-		</h2>
-		<?php
-		$counter = 1;
-		foreach ($lesson['TESTS'] as $testCode => $test) {
-			$errors = $errorsTree[$courseCode][$lessonCode][$testCode];
-			$messageParams = [
-				'HTML' => true,
-				'MESSAGE' => Loc::getMessage(
-					'INTERVOLGA_EDU.TEST_HEADER',
-					[
-						'#NUMBER#' => $counter,
-						'#TEST#' => $test['TITLE'],
-						'#CODE#' => $test['CODE'],
-					]),
-			];
-			if ($test['DESCRIPTION']) {
-				$messageParams['DETAILS'] = '<div class="desc">' . $test['DESCRIPTION'] . '</div>';
-			}
-			if ($errors) {
-				$messageParams['DETAILS'] .= implode('<br>', $errors);
-			} else {
-				$messageParams['DETAILS'] .= Loc::getMessage('INTERVOLGA_EDU.TEST_NO_ERRORS');
-				$messageParams['TYPE'] = 'OK';
-			}
-			$reportId = $courseCode . "_" . $lessonCode . "_" . strtolower($test['CODE']) . "_problem";
-
-			if ($messageParams['TYPE'] !== 'OK') {
-				$messCode = 'INTERVOLGA_EDU.REPORT_MALE';
-				$code = 'ADD';
-				$buttonClass = '';
-				if (array_key_exists($reportId, $claimsDatetimes)) {
-					$buttonClass = 'adm-btn';
-					$messCode = 'INTERVOLGA_EDU.REMOVE_REPORT';
-					$code = 'REMOVE';
-				} else {
-					$buttonClass = 'adm-btn adm-btn-save';
-					if ($isFemale) {
-						$messCode = 'INTERVOLGA_EDU.REPORT_FEMALE';
+				<?php
+				$counter = 1;
+				foreach ($lesson['TESTS'] as $testCode => $test) {
+					$errors = $errorsTree[$courseCode][$lessonCode][$testCode];
+					$messageParams = [
+						'HTML' => true,
+						'MESSAGE' => Loc::getMessage(
+							'INTERVOLGA_EDU.TEST_HEADER',
+							[
+								'#NUMBER#' => $counter,
+								'#TEST#' => $test['TITLE'],
+								'#CODE#' => $test['CODE'],
+							]),
+					];
+					if ($test['DESCRIPTION']) {
+						$messageParams['DETAILS'] = '<div class="desc">' . $test['DESCRIPTION'] . '</div>';
 					}
-				}
-				$messageParams["DETAILS"] .= '<form method="post">';
-				$messageParams["DETAILS"] .= '<button type="submit" class="' . $buttonClass . '" name="' . $code . '" value="' . $reportId . '">' . Loc::getMessage($messCode, ["#TIME#" => $claimsDatetimes[$reportId]]) . '</button>';
-				$messageParams["DETAILS"] .= '</form>';
-			}
+					if ($errors) {
+						$messageParams['DETAILS'] .= implode('<br>', $errors);
+					} else {
+						$messageParams['DETAILS'] .= Loc::getMessage('INTERVOLGA_EDU.TEST_NO_ERRORS');
+						$messageParams['TYPE'] = 'OK';
+					}
+					$reportId = $courseCode . "_" . $lessonCode . "_" . strtolower($test['CODE']) . "_problem";
 
-			if ($locatorsFound[$testCode]) {
-				$locatorsInfo = [];
-				foreach ($locatorsFound[$testCode] as $parentLocator => $locatorClasses) {
-					foreach ($locatorClasses as $locatorClass => $founds) {
-						foreach ($founds as $found) {
-							/**
-							 * @var BaseLocator $parentLocator
-							 * @var BaseLocator $locatorClass
-							 */
-							$locatorsInfo [] = $locatorClass::getReport($parentLocator, $found);
+					if ($messageParams['TYPE'] !== 'OK') {
+						$messCode = 'INTERVOLGA_EDU.REPORT_MALE';
+						$code = 'ADD';
+						$buttonClass = '';
+						if (array_key_exists($reportId, $claimsDatetimes)) {
+							$buttonClass = 'adm-btn';
+							$messCode = 'INTERVOLGA_EDU.REMOVE_REPORT';
+							$code = 'REMOVE';
+						} else {
+							$buttonClass = 'adm-btn adm-btn-save';
+							if ($isFemale) {
+								$messCode = 'INTERVOLGA_EDU.REPORT_FEMALE';
+							}
 						}
+						$messageParams["DETAILS"] .= '<form method="post">';
+						$messageParams["DETAILS"] .= '<button type="submit" class="' . $buttonClass . '" name="' . $code . '" value="' . $reportId . '">' . Loc::getMessage($messCode, ["#TIME#" => $claimsDatetimes[$reportId]]) . '</button>';
+						$messageParams["DETAILS"] .= '</form>';
 					}
-				}
-				$messageParams["DETAILS"] .= '<div class="locators-info">' . implode('<br>', $locatorsInfo) . '</div>';
-			}
 
-			$message = new CAdminMessage($messageParams);
-			echo $message->show();
-			$counter++;
-		}
-		$prevLessonCode = $lessonCode;
-		$currentLessonIndex++;
-	}
-	?>
-	<div class="contents-link">
-		<a href="#<?=$courseCode?>contents"><?=Loc::getMessage('INTERVOLGA_EDU.GO_UP')?></a>
-	</div>
+					if ($locatorsFound[$testCode]) {
+						$locatorsInfo = [];
+						foreach ($locatorsFound[$testCode] as $parentLocator => $locatorClasses) {
+							foreach ($locatorClasses as $locatorClass => $founds) {
+								foreach ($founds as $found) {
+									/**
+									 * @var BaseLocator $parentLocator
+									 * @var BaseLocator $locatorClass
+									 */
+									$locatorsInfo [] = $locatorClass::getReport($parentLocator, $found);
+								}
+							}
+						}
+						$messageParams["DETAILS"] .= '<div class="locators-info">' . implode('<br>', $locatorsInfo) . '</div>';
+					}
+
+					$message = new CAdminMessage($messageParams);
+					echo $message->show();
+					$counter++;
+				}
+				$prevLessonCode = $lessonCode;
+				$currentLessonIndex++;
+			}
+			?>
+			<div class="contents-link">
+				<a href="#<?=$courseCode?>contents"><?=Loc::getMessage('INTERVOLGA_EDU.GO_UP')?></a>
+			</div>
+		</td>
+	</tr>
 	<?php
 }
 $tabControl->beginNextTab();
-$links = [
-	'master' => 'https://gitlab.intervolga.ru/common/intervolga.edu/-/archive/master/intervolga.edu-master.zip',
-	'develop' => 'https://gitlab.intervolga.ru/common/intervolga.edu/-/archive/develop/intervolga.edu-develop.zip',
-];
 $arModuleVersion = [];
 include Application::getDocumentRoot() . '/local/modules/intervolga.edu/install/version.php';
 $versionDate = $arModuleVersion['VERSION_DATE'];
@@ -284,39 +296,18 @@ if ($versionDate)
 	}
 }
 ?>
-	<div><?=Loc::getMessage('INTERVOLGA_EDU.MODULE_VERSION', [
-			'#VERSION#' => $arModuleVersion['VERSION'],
-		])?></div>
-	<div><?=Loc::getMessage('INTERVOLGA_EDU.MODULE_VERSION_DATE', [
-			'#VERSION_DATE#' => $versionDate,
-		])?></div>
-	<div><?=Loc::getMessage('INTERVOLGA_EDU.MODULE_TESTS_COUNT', [
-			'#COUNT#' => Tester::getTestClassesCount(),
-		])?></div>
-	<h2>1. <?=Loc::getMessage('INTERVOLGA_EDU.DOWNLOAD_ZIP')?></h2>
-	<?php foreach ($links as $branch => $href): ?>
-		<a href="<?=$href?>" class="adm-btn" target="_blank"><?=$branch?></a>
-		<br><br>
-	<?php endforeach ?>
-	<h2>2. <?=Loc::getMessage('INTERVOLGA_EDU.UPLOAD_ZIP')?></h2>
-	<a href="/bitrix/admin/fileman_file_upload.php?lang=ru&site=s1&path=%2Flocal%2Fmodules"
-	   class="adm-btn" target="_blank"><?=Loc::getMessage('INTERVOLGA_EDU.GOTO_UNZIP_DIR')?></a>
-	<h2>3. <?=Loc::getMessage('INTERVOLGA_EDU.UNPACK')?></h2>
-	<?php if (Update::getZipFiles()): ?>
-		<?php foreach (Update::getZipFiles() as $file): ?>
-			<form action="" method="post">
-				<?=bitrix_sessid_post()?>
-				<button type="submit" class="adm-btn adm-btn-save" name="UNPACK" value="<?=$file->getName()?>">
-					<?=Loc::getMessage('INTERVOLGA_EDU.UNPACK_ZIP', [
-						'#ZIP#' => $file->getName(),
-						'#DATETIME#' => DateTime::createFromTimestamp($file->getModificationTime())->format('d.m.Y H:i'),
-					])?>
-				</button>
-			</form>
-			<br><br>
-		<?php endforeach ?>
-	<?php else: ?>
-		<?=Loc::getMessage('INTERVOLGA_EDU.NO_ZIP_FILES')?>
-	<?php endif ?>
+	<tr>
+		<td>
+			<div><?=Loc::getMessage('INTERVOLGA_EDU.MODULE_VERSION', [
+					'#VERSION#' => $arModuleVersion['VERSION'],
+				])?></div>
+			<div><?=Loc::getMessage('INTERVOLGA_EDU.MODULE_VERSION_DATE', [
+					'#VERSION_DATE#' => $versionDate,
+				])?></div>
+			<div><?=Loc::getMessage('INTERVOLGA_EDU.MODULE_TESTS_COUNT', [
+					'#COUNT#' => Tester::getTestClassesCount(),
+				])?></div>
+		</td>
+	</tr>
 <?php
 $tabControl->end();
