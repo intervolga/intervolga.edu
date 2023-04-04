@@ -109,8 +109,17 @@ class Tester
 
 			\Intervolga\Edu\Tests\Course2\Lesson5_2\TestComponentCache::class,
 
+			\Intervolga\Edu\Tests\Course2\Lesson6\TestWebFormsChecker::class,
+			\Intervolga\Edu\Tests\Course2\Lesson6\TestVacanciesParametersChecker::class,
+			\Intervolga\Edu\Tests\Course2\Lesson6\TestCustomComponentChecker::class,
+
 			\Intervolga\Edu\Tests\Course2\Lesson7\SecurityLevel::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\SecureAuthorization::class,
+
+			\Intervolga\Edu\Tests\Course2\Lesson8\TestGadgetTemplate::class,
+			\Intervolga\Edu\Tests\Course2\Lesson8\TestSettingResultLinks::class,
+			\Intervolga\Edu\Tests\Course2\Lesson8\TestDesktopPage::class,
+
 
 			\Intervolga\Edu\Tests\Course2\Lesson9\TestWizardTemplate::class,
 			\Intervolga\Edu\Tests\Course2\Lesson9\TestWizard::class,

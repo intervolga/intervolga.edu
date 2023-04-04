@@ -13,6 +13,9 @@ class CheckArPrefixSniff implements Sniff
 		'$arParams',
 		'$arWizardVersion',
 		'$arWizardDescription',
+		'$arGadgetParams',
+		'$arParameters',
+		'$arDescription',
 	];
 
 	public function register()
