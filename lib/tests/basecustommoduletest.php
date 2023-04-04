@@ -19,7 +19,7 @@ abstract class BaseCustomModuleTest extends BaseComponentTemplateTest
 		return Loc::getMessage('INTERVOLGA_EDU.TEST_CUSTOM_MODULE_DESCRIPTION');
 	}
 
-	protected static function testTemplateTrash(ComponentTemplate $templateDir)
+	protected static function testTemplateTrash(ComponentTemplate|\Intervolga\Edu\FilesTree\FilesTree $templateDir)
 	{
 		foreach ($templateDir->getUnknownFileSystemEntries() as $unknownFileSystemEntry) {
 			Assert::fseNotExists($unknownFileSystemEntry);
@@ -33,7 +33,7 @@ abstract class BaseCustomModuleTest extends BaseComponentTemplateTest
 		static::testTemplateLangRuTrash($templateDir);
 	}
 
-	protected static function checkRequiredFilesTemplate(ComponentTemplate $templateDir)
+	protected static function checkRequiredFilesTemplate(ComponentTemplate|\Intervolga\Edu\FilesTree\FilesTree $templateDir)
 	{
 		foreach ($templateDir->getKnownDirs() as $directory) {
 			Assert::directoryExists($directory);
