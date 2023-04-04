@@ -86,7 +86,7 @@ B_PROLOG_INCLUDED === true || die();
 </ol>
 <br>
 <div style="border: 1px dashed black; border-radius: 10px; stroke-dasharray: 5 2; padding: 10px 20px">
-    <i>Цитаты великих людей. <a href="https://cpiv.bitrix24.ru/company/personal/user/22861/">Александр Мищинков</a>:</i><br>
+    <i>Цитаты великих людей</i><br>
     В какой-то момент можно долго пытаться понять, почему эти методы выкидывают MySQL Error - все ключи, которые туда передаются, должны быть в нижнем регистре (в задании просят названия полей писать капсом). В таком случае ошибок не будет.
     <br><br>
     Еще один неочевидный момент, с которым можно столкнуться, если писать это все на D7. <br>
@@ -94,7 +94,7 @@ B_PROLOG_INCLUDED === true || die();
     Поэтому, первое подключение придется делать силами чистого PHP.<br>
     <img src="/local/modules/intervolga.edu/help/images/course3lesson2.png" height="340px">
     <br><br>
-    <i>Цитаты великих людей. <a href="https://cpiv.bitrix24.ru/company/personal/user/606/">Виктор Сопрунов</a>:</i>
+    <i>Цитаты великих людей</i>
 
     В этом уроке очень трудно разобраться. В примерах, указанных <a href="https://dev.1c-bitrix.ru/api_help/main/general/admin.section/index.php">в документации</a> очень трудно разобраться. Проблемы, которые я испытал:
     Нету исходного кода класса рубрики (маловажно)
