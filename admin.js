@@ -1,23 +1,27 @@
-$(document).on('click', '.iv-copy-link', function() {
-	if (typeof window.navigator.clipboard == 'undefined') {
-		result=confirm('Ошибка копирования пути: страница использует незащищенное http соединение.\n' +
+document.addEventListener('click', function(event) {
+	if (event.target.className !== 'iv-copy-link') {
+		return;
+	}
+
+	if (window.navigator.clipboard === undefined) {
+		result = confirm('Ошибка копирования пути: страница использует незащищенное http соединение.\n' +
 			'Использовать https соединение?');
 		if (result) {
-			window.location.href=window.location.href.replace(/http:/i, 'https:');
+			window.location.href = window.location.href.replace(/http:/i, 'https:');
 		}
 	} else {
-		window.navigator.clipboard.writeText($(this).attr('data-url'))
+		window.navigator.clipboard.writeText(event.target.getAttribute('data-url'));
 	}
 });
 
-BX.ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
 	intervolgaEduAutoSelectTab();
-	window.intervolgaEduScrollToTestCounter=10;
+	window.intervolgaEduScrollToTestCounter = 10;
 	intervolgaEduScrollToTest();
 });
 
 function intervolgaEduAutoSelectTab() {
-	var tab=BX.getCookie('intervolga_edu_tab');
+	var tab = BX.getCookie('intervolga_edu_tab');
 	if (tab && tab.length) {
 		tabControl.SelectTab(tab);
 	}
@@ -25,7 +29,7 @@ function intervolgaEduAutoSelectTab() {
 
 function intervolgaEduScrollToTest() {
 	if (window.location.hash && (window.location.hash.length > 1)) {
-		var hashElementTop=$(window.location.hash).offset().top;
+		var hashElementTop = $(window.location.hash).offset().top;
 		if (hashElementTop > 0) {
 			$([document.documentElement, document.body]).animate({
 				scrollTop: hashElementTop
