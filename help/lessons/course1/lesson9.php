@@ -14,6 +14,6 @@ B_PROLOG_INCLUDED === true || die();
 				href="https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=34&LESSON_ID=12876">статье</a>.
 	</li>
 	<li>Не пугайтесь, ибо изменение количества элементов сегодня выглядит не так, как на видео в курсе. Это уже не поле типа int, теперь
-		это целый конструктор.<br><img src="<?= MODULE_DIR ?>/help/images/course1lesson9countonpage.png">
+		это целый конструктор.<br><img src="<?= IV_EDU_MODULE_DIR ?>/help/images/course1lesson9countonpage.png">
 	</li>
 </ol>

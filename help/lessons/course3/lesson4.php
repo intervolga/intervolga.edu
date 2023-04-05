@@ -11,11 +11,11 @@ B_PROLOG_INCLUDED === true || die();
 </ol>
 <br>
 Поле должно выглядеть так:<br>
-<img src="<?= MODULE_DIR ?>/help/images/course3lesson4field.png" height="350px"><br>
+<img src="<?= IV_EDU_MODULE_DIR ?>/help/images/course3lesson4field.png" height="350px"><br>
 Вид в панели управления в форме редактирования пользователя.<br>
-<img src="<?= MODULE_DIR ?>/help/images/course3lesson4manage.png" height="350px"><br>
+<img src="<?= IV_EDU_MODULE_DIR ?>/help/images/course3lesson4manage.png" height="350px"><br>
 Вид в панели управления в списке пользователей.<br>
-<img src="<?= MODULE_DIR ?>/help/images/course3lesson4users.png" height="350px"><br>
+<img src="<?= IV_EDU_MODULE_DIR ?>/help/images/course3lesson4users.png" height="350px"><br>
 Вид в панели управления при редактировании пользователя в списке.<br>
-<img src="<?= MODULE_DIR ?>/help/images/course3lesson4list.png" height="350px"><br>
+<img src="<?= IV_EDU_MODULE_DIR ?>/help/images/course3lesson4list.png" height="350px"><br>
 Вид в публичной части в компоненте <b>bitrix:main.profile</b>.
