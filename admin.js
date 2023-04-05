@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function intervolgaEduAutoSelectTab() {
-	var tab = BX.getCookie('intervolga_edu_tab');
+	var tab = getCookie('intervolga_edu_tab');
 	if (tab && tab.length) {
 		tabControl.SelectTab(tab);
 	}
@@ -43,6 +43,15 @@ function intervolgaEduScrollToTest() {
 	}
 }
 
+function getCookie(name) {
+	var value = `; ${document.cookie}`;
+	var parts = value.split(`; ${name}=`);
+
+	if (parts.length === 2) {
+		return parts.pop().split(';').shift();
+	}
+}
+
 function intervolgaEduOnTabChanged(tab) {
-	BX.setCookie('intervolga_edu_tab', tab);
+	document.cookie = 'intervolga_edu_tab=' + tab;
 }
