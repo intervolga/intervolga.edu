@@ -60,7 +60,7 @@ class TestVacanciesParametersChecker extends BaseTest
 				);
 				Assert::eq(
 					static::prepareUrl($componentParameters['SEF_URL_TEMPLATES']['resume']),
-					'#ELEMENT_ID#/resume',
+					'#ELEMENT_ID#/resume/',
 					Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_RESUME_URL')
 				);
 			}
