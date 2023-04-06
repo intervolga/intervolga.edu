@@ -29,11 +29,12 @@ CJSCore::Init([
 Loc::loadMessages(__FILE__);
 
 global $APPLICATION, $USER;
-$APPLICATION->setAdditionalCSS('/local/modules/intervolga.edu/admin.css');
-Asset::getInstance()->addJs('/local/modules/intervolga.edu/admin.js');
 
 $module_id = 'intervolga.edu';
 Loader::includeModule($module_id);
+
+$APPLICATION->setAdditionalCSS(IV_EDU_MODULE_DIR . '/admin.css');
+Asset::getInstance()->addJs(IV_EDU_MODULE_DIR . '/admin.js');
 
 $options = [
 	'general' => [
@@ -285,7 +286,7 @@ foreach ($testsTree as $courseCode => $course) {
 }
 $tabControl->beginNextTab();
 $arModuleVersion = [];
-include Application::getDocumentRoot() . '/local/modules/intervolga.edu/install/version.php';
+include Application::getDocumentRoot() . IV_EDU_MODULE_DIR . '/install/version.php';
 $versionDate = $arModuleVersion['VERSION_DATE'];
 if ($versionDate)
 {

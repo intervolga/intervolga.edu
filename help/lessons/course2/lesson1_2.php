@@ -9,7 +9,7 @@ B_PROLOG_INCLUDED === true || die();
 	<li>
 		<b>Всегда</b> перед выполнением своего <i>GetList</i> нужно быть на 110% уверенным, что фильтр получился не
 		пустой и все параметры корректны. Пример: <br> <img
-				src="/local/modules/intervolga.edu/help/images/course2lesson1_2.png">
+				src="<?= IV_EDU_MODULE_DIR ?>/help/images/course2lesson1_2.png">
 		<br> Если <span style="color:rgb(102, 0, 0)">$tempIds</span> будет пустым, то вы возьмёте <b>все активные
 			элементы</b>, будь их там 2шт или 2млн шт.
 	</li>
