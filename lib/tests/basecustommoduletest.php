@@ -4,6 +4,7 @@ namespace Intervolga\Edu\Tests;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\FilesTree\ComponentTemplate;
+use Intervolga\Edu\FilesTree\FilesTree;
 
 abstract class BaseCustomModuleTest extends BaseComponentTemplateTest
 {
@@ -19,7 +20,7 @@ abstract class BaseCustomModuleTest extends BaseComponentTemplateTest
 		return Loc::getMessage('INTERVOLGA_EDU.TEST_CUSTOM_MODULE_DESCRIPTION');
 	}
 
-	protected static function testTemplateTrash(ComponentTemplate|\Intervolga\Edu\FilesTree\FilesTree $templateDir)
+	protected static function testTemplateTrash(FilesTree $templateDir)
 	{
 		foreach ($templateDir->getUnknownFileSystemEntries() as $unknownFileSystemEntry) {
 			Assert::fseNotExists($unknownFileSystemEntry);
@@ -27,13 +28,15 @@ abstract class BaseCustomModuleTest extends BaseComponentTemplateTest
 
 		static::checkRequiredFilesTemplate($templateDir);
 
-		foreach ($templateDir->getLangForeignDirs() as $langForeignDir) {
-			Assert::directoryNotExists($langForeignDir);
+		if ($templateDir instanceof ComponentTemplate) {
+			foreach ($templateDir->getLangForeignDirs() as $langForeignDir) {
+				Assert::directoryNotExists($langForeignDir);
+			}
 		}
 		static::testTemplateLangRuTrash($templateDir);
 	}
 
-	protected static function checkRequiredFilesTemplate(ComponentTemplate|\Intervolga\Edu\FilesTree\FilesTree $templateDir)
+	protected static function checkRequiredFilesTemplate(FilesTree $templateDir)
 	{
 		foreach ($templateDir->getKnownDirs() as $directory) {
 			Assert::directoryExists($directory);
