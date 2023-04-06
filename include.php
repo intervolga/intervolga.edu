@@ -38,3 +38,6 @@ const INTERVOLGA_EDU_GUESS_VARIANTS = [
 		]
 	],
 ];
+
+$current = getLocalPath('modules/intervolga.edu');
+define('IV_EDU_MODULE_DIR', $current);
