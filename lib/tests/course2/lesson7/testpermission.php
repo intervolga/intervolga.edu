@@ -15,6 +15,8 @@ class TestPermission extends BaseTest
 	{
 		Loader::includeModule('iblock');
 		Assert::groupLocator(Partners::class);
+		Assert::iblockLocator(PromoIblock::class);
+
 		$permission = CIBlock::GetGroupPermissions(PromoIblock::find()['ID']);
 		if ($groupPartnersId = Partners::find()['ID']) {
 			Assert::notEmpty($groupPartnersId, Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_7_STRING_ID_PARTNERS'));
