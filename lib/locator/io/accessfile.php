@@ -3,7 +3,6 @@ namespace Intervolga\Edu\Locator\IO;
 
 class AccessFile extends FileLocator
 {
-
 	public static function getNameLoc(): string
 	{
 		return '.access.php';
