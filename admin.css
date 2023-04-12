@@ -20,6 +20,15 @@
 #bx-admin-prefix #tabControl_layout .adm-info-message .adm-btn {
 	min-height: 29px;
 }
+#bx-admin-prefix #tabControl_layout .adm-info-message pre {
+	margin: 2px 0;
+}
+#bx-admin-prefix #tabControl_layout .adm-info-message pre.expect {
+	color: #0A0;
+}
+#bx-admin-prefix #tabControl_layout .adm-info-message pre.value {
+	color: #A00;
+}
 #bx-admin-prefix .iv-copy-link {
 	display: inline-block;
 	height: 15px;
@@ -47,4 +56,39 @@ h2 span.contents-link,
 }
 .contents-link a {
 	text-decoration-style: dashed;
+}
+.help {
+	border: 2px solid lightblue;
+	border-radius: 5px;
+	padding: 4px 4px 13px;
+	margin-bottom: 10px;
+}
+.help li {
+	line-height: 1.5em;
+}
+.help div {
+	padding-inline-start: 30px;
+}
+.help div ul, .help div ol{
+	padding-inline-start: 15px;
+	margin-block-end: 0;
+}
+.help div ul ol,
+.help div ul ul,
+.help div ol ul,
+.help div ol ol
+{
+	padding-inline-start: 40px;
+}
+.help h3 {
+	margin-top: 10px;
+	margin-left: 30px;
+	color: mediumblue;
+}
+.help table {
+	border-collapse: collapse;
+}
+.help table th, .help table td {
+	padding: 3px;
+	border: 1px solid black;
 }
