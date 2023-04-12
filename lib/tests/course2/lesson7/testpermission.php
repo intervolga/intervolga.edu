@@ -9,12 +9,12 @@ use Intervolga\Edu\Locator\Group\Partners;
 use Intervolga\Edu\Locator\Iblock\PromoIblock;
 use Intervolga\Edu\Tests\BaseTest;
 
-class PermissionChecker extends BaseTest
+class TestPermission extends BaseTest
 {
 	protected static function run()
 	{
 		Loader::includeModule('iblock');
-
+		Assert::groupLocator(Partners::class);
 		$permission = CIBlock::GetGroupPermissions(PromoIblock::find()['ID']);
 		if ($groupPartnersId = Partners::find()['ID']) {
 			Assert::notEmpty($groupPartnersId, Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_7_STRING_ID_PARTNERS'));

@@ -8,6 +8,11 @@ abstract class GroupLocator extends BaseLocator
 {
 	abstract public static function getNameLoc(): string;
 
+	public static function getPossibleTips(): string
+	{
+		return implode(' || ', static::getCodeGroup());
+	}
+
 	abstract public static function getCodeGroup(): string;
 
 	public static function find()

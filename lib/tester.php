@@ -115,7 +115,7 @@ class Tester
 
 			\Intervolga\Edu\Tests\Course2\Lesson7\SecurityLevel::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\SecureAuthorization::class,
-			\Intervolga\Edu\Tests\Course2\Lesson7\PermissionChecker::class,
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestPermission::class,
 
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestGadgetTemplate::class,
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestSettingResultLinks::class,
