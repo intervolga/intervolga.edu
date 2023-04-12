@@ -36,11 +36,12 @@ const INTERVOLGA_EDU_GUESS_VARIANTS = [
 			'random_reviews',
 		],
 	],
+	'PATHS' => [
+		'DESKTOP' => [
+			'/desktop.php'
+		]
+	],
 ];
 
-const INTERVOLGA_EDU_USES_BLOCKS = [
-	NewsIblock::class,
-	ProductsIblock::class,
-	PromoIblock::class,
-	ReviewsIblock::class
-];
+$current = getLocalPath('modules/intervolga.edu');
+define('IV_EDU_MODULE_DIR', $current);
