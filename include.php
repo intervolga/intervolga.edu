@@ -2,10 +2,6 @@
 B_PROLOG_INCLUDED === true || die();
 
 use Bitrix\Main\Localization\Loc;
-use Intervolga\Edu\Locator\Iblock\NewsIblock;
-use Intervolga\Edu\Locator\Iblock\ProductsIblock;
-use Intervolga\Edu\Locator\Iblock\PromoIblock;
-use Intervolga\Edu\Locator\Iblock\ReviewsIblock;
 
 require_once(__DIR__ . '/vendor/autoload.php');
 
