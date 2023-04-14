@@ -64,6 +64,15 @@ class Runner
 
 	}
 
+	public function handleErrors($code, $message, $file, $line)
+	{
+		if ((error_reporting() & $code) === 0) {
+			return true;
+		}
+
+		throw new RuntimeException("$message in $file on line $line");
+	}
+
 	public function runPHPCS(): array
 	{
 		if (empty($this->config->files) === true) {
