@@ -3,8 +3,8 @@ namespace Intervolga\Edu\Locator\Component;
 
 class NewsList extends ComponentLocator
 {
-	public static function getCode(): string
+	public static function getCode(): array
 	{
-		return 'bitrix:news.list';
+		return ['bitrix:news.list'];
 	}
 }

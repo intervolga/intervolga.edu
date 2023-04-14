@@ -8,6 +8,8 @@ Loc::loadMessages(__FILE__);
 
 class intervolga_edu extends CModule
 {
+	var $MODULE_ID = 'intervolga.edu';
+
 	/**
 	 * @return string
 	 */
