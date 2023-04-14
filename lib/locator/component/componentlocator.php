@@ -30,7 +30,7 @@ abstract class ComponentLocator extends BaseLocator
 	{
 		$result = [];
 		$getList = ParametersTable::getList([
-			'filter' => ['=COMPONENT_NAME' => static::getCode()],
+			'filter' => static::getFilter(),
 			'select' => [
 				'ID',
 				'COMPONENT_NAME',
@@ -49,7 +49,12 @@ abstract class ComponentLocator extends BaseLocator
 		return $result;
 	}
 
-	abstract public static function getCode(): string;
+	public static function getFilter() : array
+	{
+		return ['=COMPONENT_NAME' => static::getCode()];
+	}
+
+	abstract public static function getCode(): array;
 
 	protected static function getFoundFilePath($find)
 	{
@@ -64,7 +69,14 @@ abstract class ComponentLocator extends BaseLocator
 	public static function getNameLoc(): string
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.COMPONENT_CALL', [
-			'#COMPONENT#' => static::getCode(),
+			'#COMPONENT#' => static::getPossibleTips(),
 		]);
+	}
+
+	public static function getPossibleTips(): string
+	{
+		$result = implode('||', static::getCode());
+
+		return $result;
 	}
 }
