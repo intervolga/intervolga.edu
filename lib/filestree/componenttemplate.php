@@ -9,16 +9,16 @@ use Intervolga\Edu\Util\FileSystem;
 
 abstract class ComponentTemplate extends FilesTree
 {
-	public function getLangDir(): Directory
-	{
-		return FileSystem::getInnerDirectory($this, 'lang');
-	}
-
 	public function getLangRuDir(): Directory
 	{
 		$langDirectory = $this->getLangDir();
 
 		return FileSystem::getInnerDirectory($langDirectory, 'ru');
+	}
+
+	public function getLangDir(): Directory
+	{
+		return FileSystem::getInnerDirectory($this, 'lang');
 	}
 
 	/**
@@ -40,28 +40,23 @@ abstract class ComponentTemplate extends FilesTree
 		return $result;
 	}
 
-	public function getImagesDir(): Directory
+	public function getKnownPhpFiles(): array
 	{
-		return FileSystem::getInnerDirectory($this, 'images');
+		$result = [];
+		foreach ($this->getKnownFiles() as $knownFile) {
+			if ($knownFile->getExtension() == 'php') {
+				$result[] = $knownFile;
+			}
+		}
+
+		return $result;
 	}
 
 	/**
 	 * @return File[]
 	 * @throws FileNotFoundException
 	 */
-	public function getCssFiles(): array
-	{
-		$result = [];
-		foreach ($this->getChildren() as $item) {
-			if ($item instanceof File) {
-				if ($item->getExtension() == 'css') {
-					$result[] = $item;
-				}
-			}
-		}
-
-		return $result;
-	}
+	abstract public function getKnownFiles(): array;
 
 	/**
 	 * @return File[]
@@ -81,63 +76,18 @@ abstract class ComponentTemplate extends FilesTree
 		return $result;
 	}
 
-	public function getDescriptionFile(): File
-	{
-		return FileSystem::getInnerFile($this, '.description.php');
-	}
-
-	public function getParametersFile(): File
-	{
-		return FileSystem::getInnerFile($this, '.parameters.php');
-	}
-
-	public function getResultModifier(): File
-	{
-		return FileSystem::getInnerFile($this, 'result_modifier.php');
-	}
-
-	public function getComponentEpilogFile(): File
-	{
-		return FileSystem::getInnerFile($this, 'component_epilog.php');
-	}
-
 	/**
 	 * @return File[]
 	 * @throws FileNotFoundException
 	 */
-	public function getKnownFiles(): array
-	{
-		$result = [
-			$this->getComponentEpilogFile(),
-			$this->getResultModifier(),
-			$this->getParametersFile(),
-			$this->getDescriptionFile(),
-		];
-		$result = array_merge($result, $this->getJsFiles());
-		$result = array_merge($result, $this->getCssFiles());
-
-		return $result;
-	}
-
-	/**
-	 * @return Directory[]
-	 */
-	public function getKnownDirs(): array
-	{
-		$result = [
-			$this->getImagesDir(),
-			$this->getLangDir(),
-		];
-
-		return $result;
-	}
-
-	public function getKnownPhpFiles(): array
+	public function getCssFiles(): array
 	{
 		$result = [];
-		foreach ($this->getKnownFiles() as $knownFile) {
-			if ($knownFile->getExtension() == 'php') {
-				$result[] = $knownFile;
+		foreach ($this->getChildren() as $item) {
+			if ($item instanceof File) {
+				if ($item->getExtension() == 'css') {
+					$result[] = $item;
+				}
 			}
 		}
 
@@ -172,5 +122,43 @@ abstract class ComponentTemplate extends FilesTree
 		}
 
 		return $result;
+	}
+
+	/**
+	 * @return Directory[]
+	 */
+	public function getKnownDirs(): array
+	{
+		$result = [
+			$this->getImagesDir(),
+			$this->getLangDir(),
+		];
+
+		return $result;
+	}
+
+	public function getImagesDir(): Directory
+	{
+		return FileSystem::getInnerDirectory($this, 'images');
+	}
+
+	public function getComponentEpilogFile(): File
+	{
+		return FileSystem::getInnerFile($this, 'component_epilog.php');
+	}
+
+	public function getParametersFile(): File
+	{
+		return FileSystem::getInnerFile($this, '.parameters.php');
+	}
+
+	public function getResultModifier(): File
+	{
+		return FileSystem::getInnerFile($this, 'result_modifier.php');
+	}
+
+	public function getDescriptionFile(): File
+	{
+		return FileSystem::getInnerFile($this, '.description.php');
 	}
 }
