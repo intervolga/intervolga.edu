@@ -1,18 +1,18 @@
 <?php
 namespace Intervolga\Edu\Tests\Course1\Lesson3;
 
+use Bitrix\Main\Application;
 use Intervolga\Edu\Tests\BaseTestCode;
-use Intervolga\Edu\Util\PathMaskParser;
 
 class TestCode extends BaseTestCode
 {
-	static function getFilesToTestCode(): array
+	static function getFilesPaths(): array
 	{
-		return PathMaskParser::getFileSystemEntriesByMasks([
-			'/local/templates/main/header.php',
-			'/local/templates/main/footer.php',
-			'/local/templates/inner/header.php',
-			'/local/templates/inner/footer.php',
-		]);
+		return [
+			Application::getDocumentRoot().'/local/templates/main/header.php',
+			Application::getDocumentRoot().'/local/templates/main/footer.php',
+			Application::getDocumentRoot().'/local/templates/inner/header.php',
+			Application::getDocumentRoot().'/local/templates/inner/footer.php',
+		];
 	}
 }

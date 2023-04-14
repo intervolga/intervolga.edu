@@ -1,12 +1,9 @@
 <?php
 namespace Intervolga\Edu\Locator\Component;
 
-use Bitrix\Main\Application;
 use Bitrix\Main\Component\ParametersTable;
-use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Locator\BaseLocator;
-use Intervolga\Edu\Util\Admin;
 
 Loc::loadMessages(__FILE__);
 
@@ -33,7 +30,7 @@ abstract class ComponentLocator extends BaseLocator
 	{
 		$result = [];
 		$getList = ParametersTable::getList([
-			'filter' => ['=COMPONENT_NAME' => static::getCode()],
+			'filter' => static::getFilter(),
 			'select' => [
 				'ID',
 				'COMPONENT_NAME',
@@ -52,13 +49,16 @@ abstract class ComponentLocator extends BaseLocator
 		return $result;
 	}
 
-	abstract public static function getCode(): string;
-
-	public static function getDisplayHref($find): string
+	public static function getFilter() : array
 	{
-		$file = new File(Application::getDocumentRoot() . $find['REAL_PATH']);
+		return ['=COMPONENT_NAME' => static::getCode()];
+	}
 
-		return Admin::getFileManUrl($file);
+	abstract public static function getCode(): array;
+
+	protected static function getFoundFilePath($find)
+	{
+		return $find['REAL_PATH'];
 	}
 
 	public static function getDisplayText($find): string
@@ -69,7 +69,14 @@ abstract class ComponentLocator extends BaseLocator
 	public static function getNameLoc(): string
 	{
 		return Loc::getMessage('INTERVOLGA_EDU.COMPONENT_CALL', [
-			'#COMPONENT#' => static::getCode(),
+			'#COMPONENT#' => static::getPossibleTips(),
 		]);
+	}
+
+	public static function getPossibleTips(): string
+	{
+		$result = implode('||', static::getCode());
+
+		return $result;
 	}
 }

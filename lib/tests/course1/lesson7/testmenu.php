@@ -25,7 +25,7 @@ class TestMenu extends BaseTest
 				'N',
 				Loc::getMessage('INTERVOLGA_EDU.ASSERT_COMPONENT_PARAMETERS_CACHE_TYPE',
 					[
-						'#COMPONENT#' => static::getLocator()::getCode(),
+						'#COMPONENT#' => static::getLocator()::getPossibleTips(),
 						'#TEMPLATE#' => $component['PARAMETERS']['COMPONENT_TEMPLATE'],
 						'#PATH#' => $component['REAL_PATH'],
 					]
@@ -37,7 +37,7 @@ class TestMenu extends BaseTest
 				'N',
 				Loc::getMessage('INTERVOLGA_EDU.ASSERT_COMPONENT_PARAMETERS_CACHE_GROUPS',
 					[
-						'#COMPONENT#' => static::getLocator()::getCode(),
+						'#COMPONENT#' => static::getLocator()::getPossibleTips(),
 						'#TEMPLATE#' => $component['PARAMETERS']['COMPONENT_TEMPLATE'],
 						'#PATH#' => $component['REAL_PATH'],
 					]
