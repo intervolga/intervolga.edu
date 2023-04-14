@@ -2,31 +2,24 @@
 namespace Intervolga\Edu\FilesTree;
 
 use Bitrix\Main\IO\Directory;
-use Intervolga\Edu\Util\FileSystem;
 
-class ComplexComponentTemplate extends ComponentTemplate
+abstract class ComplexComponentTemplate extends ComponentTemplate
 {
-	public function getInnerTemplatesDir(): Directory
-	{
-		return FileSystem::getInnerDirectory($this, 'bitrix');
-	}
-
 	/**
 	 * @return SimpleComponentTemplate[]
 	 * @throws \Bitrix\Main\IO\FileNotFoundException
 	 */
-	public function getInnerTemplatesTrees(): array
+	abstract public function getInnerTemplatesTrees(): array;
+
+	/**
+	 * @return Directory[]
+	 */
+	public function getKnownDirs(): array
 	{
-		$result = [];
-		$innerTemplates = $this->getInnerTemplatesDir();
-		if ($innerTemplates->isExists()) {
-			foreach ($innerTemplates->getChildren() as $innerComponentDir) {
-				if ($innerComponentDir instanceof Directory) {
-					foreach ($innerComponentDir->getChildren() as $innerTemplateDir) {
-						$result[] = new SimpleComponentTemplate($innerTemplateDir->getPath());
-					}
-				}
-			}
+		$result = parent::getKnownDirs();
+		$templates = $this->getInnerTemplatesDir();
+		foreach ($templates as $template){
+			$result[] = $template;
 		}
 
 		return $result;
@@ -35,11 +28,7 @@ class ComplexComponentTemplate extends ComponentTemplate
 	/**
 	 * @return Directory[]
 	 */
-	public function getKnownDirs(): array
-	{
-		$result = parent::getKnownDirs();
-		$result[] = $this->getInnerTemplatesDir();
+	abstract public function getInnerTemplatesDir(): array;
 
-		return $result;
-	}
+	abstract public function getKnownFiles(): array;
 }
