@@ -6,10 +6,9 @@ use Bitrix\Main\IO\File;
 
 class Message
 {
-	protected ?File $file = null;
+	protected File $file;
 	protected int $line = 0;
 	protected int $column = 0;
-
 	protected string $message = '';
 	protected string $code = '';
 
@@ -22,11 +21,31 @@ class Message
 		$this->code = $code;
 	}
 
+	public function getFile(): File
+	{
+		return $this->file;
+	}
+
+	public function getLine(): int
+	{
+		return $this->line;
+	}
+
+	public function getColumn(): int
+	{
+		return $this->column;
+	}
+
 	/**
 	 * @return string
 	 */
 	public function getMessage(): string
 	{
 		return $this->message;
+	}
+
+	public function getCode(): string
+	{
+		return $this->code;
 	}
 }

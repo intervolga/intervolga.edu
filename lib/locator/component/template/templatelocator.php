@@ -2,9 +2,10 @@
 namespace Intervolga\Edu\Locator\Component\Template;
 
 use Bitrix\Main\Component\ParametersTable;
+use Intervolga\Edu\Locator\BaseLocator;
 use Intervolga\Edu\Locator\Component\ComponentLocator;
 
-abstract class TemplateLocator
+abstract class TemplateLocator extends BaseLocator
 {
 	public static function find(): array
 	{
@@ -39,8 +40,6 @@ abstract class TemplateLocator
 	 */
 	abstract public static function getComponent(): string;
 
-	abstract public static function getNameLoc(): string;
-
 	abstract public static function getFilter(): array;
 
 	/**
@@ -63,4 +62,13 @@ abstract class TemplateLocator
 		return implode(';', $result);
 	}
 
+	public static function getDisplayText($find): string
+	{
+		return $find['TEMPLATE_NAME'];
+	}
+
+	protected static function getFoundDirectoryPath($find)
+	{
+		return $find['REAL_PATH'];
+	}
 }

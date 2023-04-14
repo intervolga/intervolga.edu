@@ -2,8 +2,12 @@
 namespace Intervolga\Edu\Locator\Component;
 
 use Bitrix\Main\Component\ParametersTable;
+use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Locator\BaseLocator;
 
-abstract class ComponentLocator
+Loc::loadMessages(__FILE__);
+
+abstract class ComponentLocator extends BaseLocator
 {
 	public static function find(): array
 	{
@@ -26,7 +30,7 @@ abstract class ComponentLocator
 	{
 		$result = [];
 		$getList = ParametersTable::getList([
-			'filter' => ['=COMPONENT_NAME' => static::getCode()],
+			'filter' => static::getFilter(),
 			'select' => [
 				'ID',
 				'COMPONENT_NAME',
@@ -45,5 +49,34 @@ abstract class ComponentLocator
 		return $result;
 	}
 
-	abstract public static function getCode(): string;
+	public static function getFilter() : array
+	{
+		return ['=COMPONENT_NAME' => static::getCode()];
+	}
+
+	abstract public static function getCode(): array;
+
+	protected static function getFoundFilePath($find)
+	{
+		return $find['REAL_PATH'];
+	}
+
+	public static function getDisplayText($find): string
+	{
+		return $find['REAL_PATH'];
+	}
+
+	public static function getNameLoc(): string
+	{
+		return Loc::getMessage('INTERVOLGA_EDU.COMPONENT_CALL', [
+			'#COMPONENT#' => static::getPossibleTips(),
+		]);
+	}
+
+	public static function getPossibleTips(): string
+	{
+		$result = implode('||', static::getCode());
+
+		return $result;
+	}
 }
