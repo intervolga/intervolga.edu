@@ -21,13 +21,13 @@ class TestSymbolicCode extends BaseTest
 	{
 		Assert::iblockLocator(ProductsIblock::class);
 		if ($iblock = ProductsIblock::find()) {
-			static::checkCodeRequired($iblock);
+			static::checkFields($iblock);
 			static::checkSectionsCodes($iblock);
 			static::checkElementsCodes($iblock);
 		}
 	}
 
-	protected static function checkCodeRequired(array $iblock)
+	protected static function checkFields(array $iblock)
 	{
 		$fields = CIBlock::getFields($iblock['ID']);
 		Assert::eq(
@@ -39,6 +39,22 @@ class TestSymbolicCode extends BaseTest
 					'#IBLOCK#' => $iblock['NAME'],
 				]
 			)
+		);
+		Assert::eq(
+			$fields['CODE']['DEFAULT_VALUE']['UNIQUE'],
+			'Y',
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_FIELD_UNIQUE', [
+				'#IBLOCK_LINK#' => Admin::getIblockUrl($iblock),
+				'#IBLOCK#' => $iblock['NAME'],
+			])
+		);
+		Assert::eq(
+			$fields['CODE']['DEFAULT_VALUE']['TRANSLITERATION'],
+			'Y',
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_9_FIELD_TRANSLITERATION', [
+				'#IBLOCK_LINK#' => Admin::getIblockUrl($iblock),
+				'#IBLOCK#' => $iblock['NAME'],
+			])
 		);
 		Assert::eq(
 			$fields['SECTION_CODE']['IS_REQUIRED'],

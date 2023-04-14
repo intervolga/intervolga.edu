@@ -2,12 +2,12 @@
 namespace Intervolga\Edu\Tests;
 
 use Intervolga\Edu\FilesTree\ComplexComponentTemplate;
+use Intervolga\Edu\FilesTree\SimpleComponentTemplate;
 
 abstract class BaseComplexComponentTemplateTest extends BaseComponentTemplateTest
 {
 	protected static function run()
 	{
-		parent::run();
 		$locatorClass = static::getLocator();
 		$templateDir = $locatorClass::find(static::getComponentTemplateTree());
 		if ($templateDir) {
@@ -16,8 +16,9 @@ abstract class BaseComplexComponentTemplateTest extends BaseComponentTemplateTes
 			 */
 			$innerTrees = $templateDir->getInnerTemplatesTrees();
 			foreach ($innerTrees as $innerTree) {
-				static::testTemplateTrash($innerTree);
-				static::testTemplateCode($innerTree);
+				$template = new SimpleComponentTemplate($innerTree->getPath() . '/templates/.default/');
+				static::testTemplateTrash($template);
+				static::testTemplateCode($template);
 			}
 		}
 	}
