@@ -2,31 +2,36 @@
 namespace Intervolga\Edu\Tests\Course1\Lesson8;
 
 use Intervolga\Edu\Asserts\Assert;
+use Intervolga\Edu\FilesTree\ComplexComponentTemplate;
 use Intervolga\Edu\FilesTree\ComponentTemplate;
-use Intervolga\Edu\FilesTree\NewsTemplate;
+use Intervolga\Edu\FilesTree\ComponentTemplate\NewsTemplate;
 use Intervolga\Edu\Locator\IO\ComponentTemplate\PromoNewsTemplate;
-use Intervolga\Edu\Tests\BaseComplexComponentTemplateTest;
+use Intervolga\Edu\Locator\IO\DirectoryLocator;
+use Intervolga\Edu\Tests\BaseComponentTemplateTest;
 
-class TestPromoComponent extends BaseComplexComponentTemplateTest
+class TestPromoComponent extends BaseComponentTemplateTest
 {
+	/**
+	 * @return string|DirectoryLocator
+	 */
 	protected static function getLocator()
 	{
 		return PromoNewsTemplate::class;
 	}
 
+	/**
+	 * @return string|ComplexComponentTemplate
+	 */
 	protected static function getComponentTemplateTree()
 	{
 		return NewsTemplate::class;
 	}
 
-	protected static function testTemplateTrash(ComponentTemplate $templateDir)
+	protected static function checkNotExistingFilesTemplate(ComponentTemplate $templateDir)
 	{
-		parent::testTemplateTrash($templateDir);
-		if ($templateDir instanceof NewsTemplate) {
-			Assert::fseNotExists($templateDir->getSectionFile());
-			Assert::fseNotExists($templateDir->getSearchFile());
-			Assert::fseNotExists($templateDir->getRssFile());
-			Assert::fseNotExists($templateDir->getRssSectionFile());
-		}
+		Assert::fseNotExists($templateDir->getSectionFile());
+		Assert::fseNotExists($templateDir->getSearchFile());
+		Assert::fseNotExists($templateDir->getRssFile());
+		Assert::fseNotExists($templateDir->getRssSectionFile());
 	}
 }

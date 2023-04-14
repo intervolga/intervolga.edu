@@ -32,4 +32,12 @@ const INTERVOLGA_EDU_GUESS_VARIANTS = [
 			'random_reviews',
 		],
 	],
+	'PATHS' => [
+		'DESKTOP' => [
+			'/desktop.php'
+		]
+	],
 ];
+
+$current = getLocalPath('modules/intervolga.edu');
+define('IV_EDU_MODULE_DIR', $current);
