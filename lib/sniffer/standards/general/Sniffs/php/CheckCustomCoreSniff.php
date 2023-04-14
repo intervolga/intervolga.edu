@@ -17,6 +17,7 @@ class CheckCustomCoreSniff implements Sniff
 	{
 		$tokens = $phpcsFile->getTokens();
 		$token = $tokens[$stackPtr];
+		$contents = [];
 
 		foreach ($tokens as $contentToken) {
 			if ($contentToken['type'] == 'T_CONSTANT_ENCAPSED_STRING' || $contentToken['type'] == 'T_STRING') {
@@ -24,7 +25,7 @@ class CheckCustomCoreSniff implements Sniff
 			}
 		}
 
-		if (!in_array('B_PROLOG_INCLUDED', $contents)) {
+		if (is_array($contents) && !in_array('B_PROLOG_INCLUDED', $contents)) {
 			$erorrs = $phpcsFile->getErrors();
 			foreach ($erorrs as $rows) {
 				foreach ($rows as $row) {
@@ -34,7 +35,7 @@ class CheckCustomCoreSniff implements Sniff
 				}
 			}
 
-			if (!in_array('General.PHP.CheckCustomCore.A2CheckCustomCoreSniffNotFoundPrologIncluded', $errorSource)) {
+			if (is_array($errorSource) && !in_array('General.PHP.CheckCustomCore.A2CheckCustomCoreSniffNotFoundPrologIncluded', $errorSource)) {
 				$file = new File($phpcsFile->getFilename());
 				$error = Loc::getMessage('INTERVOLGA_EDU.SNIFFER_CUSTOM_CORE_NOT_FOUND', [
 					'#FILE#' => FileMessage::get($file),
