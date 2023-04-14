@@ -86,7 +86,7 @@ abstract class BaseTestIblock extends BaseTest
 	protected static function testOneTab(array $iblock, array $options)
 	{
 		Assert::eq(
-			count($options['TABS']),
+			!empty($options) ? count($options['TABS']) : 0,
 			1,
 			Loc::getMessage('INTERVOLGA_EDU.USE_ONE_TAB_FOR_IBLOCK_FORM', [
 				'#IBLOCK_LINK#' => Admin::getIblockElementAddUrl($iblock),

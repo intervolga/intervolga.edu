@@ -18,7 +18,6 @@ class VacanciesListComponent extends DirectoryLocator
 		return [
 			'/local/components/intervolga/vacancies.list/',
 			'/local/components/intervolga/vacancy.list/',
-			'/local/components/intervolga/vacancies.list/',
 		];
 	}
 	public static function getComponentFilePath()
