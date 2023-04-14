@@ -156,6 +156,8 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson8\TestUserTestExists::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson9\TestCompositeEnabled::class,
+
+			\Intervolga\Edu\Tests\CourseIntervolga\Lesson3\BackupCheker::class,
 		];
 	}
 
