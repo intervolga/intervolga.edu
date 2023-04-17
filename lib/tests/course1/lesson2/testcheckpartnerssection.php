@@ -10,6 +10,7 @@ use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Menu;
 use Intervolga\Edu\Util\Regex;
+use Intervolga\Edu\Util\StructureService;
 
 Loc::loadMessages(__FILE__);
 
@@ -28,9 +29,14 @@ class TestCheckPartnersSection extends BaseTest
 	{
 		$indexFile = FileSystem::getInnerFile($directory, 'index.php');
 		Assert::fseExists($indexFile, Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_PARTNERS_DIRECTORY_PAGE'));
-		Assert::fileContentMatches(
-			$indexFile,
-			new Regex('/SetTitle\((\'|")\s*Условия\s*сотрудничества\s*(\'|")/iu', Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_TITLE_PARTNERS'))
+		$directoryPageProperties = StructureService::getPageTitle($indexFile);
+		Assert::matches(
+			$directoryPageProperties,
+			new Regex('/Условия\s*сотрудничества/iu', ''),
+			Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_TITLE_PARTNERS',
+				[
+					'#VALUE#' => $directoryPageProperties?:'не задано'
+				])
 		);
 	}
 
@@ -41,9 +47,15 @@ class TestCheckPartnersSection extends BaseTest
 		$section = PartnersEventsSection::find();
 		$sectionFile = FileSystem::getInnerFile($section, 'index.php');
 		Assert::fseExists($sectionFile, Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_PARTNERS_EVENTS_DIRECTORY_PAGE'));
-		Assert::fileContentMatches(
-			$sectionFile,
-			new Regex('/SetTitle\((\'|")\s*Расписание\s*мероприятий\s*(\'|")/iu', Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_TITLE_EVENTS'))
+		$directoryPartnersEvent = StructureService::getPageTitle($sectionFile);
+		Assert::matches(
+			$directoryPartnersEvent,
+			new Regex('/Расписание\s*мероприятий/iu', 'Расписание мероприятий'),
+			Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_TITLE_EVENTS',
+				[
+					'#VALUE#' => $directoryPartnersEvent?:'не задано'
+				]
+			)
 		);
 
 		static::checkSectionMenu($directory, $section);
