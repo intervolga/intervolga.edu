@@ -9,7 +9,6 @@ use Intervolga\Edu\Locator\IO\PartnersSection;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\FileSystem;
 use Intervolga\Edu\Util\Menu;
-use Intervolga\Edu\Util\Regex;
 use Intervolga\Edu\Util\StructureService;
 
 Loc::loadMessages(__FILE__);
@@ -37,7 +36,7 @@ class TestCheckPartnersSection extends BaseTest
 			'Условия сотрудничества',
 			Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_TITLE_PARTNERS',
 				[
-					'#VALUE#' => $directoryPageProperties?:'не задано'
+					'#VALUE#' => $directoryPageProperties ?: 'не задано'
 				])
 		);
 		Assert::eq(
@@ -45,7 +44,7 @@ class TestCheckPartnersSection extends BaseTest
 			'Условия сотрудничества',
 			Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_TITLE_PARTNERS_PAGE',
 				[
-					'#VALUE#' => $title?:'не задано или унаследовано, введите вручную'
+					'#VALUE#' => $title ?: 'не задано или унаследовано, введите вручную'
 				])
 		);
 	}
@@ -65,7 +64,7 @@ class TestCheckPartnersSection extends BaseTest
 			'Расписание мероприятий',
 			Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_TITLE_EVENTS',
 				[
-					'#VALUE#' => $directoryPartnersEvent?:'не задано'
+					'#VALUE#' => $directoryPartnersEvent ?: 'не задано'
 				]
 			)
 		);
@@ -74,7 +73,7 @@ class TestCheckPartnersSection extends BaseTest
 			'Расписание мероприятий',
 			Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_TITLE_EVENTS_PAGE',
 				[
-					'#VALUE#' => $title?:'не задано или унаследовано, введите вручную'
+					'#VALUE#' => $title ?: 'не задано или унаследовано, введите вручную'
 				]
 			)
 		);
