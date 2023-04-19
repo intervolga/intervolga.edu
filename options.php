@@ -299,6 +299,9 @@ if ($versionDate)
 ?>
 	<tr>
 		<td>
+			<div>
+				<a href="/bitrix/admin/ivedu_help.php"> <?=Loc::getMessage('INTERVOLGA_EDU.TAKE_PRINT_VERSION') ?>Получить версию для печати</a>
+			</div>
 			<div><?=Loc::getMessage('INTERVOLGA_EDU.MODULE_VERSION', [
 					'#VERSION#' => $arModuleVersion['VERSION'],
 				])?></div>
