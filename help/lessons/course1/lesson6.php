@@ -18,8 +18,8 @@ B_PROLOG_INCLUDED === true || die();
 <ol>
 	<li>Делайте проверку перед выводом компонента, чтобы ничего не выводило, если не сказано иного. Используйте или if, или foreach.</li>
 	<li>Компонент должен проверять любые данные перед выводом, чтобы не было пустых атрибутов href у ссылок, src у изображений, пустых кавычек или странных пустот в верстке.
-		<br> <img src="<?= IV_EDU_MODULE_DIR ?>/help/images/course1lesson6checkemptydata.png"></li>
-	<li>Свойства нужно выводить из <i>DISPLAY_PROPERTIES</i>. Поля из <i>FIELDS</i>.<br><img src="<?= IV_EDU_MODULE_DIR ?>/help/images/course1lesson6correctshowdata.png"></li>
+		<br> <img src="/bitrix/images/intervolga.edu/course1lesson6checkemptydata.png"></li>
+	<li>Свойства нужно выводить из <i>DISPLAY_PROPERTIES</i>. Поля из <i>FIELDS</i>.<br><img src="/bitrix/images/intervolga.edu/course1lesson6correctshowdata.png"></li>
 	<li>Все изображения перед выводом должны быть уменьшены до требуемых по верстке размеров.</li>
 	<li>Все ссылки из шаблона должны выводиться с использованием узлов <i>DETAIL_PAGE_URL</i>, <i>SECTION_PAGE_URL</i> или <i>LIST_PAGE_URL</i>.</li>
 </ol>
