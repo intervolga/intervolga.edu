@@ -16,7 +16,7 @@ class TestSiteChecker extends BaseTest
 	{
 		$checkerTest = new \CSiteCheckerTest();
 		$logFile = new File(Application::getDocumentRoot() . $checkerTest->LogFile);
-		Assert::fseExists($logFile, Loc::getMessage('INTERVOLGA_EDU.EMPTY_SITE_CHECK_LOG'));
+		Assert::fseExists($logFile, Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_EMPTY_SITE_CHECK_LOG'));
 		$re = '/(?<DATE>\d{4}-.{3}-\d{2} \d{2}:\d{2}:\d{2}) (?<TITLE>.*) \((?<CODE>.*)\): Fail\n(?<ERROR>.*)/m';
 		preg_match_all($re, $logFile->getContents(), $matches, PREG_SET_ORDER);
 
