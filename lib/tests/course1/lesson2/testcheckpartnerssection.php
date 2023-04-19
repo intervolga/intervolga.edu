@@ -27,24 +27,24 @@ class TestCheckPartnersSection extends BaseTest
 	protected static function checkIndexFile(Directory $directory)
 	{
 		$indexFile = FileSystem::getInnerFile($directory, 'index.php');
-		Assert::fseExists($indexFile, Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_PARTNERS_DIRECTORY_PAGE'));
+		Assert::fseExists($indexFile, Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_NOT_FOUND_PARTNERS_DIRECTORY_PAGE'));
 		$directoryPageProperties = StructureService::getPageTitle($indexFile);
 		$title = StructureService::getPageProperties($indexFile)['TITLE'];
 
 		Assert::eq(
 			$directoryPageProperties,
-			'Условия сотрудничества',
-			Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_TITLE_PARTNERS',
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_PARTNERS_REQUIRED_TITLE'),
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_NOT_FOUND_TITLE_PARTNERS',
 				[
-					'#VALUE#' => $directoryPageProperties ?: 'не задано'
+					'#VALUE#' => $directoryPageProperties ?: Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_EMPTY_STRING')
 				])
 		);
 		Assert::eq(
 			$title,
-			'Условия сотрудничества',
-			Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_TITLE_PARTNERS_PAGE',
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_PARTNERS_REQUIRED_TITLE'),
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_NOT_FOUND_TITLE_PARTNERS_PAGE',
 				[
-					'#VALUE#' => $title ?: 'не задано или унаследовано, введите вручную'
+					'#VALUE#' => $title ?: Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_EMPTY_STRING')
 				])
 		);
 	}
@@ -55,25 +55,25 @@ class TestCheckPartnersSection extends BaseTest
 
 		$section = PartnersEventsSection::find();
 		$sectionFile = FileSystem::getInnerFile($section, 'index.php');
-		Assert::fseExists($sectionFile, Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_PARTNERS_EVENTS_DIRECTORY_PAGE'));
+		Assert::fseExists($sectionFile, Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_NOT_FOUND_PARTNERS_EVENTS_DIRECTORY_PAGE'));
 		$directoryPartnersEvent = StructureService::getPageTitle($sectionFile);
 		$title = StructureService::getPageProperties($sectionFile)['TITLE'];
 
 		Assert::eq(
 			$directoryPartnersEvent,
-			'Расписание мероприятий',
-			Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_TITLE_EVENTS',
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_PARTNERS_EVENTS_DIRECTORY'),
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_NOT_FOUND_TITLE_EVENTS',
 				[
-					'#VALUE#' => $directoryPartnersEvent ?: 'не задано'
+					'#VALUE#' => $directoryPartnersEvent ?: Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_EMPTY_STRING')
 				]
 			)
 		);
 		Assert::eq(
 			$title,
-			'Расписание мероприятий',
-			Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_TITLE_EVENTS_PAGE',
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_PARTNERS_EVENTS_DIRECTORY'),
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_NOT_FOUND_TITLE_EVENTS_PAGE',
 				[
-					'#VALUE#' => $title ?: 'не задано или унаследовано, введите вручную'
+					'#VALUE#' => $title ?: Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_EMPTY_STRING')
 				]
 			)
 		);
@@ -96,8 +96,8 @@ class TestCheckPartnersSection extends BaseTest
 		);
 		Assert::eq(
 			$links[FileSystem::getLocalPath($sectionEvents)],
-			Loc::getMessage('INTERVOLGA_EDU.PARTNERS_EVENTS_DIRECTORY'),
-			Loc::getMessage('INTERVOLGA_EDU.PARTNERS_EVENTS_DIRECTORY_WRONG_NAME')
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_PARTNERS_EVENTS_DIRECTORY'),
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_PARTNERS_EVENTS_DIRECTORY_WRONG_NAME')
 		);
 	}
 }
