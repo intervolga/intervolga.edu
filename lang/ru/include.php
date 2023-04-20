@@ -70,6 +70,8 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PRODUCTS_DESCRIPTION'] = 'Пункт ме�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PROMO'] = 'Проверка раздела &laquo;Акции&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PROMO_DESCRIPTION'] = 'Должен быть создан с очевидным именем';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_CODE_FILES'] = 'init.php';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SITELANGUAGE'] = 'Проверка подключения языковых файлов';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SITELANGUAGE_DESCRIPTION'] = 'В файле /local/templates/.default/include/heafer.php должно находиться подключение языковых файлов (<b>&#60;html lang="&#60;?=LANGUAGE_ID?&#62;"&#62;</b>)';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_CODE_FILES'] = 'header.php и footer.php шаблонов main, inner';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_TEMPLATES'] = 'Проверка шаблонов сайта';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_TEMPLATES_DESCRIPTION'] = 'В /local/templates/ должны быть только эти шаблоны: main, inner, .default';
