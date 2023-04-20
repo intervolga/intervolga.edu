@@ -4,6 +4,7 @@ B_PROLOG_INCLUDED === true || die();
 use Bitrix\Main;
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\Application;
+use Bitrix\Main\EventManager;
 
 Loc::loadMessages(__FILE__);
 
@@ -39,6 +40,7 @@ class intervolga_edu extends CModule
 		try {
 			Main\ModuleManager::registerModule($this->MODULE_ID);
 			$this->InstallFiles();
+			$this->InstallEvents();
 		} catch (\Exception $e) {
 			global $APPLICATION;
 			$APPLICATION->throwException($e->getMessage());
@@ -54,6 +56,7 @@ class intervolga_edu extends CModule
 		try {
 			Main\ModuleManager::unRegisterModule($this->MODULE_ID);
 			$this->UninstallFiles();
+			$this->UnInstallEvents();
 		} catch (\Exception $e) {
 			global $APPLICATION;
 			$APPLICATION->throwException($e->getMessage());
@@ -95,4 +98,27 @@ class intervolga_edu extends CModule
 			$root . '/bitrix/images/' . $this->MODULE_ID
 		);
 	}
+
+	function InstallEvents()
+	{
+		EventManager::getInstance()->registerEventHandler(
+			'main',
+			'OnPanelCreate',
+			$this->MODULE_ID,
+			'Intervolga\\Edu\\EventHandlers\\Main',
+			'OnPanelCreateHandler'
+		);
+	}
+
+	function UnInstallEvents()
+	{
+		EventManager::getInstance()->unRegisterEventHandler(
+			'main',
+			'OnPanelCreate',
+			$this->MODULE_ID,
+			'Intervolga\\Edu\\EventHandlers\\Main',
+			'OnPanelCreateHandler'
+		);
+	}
+
 }
