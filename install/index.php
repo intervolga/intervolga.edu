@@ -8,7 +8,6 @@ use Bitrix\Main\EventManager;
 
 Loc::loadMessages(__FILE__);
 
-
 class intervolga_edu extends CModule
 {
 	var $MODULE_ID = 'intervolga.edu';
@@ -72,13 +71,13 @@ class intervolga_edu extends CModule
 		$root = Application::getDocumentRoot();
 		$curDir = getLocalPath('modules/' . $this->MODULE_ID);
 		copyDirFiles(
-			$root . $curDir .  '/install/js',
+			$root . $curDir . '/install/js',
 			$root . '/bitrix/js/' . $this->MODULE_ID,
 			true,
 			true
 		);
 		copyDirFiles(
-			$root . $curDir .  '/install/images',
+			$root . $curDir . '/install/images',
 			$root . '/bitrix/images/' . $this->MODULE_ID,
 			true,
 			true
@@ -90,11 +89,11 @@ class intervolga_edu extends CModule
 		$root = Application::getDocumentRoot();
 		$curDir = getLocalPath('modules/' . $this->MODULE_ID);
 		deleteDirFiles(
-			$root . $curDir .  '/install/js',
+			$root . $curDir . '/install/js',
 			$root . '/bitrix/js/' . $this->MODULE_ID
 		);
 		deleteDirFiles(
-			$root . $curDir .  '/install/images',
+			$root . $curDir . '/install/images',
 			$root . '/bitrix/images/' . $this->MODULE_ID
 		);
 	}
