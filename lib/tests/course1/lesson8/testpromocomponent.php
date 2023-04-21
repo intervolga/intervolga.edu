@@ -27,7 +27,7 @@ class TestPromoComponent extends BaseComponentTemplateTest
 		return NewsTemplate::class;
 	}
 
-	protected static function checkNotExistingFilesComponentTemplate(ComponentTemplate $templateDir)
+	protected static function checkNotExistingFilesTemplate(ComponentTemplate $templateDir)
 	{
 		Assert::fseNotExists($templateDir->getSectionFile());
 		Assert::fseNotExists($templateDir->getSearchFile());
