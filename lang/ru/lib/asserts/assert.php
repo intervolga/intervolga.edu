@@ -29,6 +29,8 @@ $MESS['INTERVOLGA_EDU.ASSERT_DIRECTORY_NOT_EXISTS'] = 'Папка #VALUE# сущ
 $MESS['INTERVOLGA_EDU.ASSERT_FILE_NOT_EXISTS'] = 'Файл #VALUE# существует, должен быть удален';
 $MESS['INTERVOLGA_EDU.FSE'] = '<a href="#FILEMAN_URL#" target="_blank">#NAME#</a>';
 $MESS['INTERVOLGA_EDU.ASSERT_MODULE_INSTALLED'] = 'Модуль #VALUE# должен быть установлен';
+$MESS['INTERVOLGA_EDU.ASSERT_CUSTOM_COMPONENT_LOCATOR'] = 'Пользовательский компонент \'#COMPONENT#\' <b>не найден</b>';
+$MESS['INTERVOLGA_EDU.ASSERT_CUSTOM_COMPONENT_HASNT_REQUIRED_COUNT_FILES'] = 'Пользовательский компонент \'#COMPONENT#\' сейчас содержит #NOW_COUNT# файла(/ов) (требуется #COUNT#)';
 $MESS['INTERVOLGA_EDU.ASSERT_IBLOCK_LOCATOR'] = 'Инфоблок <b>#IBLOCK#</b> не найден (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.ASSERT_WIZARD_LOCATOR'] = 'Мастер <b>#WIZARD_NAME#</b> не найден (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.ASSERT_SECTION_LOCATOR'] = 'Раздел <b>#SECTION#</b> инфоблока <b>#IBLOCK#</b> не найден (#POSSIBLE#)';
