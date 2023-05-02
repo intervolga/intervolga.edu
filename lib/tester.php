@@ -115,11 +115,12 @@ class Tester
 
 			\Intervolga\Edu\Tests\Course2\Lesson7\SecurityLevel::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\SecureAuthorization::class,
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestAccessPartners::class,
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestPartnersUser::class,
 
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestGadgetTemplate::class,
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestSettingResultLinks::class,
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestDesktopPage::class,
-
 
 			\Intervolga\Edu\Tests\Course2\Lesson9\TestWizardTemplate::class,
 			\Intervolga\Edu\Tests\Course2\Lesson9\TestWizard::class,
