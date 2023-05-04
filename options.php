@@ -24,7 +24,8 @@ use Intervolga\Edu\Util\Help;
 
 CJSCore::Init([
 	'jquery',
-	'date'
+	'date',
+	'popup',
 ]);
 Loc::loadMessages(__FILE__);
 
@@ -50,6 +51,34 @@ if ($request->isPost()) {
 		Option::delete($module_id, [
 			'name' => $optionName
 		]);
+	}
+	if ($commentName = $request->getPost('COMMENT')) {
+		if ($comment = $request->getPost($commentName . 'Comment')) {
+			Option::delete($module_id, [
+				'name' => $commentName . "Comment"
+			]);
+			Option::set($module_id, $commentName . "Comment", $comment);
+		}
+		if ($_FILES) {
+			foreach ($_FILES as $key => $item) {
+				if (strripos($key, $commentName . 'Photo') === 0 && $item['tmp_name']) {
+					$temp = [
+						'PHOTO' => array_merge($item, [
+							'MODULE_ID' => $module_id,
+						])
+					];
+
+					if (CFile::SaveForDB($temp, 'PHOTO', $module_id))
+					{
+						Option::delete($module_id, [
+							'name' => $key
+						]);
+						Option::set($module_id, $key, $temp['PHOTO']);
+					}
+				}
+			}
+		}
+
 	}
 	LocalRedirect($request->getRequestUri());
 }
@@ -124,6 +153,13 @@ if ($fatalThrowable) {
 	]);
 	echo $message->show();
 }
+
+$results = CFile::GetList([], ['MODULE_ID' => $module_id]);
+$photos = [];
+while ($result = $results->Fetch()) {
+	$photos[$result['ID']] = $result;
+}
+
 $tabControl = new CAdminTabControl('tabControl', $tabs);
 $tabControl->begin();
 $locatorsFound = Tester::getLocatorsFound();
@@ -232,6 +268,38 @@ foreach ($testsTree as $courseCode => $course) {
 						$messageParams['DETAILS'] .= Loc::getMessage('INTERVOLGA_EDU.TEST_NO_ERRORS');
 						$messageParams['TYPE'] = 'OK';
 					}
+
+					if ($test['INPUTS']) {
+						echo '<form method="post" enctype="multipart/form-data">';
+						$formID = $courseCode . $lessonCode . $test['CODE'];
+						$photoCount = 0;
+						foreach ($test['INPUTS'] as $input) {
+							if ($input['TYPE'] === 'image') {
+								$idPhoto = $formID . 'Photo' . $input['num'];
+								echo  CFile::InputFile($idPhoto, 20, 0, '/upload/intervolga.edu/');
+								$idPhotoDb = Option::get($module_id, $idPhoto);
+								if (array_key_exists($idPhotoDb, $photos)){
+									$ph = $photos[$idPhotoDb];
+									$pathPhoto = '/upload/' . $ph['SUBDIR'] . '/' . $ph['FILE_NAME'];
+									?>
+									<div style="display:none;" id="<?=$idPhoto?>_photo"> <img src="<?=$pathPhoto?>">
+										<br> <a href="<?=$pathPhoto?>"><?= Loc::getMessage('INTERVOLGA_EDU.FOLLOW_PHOTO') ?></a></div>
+									<span class="show-img" id="<?=$idPhoto?>" onclick="showPopup(this)"><?= Loc::getMessage('INTERVOLGA_EDU.SEE_PHOTO') ?></span>
+									<br>
+									<?php
+								}
+
+							} elseif ($input['TYPE'] === 'text-area') {
+								echo '<b>' . $input['DESCRIBE'] . '</b> <br>';
+								$tip = Option::get($module_id, $formID . "Comment");
+								echo '<textarea name="' . $formID . 'Comment" rows="5" cols="80">' . $tip . '</textarea>';
+							}
+							echo '<br>';
+						}
+						echo '<br><button type="submit" class="adm-btn" name="COMMENT" value="' . $formID . '">' . Loc::getMessage('INTERVOLGA_EDU.SEND_PHOTO') . '</button>';
+						echo '</form>';
+					}
+
 					$reportId = $courseCode . "_" . $lessonCode . "_" . strtolower($test['CODE']) . "_problem";
 
 					if ($messageParams['TYPE'] !== 'OK') {

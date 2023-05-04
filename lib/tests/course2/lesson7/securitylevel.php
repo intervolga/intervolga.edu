@@ -13,6 +13,14 @@ class SecurityLevel extends BaseTest
 	{
 		return true;
 	}
+	public static function hasInputText(): string
+	{
+		return '';
+	}
+	public static function countInputImage(): int
+	{
+		return 1;
+	}
 
 	protected static function run()
 	{

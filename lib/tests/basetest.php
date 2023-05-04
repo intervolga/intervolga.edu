@@ -79,6 +79,16 @@ abstract class BaseTest
 		}
 	}
 
+	public static function hasInputText(): string
+	{
+		return '';
+	}
+
+	public static function countInputImage(): int
+	{
+		return 0;
+	}
+
 	/**
 	 * @return bool
 	 */
