@@ -233,7 +233,8 @@ class Tester
 			$count = $testClass::countInputImage();
 			for ($i = 0; $i<$count; $i++) {
 				$tree[$testClass::getCourseCode()]['LESSONS'][$testClass::getLessonCode()]['TESTS'][$testClass]['INPUTS'][] = [
-					'TYPE' => 'image'
+					'TYPE' => 'image',
+					'num' => $i
 				];
 			}
 		}
