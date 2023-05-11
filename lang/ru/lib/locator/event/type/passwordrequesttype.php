@@ -1,0 +1,2 @@
+<?php
+$MESS['INTERVOLGA_EDU.PASSWORD_REQUEST_TYPE'] = 'Запрос пароля';

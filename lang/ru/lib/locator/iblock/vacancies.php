@@ -1,0 +1,2 @@
+<?php
+$MESS['INTERVOLGA_EDU.IBLOCK_VACANCIES'] = 'Вакансии';
