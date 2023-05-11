@@ -25,7 +25,8 @@ class TestLackIncludeArea extends BaseTest
 			if ($path != null) {
 				$file = new File($path->getPath());
 				$fileMessage = FileMessage::get($file);
-				Assert::Custom(Loc::getMessage('INTERVOLGA_EDU.SECT_FILE_EXISTS', [
+				
+				Assert::fileNotExists($file, Loc::getMessage('INTERVOLGA_EDU.SECT_FILE_EXISTS', [
 					'#FILE#' => $fileMessage
 				]));
 			}
