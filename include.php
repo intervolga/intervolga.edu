@@ -32,6 +32,18 @@ const INTERVOLGA_EDU_GUESS_VARIANTS = [
 			'random_reviews',
 		],
 	],
+	'MODULES' => [
+		'main',
+		'fileman',
+		'iblock',
+		'form',
+		'perfmon',
+		'translate',
+		'search',
+		'seo',
+		'security',
+		'photogallery',
+	],
 	'PATHS' => [
 		'DESKTOP' => [
 			'/desktop.php'
