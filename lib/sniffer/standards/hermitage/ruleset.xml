@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<ruleset name="hermitage">
+    <description>Finds hermitage for iblock and sections in code</description>
+</ruleset>
