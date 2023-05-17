@@ -1,0 +1,2 @@
+<?php
+$MESS['INTERVOLGA_EDU.COURSE_1_LESSON_1_LICENSE_NAME'] = 'Стандарт';
