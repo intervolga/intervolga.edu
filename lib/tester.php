@@ -4,6 +4,7 @@ namespace Intervolga\Edu;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Tests\BaseTest;
+use Bitrix\Main\Localization\Loc;
 
 class Tester
 {
@@ -113,8 +114,8 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson6\TestVacanciesParametersChecker::class,
 			\Intervolga\Edu\Tests\Course2\Lesson6\TestCustomComponentChecker::class,
 
-			\Intervolga\Edu\Tests\Course2\Lesson7\SecurityLevel::class,
-			\Intervolga\Edu\Tests\Course2\Lesson7\SecureAuthorization::class,
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestSecurityLevel::class,
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestSecureAuthorization::class,
 
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestGadgetTemplate::class,
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestSettingResultLinks::class,
@@ -159,7 +160,8 @@ class Tester
 		];
 	}
 
-	public static function getTestClassesCount(): int {
+	public static function getTestClassesCount(): int
+	{
 		return count(static::getTestClasses());
 	}
 
@@ -178,6 +180,13 @@ class Tester
 				static::$exceptions[$testClass] = AssertException::createThrowable($throwable);
 			}
 			static::$locatorsFound[$testClass] = Assert::getLocatorsFound();
+
+			$tmpArray = explode('\\', str_replace('Intervolga\\Edu\\Tests\\', '', $testClass));
+			if (stripos($tmpArray[2], 'test') !== 0) {
+				static::$exceptions[$testClass] =
+					new AssertException(Loc::getMessage('INTERVOLGA_EDU.NAME_TEST_NOT_MATCH_REQUIREMENTS',
+						['#TEST_NAME#' => $tmpArray[2]]));
+			}
 		}
 	}
 
