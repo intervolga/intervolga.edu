@@ -15,70 +15,49 @@ Loc::loadMessages(__FILE__);
 
 class TestCheckPartnersSection extends BaseTest
 {
+	public static function interceptErrors()
+	{
+		return true;
+	}
+
 	public static function run()
 	{
 		Assert::directoryLocator(PartnersSection::class);
 		if ($directory = PartnersSection::find()) {
-			static::checkIndexFile($directory);
-			static::checkSection($directory);
+			static::checkTitles($directory);
+			Assert::directoryLocator(PartnersEventsSection::class);
+			if ($section = PartnersEventsSection::find()) {
+				static::checkTitles($section);
+				static::checkSectionMenu($directory, $section);
+			}
 		}
 	}
 
-	protected static function checkIndexFile(Directory $directory)
+	protected static function checkTitles(Directory $directory)
 	{
+		$directoryName = $directory->getName();
 		$indexFile = FileSystem::getInnerFile($directory, 'index.php');
-		Assert::fseExists($indexFile, Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_NOT_FOUND_PARTNERS_DIRECTORY_PAGE'));
-		$directoryPageProperties = StructureService::getPageTitle($indexFile);
-		$title = StructureService::getPageProperties($indexFile)['TITLE'];
+
+		Assert::fseExists($indexFile, Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_NOT_FOUND_' . mb_strtoupper($directoryName) . '_DIRECTORY_PAGE'));
+		$title = StructureService::getPageTitle($indexFile);
+		$browserTitle = StructureService::getPageProperties($indexFile)['TITLE'];
 
 		Assert::eq(
-			$directoryPageProperties,
-			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_PARTNERS_REQUIRED_TITLE'),
-			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_NOT_FOUND_TITLE_PARTNERS',
-				[
-					'#VALUE#' => $directoryPageProperties ?: Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_EMPTY_STRING')
-				])
-		);
-		Assert::eq(
 			$title,
-			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_PARTNERS_REQUIRED_TITLE'),
-			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_NOT_FOUND_TITLE_PARTNERS_PAGE',
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_' . mb_strtoupper($directoryName) . '_REQUIRED_TITLE'),
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_NOT_FOUND_TITLE_' . mb_strtoupper($directoryName),
 				[
 					'#VALUE#' => $title ?: Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_EMPTY_STRING')
 				])
 		);
-	}
-
-	protected static function checkSection(Directory $directory)
-	{
-		Assert::directoryLocator(PartnersEventsSection::class);
-
-		$section = PartnersEventsSection::find();
-		$sectionFile = FileSystem::getInnerFile($section, 'index.php');
-		Assert::fseExists($sectionFile, Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_NOT_FOUND_PARTNERS_EVENTS_DIRECTORY_PAGE'));
-		$directoryPartnersEvent = StructureService::getPageTitle($sectionFile);
-		$title = StructureService::getPageProperties($sectionFile)['TITLE'];
-
 		Assert::eq(
-			$directoryPartnersEvent,
-			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_PARTNERS_EVENTS_DIRECTORY'),
-			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_NOT_FOUND_TITLE_EVENTS',
+			$browserTitle,
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_' . mb_strtoupper($directoryName) . '_REQUIRED_TITLE'),
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_NOT_FOUND_TITLE_' . mb_strtoupper($directoryName) . '_PAGE',
 				[
-					'#VALUE#' => $directoryPartnersEvent ?: Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_EMPTY_STRING')
-				]
-			)
+					'#VALUE#' => $browserTitle ?: Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_EMPTY_STRING')
+				])
 		);
-		Assert::eq(
-			$title,
-			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_PARTNERS_EVENTS_DIRECTORY'),
-			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_NOT_FOUND_TITLE_EVENTS_PAGE',
-				[
-					'#VALUE#' => $title ?: Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_EMPTY_STRING')
-				]
-			)
-		);
-
-		static::checkSectionMenu($directory, $section);
 	}
 
 	protected static function checkSectionMenu(Directory $directory, Directory $sectionEvents)
@@ -96,7 +75,7 @@ class TestCheckPartnersSection extends BaseTest
 		);
 		Assert::eq(
 			$links[FileSystem::getLocalPath($sectionEvents)],
-			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_PARTNERS_EVENTS_DIRECTORY'),
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_EVENTS_REQUIRED_TITLE'),
 			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_PARTNERS_EVENTS_DIRECTORY_WRONG_NAME')
 		);
 	}
