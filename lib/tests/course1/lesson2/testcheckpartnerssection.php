@@ -4,6 +4,7 @@ namespace Intervolga\Edu\Tests\Course1\Lesson2;
 use Bitrix\Main\IO\Directory;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
+use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Locator\IO\PartnersEventsSection;
 use Intervolga\Edu\Locator\IO\PartnersSection;
 use Intervolga\Edu\Tests\BaseTest;
@@ -24,18 +25,17 @@ class TestCheckPartnersSection extends BaseTest
 	{
 		Assert::directoryLocator(PartnersSection::class);
 		if ($directory = PartnersSection::find()) {
-			static::checkTitles($directory);
+			static::checkTitles($directory, 'partners');
 			Assert::directoryLocator(PartnersEventsSection::class);
 			if ($section = PartnersEventsSection::find()) {
-				static::checkTitles($section);
+				static::checkTitles($section, 'events');
 				static::checkSectionMenu($directory, $section);
 			}
 		}
 	}
 
-	protected static function checkTitles(Directory $directory)
+	protected static function checkTitles(Directory $directory, string $directoryName)
 	{
-		$directoryName = $directory->getName();
 		$indexFile = FileSystem::getInnerFile($directory, 'index.php');
 
 		Assert::fseExists($indexFile, Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_NOT_FOUND_' . mb_strtoupper($directoryName) . '_DIRECTORY_PAGE'));
@@ -47,7 +47,7 @@ class TestCheckPartnersSection extends BaseTest
 			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_' . mb_strtoupper($directoryName) . '_REQUIRED_TITLE'),
 			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_NOT_FOUND_TITLE_' . mb_strtoupper($directoryName),
 				[
-					'#VALUE#' => $title ?: Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_EMPTY_STRING')
+					'#VALUE#' => $title ?: Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_EMPTY_STRING'),
 				])
 		);
 		Assert::eq(
@@ -55,7 +55,7 @@ class TestCheckPartnersSection extends BaseTest
 			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_' . mb_strtoupper($directoryName) . '_REQUIRED_TITLE'),
 			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_NOT_FOUND_TITLE_' . mb_strtoupper($directoryName) . '_PAGE',
 				[
-					'#VALUE#' => $browserTitle ?: Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_EMPTY_STRING')
+					'#VALUE#' => $browserTitle ?: Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_2_EMPTY_STRING'),
 				])
 		);
 	}
