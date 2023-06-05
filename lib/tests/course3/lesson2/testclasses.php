@@ -12,11 +12,11 @@ class TestClasses extends BaseTest
 {
 	protected static function run()
 	{
-        Assert::moduleFileExists(ModuleInclude::class);
-        Assert::fileContentMatches(ModuleInclude::find(),
-            new Regex('/Loader::registerAutoLoadClasses/', 'Loader::registerAutoLoadClasses()'));
+		Assert::moduleFileExists(ModuleInclude::class);
+		Assert::fileContentMatches(ModuleInclude::find(),
+			new Regex('/Loader::registerAutoLoadClasses/', 'Loader::registerAutoLoadClasses()'));
 
-        Assert::classLocator(CustomModuleParentTable::class);
+		Assert::classLocator(CustomModuleParentTable::class);
 		Assert::classLocator(CustomModuleTable::class);
 		if ($class = CustomModuleTable::find()) {
 			Assert::phpSniffer([$class->getFileName()], ['oldOrmClass']);
