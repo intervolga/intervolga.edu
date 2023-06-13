@@ -20,12 +20,12 @@ class TestCheckShowContent extends BaseTest
 		foreach ($files as $file) {
 			Assert::fileContentMatches(
 				$file,
-				new Regex('/\<p\s*class\s*=\s*"\s*title\s*"\s*>[\w,\s\<\?\$\-\>\(\);]*<\/p\>\s*\<\?(php|=)\s*\$APPLICATION\-\>ShowViewContent/i', Loc::getMessage('INTERVOLGA_EDU.SHOW_VIEW_CONTENT'))
+				new Regex('/\<p\s*class\s*=\s*"\s*title\s*"\s*>[\w,\s\<\?\$\-\>\(\);]*<\/p\>\s*\<\?(php|=)\s*\$APPLICATION\-\>ShowViewContent/i', Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_11_SHOW_VIEW_CONTENT'))
 			);
 
 			Assert::fileContentMatches(
 				$file,
-				new Regex('/\<p\s*class\s*=\s*"\s*title\s*"\s*>[\w,\s\<\?\$\-\>\(\);]*<\/p\>\s*\<\?(php|=)\s*\$APPLICATION\-\>ShowViewContent\((\'|")[\w\s]*rating/i', Loc::getMessage('INTERVOLGA_EDU.SHOW_VIEW_CONTENT_RATING'))
+				new Regex('/\<p\s*class\s*=\s*"\s*title\s*"\s*>[\w,\s\<\?\$\-\>\(\);]*<\/p\>\s*\<\?(php|=)\s*\$APPLICATION\-\>ShowViewContent\((\'|")[\w\s]*(rating|vote)/i', Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_11_SHOW_VIEW_CONTENT_RATING'))
 			);
 		}
 	}
