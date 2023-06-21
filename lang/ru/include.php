@@ -224,8 +224,6 @@ $MESS['INTERVOLGA_EDU.NOT_LOWER_CASE'] = 'буквы a-z, цифры 0-9, сим
 $MESS['INTERVOLGA_EDU.UPLOAD_PATH'] = 'путь к картинке в /upload/';
 $MESS['INTERVOLGA_EDU.IMG_TAG'] = 'тег <img>';
 $MESS['INTERVOLGA_EDU.SET_VIEW_TARGET'] = 'SetViewTarget';
-$MESS['INTERVOLGA_EDU.SHOW_VIEW_CONTENT'] = 'ShowViewContent после <p> с классом title';
-$MESS['INTERVOLGA_EDU.SHOW_VIEW_CONTENT_RATING'] = 'ShowViewContent для области rating после <p> с классом title';
 $MESS['INTERVOLGA_EDU.TABLE_TAG'] = 'тег <table>';
 $MESS['INTERVOLGA_EDU.SHORT_PHP_TAG_RESTRICTED'] = 'запрещены короткие открывающие PHP-теги';
 $MESS['INTERVOLGA_EDU.OLD_FUNCTION_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#PATH#</a> вместо #NEW# используется устаревший код: #OLD#';

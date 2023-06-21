@@ -16,6 +16,12 @@ class StructureService
 
 		return $return;
 	}
+	public static function getPageTitle(File $directoryPage)
+	{
+		$properties = parseFileContent($directoryPage->getContents())['TITLE'];
+
+		return $properties;
+	}
 
 	public static function getDirProperties(Directory $directory)
 	{
