@@ -31,6 +31,11 @@ const INTERVOLGA_EDU_GUESS_VARIANTS = [
 			'random_review',
 			'random_reviews',
 		],
+		'SLIDER' => [
+			'slider',
+			'promo_slider',
+			'slider_promo',
+		],
 	],
 	'PATHS' => [
 		'DESKTOP' => [
