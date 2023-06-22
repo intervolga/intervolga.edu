@@ -105,6 +105,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson4\TestShowViewContentMaterials::class,
 
 			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestDataCollection::class,
+			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestHermitageInComponent::class,
 			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestComponentDirectory::class,
 			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestDescription::class,
 			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestHermitage::class,
