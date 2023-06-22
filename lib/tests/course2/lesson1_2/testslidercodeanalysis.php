@@ -13,7 +13,7 @@ use Intervolga\Edu\Util\Regex;
 class TestSliderCodeAnalysis extends BaseTest
 {
 	const REG_GET_LIST = '/(foreach|while)+\s*([\w\s\d$=\-:()[\]\.;,><\'\"]*\{[\w\s\d{$=\-:()[\]\.;,><\'\"]*(\{[\w\s\d{$=\-:()[\]\.;,><\'\"]*\})+|[\w\s\d{$=\-:()[\]\.;,><\'\"])*getList\(/i';
-	const REG_GET_LIST_COUNT = '/([\w\s\d{}$=\-:()[\]\.;,><\'\"]*GetList){2,}/i';
+	const REG_GET_LIST_COUNT = '/GetList[\w\s\d()$[\]\'",;:\/А-я\=}{><\-]*GetList/i';
 	const REG_RESIZE_IMAGE = '/(foreach|while)+\s*([\w\s\d$=\-:()[\]\.;,><\'\"]*\{[\w\s\d{$=\-:()[\]\.;,><\'\"]*(\{[\w\s\d{$=\-:()[\]\.;,><\'\"]*\})+|[\w\s\d{$=\-:()[\]\.;,><\'\"])*ResizeImageGet\(/i';
 
 	protected static function run()
@@ -22,7 +22,7 @@ class TestSliderCodeAnalysis extends BaseTest
 		Assert::directoryLocator(SliderTemplate::class);
 
 		if ($directory = SliderTemplate::find()) {
-			$file = FileSystem::getInnerFile($directory, 'result_m2odifier.php');
+			$file = FileSystem::getInnerFile($directory, 'result_modifier.php');
 			Assert::fseExists($file);
 			if ($file->isExists()) {
 				Assert::fileContentMatches($file, new Regex('/LINK_IBLOCK_ID/i', 'LINK_IBLOCK_ID'));
