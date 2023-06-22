@@ -20,18 +20,22 @@ class TestSliderCodeAnalysis extends BaseTest
 	{
 		AssertComponent::componentLocator(Slider::class);
 		Assert::directoryLocator(SliderTemplate::class);
-		if ($directory = SliderTemplate::find()) {
-			$file = FileSystem::getInnerFile($directory, 'result_modifier.php');
-			Assert::fileContentMatches($file, new Regex('/LINK_IBLOCK_ID/i', 'LINK_IBLOCK_ID'));
-			Assert::fileContentNotMatches($file, new Regex('/nPageSize/i', 'nPageSize'));
-			Assert::fileContentNotMatches($file, new Regex('/GetNextELement/i', 'GetNextELement'));
 
-			Assert::fileContentNotMatches($file, new Regex(static::REG_GET_LIST,
-				Loc::getMessage('INTERVOLGA_EDU.COURSE_2.LESSON_1_2.REG_GET_LIST')));
-			Assert::fileContentMatches($file, new Regex(static::REG_RESIZE_IMAGE,
-				Loc::getMessage('INTERVOLGA_EDU.COURSE_2.LESSON_1_2.REG_RESIZE_IMAGE')));
-			Assert::fileContentNotMatches($file, new Regex(static::REG_GET_LIST_COUNT,
-				Loc::getMessage('INTERVOLGA_EDU.COURSE_2.LESSON_1_2.REG_GET_LIST_COUNT')));
+		if ($directory = SliderTemplate::find()) {
+			$file = FileSystem::getInnerFile($directory, 'result_m2odifier.php');
+			Assert::fseExists($file);
+			if ($file->isExists()) {
+				Assert::fileContentMatches($file, new Regex('/LINK_IBLOCK_ID/i', 'LINK_IBLOCK_ID'));
+				Assert::fileContentNotMatches($file, new Regex('/nPageSize/i', 'nPageSize'));
+				Assert::fileContentNotMatches($file, new Regex('/GetNextELement/i', 'GetNextELement'));
+
+				Assert::fileContentNotMatches($file, new Regex(static::REG_GET_LIST,
+					Loc::getMessage('INTERVOLGA_EDU.COURSE_2.LESSON_1_2.REG_GET_LIST')));
+				Assert::fileContentMatches($file, new Regex(static::REG_RESIZE_IMAGE,
+					Loc::getMessage('INTERVOLGA_EDU.COURSE_2.LESSON_1_2.REG_RESIZE_IMAGE')));
+				Assert::fileContentNotMatches($file, new Regex(static::REG_GET_LIST_COUNT,
+					Loc::getMessage('INTERVOLGA_EDU.COURSE_2.LESSON_1_2.REG_GET_LIST_COUNT')));
+			}
 		}
 	}
 }
