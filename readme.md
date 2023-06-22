@@ -51,7 +51,7 @@
 
 ## Тест шаблона компонента
 
-1. Класс должен быть наследником \Intervolga\Edu\Tests\BaseComponentTemplateTest (\Intervolga\Edu\Tests\BaseComplexComponentTemplateTest для комплексных компонентов)
+1. Класс должен быть наследником \Intervolga\Edu\Tests\BaseComponentTemplateTest
 2. Нужно переопределить метод getLocator() и возвращать класс-локатор конкретного шаблона
 3. Нужно переопределить метод getComponentTemplateTree() и возвращать класс-дерево шаблона
 4. Переопределять run() не нужно, класс сделает все сам
