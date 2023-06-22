@@ -11,7 +11,7 @@ use Intervolga\Edu\Util\Regex;
 
 class TestComponentInclude extends BaseTest
 {
-	const REG_INCLUDE_SLIDER = '/\$APPLICATION-\>IncludeComponent\(\s*(\'|")bitrix\:news\.list(\'|")\,\s*(\'|")#SLID2ER#/i';
+	const REG_INCLUDE_SLIDER = '/\$APPLICATION-\>IncludeComponent\(\s*(\'|")bitrix\:news\.list(\'|")\,\s*(\'|")#SLIDER#/i';
 
 	protected static function run()
 	{

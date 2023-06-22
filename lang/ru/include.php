@@ -295,14 +295,7 @@ $MESS['INTERVOLGA_EDU.NEWS_TEMPLATE'] = 'Шаблон новостей';
 $MESS['INTERVOLGA_EDU.TEST_IBLOCK_NAME'] = 'Проверка Инфоблока #IBLOCK#';
 $MESS['INTERVOLGA_EDU.TEST_IBLOCK_DESCRIPTION'] = 'Проверка типа, прав, количества элементов, свойств по заданию, формы редактирования в админке';
 $MESS['INTERVOLGA_EDU.SEARCH_FORM_TEMPLATE'] = 'Шаблон формы поиска';
-$MESS['INTERVOLGA_EDU.GET_LIST_IN_FOREACH'] = 'GetList помещен в foreach';
-$MESS['INTERVOLGA_EDU.NOT_FOUND_RESIZE'] = 'ресайз детального изображения';
-$MESS['INTERVOLGA_EDU.LINK_SET_NOT_BINDING_VALUE'] = 'заполнение ссылки вручную';
-$MESS['INTERVOLGA_EDU.LINK_SET_NOT_BINDING_VALUE_IMG'] = 'заполнение ссылки вручную в <img>';
-$MESS['INTERVOLGA_EDU.NOT_BINDING_ARRAY'] = 'Массив связанного элемента не заполнен';
-$MESS['INTERVOLGA_EDU.JS_NOT_FOUND_IN_COMPONENT_EPILOG'] = 'подключение js-скриптов карусели или подключение не соответствует ядру D7';
-$MESS['INTERVOLGA_EDU.NOT_TITLE_IN_LINK'] = 'title в ссылке на связанный элемент';
-$MESS['INTERVOLGA_EDU.NOT_TITLE_IN_LINK_IMG'] = 'title в ссылке на связанный элемент в <img>';
+
 $MESS['INTERVOLGA_EDU.CATALOG_SECTION_TEMPLATE'] = 'Шаблон секций каталога';
 $MESS['INTERVOLGA_EDU.GALLERY_TEMPLATE'] = 'Шаблон gallery';
 $MESS['INTERVOLGA_EDU.SHOW_VIEW_CONTENT_NOT_FOUND_MATERIALS'] = 'Show View Content для области материалов';
