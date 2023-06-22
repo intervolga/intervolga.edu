@@ -12,15 +12,19 @@ use Intervolga\Edu\Util\Regex;
 
 class TestHermitageInComponent extends BaseTest
 {
+	const REG_BUTTONS = 'CIBlock::GetPanelButtons[\w\s\d()$[\]\'",;:\/А-я\=}{><\-]*CIBlock::GetPanelButtons';
+
 	protected static function run()
 	{
 		AssertComponent::componentLocator(CustomVacanciesList::class);
 		Assert::directoryLocator(VacanciesListComponent::class);
 		if ($directory = VacanciesListComponent::find()) {
 			$file = FileSystem::getInnerFile($directory, 'component.php');
-
-			Assert::fileContentNotMatches($file, new Regex('/CIBlock::GetPanelButtons{2,}/i',
-				Loc::getMessage('INTERVOLGA_EDU.COURSE_2.LESSON_1_2.HERMITAGE_BUTTONS')));
+			Assert::fileLocator($file);
+			if($file->isExists()){
+				Assert::fileContentMatches($file, new Regex(static::REG_BUTTONS,
+					Loc::getMessage('INTERVOLGA_EDU.COURSE_2.LESSON_1_2.HERMITAGE_BUTTONS')));
+			}
 		}
 	}
 }

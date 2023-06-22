@@ -21,11 +21,13 @@ class TestDataCollection extends BaseTest
 		Assert::directoryLocator(VacanciesListComponent::class);
 		if ($directory = VacanciesListComponent::find()) {
 			$file = FileSystem::getInnerFile($directory, 'component.php');
-
-			Assert::fileContentNotMatches($file, new Regex(static::REG_GET_LIST_CIBlockSection,
-				Loc::getMessage('INTERVOLGA_EDU.COURSE_2.LESSON_1_2.REG_GET_LIST_CIBlockSection')));
-			Assert::fileContentNotMatches($file, new Regex(static::REG_GET_LIST_CIBlockElement,
-				Loc::getMessage('INTERVOLGA_EDU.COURSE_2.LESSON_1_2.REG_GET_LIST_CIBlockElement')));
+			Assert::fileLocator($file);
+			if ($file->isExists()) {
+				Assert::fileContentNotMatches($file, new Regex(static::REG_GET_LIST_CIBlockSection,
+					Loc::getMessage('INTERVOLGA_EDU.COURSE_2.LESSON_1_2.REG_GET_LIST_CIBlockSection')));
+				Assert::fileContentNotMatches($file, new Regex(static::REG_GET_LIST_CIBlockElement,
+					Loc::getMessage('INTERVOLGA_EDU.COURSE_2.LESSON_1_2.REG_GET_LIST_CIBlockElement')));
+			}
 		}
 	}
 }
