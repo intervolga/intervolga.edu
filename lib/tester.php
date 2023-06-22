@@ -88,6 +88,10 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson11\TestSmartFilterIsExist::class,
 			\Intervolga\Edu\Tests\Course1\Lesson11\TestPropertyInFilter::class,
 
+			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestComponentInclude::class,
+			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestSlider::class,
+			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestSliderComponent::class,
+			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestSliderCodeAnalysis::class,
 			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestCatalogBindingProperty::class,
 			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestPropertyPrice::class,
 
