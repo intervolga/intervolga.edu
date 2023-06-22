@@ -13,7 +13,7 @@ use Intervolga\Edu\Util\Regex;
 
 class TestTemplateLogic extends BaseTest
 {
-	const REG_FOREACH = 'foreach[\w\s\d()$[\]\'";:,?><\/*\-=]*[^d]foreach';
+	const REG_FOREACH = '/foreach[\w\s\d()$[\]\'";:,?><\/*\-=]*[^d]foreach/i';
 
 	protected static function run()
 	{
@@ -21,7 +21,7 @@ class TestTemplateLogic extends BaseTest
 		Assert::directoryLocator(VacanciesListTemplate::class);
 		if ($directory = VacanciesListTemplate::find()) {
 			$file = FileSystem::getInnerFile($directory, 'template.php');
-			Assert::fileLocator($file);
+			Assert::fseExists($file);
 			if ($file->isExists()) {
 				Assert::fileContentMatches($file, new Regex(static::REG_FOREACH,
 					Loc::getMessage('INTERVOLGA_EDU.COURSE_2.LESSON_1_2.FOREACH_COUNT')));
