@@ -1,6 +1,7 @@
 <?php
 namespace Intervolga\Edu\Tests\Course2\Lesson1_2;
 
+use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Asserts\AssertComponent;
 use Intervolga\Edu\Locator\Component\Template\Slider;
@@ -11,8 +12,9 @@ use Intervolga\Edu\Util\Regex;
 
 class TestSliderCodeAnalysis extends BaseTest
 {
-	const REG_GET_LIST = '/(foreach|while)+\s*([\w\s\d$=\-:()[\]\.;,><\'\"]*\{[\w\s\d{$=\-:()[\]\.;,><\'\"]*(\{[\w\s\d{$=\-:()[\]\.;,><\'\"]*\})*|[\w\s\d{$=\-:()[\]\.;,><\'\"])*getList\(/i';
-	const REG_RESIZE_IMAGE = '/(foreach|while)+\s*([\w\s\d$=\-:()[\]\.;,><\'\"]*\{[\w\s\d{$=\-:()[\]\.;,><\'\"]*(\{[\w\s\d{$=\-:()[\]\.;,><\'\"]*\})*|[\w\s\d{$=\-:()[\]\.;,><\'\"])*ResizeImageGet\(/i';
+	const REG_GET_LIST = '/(foreach|while)+\s*([\w\s\d$=\-:()[\]\.;,><\'\"]*\{[\w\s\d{$=\-:()[\]\.;,><\'\"]*(\{[\w\s\d{$=\-:()[\]\.;,><\'\"]*\})+|[\w\s\d{$=\-:()[\]\.;,><\'\"])*getList\(/i';
+	const REG_GET_LIST_COUNT = '/([\w\s\d{}$=\-:()[\]\.;,><\'\"]*GetList){2,}/i';
+	const REG_RESIZE_IMAGE = '/(foreach|while)+\s*([\w\s\d$=\-:()[\]\.;,><\'\"]*\{[\w\s\d{$=\-:()[\]\.;,><\'\"]*(\{[\w\s\d{$=\-:()[\]\.;,><\'\"]*\})+|[\w\s\d{$=\-:()[\]\.;,><\'\"])*ResizeImageGet\(/i';
 
 	protected static function run()
 	{
@@ -24,8 +26,12 @@ class TestSliderCodeAnalysis extends BaseTest
 			Assert::fileContentNotMatches($file, new Regex('/nPageSize/i', 'nPageSize'));
 			Assert::fileContentNotMatches($file, new Regex('/GetNextELement/i', 'GetNextELement'));
 
-			Assert::fileContentNotMatches($file, new Regex(static::REG_GET_LIST, 'GetList in foreach/while'));
-			Assert::fileContentMatches($file, new Regex(static::REG_RESIZE_IMAGE, 'ResizeImageGet in foreach'));
+			Assert::fileContentNotMatches($file, new Regex(static::REG_GET_LIST,
+				Loc::getMessage('INTERVOLGA_EDU.COURSE_2.LESSON_1_2.REG_GET_LIST')));
+			Assert::fileContentMatches($file, new Regex(static::REG_RESIZE_IMAGE,
+				Loc::getMessage('INTERVOLGA_EDU.COURSE_2.LESSON_1_2.REG_RESIZE_IMAGE')));
+			Assert::fileContentNotMatches($file, new Regex(static::REG_GET_LIST_COUNT,
+				Loc::getMessage('INTERVOLGA_EDU.COURSE_2.LESSON_1_2.REG_GET_LIST_COUNT')));
 		}
 	}
 }
