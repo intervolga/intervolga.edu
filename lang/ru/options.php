@@ -21,3 +21,5 @@ $MESS['INTERVOLGA_EDU.GO_UP'] = 'В начало';
 $MESS['INTERVOLGA_EDU.GO_BACK'] = 'К предыдущему уроку';
 $MESS['INTERVOLGA_EDU.GO_FORWARD'] = 'К следующему уроку';
 $MESS['INTERVOLGA_EDU.LESSON_HELP'] = 'Советы по уроку';
+$MESS['INTERVOLGA_EDU.SNIFFER_TAB'] = 'SNIFFER';
+$MESS['INTERVOLGA_EDU.SNIFFER_TITLE'] = 'Проверка кода через Sniffer';

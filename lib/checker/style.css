@@ -1,0 +1,38 @@
+#intervolga-checker,
+#intervolga-checker td {
+	text-align: left;
+	padding: 5px 4px 7px 0;
+}
+
+#intervolga-checker #input-block {
+	text-align: center;
+}
+
+#intervolga-checker ul {
+	list-style-type: none;
+	padding: 5px 4px 7px 35px;
+	text-align: left;
+}
+
+#intervolga-checker li {
+	padding: 5px 4px 7px 35px;
+}
+
+.title {
+	font-size: 1.5em;
+	margin: 1.2em 1.2em;
+}
+
+#result {
+	font-size: 1.5em;
+	padding: 10px 4px 7px 35px;
+}
+
+#result div {
+	font-size: 0.75em;
+	padding: 5px 4px 7px 35px;
+}
+
+#error {
+	color: red;
+}
