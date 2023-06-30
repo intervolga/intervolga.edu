@@ -4,6 +4,15 @@
 	padding: 5px 4px 7px 0;
 }
 
+#radio {
+	display: inline-flex;
+	justify-content: space-between;
+}
+
+#radio div {
+	margin-right: 40px;
+}
+
 #intervolga-checker #input-block {
 	text-align: center;
 }
@@ -29,7 +38,7 @@
 }
 
 #result div {
-	font-size: 0.75em;
+	font-size: 0.8em;
 	padding: 5px 4px 7px 35px;
 }
 

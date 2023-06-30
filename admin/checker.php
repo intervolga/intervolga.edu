@@ -8,10 +8,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_be
 global $APPLICATION;
 $result = [];
 if ($APPLICATION->getFileAccessPermission("/bitrix/admin/")>='R') {
+	$contentType = Context::getCurrent()->getRequest()->getPost('contentType');
 	$content = Context::getCurrent()->getRequest()->getPost('content');
 	$flags = Context::getCurrent()->getRequest()->getPost('flags');
 	\Bitrix\Main\Loader::includeModule('intervolga.edu');
-	$result = StandardsHelper::getJson($content, $flags);
+	$result = StandardsHelper::getJson($contentType, $content, $flags);
 }
 
 echo Json::encode($result);
