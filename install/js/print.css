@@ -1,0 +1,65 @@
+@media print {
+	.non-print {
+		display: none;
+	}
+
+	a[href^=http]:after {
+		content: " [" attr(href) "]";
+		font-style: italic;
+		color: black;
+		font-size: small;
+	}
+}
+body {
+	padding: 10px;
+}
+
+*:not(.code){
+	font-family: Arial, sans-serif;
+}
+a {
+	text-decoration: none;
+}
+
+.code {
+	color: #bb5628;
+	font-weight: bold;
+}
+
+.lesson {
+	margin-left: 15px;
+}
+
+li {
+	line-height: 1.5em;
+}
+div {
+	padding-inline-start: 30px;
+}
+div ul,  div ol{
+	padding-inline-start: 15px;
+	margin-block-end: 0;
+}
+
+h4{
+	margin-block-end: -1em;
+}
+h3{
+	margin-block-end: 0;
+}
+
+
+div ul ol,
+div ul ul,
+div ol ul,
+div ol ol
+{
+	padding-inline-start: 40px;
+}
+table {
+	border-collapse: collapse;
+}
+table th,  table td {
+	padding: 3px;
+	border: 1px solid black;
+}

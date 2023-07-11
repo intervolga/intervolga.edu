@@ -80,6 +80,10 @@ class intervolga_edu extends CModule
 			true,
 			true
 		);
+		copyDirFiles(
+			$root . $curDir .  '/install/admin',
+			$root . '/bitrix/admin/'
+		);
 	}
 
 	public function UninstallFiles()
