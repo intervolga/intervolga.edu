@@ -7,7 +7,7 @@ use Intervolga\Edu\Util\Help;
  * @var string $mid module id
  */
 global $APPLICATION, $USER;
-$APPLICATION->setAdditionalCSS('/bitrix/js/' . $mid . '/print.css');
+$APPLICATION->setAdditionalCSS('/bitrix/css/' . $mid . '/print.css');
 $APPLICATION->ShowHead();
 ?>
 	<div class="non-print"> Для печати нажмите <b><a href="javascript:(print());"> CTRL+P</a></b></div>
