@@ -620,8 +620,19 @@ class File
 
     }//end getTokens()
 
+	/**
+	 * Returns the token for this file.
+	 *
+	 * @param int $index
+	 * @return array
+	 */
+	public function getToken(int $index): array
+	{
+		return $this->tokens[$index];
 
-    /**
+	}//end getToken()
+
+	/**
      * Remove vars stored in this file that are no longer required.
      *
      * @return void
