@@ -11,6 +11,7 @@ class CheckArPrefixSniff implements Sniff
 	protected static $exceptionsNames = [
 		'$arResult',
 		'$arParams',
+		'$arTemplateParameters',
 		'$arWizardVersion',
 		'$arWizardDescription',
 		'$arGadgetParams',
