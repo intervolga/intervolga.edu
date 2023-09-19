@@ -1,6 +1,7 @@
 <?php
 namespace Intervolga\Edu\Tests;
 
+use Bitrix\Main\IO\File;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 
@@ -36,7 +37,14 @@ abstract class BaseTestCode extends BaseTest
 	protected static function run()
 	{
 		$files = static::getFilesPaths();
-		Assert::phpSniffer($files);
+		Assert::notEmpty($files, Loc::getMessage('INTERVOLGA_EDU.TEST_CODE_EMPTY_FILES'));
+		foreach ($files as $file) {
+			$file = new File($file);
+			Assert::fseExists($file);
+			if ($file->isExists()) {
+				Assert::phpSniffer([$file->getPath()]);
+			}
+		}
 	}
 
 	abstract static function getFilesPaths(): array;
