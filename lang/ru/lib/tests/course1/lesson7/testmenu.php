@@ -1,0 +1,3 @@
+<?php
+$MESS['INTERVOLGA_EDU.COURSE_1_LESSON_7_PARAMETERS_CACHE_TYPE'] = 'В компоненте <b>#COMPONENT#</b> (шаблон <b>#TEMPLATE#</b>), размещенном в #PATH# кеширование должно быть <b>отключено</b>';
+$MESS['INTERVOLGA_EDU.COURSE_1_LESSON_7_PARAMETERS_CACHE_GROUPS'] = 'В компоненте <b>#COMPONENT#</b> (шаблон <b>#TEMPLATE#</b>), размещенном в #PATH# флаг "учитывать права доступа" в настройках кеширования должен быть <b>снят</b>';
