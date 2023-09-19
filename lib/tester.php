@@ -81,6 +81,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson10\TestSearchAction::class,
 			\Intervolga\Edu\Tests\Course1\Lesson10\TestSearchTemplate::class,
 
+			\Intervolga\Edu\Tests\Course1\Lesson11\SeoChecker::class,
 			\Intervolga\Edu\Tests\Course1\Lesson11\TestCatalogRating::class,
 			\Intervolga\Edu\Tests\Course1\Lesson11\TestCheckSetViewTarget::class,
 			\Intervolga\Edu\Tests\Course1\Lesson11\TestCheckShowContent::class,

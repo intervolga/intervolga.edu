@@ -1,0 +1,2 @@
+<?php
+$MESS['INTERVOLGA_EDU.SOFT_FORNITURE_SECTION'] = 'Мягкая мебель';
