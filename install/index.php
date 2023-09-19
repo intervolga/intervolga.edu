@@ -74,11 +74,21 @@ class intervolga_edu extends CModule
 			true,
 			true
 		);
+        copyDirFiles(
+            $root . $curDir .  '/install/css',
+            $root . '/bitrix/css/' . $this->MODULE_ID,
+            true,
+            true
+        );
 		copyDirFiles(
 			$root . $curDir .  '/install/images',
 			$root . '/bitrix/images/' . $this->MODULE_ID,
 			true,
 			true
+		);
+		copyDirFiles(
+			$root . $curDir .  '/install/admin',
+			$root . '/bitrix/admin/'
 		);
 	}
 
@@ -90,6 +100,10 @@ class intervolga_edu extends CModule
 			$root . $curDir .  '/install/js',
 			$root . '/bitrix/js/' . $this->MODULE_ID
 		);
+        deleteDirFiles(
+            $root . $curDir .  '/install/css',
+            $root . '/bitrix/css/' . $this->MODULE_ID
+        );
 		deleteDirFiles(
 			$root . $curDir .  '/install/images',
 			$root . '/bitrix/images/' . $this->MODULE_ID
