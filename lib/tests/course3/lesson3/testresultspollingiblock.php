@@ -1,6 +1,7 @@
 <?php
 namespace Intervolga\Edu\Tests\Course3\Lesson3;
 
+use Intervolga\Edu\Locator\Iblock\Property\AgePollResultProperty;
 use Intervolga\Edu\Locator\Iblock\Property\ConnectRespondentProperty;
 use Intervolga\Edu\Locator\Iblock\Property\GenderProperty;
 use Intervolga\Edu\Locator\Iblock\Property\SalaryProperty;
@@ -24,7 +25,8 @@ class TestResultsPollingIblock extends BaseTestIblock
 		return [
 			SalaryProperty::class,
 			ConnectRespondentProperty::class,
-			GenderProperty::class
+			GenderProperty::class,
+			AgePollResultProperty::class
 		];
 	}
 
