@@ -157,6 +157,10 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson8\TestUserTestExists::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson9\TestCompositeEnabled::class,
+
+			\Intervolga\Edu\Tests\Course1New\Lesson2\TestLicense::class,
+			\Intervolga\Edu\Tests\Course1New\Lesson2\TestAcademModule::class,
+			\Intervolga\Edu\Tests\Course1New\Lesson2\TestDeleteTrash::class,
 		];
 	}
 
