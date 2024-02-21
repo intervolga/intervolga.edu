@@ -164,6 +164,10 @@ class Tester
 
 			\Intervolga\Edu\Tests\Course1New\Lesson3\TestUpdates::class,
 			\Intervolga\Edu\Tests\Course1New\Lesson3\TestSiteDirTrash::class,
+			\Intervolga\Edu\Tests\Course1New\Lesson3\TestMainModuleSettings::class,
+			\Intervolga\Edu\Tests\Course1New\Lesson3\TestAuthorizationSettings::class,
+			\Intervolga\Edu\Tests\Course1New\Lesson3\TestEventLogSettings::class,
+			\Intervolga\Edu\Tests\Course1New\Lesson3\TestUpdateSystemSettings::class,
 		];
 	}
 
