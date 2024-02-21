@@ -25,6 +25,7 @@ class UpdateSystem
 		return [
 			'LICENSE' => static::$updateStatus['CLIENT'][0]['@']['LICENSE'],
 			'MODULES' => static::$updateStatus['MODULES'][0]['#']['MODULE'] ?: [],
+			'UPDATE_SYSTEM' => static::$updateStatus['UPDATE_SYSTEM'][0]['@']['VERSION'],
 		];
 	}
 
