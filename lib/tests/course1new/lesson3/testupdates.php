@@ -11,7 +11,7 @@ class TestUpdates extends BaseTest
 	protected static function run()
 	{
 		$status = UpdateSystem::getStatus();
-		Assert::empty($status['UPDATE_SYSTEM'], Loc::getMessage('INTERVOLGA_EDU.UPDATE_SYSTEM_FOUND'));
+		Assert::empty($status['UPDATE_SYSTEM'], Loc::getMessage('IV_EDU.NEW_ACADEMY.C_1.L_3.UPDATE_SYSTEM_FOUND'));
 		Assert::count($status['MODULES'], 0);
 	}
 }
