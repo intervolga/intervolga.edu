@@ -8,9 +8,10 @@ use Intervolga\Edu\Tests\BaseTest;
 
 class TestUpdateSystemSettings extends BaseTest
 {
-	const UPDATE_SYSTEM_SETTINGS = [
-		'update_devsrv'
-	];
+	public static function interceptErrors()
+	{
+		return true;
+	}
 
 	protected static function run()
 	{

@@ -15,6 +15,11 @@ class TestSiteDirTrash extends BaseTest
 		'bitrixservertest.php'
 	];
 
+	public static function interceptErrors()
+	{
+		return true;
+	}
+
 	protected static function run()
 	{
 		foreach (static::TRASH_FILES as $fileName) {

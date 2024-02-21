@@ -23,6 +23,11 @@ class TestAuthorizationSettings extends BaseTest
 		'~rsa_key_pem',
 	];
 
+	public static function interceptErrors()
+	{
+		return true;
+	}
+
 	protected static function run()
 	{
 		$moduleSettings = Option::getForModule('main');

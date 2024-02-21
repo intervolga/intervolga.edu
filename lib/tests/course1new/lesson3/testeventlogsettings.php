@@ -32,6 +32,11 @@ class TestEventLogSettings extends BaseTest
 		'user_profile_history',
 	];
 
+	public static function interceptErrors()
+	{
+		return true;
+	}
+
 	protected static function run()
 	{
 		$moduleSettings = Option::getForModule('main');

@@ -19,6 +19,11 @@ class TestMainModuleSettings extends BaseTest
 		'compres_css_js_files'
 	];
 
+	public static function interceptErrors()
+	{
+		return true;
+	}
+
 	protected static function run()
 	{
 		$moduleSettings = Option::getForModule('main');
