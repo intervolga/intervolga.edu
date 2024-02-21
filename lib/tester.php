@@ -163,6 +163,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1New\Lesson2\TestDeleteTrash::class,
 
 			\Intervolga\Edu\Tests\Course1New\Lesson3\TestUpdates::class,
+			\Intervolga\Edu\Tests\Course1New\Lesson3\TestSiteDirTrash::class,
 		];
 	}
 
