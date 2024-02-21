@@ -11,6 +11,7 @@ class TestDeleteTrash extends BaseTest
 	protected static function run()
 	{
 		$innerFiles = PathMaskParser::getFileSystemEntriesByMask('/bitrix/modules/*.zip');
+		$names=[];
 		if ($innerFiles) {
 			foreach ($innerFiles as $trash) {
 				$names[] = $trash->getName();
