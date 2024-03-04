@@ -171,6 +171,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1New\Lesson3\TestSiteClosed::class,
 			\Intervolga\Edu\Tests\Course1New\Lesson3\TestSiteSupport::class,
 			\Intervolga\Edu\Tests\Course1New\Lesson3\TestAutocaching::class,
+			\Intervolga\Edu\Tests\Course1New\Lesson3\TestBackupCheck::class,
 		];
 	}
 
