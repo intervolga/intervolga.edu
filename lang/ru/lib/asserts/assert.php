@@ -54,3 +54,4 @@ $MESS['INTERVOLGA_EDU.ASSERT_EVENT_MESSAGE_EXISTS'] = 'Почтовое собы
 $MESS['INTERVOLGA_EDU.ASSERT_EVENT_TEMPLATE_EXISTS'] = 'Почтовый шаблон <b>#NAME#</b> не найден (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.TEMPLATE_NOT_EQUALS_CONDITION'] = 'Шаблон <b>#TEMPLATE#</b> имеет неверное условие показа';
 $MESS['INTERVOLGA_EDU.TEMPLATE_NOT_EXISTS'] = 'Шаблон <b>#TEMPLATE#</b> отсутствует';
+$MESS['INTERVOLGA_EDU.ASSERT_FILE_CONTENT_MATCH.EMPTY'] = 'Файл <b>#PATH#</b> является пустым';

@@ -501,7 +501,7 @@ class Assert
 	{
 		static::fseExists($value);
 		$content = $value->getContents();
-		Assert::notEmpty($content);
+		Assert::notEmpty($content, Loc::getMessage('INTERVOLGA_EDU.ASSERT_FILE_CONTENT_MATCH.EMPTY',['#PATH#' => $value->getPath()]));
 		$matches = [];
 		if ($content) {
 			preg_match_all($regex->getRegex(), $content, $matches, PREG_SET_ORDER);

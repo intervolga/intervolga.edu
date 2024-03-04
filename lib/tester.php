@@ -172,6 +172,8 @@ class Tester
 			\Intervolga\Edu\Tests\Course1New\Lesson3\TestSiteSupport::class,
 			\Intervolga\Edu\Tests\Course1New\Lesson3\TestAutocaching::class,
 			\Intervolga\Edu\Tests\Course1New\Lesson3\TestBackupCheck::class,
+			\Intervolga\Edu\Tests\Course1New\Lesson3\TestHtaccess::class,
+			\Intervolga\Edu\Tests\Course1New\Lesson3\TestRobots::class,
 		];
 	}
 
