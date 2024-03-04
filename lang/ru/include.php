@@ -6,6 +6,7 @@ $MESS['INTERVOLGA_EDU.COURSE4'] = '4. Разработка на D7. Введен
 $MESS['INTERVOLGA_EDU.COURSE1NEW'] = '1. Подготовка окружения (Новая академия)';
 
 $MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON2'] = '2. Установка платформы';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3'] = '3. Настройки для начала работы';
 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1'] = '1. Установка платформы';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2'] = '2. Структура Bitrix Framework';
@@ -44,6 +45,32 @@ $MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON2_ACADEMMODULE'] = 'Проверка ус
 $MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON2_ACADEMMODULE_DESCRIPTION'] = 'Проверка наличия модуля "Академия 1С-Битрикс" для обучения и выполнения заданий';
 $MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON2_DELETETRASH'] = 'Проверка наличия мусора';
 $MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON2_DELETETRASH_DESCRIPTION'] = 'Проверка на "забытые" архивы в папке модулей';
+
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_UPDATES'] = 'Проверка обновлений';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_UPDATES_DESCRIPTION'] = 'Список <a href="/bitrix/admin/update_system.php?refresh=Y&lang=ru" target="_blank">рекомендуемых обновлений</a> должен быть пуст';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_SITEDIRTRASH'] = 'Проверка лишних файлов в корне сайта';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_SITEDIRTRASH_DESCRIPTION'] = 'В корне сайта не должно быть файлов bitrixsetup.php, restore.php, bitrixservertest.php, бэкапов сайта и бд';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_MAINMODULESETTINGS'] = 'Проверка настроек Главного модуля';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_MAINMODULESETTINGS_DESCRIPTION'] = 'Настройки главного модуля должны соответствовать тем, что выполнялись в уроке';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_AUTHORIZATIONSETTINGS'] = 'Проверка настроек Авторизации';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_AUTHORIZATIONSETTINGS_DESCRIPTION'] = 'Настройки авторизации в главном модуле должны соответствовать настройкам из урока';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_EVENTLOGSETTINGS'] = 'Проверка настроек Журнала событий';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_EVENTLOGSETTINGS_DESCRIPTION'] = 'Настройки журнала событий в главном модуле должны соответствовать настройкам из урока';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_UPDATESYSTEMSETTINGS'] = 'Проверка настроек Системы обновлений';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_UPDATESYSTEMSETTINGS_DESCRIPTION'] = 'Настройки системы обновлений в главном модуле должны соответствовать настройкам из урока';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_SITECLOSED'] = 'Проверка наличия заглушки сайта';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_SITECLOSED_DESCRIPTION'] = 'Файл site_closed.php должен быть перенесен из материалов урока по адресу local/php_interface/include/site_closed.php';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_SITESUPPORT'] = 'Проверка наличия информации о разработчике';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_SITESUPPORT_DESCRIPTION'] = 'Файл this_site_support.php должен быть перенесен из материалов урока по адресу local/php_interface/this_site_support.php';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_AUTOCACHING'] = 'Проверка настроек Автокеширования';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_AUTOCACHING_DESCRIPTION'] = 'Автокеширование и управляемый	 кеш должны быть включены';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_BACKUPCHECK'] = 'Проверка наличия бэкапа';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_BACKUPCHECK_DESCRIPTION'] = 'На сайте должен существовать хотя бы один бэкап';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_HTACCESS'] = 'Проверка .htaccess';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_HTACCESS'] = 'Файл должен существовать и быть заполненным, согласно уроку';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_ROBOTS'] = 'Проверка robots.txt';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON3_ROBOTS_DESCRIPTION'] = 'Файл robots.txt должен существовать, быть заполнен';
+
 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE'] = 'Проверка установки модуля «Корпоративный сайт производственной компании»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE_DESCRIPTION'] = 'Модуль должен быть <a href="/bitrix/admin/partner_modules.php?lang=ru" target="_blank">зарегистрирован</a> в системе и установлен';
