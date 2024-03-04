@@ -91,12 +91,12 @@ foreach ($errorsTree as $courseCode => $lessonCodes) {
 	}
 }
 $tabs = [];
-$courseNum = 1;
+
 foreach ($testsTree as $courseCode => $course) {
 	$tabs[] = [
 		'DIV' => $courseCode,
 		'TAB' => Loc::getMessage('INTERVOLGA_EDU.COURSE_TAB_HEADER', [
-				'#NUM#' => $courseNum,
+				'#NUM#' => str_replace('course', '', $courseCode),
 				'#DONE#' => $stat[$courseCode]['DONE'],
 				'#TOTAL#' => count($course['LESSONS']),
 			]
@@ -109,7 +109,6 @@ foreach ($testsTree as $courseCode => $course) {
 		),
 		'ONSELECT' => 'intervolgaEduOnTabChanged("' . $courseCode . '");',
 	];
-	$courseNum++;
 }
 $tabs[] = [
 	'DIV' => 'info',
