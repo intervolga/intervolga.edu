@@ -161,7 +161,9 @@ class Tester
 			\Intervolga\Edu\Tests\Course1New\Lesson2\TestLicense::class,
 			\Intervolga\Edu\Tests\Course1New\Lesson2\TestAcademModule::class,
 			\Intervolga\Edu\Tests\Course1New\Lesson2\TestDeleteTrash::class,
+
 			Tests\Course1New\Lesson5\TestConfig::class,
+			Tests\Course1New\Lesson5\TestConfigAccess::class,
 		];
 	}
 
