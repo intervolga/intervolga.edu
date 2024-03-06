@@ -6,6 +6,7 @@ $MESS['INTERVOLGA_EDU.COURSE4'] = '4. Разработка на D7. Введен
 $MESS['INTERVOLGA_EDU.COURSE1NEW'] = '1. Подготовка окружения (Новая академия)';
 
 $MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON2'] = '2. Установка платформы';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON2'] = '4. Конфигурационные файлы';
 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1'] = '1. Установка платформы';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2'] = '2. Структура Bitrix Framework';
@@ -44,6 +45,9 @@ $MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON2_ACADEMMODULE'] = 'Проверка ус
 $MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON2_ACADEMMODULE_DESCRIPTION'] = 'Проверка наличия модуля "Академия 1С-Битрикс" для обучения и выполнения заданий';
 $MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON2_DELETETRASH'] = 'Проверка наличия мусора';
 $MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON2_DELETETRASH_DESCRIPTION'] = 'Проверка на "забытые" архивы в папке модулей';
+
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON4_DBCONN'] = 'Проверка файла dbconn.php';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON4_DBCONN_DESCRIPTION'] = 'Проверка настройки логирования всех запросов к БД ($DBDebugToFile)';
 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE'] = 'Проверка установки модуля «Корпоративный сайт производственной компании»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE_DESCRIPTION'] = 'Модуль должен быть <a href="/bitrix/admin/partner_modules.php?lang=ru" target="_blank">зарегистрирован</a> в системе и установлен';
