@@ -6,7 +6,7 @@ $MESS['INTERVOLGA_EDU.COURSE4'] = '4. Разработка на D7. Введен
 $MESS['INTERVOLGA_EDU.COURSE1NEW'] = '1. Подготовка окружения (Новая академия)';
 
 $MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON2'] = '2. Установка платформы';
-$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON2'] = '4. Конфигурационные файлы';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON4'] = '4. Конфигурационные файлы';
 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1'] = '1. Установка платформы';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2'] = '2. Структура Bitrix Framework';
