@@ -163,6 +163,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1New\Lesson2\TestDeleteTrash::class,
 
 			Tests\Course1New\Lesson4\TestDBConn::class,
+			Tests\Course1New\Lesson4\TestDBQueryError::class,
 		];
 	}
 

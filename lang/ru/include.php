@@ -48,6 +48,8 @@ $MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON2_DELETETRASH_DESCRIPTION'] = 'Прове
 
 $MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON4_DBCONN'] = 'Проверка файла dbconn.php';
 $MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON4_DBCONN_DESCRIPTION'] = 'Проверка настройки логирования всех запросов к БД ($DBDebugToFile)';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON4_DBQUERYERROR'] = 'Проверка наличия файла dbquery_error.php';
+$MESS['INTERVOLGA_EDU.COURSE1NEW_LESSON4_DBQUERYERROR_DESCRIPTION'] = 'Файл dbquery_error.php должен быть перенесен из материалов урока в папку /bitrix/php_interface/';
 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE'] = 'Проверка установки модуля «Корпоративный сайт производственной компании»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE_DESCRIPTION'] = 'Модуль должен быть <a href="/bitrix/admin/partner_modules.php?lang=ru" target="_blank">зарегистрирован</a> в системе и установлен';
