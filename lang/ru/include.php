@@ -38,6 +38,9 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON7'] = '7. Производительност
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON8'] = '8. Монитор качества';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON9'] = '9. Композитный сайт';
 
+$MESS['INTERVOLGA_EDU.COURSE2NEW_LESSON2_ACADEMYMODULE'] = 'Проверка наличия и установки кастомного модуля';
+$MESS['INTERVOLGA_EDU.COURSE2NEW_LESSON2_ACADEMYMODULE_DESCRIPTION'] = 'Модуль должен быть установлен и размещен в директории для локальной разработки';
+
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE'] = 'Проверка установки модуля «Корпоративный сайт производственной компании»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE_DESCRIPTION'] = 'Модуль должен быть <a href="/bitrix/admin/partner_modules.php?lang=ru" target="_blank">зарегистрирован</a> в системе и установлен';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEIBLOCKS'] = 'Проверка инфоблоков модуля «Корпоративный сайт производственной компании»';
