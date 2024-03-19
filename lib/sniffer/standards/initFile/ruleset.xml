@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<ruleset name="initFile">
+ <description>Проверка содержимого init.php согласно 2-2 Новой академии.</description>
+</ruleset>
