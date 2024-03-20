@@ -159,6 +159,8 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson9\TestCompositeEnabled::class,
 
 			\Intervolga\Edu\Tests\Course2New\Lesson2\TestAcademyModule::class,
+			\Intervolga\Edu\Tests\Course2New\Lesson2\TestInit::class,
+
 
 		];
 	}
