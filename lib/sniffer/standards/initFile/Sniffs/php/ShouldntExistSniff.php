@@ -1,5 +1,5 @@
 <?php
-namespace PHP_CodeSniffer\Standards\OldOrmClass\Sniffs\PHP;
+namespace PHP_CodeSniffer\Standards\InitFile\Sniffs\PHP;
 
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Util\FileMessage;

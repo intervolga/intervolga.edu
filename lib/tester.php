@@ -160,6 +160,7 @@ class Tester
 
 			\Intervolga\Edu\Tests\Course2New\Lesson2\TestAcademyModule::class,
 			\Intervolga\Edu\Tests\Course2New\Lesson2\TestInit::class,
+			\Intervolga\Edu\Tests\Course2New\Lesson2\TestEventhandlers::class,
 
 
 		];

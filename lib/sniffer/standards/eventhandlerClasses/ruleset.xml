@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<ruleset name="eventhandlerClasses">
+ <description>Проверка содержимого eventhandlers main и iblock согласно 2-2 Новой академии.</description>
+</ruleset>
