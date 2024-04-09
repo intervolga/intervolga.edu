@@ -44,6 +44,8 @@ $MESS['INTERVOLGA_EDU.COURSE2NEW_LESSON2_INIT'] = 'Проверка файла i
 $MESS['INTERVOLGA_EDU.COURSE2NEW_LESSON2_INIT_DESCRIPTION'] = 'В файле /local/php_interface/init.php должно остаться только подключение кастомного модуля';
 $MESS['INTERVOLGA_EDU.COURSE2NEW_LESSON2_EVENTHANDLERS'] = 'Проверка обработчиков событий';
 $MESS['INTERVOLGA_EDU.COURSE2NEW_LESSON2_EVENTHANDLERS_DESCRIPTION'] = 'В директории /local/modules/mycompany.custom/lib/ должны быть созданы классы обработчиков событий';
+$MESS['INTERVOLGA_EDU.COURSE2NEW_LESSON2_AGENTS'] = 'Проверка агента';
+$MESS['INTERVOLGA_EDU.COURSE2NEW_LESSON2_AGENTS_DESCRIPTION'] = 'Должен существовать файл агента /local/modules/mycompany.custom/lib/agents/newscount.php, в списке агентов должен появиться новый путь агента';
 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE'] = 'Проверка установки модуля «Корпоративный сайт производственной компании»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE_DESCRIPTION'] = 'Модуль должен быть <a href="/bitrix/admin/partner_modules.php?lang=ru" target="_blank">зарегистрирован</a> в системе и установлен';
