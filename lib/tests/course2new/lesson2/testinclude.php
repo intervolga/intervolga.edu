@@ -13,14 +13,16 @@ class TestInclude extends BaseTest
 	{
 		$file = FileSystem::getFile('/local/modules/mycompany.custom/include.php');
 		Assert::fseExists($file);
-		Assert::fileContentMatches($file, new Regex('/onNewsAdd/',
-			Loc::getMessage('IV_EDU.NEW_ACADEMY.C_2.L_2.NOT_FOUND_EH',
-				['#EH_NAME#' => 'onNewsAdd'])));
-		Assert::fileContentMatches($file, new Regex('/redirectFromTestPage/',
-			Loc::getMessage('IV_EDU.NEW_ACADEMY.C_2.L_2.NOT_FOUND_EH',
-				['#EH_NAME#' => 'redirectFromTestPage'])));
-		Assert::fileContentMatches($file, new Regex('/setIsDevServerConstant/',
-			Loc::getMessage('IV_EDU.NEW_ACADEMY.C_2.L_2.NOT_FOUND_EH',
-				['#EH_NAME#' => 'setIsDevServerConstant'])));
+		if ($file->isExists()) {
+			Assert::fileContentMatches($file, new Regex('/onNewsAdd/',
+				Loc::getMessage('IV_EDU.NEW_ACADEMY.C_2.L_2.NOT_FOUND_EH',
+					['#EH_NAME#' => 'onNewsAdd'])));
+			Assert::fileContentMatches($file, new Regex('/redirectFromTestPage/',
+				Loc::getMessage('IV_EDU.NEW_ACADEMY.C_2.L_2.NOT_FOUND_EH',
+					['#EH_NAME#' => 'redirectFromTestPage'])));
+			Assert::fileContentMatches($file, new Regex('/setIsDevServerConstant/',
+				Loc::getMessage('IV_EDU.NEW_ACADEMY.C_2.L_2.NOT_FOUND_EH',
+					['#EH_NAME#' => 'setIsDevServerConstant'])));
+		}
 	}
 }
