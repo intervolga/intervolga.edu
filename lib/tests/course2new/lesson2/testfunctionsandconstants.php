@@ -19,7 +19,7 @@ class TestFunctionsAndConstants extends BaseTest
 		$funcFile = FileSystem::getFile('/local/modules/mycompany.custom/functions.php');
 		Assert::fseExists($funcFile);
 		if ($funcFile->isExists()) {
-			Assert::fileContentMatches($funcFile, new Regex('/is404Page/', 'функция is404Page'));
+			Assert::fileContentMatches($funcFile, new Regex('/is404Page/', 'функцию is404Page'));
 		}
 	}
 
@@ -28,8 +28,8 @@ class TestFunctionsAndConstants extends BaseTest
 		$constFile = FileSystem::getFile('/local/modules/mycompany.custom/constants.php');
 		Assert::fseExists($constFile);
 		if ($constFile->isExists()) {
-			Assert::fileContentMatches($constFile, new Regex('/IBLOCK_NEWS_ID/', 'константа IBLOCK_NEWS_ID'));
-			Assert::fileContentMatches($constFile, new Regex('/IBLOCK_NEWS_ID/', 'константа IBLOCK_CATALOG_PROPERTY_PRICE_ID'));
+			Assert::fileContentMatches($constFile, new Regex('/IBLOCK_NEWS_ID/', 'константу IBLOCK_NEWS_ID'));
+			Assert::fileContentMatches($constFile, new Regex('/IBLOCK_NEWS_ID/', 'константу IBLOCK_CATALOG_PROPERTY_PRICE_ID'));
 		}
 	}
 }
