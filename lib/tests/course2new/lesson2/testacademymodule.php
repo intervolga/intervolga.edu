@@ -13,7 +13,7 @@ class TestAcademyModule extends BaseTest
 
 	protected static function run()
 	{
-		Assert::directoryExists(FileSystem::getDirectory('/local/modules/company.custom/'),
+		Assert::directoryExists(FileSystem::getDirectory('/local/modules/mycompany.custom/'),
 			Loc::getMessage('IV_EDU.NEW_ACADEMY.C_2.L_2.NOT_IN_LOCAL'));
 
 		Assert::true(ModuleManager::isModuleInstalled(static::CUSTOM_MODULE_ID),
