@@ -29,7 +29,7 @@ class TestFunctionsAndConstants extends BaseTest
 		Assert::fseExists($constFile);
 		if ($constFile->isExists()) {
 			Assert::fileContentMatches($constFile, new Regex('/IBLOCK_NEWS_ID/', 'константу IBLOCK_NEWS_ID'));
-			Assert::fileContentMatches($constFile, new Regex('/IBLOCK_NEWS_ID/', 'константу IBLOCK_CATALOG_PROPERTY_PRICE_ID'));
+			Assert::fileContentMatches($constFile, new Regex('/IBLOCK_CATALOG_PROPERTY_PRICE_ID/', 'константу IBLOCK_CATALOG_PROPERTY_PRICE_ID'));
 		}
 	}
 }
