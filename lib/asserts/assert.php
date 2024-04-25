@@ -2,11 +2,15 @@
 namespace Intervolga\Edu\Asserts;
 
 use Bitrix\Main\Config\Option;
+use Bitrix\Main\Diag\Debug;
 use Bitrix\Main\IO\Directory;
 use Bitrix\Main\IO\File;
+use Bitrix\Main\IO\FileNotFoundException;
 use Bitrix\Main\IO\FileSystemEntry;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
+use Bitrix\Seo\Engine\Bitrix;
+use Bitrix\Vote\Base\Diag;
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Locator\Agent\AgentLocator;
 use Intervolga\Edu\Locator\BaseLocator;
@@ -78,6 +82,7 @@ class Assert
 			));
 		}
 	}
+
 	/**
 	 * @param string $error
 	 * @throws AssertException
@@ -810,6 +815,30 @@ class Assert
 					[
 						'#NAME#' => $value::getNameLoc(),
 						'#POSSIBLE#' => $value::getPossibleTips()
+					],
+					$message
+				));
+		}
+	}
+
+	/**
+	 * @param string|FileLocator $value
+	 * @param string $message
+	 * @throws AssertException
+	 */
+	public static function langCodeExists(File $file, string $code, $message = '')
+	{
+		Assert::fseExists($file);
+		$fileContent = $file->getContents();
+		Debug::dump($file->getPath());
+		$exist = preg_match('/\$MESS\[[\'|\"]' . $code . '[\'|\"]/m', $fileContent);
+		if (!$exist) {
+			static::registerError(
+				static::getCustomOrLocMessage(
+					'INTERVOLGA_EDU.LOC_MESSAGE_NOT_FOUND',
+					[
+						'#CODE#' => $code,
+						'#FILE#' => FileMessage::get($file),
 					],
 					$message
 				));

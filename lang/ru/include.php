@@ -51,6 +51,11 @@ $MESS['INTERVOLGA_EDU.COURSE2NEW_LESSON2_INCLUDE_DESCRIPTION'] = 'В файл /l
 $MESS['INTERVOLGA_EDU.COURSE2NEW_LESSON2_FUNCTIONSANDCONSTANTS'] = 'Проверка файлов constants.php и functions.php';
 $MESS['INTERVOLGA_EDU.COURSE2NEW_LESSON2_FUNCTIONSANDCONSTANTS_DESCRIPTION'] = 'Для объявления констант и функций должны быть созданы отдельные файлы, в них из материалов урока перенесены константы и функции соответственно';
 
+$MESS['INTERVOLGA_EDU.COURSE2NEW_LESSON3_LOCALTEMPLATES'] = 'Проверка шаблонов сайта';
+$MESS['INTERVOLGA_EDU.COURSE2NEW_LESSON3_LOCALTEMPLATES_DESCRIPTION'] = 'В /local/templates/ должны быть шаблоны: main, inner, .default';
+$MESS['INTERVOLGA_EDU.COURSE2NEW_LESSON3_LANGFILE'] = 'Проверка lang-файлов';
+$MESS['INTERVOLGA_EDU.COURSE2NEW_LESSON3_LANGFILE_DESCRIPTION'] = 'Языковая фраза из header.php должна быть вынесена в ленг-файл, согласно примеру из урока';
+
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE'] = 'Проверка установки модуля «Корпоративный сайт производственной компании»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE_DESCRIPTION'] = 'Модуль должен быть <a href="/bitrix/admin/partner_modules.php?lang=ru" target="_blank">зарегистрирован</a> в системе и установлен';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEIBLOCKS'] = 'Проверка инфоблоков модуля «Корпоративный сайт производственной компании»';

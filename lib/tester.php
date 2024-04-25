@@ -165,7 +165,8 @@ class Tester
 			\Intervolga\Edu\Tests\Course2New\Lesson2\TestInclude::class,
 			\Intervolga\Edu\Tests\Course2New\Lesson2\TestFunctionsAndConstants::class,
 
-
+			\Intervolga\Edu\Tests\Course2New\Lesson3\TestLocalTemplates::class,
+			\Intervolga\Edu\Tests\Course2New\Lesson3\TestLangFile::class,
 
 		];
 	}
