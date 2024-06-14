@@ -19,7 +19,8 @@ class Help
 	protected static function convertFrom1251Possible(string $text): string
 	{
 		$isMarketplaceInstallation = (IV_EDU_MODULE_DIR == '/bitrix/modules/intervolga.edu');
-		if ($isMarketplaceInstallation)
+
+		if ($isMarketplaceInstallation && mb_detect_encoding($text) !== 'UTF-8')
 		{
 			$text = iconv('cp1251', 'UTF8', $text);
 		}
