@@ -20,7 +20,7 @@ class Help
 	{
 		$isMarketplaceInstallation = (IV_EDU_MODULE_DIR == '/bitrix/modules/intervolga.edu');
 
-		if ($isMarketplaceInstallation && mb_detect_encoding($text) !== 'UTF-8')
+		if ($isMarketplaceInstallation && !mb_check_encoding($text, 'UTF-8'))
 		{
 			$text = iconv('cp1251', 'UTF8', $text);
 		}
