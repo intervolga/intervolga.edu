@@ -12,7 +12,7 @@ class TestPropertyCode extends BaseTest
 {
     public static function interceptErrors()
     {
-        return true;
+        return false;
     }
 
     protected static function run()
