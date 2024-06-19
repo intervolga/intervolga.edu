@@ -13,7 +13,7 @@ class TestLicense extends BaseTest
 		$status = UpdateSystem::getStatus();
 		Assert::eq(
 			$status['LICENSE'],
-			Loc::getMessage('INTERVOLGA_EDU.LICENSE_NAME')
+			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_1_LICENSE_NAME')
 		);
 	}
 }
