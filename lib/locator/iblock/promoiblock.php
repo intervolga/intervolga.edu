@@ -13,6 +13,7 @@ class PromoIblock extends IblockLocator
 				'promos',
 				'stock',
 				'stocks',
+                'promotion',
 			],
 		];
 	}
