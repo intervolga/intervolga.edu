@@ -5,7 +5,7 @@ use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 
-class ModulesCheck extends BaseTest
+class TestModulesCheck extends BaseTest
 {
 	public static function interceptErrors()
 	{

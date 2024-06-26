@@ -160,7 +160,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson9\TestCompositeEnabled::class,
 
 			\Intervolga\Edu\Tests\CourseIntervolga\Lesson1\TestRobotsChecker::class,
-			\Intervolga\Edu\Tests\CourseIntervolga\Lesson2\ModulesCheck::class,
+			\Intervolga\Edu\Tests\CourseIntervolga\Lesson2\TestModulesCheck::class,
 		];
 	}
 
