@@ -128,7 +128,8 @@ abstract class BaseComponentTemplateTest extends BaseTest
 		}
 		Assert::phpSniffer($files, [
 			'general',
-			'templateChecker'
+			'templateChecker',
+			'customquotes'
 		]);
 	}
 }
