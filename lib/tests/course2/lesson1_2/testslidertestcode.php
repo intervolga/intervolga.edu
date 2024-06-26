@@ -6,7 +6,7 @@ use Intervolga\Edu\FilesTree\Template\SliderTree;
 use Intervolga\Edu\Locator\IO\SliderStockTemplate;
 use Intervolga\Edu\Tests\BaseComponentTemplateTest;
 
-class SliderTestCode extends BaseComponentTemplateTest
+class TestSliderTestCode extends BaseComponentTemplateTest
 {
 	protected static function getLocator()
 	{

@@ -90,7 +90,7 @@ class Tester
 
 			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestComponentInclude::class,
 			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestSlider::class,
-			\Intervolga\Edu\Tests\Course2\Lesson1_2\SliderTestCode::class,
+			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestSliderTestCode::class,
 
 			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestCatalogBindingProperty::class,
 			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestPropertyPrice::class,
