@@ -37,6 +37,7 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON7'] = '7. Производительност
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON8'] = '8. Монитор качества';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON9'] = '9. Композитный сайт';
 $MESS['INTERVOLGA_EDU.COURSEINTERVOLGA_LESSON1'] = '1. Поисковая оптимизация';
+$MESS['INTERVOLGA_EDU.COURSEINTERVOLGA_LESSON2'] = '2. Проверка используемых модулей';
 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE'] = 'Проверка установки модуля «Корпоративный сайт производственной компании»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE_DESCRIPTION'] = 'Модуль должен быть <a href="/bitrix/admin/partner_modules.php?lang=ru" target="_blank">зарегистрирован</a> в системе и установлен';
@@ -229,6 +230,8 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON9_COMPOSITEENABLED_DESCRIPTION'] = 'Комп
 
 $MESS['INTERVOLGA_EDU.COURSEINTERVOLGA_LESSON1_ROBOTSCHECKER'] = 'Проверка robots.txt';
 $MESS['INTERVOLGA_EDU.COURSEINTERVOLGA_LESSON1_ROBOTSCHECKER_DESCRIPTION'] = 'Файл robots.txt должен существовать, быть заполнен';
+$MESS['INTERVOLGA_EDU.COURSEINTERVOLGA_LESSON2_MODULESCHECK'] = 'Проверка списка модулей';
+$MESS['INTERVOLGA_EDU.COURSEINTERVOLGA_LESSON2_MODULESCHECK_DESCRIPTION'] = 'Неиспользуемые модули должны быть удалены, проверка списка нужных модулей';
 
 $MESS['INTERVOLGA_EDU.TEST_CODE_NAME'] = 'Проверка кода #FILES#';
 $MESS['INTERVOLGA_EDU.TEST_CODE_DESCRIPTION'] = 'Современная проверка ядра Битрикса, использование длинных php-тегов, запрет на устаревшие функции';

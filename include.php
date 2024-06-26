@@ -37,6 +37,18 @@ const INTERVOLGA_EDU_GUESS_VARIANTS = [
 			'slider_promo',
 		],
 	],
+	'MODULES' => [
+		'main',
+		'fileman',
+		'iblock',
+		'form',
+		'perfmon',
+		'translate',
+		'search',
+		'seo',
+		'security',
+		'photogallery',
+	],
 	'PATHS' => [
 		'DESKTOP' => [
 			'/desktop.php'
