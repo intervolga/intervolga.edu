@@ -526,6 +526,17 @@ class Assert
 	 * @param string $message
 	 * @throws AssertException
 	 */
+	public static function directoryNotEmpty(Directory $value, string $message = ''){
+		if(!$value->getChildren()){
+			static::registerError(static::getCustomOrLocMessage(
+				'INTERVOLGA_EDU.ASSERT_DIRECTORY_IS_EMPTY',
+				[
+					'#PATH#' => FileSystem::getLocalPath($value)
+				],
+				$message
+			));
+		}
+	}
 	public static function directoryExists(Directory $value, string $message = '')
 	{
 		if (!$value->isExists()) {

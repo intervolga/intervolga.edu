@@ -26,6 +26,7 @@ $MESS['INTERVOLGA_EDU.ASSERT_FILE_CONTENT_IS_EMPTY'] = 'Файл #VALUE# явл�
 $MESS['INTERVOLGA_EDU.ASSERT_FILE_CONTENT_MATCH'] = 'Файл #VALUE# не содержит <b>#EXPECT#</b>';
 $MESS['INTERVOLGA_EDU.ASSERT_DIRECTORY_EXISTS'] = 'Папка #VALUE# не найдена';
 $MESS['INTERVOLGA_EDU.ASSERT_DIRECTORY_NOT_EXISTS'] = 'Папка #VALUE# существует, должна быть удалена';
+$MESS['INTERVOLGA_EDU.ASSERT_DIRECTORY_IS_EMPTY'] = 'Директория #PATH# не должна быть пустой';
 $MESS['INTERVOLGA_EDU.ASSERT_FILE_NOT_EXISTS'] = 'Файл #VALUE# существует, должен быть удален';
 $MESS['INTERVOLGA_EDU.FSE'] = '<a href="#FILEMAN_URL#" target="_blank">#NAME#</a>';
 $MESS['INTERVOLGA_EDU.ASSERT_MODULE_INSTALLED'] = 'Модуль #VALUE# должен быть установлен';
