@@ -22,7 +22,7 @@ class TestCustomComponentChecker extends BaseComponentTest
 		}
 	}
 
-	protected static function checkRequiredFilesTemplate(FilesTree $templateDir)
+	protected static function checkRequiredFilesTemplate(ComponentTemplate $templateDir)
 	{
 		Assert::fseExists($templateDir->getResumeFile());
 		Assert::fseExists($templateDir->getVacanciesFile());

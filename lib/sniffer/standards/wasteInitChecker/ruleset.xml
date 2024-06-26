@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<ruleset name="wasteInitChecker">
+    <description>Sniffer to search for extra output outside the php tag.</description>
+</ruleset>
