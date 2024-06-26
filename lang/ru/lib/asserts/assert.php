@@ -55,3 +55,6 @@ $MESS['INTERVOLGA_EDU.ASSERT_EVENT_MESSAGE_EXISTS'] = 'Почтовое собы
 $MESS['INTERVOLGA_EDU.ASSERT_EVENT_TEMPLATE_EXISTS'] = 'Почтовый шаблон <b>#NAME#</b> не найден (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.TEMPLATE_NOT_EQUALS_CONDITION'] = 'Шаблон <b>#TEMPLATE#</b> имеет неверное условие показа';
 $MESS['INTERVOLGA_EDU.TEMPLATE_NOT_EXISTS'] = 'Шаблон <b>#TEMPLATE#</b> отсутствует';
+$MESS['INTERVOLGA_EDU.LANG_STRING_NOT_FOUND'] = 'Строка \'#STRING#\' не найдена в языковом файле #FILE#';
+$MESS['INTERVOLGA_EDU.EN_LANG_CODE_NOT_FOUND'] = 'Код \'#CODE#\' не найден в /en/ языковом файле #FILE#';
+$MESS['INTERVOLGA_EDU.LOC_MESSAGE_NOT_FOUND'] = 'Код \'#CODE#\' не найден в файле #FILE#';
