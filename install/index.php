@@ -3,8 +3,10 @@ B_PROLOG_INCLUDED === true || die();
 
 use Bitrix\Main;
 use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\Application;
 
 Loc::loadMessages(__FILE__);
+
 
 class intervolga_edu extends CModule
 {
@@ -32,10 +34,11 @@ class intervolga_edu extends CModule
 		$this->PARTNER_URI = Loc::getMessage('INTERVOLGA_EDU.PARTNER_URI');
 	}
 
-	public function doInstall()
+	public function DoInstall()
 	{
 		try {
 			Main\ModuleManager::registerModule($this->MODULE_ID);
+			$this->InstallFiles();
 		} catch (\Exception $e) {
 			global $APPLICATION;
 			$APPLICATION->throwException($e->getMessage());
@@ -46,10 +49,11 @@ class intervolga_edu extends CModule
 		return true;
 	}
 
-	public function doUninstall()
+	public function DoUninstall()
 	{
 		try {
 			Main\ModuleManager::unRegisterModule($this->MODULE_ID);
+			$this->UninstallFiles();
 		} catch (\Exception $e) {
 			global $APPLICATION;
 			$APPLICATION->throwException($e->getMessage());
@@ -58,5 +62,37 @@ class intervolga_edu extends CModule
 		}
 
 		return true;
+	}
+
+	public function InstallFiles()
+	{
+		$root = Application::getDocumentRoot();
+		$curDir = getLocalPath('modules/' . $this->MODULE_ID);
+		copyDirFiles(
+			$root . $curDir .  '/install/js',
+			$root . '/bitrix/js/' . $this->MODULE_ID,
+			true,
+			true
+		);
+		copyDirFiles(
+			$root . $curDir .  '/install/images',
+			$root . '/bitrix/images/' . $this->MODULE_ID,
+			true,
+			true
+		);
+	}
+
+	public function UninstallFiles()
+	{
+		$root = Application::getDocumentRoot();
+		$curDir = getLocalPath('modules/' . $this->MODULE_ID);
+		deleteDirFiles(
+			$root . $curDir .  '/install/js',
+			$root . '/bitrix/js/' . $this->MODULE_ID
+		);
+		deleteDirFiles(
+			$root . $curDir .  '/install/images',
+			$root . '/bitrix/images/' . $this->MODULE_ID
+		);
 	}
 }
