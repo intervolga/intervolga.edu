@@ -1,0 +1,2 @@
+<?php
+$MESS['INTERVOLGA_EDU.AGE_POLL_RESULTS_PROPERTY'] = 'Заработная плата';

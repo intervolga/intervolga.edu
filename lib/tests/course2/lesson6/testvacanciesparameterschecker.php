@@ -55,12 +55,12 @@ class TestVacanciesParametersChecker extends BaseTest
 				);
 				Assert::eq(
 					static::prepareUrl($componentParameters['SEF_URL_TEMPLATES']['vacancy']),
-					'#ELEMENT_ID#/',
+					'#VACANT_ID#/',
 					Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_VACANCY_URL')
 				);
 				Assert::eq(
 					static::prepareUrl($componentParameters['SEF_URL_TEMPLATES']['resume']),
-					'#ELEMENT_ID#/resume/',
+					'#VACANT_ID#/resume/',
 					Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_RESUME_URL')
 				);
 			}
@@ -77,7 +77,7 @@ class TestVacanciesParametersChecker extends BaseTest
 				],
 				[
 					'#SITE_DIR#',
-					'#ELEMENT_ID#'
+					'#VACANT_ID#'
 				],
 				$url
 			);

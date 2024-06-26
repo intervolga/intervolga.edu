@@ -33,8 +33,8 @@ global $APPLICATION, $USER;
 $module_id = 'intervolga.edu';
 Loader::includeModule($module_id);
 
-$APPLICATION->setAdditionalCSS(IV_EDU_MODULE_DIR . '/admin.css');
-Asset::getInstance()->addJs(IV_EDU_MODULE_DIR . '/admin.js');
+$APPLICATION->setAdditionalCSS('/bitrix/js/' . $module_id . '/admin.css');
+Asset::getInstance()->addJs('/bitrix/js/' . $module_id . '/admin.js');
 
 $options = [
 	'general' => [

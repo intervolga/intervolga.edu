@@ -11,7 +11,6 @@ class VacanciesListTemplate extends DirectoryLocator
 		return [
 			'/local/components/intervolga/vacancies.list/templates/.default/',
 			'/local/components/intervolga/vacancy.list/templates/.default/',
-			'/local/components/intervolga/vacancies.list/templates/.default/',
 		];
 	}
 
