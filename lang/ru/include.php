@@ -15,6 +15,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON8'] = '8. Комплексные компо�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON9'] = '9. ЧПУ, эрмитаж, постраничная навигация';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10'] = '10. Поиск';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11'] = '11. Полезные возможности';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON1'] = '1. Получение связанных элементов';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2'] = '1.2 Получение связанных элементов';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON2'] = '2. Технологии: параметры модулей, почтовая системы, агенты, журнал событий';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON3'] = '3. События';
@@ -85,6 +86,7 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST'] = 'Проверка н�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST_DESCRIPTION'] = 'Инфоблок должен иметь свойство "В наличии"';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER'] = 'Используется в умном фильтре';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER_DESCRIPTION'] = 'Проверка у свойства на наличие флага "использовать в умном фильтре"';
+
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_INCLUDEAREA'] = 'Проверка включаемой области';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_INCLUDEAREA_DESCRIPTION'] = 'Должен быть файл в разделе Партнерам и в корне сайта';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_ABOUTMENUITEMS'] = 'Проверка пунктов меню "О магазине"';
@@ -127,6 +129,11 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST'] = 'Проверка с�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST_DESCRIPTION'] = 'Инфоблок должен иметь свойство "В наличии", оно должно быть заполненно хотя бы у 1 элемента раздела "Мягкая мебель"';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER'] = 'Используется в умном фильтре';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYINFILTER_DESCRIPTION'] = 'Проверка параметра свойства "использовать в умном фильтре"';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_COMPONENTINCLUDE'] = 'Проверка подключения "Слайдера"';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_COMPONENTINCLUDE_DESCRIPTION'] = 'В header.php главной страницы должен подключаться компонент списка новостей с шаблоном слайдера';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_SLIDER'] = 'Проверка содержимого шаблона Слайдера';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_SLIDER_DESCRIPTION'] = 'Должны быть правильно заполнены ссылки, getList не должен быть в цикле, js-скрипты подключаются в правильном файле';
+
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_SLIDERCODEANALYSIS'] = 'Проверка кода файла result_modifier';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_SLIDERCODEANALYSIS_DESCRIPTION'] = 'Анализ кода news.list/slider/result_modifier.php';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_CATALOGBINDINGPROPERTY'] = 'Проверка свойства "Привязка к каталогу"';
@@ -278,6 +285,8 @@ $MESS['INTERVOLGA_EDU.CUSTOM_MODULE'] = 'intervolga.?';
 $MESS['INTERVOLGA_EDU.CUSTOM_MODULE_TIP'] = 'intervolga.? в #MODULES#';
 $MESS['INTERVOLGA_EDU.INCLUDEAREA_PARTNERS'] = 'Включаемая область в разделе Партнерам';
 $MESS['INTERVOLGA_EDU.INCLUDEAREA_PARTNERS_TIPS'] = 'в названии должно быть: #PARTS#';
+
+$MESS['INTERVOLGA_EDU.SLIDER_STOCK_TEMPLATE'] = 'Шаблон слайдера';
 $MESS['INTERVOLGA_EDU.TOP_MENU_TEMPLATE'] = 'Шаблон верхнего меню';
 $MESS['INTERVOLGA_EDU.LEFT_MENU_TEMPLATE'] = 'Шаблон левого меню';
 $MESS['INTERVOLGA_EDU.BOTTOM_MENU_TEMPLATE'] = 'Шаблон меню О магазине';
@@ -288,6 +297,7 @@ $MESS['INTERVOLGA_EDU.NEWS_TEMPLATE'] = 'Шаблон новостей';
 $MESS['INTERVOLGA_EDU.TEST_IBLOCK_NAME'] = 'Проверка Инфоблока #IBLOCK#';
 $MESS['INTERVOLGA_EDU.TEST_IBLOCK_DESCRIPTION'] = 'Проверка типа, прав, количества элементов, свойств по заданию, формы редактирования в админке';
 $MESS['INTERVOLGA_EDU.SEARCH_FORM_TEMPLATE'] = 'Шаблон формы поиска';
+
 $MESS['INTERVOLGA_EDU.CATALOG_SECTION_TEMPLATE'] = 'Шаблон секций каталога';
 $MESS['INTERVOLGA_EDU.GALLERY_TEMPLATE'] = 'Шаблон gallery';
 $MESS['INTERVOLGA_EDU.SHOW_VIEW_CONTENT_NOT_FOUND_MATERIALS'] = 'Show View Content для области материалов';
