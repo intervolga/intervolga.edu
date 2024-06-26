@@ -23,7 +23,7 @@ abstract class BaseComponentTest extends BaseComponentTemplateTest
 		);
 	}
 
-	/** локатор для компонента
+	/**
 	 * @return string|DirectoryLocator
 	 */
 	abstract protected static function getLocator();
@@ -45,7 +45,7 @@ abstract class BaseComponentTest extends BaseComponentTemplateTest
 		}
 	}
 
-	/** дерево компонента
+	/**
 	 * @return string|Component
 	 */
 	abstract protected static function getComponentTemplateTree();
@@ -76,7 +76,7 @@ abstract class BaseComponentTest extends BaseComponentTemplateTest
 		static::testComponentLangRuTrash($componentDir);
 	}
 
-	/** локатор для шаблона
+	/**
 	 * @return string|DirectoryLocator
 	 */
 	abstract protected static function getTemplateLocator();
