@@ -20,7 +20,7 @@ const INTERVOLGA_EDU_GUESS_VARIANTS = [
 			'list_reviews',
 		],
 		'REVIEWS_CAROUSEL' => [
-			'review.сarousel',
+			'review.carousel',
 			'review_carousel',
 			'reviews_carousel',
 			'carousel',
