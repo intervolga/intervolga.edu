@@ -500,8 +500,8 @@ class Assert
 	public static function fileContentMatches(File $value, Regex $regex, string $message = '')
 	{
 		static::fseExists($value);
+		Assert::fileNotEmpty($value);
 		$content = $value->getContents();
-		Assert::notEmpty($content);
 		$matches = [];
 		if ($content) {
 			preg_match_all($regex->getRegex(), $content, $matches, PREG_SET_ORDER);
