@@ -3,8 +3,8 @@ namespace Intervolga\Edu\Locator\Component;
 
 class Feedback extends ComponentLocator
 {
-	public static function getCode(): string
+	public static function getCode(): array
 	{
-		return 'bitrix:main.feedback';
+		return ['bitrix:main.feedback'];
 	}
 }
