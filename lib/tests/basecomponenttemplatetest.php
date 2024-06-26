@@ -6,6 +6,7 @@ use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\FilesTree\ComponentTemplate;
 use Intervolga\Edu\FilesTree\ComponentTemplate\NewsTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
+use Intervolga\Edu\Util\CodeSnifferChecker;
 
 abstract class BaseComponentTemplateTest extends BaseTest
 {
@@ -123,12 +124,12 @@ abstract class BaseComponentTemplateTest extends BaseTest
 		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
 			if ($knownPhpFile->isExists()) {
 				$files[] = $knownPhpFile->getPath();
+				CodeSnifferChecker::checkCustomQuotes($knownPhpFile->getPath());
 			}
 		}
 		Assert::phpSniffer($files, [
 			'general',
 			'templateChecker',
-			'customquotes'
 		]);
 	}
 }
