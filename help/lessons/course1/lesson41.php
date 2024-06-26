@@ -10,6 +10,6 @@ B_PROLOG_INCLUDED === true || die();
 	<li><b>файлы описания <i>.description</i>.</b> Сегодня они в Битриксе уже не используются</li>
 	<li><b>файлы <i>.parameters</i>.</b> Часто вы настолько изменяете стандартный шаблон, что его первоначальные настройки теряют актуальность и их нужно удалять. Не забудьте по lang-файлы.</li>
 </ul>
-<br> <img src="<?= IV_EDU_MODULE_DIR ?>/help/images/course1lesson41before.png">
-<br> <img src="<?= IV_EDU_MODULE_DIR ?>/help/images/course1lesson41withlang.png">
-<br> <img src="<?= IV_EDU_MODULE_DIR ?>/help/images/course1lesson41after.png">
+<br> <img src="/bitrix/images/intervolga.edu/course1lesson41before.png">
+<br> <img src="/bitrix/images/intervolga.edu/course1lesson41withlang.png">
+<br> <img src="/bitrix/images/intervolga.edu/course1lesson41after.png">
