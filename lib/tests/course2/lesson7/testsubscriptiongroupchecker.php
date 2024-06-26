@@ -8,7 +8,7 @@ use CUser;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 
-class SubscriptionGroupChecker extends BaseTest
+class TestSubscriptionGroupChecker extends BaseTest
 {
 	protected static function run()
 	{

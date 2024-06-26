@@ -12,7 +12,7 @@ use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Locator\IO\AccessFile;
 use Intervolga\Edu\Tests\BaseTest;
 
-class LiteadminAccessChecker extends BaseTest
+class TestLiteadminAccessChecker extends BaseTest
 {
 
 	protected static function run()

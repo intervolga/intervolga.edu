@@ -9,7 +9,7 @@ use CUser;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 
-class ProfileGroupEditCheker extends BaseTest
+class TestProfileGroupEditCheker extends BaseTest
 {
 	protected static function run()
 	{
