@@ -7,6 +7,8 @@ use Intervolga\Edu\FilesTree\ComponentTemplate;
 use Intervolga\Edu\FilesTree\ComponentTemplate\NewsTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
 use Intervolga\Edu\Sniffer;
+use Intervolga\Edu\Util\Admin;
+use Intervolga\Edu\Util\FileSystem;
 
 abstract class BaseComponentTemplateTest extends BaseTest
 {
