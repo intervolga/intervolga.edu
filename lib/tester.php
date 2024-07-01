@@ -44,6 +44,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestTemplateConditions::class,
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestCode::class,
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestOption::class,
+			\Intervolga\Edu\Tests\Course1\Lesson3\TestLang::class,
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestScripts::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestIncludeArea::class,
@@ -88,6 +89,10 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson11\TestSmartFilterIsExist::class,
 			\Intervolga\Edu\Tests\Course1\Lesson11\TestPropertyInFilter::class,
 
+			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestComponentInclude::class,
+			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestSlider::class,
+			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestSliderComponent::class,
+			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestSliderCodeAnalysis::class,
 			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestCatalogBindingProperty::class,
 			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestPropertyPrice::class,
 
@@ -158,6 +163,9 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson8\TestUserTestExists::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson9\TestCompositeEnabled::class,
+
+			\Intervolga\Edu\Tests\CourseIntervolga\Lesson1\TestRobotsChecker::class,
+			\Intervolga\Edu\Tests\CourseIntervolga\Lesson2\TestModulesCheck::class,
 		];
 	}
 

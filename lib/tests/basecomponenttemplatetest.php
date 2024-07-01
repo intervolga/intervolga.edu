@@ -6,6 +6,9 @@ use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\FilesTree\ComponentTemplate;
 use Intervolga\Edu\FilesTree\ComponentTemplate\NewsTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
+use Intervolga\Edu\Sniffer;
+use Intervolga\Edu\Util\Admin;
+use Intervolga\Edu\Util\FileSystem;
 
 abstract class BaseComponentTemplateTest extends BaseTest
 {
@@ -91,6 +94,8 @@ abstract class BaseComponentTemplateTest extends BaseTest
 				} elseif ($child->isFile()) {
 					if (!in_array($child->getName(), static::getKnownFilesNames($templateDir))) {
 						Assert::fseNotExists($child);
+					}else {
+						static::testTemplateLangRu($templateDir, $child);
 					}
 				}
 			}
@@ -129,5 +134,38 @@ abstract class BaseComponentTemplateTest extends BaseTest
 			'general',
 			'templateChecker'
 		]);
+	}
+
+	protected static function getLangArrayTemplateDir(ComponentTemplate $templateDir)
+	{
+		foreach ($templateDir->getKnownFiles() as $template) {
+			$result = Sniffer::run([$template->getPath()], ['langUsage']);
+			foreach ($result as $message) {
+				$newTest[] = mb_strcut($message->getMessage(), 1, -1);
+			}
+		}
+
+		return $newTest;
+	}
+
+	protected static function testTemplateLangRu(ComponentTemplate $templateDir, $child)
+	{
+		$result = Sniffer::run([$child->getPath()], ['langDefinition']);
+		$test = static::getLangArrayTemplateDir($templateDir);
+		foreach ($result as $message) {
+			$langNames[$child->getName()][] = $message->getMessage();
+			$tester = mb_strcut($message->getMessage(), 1, -1);
+			if (!in_array($tester, $test)) {
+				Assert::true($tester, Loc::getMessage('INTERVOLGA_EDU.SNIFFER_CHECK_LANG_CODE', [
+					'#FILE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+						'#NAME#' => $child->getName(),
+						'#PATH#' => FileSystem::getLocalPath($child),
+						'#FILEMAN_URL#' => Admin::getFileManUrl($child),
+					]),
+					'#VALUE#' => $tester
+				]));
+			}
+		}
+
 	}
 }
