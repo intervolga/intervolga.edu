@@ -122,6 +122,10 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON9_NAVPAGE_DESCRIPTION'] = 'У компоне
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON9_NAVPAGE'] = 'Проверка постраничной навигации';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION'] = 'Проверка формы поиска';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON10_SEARCHACTION_DESCRIPTION'] = 'Должна быть настроена на раздел, а не на index.php-страницу';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_COMPONENTINCLUDE'] = 'Проверка подключения "Слайдера"';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_COMPONENTINCLUDE_DESCRIPTION'] = 'В header.php главной страницы должен подключаться компонент списка новостей с шаблоном слайдера';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_SLIDER'] = 'Проверка содержимого шаблона Слайдера';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_SLIDER_DESCRIPTION'] = 'Должны быть правильно заполнены ссылки, getList не должен быть в цикле, js-скрипты подключаются в правильном файле';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CATALOGRATING'] = 'Проверка на наличие включенного рейтинга';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CATALOGRATING_DESCRIPTION'] = 'В настройках bitrix:catalog должен быть установлен параметр «Включить рейтинг товара»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSETVIEWTARGET'] = 'Проверка SetViewTarget';
@@ -306,7 +310,8 @@ $MESS['INTERVOLGA_EDU.CUSTOM_MODULE'] = 'intervolga.?';
 $MESS['INTERVOLGA_EDU.CUSTOM_MODULE_TIP'] = 'intervolga.? в #MODULES#';
 $MESS['INTERVOLGA_EDU.INCLUDEAREA_PARTNERS'] = 'Включаемая область в разделе Партнерам';
 $MESS['INTERVOLGA_EDU.INCLUDEAREA_PARTNERS_TIPS'] = 'в названии должно быть: #PARTS#';
-
+$MESS['INTERVOLGA_EDU.MAIN_HEADER_TEMPLATE'] = 'Шаблон header главной страницы';
+$MESS['INTERVOLGA_EDU.MAIN_HEADER_TEMPLATE_INCLUDE_COMPONENT'] = 'подключение шаблона слайдера компонента списка новостей';
 $MESS['INTERVOLGA_EDU.SLIDER_STOCK_TEMPLATE'] = 'Шаблон слайдера';
 $MESS['INTERVOLGA_EDU.TOP_MENU_TEMPLATE'] = 'Шаблон верхнего меню';
 $MESS['INTERVOLGA_EDU.LEFT_MENU_TEMPLATE'] = 'Шаблон левого меню';
@@ -318,6 +323,15 @@ $MESS['INTERVOLGA_EDU.NEWS_TEMPLATE'] = 'Шаблон новостей';
 $MESS['INTERVOLGA_EDU.TEST_IBLOCK_NAME'] = 'Проверка Инфоблока #IBLOCK#';
 $MESS['INTERVOLGA_EDU.TEST_IBLOCK_DESCRIPTION'] = 'Проверка типа, прав, количества элементов, свойств по заданию, формы редактирования в админке';
 $MESS['INTERVOLGA_EDU.SEARCH_FORM_TEMPLATE'] = 'Шаблон формы поиска';
+
+$MESS['INTERVOLGA_EDU.GET_LIST_IN_FOREACH'] = 'GetList помещен в foreach';
+$MESS['INTERVOLGA_EDU.NOT_FOUND_RESIZE'] = 'ресайз детального изображения';
+$MESS['INTERVOLGA_EDU.LINK_SET_NOT_BINDING_VALUE'] = 'заполнение ссылки вручную';
+$MESS['INTERVOLGA_EDU.LINK_SET_NOT_BINDING_VALUE_IMG'] = 'заполнение ссылки вручную в <img>';
+$MESS['INTERVOLGA_EDU.NOT_BINDING_ARRAY'] = 'Массив связанного элемента не заполнен';
+$MESS['INTERVOLGA_EDU.JS_NOT_FOUND_IN_COMPONENT_EPILOG'] = 'подключение js-скриптов карусели или подключение не соответствует ядру D7';
+$MESS['INTERVOLGA_EDU.NOT_TITLE_IN_LINK'] = 'title в ссылке на связанный элемент';
+$MESS['INTERVOLGA_EDU.NOT_TITLE_IN_LINK_IMG'] = 'title в ссылке на связанный элемент в <img>';
 
 $MESS['INTERVOLGA_EDU.CATALOG_SECTION_TEMPLATE'] = 'Шаблон секций каталога';
 $MESS['INTERVOLGA_EDU.GALLERY_TEMPLATE'] = 'Шаблон gallery';

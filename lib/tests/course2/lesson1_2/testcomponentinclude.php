@@ -4,6 +4,7 @@ namespace Intervolga\Edu\Tests\Course2\Lesson1_2;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Asserts\AssertComponent;
+use Intervolga\Edu\Locator\Component\Template\TemplateLocator;
 use Intervolga\Edu\Locator\Component\Template\Slider;
 use Intervolga\Edu\Locator\IO\MainHeaderTemplate;
 use Intervolga\Edu\Tests\BaseTest;
@@ -24,5 +25,6 @@ class TestComponentInclude extends BaseTest
 					Loc::getMessage('INTERVOLGA_EDU.COURSE_2.LESSON_1_2.WRONG_PATH_SLIDER')));
 			}
 		}
+    AssertComponent::TemplateLocator(Slider::class);
 	}
 }
