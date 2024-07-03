@@ -6,7 +6,7 @@ use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\Buckup;
 
-class BackupCheker extends BaseTest
+class TestBackupCheker extends BaseTest
 {
 	const BACKUP_COUNT = 3;
 
