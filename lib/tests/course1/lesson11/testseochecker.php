@@ -13,7 +13,7 @@ use Intervolga\Edu\Locator\Iblock\Section\OfficeFurniture;
 use Intervolga\Edu\Tests\BaseTest;
 use Intervolga\Edu\Util\Regex;
 
-class SeoChecker extends BaseTest
+class TestSeoChecker extends BaseTest
 {
 	public static function interceptErrors()
 	{
@@ -41,39 +41,39 @@ class SeoChecker extends BaseTest
 		$ipropIblockValues = new IblockValues($iblockId);
 		$seoIblock = $ipropIblockValues->queryValues();
 
-		Assert::matches($value = $seoIblock['ELEMENT_META_TITLE']['TEMPLATE'],
+		Assert::matches($value = $seoIblock['ELEMENT_META_TITLE']['TEMPLATE'] ? : '',
 			new Regex('/{=this.property.ARTNUMBER}\s*{=this.Name}\s*-\s*{=this.property.PRICE}\s*рублей/iu',
 				'{=this.property.ARTNUMBER} {=this.Name} - {=this.property.PRICE} рублей'),
 			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_11_SEO_ELEMENTS', [
-				'#VALUE#' => $value
+				'#VALUE#' => !empty($value) ? : 'не задано',
 			]));
 
-		Assert::matches($value = $seoIblock['SECTION_META_KEYWORDS']['TEMPLATE'],
+		Assert::matches($value = $seoIblock['SECTION_META_KEYWORDS']['TEMPLATE'] ? : '',
 			new Regex('/\{=this\.Name}\s*-\s*[\w,\s,\d,\{,\},\[,\],\=,\.,\],]+/iu',
 				'{=this.Name} - #произвольный текст#'),
 			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_11_SEO_SECTIONS', [
-				'#VALUE#' => $value
+				'#VALUE#' => !empty($value) ? : 'не задано',
 			]));
 
-		Assert::matches($value = $seoIblock['ELEMENT_PREVIEW_PICTURE_FILE_ALT']['TEMPLATE'],
+		Assert::matches($value = $seoIblock['ELEMENT_PREVIEW_PICTURE_FILE_ALT']['TEMPLATE'] ? : '',
 			new Regex('/{=parent.Name}\s*-\s*{=this.property.PRICE}/iu',
 				'{=parent.Name} - {=this.property.PRICE}'),
 			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_11_SEO_PREVIEW_PICTURE', [
-				'#VALUE#' => $value
+				'#VALUE#' => !empty($value) ? : 'не задано',
 			]));
 
-		Assert::matches($value = $seoIblock['ELEMENT_PREVIEW_PICTURE_FILE_TITLE']['TEMPLATE'],
+		Assert::matches($value = $seoIblock['ELEMENT_PREVIEW_PICTURE_FILE_TITLE']['TEMPLATE'] ? : '',
 			new Regex('/{=parent.Name}\s*-\s*{=this.property.PRICE}/iu',
 				'{=parent.Name} - {=this.property.PRICE}'),
 			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_11_SEO_PREVIEW_PICTURE', [
-				'#VALUE#' => $value
+				'#VALUE#' => !empty($value) ? : 'не задано',
 			]));
 
-		Assert::matches($value = $seoIblock['ELEMENT_PREVIEW_PICTURE_FILE_NAME']['TEMPLATE'],
+		Assert::matches($value = $seoIblock['ELEMENT_PREVIEW_PICTURE_FILE_NAME']['TEMPLATE'] ? : '',
 			new Regex('/{=parent.Name}\s*-\s*{=this.property.PRICE}/iu',
 				'{=parent.Name} - {=this.property.PRICE}'),
 			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_11_SEO_PREVIEW_PICTURE', [
-				'#VALUE#' => $value
+				'#VALUE#' => !empty($value) ? : 'не задано',
 			]));
 	}
 
@@ -82,11 +82,11 @@ class SeoChecker extends BaseTest
 		$ipropSectionValues = new SectionValues($iblockId, $sectionId);
 		$seoIblock = $ipropSectionValues->queryValues();
 
-		Assert::matches($value = $seoIblock['ELEMENT_META_KEYWORDS']['TEMPLATE'],
+		Assert::matches($value = $seoIblock['ELEMENT_META_KEYWORDS']['TEMPLATE'] ? : '',
 			new Regex('/{=this.property.[\w]+},\s*{=this.property.[\w]+}/i',
 				'{=this.property.#любое_свойство#}, {=this.property.#любое_свойство#}'),
 			Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_11_SEO_OFFICE_FURNITURE', [
-				'#VALUE#' => $value
+				'#VALUE#' => $value ? : 'не задано',
 			]));
 	}
 
