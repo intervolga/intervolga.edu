@@ -4,9 +4,12 @@ namespace Intervolga\Edu\Tests;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\FilesTree\ComponentTemplate;
-use Intervolga\Edu\FilesTree\NewsTemplate;
-use Intervolga\Edu\FilesTree\SimpleComponentTemplate;
+use Intervolga\Edu\FilesTree\ComponentTemplate\NewsTemplate;
 use Intervolga\Edu\Locator\IO\DirectoryLocator;
+use Intervolga\Edu\Util\CodeSnifferChecker;
+use Intervolga\Edu\Sniffer;
+use Intervolga\Edu\Util\Admin;
+use Intervolga\Edu\Util\FileSystem;
 
 abstract class BaseComponentTemplateTest extends BaseTest
 {
@@ -45,20 +48,6 @@ abstract class BaseComponentTemplateTest extends BaseTest
 		}
 	}
 
-	protected static function testTemplateCode(ComponentTemplate $templateDir)
-	{
-		$files = [];
-		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
-			if ($knownPhpFile->isExists()) {
-				$files[] = $knownPhpFile->getPath();
-			}
-		}
-		Assert::phpSniffer($files, [
-			'general',
-			'templateChecker'
-		]);
-	}
-
 	/**
 	 * @return string|ComponentTemplate
 	 */
@@ -69,36 +58,116 @@ abstract class BaseComponentTemplateTest extends BaseTest
 		foreach ($templateDir->getUnknownFileSystemEntries() as $unknownFileSystemEntry) {
 			Assert::fseNotExists($unknownFileSystemEntry);
 		}
-		Assert::fseNotExists($templateDir->getImagesDir());
-		Assert::fseNotExists($templateDir->getParametersFile());
-		Assert::fseNotExists($templateDir->getDescriptionFile());
+		static::checkRequiredFilesTemplate($templateDir);
+		static::checkNotExistingFilesTemplate($templateDir);
 		foreach ($templateDir->getLangForeignDirs() as $langForeignDir) {
 			Assert::directoryNotExists($langForeignDir);
 		}
 		static::testTemplateLangRuTrash($templateDir);
 	}
 
+	protected static function checkRequiredFilesTemplate(ComponentTemplate $templateDir)
+	{
+		if ($templateDir instanceof NewsTemplate) {
+			Assert::fseExists($templateDir->getNewsFile());
+			Assert::fseExists($templateDir->getDetailFile());
+		} else {
+			Assert::fseExists($templateDir->getTemplateFile());
+		}
+	}
+
+	protected static function checkNotExistingFilesTemplate(ComponentTemplate $templateDir)
+	{
+		Assert::fseNotExists($templateDir->getImagesDir());
+		Assert::fseNotExists($templateDir->getParametersFile());
+		Assert::fseNotExists($templateDir->getDescriptionFile());
+	}
+
 	protected static function testTemplateLangRuTrash(ComponentTemplate $templateDir)
 	{
 		if ($templateDir->getLangRuDir()->isExists()) {
 			foreach ($templateDir->getLangRuDir()->getChildren() as $child) {
-				if ($child->getName() == $templateDir->getDescriptionFile()->getName()) {
-					Assert::fseNotExists($child);
-				} elseif ($child->getName() == $templateDir->getParametersFile()->getName()) {
-					Assert::fseNotExists($child);
-				} elseif ($templateDir instanceof SimpleComponentTemplate) {
-					if ($child->getName() != $templateDir->getTemplateFile()->getName()) {
-						Assert::fseNotExists($child);
+
+				if ($child->isDirectory()) {
+					if (!in_array($child->getName(), static::getKnownDirNames($templateDir))) {
+						Assert::directoryNotExists($child);
 					}
-				} elseif ($templateDir instanceof NewsTemplate) {
-					if (!in_array($child->getName(), [
-						$templateDir->getNewsFile()->getName(),
-						$templateDir->getDetailFile()->getName()
-					])) {
+				} elseif ($child->isFile()) {
+					if (!in_array($child->getName(), static::getKnownFilesNames($templateDir))) {
 						Assert::fseNotExists($child);
+					}else {
+						static::testTemplateLangRu($templateDir, $child);
 					}
 				}
 			}
 		}
+	}
+
+	protected static function getKnownDirNames(ComponentTemplate $templateDir)
+	{
+		$names = [];
+		foreach ($templateDir->getKnownDirs() as $file) {
+			$names[] = $file->getName();
+		}
+
+		return $names;
+	}
+
+	protected static function getKnownFilesNames(ComponentTemplate $templateDir)
+	{
+		$names = [];
+		foreach ($templateDir->getKnownFiles() as $file) {
+			$names[] = $file->getName();
+		}
+
+		return $names;
+	}
+
+	protected static function testTemplateCode(ComponentTemplate $templateDir)
+	{
+		$files = [];
+		foreach ($templateDir->getKnownPhpFiles() as $knownPhpFile) {
+			if ($knownPhpFile->isExists()) {
+				$files[] = $knownPhpFile->getPath();
+				CodeSnifferChecker::checkCustomQuotes($knownPhpFile->getPath());
+			}
+		}
+		Assert::phpSniffer($files, [
+			'general',
+			'templateChecker',
+		]);
+	}
+
+	protected static function getLangArrayTemplateDir(ComponentTemplate $templateDir)
+	{
+		foreach ($templateDir->getKnownFiles() as $template) {
+			$result = Sniffer::run([$template->getPath()], ['langUsage']);
+			foreach ($result as $message) {
+				$newTest[] = mb_strcut($message->getMessage(), 1, -1);
+			}
+		}
+
+		return $newTest;
+	}
+
+	protected static function testTemplateLangRu(ComponentTemplate $templateDir, $child)
+	{
+		$result = Sniffer::run([$child->getPath()], ['langDefinition']);
+		$test = static::getLangArrayTemplateDir($templateDir);
+		foreach ($result as $message) {
+			$langNames[$child->getName()][] = $message->getMessage();
+			$tester = mb_strcut($message->getMessage(), 1, -1);
+			if (!in_array($tester, $test)) {
+				Assert::true($tester, Loc::getMessage('INTERVOLGA_EDU.SNIFFER_CHECK_LANG_CODE', [
+					'#FILE#' => Loc::getMessage('INTERVOLGA_EDU.FSE', [
+						'#NAME#' => $child->getName(),
+						'#PATH#' => FileSystem::getLocalPath($child),
+						'#FILEMAN_URL#' => Admin::getFileManUrl($child),
+					]),
+					'#VALUE#' => $tester
+				]));
+			}
+		}
+
 	}
 }

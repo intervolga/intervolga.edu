@@ -1,7 +1,7 @@
 <?php
-
 namespace Intervolga\Edu\Sniffer;
 
+use Intervolga\Edu\Exceptions\AssertException;
 use PHP_CodeSniffer\Autoload;
 use PHP_CodeSniffer\Config;
 use PHP_CodeSniffer\Exceptions\DeepExitException;
@@ -31,8 +31,8 @@ class Runner
 		// Check that the standards are valid.
 		foreach ($this->config->standards as $standard) {
 			if (Standards::isInstalledStandard($standard) === false) {
-				$error = 'ERROR: the "' . $standard . '" coding standard is not installed. ';
-				throw new DeepExitException($error, 3);
+				$error = 'Ошибка модуля : стандарт "' . $standard . '" не найден.';
+				throw new AssertException($error);
 			}
 		}
 
@@ -62,6 +62,15 @@ class Runner
 			throw new DeepExitException($error, 3);
 		}
 
+	}
+
+	public function handleErrors($code, $message, $file, $line)
+	{
+		if ((error_reporting() & $code) === 0) {
+			return true;
+		}
+
+		throw new RuntimeException("$message in $file on line $line");
 	}
 
 	public function runPHPCS(): array
