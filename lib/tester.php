@@ -119,13 +119,14 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson6\TestVacanciesParametersChecker::class,
 			\Intervolga\Edu\Tests\Course2\Lesson6\TestCustomComponentChecker::class,
 
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestAccessPartners::class,
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestPartnersUser::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\TestSecurityLevel::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\TestSecureAuthorization::class,
 
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestGadgetTemplate::class,
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestSettingResultLinks::class,
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestDesktopPage::class,
-
 
 			\Intervolga\Edu\Tests\Course2\Lesson9\TestWizardTemplate::class,
 			\Intervolga\Edu\Tests\Course2\Lesson9\TestWizard::class,
