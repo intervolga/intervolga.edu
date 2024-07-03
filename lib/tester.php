@@ -91,8 +91,10 @@ class Tester
 
 			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestComponentInclude::class,
 			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestSlider::class,
+			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestSliderTestCode::class,
 			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestSliderComponent::class,
 			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestSliderCodeAnalysis::class,
+
 			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestCatalogBindingProperty::class,
 			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestPropertyPrice::class,
 
@@ -119,13 +121,18 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson6\TestVacanciesParametersChecker::class,
 			\Intervolga\Edu\Tests\Course2\Lesson6\TestCustomComponentChecker::class,
 
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestAccessPartners::class,
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestPartnersUser::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\TestSecurityLevel::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\TestSecureAuthorization::class,
+
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestLiteadminAccessChecker::class,
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestSubscriptionGroupChecker::class,
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestProfileGroupEditCheker::class,
 
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestGadgetTemplate::class,
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestSettingResultLinks::class,
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestDesktopPage::class,
-
 
 			\Intervolga\Edu\Tests\Course2\Lesson9\TestWizardTemplate::class,
 			\Intervolga\Edu\Tests\Course2\Lesson9\TestWizard::class,
@@ -141,6 +148,9 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestPropertyGenderValues::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestLinkWithRespondent::class,
             \Intervolga\Edu\Tests\Course3\Lesson3\TestPropertyCode::class,
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestRespondentComponent::class,
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestRespondentComponentTemplate::class,
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestSubQuery::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUf::class,
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUfClass::class,

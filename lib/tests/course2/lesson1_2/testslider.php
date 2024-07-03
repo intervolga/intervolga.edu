@@ -28,6 +28,7 @@ class TestSlider extends BaseTest
 		if ($directory = SliderTemplate::find()) {
 			static::testTemplate($directory);
 			static::testComponentEpilogFile($directory);
+			static::testResultModifier($directory);
 		}
 	}
 
@@ -61,6 +62,16 @@ class TestSlider extends BaseTest
 		if ($file->isExists()) {
 			Assert::fileContentMatches($file, new Regex('/slides\.min\.jquery\.js/is',
 				Loc::getMessage('INTERVOLGA_EDU.COURSE_2.LESSON_1_2.JS_NOT_FOUND_IN_COMPONENT_EPILOG')));
+		}
+	}
+
+	protected static function testResultModifier(Directory $directory)
+	{
+		$file = FileSystem::getInnerFile($directory, 'result_modifier.php');
+		Assert::fseExists($file);
+		if ($file->isExists()) {
+			Assert::fileContentMatches($file, new Regex('/CFile::ResizeImageGet/i',
+				Loc::getMessage('INTERVOLGA_EDU.NOT_FOUND_RESIZE')));
 		}
 	}
 }
