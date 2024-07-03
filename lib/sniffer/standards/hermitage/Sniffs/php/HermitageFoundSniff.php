@@ -5,8 +5,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 
 class HermitageFoundSniff implements Sniff
 {
-	const error = [];
-
 	public function register()
 	{
 		return [T_STRING];
@@ -17,19 +15,14 @@ class HermitageFoundSniff implements Sniff
 		$tokens = $phpcsFile->getTokens();
 		$getArrayByID = $tokens[$stackPtr];
 
-		if ($getArrayByID['content'] === 'GetArrayByID') {
-			$error = '';
+		if (preg_match('/GetArrayByID/mi', $getArrayByID['content'])) {
 			$idVarName = $phpcsFile->findNext(T_CONSTANT_ENCAPSED_STRING, $stackPtr);
-			if (preg_match('/IBLOCK_SECTION_ID/i', $tokens[$idVarName]['content'])) {
-
-				$error .= 'IBLOCK_SECTION_ID';
+			if (preg_match('/IBLOCK_SECTION_ID/im', $tokens[$idVarName]['content'])) {
 				$phpcsFile->addError('IBLOCK_SECTION_ID', $idVarName, 'HermitageFoundSniff');
 			}
-			if (preg_match('/IBLOCK_ID/i', $tokens[$idVarName]['content'])) {
-				$error .= 'IBLOCK_ID';
+			if (preg_match('/IBLOCK_ID/im', $tokens[$idVarName]['content'])) {
 				$phpcsFile->addError('IBLOCK_ID', $idVarName, 'HermitageFoundSniff');
 			}
-
 		}
 	}
 }

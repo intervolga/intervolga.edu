@@ -15,11 +15,11 @@ class TestHermitage extends BaseTest
 {
 	protected static function run()
 	{
-		Assert::directoryLocator(static::getLocator());
+		Assert::directoryLocator(VacanciesListTemplate::class);
 		Assert::fseExists(static::getTemplateFile());
 
 		$hermitage = static::getHermitage();
-		static::findHermitage($hermitage, 'IBLOCKS');
+		static::findHermitage($hermitage, 'IBLOCK_ID');
 		static::findHermitage($hermitage, 'IBLOCK_SECTION_ID');
 	}
 
@@ -36,7 +36,7 @@ class TestHermitage extends BaseTest
 	 */
 	protected static function getTemplateFile(): File
 	{
-		return FileSystem::getInnerFile(static::getLocator()::find(), 'template.php');
+		return FileSystem::getInnerFile(VacanciesListTemplate::find(), 'template.php');
 	}
 
 	protected static function getHermitage()
@@ -44,7 +44,7 @@ class TestHermitage extends BaseTest
 		$hermitage = [];
 		$result = Sniffer::run([static::getTemplateFile()->getPath()], ['hermitage']);
 
-		Assert::notEmpty(static::getHermitage(),
+		Assert::notEmpty($result,
 			Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_5_1_NOT_FOUND_HERMITAGE',
 				[
 					'#FILE#' => FileMessage::get(static::getTemplateFile()),
