@@ -179,6 +179,13 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SECURITYLEVEL'] = 'Проверка уро
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SECURITYLEVEL_DESCRIPTION'] = 'Уровень безопасности должен быть "Стандартный" или выше.';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SECUREAUTHORIZATION'] = 'Проверка настроек Авторизации';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SECUREAUTHORIZATION_DESCRIPTION'] = 'В настройках главного модуля, в разделе "Авторизация" в параметрах "Безопасной авторизации" должен стоять флаг на передачу пароля в зашифрованном виде и сгенерирован ключ шифрования.';
+
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7_LITEADMINACCESSCHECKER'] = 'Проверка пользователя liteadmin на группу Контент-редакторы';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7_LITEADMINACCESSCHECKER_DESCRIPTION'] = 'Доступы группы "Контент-редакторы" должны быть изменены в соответствии с заданием';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SUBSCRIPTIONGROUPCHECKER'] = 'Проверка пользователя liteadmin на группу с доступом к модулю "Подписки, рассылки"';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7_SUBSCRIPTIONGROUPCHECKER_DESCRIPTION'] = 'Пользователь должен находиться в группе, группа должна иметь доступ к модулю "Подписки, рассылки"';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7_PROFILEGROUPEDITCHEKER'] = 'Проверка пользователя liteadmin на группу с доступом к редактированию профилей группы "Партнеры"';
+$MESS['INTERVOLGA_EDU.COURSE2_LESSON7_PROFILEGROUPEDITCHEKER_DESCRIPTION'] = 'Пользователь должен находиться в группе, группа должна иметь возможность редактировать и просматривать профили группы "Партнеры"';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_ACCESSPARTNERS'] = 'Проверка прав доступа раздела "Партнерам"';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_ACCESSPARTNERS_DESCRIPTION'] = 'В разделе "Партнерам" доступ для всех пользователей должен быть закрыт, кроме группы "Партнеры" (чтение).';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON7_PARTNERSUSER'] = 'Проверка группы "Партнеры"';

@@ -124,6 +124,10 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson7\TestSecurityLevel::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\TestSecureAuthorization::class,
 
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestLiteadminAccessChecker::class,
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestSubscriptionGroupChecker::class,
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestProfileGroupEditCheker::class,
+
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestGadgetTemplate::class,
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestSettingResultLinks::class,
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestDesktopPage::class,
