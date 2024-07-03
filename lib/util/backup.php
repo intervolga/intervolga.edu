@@ -3,13 +3,13 @@ namespace Intervolga\Edu\Util;
 
 use Bitrix\Main\Application;
 
-class Buckup
+class Backup
 {
 	public static function get()
 	{
 		include Application::getDocumentRoot() . '/bitrix/modules/main/classes/general/backup.php';
 		$arTmpFiles = array_merge(static::getLocalBackup(), static::getCloudBackup());
-
+		\Bitrix\Main\Diag\Debug::dump(static::prepareOutput($arTmpFiles));
 		return static::prepareOutput($arTmpFiles);
 	}
 
