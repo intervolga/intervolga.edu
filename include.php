@@ -20,7 +20,7 @@ const INTERVOLGA_EDU_GUESS_VARIANTS = [
 			'list_reviews',
 		],
 		'REVIEWS_CAROUSEL' => [
-			'review.сarousel',
+			'review.carousel',
 			'review_carousel',
 			'reviews_carousel',
 			'carousel',
@@ -31,6 +31,23 @@ const INTERVOLGA_EDU_GUESS_VARIANTS = [
 			'random_review',
 			'random_reviews',
 		],
+		'SLIDER' => [
+			'slider',
+			'promo_slider',
+			'slider_promo',
+		],
+	],
+	'MODULES' => [
+		'main',
+		'fileman',
+		'iblock',
+		'form',
+		'perfmon',
+		'translate',
+		'search',
+		'seo',
+		'security',
+		'photogallery',
 	],
 	'PATHS' => [
 		'DESKTOP' => [
