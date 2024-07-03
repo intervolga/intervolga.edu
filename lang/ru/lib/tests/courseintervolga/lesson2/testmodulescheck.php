@@ -1,0 +1,3 @@
+<?php
+$MESS['INTERVOLGA_EDU.COURSE_INTERVOLGA_MODULE_NOT_ISTALLED'] = 'Модуль #VALUE# должен быть установлен';
+$MESS['INTERVOLGA_EDU.COURSE_INTERVOLGA_MODULE_NEED_DELETED'] = 'Модуль #VALUE# должен быть удален';
