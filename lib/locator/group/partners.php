@@ -10,9 +10,9 @@ class Partners extends GroupLocator
 		return Loc::getMessage('INTERVOLGA_EDU.GROUP_PARTNERS');
 	}
 
-	public static function getCodeGroup(): string
+	public static function getCodeGroup(): array
 	{
-		return 'partners';
+		return ['partners'];
 	}
 
 	public static function getDisplayText($find): string

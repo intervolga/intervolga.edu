@@ -13,10 +13,10 @@ abstract class GroupLocator extends BaseLocator
 		return implode(' || ', static::getCodeGroup());
 	}
 
-	abstract public static function getCodeGroup(): string;
+	abstract public static function getCodeGroup(): array;
 
 	public static function find()
 	{
-		return CGroup::GetList(false, false, ['STRING_ID' => static::getCodeGroup()])->fetch();
+		return CGroup::GetList(false, false, ['STRING_ID' => static::getPossibleTips()])->fetch();
 	}
 }
