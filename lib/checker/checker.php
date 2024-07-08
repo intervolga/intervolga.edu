@@ -28,12 +28,14 @@ $standardsList = StandardsHelper::getStandardsList();
 				<div class="title"><?=Loc::getMessage('INTERVOLGA_EDU.CHECKER_TITLE_STANDARDS')?></div>
 				<? if ($standardsList):
 					foreach ($standardsList as $standard):?>
-						<li>
-							<div>
-								<input type="checkbox" name="standards" id="<?=$standard?>" value="<?=$standard?>">
-								<label for="<?=$standard?>"><?=Loc::getMessage('INTERVOLGA_EDU.CHECKER_' . $standard)?></label>
-							</div>
-						</li>
+						<? if (Loc::getMessage('INTERVOLGA_EDU.CHECKER_' . $standard)):?>
+							<li>
+								<div>
+									<input type="checkbox" name="standards" id="<?=$standard?>" value="<?=$standard?>">
+									<label for="<?=$standard?>"><?=Loc::getMessage('INTERVOLGA_EDU.CHECKER_' . $standard)?></label>
+								</div>
+							</li>
+						<?endif; ?>
 					<?endforeach;
 				endif; ?>
 			</ul>

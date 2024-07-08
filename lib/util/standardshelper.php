@@ -18,7 +18,8 @@ class StandardsHelper
 				$result[] = $child->getName();
 			}
 		}
-
+		//эти сниффы используются в методах, результата не дают, просто вытаскивают элементы
+		$result = array_diff($result, ['langDefinition', 'langUsage', 'customquotes']);
 		return $result;
 	}
 
