@@ -22,6 +22,7 @@ class MenuTop extends TemplateLocator
 			'=TEMPLATE_NAME' => [
 				'top',
 				'top_menu',
+				'top_multi',
 			],
 			'%REAL_PATH' => '/local/templates/.default/include/header.php',
 		];

@@ -21,9 +21,6 @@ class TestMenu extends BaseTest
 
 	protected static function run()
 	{
-		AssertComponent::templateLocator(MenuBottom::class);
-		AssertComponent::templateLocator(MenuTop::class);
-		AssertComponent::templateLocator(MenuLeft::class);
 		static::checkCacheParams(MenuBottom::class);
 		static::checkCacheParams(MenuTop::class);
 		static::checkCacheParams(MenuLeft::class);
@@ -34,6 +31,7 @@ class TestMenu extends BaseTest
 	 */
 	protected static function checkCacheParams($templateLocator)
 	{
+		AssertComponent::templateLocator($templateLocator);
 		if ($component = $templateLocator::find()) {
 			$file = FileSystem::getFile($component['REAL_PATH']);
 			Assert::eq(
@@ -60,13 +58,5 @@ class TestMenu extends BaseTest
 				)
 			);
 		}
-	}
-
-	/**
-	 * @return string|ComponentLocator
-	 */
-	protected static function getLocator()
-	{
-		return Menu::class;
 	}
 }
