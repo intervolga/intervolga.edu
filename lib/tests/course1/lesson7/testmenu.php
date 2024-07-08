@@ -61,4 +61,12 @@ class TestMenu extends BaseTest
 			);
 		}
 	}
+
+	/**
+	 * @return string|ComponentLocator
+	 */
+	protected static function getLocator()
+	{
+		return Menu::class;
+	}
 }
