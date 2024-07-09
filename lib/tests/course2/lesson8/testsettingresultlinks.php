@@ -128,9 +128,10 @@ class TestSettingResultLinks extends BaseTest
 		$page = ob_get_contents();
 		ob_clean();
 
-		preg_match_all('/href="[\w\s\d\=\'"\/_\.\?&;\-\#\$\%\^:]*\>/iu', $page, $matches, PREG_SET_ORDER);
+        $page = preg_replace('/\s*/', '', $page);
+		preg_match_all('/href=("|\')[\w\d=\/_.?&;\-#]*("|\')/iu', $page, $matches, PREG_SET_ORDER);
 		foreach ($matches as $match) {
-			$urls[] = mb_strcut($match[0], strpos($match[0], '"') + 1, -2);
+			$urls[] = mb_strcut(trim($match[0]), 6, -1);
 		}
 
 		if (strpos($urls[1], 'find_date_create_1')) {
