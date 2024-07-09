@@ -7,7 +7,7 @@ use CAutoCheck;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Tests\BaseTest;
 
-class SecurityLevel extends BaseTest
+class TestSecurityLevel extends BaseTest
 {
 	public static function interceptErrors()
 	{
