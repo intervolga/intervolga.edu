@@ -219,6 +219,9 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON3_PROPERTYCODE'] = 'Проверка код�
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON3_PROPERTYCODE_DESCRIPTION'] = 'В коде компонента и шаблона не должно быть упоминаний SALARY, GENDER, AGE"';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON3_SUBQUERY'] = 'Проверка правильного расположения CIBlockElement::SubQuery';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON3_SUBQUERY_DESCRIPTION'] = 'CIBlockElement::SubQuery должен использоваться внутри класса компонента';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON3_TEMPLATERESPONDENTS'] = 'Проверка размещения компонента "Респонденты" и содержимого шаблона';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON3_TEMPLATERESPONDENTS_DESCRIPTION'] = 'Компонент должен быть размещен, а все используемые слова/фразы должны быть вынесены в lang-файлы.';
+
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Проверка собственного UF-свойства';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF_DESCRIPTION'] = 'Должен существовать обработчик события OnUserTypeBuildList модуля main для свойства "Привязка к коллекции медиабиблиотеки"';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UFCLASS'] = 'Проверка собственного UF-свойства с требуемыми свойствами для объекта USER';
