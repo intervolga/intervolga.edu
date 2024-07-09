@@ -36,6 +36,7 @@ class UpdateSystem
 		return [
 			'LICENSE' => $license,
 			'MODULES' => $modules,
+			'UPDATE_SYSTEM' => static::$updateStatus['UPDATE_SYSTEM'],
 		];
 	}
 
