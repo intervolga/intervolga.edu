@@ -26,5 +26,5 @@ B_PROLOG_INCLUDED === true || die();
 	<li>В разделе <a href="/products/">Каталог</a> вас ждет сюрприз. Битрикс там подключает bootstrap.css и его стили
 		конфликтуют с вашей версткой. Вам стоит либо смириться, либо скопировать шаблон bitrix:catalog и всех дочерних
 		компонентов и удалить строчку: <i>$this->addExternalCss("/bitrix/css/main/bootstrap.css");</i>
-		<br> <img src="<?= IV_EDU_MODULE_DIR ?>/help/images/course1lesson3surprise.png"></li>
+		<br> <img src="/bitrix/images/intervolga.edu/course1lesson3surprise.png"></li>
 </ol>

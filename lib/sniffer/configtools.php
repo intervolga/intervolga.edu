@@ -7,7 +7,7 @@ class ConfigTools
 {
 	public static function makeConfig($standardPath = [], $files = []): Config
 	{
-		$config = new Config();
+		$config = new Config(['']);
 		$config->restoreDefaults();
 		$config->filter = __DIR__ . '/filters/filter.php';
 		$config->reports = ['full' => null];

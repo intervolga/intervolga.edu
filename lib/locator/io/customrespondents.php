@@ -2,6 +2,7 @@
 namespace Intervolga\Edu\Locator\IO;
 
 use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Asserts\AssertComponent;
 
 class CustomRespondents extends DirectoryLocator
 {
@@ -12,9 +13,12 @@ class CustomRespondents extends DirectoryLocator
 
 	public static function getComponentFile()
 	{
-		foreach (static::find()->getChildren() as $child) {
-			if ($child->getName() == 'component.php' || $child->getName() == 'class.php') {
-				return $child;
+		AssertComponent::componentLocator(static::class);
+		if (static::find()) {
+			foreach (static::find()->getChildren() as $child) {
+				if ($child->getName() == 'component.php' || $child->getName() == 'class.php') {
+					return $child;
+				}
 			}
 		}
 

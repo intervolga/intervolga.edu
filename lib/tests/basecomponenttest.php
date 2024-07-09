@@ -23,7 +23,7 @@ abstract class BaseComponentTest extends BaseComponentTemplateTest
 		);
 	}
 
-	/** локатор для компонента
+	/**
 	 * @return string|DirectoryLocator
 	 */
 	abstract protected static function getLocator();
@@ -45,7 +45,7 @@ abstract class BaseComponentTest extends BaseComponentTemplateTest
 		}
 	}
 
-	/** дерево компонента
+	/**
 	 * @return string|Component
 	 */
 	abstract protected static function getComponentTemplateTree();
@@ -53,10 +53,21 @@ abstract class BaseComponentTest extends BaseComponentTemplateTest
 	protected static function testComponentTrash(Component $componentDir)
 	{
 		foreach ($componentDir->getUnknownFileSystemEntries() as $unknownFileSystemEntry) {
-			Assert::fseNotExists($unknownFileSystemEntry);
+			if ($unknownFileSystemEntry->getName() == $componentDir->getTemplatesDir()->getName()) {
+				$locatorTemplate = static::getTemplateLocator();
+				Assert::directoryLocator($locatorTemplate);
+				if ($templateDir = $locatorTemplate::find(static::getComponentTemplateTree()::getTemplateTree())) {
+					/**
+					 * @var ComponentTemplate $templateDir
+					 */
+					static::testTemplateTrash($templateDir);
+					static::testTemplateCode($templateDir);
+				}
+			} else {
+				Assert::fseNotExists($unknownFileSystemEntry);
+			}
 		}
 
-		static::checkTemplateDirectory();
 		static::checkRequiredFilesComponent($componentDir);
 
 		foreach ($componentDir->getLangForeignDirs() as $langForeignDir) {
@@ -65,20 +76,7 @@ abstract class BaseComponentTest extends BaseComponentTemplateTest
 		static::testComponentLangRuTrash($componentDir);
 	}
 
-	protected static function checkTemplateDirectory()
-	{
-		$locatorTemplate = static::getTemplateLocator();
-		Assert::directoryLocator($locatorTemplate);
-		if ($templateDir = $locatorTemplate::find(static::getComponentTemplateTree()::getTemplateTree())) {
-			/**
-			 * @var ComponentTemplate $templateDir
-			 */
-			static::testTemplateTrash($templateDir);
-			static::testTemplateCode($templateDir);
-		}
-	}
-
-	/** локатор для шаблона
+	/**
 	 * @return string|DirectoryLocator
 	 */
 	abstract protected static function getTemplateLocator();
