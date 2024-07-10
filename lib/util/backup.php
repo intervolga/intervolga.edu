@@ -9,7 +9,6 @@ class Backup
 	{
 		include Application::getDocumentRoot() . '/bitrix/modules/main/classes/general/backup.php';
 		$arTmpFiles = array_merge(static::getLocalBackup(), static::getCloudBackup());
-		\Bitrix\Main\Diag\Debug::dump(static::prepareOutput($arTmpFiles));
 		return static::prepareOutput($arTmpFiles);
 	}
 
