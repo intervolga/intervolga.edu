@@ -52,6 +52,17 @@ if ($request->isPost()) {
 			'name' => $optionName
 		]);
 	}
+	if ($fileId = $request->getPost('deleteFile')) {
+		$file = CFile::GetByID($fileId);
+		if($file){
+			try{
+				CFile::Delete($fileId);
+			}catch (Exception $exception){
+				//TODO:сделать логирование от модуля?
+				//\Bitrix\Main\Diag\Debug::writeToFile($exception);
+			}
+		}
+	}
 	if ($commentName = $request->getPost('COMMENT')) {
 		if ($comment = $request->getPost($commentName . 'Comment')) {
 			Option::delete($module_id, [
@@ -62,18 +73,17 @@ if ($request->isPost()) {
 		if ($_FILES) {
 			foreach ($_FILES as $key => $item) {
 				if (strripos($key, $commentName . 'Photo') === 0 && $item['tmp_name']) {
-					$temp = [
-						'PHOTO' => array_merge($item, [
-							'MODULE_ID' => $module_id,
-						])
-					];
-
-					if (CFile::SaveForDB($temp, 'PHOTO', $module_id))
-					{
-						Option::delete($module_id, [
-							'name' => $key
-						]);
+					$path = mb_strcut($key, 0, strpos($key, 'Photo'));
+					$temp = array_merge($item, [
+						'MODULE_ID' => $module_id,
+						'description' => $path,
+					]);
+					try {
+						CFile::SaveFile($temp, $module_id, false, false, $path);
 						Option::set($module_id, $key, $temp['PHOTO']);
+					} catch (Exception $e) {
+						//TODO:сделать логирование от модуля?
+						//\Bitrix\Main\Diag\Debug::writeToFile($e);
 					}
 				}
 			}
@@ -156,7 +166,7 @@ if ($fatalThrowable) {
 $results = CFile::GetList([], ['MODULE_ID' => $module_id]);
 $photos = [];
 while ($result = $results->Fetch()) {
-	$photos[$result['ID']] = $result;
+	$photos[$result['DESCRIPTION']][] = $result;
 }
 
 $tabControl = new CAdminTabControl('tabControl', $tabs);
@@ -172,11 +182,11 @@ foreach ($testsTree as $courseCode => $course) {
 			<ul class="lessons-contents">
 				<?php foreach ($course['LESSONS'] as $lessonCode => $lesson): ?>
 					<?php
-						$title = Loc::getMessage('INTERVOLGA_EDU.LESSON_HEADER', [
-							'#LESSON#' => $lesson['TITLE'],
-							'#TOTAL#' => count($lesson['TESTS']),
-							'#DONE#' => count($lesson['TESTS']) - intval($stat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']),
-						]);
+					$title = Loc::getMessage('INTERVOLGA_EDU.LESSON_HEADER', [
+						'#LESSON#' => $lesson['TITLE'],
+						'#TOTAL#' => count($lesson['TESTS']),
+						'#DONE#' => count($lesson['TESTS']) - intval($stat[$courseCode]['LESSONS'][$lessonCode]['ERRORS']),
+					]);
 					?>
 					<li>
 						<a href="#<?=$courseCode?><?=$lessonCode?>">
@@ -196,8 +206,7 @@ foreach ($testsTree as $courseCode => $course) {
 			$lessonCodes = array_keys($course['LESSONS']);
 			$currentLessonIndex = 0;
 			foreach ($course['LESSONS'] as $lessonCode => $lesson) {
-				if ($currentLessonIndex < count($lessonCodes) + 1)
-				{
+				if ($currentLessonIndex<count($lessonCodes) + 1) {
 					$nextLessonCode = $lessonCodes[$currentLessonIndex + 1];
 				}
 				$title = Loc::getMessage('INTERVOLGA_EDU.LESSON_HEADER', [
@@ -269,34 +278,34 @@ foreach ($testsTree as $courseCode => $course) {
 					}
 
 					if ($test['INPUTS']) {
-						echo '<form method="post" enctype="multipart/form-data">';
+						$messageParams["DETAILS"] .= '<br>';
+						$messageParams["DETAILS"] .= '<form method="post" enctype="multipart/form-data">';
+						$messageParams["DETAILS"] .= '<br>';
 						$formID = $courseCode . $lessonCode . $test['CODE'];
 						$photoCount = 0;
+
 						foreach ($test['INPUTS'] as $input) {
 							if ($input['TYPE'] === 'image') {
-								$idPhoto = $formID . 'Photo' . $input['num'];
-								echo  CFile::InputFile($idPhoto, 20, 0, '/upload/intervolga.edu/');
-								$idPhotoDb = Option::get($module_id, $idPhoto);
-								if (array_key_exists($idPhotoDb, $photos)){
-									$ph = $photos[$idPhotoDb];
-									$pathPhoto = '/upload/' . $ph['SUBDIR'] . '/' . $ph['FILE_NAME'];
-									?>
-									<div style="display:none;" id="<?=$idPhoto?>_photo"> <img src="<?=$pathPhoto?>">
-										<br> <a href="<?=$pathPhoto?>"><?= Loc::getMessage('INTERVOLGA_EDU.FOLLOW_PHOTO') ?></a></div>
-									<span class="show-img" id="<?=$idPhoto?>" onclick="showPopup(this)"><?= Loc::getMessage('INTERVOLGA_EDU.SEE_PHOTO') ?></span>
-									<br>
-									<?php
-								}
+								$photos = $photos[$formID];
+								foreach ($photos as $photo) {
 
+									$pathPhoto = '/upload/' . $photo['SUBDIR'] . '/' . $photo['FILE_NAME'];
+									$messageParams["DETAILS"] .= '<div style="display:none;" id="' . $photo['FILE_NAME'] . '_photo"> <img src="' . $pathPhoto . '">';
+									$messageParams["DETAILS"] .= '<br> <a href="' . $pathPhoto . '">' . Loc::getMessage('INTERVOLGA_EDU.FOLLOW_PHOTO') . '</a></div>';
+									$messageParams["DETAILS"] .= '<div><a class="show-img" id="' . $photo['FILE_NAME'] . '" onclick="showPopup(this)">' . $photo['FILE_NAME'] . '</a>';
+									$messageParams["DETAILS"] .= '<button style="margin-left: 3px" type="submit" name="deleteFile" title="Удалить файл" class="iv-delete-link" value="'.$photo['ID'].'"></button></div>';
+								}
 							} elseif ($input['TYPE'] === 'text-area') {
-								echo '<b>' . $input['DESCRIBE'] . '</b> <br>';
+								$messageParams["DETAILS"] .= '<b>' . $input['DESCRIBE'] . '</b> <br>';
 								$tip = Option::get($module_id, $formID . "Comment");
-								echo '<textarea name="' . $formID . 'Comment" rows="5" cols="80">' . $tip . '</textarea>';
+								$messageParams["DETAILS"] .= '<textarea name="' . $formID . 'Comment" rows="5" cols="80">' . $tip . '</textarea>';
 							}
-							echo '<br>';
+							$messageParams["DETAILS"] .= '<br>';
+							$messageParams["DETAILS"] .= CFile::InputFile($formID. 'Photo', 20, 0, '/upload/intervolga.edu/');
 						}
-						echo '<br><button type="submit" class="adm-btn" name="COMMENT" value="' . $formID . '">' . Loc::getMessage('INTERVOLGA_EDU.SEND_PHOTO') . '</button>';
-						echo '</form>';
+						$messageParams["DETAILS"] .= '<button type="submit" style="margin-left: 10px" class="adm-btn" name="COMMENT" value="' . $formID . '">' . Loc::getMessage('INTERVOLGA_EDU.SEND_PHOTO') . '</button>';
+						$messageParams["DETAILS"] .= '</form>';
+						$messageParams["DETAILS"] .= '<br>';
 					}
 
 					$reportId = $courseCode . "_" . $lessonCode . "_" . strtolower($test['CODE']) . "_problem";
@@ -355,11 +364,9 @@ $tabControl->beginNextTab();
 $arModuleVersion = [];
 include Application::getDocumentRoot() . IV_EDU_MODULE_DIR . '/install/version.php';
 $versionDate = $arModuleVersion['VERSION_DATE'];
-if ($versionDate)
-{
+if ($versionDate) {
 	$dateTime = DateTime::tryParse($versionDate, 'Y-m-d H:i:s');
-	if ($dateTime)
-	{
+	if ($dateTime) {
 		$versionDate = $dateTime->format('d.m.Y H:i');
 	}
 }

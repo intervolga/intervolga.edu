@@ -84,9 +84,9 @@ abstract class BaseTest
 		return '';
 	}
 
-	public static function countInputImage(): int
+	public static function countInputImage(): bool
 	{
-		return 0;
+		return false;
 	}
 
 	/**
