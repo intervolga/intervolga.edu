@@ -80,7 +80,13 @@ class intervolga_edu extends CModule
 			true,
 			true
 		);
-		\Bitrix\Main\Config\Option::set("main", "save_original_file_name", "Y");
+		copyDirFiles(
+			$root . $curDir. '/install/admin',
+			$root . '/bitrix/admin',
+			true,
+			true
+		);
+    \Bitrix\Main\Config\Option::set("main", "save_original_file_name", "Y");
 	}
 
 	public function UninstallFiles()
@@ -94,6 +100,10 @@ class intervolga_edu extends CModule
 		deleteDirFiles(
 			$root . $curDir .  '/install/images',
 			$root . '/bitrix/images/' . $this->MODULE_ID
+		);
+		deleteDirFiles(
+			$root . $curDir. '/install/admin',
+			$root . '/bitrix/admin',
 		);
 	}
 }

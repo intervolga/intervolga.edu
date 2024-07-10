@@ -18,7 +18,7 @@ class FindWasteSniff implements Sniff
 
 		if ($token) {
 			$error = Loc::getMessage('INTERVOLGA_EDU.SNIFFER_FIND_WASTE_HTML_LINE', [
-				'#VAR#' => $token['content']
+				'#VAR#' => strip_tags($token['content']),
 			]);
 			$phpcsFile->addError($error, $stackPtr, 'FindWasteSniff');
 		}

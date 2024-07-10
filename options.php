@@ -155,6 +155,12 @@ $tabs[] = [
 	'TITLE' => Loc::getMessage('INTERVOLGA_EDU.MODULE_INFO'),
 	'ONSELECT' => 'intervolgaEduOnTabChanged("info");',
 ];
+$tabs[] = [
+	'DIV' => 'sniffer',
+	'TAB' => Loc::getMessage('INTERVOLGA_EDU.SNIFFER_TAB'),
+	'TITLE' => Loc::getMessage('INTERVOLGA_EDU.SNIFFER_TITLE'),
+	'ONSELECT' => 'intervolgaEduOnTabChanged("checker");',
+];
 if ($fatalThrowable) {
 	$message = new CAdminMessage([
 		'MESSAGE' => Loc::getMessage('INTERVOLGA_EDU.FATAL_ERROR', ['#ERROR#' => $fatalThrowable->getMessage()]),
@@ -385,4 +391,9 @@ if ($versionDate) {
 		</td>
 	</tr>
 <?php
+
+$tabControl->beginNextTab();
+
+include Application::getDocumentRoot() . IV_EDU_MODULE_DIR . '/lib/checker/checker.php';
+
 $tabControl->end();
