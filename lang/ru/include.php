@@ -75,6 +75,12 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PRODUCTS_DESCRIPTION'] = 'Пункт ме�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PROMO'] = 'Проверка раздела &laquo;Акции&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PROMO_DESCRIPTION'] = 'Должен быть создан с очевидным именем';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_CODE_FILES'] = 'init.php';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_INNERTITLE'] = 'Проверка решения проблемы с loading.gif';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_INNERTITLE_DESCRIPTION'] = 'В файле /local/templates/main/heafer.php нужно подправить скрипт (внутри функции \'<b>slides()</b>\' js-скрипта добавить параметр <b>preloadImage: \'/local/templates/.default/images/loading.gif\'</b>)';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_INNERTITLE'] = 'Проверка подключения заголовков';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_INNERTITLE_DESCRIPTION'] = 'В файле /local/templates/inner/heafer.php должно быть правильное подключение языковых файлов (<b>$APPLICATION->ShowTitle(false)</b>)';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SITELANGUAGE'] = 'Проверка подключения языковых файлов';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SITELANGUAGE_DESCRIPTION'] = 'В файле /local/templates/.default/include/heafer.php должно находиться подключение языковых файлов (<b>&#60;html lang="&#60;?=LANGUAGE_ID?&#62;"&#62;</b>)';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_CODE_FILES'] = 'header.php и footer.php шаблонов main, inner';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_TEMPLATES'] = 'Проверка шаблонов сайта';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_TEMPLATES_DESCRIPTION'] = 'В /local/templates/ должны быть только эти шаблоны: main, inner, .default';
@@ -86,6 +92,11 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_OPTION'] = 'Проверка настро�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_OPTION_DESCRIPTION'] = 'Требуется включить настройки Объединять CSS файлы, Объединять JS файлы, Создавать сжатую копию объединенных CSS и JS файлов';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_LANG'] = 'Проверка lang кодов';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_LANG_DESCRIPTION'] = 'Требуется использовать языковые коды для строк из задания';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SCRIPTLOCATION'] = 'Проверка правильного расположения папок JS,CSS и IMG и их файлов';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SCRIPTLOCATION_DESCRIPTION'] = 'Папки и файлы в них должны распологаться в /local/templates/.default/ и должны быть удалены из шаблонов main и inner';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_PRELOADIMAGE'] = 'Проверка решения проблемы с loading.gif (предварительная загрузка изображений)';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_PRELOADIMAGE_DESCRIPTION'] = 'Проблема должна быть решена с помощью использования параметра preloadImage в коде js-скрипта';
+
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_SMARTFILTERISEXIST'] = 'Проверка на наличие включенного фильтра';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_SMARTFILTERISEXIST_DESCRIPTION'] = 'В компоненте каталог должен быть включен фильтр';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST'] = 'Проверка на наличие свойства';
