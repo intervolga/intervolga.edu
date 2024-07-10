@@ -55,3 +55,19 @@ function getCookie(name) {
 function intervolgaEduOnTabChanged(tab) {
 	document.cookie = 'intervolga_edu_tab=' + tab;
 }
+
+function showPopup(el) {
+	const popup=new BX.PopupWindow('call_feedback', window.body, {
+		autoHide: true,
+		offsetTop: 1,
+		offsetLeft: 0,
+		lightShadow: true,
+		closeIcon: true,
+		closeByEsc: true,
+		overlay: {
+			opacity: '80'
+		}
+	});
+	popup.setContent(BX(el.id + '_photo'))
+	popup.show();
+}
