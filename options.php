@@ -282,16 +282,14 @@ foreach ($testsTree as $courseCode => $course) {
 						$messageParams["DETAILS"] .= '<form method="post" enctype="multipart/form-data">';
 						$messageParams["DETAILS"] .= '<br>';
 						$formID = $courseCode . $lessonCode . $test['CODE'];
-						$photoCount = 0;
 
 						foreach ($test['INPUTS'] as $input) {
 							if ($input['TYPE'] === 'image') {
 								$photos = $photos[$formID];
 								foreach ($photos as $photo) {
-
 									$pathPhoto = '/upload/' . $photo['SUBDIR'] . '/' . $photo['FILE_NAME'];
-									$messageParams["DETAILS"] .= '<div style="display:none;" id="' . $photo['FILE_NAME'] . '_photo"> <img src="' . $pathPhoto . '">';
-									$messageParams["DETAILS"] .= '<br> <a href="' . $pathPhoto . '">' . Loc::getMessage('INTERVOLGA_EDU.FOLLOW_PHOTO') . '</a></div>';
+									$messageParams["DETAILS"] .= '<div style="display:none;" id="' . $photo['FILE_NAME'] . '_photo"> <img src="' . $pathPhoto . '"><br>';
+									$messageParams["DETAILS"] .= ' <a href="' . $pathPhoto . '">' . Loc::getMessage('INTERVOLGA_EDU.FOLLOW_PHOTO') . '</a></div>';
 									$messageParams["DETAILS"] .= '<div><a class="show-img" id="' . $photo['FILE_NAME'] . '" onclick="showPopup(this)">' . $photo['FILE_NAME'] . '</a>';
 									$messageParams["DETAILS"] .= '<button style="margin-left: 3px" type="submit" name="deleteFile" title="Удалить файл" class="iv-delete-link" value="'.$photo['ID'].'"></button></div>';
 								}
@@ -300,7 +298,9 @@ foreach ($testsTree as $courseCode => $course) {
 								$tip = Option::get($module_id, $formID . "Comment");
 								$messageParams["DETAILS"] .= '<textarea name="' . $formID . 'Comment" rows="5" cols="80">' . $tip . '</textarea>';
 							}
-							$messageParams["DETAILS"] .= '<br>';
+							if($photos){
+								$messageParams["DETAILS"] .= '<br>';
+							}
 							$messageParams["DETAILS"] .= CFile::InputFile($formID. 'Photo', 20, 0, '/upload/intervolga.edu/');
 						}
 						$messageParams["DETAILS"] .= '<button type="submit" style="margin-left: 10px" class="adm-btn" name="COMMENT" value="' . $formID . '">' . Loc::getMessage('INTERVOLGA_EDU.SEND_PHOTO') . '</button>';

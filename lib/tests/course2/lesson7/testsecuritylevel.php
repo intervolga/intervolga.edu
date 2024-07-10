@@ -14,11 +14,6 @@ class TestSecurityLevel extends BaseTest
 		return true;
 	}
 
-	public static function countInputImage(): bool
-	{
-		return true;
-	}
-
 	protected static function run()
 	{
 		include(Application::getDocumentRoot() . '/bitrix/modules/main/classes/general/checklist.php');
