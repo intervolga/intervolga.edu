@@ -86,6 +86,7 @@ class intervolga_edu extends CModule
 			true,
 			true
 		);
+    \Bitrix\Main\Config\Option::set("main", "save_original_file_name", "Y");
 	}
 
 	public function UninstallFiles()
