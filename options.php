@@ -150,17 +150,18 @@ foreach ($testsTree as $courseCode => $course) {
 	];
 }
 $tabs[] = [
-	'DIV' => 'info',
-	'TAB' => Loc::getMessage('INTERVOLGA_EDU.MODULE_TAB_INFO'),
-	'TITLE' => Loc::getMessage('INTERVOLGA_EDU.MODULE_INFO'),
-	'ONSELECT' => 'intervolgaEduOnTabChanged("info");',
-];
-$tabs[] = [
 	'DIV' => 'sniffer',
 	'TAB' => Loc::getMessage('INTERVOLGA_EDU.SNIFFER_TAB'),
 	'TITLE' => Loc::getMessage('INTERVOLGA_EDU.SNIFFER_TITLE'),
 	'ONSELECT' => 'intervolgaEduOnTabChanged("checker");',
 ];
+$tabs[] = [
+	'DIV' => 'info',
+	'TAB' => Loc::getMessage('INTERVOLGA_EDU.MODULE_TAB_INFO'),
+	'TITLE' => Loc::getMessage('INTERVOLGA_EDU.MODULE_INFO'),
+	'ONSELECT' => 'intervolgaEduOnTabChanged("info");',
+];
+
 if ($fatalThrowable) {
 	$message = new CAdminMessage([
 		'MESSAGE' => Loc::getMessage('INTERVOLGA_EDU.FATAL_ERROR', ['#ERROR#' => $fatalThrowable->getMessage()]),
