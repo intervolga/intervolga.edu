@@ -38,6 +38,7 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON8'] = '8. Монитор качества';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON9'] = '9. Композитный сайт';
 $MESS['INTERVOLGA_EDU.COURSEINTERVOLGA_LESSON1'] = '1. Поисковая оптимизация';
 $MESS['INTERVOLGA_EDU.COURSEINTERVOLGA_LESSON2'] = '2. Проверка используемых модулей';
+$MESS['INTERVOLGA_EDU.COURSEINTERVOLGA_LESSON3'] = '3. Проверка актуального бекапа';
 
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE'] = 'Проверка установки модуля «Корпоративный сайт производственной компании»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON1_SITECORPORATEMODULE_DESCRIPTION'] = 'Модуль должен быть <a href="/bitrix/admin/partner_modules.php?lang=ru" target="_blank">зарегистрирован</a> в системе и установлен';
@@ -74,6 +75,12 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PRODUCTS_DESCRIPTION'] = 'Пункт ме�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PROMO'] = 'Проверка раздела &laquo;Акции&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PROMO_DESCRIPTION'] = 'Должен быть создан с очевидным именем';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_CODE_FILES'] = 'init.php';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_INNERTITLE'] = 'Проверка решения проблемы с loading.gif';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_INNERTITLE_DESCRIPTION'] = 'В файле /local/templates/main/heafer.php нужно подправить скрипт (внутри функции \'<b>slides()</b>\' js-скрипта добавить параметр <b>preloadImage: \'/local/templates/.default/images/loading.gif\'</b>)';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_INNERTITLE'] = 'Проверка подключения заголовков';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_INNERTITLE_DESCRIPTION'] = 'В файле /local/templates/inner/heafer.php должно быть правильное подключение языковых файлов (<b>$APPLICATION->ShowTitle(false)</b>)';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SITELANGUAGE'] = 'Проверка подключения языковых файлов';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SITELANGUAGE_DESCRIPTION'] = 'В файле /local/templates/.default/include/heafer.php должно находиться подключение языковых файлов (<b>&#60;html lang="&#60;?=LANGUAGE_ID?&#62;"&#62;</b>)';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_CODE_FILES'] = 'header.php и footer.php шаблонов main, inner';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_TEMPLATES'] = 'Проверка шаблонов сайта';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_TEMPLATES_DESCRIPTION'] = 'В /local/templates/ должны быть только эти шаблоны: main, inner, .default';
@@ -85,6 +92,11 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_OPTION'] = 'Проверка настро�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_OPTION_DESCRIPTION'] = 'Требуется включить настройки Объединять CSS файлы, Объединять JS файлы, Создавать сжатую копию объединенных CSS и JS файлов';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_LANG'] = 'Проверка lang кодов';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_LANG_DESCRIPTION'] = 'Требуется использовать языковые коды для строк из задания';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SCRIPTLOCATION'] = 'Проверка правильного расположения папок JS,CSS и IMG и их файлов';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_SCRIPTLOCATION_DESCRIPTION'] = 'Папки и файлы в них должны распологаться в /local/templates/.default/ и должны быть удалены из шаблонов main и inner';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_PRELOADIMAGE'] = 'Проверка решения проблемы с loading.gif (предварительная загрузка изображений)';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON3_PRELOADIMAGE_DESCRIPTION'] = 'Проблема должна быть решена с помощью использования параметра preloadImage в коде js-скрипта';
+
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_SMARTFILTERISEXIST'] = 'Проверка на наличие включенного фильтра';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_SMARTFILTERISEXIST_DESCRIPTION'] = 'В компоненте каталог должен быть включен фильтр';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_PROPERTYISEXIST'] = 'Проверка на наличие свойства';
@@ -126,6 +138,8 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_COMPONENTINCLUDE'] = 'Проверка �
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_COMPONENTINCLUDE_DESCRIPTION'] = 'В header.php главной страницы должен подключаться компонент списка новостей с шаблоном слайдера';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_SLIDER'] = 'Проверка содержимого шаблона Слайдера';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_SLIDER_DESCRIPTION'] = 'Должны быть правильно заполнены ссылки, getList не должен быть в цикле, js-скрипты подключаются в правильном файле';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_SEOCHECKER'] = 'Проверка SEO параметров инфоблока "Продукция"';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON11_SEOCHECKER_DESCRIPTION'] = 'Проверка правильного заполнения SEO параметров согласно условиям задания';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CATALOGRATING'] = 'Проверка на наличие включенного рейтинга';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CATALOGRATING_DESCRIPTION'] = 'В настройках bitrix:catalog должен быть установлен параметр «Включить рейтинг товара»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON11_CHECKSETVIEWTARGET'] = 'Проверка SetViewTarget';
@@ -219,6 +233,9 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON3_PROPERTYCODE'] = 'Проверка код�
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON3_PROPERTYCODE_DESCRIPTION'] = 'В коде компонента и шаблона не должно быть упоминаний SALARY, GENDER, AGE"';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON3_SUBQUERY'] = 'Проверка правильного расположения CIBlockElement::SubQuery';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON3_SUBQUERY_DESCRIPTION'] = 'CIBlockElement::SubQuery должен использоваться внутри класса компонента';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON3_TEMPLATERESPONDENTS'] = 'Проверка размещения компонента "Респонденты" и содержимого шаблона';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON3_TEMPLATERESPONDENTS_DESCRIPTION'] = 'Компонент должен быть размещен, а все используемые слова/фразы должны быть вынесены в lang-файлы.';
+
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Проверка собственного UF-свойства';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF_DESCRIPTION'] = 'Должен существовать обработчик события OnUserTypeBuildList модуля main для свойства "Привязка к коллекции медиабиблиотеки"';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UFCLASS'] = 'Проверка собственного UF-свойства с требуемыми свойствами для объекта USER';
@@ -251,6 +268,8 @@ $MESS['INTERVOLGA_EDU.COURSEINTERVOLGA_LESSON1_ROBOTSCHECKER'] = 'Проверк
 $MESS['INTERVOLGA_EDU.COURSEINTERVOLGA_LESSON1_ROBOTSCHECKER_DESCRIPTION'] = 'Файл robots.txt должен существовать, быть заполнен';
 $MESS['INTERVOLGA_EDU.COURSEINTERVOLGA_LESSON2_MODULESCHECK'] = 'Проверка списка модулей';
 $MESS['INTERVOLGA_EDU.COURSEINTERVOLGA_LESSON2_MODULESCHECK_DESCRIPTION'] = 'Неиспользуемые модули должны быть удалены, проверка списка нужных модулей';
+$MESS['INTERVOLGA_EDU.COURSEINTERVOLGA_LESSON3_BACKUPCHEKER'] = 'Проверка списка резервных копий';
+$MESS['INTERVOLGA_EDU.COURSEINTERVOLGA_LESSON3_BACKUPCHEKER_DESCRIPTION'] = 'Должна существовать хотя бы одна резервная копия, дата создания не позднее трех дней, не должно быть более 3 бэкапов';
 
 $MESS['INTERVOLGA_EDU.TEST_CODE_NAME'] = 'Проверка кода #FILES#';
 $MESS['INTERVOLGA_EDU.TEST_CODE_DESCRIPTION'] = 'Современная проверка ядра Битрикса, использование длинных php-тегов, запрет на устаревшие функции';
@@ -349,6 +368,4 @@ $MESS['INTERVOLGA_EDU.REVIEWS_CAROUSEL_TEMPLATE'] = 'Карусель отзыв
 $MESS['INTERVOLGA_EDU.REVIEWS_RAND_TEMPLATE'] = 'Cлучайный отзыв';
 $MESS['INTERVOLGA_EDU.LAST_PROMO_TEMPLATE'] = 'Последняя акция';
 $MESS['INTERVOLGA_EDU.REVIEWS_LIST_TEMPLATE'] = 'Cписок отзывов';
-$MESS['INTERVOLGA_EDU.ASSERT_COMPONENT_PARAMETERS_CACHE_TYPE'] = 'В компоненте <b>#COMPONENT#</b> (шаблон <b>#TEMPLATE#</b>) в файле #PATH# кеширование должно быть <b>отключено</b>';
-$MESS['INTERVOLGA_EDU.ASSERT_COMPONENT_PARAMETERS_CACHE_GROUPS'] = 'В компоненте <b>#COMPONENT#</b> (шаблон <b>#TEMPLATE#</b>) в файле #PATH# флаг "учитывать права доступа" в настройках кеширования должен быть <b>снят</b>';
 $MESS['INTERVOLGA_EDU.AGENT_PARAMETERS_NOT_FOUND'] = 'В административной панели не создан агент, либо у него не задана функция, лежащая в agent.php';

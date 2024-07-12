@@ -4,9 +4,13 @@ namespace Intervolga\Edu\Tests\Course1\Lesson7;
 use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Asserts\AssertComponent;
-use Intervolga\Edu\Locator\Component\ComponentLocator;
-use Intervolga\Edu\Locator\Component\Menu;
+use Intervolga\Edu\Locator\Component\Template\MenuBottom;
+use Intervolga\Edu\Locator\Component\Template\MenuLeft;
+use Intervolga\Edu\Locator\Component\Template\MenuTop;
+use Intervolga\Edu\Locator\Component\Template\TemplateLocator;
 use Intervolga\Edu\Tests\BaseTest;
+use Intervolga\Edu\Util\FileMessage;
+use Intervolga\Edu\Util\FileSystem;
 
 class TestMenu extends BaseTest
 {
@@ -17,17 +21,27 @@ class TestMenu extends BaseTest
 
 	protected static function run()
 	{
-		AssertComponent::componentLocator(static::getLocator());
-		$components = static::getLocator()::findAll();
-		foreach ($components as $component) {
+		static::checkCacheParams(MenuBottom::class);
+		static::checkCacheParams(MenuTop::class);
+		static::checkCacheParams(MenuLeft::class);
+	}
+
+	/**
+	 * @return string|templateLocator
+	 */
+	protected static function checkCacheParams($templateLocator)
+	{
+		AssertComponent::templateLocator($templateLocator);
+		if ($component = $templateLocator::find()) {
+			$file = FileSystem::getFile($component['REAL_PATH']);
 			Assert::eq(
 				$component['PARAMETERS']['MENU_CACHE_TYPE'],
 				'N',
-				Loc::getMessage('INTERVOLGA_EDU.ASSERT_COMPONENT_PARAMETERS_CACHE_TYPE',
+				Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_7_PARAMETERS_CACHE_TYPE',
 					[
-						'#COMPONENT#' => static::getLocator()::getPossibleTips(),
-						'#TEMPLATE#' => $component['PARAMETERS']['COMPONENT_TEMPLATE']?:'.default',
-						'#PATH#' => $component['REAL_PATH'],
+						'#COMPONENT#' => $component['COMPONENT_NAME'],
+						'#TEMPLATE#' => $component['PARAMETERS']['COMPONENT_TEMPLATE'],
+						'#PATH#' => FileMessage::get($file),
 					]
 				)
 			);
@@ -35,22 +49,14 @@ class TestMenu extends BaseTest
 			Assert::eq(
 				$component['PARAMETERS']['MENU_CACHE_USE_GROUPS'],
 				'N',
-				Loc::getMessage('INTERVOLGA_EDU.ASSERT_COMPONENT_PARAMETERS_CACHE_GROUPS',
+				Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_7_PARAMETERS_CACHE_GROUPS',
 					[
-						'#COMPONENT#' => static::getLocator()::getPossibleTips(),
-						'#TEMPLATE#' => $component['PARAMETERS']['COMPONENT_TEMPLATE']?:'.default',
-						'#PATH#' => $component['REAL_PATH'],
+						'#COMPONENT#' => $component['COMPONENT_NAME'],
+						'#TEMPLATE#' => $component['PARAMETERS']['COMPONENT_TEMPLATE'],
+						'#PATH#' => FileMessage::get($file),
 					]
 				)
 			);
 		}
-	}
-
-	/**
-	 * @return string|ComponentLocator
-	 */
-	protected static function getLocator()
-	{
-		return Menu::class;
 	}
 }
