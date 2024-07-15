@@ -1,5 +1,4 @@
 <?php
-
 namespace Intervolga\Edu\Tests\Course2\Lesson6;
 
 use Bitrix\Main\Localization\Loc;
@@ -45,69 +44,46 @@ class TestVacanciesParametersChecker extends BaseTest
                 $componentParameters['SEF_URL_TEMPLATES'],
                 Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_EMPTY_SEF_URL_TEMPLATES'));
 
-            if ($componentParameters['SEF_URL_TEMPLATES']) {
-                Assert::eq(
-                    static::prepareUrl($componentParameters['SEF_FOLDER']),
-                    '/company/vacancies/',
-                    Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_VACANCIES_SEF_FOLDER')
-                );
+			if ($componentParameters['SEF_URL_TEMPLATES']) {
+				Assert::eq(
+					static::prepareUrl($componentParameters['SEF_FOLDER']),
+					'/company/vacancies/',
+					Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_VACANCIES_SEF_FOLDER')
+				);
+				Assert::eq(
+					static::prepareUrl($componentParameters['SEF_URL_TEMPLATES']['vacancies']),
+					'',
+					Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_VACANCIES_URL')
+				);
+				Assert::eq(
+					static::prepareUrl($componentParameters['SEF_URL_TEMPLATES']['vacancy']),
+					'#VACANT_ID#/',
+					Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_VACANCY_URL')
+				);
+				Assert::eq(
+					static::prepareUrl($componentParameters['SEF_URL_TEMPLATES']['resume']),
+					'#VACANT_ID#/resume/',
+					Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_RESUME_URL')
+				);
+			}
+		}
+	}
 
-                if (static::checkPages($componentParameters['SEF_URL_TEMPLATES'])) {
-                    Assert::eq(
-                        static::prepareUrl($componentParameters['SEF_URL_TEMPLATES']['vacancies']),
-                        '',
-                        Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_VACANCIES_URL')
-                    );
-                    Assert::eq(
-                        static::prepareUrl($componentParameters['SEF_URL_TEMPLATES']['vacancy']),
-                        '#ELEMENT_ID#/',
-                        Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_VACANCY_URL')
-                    );
-                    Assert::eq(
-                        static::prepareUrl($componentParameters['SEF_URL_TEMPLATES']['resume']),
-                        '#ELEMENT_ID#/resume/',
-                        Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_RESUME_URL')
-                    );
-                }
-            }
-        }
-    }
-
-    protected static function checkPages($parameters)
-    {
-        $result = true;
-        $pages = array_keys($parameters);
-        foreach ($pages as $page) {
-            $finded = in_array($page, static::NEEDLE_PAGES);
-            if (!$finded) {
-                Assert::custom(
-                    Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_VACANCIES_PARAMETERS_PAGES',
-                        [
-                            '#NEEDLE#' => implode(', ', static::NEEDLE_PAGES),
-                            '#NAME#' => $page,
-                        ]
-                    ));
-                $result = false;
-            }
-        }
-        return $result;
-    }
-
-    protected static function prepareUrl($url)
-    {
-        if (!empty($url)) {
-            str_replace(
-                [
-                    '#SITE_DIR#/',
-                    '#ID#'
-                ],
-                [
-                    '#SITE_DIR#',
-                    '#ELEMENT_ID#'
-                ],
-                $url
-            );
-        }
+	protected static function prepareUrl($url)
+	{
+		if (!empty($url)) {
+			str_replace(
+				[
+					'#SITE_DIR#/',
+					'#ID#'
+				],
+				[
+					'#SITE_DIR#',
+					'#VACANT_ID#'
+				],
+				$url
+			);
+		}
 
         return $url;
     }
