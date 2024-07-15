@@ -11,4 +11,8 @@ class TestPerformancePage extends BaseTest
 	{
 		AssertComponent::componentLocator(PerfElementList::class);
 	}
+	public static function countInputImage(): bool
+	{
+		return true;
+	}
 }
