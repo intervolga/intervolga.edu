@@ -11,7 +11,7 @@ use Intervolga\Edu\Locator\IO\CompanySection;
 use Intervolga\Edu\Locator\IO\CatalogSection;
 use Intervolga\Edu\Util\FileMessage;
 
-class TestLackIncludeArea extends BaseTest
+class TestWasteIncludeArea extends BaseTest
 {
 	protected static function run()
 	{
