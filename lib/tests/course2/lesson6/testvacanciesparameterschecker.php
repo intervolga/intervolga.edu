@@ -33,7 +33,7 @@ class TestVacanciesParametersChecker extends BaseTest
 			);
 			Assert::eq(
 				static::prepareUrl($vacancyIblock['DETAIL_PAGE_URL']),
-				'/company/vacancies/#ELEMENT_ID#/',
+				'/company/vacancies/#VACANT_ID#/',
 				Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_VACANCIES_DETAIL_PAGE_URL')
 			);
 		}
