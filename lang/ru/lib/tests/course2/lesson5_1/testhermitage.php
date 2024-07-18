@@ -1,2 +1,4 @@
 <?php
-$MESS['INTERVOLGA_EDU.NOT_FOUND_HERMITAGE'] = 'подключение эрмитажа. Эрмитаж должен быть использован два раза: один для элементов, второй для разделов.';
+$MESS['INTERVOLGA_EDU.COURSE_2_LESSON_5_1_NOT_FOUND_HERMITAGE'] = 'В #FILE# не найдено подключение эрмитажа #EXPECT#';
+$MESS['INTERVOLGA_EDU.COURSE_2_LESSON_5_1_HERMITAGE_IBLOCK_SECTION_ID'] = 'для секций инфоблока (IBLOCK_SECTION_ID)';
+$MESS['INTERVOLGA_EDU.COURSE_2_LESSON_5_1_HERMITAGE_IBLOCK_ID'] = 'для элементов инфоблока (IBLOCK_ID)';

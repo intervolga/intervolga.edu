@@ -1,6 +1,7 @@
 <?php
 namespace Intervolga\Edu\Tests\Course3\Lesson2;
 
+use Bitrix\Main\Localization\Loc;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Locator\Module\AdminFiles\EditFile;
 use Intervolga\Edu\Locator\Module\AdminFiles\TableFile;
@@ -29,7 +30,7 @@ class TestContentPage extends BaseTest
 		if (TableFile::find()) {
 			Assert::fileNotEmpty(TableFile::find());
 			if (TableFile::find()) {
-				Assert::fileContentMatches(TableFile::find(), new Regex('/DisplayList/i', 'Вывод страницы (DisplayList)'));
+				Assert::fileContentMatches(TableFile::find(), new Regex('/DisplayList/i', Loc::getMessage('INTERVOLGA_EDU.COURSE_3_LESSON_2_DISPLAY_LIST')));
 			}
 		}
 	}

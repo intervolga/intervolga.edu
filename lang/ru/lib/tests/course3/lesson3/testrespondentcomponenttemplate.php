@@ -1,0 +1,2 @@
+<?php
+$MESS['INTERVOLGA_EDU.COURSE_3_LESSON_3_POSSIBLE_TEMPLATE_NAMES'] = 'Существующих шаблонов (страниц) компонента респонденты должно быть больше или равно <b>#EXPECT#</b>, сейчас <b>#VALUE#</b>. Допустимые названия файлов: <b>#POSSIBLE_NAMES#</b>';

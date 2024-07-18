@@ -22,9 +22,21 @@ class UpdateSystem
 			static::$updateStatus = static::getUpdatesList();
 		}
 
+		try {
+			$license = static::$updateStatus['CLIENT'][0]['@']['LICENSE'];
+		} catch (\Throwable $throw) {
+			$license = $throw->getMessage().'<br>'.$throw->getFile().' '.$throw->getLine();
+		}
+		try {
+			$modules = static::$updateStatus['MODULES'][0]['#'] ? static::$updateStatus['MODULES'][0]['#']['MODULE'] : [];
+		} catch (\Throwable $throw) {
+			$modules = $throw->getMessage().'<br>'.$throw->getFile().' '.$throw->getLine();
+		}
+
 		return [
-			'LICENSE' => static::$updateStatus['CLIENT'][0]['@']['LICENSE'],
-			'MODULES' => static::$updateStatus['MODULES'][0]['#']['MODULE'] ?: [],
+			'LICENSE' => $license,
+			'MODULES' => $modules,
+			'UPDATE_SYSTEM' => static::$updateStatus['UPDATE_SYSTEM'],
 		];
 	}
 
