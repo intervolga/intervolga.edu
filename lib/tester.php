@@ -57,6 +57,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestBottomMenu::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestAboutMenuItems::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestBreadcrumb::class,
+			\Intervolga\Edu\Tests\Course1\Lesson41\TestLangFile::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson42\TestRegisterPageOption::class,
 			\Intervolga\Edu\Tests\Course1\Lesson42\TestEmail::class,
