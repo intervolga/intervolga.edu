@@ -25,14 +25,18 @@ class FieldsCheckerSniff implements Sniff
 			'DETAIL_PICTURE',
 			'NAME'
 		])) {
+			$prevToken = $phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 1), null, true);
+			if ($tokens[$prevToken]['type'] == 'T_OPEN_SQUARE_BRACKET') {
+				$prevToken1 = $phpcsFile->findPrevious(T_WHITESPACE, ($prevToken - 1), null, true);
+				if ($tokens[$prevToken1]['type'] === 'T_VARIABLE' && $tokens[$prevToken1]['content'] == '$arResult') {
+					$file = new File($phpcsFile->getFilename());
+					$error = Loc::getMessage('INTERVOLGA_EDU.SNIFFER_FIELDS', [
+						'#FILE#' => FileMessage::get($file),
+						'#CODE#' => $token['content']
+					]);
+					$phpcsFile->addError($error, $stackPtr, 'FieldsCheckerSniff');
 
-			if (mb_strcut($tokens[$phpcsFile->findPrevious(T_WHITESPACE, ($stackPtr - 3), null, true)]['content'], 1, -1) !== 'FIELDS') {
-				$file = new File($phpcsFile->getFilename());
-				$error = Loc::getMessage('INTERVOLGA_EDU.SNIFFER_FIELDS', [
-					'#FILE#' => FileMessage::get($file),
-					'#CODE#' => $token['content']
-				]);
-				$phpcsFile->addError($error, $stackPtr, 'FieldsCheckerSniff');
+				}
 			}
 		}
 	}
