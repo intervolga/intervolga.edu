@@ -54,10 +54,10 @@ if ($request->isPost()) {
 	}
 	if ($fileId = $request->getPost('deleteFile')) {
 		$file = CFile::GetByID($fileId);
-		if($file){
-			try{
+		if ($file) {
+			try {
 				CFile::Delete($fileId);
-			}catch (Exception $exception){
+			} catch (Exception $exception) {
 				//TODO:сделать логирование от модуля?
 				//\Bitrix\Main\Diag\Debug::writeToFile($exception);
 			}
@@ -298,17 +298,17 @@ foreach ($testsTree as $courseCode => $course) {
 									$messageParams["DETAILS"] .= '<div style="display:none;" id="' . $photo['FILE_NAME'] . '_photo"> <img src="' . $pathPhoto . '"><br>';
 									$messageParams["DETAILS"] .= ' <a href="' . $pathPhoto . '">' . Loc::getMessage('INTERVOLGA_EDU.FOLLOW_PHOTO') . '</a></div>';
 									$messageParams["DETAILS"] .= '<div><a class="show-img" id="' . $photo['FILE_NAME'] . '" onclick="showPopup(this)">' . $photo['FILE_NAME'] . '</a>';
-									$messageParams["DETAILS"] .= '<button style="margin-left: 3px" type="submit" name="deleteFile" title="Удалить файл" class="iv-delete-link" value="'.$photo['ID'].'"></button></div>';
+									$messageParams["DETAILS"] .= '<button style="margin-left: 3px" type="submit" name="deleteFile" title="Удалить файл" class="iv-delete-link" value="' . $photo['ID'] . '"></button></div>';
 								}
 							} elseif ($input['TYPE'] === 'text-area') {
 								$messageParams["DETAILS"] .= '<b>' . $input['DESCRIBE'] . '</b> <br>';
 								$tip = Option::get($module_id, $formID . "Comment");
 								$messageParams["DETAILS"] .= '<textarea name="' . $formID . 'Comment" rows="5" cols="80">' . $tip . '</textarea>';
 							}
-							if($photos){
+							if ($photos) {
 								$messageParams["DETAILS"] .= '<br>';
 							}
-							$messageParams["DETAILS"] .= CFile::InputFile($formID. 'Photo', 20, 0, '/upload/intervolga.edu/');
+							$messageParams["DETAILS"] .= CFile::InputFile($formID . 'Photo', 20, 0, '/upload/intervolga.edu/');
 						}
 						$messageParams["DETAILS"] .= '<button type="submit" style="margin-left: 10px" class="adm-btn" name="COMMENT" value="' . $formID . '">' . Loc::getMessage('INTERVOLGA_EDU.SEND_PHOTO') . '</button>';
 						$messageParams["DETAILS"] .= '</form>';
@@ -368,6 +368,9 @@ foreach ($testsTree as $courseCode => $course) {
 	<?php
 }
 $tabControl->beginNextTab();
+include Application::getDocumentRoot() . IV_EDU_MODULE_DIR . '/lib/checker/checker.php';
+
+$tabControl->beginNextTab();
 $arModuleVersion = [];
 include Application::getDocumentRoot() . IV_EDU_MODULE_DIR . '/install/version.php';
 $versionDate = $arModuleVersion['VERSION_DATE'];
@@ -392,9 +395,4 @@ if ($versionDate) {
 		</td>
 	</tr>
 <?php
-
-$tabControl->beginNextTab();
-
-include Application::getDocumentRoot() . IV_EDU_MODULE_DIR . '/lib/checker/checker.php';
-
 $tabControl->end();
