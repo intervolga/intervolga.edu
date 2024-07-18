@@ -1,0 +1,47 @@
+#intervolga-checker,
+#intervolga-checker td {
+	text-align: left;
+	padding: 5px 4px 7px 0;
+}
+
+#radio {
+	display: inline-flex;
+	justify-content: space-between;
+}
+
+#radio div {
+	margin-right: 40px;
+}
+
+#intervolga-checker #input-block {
+	text-align: center;
+}
+
+#intervolga-checker ul {
+	list-style-type: none;
+	padding: 5px 4px 7px 35px;
+	text-align: left;
+}
+
+#intervolga-checker li {
+	padding: 5px 4px 7px 35px;
+}
+
+.title {
+	font-size: 1.5em;
+	margin: 1.2em 1.2em;
+}
+
+#result {
+	font-size: 1.5em;
+	padding: 10px 4px 7px 35px;
+}
+
+#result div {
+	font-size: 0.8em;
+	padding: 5px 4px 7px 35px;
+}
+
+#error {
+	color: red;
+}
