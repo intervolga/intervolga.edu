@@ -108,6 +108,8 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_INCLUDEAREA'] = 'Проверка вкл�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_INCLUDEAREA_DESCRIPTION'] = 'Должен быть файл в разделе Партнерам и в корне сайта';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_ABOUTMENUITEMS'] = 'Проверка пунктов меню "О магазине"';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_ABOUTMENUITEMS_DESCRIPTION'] = 'В меню должны быть разделы: Отзывы, Контакты, Руководство, История';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON41_WASTEINCLUDEAREA'] = 'Проверка лишних включаемых областей';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON41_WASTEINCLUDEAREA_DESCRIPTION'] = 'Должен отсутствовать файл в разделах \'Новости\', \'Каталог\' и \'О компании\'';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_REGISTERPAGEOPTION'] = 'Проверка настройки «Страница регистрации»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_REGISTERPAGEOPTION_DESCRIPTION'] = 'Настройка Главного модуля «Страница регистрации (для системного компонента авторизации)» должна содержать относительный путь к разделу регистрации';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_EMAIL'] = 'Проверка ссылки на восстановление пароля';
@@ -159,6 +161,7 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_SLIDER_DESCRIPTION'] = 'Должны б�
 
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_SLIDERCODEANALYSIS'] = 'Проверка кода файла result_modifier';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_SLIDERCODEANALYSIS_DESCRIPTION'] = 'Анализ кода news.list/slider/result_modifier.php';
+
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_CATALOGBINDINGPROPERTY'] = 'Проверка свойства "Привязка к каталогу"';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_CATALOGBINDINGPROPERTY_DESCRIPTION'] = 'Свойство должно существовать, иметь тип "Привязка к элементам" и быть заполненно хотя бы у 3 элементов';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_PROPERTYPRICE'] = 'Проверка свойства "Цена"';
@@ -313,6 +316,9 @@ $MESS['INTERVOLGA_EDU.USE_FIELDS_FOR_FIELDS'] = 'Файл #FILE# содержи�
 $MESS['INTERVOLGA_EDU.USE_DISPLAY_PROPERTIES_FOR_PROPERTIES'] = 'Файл #FILE# содержит прямое обращение к свойству #CODE#, нужно через #VAR#[\'DISPLAY_PROPERTIES\'][\'#PROPERTY#\']';
 $MESS['INTERVOLGA_EDU.USE_DISPLAY_PROPERTIES_FOR_PROPERTIES_ECHO'] = 'Файл #FILE# содержит вывод свойства #CODE#, нужно через #VAR#[\'DISPLAY_PROPERTIES\'][\'#PROPERTY#\'][\'DISPLAY_VALUE\']';
 $MESS['INTERVOLGA_EDU.PARTNERS_DIRECTORY'] = 'Партнерам';
+$MESS['INTERVOLGA_EDU.CATALOG_DIRECTORY'] = 'Каталог';
+$MESS['INTERVOLGA_EDU.COMPANY_DIRECTORY'] = 'О компании';
+$MESS['INTERVOLGA_EDU.NEWS_DIRECTORY'] = 'Новости';
 $MESS['INTERVOLGA_EDU.REVIEWS_DIRECTORY'] = 'Отзывы';
 $MESS['INTERVOLGA_EDU.PROMO_DIRECTORY'] = 'Акции';
 $MESS['INTERVOLGA_EDU.REVIEWS_CAROUSEL_TEMPLATE_DIRECTORY'] = 'Шаблон карусели отзывов';
