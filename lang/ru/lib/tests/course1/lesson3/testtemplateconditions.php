@@ -1,0 +1,2 @@
+<?php
+$MESS['INTERVOLGA_EDU.COURSE_1_LESSON_3.DIRECTORY_NOT_FOUND'] = 'Не найдена папка шаблона #VALUE#';
