@@ -34,7 +34,7 @@ global $APPLICATION, $USER;
 $module_id = 'intervolga.edu';
 Loader::includeModule($module_id);
 
-$APPLICATION->setAdditionalCSS('/bitrix/js/' . $module_id . '/admin.css');
+$APPLICATION->setAdditionalCSS('/bitrix/css/' . $module_id . '/admin.css');
 Asset::getInstance()->addJs('/bitrix/js/' . $module_id . '/admin.js');
 
 $options = [
@@ -380,6 +380,9 @@ if ($versionDate) {
 ?>
 	<tr>
 		<td>
+			<div>
+				<a href="/bitrix/admin/intervolga.edu_help.php"> <?=Loc::getMessage('INTERVOLGA_EDU.TAKE_PRINT_VERSION') ?></a>
+			</div>
 			<div><?=Loc::getMessage('INTERVOLGA_EDU.MODULE_VERSION', [
 					'#VERSION#' => $arModuleVersion['VERSION'],
 				])?></div>
