@@ -75,6 +75,9 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PRODUCTS_DESCRIPTION'] = 'Пункт ме�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PROMO'] = 'Проверка раздела &laquo;Акции&raquo;';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_PROMO_DESCRIPTION'] = 'Должен быть создан с очевидным именем';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON2_CODE_FILES'] = 'init.php';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_DUMPACCESS'] = 'Проверка условия вывода для функции test_dump';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON2_DUMPACCESS_DESCRIPTION'] = 'Функция должна выводиться только для пользователей с правами "администратор"';
+
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_INNERTITLE'] = 'Проверка решения проблемы с loading.gif';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_INNERTITLE_DESCRIPTION'] = 'В файле /local/templates/main/heafer.php нужно подправить скрипт (внутри функции \'<b>slides()</b>\' js-скрипта добавить параметр <b>preloadImage: \'/local/templates/.default/images/loading.gif\'</b>)';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON3_INNERTITLE'] = 'Проверка подключения заголовков';
