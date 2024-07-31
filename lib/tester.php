@@ -44,9 +44,15 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestTemplateConditions::class,
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestCode::class,
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestOption::class,
+			\Intervolga\Edu\Tests\Course1\Lesson3\TestLang::class,
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestScripts::class,
+			\Intervolga\Edu\Tests\Course1\Lesson3\TestScriptLocation::class,
+			\Intervolga\Edu\Tests\Course1\Lesson3\TestSiteLanguage::class,
+			\Intervolga\Edu\Tests\Course1\Lesson3\TestInnerTitle::class,
+			\Intervolga\Edu\Tests\Course1\Lesson3\TestPreloadImage::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestIncludeArea::class,
+			\Intervolga\Edu\Tests\Course1\Lesson41\TestWasteIncludeArea::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestTopMenu::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestLeftMenu::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestBottomMenu::class,
@@ -81,12 +87,19 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson10\TestSearchAction::class,
 			\Intervolga\Edu\Tests\Course1\Lesson10\TestSearchTemplate::class,
 
+			\Intervolga\Edu\Tests\Course1\Lesson11\TestSeoChecker::class,
 			\Intervolga\Edu\Tests\Course1\Lesson11\TestCatalogRating::class,
 			\Intervolga\Edu\Tests\Course1\Lesson11\TestCheckSetViewTarget::class,
 			\Intervolga\Edu\Tests\Course1\Lesson11\TestCheckShowContent::class,
 			\Intervolga\Edu\Tests\Course1\Lesson11\TestPropertyIsExist::class,
 			\Intervolga\Edu\Tests\Course1\Lesson11\TestSmartFilterIsExist::class,
 			\Intervolga\Edu\Tests\Course1\Lesson11\TestPropertyInFilter::class,
+
+			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestComponentInclude::class,
+			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestSlider::class,
+			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestSliderTestCode::class,
+			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestSliderComponent::class,
+			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestSliderCodeAnalysis::class,
 
 			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestCatalogBindingProperty::class,
 			\Intervolga\Edu\Tests\Course2\Lesson1_2\TestPropertyPrice::class,
@@ -119,8 +132,14 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson6\TestVacanciesParametersChecker::class,
 			\Intervolga\Edu\Tests\Course2\Lesson6\TestCustomComponentChecker::class,
 
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestAccessPartners::class,
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestPartnersUser::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\TestSecurityLevel::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\TestSecureAuthorization::class,
+
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestLiteadminAccessChecker::class,
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestSubscriptionGroupChecker::class,
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestProfileGroupEditCheker::class,
 
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestGadgetTemplate::class,
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestSettingResultLinks::class,
@@ -140,6 +159,13 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestResultsPollingIblock::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestPropertyGenderValues::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestLinkWithRespondent::class,
+            \Intervolga\Edu\Tests\Course3\Lesson3\TestPropertyCode::class,
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestRespondentComponent::class,
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestRespondentComponentTemplate::class,
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestSubQuery::class,
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestRespondentIblock::class,
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestRespondentComponent::class,
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestTemplateRespondents::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUf::class,
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUfClass::class,
@@ -162,6 +188,10 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson8\TestUserTestExists::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson9\TestCompositeEnabled::class,
+
+			\Intervolga\Edu\Tests\CourseIntervolga\Lesson1\TestRobotsChecker::class,
+			\Intervolga\Edu\Tests\CourseIntervolga\Lesson2\TestModulesCheck::class,
+			\Intervolga\Edu\Tests\CourseIntervolga\Lesson3\TestBackupCheker::class,
 		];
 	}
 
@@ -238,8 +268,20 @@ class Tester
 			$tree[$testClass::getCourseCode()]['LESSONS'][$testClass::getLessonCode()]['TESTS'][$testClass]['CODE'] = $code;
 			$tree[$testClass::getCourseCode()]['LESSONS'][$testClass::getLessonCode()]['TESTS'][$testClass]['TITLE'] = $testClass::getTestLoc();
 			$tree[$testClass::getCourseCode()]['LESSONS'][$testClass::getLessonCode()]['TESTS'][$testClass]['DESCRIPTION'] = $testClass::getDescription();
+			if ($describe = $testClass::hasInputText()) {
+				$tree[$testClass::getCourseCode()]['LESSONS'][$testClass::getLessonCode()]['TESTS'][$testClass]['INPUTS'][] = [
+					'TYPE' => 'text-area',
+					'DESCRIBE' => $describe
+				];
+			}
+			$count = $testClass::countInputImage();
+			for ($i = 0; $i<$count; $i++) {
+				$tree[$testClass::getCourseCode()]['LESSONS'][$testClass::getLessonCode()]['TESTS'][$testClass]['INPUTS'][] = [
+					'TYPE' => 'image',
+					'num' => $i
+				];
+			}
 		}
-
 		return $tree;
 	}
 

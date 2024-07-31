@@ -10,6 +10,12 @@ use Intervolga\Edu\Tests\BaseTest;
 
 class TestVacanciesParametersChecker extends BaseTest
 {
+	const NEEDLE_PAGES = [
+		'vacancies',
+		'vacancy',
+		'resume'
+	];
+
 	public static function interceptErrors()
 	{
 		return true;
@@ -27,7 +33,7 @@ class TestVacanciesParametersChecker extends BaseTest
 			);
 			Assert::eq(
 				static::prepareUrl($vacancyIblock['DETAIL_PAGE_URL']),
-				'/company/vacancies/#ELEMENT_ID#/',
+				'/company/vacancies/#VACANT_ID#/',
 				Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_VACANCIES_DETAIL_PAGE_URL')
 			);
 		}
@@ -48,23 +54,46 @@ class TestVacanciesParametersChecker extends BaseTest
 					'/company/vacancies/',
 					Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_VACANCIES_SEF_FOLDER')
 				);
-				Assert::eq(
-					static::prepareUrl($componentParameters['SEF_URL_TEMPLATES']['vacancies']),
-					'',
-					Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_VACANCIES_URL')
-				);
-				Assert::eq(
-					static::prepareUrl($componentParameters['SEF_URL_TEMPLATES']['vacancy']),
-					'#ELEMENT_ID#/',
-					Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_VACANCY_URL')
-				);
-				Assert::eq(
-					static::prepareUrl($componentParameters['SEF_URL_TEMPLATES']['resume']),
-					'#ELEMENT_ID#/resume/',
-					Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_RESUME_URL')
-				);
+				if (static::checkPages($componentParameters['SEF_URL_TEMPLATES'])) {
+					Assert::eq(
+						static::prepareUrl($componentParameters['SEF_URL_TEMPLATES']['vacancies']),
+						'',
+						Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_VACANCIES_URL')
+					);
+					Assert::eq(
+						static::prepareUrl($componentParameters['SEF_URL_TEMPLATES']['vacancy']),
+						'#VACANT_ID#/',
+						Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_VACANCY_URL')
+					);
+					Assert::eq(
+						static::prepareUrl($componentParameters['SEF_URL_TEMPLATES']['resume']),
+						'#VACANT_ID#/resume/',
+						Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_RESUME_URL')
+					);
+				}
 			}
 		}
+	}
+
+	protected static function checkPages($parameters)
+	{
+		$result = true;
+		$pages = array_keys($parameters);
+		foreach ($pages as $page) {
+			$finded = in_array($page, static::NEEDLE_PAGES);
+			if (!$finded) {
+				Assert::custom(
+					Loc::getMessage('INTERVOLGA_EDU.COURSE_2_LESSON_6_VACANCIES_PARAMETERS_PAGES',
+						[
+							'#NEEDLE#' => implode(', ', static::NEEDLE_PAGES),
+							'#NAME#' => $page,
+						]
+					));
+				$result = false;
+			}
+		}
+
+		return $result;
 	}
 
 	protected static function prepareUrl($url)
@@ -77,7 +106,7 @@ class TestVacanciesParametersChecker extends BaseTest
 				],
 				[
 					'#SITE_DIR#',
-					'#ELEMENT_ID#'
+					'#VACANT_ID#'
 				],
 				$url
 			);
