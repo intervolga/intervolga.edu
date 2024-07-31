@@ -52,8 +52,7 @@ class intervolga_edu extends CModule
 	}
 
 	public function installDb()
-	{//добавить курс
-
+	{
 		global $DB, $DBType;
 		$errors = $DB->RunSQLBatch(__DIR__ . "/db/" . strtolower($DBType) . "/install.sql");
 		if ($errors) {
