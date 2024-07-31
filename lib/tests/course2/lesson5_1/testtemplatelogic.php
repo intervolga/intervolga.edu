@@ -13,7 +13,7 @@ use Intervolga\Edu\Util\Regex;
 
 class TestTemplateLogic extends BaseTest
 {
-	const REG_FOREACH = '/foreach[\w\s\d()$[\]\'";:,?><\/*\-=]*[^d]foreach/i';
+	const REG_FOREACH = '/foreach[\w\s\d()$[\]\'";:,?><\/*-={!}]*[^d]foreach/iu';
 
 	protected static function run()
 	{
