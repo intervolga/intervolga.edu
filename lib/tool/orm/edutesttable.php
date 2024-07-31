@@ -26,6 +26,9 @@ class EduTestTable extends DataManager
 		return EduTest::class;
 	}
 
+	public static function getByTestName(string $testName){
+		return static::getList(['filter' =>['TEST_NAME' => $testName]]);
+	}
 	/**
 	 * Returns entity map definition.
 	 *

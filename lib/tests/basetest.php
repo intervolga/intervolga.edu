@@ -89,6 +89,11 @@ abstract class BaseTest
 		return false;
 	}
 
+	public static function checkLastResult() : bool
+	{
+		return false;
+	}
+
 	/**
 	 * @return bool
 	 */

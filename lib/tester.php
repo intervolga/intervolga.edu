@@ -1,10 +1,13 @@
 <?php
 namespace Intervolga\Edu;
 
+use Bitrix\Main\Type\DateTime;
 use Intervolga\Edu\Asserts\Assert;
+use Intervolga\Edu\Entity\EduTest;
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Tests\BaseTest;
 use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Tool\ORM\EduTestTable;
 
 class Tester
 {
@@ -201,13 +204,17 @@ class Tester
 		 * @var BaseTest $testClass
 		 */
 		foreach (static::getTestClasses() as $testClass) {
-			try {
-				Assert::resetLocatorsFound();
-				$testClass::runOuter();
-			} catch (AssertException $assertException) {
-				static::$exceptions[$testClass] = $assertException;
-			} catch (\Throwable $throwable) {
-				static::$exceptions[$testClass] = AssertException::createThrowable($throwable);
+			if ($testClass::checkLastResult()) {
+				static::checkResultFromTable($testClass);
+			} else {
+				try {
+					Assert::resetLocatorsFound();
+					$testClass::runOuter();
+				} catch (AssertException $assertException) {
+					static::$exceptions[$testClass] = $assertException;
+				} catch (\Throwable $throwable) {
+					static::$exceptions[$testClass] = AssertException::createThrowable($throwable);
+				}
 			}
 			static::$locatorsFound[$testClass] = Assert::getLocatorsFound();
 
@@ -217,6 +224,40 @@ class Tester
 					new AssertException(Loc::getMessage('INTERVOLGA_EDU.NAME_TEST_NOT_MATCH_REQUIREMENTS',
 						['#TEST_NAME#' => $tmpArray[2]]));
 			}
+
+		}
+	}
+	public static function checkResultFromTable($testClass)
+	{
+		$test = EduTestTable::getByTestName($testClass)->fetch();
+		\Bitrix\Main\Diag\Debug::writeToFile(empty($test));
+		if(empty($test)){
+			/*try {
+				$newResult = new EduTest();
+				\Bitrix\Main\Diag\Debug::writeToFile('$newResult');
+				//$newResult->setTestName($testClass);
+				\Bitrix\Main\Diag\Debug::writeToFile('$newResult');
+				try {
+					Assert::resetLocatorsFound();
+					$testClass::runOuter();
+					$newResult->setTestResult(true);
+				} catch (AssertException $assertException) {
+					static::$exceptions[$testClass] = $assertException;
+					$newResult->setTestResult(false);
+				} catch (\Throwable $throwable) {
+					static::$exceptions[$testClass] = AssertException::createThrowable($throwable);
+					\Bitrix\Main\Diag\Debug::writeToFile($throwable);
+				}
+				$newResult->setPassedDate(new DateTime());
+				\Bitrix\Main\Diag\Debug::writeToFile('$newResult');
+				\Bitrix\Main\Diag\Debug::writeToFile($newResult);
+				$result = $newResult->save();
+				\Bitrix\Main\Diag\Debug::writeToFile('$result');
+				\Bitrix\Main\Diag\Debug::writeToFile($result);
+			} catch (\Exception $exception) {
+			}*/
+		}else{
+			\Bitrix\Main\Diag\Debug::writeToFile('hi');
 		}
 	}
 
