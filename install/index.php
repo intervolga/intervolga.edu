@@ -4,9 +4,9 @@ B_PROLOG_INCLUDED === true || die();
 use Bitrix\Main;
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\Application;
+use Bitrix\Main\EventManager;
 
 Loc::loadMessages(__FILE__);
-
 
 class intervolga_edu extends CModule
 {
@@ -39,6 +39,7 @@ class intervolga_edu extends CModule
 		try {
 			Main\ModuleManager::registerModule($this->MODULE_ID);
 			$this->InstallFiles();
+			$this->InstallEvents();
 		} catch (\Exception $e) {
 			global $APPLICATION;
 			$APPLICATION->throwException($e->getMessage());
@@ -54,6 +55,7 @@ class intervolga_edu extends CModule
 		try {
 			Main\ModuleManager::unRegisterModule($this->MODULE_ID);
 			$this->UninstallFiles();
+			$this->UnInstallEvents();
 		} catch (\Exception $e) {
 			global $APPLICATION;
 			$APPLICATION->throwException($e->getMessage());
@@ -69,13 +71,19 @@ class intervolga_edu extends CModule
 		$root = Application::getDocumentRoot();
 		$curDir = getLocalPath('modules/' . $this->MODULE_ID);
 		copyDirFiles(
-			$root . $curDir .  '/install/js',
+			$root . $curDir . '/install/js',
 			$root . '/bitrix/js/' . $this->MODULE_ID,
 			true,
 			true
 		);
+        copyDirFiles(
+            $root . $curDir .  '/install/css',
+            $root . '/bitrix/css/' . $this->MODULE_ID,
+            true,
+            true
+        );
 		copyDirFiles(
-			$root . $curDir .  '/install/images',
+			$root . $curDir . '/install/images',
 			$root . '/bitrix/images/' . $this->MODULE_ID,
 			true,
 			true
@@ -94,11 +102,15 @@ class intervolga_edu extends CModule
 		$root = Application::getDocumentRoot();
 		$curDir = getLocalPath('modules/' . $this->MODULE_ID);
 		deleteDirFiles(
-			$root . $curDir .  '/install/js',
+			$root . $curDir . '/install/js',
 			$root . '/bitrix/js/' . $this->MODULE_ID
 		);
+        deleteDirFiles(
+            $root . $curDir .  '/install/css',
+            $root . '/bitrix/css/' . $this->MODULE_ID
+        );
 		deleteDirFiles(
-			$root . $curDir .  '/install/images',
+			$root . $curDir . '/install/images',
 			$root . '/bitrix/images/' . $this->MODULE_ID
 		);
 		deleteDirFiles(
@@ -106,4 +118,27 @@ class intervolga_edu extends CModule
 			$root . '/bitrix/admin',
 		);
 	}
+
+	function InstallEvents()
+	{
+		EventManager::getInstance()->registerEventHandler(
+			'main',
+			'OnPanelCreate',
+			$this->MODULE_ID,
+			'Intervolga\\Edu\\EventHandlers\\Main',
+			'OnPanelCreateHandler'
+		);
+	}
+
+	function UnInstallEvents()
+	{
+		EventManager::getInstance()->unRegisterEventHandler(
+			'main',
+			'OnPanelCreate',
+			$this->MODULE_ID,
+			'Intervolga\\Edu\\EventHandlers\\Main',
+			'OnPanelCreateHandler'
+		);
+	}
+
 }

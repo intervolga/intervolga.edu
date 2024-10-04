@@ -108,6 +108,8 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_INCLUDEAREA'] = 'Проверка вкл�
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_INCLUDEAREA_DESCRIPTION'] = 'Должен быть файл в разделе Партнерам и в корне сайта';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_ABOUTMENUITEMS'] = 'Проверка пунктов меню "О магазине"';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_ABOUTMENUITEMS_DESCRIPTION'] = 'В меню должны быть разделы: Отзывы, Контакты, Руководство, История';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON41_WASTEINCLUDEAREA'] = 'Проверка лишних включаемых областей';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON41_WASTEINCLUDEAREA_DESCRIPTION'] = 'Должен отсутствовать файл в разделах \'Новости\', \'Каталог\' и \'О компании\'';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_LANGFILE'] = 'Проверка lang-файлов шаблона';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_LANGFILE_DESCRIPTION'] = 'В файле шаблона не должно быть кириллицы, все языковые фразы должны быть вынесены в соответствующий lang-файл';
 
@@ -162,6 +164,7 @@ $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_SLIDER_DESCRIPTION'] = 'Должны б�
 
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_SLIDERCODEANALYSIS'] = 'Проверка кода файла result_modifier';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_SLIDERCODEANALYSIS_DESCRIPTION'] = 'Анализ кода news.list/slider/result_modifier.php';
+
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_CATALOGBINDINGPROPERTY'] = 'Проверка свойства "Привязка к каталогу"';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_CATALOGBINDINGPROPERTY_DESCRIPTION'] = 'Свойство должно существовать, иметь тип "Привязка к элементам" и быть заполненно хотя бы у 3 элементов';
 $MESS['INTERVOLGA_EDU.COURSE2_LESSON1_2_PROPERTYPRICE'] = 'Проверка свойства "Цена"';

@@ -12,6 +12,7 @@ $MESS['INTERVOLGA_EDU.REMOVE_REPORT'] = 'Снять жалобу от #TIME#';
 $MESS['INTERVOLGA_EDU.MODULE_TAB_INFO'] = 'О модуле';
 $MESS['INTERVOLGA_EDU.MODULE_INFO'] = 'О модуле проверки Академии';
 $MESS['INTERVOLGA_EDU.MODULE_VERSION'] = 'Версия модуля: <b>#VERSION#</b>';
+$MESS['INTERVOLGA_EDU.TAKE_PRINT_VERSION'] = 'Получить версию руководства для печати';
 $MESS['INTERVOLGA_EDU.MODULE_VERSION_DATE'] = 'Дата обновления: <b>#VERSION_DATE#</b>';
 $MESS['INTERVOLGA_EDU.MODULE_TESTS_COUNT'] = 'Тестов в базе: <b>#COUNT#</b>';
 $MESS['INTERVOLGA_EDU.COURSE_CONTENTS'] = 'Итоги курса';
