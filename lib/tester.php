@@ -124,6 +124,9 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestComponentDirectory::class,
 			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestDescription::class,
 
+			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestHermitage::class,
+			\Intervolga\Edu\Tests\Course2\Lesson5_1\TestComponentTemplate::class,
+
 
 			\Intervolga\Edu\Tests\Course2\Lesson5_2\TestComponentCache::class,
 			\Intervolga\Edu\Tests\Course2\Lesson5_2\TestVacancyIblock::class,
@@ -159,7 +162,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestResultsPollingIblock::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestPropertyGenderValues::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestLinkWithRespondent::class,
-            \Intervolga\Edu\Tests\Course3\Lesson3\TestPropertyCode::class,
+      \Intervolga\Edu\Tests\Course3\Lesson3\TestPropertyCode::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestRespondentComponent::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestRespondentComponentTemplate::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestSubQuery::class,
