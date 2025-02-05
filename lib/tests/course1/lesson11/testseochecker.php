@@ -92,6 +92,7 @@ class TestSeoChecker extends BaseTest
 
 	protected static function chechkSeoElements($iblockId, $sectionId)
 	{
+		$elements = [];
 		$iblockElems = CIblockElement::GetList(false, [
 			'IBLOCK_ID' => $iblockId,
 			'SECTION_ID' => $sectionId
@@ -102,11 +103,12 @@ class TestSeoChecker extends BaseTest
 			$keywords = $seoElement['ELEMENT_META_KEYWORDS']['TEMPLATE'];
 			$discription = $seoElement['ELEMENT_META_DESCRIPTION']['TEMPLATE'];
 
-			if (preg_match('/\{=parent\.Name}\s*\{=iblock\.Name}/', $keywords) &&
+			if (preg_match('/\{=parent\.Name}\s*\,*\s*\{=iblock\.Name}/', $keywords) &&
 				preg_match('/\{=this\.PreviewText}/', $discription)) {
 				$elements[$iblockElement['ID']] = $iblockElement;
 			}
 		}
+
 		Assert::greaterEq(count($elements), 1, Loc::getMessage('INTERVOLGA_EDU.COURSE_1_LESSON_11_SEO_ELEMENT_COUNT'));
 	}
 }
