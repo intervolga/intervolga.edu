@@ -7,6 +7,14 @@ use Intervolga\Edu\Tests\BaseTest;
 
 class TestNavPage extends BaseTest
 {
+	/**
+	 * Добавляем в этот урок, потому что во втором курсе просят сменить постраничку с 5 до 2
+	 * */
+	public static function checkLastResult(): bool
+	{
+		return true;
+	}
+
 	public static function interceptErrors()
 	{
 		return true;

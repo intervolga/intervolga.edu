@@ -27,3 +27,4 @@ $MESS['INTERVOLGA_EDU.SEE_PHOTO'] = 'Смотреть фото';
 $MESS['INTERVOLGA_EDU.SEND_PHOTO'] = 'Отправить';
 $MESS['INTERVOLGA_EDU.SNIFFER_TAB'] = 'SNIFFER';
 $MESS['INTERVOLGA_EDU.SNIFFER_TITLE'] = 'Проверка кода через Sniffer';
+$MESS['INTERVOLGA_EDU.LAST_PASSED_DATE'] = '<div class="last-passed-date-info"> Дата успешного прохождения: #DATE# </div>';

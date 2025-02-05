@@ -8,11 +8,6 @@ use Intervolga\Edu\Util\UpdateSystem;
 
 class TestLicense extends BaseTest
 {
-	public static function checkLastResult(): bool
-	{
-		return true;
-	}
-
 	protected static function run()
 	{
 		$status = UpdateSystem::getStatus();

@@ -179,6 +179,7 @@ while ($result = $results->Fetch()) {
 $tabControl = new CAdminTabControl('tabControl', $tabs);
 $tabControl->begin();
 $locatorsFound = Tester::getLocatorsFound();
+$lastPassedDate = Tester::getLastPassedDate();
 
 foreach ($testsTree as $courseCode => $course) {
 	$tabControl->beginNextTab();
@@ -350,6 +351,10 @@ foreach ($testsTree as $courseCode => $course) {
 							}
 						}
 						$messageParams["DETAILS"] .= '<div class="locators-info">' . implode('<br>', $locatorsInfo) . '</div>';
+					}
+
+					if($lastPassedDate[$testCode]){
+						$messageParams["DETAILS"] .= Loc::getMessage('INTERVOLGA_EDU.LAST_PASSED_DATE', ['#DATE#' => $lastPassedDate[$testCode]]);
 					}
 
 					$message = new CAdminMessage($messageParams);
