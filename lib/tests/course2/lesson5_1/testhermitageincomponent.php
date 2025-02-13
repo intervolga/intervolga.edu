@@ -12,7 +12,7 @@ use Intervolga\Edu\Util\Regex;
 
 class TestHermitageInComponent extends BaseTest
 {
-	const REG_BUTTONS = '/CIBlock::GetPanelButtons[\w\s\d()$[\]\'",;:\/А-я\=}{><\-]*CIBlock::GetPanelButtons/iu';
+	const REG_BUTTONS = '/CIBlock::GetPanelButtons[\w\s\d()$[\]\'",;:\/А-я\=}{><\-?.#]*CIBlock::GetPanelButtons/iu';
 
 	protected static function run()
 	{

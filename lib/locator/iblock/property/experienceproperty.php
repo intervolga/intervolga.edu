@@ -18,6 +18,7 @@ class ExperienceProperty extends PropertyLocator
 				'REQUIRED_EXP',
 				'EXP',
 				'EXPERIENCE',
+                'WORK_EXPERIENCE',
 			],
 		];
 	}
