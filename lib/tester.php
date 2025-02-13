@@ -69,6 +69,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestBottomMenu::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestAboutMenuItems::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestBreadcrumb::class,
+			\Intervolga\Edu\Tests\Course1\Lesson41\TestLangFile::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson42\TestRegisterPageOption::class,
 			\Intervolga\Edu\Tests\Course1\Lesson42\TestEmail::class,
@@ -179,6 +180,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestRespondentIblock::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestRespondentComponent::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestTemplateRespondents::class,
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestComponentParameters::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUf::class,
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUfClass::class,

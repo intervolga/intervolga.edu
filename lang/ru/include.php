@@ -113,6 +113,9 @@ $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_ABOUTMENUITEMS'] = 'Проверка пу
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_ABOUTMENUITEMS_DESCRIPTION'] = 'В меню должны быть разделы: Отзывы, Контакты, Руководство, История';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_WASTEINCLUDEAREA'] = 'Проверка лишних включаемых областей';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON41_WASTEINCLUDEAREA_DESCRIPTION'] = 'Должен отсутствовать файл в разделах \'Новости\', \'Каталог\' и \'О компании\'';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON41_LANGFILE'] = 'Проверка lang-файлов шаблона';
+$MESS['INTERVOLGA_EDU.COURSE1_LESSON41_LANGFILE_DESCRIPTION'] = 'В файле шаблона не должно быть кириллицы, все языковые фразы должны быть вынесены в соответствующий lang-файл';
+
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_REGISTERPAGEOPTION'] = 'Проверка настройки «Страница регистрации»';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_REGISTERPAGEOPTION_DESCRIPTION'] = 'Настройка Главного модуля «Страница регистрации (для системного компонента авторизации)» должна содержать относительный путь к разделу регистрации';
 $MESS['INTERVOLGA_EDU.COURSE1_LESSON42_EMAIL'] = 'Проверка ссылки на восстановление пароля';
@@ -247,6 +250,9 @@ $MESS['INTERVOLGA_EDU.COURSE3_LESSON3_SUBQUERY'] = 'Проверка прави�
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON3_SUBQUERY_DESCRIPTION'] = 'CIBlockElement::SubQuery должен использоваться внутри класса компонента';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON3_TEMPLATERESPONDENTS'] = 'Проверка размещения компонента "Респонденты" и содержимого шаблона';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON3_TEMPLATERESPONDENTS_DESCRIPTION'] = 'Компонент должен быть размещен, а все используемые слова/фразы должны быть вынесены в lang-файлы.';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON3_COMPONENTPARAMETERS'] = 'Проверка параметров компонента "Респонденты/Результаты опроса';
+$MESS['INTERVOLGA_EDU.COURSE3_LESSON3_COMPONENTPARAMETERS_DESCRIPTION'] = 'В параметрах компонента должны быть выбраны свойсвтва ИБ, согласно тексту задания.';
+
 
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF'] = 'Проверка собственного UF-свойства';
 $MESS['INTERVOLGA_EDU.COURSE3_LESSON4_UF_DESCRIPTION'] = 'Должен существовать обработчик события OnUserTypeBuildList модуля main для свойства "Привязка к коллекции медиабиблиотеки"';
@@ -329,9 +335,6 @@ $MESS['INTERVOLGA_EDU.USE_FIELDS_FOR_FIELDS'] = 'Файл #FILE# содержи�
 $MESS['INTERVOLGA_EDU.USE_DISPLAY_PROPERTIES_FOR_PROPERTIES'] = 'Файл #FILE# содержит прямое обращение к свойству #CODE#, нужно через #VAR#[\'DISPLAY_PROPERTIES\'][\'#PROPERTY#\']';
 $MESS['INTERVOLGA_EDU.USE_DISPLAY_PROPERTIES_FOR_PROPERTIES_ECHO'] = 'Файл #FILE# содержит вывод свойства #CODE#, нужно через #VAR#[\'DISPLAY_PROPERTIES\'][\'#PROPERTY#\'][\'DISPLAY_VALUE\']';
 $MESS['INTERVOLGA_EDU.PARTNERS_DIRECTORY'] = 'Партнерам';
-$MESS['INTERVOLGA_EDU.CATALOG_DIRECTORY'] = 'Каталог';
-$MESS['INTERVOLGA_EDU.COMPANY_DIRECTORY'] = 'О компании';
-$MESS['INTERVOLGA_EDU.NEWS_DIRECTORY'] = 'Новости';
 $MESS['INTERVOLGA_EDU.REVIEWS_DIRECTORY'] = 'Отзывы';
 $MESS['INTERVOLGA_EDU.PROMO_DIRECTORY'] = 'Акции';
 $MESS['INTERVOLGA_EDU.REVIEWS_CAROUSEL_TEMPLATE_DIRECTORY'] = 'Шаблон карусели отзывов';
@@ -342,7 +345,7 @@ $MESS['INTERVOLGA_EDU.REGISTER_PAGE_OPTION_NOT_SET'] = 'Настройка не 
 $MESS['INTERVOLGA_EDU.REGISTER_PAGE_OPTION_VALID'] = '/path/to/register/';
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_TEXT_PROBLEM'] = 'Шаблон письма «Запрос на смену пароля» не найден или пуст, <a href="/bitrix/admin/type_edit.php?EVENT_NAME=USER_PASS_REQUEST" target="_blank">проверьте</a>';
 $MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_URL_PROBLEM'] = 'В шаблоне письма «Запрос на смену пароля» нет валидной ссылки';
-$MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_PAGE_PROBLEM'] = 'ссылка из письма';
+$MESS['INTERVOLGA_EDU.USER_PASS_REQUEST_PAGE_PROBLEM'] = 'Cсылка восстановления пароля из письма является <b>недействительной</b>. Файл #VALUE#  - не существует';
 $MESS['INTERVOLGA_EDU.IBLOCK_FIELD_PARAM_SHOULD_BE_SET'] = 'Настройка <b>#PARAM#</b> поля <b>#FIELD#</b> должна быть <b>#EXPECT#</b>';
 $MESS['INTERVOLGA_EDU.CONTENT_FOUND'] = 'В <a href="#ADMIN_LINK#" target="_blank">#NAME#</a> не должно быть #REGEX_EXPLAIN# (#REASON#)';
 $MESS['INTERVOLGA_EDU.ADD_CUSTOM_CORE_CHECK'] = 'В файле #VALUE# нужно использовать короткое подключение ядра: B_PROLOG_INCLUDED === true || die()';
