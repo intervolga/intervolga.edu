@@ -50,7 +50,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestLowerCase::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestCode::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestDumpAccess::class,
-/*
+
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestTemplates::class,
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestTemplateConditions::class,
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestCode::class,
@@ -207,7 +207,7 @@ class Tester
 
 			\Intervolga\Edu\Tests\CourseIntervolga\Lesson1\TestRobotsChecker::class,
 			\Intervolga\Edu\Tests\CourseIntervolga\Lesson2\TestModulesCheck::class,
-			\Intervolga\Edu\Tests\CourseIntervolga\Lesson3\TestBackupCheker::class,*/
+			\Intervolga\Edu\Tests\CourseIntervolga\Lesson3\TestBackupCheker::class,
 		];
 	}
 
