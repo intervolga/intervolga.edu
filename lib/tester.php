@@ -151,6 +151,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson7\TestPartnersUser::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\TestSecurityLevel::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\TestSecureAuthorization::class,
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestPermission::class,
 
 			\Intervolga\Edu\Tests\Course2\Lesson7\TestLiteadminAccessChecker::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\TestSubscriptionGroupChecker::class,
