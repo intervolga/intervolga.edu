@@ -55,7 +55,14 @@ $MESS['INTERVOLGA_EDU.ASSERT_AGENT_EXISTS'] = 'Агент <b>#NAME#</b> не н�
 $MESS['INTERVOLGA_EDU.ASSERT_EVENT_MESSAGE_EXISTS'] = 'Почтовое событие <b>#NAME#</b> не найдено (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.ASSERT_EVENT_TEMPLATE_EXISTS'] = 'Почтовый шаблон <b>#NAME#</b> не найден (#POSSIBLE#)';
 $MESS['INTERVOLGA_EDU.TEMPLATE_NOT_EQUALS_CONDITION'] = 'Шаблон <b>#TEMPLATE#</b> имеет неверное условие показа';
-$MESS['INTERVOLGA_EDU.TEMPLATE_NOT_EXISTS'] = 'Шаблон <b>#TEMPLATE#</b> отсутствует';
+$MESS['INTERVOLGA_EDU.TEMPLATE_NOT_EXISTS'] = 'Шаблон <b>#TEMPLATE#</b> не используется в <a href="/bitrix/admin/site_edit.php?lang=ru&LID=s1" target="_blank">шаблонах сайта</a>';
 $MESS['INTERVOLGA_EDU.LANG_STRING_NOT_FOUND'] = 'Строка \'#STRING#\' не найдена в языковом файле #FILE#';
 $MESS['INTERVOLGA_EDU.EN_LANG_CODE_NOT_FOUND'] = 'Код \'#CODE#\' не найден в /en/ языковом файле #FILE#';
 $MESS['INTERVOLGA_EDU.LOC_MESSAGE_NOT_FOUND'] = 'Код \'#CODE#\' не найден в файле #FILE#';
+
+$MESS['INTERVOLGA_EDU.HAS_EXTRA_PROPERTY'] = 'Имеются лишние свойства:<b> #EXTRA_PROPERTIES# </b>';
+$MESS['INTERVOLGA_EDU.REPLACE_TO_PROPERTY'] = 'Возможно стоит <b>#PROPERTY#</b> заменить на <b>#REPLACE_TO#</b>';
+$MESS['INTERVOLGA_EDU.CHANGE_TO_DESC'] = 'детальное описание элемента';
+$MESS['INTERVOLGA_EDU.CHANGE_TO_NAME'] = 'название элемента';
+$MESS['INTERVOLGA_EDU.COUNT_SECTIONS_IS_LESS'] = 'Требуемое количество разделов: <b>#REQUIRED#</b>, сейчас: <b>#NOW#</b>';
+$MESS['INTERVOLGA_EDU.COUNT_ELEMENTS_IN_SECTION_IS_LESS'] = 'Разделы (#SECTIONS#) имеют меньше #MIN# элемента';
