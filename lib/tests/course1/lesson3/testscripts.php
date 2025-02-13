@@ -8,6 +8,11 @@ use Intervolga\Edu\Util\Regex;
 
 class TestScripts extends BaseTest
 {
+	public static function checkLastResult(): bool
+	{
+		return true;
+	}
+
 	protected static function run()
 	{
 		$mainHeaderFile = FileSystem::getFile('/local/templates/main/header.php');

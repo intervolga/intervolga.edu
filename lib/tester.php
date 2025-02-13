@@ -1,10 +1,14 @@
 <?php
 namespace Intervolga\Edu;
 
+use Bitrix\Main\ArgumentException;
+use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\ObjectPropertyException;
+use Bitrix\Main\SystemException;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Exceptions\AssertException;
 use Intervolga\Edu\Tests\BaseTest;
-use Bitrix\Main\Localization\Loc;
+use Intervolga\Edu\Tool\ORM\EduTestTable;
 
 class Tester
 {
@@ -13,6 +17,12 @@ class Tester
 	 */
 	protected static $exceptions = [];
 	protected static $locatorsFound = [];
+	protected static $lastPassedDate = [];
+
+	public static function getTestClassesCount(): int
+	{
+		return count(static::getTestClasses());
+	}
 
 	/**
 	 * @return string[]|BaseTest[]
@@ -39,6 +49,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestDumpFunction::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestLowerCase::class,
 			\Intervolga\Edu\Tests\Course1\Lesson2\TestCode::class,
+			\Intervolga\Edu\Tests\Course1\Lesson2\TestDumpAccess::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestTemplates::class,
 			\Intervolga\Edu\Tests\Course1\Lesson3\TestTemplateConditions::class,
@@ -58,6 +69,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestBottomMenu::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestAboutMenuItems::class,
 			\Intervolga\Edu\Tests\Course1\Lesson41\TestBreadcrumb::class,
+			\Intervolga\Edu\Tests\Course1\Lesson41\TestLangFile::class,
 
 			\Intervolga\Edu\Tests\Course1\Lesson42\TestRegisterPageOption::class,
 			\Intervolga\Edu\Tests\Course1\Lesson42\TestEmail::class,
@@ -139,6 +151,7 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson7\TestPartnersUser::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\TestSecurityLevel::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\TestSecureAuthorization::class,
+			\Intervolga\Edu\Tests\Course2\Lesson7\TestPermission::class,
 
 			\Intervolga\Edu\Tests\Course2\Lesson7\TestLiteadminAccessChecker::class,
 			\Intervolga\Edu\Tests\Course2\Lesson7\TestSubscriptionGroupChecker::class,
@@ -147,7 +160,6 @@ class Tester
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestGadgetTemplate::class,
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestSettingResultLinks::class,
 			\Intervolga\Edu\Tests\Course2\Lesson8\TestDesktopPage::class,
-
 
 			\Intervolga\Edu\Tests\Course2\Lesson9\TestWizardTemplate::class,
 			\Intervolga\Edu\Tests\Course2\Lesson9\TestWizard::class,
@@ -162,13 +174,14 @@ class Tester
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestResultsPollingIblock::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestPropertyGenderValues::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestLinkWithRespondent::class,
-      \Intervolga\Edu\Tests\Course3\Lesson3\TestPropertyCode::class,
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestPropertyCode::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestRespondentComponent::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestRespondentComponentTemplate::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestSubQuery::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestRespondentIblock::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestRespondentComponent::class,
 			\Intervolga\Edu\Tests\Course3\Lesson3\TestTemplateRespondents::class,
+			\Intervolga\Edu\Tests\Course3\Lesson3\TestComponentParameters::class,
 
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUf::class,
 			\Intervolga\Edu\Tests\Course3\Lesson4\TestUfClass::class,
@@ -198,24 +211,34 @@ class Tester
 		];
 	}
 
-	public static function getTestClassesCount(): int
-	{
-		return count(static::getTestClasses());
-	}
-
+	/**
+	 * @throws ArgumentException
+	 * @throws ObjectPropertyException
+	 * @throws SystemException
+	 */
 	public static function run()
 	{
 		/**
 		 * @var BaseTest $testClass
 		 */
+
+		$lastRes = static::getLastResultsTests();
+
 		foreach (static::getTestClasses() as $testClass) {
-			try {
-				Assert::resetLocatorsFound();
-				$testClass::runOuter();
-			} catch (AssertException $assertException) {
-				static::$exceptions[$testClass] = $assertException;
-			} catch (\Throwable $throwable) {
-				static::$exceptions[$testClass] = AssertException::createThrowable($throwable);
+			//смотрим есть ли успешное прохождение теста в бд
+			$lastPassDate = $testClass::checkLastResult() && $lastRes && key_exists($testClass, $lastRes);
+
+			if ($lastPassDate) {
+				static::$lastPassedDate[$testClass] = $lastRes[$testClass]['PASSED_DATE'];
+			} else {
+				try {
+					Assert::resetLocatorsFound();
+					$testClass::runOuter();
+				} catch (AssertException $assertException) {
+					static::$exceptions[$testClass] = $assertException;
+				} catch (\Throwable $throwable) {
+					static::$exceptions[$testClass] = AssertException::createThrowable($throwable);
+				}
 			}
 			static::$locatorsFound[$testClass] = Assert::getLocatorsFound();
 
@@ -225,7 +248,34 @@ class Tester
 					new AssertException(Loc::getMessage('INTERVOLGA_EDU.NAME_TEST_NOT_MATCH_REQUIREMENTS',
 						['#TEST_NAME#' => $tmpArray[2]]));
 			}
+
 		}
+	}
+
+	/**
+	 * @throws ObjectPropertyException
+	 * @throws SystemException
+	 * @throws ArgumentException
+	 */
+	public static function getLastResultsTests(): array
+	{
+		return EduTestTable::getAll();
+	}
+
+	/**
+	 * @return array
+	 */
+	public static function getLocatorsFound()
+	{
+		return static::$locatorsFound;
+	}
+
+	/**
+	 * @return array
+	 */
+	public static function getLastPassedDate(): array
+	{
+		return static::$lastPassedDate;
 	}
 
 	/**
@@ -285,14 +335,7 @@ class Tester
 				];
 			}
 		}
-		return $tree;
-	}
 
-	/**
-	 * @return array
-	 */
-	public static function getLocatorsFound()
-	{
-		return static::$locatorsFound;
+		return $tree;
 	}
 }

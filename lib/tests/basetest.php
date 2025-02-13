@@ -2,13 +2,20 @@
 namespace Intervolga\Edu\Tests;
 
 use Bitrix\Main\Localization\Loc;
+use Exception;
 use Intervolga\Edu\Asserts\Assert;
 use Intervolga\Edu\Exceptions\AssertException;
+use Intervolga\Edu\Tool\ORM\EduTestTable;
 
 Loc::loadMessages(__FILE__);
 
 abstract class BaseTest
 {
+	public static function getCourseLoc(): string
+	{
+		return Loc::getMessage('INTERVOLGA_EDU.' . mb_strtoupper(static::getCourseCode()));
+	}
+
 	public static function getCourseCode(): string
 	{
 		$class = get_called_class();
@@ -16,20 +23,6 @@ abstract class BaseTest
 		$tmpArray = explode('\\', $tmp);
 
 		return strtolower($tmpArray[0]);
-	}
-
-	public static function getCourseLoc(): string
-	{
-		return Loc::getMessage('INTERVOLGA_EDU.' . mb_strtoupper(static::getCourseCode()));
-	}
-
-	public static function getLessonCode(): string
-	{
-		$class = get_called_class();
-		$tmp = str_replace('Intervolga\\Edu\\Tests\\', '', $class);
-		$tmpArray = explode('\\', $tmp);
-
-		return strtolower($tmpArray[1]);
 	}
 
 	public static function getLessonLoc(): string
@@ -43,18 +36,13 @@ abstract class BaseTest
 		}
 	}
 
-	public static function getTestCode(): string
+	public static function getLessonCode(): string
 	{
 		$class = get_called_class();
 		$tmp = str_replace('Intervolga\\Edu\\Tests\\', '', $class);
 		$tmpArray = explode('\\', $tmp);
 
-		return preg_replace('/^Test/', '', $tmpArray[2]);
-	}
-
-	protected static function getTestLocCode(): string
-	{
-		return 'INTERVOLGA_EDU.' . mb_strtoupper(static::getCourseCode()) . '_' . mb_strtoupper(static::getLessonCode()) . '_' . mb_strtoupper(static::getTestCode());
+		return strtolower($tmpArray[1]);
 	}
 
 	public static function getTestLoc(): string
@@ -66,6 +54,20 @@ abstract class BaseTest
 		} else {
 			return '&lt;' . $code . '&gt;';
 		}
+	}
+
+	protected static function getTestLocCode(): string
+	{
+		return 'INTERVOLGA_EDU.' . mb_strtoupper(static::getCourseCode()) . '_' . mb_strtoupper(static::getLessonCode()) . '_' . mb_strtoupper(static::getTestCode());
+	}
+
+	public static function getTestCode(): string
+	{
+		$class = get_called_class();
+		$tmp = str_replace('Intervolga\\Edu\\Tests\\', '', $class);
+		$tmpArray = explode('\\', $tmp);
+
+		return preg_replace('/^Test/', '', $tmpArray[2]);
 	}
 
 	public static function getDescription(): string
@@ -90,6 +92,25 @@ abstract class BaseTest
 	}
 
 	/**
+	 * @throws AssertException
+	 * @throws Exception
+	 */
+	public static function runOuter()
+	{
+		if (static::interceptErrors()) {
+			Assert::interceptErrorsOn();
+		}
+		static::run();
+		if (static::interceptErrors()) {
+			Assert::interceptErrorsOff();
+			Assert::throwIntercepted();
+		}
+		if (static::checkLastResult()) {
+			static::saveLastResult();
+		}
+	}
+
+	/**
 	 * @return bool
 	 */
 	public static function interceptErrors()
@@ -100,25 +121,23 @@ abstract class BaseTest
 	/**
 	 * @throws AssertException
 	 */
-	public static function runOuter()
-	{
-		if (static::interceptErrors())
-		{
-			Assert::interceptErrorsOn();
-		}
-		static::run();
-		if (static::interceptErrors())
-		{
-			Assert::interceptErrorsOff();
-			Assert::throwIntercepted();
-		}
-	}
-
-	/**
-	 * @throws AssertException
-	 */
 	protected static function run()
 	{
 		Assert::true(false, 'Not implemented yet');
+	}
+
+	public static function checkLastResult(): bool
+	{
+		return false;
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	protected static function saveLastResult()
+	{
+		if ($class = static::class) {
+			EduTestTable::addPassedTest($class);
+		}
 	}
 }
