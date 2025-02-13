@@ -16,7 +16,8 @@ class WorkTimeProperty extends PropertyLocator
 		return [
 			'=CODE' => [
 				'WORK_TIME',
-				'WORKING_TIME'
+				'WORKING_TIME',
+                'SCHEDULE',
 			],
 		];
 	}
